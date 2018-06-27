@@ -1,0 +1,18 @@
+{% macro button( options ) %}
+
+    {% set tag = 'button' %}
+    {% if options.tag === 'a' or options.tag == 'button' %}
+        {% set tag = options.tag %}
+     {% endif %}
+
+    <{{ tag }} class='button' {% if options.tag == 'a' %} href={{ options.href }} {% endif %}>
+        <span class='button__wrap'>
+            <span class='button__title'>{{ options.title }}</span>
+        </span>
+    </{{ tag }}>
+{% endmacro %}
+
+<header>
+    {{ button({ 'title': 'title' }) }}
+</header>
+
