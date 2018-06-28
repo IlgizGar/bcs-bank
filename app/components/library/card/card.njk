@@ -1,0 +1,24 @@
+{% macro card( options ) %}
+    {% set tag = 'div' %}
+    {% if options.href %}
+        {% set tag = 'a' %}
+    {% endif %}
+
+    {% set head = 'h2' %}
+    {% if options.head %}
+        {% set head = options.head %}
+    {% endif %}
+
+    <{{ tag }} class="card js-card" {% if options.href %} href={{ options.href }} {% endif %}>
+        <div class="card__wrap">
+            <div class="card__content">
+                <{{ head }} class="card__title">{{ options.title }}</{{ head }}>
+                {% if options.subtitle %}
+                    <p class="card__subtitle">{{ options.subtitle }}</p>
+                {% endif %}
+            </div>
+            <div class="card__button"></div>
+        </div>
+    </{{ tag }}>
+
+{% endmacro %}

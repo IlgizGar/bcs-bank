@@ -1,0 +1,34 @@
+{% extends "layout/layout.njk" %}
+
+{% import "../components/library/card/card.njk" as Card %}
+
+{% set root = "." %}
+{% set title = "Новости" %}
+{% set card = [
+    {'title': 'Как поужинать \n в любимом ресторане за счет банка',
+     'subtitle': '24 марта 2018'}
+] %}
+
+{% block body %}
+    <div class="page">
+
+        {% include "../components/modules/header/header.njk" %}
+
+        <main role="main">
+            <section class="news section page__section">
+                <div class="page__container">
+                    <div class="section__content">
+                        <div class="news__cards">
+                            {% for card in card %}
+                                {{ Card.card({'href': '#', 'title': card.title | striptags(true) | escape | nl2br, 'subtitle': card.subtitle}) }}
+                            {% endfor %}
+                        </div>
+                        <div class="news__contact"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        {% include "../components/modules/footer/footer.njk" %}
+    </div>
+{% endblock %}
