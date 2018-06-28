@@ -1,3 +1,6 @@
+{% import "../../../components/icon/icon.njk" as Icon %}
+{% import "../../../components/inline-svg/inline-svg.njk" as Svg %}
+
 {% macro button( options ) %}
     {% set tag = 'button' %}
     {% if options.href %}
@@ -14,7 +17,14 @@
 
     <{{ tag }} class='button {{ mods }} {{ options.class }}' {% if options.href %} href={{ options.href }} {% endif %}>
         <span class='button__wrap'>
-            <span class='button__title'>{{ options.title }}</span>
+            {% if options.title %}
+                <span class='button__title'>{{ options.title }}</span>
+            {% endif %}
+            {% if options.path  %}
+                <span class='button__icon'>{{ Svg.inlineSvg({ 'path': options.path }) }}</span>
+            {% elseif options.name %}
+                <span class='button__icon'>{{ Icon.icon({ 'name': options.name }) }}</span>
+            {% endif %}
         </span>
     </{{ tag }}>
 

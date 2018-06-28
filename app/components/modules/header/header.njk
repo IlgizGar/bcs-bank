@@ -5,12 +5,17 @@
         <div class="page__container">
             <div class="navbar__wrapper">
                 {% include "../../../components/modules/nav/nav.njk" %}
+                {{ Button.button({ 'title': 'Офисы и банкоматы', 'mods' : {'type': 'tab', 'view': 'underscore'}, 'class': 'navbar__button' }) }}
+                {{ Button.button({ 'name': 'search', 'mods' : {'type': 'icon', 'theme': 'gray', 'view': 'transparent'}, 'class': 'navbar__button' }) }}
             </div>
         </div>
     </div>
     <div class="menubar">
         <div class="page__container">
-            <div class="menubar__wrapper"></div>
+            <div class="menubar__wrapper">
+                {{ Button.button({ 'title': 'БКС банк', 'path': 'assets/images/svg/logo-dark.svg', 'mods' : {'view': 'icon-left'}, 'class': 'menubar__logo' }) }}
+                {{ Button.button({ 'title': 'Интернет-банк', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low'} }) }}
+            </div>
         </div>
     </div>
 </header>

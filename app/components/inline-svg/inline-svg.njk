@@ -1,3 +1,4 @@
 {% macro inlineSvg(data) %}
-  <!-- inject:{{ data.path }} --><!-- endinject -->
+  <img class='image' src="{{ data.path }}">
+  {#<!-- inject:{{ data.path }} --><!-- endinject -->#}
 {% endmacro %}
