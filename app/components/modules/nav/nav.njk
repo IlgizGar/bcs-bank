@@ -1,0 +1,8 @@
+{% import "../../../components/library/button/button.njk" as Button %}
+{% import "../../../components/icon/icon.njk" as Icon %}
+
+<nav class="nav header__nav js-nav">
+    {{ Button.button({ 'title': 'Частным лицам', 'mods' : {'type': 'tab', 'view': 'underscore'}, 'class': 'nav__button state_active' }) }}
+    {{ Button.button({ 'title': 'Малому бизнесу', 'mods' : {'type': 'tab', 'view': 'underscore'}, 'class': 'nav__button' }) }}
+    {{ Button.button({ 'title': 'Крупному бизнесу', 'mods' : {'type': 'tab', 'view': 'underscore'}, 'class': 'nav__button' }) }}
+</nav>

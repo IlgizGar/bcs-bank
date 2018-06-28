@@ -4,5 +4,10 @@
 {% set title = "Главная" %}
 
 {% block body %}
-{% include "../components/modules/header/header.njk" %}
+    <div class="page">
+
+        {% include "../components/modules/header/header.njk" %}
+
+        <main role="main"></main>
+    </div>
 {% endblock %}

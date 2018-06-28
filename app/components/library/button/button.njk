@@ -1,4 +1,21 @@
-{% macro button(tag='button') %}
-    <tag class='button'></tag>
-{% endmacro %}
+{% macro button( options ) %}
+    {% set tag = 'button' %}
+    {% if options.href %}
+        {% set tag = 'a' %}
+    {% endif %}
 
+    {% set mods = '' %}
+    {% set class_sep = joiner(' ') %}
+    {% set mods %}
+        {% for key, value in options.mods -%}
+            {{ class_sep() }} button_{{ key }}-{{ value }}
+        {%- endfor %}
+    {% endset %}
+
+    <{{ tag }} class='button {{ mods }} {{ options.class }}' {% if options.href %} href={{ options.href }} {% endif %}>
+        <span class='button__wrap'>
+            <span class='button__title'>{{ options.title }}</span>
+        </span>
+    </{{ tag }}>
+
+{% endmacro %}

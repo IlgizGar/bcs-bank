@@ -1,20 +1,20 @@
-button
+.button
   cursor: pointer
   position: relative
 
+  display: inline-block
   overflow: hidden
   height: 56px
-  padding: 0 32px
-
-  color: $color_light
 
   border-radius: 4px
-  background-color: $color_default
 
   transition: all $interval
 
   &:hover
     background-color: $color_hover
+    box-shadow: none
+    .button__wrap
+      color: $color_light
 
   &:after
     display: none

@@ -1,18 +1,17 @@
-{% macro button( options ) %}
+{% import "../../../components/library/button/button.njk" as Button %}
 
-    {% set tag = 'button' %}
-    {% if options.tag === 'a' or options.tag == 'button' %}
-        {% set tag = options.tag %}
-     {% endif %}
-
-    <{{ tag }} class='button' {% if options.tag == 'a' %} href={{ options.href }} {% endif %}>
-        <span class='button__wrap'>
-            <span class='button__title'>{{ options.title }}</span>
-        </span>
-    </{{ tag }}>
-{% endmacro %}
-
-<header>
-    {{ button({ 'title': 'title' }) }}
+<header class="header">
+    <div class="navbar">
+        <div class="page__container">
+            <div class="navbar__wrapper">
+                {% include "../../../components/modules/nav/nav.njk" %}
+            </div>
+        </div>
+    </div>
+    <div class="menubar">
+        <div class="page__container">
+            <div class="menubar__wrapper"></div>
+        </div>
+    </div>
 </header>
 

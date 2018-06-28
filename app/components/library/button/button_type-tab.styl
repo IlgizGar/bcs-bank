@@ -1,0 +1,34 @@
+.button.button_type-tab
+  border-radius: 0
+  background-color: transparent
+
+  .button__wrap
+    padding: 0
+
+    color: $color_inactive
+
+  &:after
+    content: ''
+
+    position: absolute
+    left: 0
+
+    width: 100%
+    height: 3px
+
+    background-color: $color_selector
+
+  &:hover
+    background-color: transparent
+
+    .button__wrap
+      color: $color_text
+
+  &.state_active
+    &:after
+      display: block
+
+      transform: translateY(0)
+
+    .button__wrap
+      color: $color_text
