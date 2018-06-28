@@ -1,10 +1,13 @@
 {% import "../../../components/library/button/button.njk" as Button %}
+{% import "../../../components/inline-svg/inline-svg.njk" as Svg %}
+{% import "../../../components/modules/menu/menu.njk" as Menu %}
 
 <header class="header">
     <div class="navbar">
         <div class="page__container">
             <div class="navbar__wrapper">
                 {% include "../../../components/modules/nav/nav.njk" %}
+                {{ Button.button({ 'title': 'Контакты', 'name': 'dropdown', 'mods': {'type': 'icon-right', 'theme': 'gray', 'view': 'text'}, 'class': 'navbar__button navbar__button_type-dropdown' }) }}
                 {{ Button.button({ 'title': 'Офисы и банкоматы', 'mods' : {'type': 'tab', 'view': 'underscore'}, 'class': 'navbar__button' }) }}
                 {{ Button.button({ 'name': 'search', 'mods' : {'type': 'icon', 'theme': 'gray', 'view': 'transparent'}, 'class': 'navbar__button' }) }}
             </div>
@@ -13,8 +16,12 @@
     <div class="menubar">
         <div class="page__container">
             <div class="menubar__wrapper">
-                {{ Button.button({ 'title': 'БКС банк', 'path': 'assets/images/svg/logo-dark.svg', 'mods' : {'view': 'icon-left'}, 'class': 'menubar__logo' }) }}
-                {{ Button.button({ 'title': 'Интернет-банк', 'mods' : {'theme': 'gray', 'view': 'outlined', 'size': 'low'} }) }}
+                <a href="#">
+                    {{ Svg.inlineSvg({'path': 'assets/images/svg/full-logo-dark.svg'}) }}
+                </a>
+                {{ Menu.menu({ 'basic': [{'href': '#', 'title': 'Карты'}, {'href': '#', 'title': 'Кредиты'}, {'href': '#', 'title': 'Вклады'}, {'href': '#', 'title': 'Платежи'}],
+                             'more': [], 'class': 'header__menu' }) }}
+                {{ Button.button({ 'title': 'Интернет-банк', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low'} }) }}
             </div>
         </div>
     </div>

@@ -9,7 +9,7 @@
         {% set head = options.head %}
     {% endif %}
 
-    <{{ tag }} class="card js-card" {% if options.href %} href={{ options.href }} {% endif %}>
+    <{{ tag }} class="card js-card {{ options.class }}" {% if options.href %} href={{ options.href }} {% endif %}>
         <div class="card__wrap">
             <div class="card__content">
                 <{{ head }} class="card__title">{{ options.title }}</{{ head }}>
@@ -17,7 +17,10 @@
                     <p class="card__subtitle">{{ options.subtitle }}</p>
                 {% endif %}
             </div>
-            <div class="card__button"></div>
+            <a href="#" class="card__button">
+                <span>Читать</span>
+                <div style="width: 24px; height: 24px; background-color: aqua;"></div>
+            </a>
         </div>
     </{{ tag }}>
 

@@ -15,6 +15,7 @@ webFont('Opensans Bold', 'OpenSans-Bold')
 webFont('Opensans Semibold', 'OpenSans-Semibold')
 webFont('Opensans Regular', 'OpenSans-Regular')
 webFont('Formular Bold', 'Formular-Bold')
+webFont('Formular', 'Formular')
 
 opensansBold($fntSize = $fntSize_basic, $ltrSpacing = normal)
   font-family: "Opensans Bold", "sans-serif"
@@ -40,3 +41,8 @@ formularBold($fntSize = $fntSize_basic, $ltrSpacing = normal)
   font-size: $fntSize
   -webkit-font-smoothing: antialiased
 
+formular($fntSize = $fntSize_basic, $ltrSpacing = normal)
+  font-family: "Formular", "sans-serif"
+  letter-spacing: $ltrSpacing
+  font-size: $fntSize
+  -webkit-font-smoothing: antialiased
