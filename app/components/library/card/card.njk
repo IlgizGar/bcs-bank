@@ -1,3 +1,5 @@
+{% import "../../../components/icon/icon.njk" as Icon %}
+
 {% macro card( options ) %}
     {% set tag = 'div' %}
     {% if options.href %}
@@ -19,7 +21,7 @@
             </div>
             <a href="#" class="card__button">
                 <span>Читать</span>
-                <div style="width: 24px; height: 24px; background-color: aqua;"></div>
+                {{ Icon.icon({ 'name': 'arrow' }) }}
             </a>
         </div>
     </{{ tag }}>

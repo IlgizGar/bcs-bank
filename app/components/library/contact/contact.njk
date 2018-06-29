@@ -1,0 +1,11 @@
+{% macro contact( options ) %}
+    <div class="contact {{ options.class }}">
+        <div class="contact__title">{{ options.title }}</div>
+        {% for item in options.items %}
+            <div class="contact__item">
+                <p>{{ item.value }}</p>
+                <p>{{ item.name }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endmacro %}

@@ -1,0 +1,15 @@
+{% import "../context/context.njk" as Context %}
+
+{% macro heading( options ) %}
+    {% set tag = 'h2' %}
+    {% if options.tag %}
+        {% set tag = options.tag %}
+    {% endif %}
+
+    <{{ tag }} class="heading {{ options.class }}">
+        <span>{{ options.title }}</span>
+        {% if options.context %}
+            {{ Context.context({'title': options.context}) }}
+        {% endif %}
+    </{{ tag }}>
+{% endmacro %}

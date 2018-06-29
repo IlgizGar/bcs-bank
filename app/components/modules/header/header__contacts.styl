@@ -1,0 +1,14 @@
+.header .header__contacts
+  position: absolute
+  z-index: 100
+
+  width: 100%
+  padding: 80px 0 120px
+
+  background-color: $color_light
+
+  transform: translateY(calc(-100% - 50px))
+  transition: transform 2 * $interval
+
+  &.state_explored
+    transform: translateY(0)

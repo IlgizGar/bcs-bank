@@ -1,8 +1,15 @@
 .navbar .navbar__button
   &.navbar__button_type-dropdown
-    .button__wrap:hover
-      color: $color_elem
+    &:hover, &.state_active
+      .button__wrap
+        color: $color_elem
+
+    &.state_active
+      .button__icon .icon
+        transform: scale(1, -1)
 
     .button__icon .icon
       width: 10px
       height: 10px
+
+      transition: transform $interval

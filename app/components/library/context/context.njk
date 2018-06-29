@@ -1,3 +1,8 @@
+{% import "../../../components/icon/icon.njk" as Icon %}
+
 {% macro context( options ) %}
-    <button class="context {{ options.class }}">{{ options.title }}</button>
+    <button class="context {{ options.class }}">
+        <span>{{ options.title }}</span>
+        {{ Icon.icon({'name': 'ver-explore'}) }}
+    </button>
 {% endmacro %}

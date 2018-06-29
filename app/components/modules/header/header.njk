@@ -1,15 +1,38 @@
 {% import "../../../components/library/button/button.njk" as Button %}
 {% import "../../../components/inline-svg/inline-svg.njk" as Svg %}
 {% import "../../../components/modules/menu/menu.njk" as Menu %}
+{% import "../../../components/library/contact/contact.njk" as Contact %}
+{% import "../../../components/library/heading/heading.njk" as Heading %}
 
-<header class="header">
+<header class="header js-header">
     <div class="navbar">
         <div class="page__container">
             <div class="navbar__wrapper">
                 {% include "../../../components/modules/nav/nav.njk" %}
-                {{ Button.button({ 'title': 'Контакты', 'name': 'dropdown', 'mods': {'type': 'icon-right', 'theme': 'gray', 'view': 'text'}, 'class': 'navbar__button navbar__button_type-dropdown' }) }}
+                {{ Button.button({ 'title': 'Контакты', 'name': 'dropdown', 'mods': {'type': 'icon-right', 'theme': 'gray', 'view': 'text'}, 'class': 'navbar__button navbar__button_type-dropdown js-btn-header-contacts' }) }}
                 {{ Button.button({ 'title': 'Офисы и банкоматы', 'mods' : {'type': 'tab', 'view': 'underscore'}, 'class': 'navbar__button' }) }}
                 {{ Button.button({ 'name': 'search', 'mods' : {'type': 'icon', 'theme': 'gray', 'view': 'transparent'}, 'class': 'navbar__button' }) }}
+            </div>
+        </div>
+    </div>
+    <div class="header__contacts js-header-contacts">
+        <div class="page__container">
+            {{ Heading.heading({ 'title': 'Свяжитесь с нами' }) }}
+            <div class="header__contacts-wrap">
+                {{ Contact.contact({ 'title': 'Частным клиентам', 'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500-70-65' },
+                    { 'name': 'Если вы звоните из-за рубежа', 'value': '+7 (495) 967-11-11' }], 'class': 'header__contact' }) }}
+                {{ Contact.contact({ 'title': 'Малому и среднему бизнесу', 'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500-03-05' },
+                    { 'name': 'Если вы звоните из-за рубежа', 'value': '+7 (495) 777-57-04' }], 'class': 'header__contact' }) }}
+                {{ Contact.contact({ 'title': 'Малому и среднему бизнесу', 'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500-05-59' },
+                    { 'name': 'Если вы звоните из-за рубежа', 'value': '+7 (495) 777-57-03' }], 'class': 'header__contact' }) }}
+                <div class="header__contacts-links">
+                    {{ Button.button({ 'title': 'Задать вопрос', 'mods' : {'theme': 'default', 'size': 'wide'} }) }}
+                    <div class="header__contacts-socials">
+                        {{ Button.button({ 'href': '#', 'name': 'facebook', 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'} }) }}
+                        {{ Button.button({ 'href': '#', 'name': 'vkontakte', 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'} }) }}
+                        {{ Button.button({ 'href': '#', 'name': 'twitter', 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'} }) }}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -20,7 +43,7 @@
                     {{ Svg.inlineSvg({'path': 'assets/images/svg/full-logo-dark.svg'}) }}
                 </a>
                 {{ Menu.menu({ 'basic': [{'href': '#', 'title': 'Карты'}, {'href': '#', 'title': 'Кредиты'}, {'href': '#', 'title': 'Вклады'}, {'href': '#', 'title': 'Платежи'}],
-                             'more': [], 'class': 'header__menu' }) }}
+                    'more': [], 'class': 'header__menu' }) }}
                 {{ Button.button({ 'title': 'Интернет-банк', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low'} }) }}
             </div>
         </div>

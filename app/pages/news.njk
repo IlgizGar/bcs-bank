@@ -1,7 +1,8 @@
 {% extends "layout/layout.njk" %}
 
 {% import "../components/library/card/card.njk" as Card %}
-{% import "../components/library/context/context.njk" as Context %}
+{% import "../components/library/contact/contact.njk" as Contact %}
+{% import "../components/library/heading/heading.njk" as Heading %}
 {% import "../components/library/button/button.njk" as Button %}
 
 {% set root = "." %}
@@ -29,10 +30,7 @@
                 <div class="page__container">
                     <div class="section__content">
                         <div class="news__cards">
-                            <h1 class="news__title">
-                                <span>Новости за</span>
-                                {{ Context.context({'title': 'июнь 2018'}) }}
-                            </h1>
+                            {{ Heading.heading({ 'title': 'Новости за', 'context': 'июнь 2018', 'class': 'news__heading'}) }}
                             <div class="js-news-cards">
                                 {% for card in card %}
                                     {{ Card.card({'title': card.title | striptags(true) | escape | nl2br, 'subtitle': card.subtitle, 'class': 'news__card'}) }}
@@ -40,21 +38,9 @@
                             </div>
                             {{ Button.button({ 'title': 'Показать еще', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'wide'} }) }}
                         </div>
-                        <div class="news__contact">
-                            <div class="news__contact-title">Управление по связям <br> с общественностью</div>
-                            <div class="news__contact-item">
-                                <p>Сергей Нагорный</p>
-                                <p>Менеджер</p>
-                            </div>
-                            <div class="news__contact-item">
-                                <p>8 (495) 785 53 36</p>
-                                <p>Телефон</p>
-                            </div>
-                            <div class="news__contact-item">
-                                <p>snagornyy@msk.bcs.ru </p>
-                                <p>Электронная почта</p>
-                            </div>
-                        </div>
+                        {{ Contact.contact({ 'title': 'Управление по связям \n с общественностью' | striptags(true) | escape | nl2br,
+                                             'items': [{ 'name': 'Менеджер', 'value': 'Сергей Нагорный' }, { 'name': 'Телефон', 'value': '8 (495) 785 53 36' }, { 'name': 'Электронная почта', 'value': 'snagornyy@msk.bcs.ru' }],
+                                             'class': 'news__contact' }) }}
                     </div>
                 </div>
             </section>
