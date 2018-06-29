@@ -1,45 +1,45 @@
 {% import "../../../components/library/button/button.njk" as Button %}
 {% import "../../../components/inline-svg/inline-svg.njk" as Svg %}
+{% import "../../../components/library/socials/socials.njk" as Socials %}
 
 {% set menu = [
-    {'title': 'О банке',
-        'items': ['Новости', 'Общая информация', 'Руководство', 'Вакансии', 'Офисы и банкоматы', 'Вся группа']},
-    {'title': 'Реквизиты',
-        'items': ['Cтрахованиe вкладов', 'Лицензии', 'БКС Онлайн', 'Депозитарий']},
-    {'title': 'Инсайдерам',
-        'items': ['Раскрытие информации', 'Документы', 'Финансовым институтам']}
+  {'title': 'О банке',
+    'items': ['Новости', 'Общая информация', 'Руководство', 'Вакансии', 'Офисы и банкоматы', 'Вся группа']},
+  {'title': 'Реквизиты',
+    'items': ['Cтрахованиe вкладов', 'Лицензии', 'БКС Онлайн', 'Депозитарий']},
+  {'title': 'Инсайдерам',
+    'items': ['Раскрытие информации', 'Документы', 'Финансовым институтам']}
 ] %}
 
 <footer class="footer">
-    <div class="page__container">
-        <div class="footer__wrap">
-            <div class="footer__logo">
-                {{ Svg.inlineSvg({ 'path': 'assets/images/svg/logo-dark.svg' }) }}
-            </div>
-            {% for item in menu %}
-                <div class="footer__menu">
-                    <p class="footer__menu-title">{{ item.title }}</p>
-                    {% for el in item.items %}
-                        {% set els = el %}
-                        {{ Button.button({ 'href': '#', 'title': el, 'mods': {'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'footer__menu-link' }) }}
-                    {% endfor %}
-                </div>
-            {% endfor %}
-            <div class="footer__info">
-                <p class="footer__info-phone">8 800 500 7065</p>
-                <p class="footer__info-inform">Бесплатный звонок по России</p>
-                {{ Button.button({ 'title': 'Задать вопрос', 'mods': {'theme': 'default'} }) }}
-            </div>
-            <div class="footer__credentials">
-                {{ Button.button({ 'href': '#', 'title': 'Информация о максимальных процентных ставках по вкладам физических лиц', 'mods': {'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'footer__credentials-link' }) }}
-                <p>Финансовая Группа БКС</p>
-                <p>© 1989–2018, АО «БКС Банк», официальный сайт, генеральная лицензия на осуществление банковских операций №101 от 15.12.2014.</p>
-            </div>
-            <div class="footer__socials">
-                {{ Button.button({ 'href': '#', 'name': 'facebook', 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'}, 'class': 'footer__socials-link' }) }}
-                {{ Button.button({ 'href': '#', 'name': 'vkontakte', 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'}, 'class': 'footer__socials-link' }) }}
-                {{ Button.button({ 'href': '#', 'name': 'twitter', 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'}, 'class': 'footer__socials-link' }) }}
-            </div>
+  <div class="page__container">
+    <div class="footer__wrap">
+      <div class="footer__logo">
+        {{ Svg.inlineSvg({ 'path': 'assets/images/svg/logo-dark.svg' }) }}
+      </div>
+      {% for item in menu %}
+        <div class="footer__menu">
+          <p class="footer__menu-title">{{ item.title }}</p>
+          {% for el in item.items %}
+            {% set els = el %}
+            {{ Button.button({ 'href': '#', 'title': el, 'mods': {'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'footer__menu-link' }) }}
+          {% endfor %}
         </div>
+      {% endfor %}
+      <div class="footer__info">
+        <p class="footer__info-phone">8 800 500 7065</p>
+        <p class="footer__info-inform">Бесплатный звонок по России</p>
+        {{ Button.button({ 'title': 'Задать вопрос', 'mods': {'theme': 'default'} }) }}
+      </div>
+      <div class="footer__credentials">
+        {{ Button.button({ 'href': '#', 'title': 'Информация о максимальных процентных ставках по вкладам физических лиц', 'mods': {'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'footer__credentials-link' }) }}
+        <p>Финансовая Группа БКС</p>
+        <p>© 1989–2018, АО «БКС Банк», официальный сайт, генеральная лицензия на осуществление банковских операций №101
+          от 15.12.2014.</p>
+      </div>
+      <div class="footer__socials">
+        {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'} }) }}
+      </div>
     </div>
+  </div>
 </footer>
