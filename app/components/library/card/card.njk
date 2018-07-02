@@ -1,4 +1,6 @@
 {% import "../../../components/icon/icon.njk" as Icon %}
+{% import "../../../components/library/button/button.njk" as Button %}
+{% import "../../../components/library/socials/socials.njk" as Socials %}
 
 {% macro card( options ) %}
     {% set tag = 'div' %}
@@ -18,11 +20,28 @@
                 {% if options.subtitle %}
                     <p class="card__subtitle">{{ options.subtitle }}</p>
                 {% endif %}
+
+                {% if options.type === 'vacancy' %}
+                  <ul class="list">
+                    {% for item in options.items %}
+                      <li>{{ item }}</li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
             </div>
-            <a href="#" class="card__button">
-                <span>Читать</span>
-                {{ Icon.icon({ 'name': 'arrow' }) }}
-            </a>
+
+            <div class="card__footer">
+              {%  if options.type === 'news' %}
+                <a href="#" class="card__button">
+                    <span>Читать</span>
+                    {{ Icon.icon({ 'name': 'arrow' }) }}
+                </a>
+              {% elseif options.type === 'vacancy' %}
+                {{ Button.button({ 'title': 'Откликнуться', 'mods': { 'theme': 'default' } }) }}
+                {{ Button.button({ 'title': 'Узнать больше', 'mods': { 'theme': 'default', 'view': 'text' } }) }}
+                {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'} }) }}
+              {% endif %}
+            </div>
         </div>
     </{{ tag }}>
 

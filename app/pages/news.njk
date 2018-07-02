@@ -8,44 +8,46 @@
 {% set root = "." %}
 {% set title = "Новости" %}
 {% set card = [
-    {'title': 'Как поужинать \n в любимом ресторане за счет банка',
-        'subtitle': '24 марта 2018'},
-    {'title': 'Как поужинать \n в любимом ресторане за счет банка',
-        'subtitle': '24 марта 2018'},
-    {'title': 'Как поужинать \n в любимом ресторане за счет банка',
-        'subtitle': '24 марта 2018'},
-    {'title': 'Как поужинать \n в любимом ресторане за счет банка',
-        'subtitle': '24 марта 2018'},
-    {'title': 'Как поужинать \n в любимом ресторане за счет банка',
-        'subtitle': '24 марта 2018'}
+  {'title': 'Как поужинать \n в любимом ресторане за счет банка',
+    'subtitle': '24 марта 2018'},
+  {'title': 'Как поужинать \n в любимом ресторане за счет банка',
+    'subtitle': '24 марта 2018'},
+  {'title': 'Как поужинать \n в любимом ресторане за счет банка',
+    'subtitle': '24 марта 2018'},
+  {'title': 'Как поужинать \n в любимом ресторане за счет банка',
+    'subtitle': '24 марта 2018'},
+  {'title': 'Как поужинать \n в любимом ресторане за счет банка',
+    'subtitle': '24 марта 2018'}
 ] %}
 
 {% block body %}
-    <div class="page">
+  <div class="page">
 
-        {% include "../components/modules/header/header.njk" %}
+    {% include "../components/modules/header/header.njk" %}
 
-        <main role="main">
-            <section class="news section page__section">
-                <div class="page__container">
-                    <div class="section__content">
-                        <div class="news__cards">
-                            {{ Heading.heading({ 'title': 'Новости за', 'context': 'июнь 2018', 'class': 'news__heading'}) }}
-                            <div class="js-news-cards">
-                                {% for card in card %}
-                                    {{ Card.card({'title': card.title | striptags(true) | escape | nl2br, 'subtitle': card.subtitle, 'class': 'news__card'}) }}
-                                {% endfor %}
-                            </div>
-                            {{ Button.button({ 'title': 'Показать еще', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'wide'} }) }}
-                        </div>
-                        {{ Contact.contact({ 'title': 'Управление по связям \n с общественностью' | striptags(true) | escape | nl2br,
-                                             'items': [{ 'name': 'Менеджер', 'value': 'Сергей Нагорный' }, { 'name': 'Телефон', 'value': '8 (495) 785 53 36' }, { 'name': 'Электронная почта', 'value': 'snagornyy@msk.bcs.ru' }],
-                                             'class': 'news__contact' }) }}
-                    </div>
-                </div>
-            </section>
-        </main>
+    <main role="main">
+      <section class="news section page__section">
+        <div class="page__container">
+          <div class="section__content">
+            <div class="section__cards">
+              {{ Heading.heading({ 'title': 'Новости за', 'context': 'июнь 2018', 'class': 'heading_type-cards'}) }}
+              <div class="js-news-cards">
+                {% for card in card %}
+                  {{ Card.card({ 'type': 'news', 'title': card.title | striptags(true) | escape | nl2br, 'subtitle': card.subtitle , 'class': 'card_type-news' }) }}
+                {% endfor %}
+              </div>
+              {{ Button.button({ 'title': 'Показать еще', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'wide'} }) }}
+            </div>
+            <div class="section__aside">
+              {{ Contact.contact({ 'title': 'Управление по связям \n с общественностью' | striptags(true) | escape | nl2br,
+                'items': [{ 'name': 'Менеджер', 'value': 'Сергей Нагорный' }, { 'name': 'Телефон', 'value': '8 (495) 785 53 36' }, { 'name': 'Электронная почта', 'value': 'snagornyy@msk.bcs.ru' }],
+                'class': 'news__contact' }) }}
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
-        {% include "../components/modules/footer/footer.njk" %}
-    </div>
+    {% include "../components/modules/footer/footer.njk" %}
+  </div>
 {% endblock %}

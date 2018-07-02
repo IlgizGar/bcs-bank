@@ -1,0 +1,24 @@
+.card.card_type-news
+  .card__footer
+    height: 80px
+
+    .card__button
+      display: flex
+      justify-content: space-between
+      align-items: center
+
+      width: 100%
+      height: 100%
+      padding: 0 40px
+
+      opensansBold()
+      color: $color_default
+
+      .icon
+        width: 16px
+        height: 12px
+  &:hover
+    background-image: linear-gradient(32deg, #3e6cd5, #578aff)
+
+    .card__title, .card__subtitle, .card__button
+      color: $color_light
