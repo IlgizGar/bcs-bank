@@ -32,10 +32,10 @@
 
             <div class="card__footer">
               {%  if options.type === 'news' %}
-                <a href="#" class="card__button">
+                <div class="card__button">
                     <span>Читать</span>
                     {{ Icon.icon({ 'name': 'arrow' }) }}
-                </a>
+                </div>
               {% elseif options.type === 'vacancy' %}
                 {{ Button.button({ 'title': 'Откликнуться', 'mods': { 'theme': 'default' } }) }}
                 {{ Button.button({ 'title': 'Узнать больше', 'mods': { 'theme': 'default', 'view': 'text' } }) }}

@@ -3,7 +3,11 @@
         <div class="contact__title">{{ options.title }}</div>
         {% for item in options.items %}
             <div class="contact__item">
-                <p>{{ item.value }}</p>
+                {% if item.href %}
+                    <a href={{ item.href }}>{{ item.value }}</a>
+                {% else %}
+                    <p>{{ item.value }}</p>
+                {% endif %}
                 <p>{{ item.name }}</p>
             </div>
         {% endfor %}

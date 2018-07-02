@@ -1,7 +1,9 @@
 .contact .contact__item
   margin-top: 34px
 
-  p:first-child
+  transition: all $interval
+
+  p:first-child, a:first-child
     formular(24px)
     color: $color_elem
 
@@ -9,3 +11,6 @@
     margin-top: 10px
     opensansRegular(12px)
     color: $color_link
+
+  a:hover
+    color: $color_hover

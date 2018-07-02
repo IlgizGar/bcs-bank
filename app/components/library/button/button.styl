@@ -8,13 +8,17 @@
 
   border-radius: 4px
 
-  transition: all $interval
+  transition: background-color $interval
 
   &:hover
     background-color: $color_hover
     box-shadow: none
+
     .button__wrap
       color: $color_light
+
+      .button__icon
+        color: currentColor
 
   &:after
     display: none
