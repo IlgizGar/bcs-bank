@@ -6,12 +6,7 @@ module.exports = (elem) => {
       this.contact = $(selector);
       this.offset = -1;
 
-      this.init();
       this.events();
-    }
-
-    init() {
-
     }
 
     events() {

@@ -1,0 +1,9 @@
+{% import "../../../components/library/button/button.njk" as Button %}
+
+{% macro tabbar( options ) %}
+  <nav class="tabbar js-tabbar {{ options.class }}">
+    {% for tab in options.tabs %}
+      {{ Button.button({ 'title': tab.title, 'mods' : {'type': 'tab', 'view': options.view }, 'class': tab.state }) }}
+    {% endfor %}
+  </nav>
+{% endmacro %}

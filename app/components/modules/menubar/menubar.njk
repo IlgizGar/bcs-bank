@@ -1,0 +1,25 @@
+{% import "../../../components/inline-svg/inline-svg.njk" as Svg %}
+{% import "../../../components/modules/menu/menu.njk" as Menu %}
+{% import "../../../components/library/button/button.njk" as Button %}
+
+{% macro menubar( options ) %}
+  <div class="menubar {{ options.class }}">
+    <div class="page__container">
+      <div class="menubar__wrapper">
+        <a href="#">
+          {% if options.theme === 'blue' %}
+            {{ Svg.inlineSvg({'path': 'assets/images/svg/full-logo-light.svg'}) }}
+            {{ Menu.menu({ 'basic': [{'href': '#', 'title': 'Карты'}, {'href': '#', 'title': 'Кредиты'}, {'href': '#', 'title': 'Вклады'}, {'href': '#', 'title': 'Платежи'}],
+              'more': [], 'theme': 'white', 'class': 'header__menu' }) }}
+            {{ Button.button({ 'title': 'Интернет-банк', 'mods' : {'theme': 'white', 'view': 'outlined', 'size': 'low'} }) }}
+          {% else %}
+            {{ Svg.inlineSvg({'path': 'assets/images/svg/full-logo-dark.svg'}) }}
+            {{ Menu.menu({ 'basic': [{'href': '#', 'title': 'Карты'}, {'href': '#', 'title': 'Кредиты'}, {'href': '#', 'title': 'Вклады'}, {'href': '#', 'title': 'Платежи'}],
+              'more': [], 'theme': 'black', 'class': 'header__menu' }) }}
+            {{ Button.button({ 'title': 'Интернет-банк', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low'} }) }}
+          {% endif %}
+        </a>
+      </div>
+    </div>
+  </div>
+{% endmacro %}

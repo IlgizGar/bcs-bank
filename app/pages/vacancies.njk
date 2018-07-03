@@ -3,8 +3,8 @@
 {% import "../components/library/heading/heading.njk" as Heading %}
 {% import "../components/library/contact/contact.njk" as Contact %}
 {% import "../components/library/card/card.njk" as Card %}
+{% import "../components/modules/menubar/menubar.njk" as Menubar %}
 
-{% set root = "." %}
 {% set title = "Вакансии" %}
 {% set vacancies = [
   { 'title': 'Начальник отдела \n методологии риск-менеджмента',
@@ -23,21 +23,30 @@
 
     {% include "../components/modules/header/header.njk" %}
 
-    <main role="main">
-      <section class="vacancies section page__section">
+    <main role="main" class="vacancies">
+      <section class="section page__section">
+        <div class="section__header">
+          {{ Menubar.menubar({ 'theme': 'black', 'class': 'section__menubar' }) }}
+        </div>
+      </section>
+
+      <section class="section page__section page__section_theme-last">
         <div class="page__container">
-          <div class="section__content">
-            <div class="section__cards section__cards_theme-final">
-              {{ Heading.heading({ 'title': 'Вакансии', 'context': 'в Москве', 'class': 'heading_type-cards'}) }}
+          <div class="section__row">
+
+            <div class="section__content section__cards_theme-final">
+              {{ Heading.heading({ 'tag': 'h1', 'title': 'Вакансии', 'context': 'в Москве', 'class': 'heading_type-main'}) }}
               {% for vacancy in vacancies %}
-                {{ Card.card({ 'type': 'vacancy', 'title': vacancy.title | striptags(true) | escape | nl2br, 'subtitle': vacancy.subtitle, 'class': 'card_type-vacancy', 'items': vacancy.items }) }}
+                {{ Card.card({ 'type': 'vacancy', 'href': '#', 'title': vacancy.title | striptags(true) | escape | nl2br, 'subtitle': vacancy.subtitle, 'class': 'card_type-vacancy', 'items': vacancy.items }) }}
               {% endfor %}
             </div>
+
             <div class="section__aside">
               {{ Contact.contact({ 'title': 'Контакты HR департамента',
                 'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500 03 05', 'href': '+78005000305' }, { 'name': 'Почтовый и юридический адрес', 'value': 'г. Москва, просп. Мира \n д.69, стр. 1' | striptags(true) | escape | nl2br }],
                 'class': 'vacancies__contact js-contact' }) }}
             </div>
+
           </div>
         </div>
       </section>

@@ -1,0 +1,63 @@
+{% extends "layout/layout.njk" %}
+
+{% set root = "." %}
+{% set title = "Инсайдеры" %}
+
+{% import "../components/modules/menubar/menubar.njk" as Menubar %}
+{% import "../components/library/docs/docs.njk" as Docs %}
+{% import "../components/library/heading/heading.njk" as Heading %}
+
+{% block body %}
+  <div class="page">
+
+    {% include "../components/modules/header/header.njk" %}
+
+    <main role="main">
+      <section class="insiders section page__section">
+
+        <div class="section__header section__header_theme-blue">
+            {{ Menubar.menubar({ 'theme': 'blue', 'class': 'section__menubar' }) }}
+            <div class="page__container">
+              {{ Heading.heading({ 'tag': 'h1', 'title': 'Сведения \n для инсайдеров' | striptags(true) | escape | nl2br }) }}
+            </div>
+        </div>
+
+        <div class="page__container">
+          <div class="section__row">
+            <div class="section__content section__content_theme-centered">
+              <div class="insiders__cover">
+                {{ Docs.docs({ 'title': 'Перечень инсайдерской информации Акционерного общества \n «БКС - Инвестиционный Банк»' | striptags(true) | escape | nl2br, 'href': '#', 'type': 'PDF', 'size': '512 КБ' }) }}
+              </div>
+
+              <div class="section__text">
+                <p>
+                  В соответствии со статьей 10 Федерального закона от 27.07.2010 г. №224-ФЗ «О противодействии
+                  неправомерному использованию инсайдерской информации и манипулированию рынком и о внесении изменений в
+                  отдельные законодательные акты Российской Федерации» лицо, включенное в список инсайдеров Aкционерного
+                  общества «БКС — Инвестиционный Банк», должно направлять уведомления о совершенных им операциях с
+                  финансовыми инструментами, иностранной валютой и (или) товарами, которых касается инсайдерская
+                  информация, к которой они имеют доступ, в случае, если указанные финансовые инструменты, иностранная
+                  валюта и (или) товары допущены к организованным торгам, и (или) в отношении указанных финансовых
+                  инструментов, иностранной валюты и (или) товаров подана заявка о допуске к торгам на указанных
+                  организаторах торговли, и (или) цена указанных финансовых инструментов зависит от финансовых
+                  инструментов, иностранной валюты и (или) товаров, допущенных к торгам на указанных организаторах
+                  торговли, и (или) цена указанных финансовых инструментов зависит от финансовых инструментов,
+                  иностранной валюты и (или) товаров, в отношении которых подана заявка о допуске к торгам на указанных
+                  организаторах торговли.
+                </p>
+              </div>
+              {{ Heading.heading({ 'title': 'Контактное лицо, ответственное за ведение списка инсайдеров', 'class': 'heading_theme-subheadinng insiders__subheading' }) }}
+              <div class="section__text">
+                <p>Камаева Екатерина Викторовна</p>
+                <p>ekamaeva@bcs.ru</p>
+                <p>+7 (383) 230-55-01</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    {% include "../components/modules/footer/footer.njk" %}
+  </div>
+{% endblock %}

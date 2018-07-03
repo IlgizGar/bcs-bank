@@ -1,12 +1,12 @@
 {% import "../../../components/library/button/button.njk" as Button %}
 
 {% macro menu( options ) %}
-    <div class="menu js-menu {{ options.class }}">
+      <div class="menu js-menu {{ options.class }}">
         <div class="menu__wrapper">
             {% for item in options.basic %}
-                {{ Button.button({ 'href': item.href, 'title': item.title, 'mods': {'theme': 'black', 'view': 'text', 'size': 'low'}, 'class': 'menu__item' }) }}
+                {{ Button.button({ 'href': item.href, 'title': item.title, 'mods': {'theme': options.theme, 'view': 'text', 'size': 'low'}, 'class': 'menu__item' }) }}
             {% endfor %}
-            {{ Button.button({ 'title': 'Еще', 'name': 'hor-explore', 'mods': {'type': 'icon-right', 'theme': 'black', 'view': 'text', 'size': 'low'}, 'class': 'menu__item' }) }}
+            {{ Button.button({ 'title': 'Еще', 'name': 'hor-explore', 'mods': {'type': 'icon-right', 'theme': options.theme, 'view': 'text', 'size': 'low'}, 'class': 'menu__item' }) }}
         </div>
     </div>
 {% endmacro %}

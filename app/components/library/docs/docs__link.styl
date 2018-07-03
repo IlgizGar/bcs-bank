@@ -1,0 +1,29 @@
+.docs .docs__link
+  display: inline-flex
+  align-items: center
+
+  margin-top: 15px
+
+  height: 28px
+  padding: 0 7px
+
+  border-radius: 2px
+  border: solid 1px $color_borders
+
+  transition: all $interval
+
+  span:first-child
+    opensansSemibold(14px)
+    color: $color_text
+
+    &:after
+      content: '•'
+      margin: 0 8px
+
+      color: $color_inactive
+  span:last-child
+    opensansRegular(12px)
+    color: $color_inactive
+
+  &:hover
+    border-color: $color_borders_light

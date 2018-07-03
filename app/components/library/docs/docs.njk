@@ -1,0 +1,12 @@
+{% macro docs( options ) %}
+  <a class="docs" href={{ options.href }}>
+    <p class="docs__title">{{ options.title }}</p>
+    <div class="docs__content">
+      <div class="docs__link">
+        <span>{{ options.type }}</span>
+        <span>{{ options.size }}</span>
+      </div>
+      <p class="docs__note">{{ options.note }}</p>
+    </div>
+  </a>
+{% endmacro %}
