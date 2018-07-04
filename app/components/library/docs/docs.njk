@@ -1,12 +1,22 @@
+{% import "../../../components/icon/icon.njk" as Icon %}
+
 {% macro docs( options ) %}
-  <a class="docs {{ options.class }}" href={{ options.href }}>
+  <a class="docs {% if options.theme %}docs_theme-{{ options.theme }}{% endif %} {{ options.class }}" href={{ options.href }}>
     <p class="docs__title">{{ options.title }}</p>
     <div class="docs__content">
-      <div class="docs__link">
-        <span>{{ options.type }}</span>
-        <span>{{ options.size }}</span>
+      {% if options.type %}
+        <div class="docs__link">
+          <span>{{ options.type }}</span>
+          <span>{{ options.size }}</span>
+        </div>
+      {% endif %}
+      <div class="docs__note {% if options.prenote %}state_dotted{% endif %}">
+        <span>{{ options.prenote }}</span>
+        <span>{{ options.note }}</span>
       </div>
-      <p class="docs__note">{{ options.note }}</p>
     </div>
+    {% if options.icon %}
+      {{ Icon.icon({ 'name': options.icon }) }}
+    {% endif %}
   </a>
 {% endmacro %}

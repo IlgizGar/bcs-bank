@@ -5,17 +5,8 @@ module.exports = (elem) => {
     constructor(selector) {
       this.accordion = $(selector);
 
-      this.init();
-      this.events();
-    }
-
-    init() {
-      console.log('INITED');
-      this.accordion.accordion();
-    }
-
-    events() {
-
+      // this.init();
+      // this.events();
     }
   }
 

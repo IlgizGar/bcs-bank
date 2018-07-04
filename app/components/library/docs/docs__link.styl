@@ -3,6 +3,7 @@
   align-items: center
 
   margin-top: 15px
+  margin-right: 24px
 
   height: 28px
   padding: 0 7px
@@ -13,15 +14,16 @@
   transition: all $interval
 
   span:first-child
-    opensansBold(14px)
-    color: rgba($color_text, 0.6)
+    opensansBold(12px)
+    color: rgba($color_elem, 0.6)
 
     &:after
       content: '•'
-      margin: 0 8px
+      margin: -1px 8px 0
 
-      color: $color_inactive
+      color: rgba($color_elem, 0.6)
+      font-size: 9px;
 
   span:last-child
     opensansRegular(12px)
-    color: $color_inactive
+    color: rgba($color_elem, 0.6)

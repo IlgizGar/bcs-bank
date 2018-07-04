@@ -18,11 +18,13 @@
           {% endif %}
 
           {% if options.type === 'vacancy' %}
-            <ul class="list">
-            {% for item in options.items %}
-              <li>{{ item }}</li>
-            {% endfor %}
-            </ul>
+            <div class="section__text mt-40">
+              <ul class="list">
+              {% for item in options.items %}
+                <li>{{ item }}</li>
+              {% endfor %}
+              </ul>
+            </div>
           {% endif %}
         </div>
 
