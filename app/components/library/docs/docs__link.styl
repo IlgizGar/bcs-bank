@@ -13,17 +13,15 @@
   transition: all $interval
 
   span:first-child
-    opensansSemibold(14px)
-    color: $color_text
+    opensansBold(14px)
+    color: rgba($color_text, 0.6)
 
     &:after
       content: '•'
       margin: 0 8px
 
       color: $color_inactive
+
   span:last-child
     opensansRegular(12px)
     color: $color_inactive
-
-  &:hover
-    border-color: $color_borders_light

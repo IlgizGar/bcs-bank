@@ -5,7 +5,7 @@
   .button__wrap
     padding: 0
 
-    color: $color_inactive
+    //color: $color_inactive
 
   &:after
     content: ''
@@ -16,19 +16,14 @@
     width: 100%
     height: 3px
 
-    background-color: $color_selector
-
   &:hover
     background-color: transparent
-
-    .button__wrap
-      color: $color_hover
-
+  //
+  //  .button__wrap
+  //    color: $color_hover
+  //
   &.state_active
     &:after
       display: block
 
       transform: translateY(0)
-
-    .button__wrap
-      color: $color_text

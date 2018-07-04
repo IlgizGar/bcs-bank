@@ -1,3 +1,10 @@
 .docs
   display: inline-flex
   flex-direction: column
+  align-self: flex-start
+
+  &:hover
+    .docs__title
+      color: $color_hover
+    .docs__link
+      border-color: $color_borders_light

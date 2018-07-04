@@ -9,14 +9,15 @@
       <div class="navbar__wrapper">
         {% include "../../../components/modules/nav/nav.njk" %}
         {{ Button.button({ 'title': 'Контакты', 'name': 'dropdown', 'mods': {'type': 'icon-right', 'theme': 'gray', 'view': 'text'}, 'class': 'navbar__button navbar__button_type-dropdown js-btn-header-contacts' }) }}
-        {{ Button.button({ 'title': 'Офисы и банкоматы', 'mods' : {'type': 'tab', 'view': 'underscore'}, 'class': 'navbar__button' }) }}
+        {{ Button.button({ 'title': 'Офисы и банкоматы', 'href': '#', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'navbar__button' }) }}
         {{ Button.button({ 'name': 'search', 'mods' : {'type': 'icon', 'theme': 'default', 'view': 'text'} }) }}
       </div>
     </div>
   </div>
+
   <div class="header__contacts js-header-contacts">
     <div class="page__container">
-      {{ Heading.heading({ 'title': 'Свяжитесь с нами' }) }}
+      {{ Heading.heading({ 'title': 'Свяжитесь с нами', 'type': 'default', 'margin': 'normal' }) }}
       <div class="header__contacts-wrap">
         {{ Contact.contact({ 'title': 'Частным клиентам', 'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500-70-65', 'href': 'tel:+78005007065' },
           { 'name': 'Если вы звоните из-за рубежа', 'value': '+7 (495) 967-11-11', 'href': 'tel:+74959671111' }], 'class': 'header__contact' }) }}
@@ -31,5 +32,6 @@
       </div>
     </div>
   </div>
+
 </header>
 

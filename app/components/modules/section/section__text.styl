@@ -1,5 +1,13 @@
 .section .section__text
-  p
+  display: flex
+  flex-direction: column
+
+  p, a
     opensansRegular()
     color: rgba($color_elem, 0.6)
     line-height: 1.5
+
+    transition: all $interval
+
+  a:hover
+    color: $color_hover

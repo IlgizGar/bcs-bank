@@ -12,22 +12,24 @@
 
     {% include "../components/modules/header/header.njk" %}
 
-    <main role="main">
-      <section class="insiders section page__section">
+    <main role="main" class="insiders">
+      <section class="section page__section">
 
         <div class="section__header section__header_theme-blue">
-            {{ Menubar.menubar({ 'theme': 'blue', 'class': 'section__menubar' }) }}
-            <div class="page__container">
-              {{ Heading.heading({ 'tag': 'h1', 'title': 'Сведения \n для инсайдеров' | striptags(true) | escape | nl2br }) }}
-            </div>
+          {{ Menubar.menubar({ 'theme': 'blue', 'class': 'section__menubar' }) }}
+          <div class="page__container">
+            {{ Heading.heading({ 'tag': 'h1', 'title': 'Сведения \n для инсайдеров' | striptags(true) | escape | nl2br, 'type': 'large', 'margin': 'long' }) }}
+          </div>
         </div>
+
+      </section>
+
+      <section class="section page__section page__section_theme-last">
 
         <div class="page__container">
           <div class="section__row">
             <div class="section__content section__content_theme-centered">
-              <div class="insiders__cover">
-                {{ Docs.docs({ 'title': 'Перечень инсайдерской информации Акционерного общества \n «БКС - Инвестиционный Банк»' | striptags(true) | escape | nl2br, 'href': '#', 'type': 'PDF', 'size': '512 КБ' }) }}
-              </div>
+              {{ Docs.docs({ 'href': '#', 'title': 'Перечень инсайдерской информации Акционерного общества \n «БКС - Инвестиционный Банк»' | striptags(true) | escape | nl2br, 'type': 'PDF', 'size': '512 КБ', 'class': 'docs_theme-covered' }) }}
 
               <div class="section__text">
                 <p>
@@ -46,11 +48,11 @@
                   организаторах торговли.
                 </p>
               </div>
-              {{ Heading.heading({ 'title': 'Контактное лицо, ответственное за ведение списка инсайдеров', 'class': 'heading_theme-subheadinng insiders__subheading' }) }}
+              {{ Heading.heading({ 'title': 'Контактное лицо, ответственное за ведение списка инсайдеров', 'type': 'small', 'margin': 'min', 'class': 'mt-40' }) }}
               <div class="section__text">
                 <p>Камаева Екатерина Викторовна</p>
-                <p>ekamaeva@bcs.ru</p>
-                <p>+7 (383) 230-55-01</p>
+                <a href="mailto:ekamaeva@bcs.ru">ekamaeva@bcs.ru</a>
+                <a href="tel:+73832305501">+7 (383) 230-55-01</a>
               </div>
             </div>
           </div>

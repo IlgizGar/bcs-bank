@@ -35,7 +35,7 @@
           <div class="section__row">
 
             <div class="section__content section__cards_theme-final">
-              {{ Heading.heading({ 'tag': 'h1', 'title': 'Вакансии', 'context': 'в Москве', 'class': 'heading_type-main'}) }}
+              {{ Heading.heading({ 'tag': 'h1', 'title': 'Вакансии', 'context': 'в Москве', 'type': 'default', 'margin': 'default' }) }}
               {% for vacancy in vacancies %}
                 {{ Card.card({ 'type': 'vacancy', 'href': '#', 'title': vacancy.title | striptags(true) | escape | nl2br, 'subtitle': vacancy.subtitle, 'class': 'card_type-vacancy', 'items': vacancy.items }) }}
               {% endfor %}
