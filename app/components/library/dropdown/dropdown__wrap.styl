@@ -1,0 +1,31 @@
+.dropdown .dropdown__wrap
+  display: flex
+  align-items: center
+
+  position: relative
+
+  height: 56px
+  padding: 0 72px 0 16px
+
+  border-radius: 4px
+
+  &:after
+    content: ''
+
+    position: absolute
+    top: 50%
+    right: 16px
+
+    width: 10px
+    height: 5px
+
+    transform: translateY(-50%)
+    transform-origin: 50% 25%
+    transition: all $interval
+
+    background-image: url('../images/svg/dropdown.svg')
+    background-size: cover
+    background-repeat: no-repeat
+    background-position: center center
+
+

@@ -8,6 +8,7 @@
 {% import "../components/library/docs/docs.njk" as Docs %}
 {% import "../components/library/heading/heading.njk" as Heading %}
 {% import "../components/icon/icon.njk" as Icon %}
+{% import "../components/library/dropdown/dropdown.njk" as Dropdown %}
 
 {% block body %}
   <div class="page">
@@ -24,7 +25,10 @@
           </div>
           <div class="section__nav">
             <div class="page__container">
-              {{ Tabbar.tabbar({ 'theme': 'light-tab', 'view': 'upperscore', 'tabs': [{'title': 'Актуальные документы', 'id': 'charter' }, {'title': 'Архив для физических лиц', 'id': 'individual'}, {'title': 'Архив для юридических лиц', 'id': 'entity'}] }) }}
+              <div class="section__wrap">
+                {{ Tabbar.tabbar({ 'theme': 'light-tab', 'view': 'upperscore', 'tabs': [{'title': 'Актуальные документы', 'id': 'charter' }, {'title': 'Архив для физических лиц', 'id': 'individual'}, {'title': 'Архив для юридических лиц', 'id': 'entity'}] }) }}
+                {{ Dropdown.dropdown({ 'theme': 'white', 'label': 'Год', 'items': [{'title': '2017', 'val': '2017'},{'title': '2018', 'val': '2018'},{'title': '2018', 'val': '2018'},{'title': '2018', 'val': '2018'},{'title': '2018', 'val': '2018'},{'title': '2018', 'val': '2018'},{'title': '2018', 'val': '2018'},{'title': '2018', 'val': '2018'},{'title': '2018', 'val': '2018'}], 'class': 'dropdown_type-documents ml-a' }) }}
+              </div>
             </div>
           </div>
         </div>
@@ -35,7 +39,7 @@
           <div class="section__row">
             <div class="section__content section__content_theme-centered">
               <div class="tabs js-tabs">
-                <div id="charter" class="tabs__item documents__tab js-tab state_invisible">
+                <div id="charter" class="tabs__item js-tab state_invisible">
                   {{ Heading.heading({ 'title': 'Устав банка' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'normal' }) }}
 
                   {{ Docs.docs({ 'title': 'Изменения №5 в устав', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'class': 'mb-32'}) }}
