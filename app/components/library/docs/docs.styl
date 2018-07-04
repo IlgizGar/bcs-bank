@@ -4,17 +4,22 @@
   align-self: flex-start
 
   position: relative
-
-  .icon
-    position: absolute
-    top: 48px
-    right: 36px
-
-    width: 16px
-    height: 16px
+  padding-left: 48px
 
   &:hover
     .docs__title
       color: $color_hover
-    .docs__link
-      border-color: $color_borders_light
+    .icon-downloads
+      color: rgba($color_elem, 0.6)
+
+  .icon-downloads
+    position: absolute
+
+    top: 0
+    left: 0
+
+    width: 24px
+    height: 24px
+
+    color: rgba($color_elem, 0.4)
+    transition: color $interval

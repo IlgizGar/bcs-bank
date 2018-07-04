@@ -1,0 +1,33 @@
+.accordion .accordion__header
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+  cursor: pointer
+
+  height: 92px
+  padding: 0 40px
+
+  line-height: 1.75
+
+  border-top: solid 1px $color_borders
+  background-color: $color_card
+
+  &:first-child
+    border-top: none
+
+  &:after
+    content: ''
+
+    width: 10px
+    height: 5px
+
+    background-image: url('../images/svg/dropdown.svg')
+    background-size: cover
+    background-repeat: no-repeat
+    background-position: center center
+
+    transition: transform $interval
+
+  &.state_active:after
+    transform: scale(1, -1)

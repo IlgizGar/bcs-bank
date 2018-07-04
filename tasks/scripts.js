@@ -31,7 +31,7 @@ bundler.transform('babelify', {
 });
 
 gulp.task('scripts:lint', () => {
-  return gulp.src(['app/components/**/*.js', 'app/scripts/**/*.js'])
+  return gulp.src(['app/scripts/**/*.js', 'app/components/**/*.js'])
     .pipe(eslint())
     .pipe(eslint.format());
 });

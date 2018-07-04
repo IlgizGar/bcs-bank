@@ -2,6 +2,7 @@
 
 {% macro docs( options ) %}
   <a class="docs {% if options.theme %}docs_theme-{{ options.theme }}{% endif %} {{ options.class }}" href={{ options.href }}>
+    {{ Icon.icon({ 'name': 'downloads' }) }}
     <p class="docs__title">{{ options.title }}</p>
     <div class="docs__content">
       {% if options.type %}
