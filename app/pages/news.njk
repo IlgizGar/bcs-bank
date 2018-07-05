@@ -4,6 +4,7 @@
 {% import "../components/library/contact/contact.njk" as Contact %}
 {% import "../components/library/heading/heading.njk" as Heading %}
 {% import "../components/library/button/button.njk" as Button %}
+{% import "../components/library/datepicker/datepicker.njk" as Datepicker %}
 {% import "../components/icon/icon.njk" as Icon %}
 {% import "../components/modules/menubar/menubar.njk" as Menubar %}
 
@@ -40,6 +41,7 @@
 
             <div class="section__content">
               {{ Heading.heading({ 'tag': 'h1', 'title': 'Новости за', 'context': 'июнь 2018', 'type': 'default', 'margin': 'default'}) }}
+              {{ Datepicker.datepicker() }}
               <div class="js-news-cards">
                 {% for card in card %}
                   {{ Card.card({ 'href': '#', 'type': 'news', 'title': card.title | striptags(true) | escape | nl2br, 'subtitle': card.subtitle , 'class': 'card_type-news' }) }}

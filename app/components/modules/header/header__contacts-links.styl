@@ -2,7 +2,7 @@
   col()
   size(3)
 
-  display: flex
+  display: inline-flex
   flex-direction: column
   justify-content: space-between
   align-items: center
@@ -13,6 +13,8 @@
   background-color: $color_card
 
   p:last-child
+    align-self: stretch
+
     opensansRegular();
     color: $color_text
     line-height: 1.75
