@@ -1,4 +1,7 @@
 import $ from 'jquery';
+import 'jscrollpane';
+
+require('jquery-mousewheel')($);
 
 module.exports = (elem) => {
   class Dropdown {
@@ -15,9 +18,22 @@ module.exports = (elem) => {
     }
 
     init() {
-      for (let option of this.options) {
-        this.list.find('ul').append('<li data-val="' + $(option).val() + '">' + $(option).html() + '</li>');
+      for (const option of this.options) {
+        this.list.find('ul').append(`
+          <li data-val="${$(option).val()}">
+            ${$(option).html()}
+          </li>
+        `);
       }
+
+      $('.scroll-pane').jScrollPane({
+        contentWidth: 100,
+        verticalDragMinHeight: 16,
+        verticalDragMaxHeight: 16,
+        verticalGutter: 16,
+        mouseWheelSpeed: 1,
+        animateDuration: 1000,
+      });
     }
 
     events() {
@@ -25,19 +41,20 @@ module.exports = (elem) => {
         if (!$(e.target).closest('.js-dropdown-clear').length) {
 
           $(e.currentTarget).toggleClass('state_explored');
-          this.list.toggleClass('state_invisible');
+          this.list.toggleClass('state_inactive');
 
           if ($(e.target).closest('.js-dropdown-list').length) {
-            this.dropdown.addClass('state_filled');
-            this.input.val($(e.target).html());
-
-            this.options.attr('selected', false);
-            this.select.find('[value="' + $(e.target).data('val') + '"]').attr('selected', 'selected');
+            if ($(e.target).closest('ul').length) {
+              this.dropdown.addClass('state_filled');
+              this.input.val($(e.target).html());
+              this.options.attr('selected', false);
+              this.select.find('[value="' + $(e.target).data('val') + '"]').attr('selected', 'selected');
+            }
           }
         }
       });
 
-      this.clear.on('click', (e) => {
+      this.clear.on('click', () => {
         this.dropdown.removeClass('state_filled');
         this.hideList();
         this.input.val('');
@@ -45,19 +62,17 @@ module.exports = (elem) => {
       });
 
       $(window).on('click', (e) => {
-        console.log("EL", $(e.target).closest('.js-dropdown'));
-        if(!$(e.target).closest('.js-dropdown').length) {
-          for(let dropdown of dropdowns) {
+        if (!$(e.target).closest('.js-dropdown').length) {
+          for (const dropdown of global.dropdowns) {
             dropdown.hideList();
           }
         }
-      })
-
+      });
     }
 
     hideList() {
       this.dropdown.removeClass('state_explored');
-      this.list.addClass('state_invisible');
+      this.list.addClass('state_inactive');
     }
   }
 
