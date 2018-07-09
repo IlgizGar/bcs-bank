@@ -4,6 +4,7 @@
 {% import "../components/library/contact/contact.njk" as Contact %}
 {% import "../components/library/card/card.njk" as Card %}
 {% import "../components/modules/menubar/menubar.njk" as Menubar %}
+{% import "../components/library/socials/socials.njk" as Socials %}
 
 {% set root = "." %}
 {% set title = "Вакансии" %}
@@ -43,9 +44,13 @@
             </div>
 
             <div class="section__aside">
-              {{ Contact.contact({ 'title': 'Контакты HR департамента',
-                'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500 03 05', 'href': '+78005000305' }, { 'name': 'Почтовый и юридический адрес', 'value': 'г. Москва, просп. Мира \n д.69, стр. 1' | striptags(true) | escape | nl2br }],
-                'class': 'vacancies__contact js-contact' }) }}
+              <div class="js-fixed-area">
+                {{ Contact.contact({ 'title': 'Контакты HR департамента',
+                  'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500 03 05', 'href': '+78005000305' }, { 'name': 'Почтовый и юридический адрес', 'value': 'г. Москва, просп. Мира \n д.69, стр. 1' | striptags(true) | escape | nl2br }],
+                  'class': 'vacancies__contact js-contact' }) }}
+                {{ Heading.heading({ 'title': 'Мы в социальных сетях', 'class': 'mt-56' }) }}
+                {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'}, 'class': 'mt-32'}) }}
+              </div>
             </div>
 
           </div>

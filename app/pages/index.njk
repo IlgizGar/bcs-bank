@@ -3,13 +3,86 @@
 {% set root = "." %}
 {% set title = "Главная" %}
 
+{% import "../components/modules/menubar/menubar.njk" as Menubar %}
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/library/feature/feature.njk" as Feature %}
+{% import "../components/library/button/button.njk" as Button %}
+
 {% block body %}
-    <div class="page">
+  <div class="page">
 
-        {% include "../components/modules/header/header.njk" %}
+    {% include "../components/modules/header/header.njk" %}
 
-        <main role="main" style="height: 1758px;"></main>
+    <main role="main">
+      <section class="section page__section">
+        <div class="section__header section__header_theme-blue">
+          {{ Menubar.menubar({ 'theme': 'blue', 'class': 'section__menubar section__menubar_theme-simple' }) }}
+          <div class="carousel">
+            <div class="index-carousel js-carousel">
+              <div class="index-carousel__slide">
+                <div class="page__container">
+                  <div class="index-carousel__wrap">
+                    <div class="index-carousel__content">
+                      {{ Heading.heading({ 'tag': 'h1', 'title': 'Отпуск легче \n с кредитом БКС' | striptags(true) | escape | nl2br, 'type': 'large', 'margin': 'normal', 'theme': 'light'}) }}
+                      <div class="index-carousel__features">
+                        {{ Feature.feature({ 'title': 'До 55 дней', 'subtitle': 'Беспроцентный \n период' | striptags(true) | escape | nl2br, 'class': 'index-carousel__feature'}) }}
+                        {{ Feature.feature({ 'title': 'До 1 млн. ', 'subtitle': 'Максимальная \n сумма кредита' | striptags(true) | escape | nl2br, 'class': 'index-carousel__feature'}) }}
+                        {{ Feature.feature({ 'title': 'До 30%', 'subtitle': 'От покупок \n возвращаются на карту' | striptags(true) | escape | nl2br, 'class': 'index-carousel__feature'}) }}
+                      </div>
+                    </div>
+                    <div class="index-carousel__image">
+                      <img src="assets/images/banner-family.png" alt="Отпуск легче с кредитом БКС">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="index-carousel__slide">
+                <div class="page__container">
+                  <div class="index-carousel__wrap">
+                    <div class="index-carousel__content">
+                      {{ Heading.heading({ 'tag': 'h1', 'title': 'Отпуск легче \n с кредитом БКС' | striptags(true) | escape | nl2br, 'type': 'large', 'margin': 'normal', 'theme': 'light'}) }}
+                      <div class="index-carousel__features">
+                        {{ Feature.feature({ 'title': 'До 55 дней', 'subtitle': 'Беспроцентный \n период' | striptags(true) | escape | nl2br, 'class': 'index-carousel__feature'}) }}
+                        {{ Feature.feature({ 'title': 'До 1 млн. ', 'subtitle': 'Максимальная \n сумма кредита' | striptags(true) | escape | nl2br, 'class': 'index-carousel__feature'}) }}
+                        {{ Feature.feature({ 'title': 'До 30%', 'subtitle': 'От покупок \n возвращаются на карту' | striptags(true) | escape | nl2br, 'class': 'index-carousel__feature'}) }}
+                      </div>
+                    </div>
+                    <div class="index-carousel__image">
+                      <img src="assets/images/banner-family.png" alt="Отпуск легче с кредитом БКС">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="index-carousel__slide">
+                <div class="page__container">
+                  <div class="index-carousel__wrap">
+                    <div class="index-carousel__content">
+                      {{ Heading.heading({ 'tag': 'h1', 'title': 'Отпуск легче \n с кредитом БКС' | striptags(true) | escape | nl2br, 'type': 'large', 'margin': 'normal', 'theme': 'light'}) }}
+                      <div class="index-carousel__features">
+                        {{ Feature.feature({ 'title': 'До 55 дней', 'subtitle': 'Беспроцентный \n период' | striptags(true) | escape | nl2br, 'class': 'index-carousel__feature'}) }}
+                        {{ Feature.feature({ 'title': 'До 1 млн. ', 'subtitle': 'Максимальная \n сумма кредита' | striptags(true) | escape | nl2br, 'class': 'index-carousel__feature'}) }}
+                        {{ Feature.feature({ 'title': 'До 30%', 'subtitle': 'От покупок \n возвращаются на карту' | striptags(true) | escape | nl2br, 'class': 'index-carousel__feature'}) }}
+                      </div>
+                    </div>
+                    <div class="index-carousel__image">
+                      <img src="assets/images/banner-family.png" alt="Отпуск легче с кредитом БКС">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel__progressbar"></div>
+          </div>
+          <div class="page__container">
+            <div class="section__header-controls">
+              {{ Button.button({ 'title': 'Откликнуться', 'mods': { 'theme': 'white' }, 'class': 'card__button card__button_type-respond' }) }}
+              {{ Button.button({ 'href': '#', 'title': 'Узнать больше', 'mods': { 'theme': 'white', 'view': 'text' }, 'class': 'card__button card__button_type-more' }) }}
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
-        {% include "../components/modules/footer/footer.njk" %}
-    </div>
+    {% include "../components/modules/footer/footer.njk" %}
+  </div>
 {% endblock %}

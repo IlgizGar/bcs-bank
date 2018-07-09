@@ -41,7 +41,6 @@
 
             <div class="section__content">
               {{ Heading.heading({ 'tag': 'h1', 'title': 'Новости за', 'context': 'июнь 2018', 'type': 'default', 'margin': 'default'}) }}
-              {{ Datepicker.datepicker() }}
               <div class="js-news-cards">
                 {% for card in card %}
                   {{ Card.card({ 'href': '#', 'type': 'news', 'title': card.title | striptags(true) | escape | nl2br, 'subtitle': card.subtitle , 'class': 'card_type-news' }) }}
@@ -51,9 +50,11 @@
             </div>
 
             <div class="section__aside">
-              {{ Contact.contact({ 'title': 'Управление по связям \n с общественностью' | striptags(true) | escape | nl2br,
-                'items': [{ 'name': 'Менеджер', 'value': 'Сергей Нагорный' }, { 'name': 'Телефон', 'value': '8 (495) 785 53 36', 'href': 'tel:+74957855336' }, { 'name': 'Электронная почта', 'value': 'snagornyy@msk.bcs.ru', 'href': 'mailto:snagornyy@msk.bcs.ru' }],
-                'class': 'news__contact js-contact' }) }}
+              <div class="js-fixed-area">
+                {{ Contact.contact({ 'title': 'Управление по связям \n с общественностью' | striptags(true) | escape | nl2br,
+                  'items': [{ 'name': 'Менеджер', 'value': 'Сергей Нагорный' }, { 'name': 'Телефон', 'value': '8 (495) 785 53 36', 'href': 'tel:+74957855336' }, { 'name': 'Электронная почта', 'value': 'snagornyy@msk.bcs.ru', 'href': 'mailto:snagornyy@msk.bcs.ru' }],
+                  'class': 'news__contact js-contact' }) }}
+              </div>
             </div>
 
           </div>

@@ -5,7 +5,7 @@
     <div class="dropdown__wrap">
       <select class="dropdown__select" hidden name="{{ options.name }}_select">
         {% for item in options.items %}
-          <option value={{ item.val }} {% if item.active %}selected{% endif %}>{{ item.title }}</option>
+          <option value={{ item.val }} {% if item.selected %}selected{% endif %}>{{ item.title }}</option>
         {% endfor %}
       </select>
       <label class="dropdown__controls">

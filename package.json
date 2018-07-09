@@ -60,6 +60,7 @@
     "require-dir": "^0.3.2",
     "run-sequence": "^2.2.0",
     "simple-scrollbar": "^0.4.0",
+    "slick-carousel": "^1.8.1",
     "smart-grid": "^2.1.1",
     "svg4everybody": "^2.1.9",
     "vinyl-buffer": "^1.0.0",

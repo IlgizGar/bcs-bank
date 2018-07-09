@@ -21,7 +21,9 @@ gulp.task('styles', () => {
 
   return gulp
     .src('app/styles/*.styl')
-    .pipe(stylus())
+    .pipe(stylus({
+      'include css': true,
+    }))
     .pipe(postcss(plugins))
     .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest('dist/assets/styles'));

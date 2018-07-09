@@ -20,10 +20,12 @@ module.exports = (elem) => {
     init() {
       for (const option of this.options) {
         this.list.find('ul').append(`
-          <li data-val="${$(option).val()}">
-            ${$(option).html()}
-          </li>
+          <li data-val="${$(option).val()}">${$(option).html()}</li>
         `);
+        if ($(option).attr('selected')) {
+          this.dropdown.addClass('state_filled');
+          this.input.val($(option).html());
+        }
       }
 
       $('.scroll-pane').jScrollPane({
@@ -45,8 +47,10 @@ module.exports = (elem) => {
 
           if ($(e.target).closest('.js-dropdown-list').length) {
             if ($(e.target).closest('ul').length) {
+
               this.dropdown.addClass('state_filled');
               this.input.val($(e.target).html());
+
               this.options.attr('selected', false);
               this.select.find('[value="' + $(e.target).data('val') + '"]').attr('selected', 'selected');
             }
