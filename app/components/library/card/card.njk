@@ -8,34 +8,39 @@
         {% set tag = options.tag %}
     {% endif %}
 
-    <div class="card js-card {{ options.class }}" >
+    <div class="card js-card card_type-{{ options.type }} {% if options.view %}card_view-{{ options.view }}{% endif %} {% if options.theme %}card_theme-{{ options.theme }}{% endif %} {{ options.class }}" >
       <a class="card__wrap" href={{ options.href }}>
 
         <div class="card__content">
-          <{{ tag }} class="card__title">{{ options.title }}</{{ tag }}>
-          {% if options.subtitle %}
-            <p class="card__subtitle">{{ options.subtitle }}</p>
-          {% endif %}
 
-          {% if options.type === 'vacancy' %}
-            <div class="section__text mt-40">
-              <ul class="list">
-              {% for item in options.items %}
-                <li>{{ item }}</li>
-              {% endfor %}
-              </ul>
-            </div>
-          {% endif %}
+          {% block content %}{% endblock %}
+
+          {#<{{ tag }} class="card__title">{{ options.title }}</{{ tag }}>#}
+          {#{% if options.subtitle %}#}
+            {#<p class="card__subtitle">{{ options.subtitle }}</p>#}
+          {#{% endif %}#}
+
+          {#{% if options.type === 'vacancy' %}#}
+            {#<div class="section__text mt-40">#}
+              {#<ul class="list">#}
+              {#{% for item in options.items %}#}
+                {#<li>{{ item }}</li>#}
+              {#{% endfor %}#}
+              {#</ul>#}
+            {#</div>#}
+          {#{% endif %}#}
+
         </div>
 
         <div class="card__footer">
 
-          {%  if options.type === 'news' %}
+          {%  if options.type === 'default' %}
             <div class="card__button">
-              <span>Читать</span>
+              <span>{{ options.link }}</span>
               {{ Icon.icon({ 'name': 'arrow' }) }}
             </div>
           {% endif %}
+
         </div>
 
       </a>

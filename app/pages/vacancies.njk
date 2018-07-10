@@ -36,10 +36,10 @@
         <div class="page__container">
           <div class="section__row">
 
-            <div class="section__content section__cards_theme-final">
-              {{ Heading.heading({ 'tag': 'h1', 'title': 'Вакансии', 'context': 'в Москве', 'type': 'default', 'margin': 'default' }) }}
+            <div class="section__content section__content_theme-default">
+              {{ Heading.heading({ 'tag': 'h1', 'title': 'Вакансии', 'context': 'в Москве', 'type': 'default', 'margin': 'short', 'theme' : 'default' }) }}
               {% for vacancy in vacancies %}
-                {{ Card.card({ 'type': 'vacancy', 'href': '#', 'title': vacancy.title | striptags(true) | escape | nl2br, 'subtitle': vacancy.subtitle, 'class': 'card_type-vacancy', 'items': vacancy.items }) }}
+                {{ Card.card({ 'type': 'vacancy', 'href': '#', 'title': vacancy.title | striptags(true) | escape | nl2br, 'subtitle': vacancy.subtitle, 'items': vacancy.items }) }}
               {% endfor %}
             </div>
 

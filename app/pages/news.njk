@@ -40,10 +40,10 @@
           <div class="section__row">
 
             <div class="section__content">
-              {{ Heading.heading({ 'tag': 'h1', 'title': 'Новости за', 'context': 'июнь 2018', 'type': 'default', 'margin': 'default'}) }}
+              {{ Heading.heading({ 'tag': 'h1', 'title': 'Новости за', 'context': 'июнь 2018', 'type': 'default', 'margin': 'short', 'theme': 'default'}) }}
               <div class="js-news-cards">
                 {% for card in card %}
-                  {{ Card.card({ 'href': '#', 'type': 'news', 'title': card.title | striptags(true) | escape | nl2br, 'subtitle': card.subtitle , 'class': 'card_type-news' }) }}
+                  {{ Card.card({ 'href': '#', 'type': 'default', 'title': card.title | striptags(true) | escape | nl2br, 'subtitle': card.subtitle, 'link': 'Читать' }) }}
                 {% endfor %}
               </div>
               {{ Button.button({ 'title': 'Показать еще', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'wide'} }) }}

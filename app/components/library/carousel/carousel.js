@@ -10,7 +10,9 @@ module.exports = (elem) => {
     }
 
     init() {
-      this.carousel.slick({});
+      this.carousel.slick({
+        arrows: false
+      });
     }
   }
 

@@ -1,4 +1,5 @@
 {% extends "layout/layout.njk" %}
+{#{% extends "library/card/card.njk" %}#}
 
 {% set root = "." %}
 {% set title = "Главная" %}
@@ -7,6 +8,7 @@
 {% import "../components/library/heading/heading.njk" as Heading %}
 {% import "../components/library/feature/feature.njk" as Feature %}
 {% import "../components/library/button/button.njk" as Button %}
+{% import "../components/library/card/card.njk" as Card with context %}
 
 {% block body %}
   <div class="page">
@@ -17,7 +19,7 @@
       <section class="section page__section">
         <div class="section__header section__header_theme-blue">
           {{ Menubar.menubar({ 'theme': 'blue', 'class': 'section__menubar section__menubar_theme-simple' }) }}
-          <div class="carousel">
+          <div class="carousel carousel_theme-index">
             <div class="index-carousel js-carousel">
               <div class="index-carousel__slide">
                 <div class="page__container">
@@ -78,6 +80,18 @@
               {{ Button.button({ 'title': 'Откликнуться', 'mods': { 'theme': 'white' }, 'class': 'card__button card__button_type-respond' }) }}
               {{ Button.button({ 'href': '#', 'title': 'Узнать больше', 'mods': { 'theme': 'white', 'view': 'text' }, 'class': 'card__button card__button_type-more' }) }}
             </div>
+          </div>
+        </div>
+      </section>
+      <section class="section page__section">
+        <div class="page__container">
+          <div class="products section__content">
+
+            {{ Card.card({ 'href': '#', 'type': 'default', 'view': 'uppercase', 'theme': 'black', 'title': '12.9%', 'subtitle': 'Ставка по кредиту \n без переплат' | striptags(true) | escape | nl2br, 'link': 'Потребительский кредит', 'class': 'section__element products__card' }) }}
+            {% block content %}
+              <p>fdfdfsfdsfsdfsd</p>
+            {% endblock %}
+
           </div>
         </div>
       </section>

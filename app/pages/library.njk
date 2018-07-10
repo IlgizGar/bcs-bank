@@ -1,0 +1,21 @@
+{% extends "layout/layout.njk" %}
+
+{% set root = "." %}
+{% set title = "Библиотека" %}
+
+{% import "../components/library/card/card.njk" as Card %}
+
+{% block body %}
+  <div class="page">
+
+    <main role="main" class="library">
+      <aside class="library__aside"></aside>
+      <div class="library__content">
+        <div class="js-card">
+
+        </div>
+      </div>
+    </main>
+
+  </div>
+{% endblock %}
