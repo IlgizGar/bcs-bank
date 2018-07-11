@@ -1,0 +1,24 @@
+.carousel-controls .carousel-controls__pagination
+  order: 1
+  display: flex
+  align-items center
+
+  padding: 0 16px
+
+  formularBold()
+  color: $color_arrow
+
+  span
+    display: inline-block
+    width: 24px
+    text-align center
+
+    &:nth-child(1)
+      color: $color_light
+
+    &:nth-child(2)
+      margin: 0 12px
+      width: 2px
+      height: 20px
+      transform: rotate(25deg)
+      background-color: $color_arrow

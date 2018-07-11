@@ -1,0 +1,15 @@
+.carousel .carousel__progressbar-bar
+  width: 100%
+  height: 1px
+
+  transform: scaleX(0)
+  transform-origin: left
+
+  background-color: $color_hover
+
+  &.state_busy
+    transform: scaleX(1)
+    transition: all 12000ms
+
+  &:not(.state_busy)
+    transition: all 200ms

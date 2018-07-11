@@ -1,6 +1,7 @@
 .section .section__text
   display: flex
   flex-direction: column
+  color: rgba($color_elem, 0.8)
 
   a
     align-self: flex-start
@@ -9,7 +10,7 @@
     margin-bottom: 32px
 
     opensansRegular()
-    color: rgba($color_elem, 0.8)
+    color: currentColor
     line-height: 1.5
 
     transition: all $interval
@@ -30,7 +31,7 @@
     margin-bottom: 40px
 
     opensansRegular()
-    color: rgba($color_elem, 0.8)
+    color: currentColor
 
     &:last-child
       margin-bottom: 0
@@ -53,4 +54,4 @@
         top: -4px;
 
         font-size: 22px;
-        color: $color_elem
+        color: currentColor

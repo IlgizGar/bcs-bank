@@ -1,0 +1,8 @@
+{% macro input( options ) %}
+  <div class="input {{ options.class }}">
+    <label class="input__group">
+      <span class="input__label">{{ options.label }}</span>
+      <input class="input__field" type="{{ options.type }}" name="{{ options.name }} value={{ options.value }}">
+    </label>
+  </div>
+{% endmacro %}

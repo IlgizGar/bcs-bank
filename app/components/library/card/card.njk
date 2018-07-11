@@ -1,4 +1,5 @@
 {% import "../../../components/icon/icon.njk" as Icon %}
+{% import "../../../components/inline-svg/inline-svg.njk" as inlineSvg %}
 {% import "../../../components/library/button/button.njk" as Button %}
 {% import "../../../components/library/socials/socials.njk" as Socials %}
 
@@ -13,29 +14,34 @@
 
         <div class="card__content">
 
-          {% block content %}{% endblock %}
+          {% if options.type === 'figure' %}
+            <img class="card__figure" src="{{ options.img }}" alt="{{ options.subtitle }}">
+          {% endif %}
 
-          {#<{{ tag }} class="card__title">{{ options.title }}</{{ tag }}>#}
-          {#{% if options.subtitle %}#}
-            {#<p class="card__subtitle">{{ options.subtitle }}</p>#}
-          {#{% endif %}#}
+          <{{ tag }} class="card__title">{{ options.title }}</{{ tag }}>
+          {% if options.subtitle %}
+            <p class="card__subtitle">{{ options.subtitle }}</p>
+          {% endif %}
 
-          {#{% if options.type === 'vacancy' %}#}
-            {#<div class="section__text mt-40">#}
-              {#<ul class="list">#}
-              {#{% for item in options.items %}#}
-                {#<li>{{ item }}</li>#}
-              {#{% endfor %}#}
-              {#</ul>#}
-            {#</div>#}
-          {#{% endif %}#}
+          {% if options.type === 'vacancy' %}
+            <div class="section__text mt-40">
+              <ul class="list">
+              {% for item in options.items %}
+                <li>{{ item }}</li>
+              {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
 
         </div>
 
         <div class="card__footer">
 
-          {%  if options.type === 'default' %}
+          {%  if options.link %}
             <div class="card__button">
+              {% if options.icon %}
+                {{ inlineSvg.inlineSvg({ 'path': options.icon }) }}
+              {% endif %}
               <span>{{ options.link }}</span>
               {{ Icon.icon({ 'name': 'arrow' }) }}
             </div>
