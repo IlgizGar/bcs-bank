@@ -1,0 +1,35 @@
+{% import "../../library/currency/currency.njk" as Currency %}
+
+<div class="services__block services__block_theme-exchange">
+  <table class="table">
+    <thead>
+    <tr>
+      <th></th>
+      <th>Покупаю по</th>
+      <th>Продаю по</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>USD</td>
+      <td>{{ Currency.currency({ 'value': '45.6', 'state': 'rise' }) }}</td>
+      <td>{{ Currency.currency({ 'value': '54.2', 'state': 'fall'}) }}</td>
+    </tr>
+    <tr>
+      <td>EUR</td>
+      <td>{{ Currency.currency({ 'value': '5.9', 'state': 'rise' }) }}</td>
+      <td>{{ Currency.currency({ 'value': '6', 'state': 'rise' }) }}</td>
+    </tr>
+    <tr>
+      <td>GBR</td>
+      <td>{{ Currency.currency({ 'value': '5.9', 'state': 'rise' }) }}</td>
+      <td>{{ Currency.currency({ 'value': '6', 'state': 'rise' }) }}</td>
+    </tr>
+    <tr>
+      <td>CHF</td>
+      <td>{{ Currency.currency({ 'value': '5.9', 'state': 'rise' }) }}</td>
+      <td>{{ Currency.currency({ 'value': '6', 'state': 'rise' }) }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

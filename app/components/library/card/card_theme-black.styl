@@ -1,3 +1,14 @@
 .card.card_theme-black
   .card__button
     color: $color_elem
+  &:hover
+    .card__wrap
+      *
+        color: $color_light
+        border-color: $color_light
+      .radio__label
+        &:after
+          background-color: $color_light
+        &:before
+          border-color: $color_light
+      background-color: $color_selector

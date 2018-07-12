@@ -1,0 +1,13 @@
+{% import "../../../components/icon/icon.njk" as Icon %}
+
+{% macro currency( options ) %}
+  {% set intPart = options.value | int %}
+  {% set floatPart = ( 100 * ( options.value | float - intPart )) | int %}
+  {% if floatPart | string | length < 2 %}
+    {% set floatPart = floatPart + '0' %}
+  {% endif %}
+  <div class="currency state_{{ options.state }} {{ options.class }}">
+    <span>{{ intPart }}</span><span>,{{ floatPart }}</span>
+    {{ Icon.icon({ 'name': 'fall_arrow'}) }}
+  </div>
+{% endmacro %}

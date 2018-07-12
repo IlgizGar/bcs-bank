@@ -1,0 +1,12 @@
+{% import "../../library/radio/radio.njk" as Radio %}
+{% import "../../library/input/input.njk" as Input %}
+
+<div class="services__block services__block_theme-check">
+  <div class="services__radio-group">
+    {{ Radio.radio({'label': 'По номеру ВУ/СТС', 'name': 'check-exist', 'id': 'check_vu', 'checked': 'true' }) }}
+    {{ Radio.radio({'label': 'По номеру постановления', 'name': 'check-exist', 'id': 'check_post'}) }}
+  </div>
+
+  {{ Input.input({ 'label': 'Водительское удостоверение', 'class': 'mb-16' }) }}
+  {{ Input.input({ 'label': 'Свидетельство о регистрации' }) }}
+</div>

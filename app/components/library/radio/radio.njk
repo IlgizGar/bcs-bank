@@ -1,0 +1,6 @@
+{% macro radio( options ) %}
+  <div class="radio {{ options.class }}">
+      <input class="radio__field" id="{{ options.id }}" type="radio" name="{{ options.name }}" value="{{ options.value }}" {% if options.checked %}checked{% endif %}/>
+      <label for="{{ options.id }}" class="radio__label">{{ options.label }}</label>
+  </div>
+{% endmacro %}

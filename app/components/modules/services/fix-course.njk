@@ -1,0 +1,32 @@
+{% import "../../library/radio/radio.njk" as Radio %}
+{% import "../../library/input/input.njk" as Input %}
+
+<div class="services__block services__block_theme-course">
+  <table class="table mb-32">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Покупаю по</th>
+        <th>Продаю по</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>USD</td>
+        <td>{{ Radio.radio({ 'view': 'currency', 'label': '62,34', 'name': 'course-fix', 'id': 'course-buy_usd', 'checked': 'true' }) }}</td>
+        <td>{{ Radio.radio({'label': '62.79', 'name': 'course-fix', 'id': 'course-cell_usd'}) }}</td>
+      </tr>
+      <tr>
+        <td>EUR</td>
+        <td>{{ Radio.radio({ 'view': 'currency', 'label': '62,34', 'name': 'course-fix', 'id': 'course-buy_eur', 'checked': 'true' }) }}</td>
+        <td>{{ Radio.radio({'label': '62.79', 'name': 'course-fix', 'id': 'course-cell_eur'}) }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  {{ Input.input({ 'label': '3000', 'class': 'mb-16' }) }}
+  <div class="course__result">
+    <p>Сумма сделки</p>
+    <p>187710 RUB</p>
+  </div>
+</div>

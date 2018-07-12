@@ -1,0 +1,13 @@
+.radio .radio__field
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+
+  &:focus + .radio__label:before
+    border: 1px solid $color_borders
+
+  &:checked + .radio__label:after
+    opacity: 1;
+
+  &:checked + .radio__label:before
+    border: 1px solid $color_selector
