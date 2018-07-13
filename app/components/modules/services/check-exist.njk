@@ -1,6 +1,10 @@
 {% import "../../library/radio/radio.njk" as Radio %}
 {% import "../../library/input/input.njk" as Input %}
 
+<div class="card__heading">
+  <h2 class="card__title">Поиск штрафов</h2>
+  <p class="card__subtitle mt-10">На 13 апреля 2018</p>
+</div>
 <div class="services__block services__block_theme-check">
   <div class="services__radio-group">
     {{ Radio.radio({'label': 'По номеру ВУ/СТС', 'name': 'check-exist', 'id': 'check_vu', 'checked': 'true' }) }}

@@ -1,5 +1,11 @@
 {% import "../../library/currency/currency.njk" as Currency %}
+{% import "../../library/context/context.njk" as Context %}
 
+<div class="card__heading card__heading_theme-exchange">
+  <h2 class="card__title">Обмен валюты</h2>
+  <span class="context__exchange-prefix">в</span> {{ Context.context({ 'name': 'exchange', 'theme': 'small', 'items': [{'title': 'БКС-онлайн', 'val': 'bks', 'selected': true},{'title': 'Отделениях банкоматов', 'val': 'bank'}] }) }}
+  <p class="card__subtitle mt-0">До 13 апреля 2018</p>
+</div>
 <div class="services__block services__block_theme-exchange">
   <table class="table">
     <thead>

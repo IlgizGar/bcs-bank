@@ -1,6 +1,14 @@
+{% import "../currency/currency.njk" as Currency %}
+
 {% macro radio( options ) %}
   <div class="radio {{ options.class }}">
       <input class="radio__field" id="{{ options.id }}" type="radio" name="{{ options.name }}" value="{{ options.value }}" {% if options.checked %}checked{% endif %}/>
-      <label for="{{ options.id }}" class="radio__label">{{ options.label }}</label>
+      <label for="{{ options.id }}" class="radio__label">
+        {% if options.view === "currency" %}
+          {{ Currency.currency({ 'value': options.label, 'state': options.state }) }}
+        {% else %}
+          {{ options.label }}
+        {% endif %}
+      </label>
   </div>
 {% endmacro %}

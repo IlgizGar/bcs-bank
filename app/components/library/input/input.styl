@@ -1,5 +1,29 @@
 .input
   position: relative
 
+  display: flex
+  justify-content: space-between
+  align-items: center
+
   height: 64px
   width: 100%
+  padding: 0
+
+  border-radius: 4px
+  border: solid 1px $color_borders
+
+  transition: all $interval
+
+  &:hover
+    border-color: $color_borders_light
+
+  &.state_init
+    .input__label
+      transform: translateY(38%)
+      font-size: 16px
+
+  .icon
+    width: 16px
+    height: 16px
+    margin-right: 24px
+    color: $color_inactive

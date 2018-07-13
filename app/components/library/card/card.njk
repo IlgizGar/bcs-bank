@@ -10,19 +10,22 @@
     {% set tag = options.tag %}
   {% endif %}
 
-  <div class="card js-card card_type-{{ options.type }} {% if options.view %}card_view-{{ options.view }}{% endif %} {% if options.theme %}card_theme-{{ options.theme }}{% endif %} {{ options.class }}">
-      <div class="card__wrap" data-href={{ options.href }}>
+  <div
+    class="card js-card card_type-{{ options.type }} {% if options.view %}card_view-{{ options.view }}{% endif %} {% if options.theme %}card_theme-{{ options.theme }}{% endif %} {{ options.class }}">
+    <div class="card__wrap" data-href={{ options.href }}>
 
       <div class="card__content">
-
-        <{{ tag }} class="card__title">{{ options.title }}</{{ tag }}>
-        {% if options.subtitle %}
-          <p class="card__subtitle {% if options.block %}mt-10{% endif %}">{{ options.subtitle }}</p>
-        {% endif %}
 
         {% if options.block %}
           {% include "../../" + options.block + ".njk" %}
         {% else %}
+
+        <div class="card__heading">
+          <{{ tag }} class="card__title">{{ options.title }}</{{ tag }}>
+          {% if options.subtitle %}
+            <p class="card__subtitle">{{ options.subtitle }}</p>
+          {% endif %}
+        </div>
 
           {% if options.type === 'figure' %}
             <img class="card__figure" src="{{ options.img }}" alt="{{ options.subtitle }}">
@@ -37,24 +40,24 @@
               </ul>
             </div>
           {% endif %}
-        {% endif %}
+      {% endif %}
 
+    </div>
+
+    <div class="card__footer">
+
+      {% if options.link %}
+        <div class="card__button">
+          {% if options.icon %}
+            {{ inlineSvg.inlineSvg({ 'path': options.icon }) }}
+          {% endif %}
+          <span>{{ options.link }}</span>
+          {{ Icon.icon({ 'name': 'arrow' }) }}
+        </div>
+      {% endif %}
+
+    </div>
   </div>
-
-  <div class="card__footer">
-
-    {% if options.link %}
-      <div class="card__button">
-        {% if options.icon %}
-          {{ inlineSvg.inlineSvg({ 'path': options.icon }) }}
-        {% endif %}
-        <span>{{ options.link }}</span>
-        {{ Icon.icon({ 'name': 'arrow' }) }}
-      </div>
-    {% endif %}
-
-  </div>
-</div>
 
   {% if options.type === 'vacancy' %}
     {{ Button.button({ 'title': 'Откликнуться', 'mods': { 'theme': 'default' }, 'class': 'card__button card__button_type-respond' }) }}

@@ -1,8 +1,18 @@
 {% import "../../../components/icon/icon.njk" as Icon %}
 
 {% macro context( options ) %}
-    <button class="context {{ options.class }}">
-        <span>{{ options.title }}</span>
+  <div class="context js-context {% if options.theme %}context_theme-{{ options.theme }}{%  endif %} {{ options.class }}">
+    <select class="context__select" hidden name="{{ options.name }}_select">
+      {% for item in options.items %}
+        <option value={{ item.val }} {% if item.selected %}selected{% endif %}>{{ item.title }}</option>
+      {% endfor %}
+    </select>
+    <button class="context__button">
+        <span class="js-context-title">{%  if options.title %}{{ options.title }}{% endif %}</span>
         {{ Icon.icon({'name': 'dropdown'}) }}
     </button>
+    <div class="dropdown__list state_inactive scroll-pane js-context-list">
+      <ul></ul>
+    </div>
+  </div>
 {% endmacro %}

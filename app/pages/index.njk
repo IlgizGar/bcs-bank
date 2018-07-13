@@ -11,6 +11,7 @@
 {% import "../components/library/card/card.njk" as Card with context %}
 {% import "../components/modules/advice/advice.njk" as Advice %}
 {% import "../components/library/input/input.njk" as Input %}
+{% import "../components/icon/icon.njk" as Icon %}
 
 {% block body %}
   <div class="page">
@@ -22,6 +23,9 @@
         <div class="section__header section__header_theme-blue">
           {{ Menubar.menubar({ 'theme': 'blue', 'class': 'section__menubar section__menubar_theme-simple' }) }}
           <div class="carousel carousel_theme-index">
+            <div class="carousel__progressbar">
+              <div class="carousel__progressbar-bar js-carousel-progressbar"></div>
+            </div>
             <div class="index-carousel js-carousel">
               <div class="index-carousel__slide">
                 <div class="page__container">
@@ -30,7 +34,10 @@
                       {{ Heading.heading({ 'tag': 'h1', 'title': 'Отпуск легче \n с кредитом БКС' | striptags(true) | escape | nl2br, 'type': 'large', 'margin': 'normal', 'theme': 'light'}) }}
                       <div class="index-carousel__features">
                         {{ Feature.feature({ 'title': 'До 55 дней', 'subtitle': 'Беспроцентный \n период' | striptags(true) | escape | nl2br, 'class': 'index-carousel__feature'}) }}
-                        {{ Feature.feature({ 'title': 'До 1 млн. ', 'subtitle': 'Максимальная \n сумма кредита' | striptags(true) | escape | nl2br, 'class': 'index-carousel__feature'}) }}
+                        <div class="feature index-carousel__feature">
+                          <p>До 1 млн. {{ Icon.icon({ 'name': 'ruble' }) }}</p>
+                          <p>Максимальная <br> сумма кредита</p>
+                        </div>
                         {{ Feature.feature({ 'title': 'До 30%', 'subtitle': 'От покупок \n возвращаются на карту' | striptags(true) | escape | nl2br, 'class': 'index-carousel__feature'}) }}
                       </div>
                     </div>
@@ -47,7 +54,10 @@
                       {{ Heading.heading({ 'tag': 'h1', 'title': 'Отпуск легче \n с кредитом БКС' | striptags(true) | escape | nl2br, 'type': 'large', 'margin': 'normal', 'theme': 'light'}) }}
                       <div class="index-carousel__features">
                         {{ Feature.feature({ 'title': 'До 55 дней', 'subtitle': 'Беспроцентный \n период' | striptags(true) | escape | nl2br, 'class': 'index-carousel__feature'}) }}
-                        {{ Feature.feature({ 'title': 'До 1 млн. ', 'subtitle': 'Максимальная \n сумма кредита' | striptags(true) | escape | nl2br, 'class': 'index-carousel__feature'}) }}
+                        <div class="feature index-carousel__feature">
+                          <p>До 1 млн. {{ Icon.icon({ 'name': 'ruble' }) }}</p>
+                          <p>Максимальная <br> сумма кредита</p>
+                        </div>
                         {{ Feature.feature({ 'title': 'До 30%', 'subtitle': 'От покупок \n возвращаются на карту' | striptags(true) | escape | nl2br, 'class': 'index-carousel__feature'}) }}
                       </div>
                     </div>
@@ -64,7 +74,10 @@
                       {{ Heading.heading({ 'tag': 'h1', 'title': 'Отпуск легче \n с кредитом БКС' | striptags(true) | escape | nl2br, 'type': 'large', 'margin': 'normal', 'theme': 'light'}) }}
                       <div class="index-carousel__features">
                         {{ Feature.feature({ 'title': 'До 55 дней', 'subtitle': 'Беспроцентный \n период' | striptags(true) | escape | nl2br, 'class': 'index-carousel__feature'}) }}
-                        {{ Feature.feature({ 'title': 'До 1 млн. ', 'subtitle': 'Максимальная \n сумма кредита' | striptags(true) | escape | nl2br, 'class': 'index-carousel__feature'}) }}
+                        <div class="feature index-carousel__feature">
+                          <p>До 1 млн. {{ Icon.icon({ 'name': 'ruble' }) }}</p>
+                          <p>Максимальная <br> сумма кредита</p>
+                        </div>
                         {{ Feature.feature({ 'title': 'До 30%', 'subtitle': 'От покупок \n возвращаются на карту' | striptags(true) | escape | nl2br, 'class': 'index-carousel__feature'}) }}
                       </div>
                     </div>
@@ -74,9 +87,6 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="carousel__progressbar">
-              <div class="carousel__progressbar-bar js-carousel-progressbar"></div>
             </div>
           </div>
           <div class="page__container">
@@ -155,7 +165,7 @@
                     {{ Input.input({ 'label': 'Номер карты', 'class': 'services__card-sender' }) }}
                   </div>
                   <div class="services__transfer-controls">
-                    {{ Input.input({ 'label': 'Сумма перевода', 'class': 'services__card-summ' }) }}
+                    {{ Input.input({ 'label': 'Сумма перевода', 'name': 'ruble', 'class': 'services__card-summ' }) }}
                     <div class="services__card-commission">Комиссия за перевод будет <br> расчитана автоматически</div>
                     <div class="services__card-legal"><span>Нажимая «Перевести деньги», <br>я принимаю </span>{{ Button.button({ 'href': '#', 'title': 'условия сервиса', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}</div>
                     {{ Button.button({ 'title': 'Перевести деньги', 'type': 'submit', 'mods': { 'theme': 'default' } }) }}

@@ -10,7 +10,9 @@ import Header from '../components/modules/header/header';
 import Contact from '../components/library/contact/contact';
 import Accordion from '../components/library/accordion/accordion';
 import Dropdown from '../components/library/dropdown/dropdown';
+import Context from '../components/library/context/context';
 import Carousel from '../components/library/carousel/carousel';
+import Input from '../components/library/input/input';
 import Tabs from '../components/modules/tabbar/tabbar';
 // import Datepicker from '../components/library/datepicker/datepicker';
 
@@ -21,6 +23,11 @@ $(() => {
   global.dropdowns = [];
   for (const dropdown of $('.js-dropdown')) {
     global.dropdowns.push(Dropdown(dropdown));
+  }
+
+  global.contexts = [];
+  for (const context of $('.js-context')) {
+    global.contexts.push(Context(context));
   }
 
   global.contacts = [];
@@ -41,6 +48,11 @@ $(() => {
   global.carousels = [];
   for (const carousel of $('.js-carousel')) {
     global.carousels.push(Carousel(carousel));
+  }
+
+  global.inputs = [];
+  for (const input of $('.js-input')) {
+    global.inputs.push(Input(input));
   }
 
   // global.datepickers = [];
