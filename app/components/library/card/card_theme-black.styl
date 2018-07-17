@@ -1,25 +1,31 @@
 .card.card_theme-black
   .card__button
     color: $color_elem
-  &:hover
-    .card__wrap
-      *
-        color: $color_light
-        border-color: $color_light
-      .input
-        border-color: $color_tab
-        .input__label, .input__title, .icon
-          color: $color_tab
-      .card__footer
-        border-color: $color_tab
-      .radio__label
-        &:after
-          background-color: $color_light
-        &:before
-          border-color: $color_light
+  &.card_hover-type-button
+    .card__action
+      &:hover
+        background-color: $color_default
+        .card__button
+            color: $color_light
+            border-color: $color_light
+          & + .card__content
+            *
+              color: $color_light
+              border-color: $color_light
+            .input
+              border-color: $color_tab
+              .input__label, .input__title, .icon
+                color: $color_tab
+            .card__action
+              border-color: $color_tab
+            .radio__label
+              &:after
+                background-color: $color_light
+              &:before
+                border-color: $color_light
 
-      .context .dropdown__list
-        ul li
-          color: $color_text
+            .context .dropdown__list
+              ul li
+                color: $color_text
 
-      background-color: $color_default
+            background-color: $color_default
