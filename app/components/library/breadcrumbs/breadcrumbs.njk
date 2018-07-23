@@ -1,0 +1,18 @@
+{% import "../../icon/icon.njk" as Icon %}
+
+{% macro breadcrumbs( options ) %}
+  {# Параметры компонента
+    main : {
+      link: ссылка на страницу
+      title: заголовок ссылки
+    },
+    current: текст текущей страницы
+  #}
+  <div class="breadcrumbs">
+    <a href="{{ options.main.link }}" class="breadcrumbs__item breadcrumbs__item_main">
+      {{ Icon.icon({ 'name': 'dropdown', 'elementClass': 'breadcrumbs__item-arrow' })}}
+      <span class="breadcrumbs__item-text">{{ options.main.title }}</span>
+    </a>
+    <span class="breadcrumbs__item breadcrumbs__item_current">{{ options.current }}</span>
+  </div>
+{% endmacro %}

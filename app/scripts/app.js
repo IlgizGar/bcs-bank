@@ -1,4 +1,5 @@
 //Три этих файла нужны для нормальной работы JS в IE
+
 require('babel-polyfill');
 import "core-js/fn/symbol/iterator.js";
 import "core-js/es6/symbol.js";
@@ -12,6 +13,9 @@ import Accordion from '../components/library/accordion/accordion';
 import Dropdown from '../components/library/dropdown/dropdown';
 import Context from '../components/library/context/context';
 import Carousel from '../components/library/carousel/carousel';
+import MediaSlider from '../components/library/media-slider/media-slider';
+import TableSort from '../components/library/table/table';
+import Collapse from '../components/library/collapse/collapse';
 import Input from '../components/library/input/input';
 import Tabs from '../components/modules/tabbar/tabbar';
 // import Datepicker from '../components/library/datepicker/datepicker';
@@ -53,6 +57,27 @@ $(() => {
   global.inputs = [];
   for (const input of $('.js-input')) {
     global.inputs.push(Input(input));
+  }
+
+  global.mediaSliders = [];
+  if ($('.media-slider').length) {
+    $('.media-slider').each((i, el) => {
+      global.mediaSliders.push(MediaSlider($(el)));
+    });
+  }
+
+  global.collapses = [];
+  if ($('.collapse').length) {
+    $('.collapse').each((i, el) => {
+      global.collapses.push(new Collapse($(el)));
+    })
+  }
+
+  global.sortableTables = [];
+  if ($('.table_sortable').length) {
+    $('.table_sortable').each((i, el) => {
+      global.sortableTables.push(new TableSort($(el)))
+    })
   }
 
   // global.datepickers = [];

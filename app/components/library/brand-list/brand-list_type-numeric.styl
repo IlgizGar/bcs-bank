@@ -1,0 +1,39 @@
+.brand-list.brand-list_type-numeric
+  counter-reset: item
+  padding-left: 0
+  margin-bottom: 56px
+  li // first level
+    position: relative
+    display: block
+    padding-left: 55px
+    line-height: 1.5
+    opensansRegular()
+    & + li,
+    &:first-child
+      padding-bottom: 12px
+    &:last-child
+      padding-bottom: 0
+    &:before
+      opensansBold()
+      position: absolute
+      top: 0
+      left: 0
+      content: counters(item, ".") ". ";
+      counter-increment: item
+      color: $cyprus
+    &>.brand-list_type-numeric // second level
+      padding-top: 12px
+      margin-bottom: 0
+      li
+        padding-left: 0
+        &:before
+          position: static
+          content: counters(item, ".") " ";
+          margin-right: 20px
+        &>.brand-list_type-numeric // third level
+          margin-bottom: 8px
+          li
+            padding-left: 24px
+            &:before
+              opensansRegular()
+              content: counters(item, ".") " ";

@@ -1,0 +1,29 @@
+.media-slider .media-slider__progressbar-part
+  flex: 1
+  height: 2px
+  .media-slider__progressbar-part-color
+    margin-bottom: -1px
+    display: block
+    height: 2px
+    transform: scaleX(1)
+    transform-origin: left center
+    background-color: $royal_blue
+
+  &.media-slider__progressbar-part_filling
+    .media-slider__progressbar-part-color
+      // animation delay set in media-slider.js
+      animation: fillSlidePart linear forwards
+
+    & ~ .media-slider__progressbar-part
+      .media-slider__progressbar-part-color
+        transform: scaleX(0)
+
+
+@keyframes fillSlidePart {
+  0% {
+    transform: scaleX(0)
+  }
+  100% {
+    transform: scaleX(1)
+  }
+}

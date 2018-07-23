@@ -1,0 +1,44 @@
+{% extends "layout/layout.njk" %}
+
+{% import "../components/library/breadcrumbs/breadcrumbs.njk" as Breadcrumbs %}
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/library/socials/socials.njk" as Socials %}
+{% import "../components/library/button/button.njk" as Button %}
+{% import "../components/modules/menubar/menubar.njk" as Menubar %}
+
+
+{% set root = "." %}
+{% set title = "Новость детально" %}
+
+{% block body %}
+  <div class="page">
+
+    {% include "../components/modules/header/header.njk" %}
+
+    <main role="main">
+      <section class="section page__section">
+
+        {# Чтобы установить картинку на фон, необходимо добавить style="backgraun-image: url(путь до картинки)" #}
+        <div class="section__header section__header_theme-blue">
+          {{ Menubar.menubar({ 'theme': 'blue', 'class': 'section__menubar' }) }}
+          <div class="page__container page__container_type-header">
+            {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Новости', 'link': '/news.html' }, 'current': '24 марта 2018' }) }}
+            {{ Heading.heading({ 'tag': 'h1', 'title': 'Как поужинать \n в любимом ресторане \n за счет банка' | striptags(true) | escape | nl2br, 'type': 'large', 'margin': 'long' }) }}
+            {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'white'}, 'class': 'mt-a social_placement-header'}) }}
+          </div>
+        </div>
+
+      </section>
+
+      <section class="section page__section">
+        <div class="page__container">
+          {% include "../components/modules/news-detail/news-detail.njk" %}
+        </div>
+      </section>
+      {% include "../components/modules/similar-news/similar-news.njk" %}
+
+    </main>
+
+    {% include "../components/modules/footer/footer.njk" %}
+  </div>
+{% endblock %}

@@ -1,0 +1,52 @@
+.table.table_sortable .table__body
+  tr
+    td
+      padding: 0 0 32px
+      text-align: right
+      line-height: 1.5
+      color: $madison
+      &:before
+        content: ''
+        display: block
+        height: 1px
+        width: 100%
+        margin-bottom: 32px
+        background-color $gainsboro
+        transition background-color $interval
+
+      &:first-child
+        text-align: left
+        padding-left: 23px
+      &:last-child
+        padding-right: 23px
+    &:last-child
+      td
+        padding-bottom: 0
+        &:after
+          content: ''
+          display: block
+          height: 1px
+          width: 100%
+          margin-top: 31px
+          background-color $gainsboro
+          transition background-color $interval
+
+  tr
+    cursor: pointer
+    td
+      transition background-color $interval
+    &:hover
+      td
+        transition background-color $interval
+        background-color $white_smoke_dark
+        &:before,
+        &:after
+          background-color: transparent
+          transition background-color $interval
+
+      & + tr
+        td
+          &:before
+            background-color: transparent
+            transition background-color $interval
+

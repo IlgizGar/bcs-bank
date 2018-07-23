@@ -6,7 +6,7 @@
             {% for item in options.basic %}
                 {{ Button.button({ 'href': item.href, 'title': item.title, 'mods': {'theme': options.theme, 'view': 'text', 'size': 'low'}, 'class': 'menu__item' }) }}
             {% endfor %}
-            {{ Button.button({ 'title': 'Еще', 'name': 'hor-explore', 'mods': {'type': 'icon-right', 'theme': options.theme, 'view': 'text', 'size': 'low'}, 'class': 'menu__item' }) }}
+            {{ Button.button({ 'title': 'Еще', 'name': 'dropdown', 'mods': {'type': 'icon-right', 'theme': options.theme, 'view': 'text', 'size': 'low'}, 'class': 'menu__item' }) }}
         </div>
     </div>
 {% endmacro %}

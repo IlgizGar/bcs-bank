@@ -1,0 +1,19 @@
+{% import "../../library/heading/heading.njk" as Heading %}
+{% import "../../library/button/button.njk" as Button %}
+{% import "../../library/card/card.njk" as Card with context %}
+
+<section class="similar-news section section_theme-white-smoke">
+  <div class="page__container">
+    <div class="section__heading">
+      {{ Heading.heading({ 'title': 'Похожие новости' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'none', 'theme': 'default'}) }}
+      {{ Button.button({ 'href': '#', 'title': 'Все новости', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
+    </div>
+    <div class="section__row">
+      {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'light', 'hoverType': 'button', 'title': 'Как поужинать в любимом ресторане  за счет банкан', 'subtitle': '24 марта 2018' | striptags(true) | escape | nl2br, 'link': 'Читать', 'class': 'section__element similar-news__card' }) }}
+
+      {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'light', 'hoverType': 'button', 'title': 'Режим работы офисов БКС Банка в июне 2018 года' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018' | striptags(true) | escape | nl2br, 'link': 'Читать', 'class': 'section__element similar-news__card' }) }}
+
+      {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'light', 'hoverType': 'button', 'title': 'Изменения в бонусных программах с 1.06.2018', 'subtitle': '24 марта 2018' | striptags(true) | escape | nl2br, 'link': 'Читать', 'class': 'section__element similar-news__card' }) }}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,21 @@
+.table_sortable .table__head
+  font-size: 12px
+  th
+    outline: none
+    text-align: right
+    &:first-child
+      text-align: left
+      padding-left: 23px
+    &:last-child
+      padding-right: 23px
+    &[data-sort]
+      position: relative
+      cursor: pointer
+      svg
+        position: absolute
+        top: 6px
+        left: calc(100% + 8px)
+        path
+          fill: $slate_grey
+
+

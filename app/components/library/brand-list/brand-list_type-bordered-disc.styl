@@ -1,0 +1,23 @@
+.brand-list.brand-list_type-bordered-disc
+  opensansRegular()
+
+  & > li
+    position: relative
+    padding-left: 32px
+    &:not(:last-child)
+      padding-bottom: 14px
+    &:before
+      content: ''
+      display: inline-block
+      position: absolute
+      left: 4px
+      top: 9px
+      width: 4px
+      height: 4px
+      border-radius: 50%
+      background-color: transparent
+      border: 1px solid $cyprus
+    & > .brand-list_type-bordered-disc
+      padding-left: 10px
+
+
