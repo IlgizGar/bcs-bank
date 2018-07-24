@@ -1,6 +1,12 @@
 {% import "../../../components/library/button/button.njk" as Button %}
 {% import "../../../components/inline-svg/inline-svg.njk" as Svg %}
 {% import "../../../components/library/socials/socials.njk" as Socials %}
+{% import "../../../components/library/heading/heading.njk" as Heading %}
+{% import "../../../components/library/input/input.njk" as Input %}
+{% import "../../../components/library/dropdown/dropdown.njk" as Dropdown %}
+
+
+
 
 {% set menu = [
   {'title': 'О банке',
@@ -43,3 +49,31 @@
     </div>
   </div>
 </footer>
+<div id="question-modal-form" class="modal">
+  <form id="question-form" action="/" class="form question-form">
+    {{ Heading.heading({ 'title': 'У вас есть вопрос?' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'none', 'theme': 'default', 'class': 'form__title'}) }}
+    {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group' }) }}
+    <div class="form__line-group">
+      {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group' }) }}
+      {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group' }) }}
+    </div>
+    {{ Dropdown.dropdown({ 'theme': 'bordered', 'label': 'Тема', 'items': [{'title': 'Предложения по сайту', 'val': '0'},{'title': 'Интернет-банк', 'val': '1'}], 'class': 'form__field-group form__field-group_dropdown' }) }}
+    {{ Input.input({ 'label': 'Текст вопроса', 'tag': 'textarea', 'rows': '6', 'class': 'input_textarea form__field-group' }) }}
+    <div class="form__action">
+      <div class="form__agreements">
+        {# TODO: вынести в шаблон #}
+        <label class="checkbox checkbox_theme-dark">
+          <input type="checkbox" class="checkbox__control">
+          <span class="checkbox__state"></span>
+          <span class="checkbox__label">
+            Даю согласие на обработку
+            {{ Button.button({ 'href': '#', 'title': 'персональных данных', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
+          </span>
+        </label>
+      </div>
+      {{ Button.button({ 'title': 'Отправить', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
+
+    </div>
+
+  </form>
+</div>

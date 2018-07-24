@@ -12,7 +12,7 @@ module.exports = (elem) => {
       this.list = this.dropdown.find('.js-dropdown-list');
       this.input = this.dropdown.find('.js-input');
       this.clear = this.dropdown.find('.js-dropdown-clear');
-
+      this.scrollBarInited = false;
       this.init();
       this.events();
     }
@@ -28,18 +28,23 @@ module.exports = (elem) => {
         }
       }
 
-      $('.scroll-pane').jScrollPane({
-        contentWidth: 100,
-        verticalDragMinHeight: 16,
-        verticalDragMaxHeight: 16,
-        verticalGutter: 16,
-        mouseWheelSpeed: 1,
-        animateDuration: 1000,
-      });
+
     }
 
     events() {
       this.dropdown.on('click', (e) => {
+        e.preventDefault();
+        if (!this.scrollBarInited) {
+          $('.scroll-pane').jScrollPane({
+            contentWidth: 100,
+            verticalDragMinHeight: 16,
+            verticalDragMaxHeight: 16,
+            verticalGutter: 16,
+            mouseWheelSpeed: 1,
+            animateDuration: 1000,
+          });
+          this.scrollBarInited = true;
+        }
         if (!$(e.target).closest('.js-dropdown-clear').length) {
 
           $(e.currentTarget).toggleClass('state_explored');

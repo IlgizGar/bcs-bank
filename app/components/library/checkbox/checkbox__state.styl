@@ -1,0 +1,36 @@
+.checkbox
+  .checkbox__state
+    position: relative
+    display: inline-block
+    height: 24px
+    width: 24px
+    border: 1px solid
+    border-radius: 2px
+    cursor: pointer
+    transition: all $interval linear
+    margin-right: 16px
+    padding: 4px 3px
+    &:after
+      content: ''
+      display: block
+      width: 4px
+      height: 10px
+      border-bottom: 2px solid transparent
+      border-right: 2px solid transparent
+      transform-origin: right bottom
+      transform: rotate(45deg)
+      transition: all $interval linear
+
+  &.checkbox_theme-dark
+    .checkbox__state
+      border-color: $gainsboro
+      &:hover
+        border-color: $very_light_gray
+    .checkbox__control:checked + .checkbox__state
+      border-color: $royal_blue
+      &:after
+        border-bottom-color: $royal_blue
+        border-right-color: $royal_blue
+
+
+

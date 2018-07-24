@@ -1,7 +1,11 @@
-.input .input__label
-  pointer-events: none
+.input
+  .input__label
+    pointer-events: none
 
-  opensansRegular(12px)
-  color: $color_inactive
+    opensansRegular(12px)
+    color: $color_inactive
 
-  transition: all $interval
+    transition: all $interval
+  &.input_textarea
+    .input__label
+      //position: absolute

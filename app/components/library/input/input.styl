@@ -1,18 +1,15 @@
 .input
   position: relative
-
   display: flex
   justify-content: space-between
   align-items: center
-
-  height: 64px
   width: 100%
   padding: 0
-
   border-radius: 4px
   border: solid 1px $color_borders
-
   transition: all $interval
+  &:not(.input_textarea)
+    height: 64px
 
   &:hover
     border-color: $color_borders_light

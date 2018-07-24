@@ -4,7 +4,7 @@ module.exports = (elem) => {
   class Input {
     constructor(selector) {
       this.input = $(selector);
-      this.field = this.input.find('input');
+      this.field = this.input.find('input, textarea');
 
       this.events();
     }

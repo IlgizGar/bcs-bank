@@ -21,9 +21,9 @@
   "dependencies": {
     "bootstrap-datepicker": "^1.8.0",
     "jquery": "^3.3.1",
+    "jquery-modal": "^0.9.1",
     "jquery-mousewheel": "^3.1.13",
     "jscrollpane": "^2.2.0",
-    "magnific-popup": "^1.1.0",
     "normalize-styl": "^4.1.1",
     "simple-scrollbar": "^0.4.0",
     "slick-carousel": "^1.8.1",

@@ -4,7 +4,11 @@
   <div class="input js-input state_init {{ options.class }}">
     <label class="input__group">
       <span class="input__label js-label">{{ options.label }}</span>
-      <input class="input__field" type="{{ options.type }}" name="{{ options.name }} value={{ options.value }}">
+      {% if options.tag === "textarea" %}
+        <textarea class="input__field" rows="{{ options.rows }}" type="{{ options.type }}" name="{{ options.name }} value={{ options.value }}"></textarea>
+      {% else %}
+        <input class="input__field" type="{{ options.type }}" name="{{ options.name }} value={{ options.value }}">
+      {% endif %}
     </label>
     {% if options.name %}
       {{ Icon.icon({ 'name': options.name }) }}

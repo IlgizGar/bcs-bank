@@ -16,6 +16,7 @@ import Carousel from '../components/library/carousel/carousel';
 import MediaSlider from '../components/library/media-slider/media-slider';
 import TableSort from '../components/library/table/table';
 import Collapse from '../components/library/collapse/collapse';
+import Modal from '../components/library/modal/modal';
 import Input from '../components/library/input/input';
 import Tabs from '../components/modules/tabbar/tabbar';
 // import Datepicker from '../components/library/datepicker/datepicker';
@@ -77,6 +78,13 @@ $(() => {
   if ($('.table_sortable').length) {
     $('.table_sortable').each((i, el) => {
       global.sortableTables.push(new TableSort($(el)))
+    })
+  }
+
+  global.modals = [];
+  if ($('.js-open-modal').length) {
+    $('.js-open-modal').each((i, el) => {
+      global.modals.push(new Modal($(el)))
     })
   }
 
