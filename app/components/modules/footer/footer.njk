@@ -35,7 +35,7 @@
       <div class="footer__info">
         <p class="footer__info-phone">8 800 500 7065</p>
         <p class="footer__info-inform">Бесплатный звонок по России</p>
-        {{ Button.button({ 'title': 'Задать вопрос', 'mods': {'theme': 'default'} }) }}
+        {{ Button.button({ 'title': 'Задать вопрос', 'href': '#question-modal-form', 'mods': {'theme': 'default'}, 'class': 'js-open-modal'  }) }}
       </div>
       <div class="footer__credentials">
         {{ Button.button({ 'href': '#', 'title': 'Информация о максимальных процентных ставках по вкладам физических лиц', 'mods': {'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'footer__credentials-link' }) }}
@@ -49,6 +49,7 @@
     </div>
   </div>
 </footer>
+{# TODO: Вынести в шаблон #}
 <div id="question-modal-form" class="modal">
   <form id="question-form" action="/" class="form question-form">
     {{ Heading.heading({ 'title': 'У вас есть вопрос?' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'none', 'theme': 'default', 'class': 'form__title'}) }}

@@ -21,7 +21,7 @@
         <div class="section__header section__header_theme-blue">
           {{ Menubar.menubar({ 'theme': 'blue', 'class': 'section__menubar' }) }}
           <div class="page__container">
-            {{ Heading.heading({ 'tag': 'h1', 'title': 'Документы' | striptags(true) | escape | nl2br, 'type': 'large', 'margin': 'medium' }) }}
+            {{ Heading.heading({ 'tag': 'h1', 'title': 'Документы' | striptags(true) | escape | nl2br, 'type': 'large', 'margin': 'default' }) }}
           </div>
           <div class="section__nav">
             <div class="page__container">
@@ -37,7 +37,7 @@
       <section class="section page__section page__section_theme-last">
         <div class="page__container">
           <div class="section__row">
-            <div class="section__content section__content_theme-centered">
+            <div class="section__content section__content_medium section__content_theme-centered">
               <div class="tabs js-tabs">
                 <div id="charter" class="tabs__item js-tab state_invisible">
                   {{ Heading.heading({ 'title': 'Устав банка' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'normal' }) }}

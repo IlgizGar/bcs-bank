@@ -9,7 +9,7 @@ module.exports = (elem) => {
     }
 
     events() {
-      $('.js-accordion-header').on('click', (e) => {
+      this.accordion.find('.js-accordion-header').on('click', (e) => {
         const $header = $(e.currentTarget);
         const $active = this.accordion.find('.js-accordion-header.state_active');
         if ($header.hasClass('state_active')) {
