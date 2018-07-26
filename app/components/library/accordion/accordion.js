@@ -27,3 +27,4 @@ module.exports = (elem) => {
 
   return new Accordion(elem);
 };
+

@@ -17,9 +17,12 @@ import MediaSlider from '../components/library/media-slider/media-slider';
 import TableSort from '../components/library/table/table';
 import Collapse from '../components/library/collapse/collapse';
 import Modal from '../components/library/modal/modal';
+import FileInput from '../components/library/file-input/file-input';
 import Input from '../components/library/input/input';
 import Tabs from '../components/modules/tabbar/tabbar';
+import PageHeader from '../components/modules/page-header/page-header';
 // import Datepicker from '../components/library/datepicker/datepicker';
+
 
 $(() => {
   svg4everybody();
@@ -87,6 +90,16 @@ $(() => {
       global.modals.push(new Modal($(el)))
     })
   }
+
+  if ($('.page-header_vacancy').length) {
+    let headerHandler = new PageHeader();
+    headerHandler.nav = $('.page-header_vacancy .page-header__nav');
+    headerHandler.addStickyTitle();
+    headerHandler.stickyHandler();
+  }
+
+  new FileInput();
+
 
   // global.datepickers = [];
   // for (const datepicker of $('.js-datepicker')) {

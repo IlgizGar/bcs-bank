@@ -1,0 +1,140 @@
+{% extends "layout/layout.njk" %}
+
+{% import "../components/library/breadcrumbs/breadcrumbs.njk" as Breadcrumbs %}
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/library/socials/socials.njk" as Socials %}
+{% import "../components/library/button/button.njk" as Button %}
+{% import "../components/modules/menubar/menubar.njk" as Menubar %}
+{% import "../components/library/input/input.njk" as Input %}
+{% import "../components/library/file-input/file-input.njk" as FileInput %}
+{% import "../components/library/dropdown/dropdown.njk" as Dropdown %}
+
+
+
+
+{% set root = "." %}
+{% set title = "Вакансия детально" %}
+
+{% block body %}
+  <div class="page">
+
+    {% include "../components/modules/header/header.njk" %}
+
+    <main role="main">
+      <section class="page-header page-header_vacancy section page__section">
+
+        {# Чтобы установить картинку на фон, необходимо добавить style="backgraun-image: url(путь до картинки)" #}
+        <div class="section__header section__header_theme-blue">
+          {{ Menubar.menubar({ 'theme': 'blue', 'class': 'section__menubar' }) }}
+          <div class="page__container page__container_type-header">
+            {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Новости', 'link': '/news.html' }, 'current': 'Москва' }) }}
+            {{ Heading.heading({ 'tag': 'h1', 'title': 'Старший клиентский менеджер \n по привлечению корпоративных клиентов' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'default', 'class': 'page-header__title' }) }}
+          </div>
+          <div class="page-header__nav section__nav">
+            <div class="page__container">
+              <div class="section__wrap">
+                {{ Button.button({ 'title': 'Откликнуться', 'mods': { 'theme': 'white' }, 'class': 'mr-a' }) }}
+                {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'white', 'view': 'outlined' }, 'class': ''}) }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="section">
+        <div class="page__container">
+          <div class="section__row">
+            <div class="section__content section__content_medium section__content_theme-centered">
+
+              {{ Heading.heading({ 'tag': 'h2', 'title': 'Требования:' | striptags(true) | escape | nl2br, 'type': 'normal', 'margin': 'normal-small', 'class': 'news-detail__title' }) }}
+              <ul class="brand-list brand-list_type-disc brand-list_margin-medium">
+                <li>Наличие собственной клиентской базы;</li>
+                <li>Знание всех банковских продуктов и технологий для корпоративных клиентов;</li>
+                <li>Опыт проведения презентаций, переговоров;</li>
+                <li>Опыт продаж финансовых продуктов от двух лет;</li>
+                <li>Опыт руководства отделом от одного года;</li>
+                <li>Высшее образование (экономическое, финансовое);</li>
+                <li>Знание всего спектра банковских продуктов;</li>
+                <li>Успешный опыт привлечения корпоративных клиентов на активы и пассивы.</li>
+              </ul>
+
+              {{ Heading.heading({ 'tag': 'h2', 'title': 'Задачи:' | striptags(true) | escape | nl2br, 'type': 'normal', 'margin': 'normal-small', 'class': 'news-detail__title' }) }}
+              <ul class="brand-list brand-list_type-disc brand-list_margin-medium">
+                <li>Привлечение крупных корпоративных клиентов на обслуживание в Банк;</li>
+                <li>Выполнение плановых показателей по приросту активов, пассивов и комиссионного дохода Банка,
+                  выполнение плана продаж (в т.ч. по паспортам сделок, гарантиям, зарплатным проектам);
+                </li>
+                <li>Кросс-продажи банковских продуктов и услуг, организация сопровождения клиентов корпоративного
+                  бизнеса, выстраивание долгосрочных отношений с клиентами корпоративного бизнеса;
+                </li>
+                <li>Развитие существующей клиентской базы, участие в переговорах с крупными и средними корпоративными
+                  клиентами по вопросам структурирования потребностей клиентов в кредитных и других банковских
+                  продуктов;
+                </li>
+                <li>Обучение Финансовых советников продажам Банковских продуктов корпоративным клиентам;</li>
+                <li>Непосредственное участие в разработке и внедрении методических рекомендаций по организации работы
+                  подразделений департамента по работе с корпоративными клиентами;
+                </li>
+                <li>Сбор необходимых документов для подготовки проф. заключения и защита проекта на Кредитном комитете;
+                  взаимодействие с структурными подразделениями Банка, участие в кредитных комитетах;
+                </li>
+                <li>Составление периодической отчетности.</li>
+              </ul>
+
+              {{ Heading.heading({ 'tag': 'h2', 'title': 'Условия:' | striptags(true) | escape | nl2br, 'type': 'normal', 'margin': 'normal-small', 'class': 'news-detail__title' }) }}
+              <ul class="brand-list brand-list_type-disc brand-list_margin-big">
+                <li>Высокий уровень фиксированного оклада + бонусы;</li>
+                <li>Широкие возможности профессионального роста, корпоративная система обучения в компании;</li>
+                <li>Работа в команде профессионалов, в молодом и дружном коллективе;</li>
+                <li>График работы: с 9-30 до 18-30;</li>
+                <li>Оформление по ТК РФ, белая заработная плата.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section_theme-white-smoke vacancy-feedback">
+        <div class="page__container">
+          <div class="section__row">
+            <div class="section__content section__content_medium section__content_theme-centered">
+              <form id="vacancy-feedback__form" action="/" class="form vacancy-feedback__form">
+                {{ Heading.heading({ 'title': 'Откликнуться на вакансию' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'none', 'theme': 'default', 'class': 'form__title'}) }}
+                {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group' }) }}
+                <div class="form__line-group">
+                  {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group' }) }}
+                  {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group' }) }}
+                </div>
+                {{ Dropdown.dropdown({ 'theme': 'bordered', 'label': 'Тема', 'items': [{'title': 'Предложения по сайту', 'val': '0'},{'title': 'Интернет-банк', 'val': '1'}], 'class': 'form__field-group form__field-group_dropdown' }) }}
+
+                {{ FileInput.fileInput({ 'settings': {'extensions': 'image/png, image/jpeg', 'fileSize': '1MB', 'sizeError': 'Файл слишком большой', 'maxFiles': '3'}, 'class': '' }) }}
+
+                {{ Input.input({ 'label': 'Сопроводительное письмо (по желанию)', 'tag': 'textarea', 'rows': '6', 'class': 'input_textarea form__field-group' }) }}
+                <div class="form__action">
+                  <div class="form__agreements">
+                    {# TODO: вынести в шаблон #}
+                    <label class="checkbox checkbox_theme-dark">
+                      <input type="checkbox" class="checkbox__control">
+                      <span class="checkbox__state"></span>
+                      <span class="checkbox__label">
+                        Даю согласие на обработку <br>
+                        {{ Button.button({ 'href': '#', 'title': 'персональных данных', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
+                </span>
+                    </label>
+                  </div>
+                  {{ Button.button({ 'title': 'Отправить', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
+
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    {% include "../components/modules/footer/footer.njk" %}
+  </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% import "../button/button.njk" as Button %}
+{% import "../../icon/icon.njk" as Icon %}
+
+{% macro fileInput( options ) %}
+  <div class="file-input">
+    <div class="dz-message needsclick">
+      <span class="file-input__text">Перетащите файл сюда</span>
+      {{ Button.button({ 'title': 'Выбрать файл', 'mods': { 'theme': 'white' }, 'class': '', 'type': 'button' }) }}
+    </div>
+
+    <div class="file-input__preview-template">
+      <div class="file-input__item">
+        <div class="file-input__item-details">
+          <div class="file-input__item-filename"><span data-dz-name></span></div>
+          <div class="file-input__item-remove" data-dz-remove>
+            {{ Icon.icon({ 'name': 'close', 'elementClass': 'file-input__item-remove-icon' })}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {#<input type="file"
+         multiple
+         accept="{{ options.settings.extensions }}"
+         data-max-file-size="{{ options.settings.fileSize }}"
+         data-max-files="{{ options.settings.maxFiles }}"
+         data-label-max-file-size-exceeded="{{ options.settings.sizeError }}"
+         data-label-max-file-size="Максимальный размер файла {filesize}"
+         data-label-file-type-not-allowed="Недопустимый формат файла"
+         data-file-validate-type-label-expected-types="Доступные форматы: {allTypes}"
+  >#}
+{% endmacro %}
