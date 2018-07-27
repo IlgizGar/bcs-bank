@@ -12,6 +12,7 @@
 
   border-top: solid 1px $color_borders
   background-color: $color_card
+  transition: all 0.175s linear
 
   &:first-child
     border-top: none
@@ -31,3 +32,8 @@
 
   &.state_active:after
     transform: scale(1, -1)
+
+  &:hover
+    background-color: $white_smoke_dark
+    & + .accordion__content
+      background-color: $white_smoke_dark

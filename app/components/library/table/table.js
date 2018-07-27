@@ -24,7 +24,7 @@ export default class TableSort {
     this.$table.find('th').each((i, el) => {
       if (el.hasAttribute('data-sort')) {
         // todo: заменить иконку
-        $(el).find('.table__column-title').append('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><g fill="none" fill-rule="evenodd"><path d="M-604-2935H836v7555H-604z"/></g></svg>')
+        $(el).find('.table__column-title').append('<svg xmlns="http://www.w3.org/2000/svg" width="10" height="7" viewBox="0 0 10 7"><g fill="none" fill-rule="evenodd"><path fill="#78818F" d="M0 0h4v1H0V0zm0 3h7v1H0V3zm0 3h10v1H0V6z"/></g></svg>')
       }
     })
   }

@@ -97,8 +97,9 @@ $(() => {
     headerHandler.addStickyTitle();
     headerHandler.stickyHandler();
   }
-
-  new FileInput();
+  if ($('.file-input').length) {
+    new FileInput();
+  }
 
 
   // global.datepickers = [];
