@@ -140,9 +140,9 @@
             {{ Button.button({ 'href': '#', 'title': 'Все сервисы', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
           </div>
           <div class="section__row">
-            {{ Card.card({ 'title': 'Фиксация курса', 'subtitle': 'До 13 апреля 2018', 'block': 'modules/services/fix-course', 'href': '#', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Зафиксировать курс', 'class': 'section__element services__card' }) }}
-            {{ Card.card({ 'title': 'Фиксация курса', 'subtitle': 'До 13 апреля 2018', 'block': 'modules/services/exchange', 'href': '#', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Обменять валюту', 'class': 'section__element services__card' }) }}
-            {{ Card.card({ 'title': 'Поиск штрафов', 'subtitle': 'На 13 апреля 2018', 'block': 'modules/services/check-exist', 'href': '#', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Проверить наличие', 'class': 'section__element services__card' }) }}
+            {{ Card.card({ 'block': 'modules/services/fix-course', 'href': '#', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Зафиксировать курс', 'class': 'section__element services__card' }) }}
+            {{ Card.card({ 'block': 'modules/services/exchange', 'href': '#', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Обменять валюту', 'class': 'section__element services__card' }) }}
+            {{ Card.card({ 'block': 'modules/services/check-exist', 'href': '#', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Проверить наличие', 'class': 'section__element services__card' }) }}
 
             <div class="services__transfer">
               <div class="services__transfer-bkg"></div>
@@ -150,26 +150,37 @@
                 {{ Heading.heading({ 'title': 'Мгновенный перевод \n с карты на карту' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'none', 'theme': 'light'}) }}
                 {{ Button.button({ 'href': '#', 'title': 'Лимиты и тарифы', 'mods': { 'type': 'link', 'theme': 'white', 'view': 'text' }, 'class': 'services__transfer-link' }) }}
               </div>
-              <form>
-                <div class="services__transfer-cards section__row">
-                  <div class="services__credit-card">
-                    {{ Heading.heading({ 'title': 'Данные отправителя', 'type': 'small', 'margin': 'none', 'theme': 'default'}) }}
-                    {{ Input.input({ 'label': 'Номер карты', 'class': 'services__card-sender' }) }}
-                    {{ Input.input({ 'label': 'CVV/CVV2', 'class': 'services__card-code mt-16' }) }}
-                    {{ Input.input({ 'label': 'Срок действия', 'class': 'services__card-period mt-16' }) }}
+              <div class="js-form">
+                <form>
+                  <div class="services__transfer-cards section__row">
+                    <div class="services__credit-card">
+                      {{ Heading.heading({ 'title': 'Данные отправителя', 'type': 'small', 'margin': 'none', 'theme': 'default'}) }}
+                      {{ Input.input({ 'label': 'Номер карты', 'class': 'services__card-sender' }) }}
+                      {{ Input.input({ 'label': 'CVV/CVV2', 'class': 'services__card-code mt-16' }) }}
+                      {{ Input.input({ 'label': 'Срок действия', 'class': 'services__card-period mt-16' }) }}
+                    </div>
+                    <div class="services__credit-card">
+                      {{ Heading.heading({ 'title': 'Данные получателя', 'type': 'small', 'margin': 'none', 'theme': 'default'}) }}
+                      {{ Input.input({ 'label': 'Номер карты', 'class': 'services__card-sender' }) }}
+                    </div>
+                    <div class="services__transfer-controls">
+                      {{ Input.input({ 'label': 'Сумма перевода', 'name': 'ruble', 'class': 'services__card-summ', 'field': 'js-numeric-input js-transfer-input' }) }}
+                      <input class="js-commission-result" value="123456" hidden>
+                      <div class="services__card-commission">
+                        <p >Комиссия за перевод будет <br> расчитана автоматически</p>
+                        <div class="services__card-commission-res state_hidden">
+                          <p>Сумма перевода с комиссией</p>
+                          <p><span class="js-commission-amount">123435</span> {{ Icon.icon({ 'name': 'ruble' }) }}</p>
+                        </div>
+                      </div>
+                      <div class="services__card-legal">
+                        <span>Нажимая «Перевести деньги», <br>я принимаю </span>{{ Button.button({ 'href': '#', 'title': 'условия сервиса', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
+                      </div>
+                      {{ Button.button({ 'title': 'Перевести деньги', 'type': 'submit', 'mods': { 'theme': 'default' } }) }}
+                    </div>
                   </div>
-                  <div class="services__credit-card">
-                    {{ Heading.heading({ 'title': 'Данные получателя', 'type': 'small', 'margin': 'none', 'theme': 'default'}) }}
-                    {{ Input.input({ 'label': 'Номер карты', 'class': 'services__card-sender' }) }}
-                  </div>
-                  <div class="services__transfer-controls">
-                    {{ Input.input({ 'label': 'Сумма перевода', 'name': 'ruble', 'class': 'services__card-summ' }) }}
-                    <div class="services__card-commission">Комиссия за перевод будет <br> расчитана автоматически</div>
-                    <div class="services__card-legal"><span>Нажимая «Перевести деньги», <br>я принимаю </span>{{ Button.button({ 'href': '#', 'title': 'условия сервиса', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}</div>
-                    {{ Button.button({ 'title': 'Перевести деньги', 'type': 'submit', 'mods': { 'theme': 'default' } }) }}
-                  </div>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>

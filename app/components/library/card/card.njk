@@ -14,10 +14,9 @@
     hoverType:
       button - заливка фона при ховере на кнопку
       card - заливка фона при ховере на карточку
-
   #}
   <div
-    class="card js-card {{ "card_type-"+options.type }} {% if options.hoverType %}{{ "card_hover-type-"+options.hoverType }}{% endif %} {% if options.view %}{{ "card_view-"+options.view }}{% endif %} {% if options.theme %} {{ "card_theme-"+options.theme }}{% endif %} {{ options.class }}">
+    class="card js-card {{ "card_type-" + options.type }} {% if options.hoverType %}{{ "card_hover-type-" + options.hoverType }}{% endif %} {% if options.view %}{{ "card_view-" + options.view }}{% endif %} {% if options.theme %} {{ "card_theme-"+options.theme }}{% endif %} {{ options.class }}">
     <div class="card__wrap" data-href={{ options.href }}>
 
       <div class="card__action">

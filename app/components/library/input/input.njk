@@ -7,7 +7,7 @@
       {% if options.tag === "textarea" %}
         <textarea class="input__field" rows="{{ options.rows }}" type="{{ options.type }}" name="{{ options.name }} value={{ options.value }}"></textarea>
       {% else %}
-        <input class="input__field" type="{{ options.type }}" name="{{ options.name }} value={{ options.value }}">
+        <input class="input__field {{ options.field }}" type="{{ options.type }}" name="{{ options.name }}" value="{{ options.value }}" {% if options.disabled %}disabled{% endif %}>
       {% endif %}
     </label>
     {% if options.name %}

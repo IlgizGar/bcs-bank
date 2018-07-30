@@ -4,11 +4,17 @@ import tablesorter from 'tablesorter'
 export default class TableSort {
   constructor($table) {
     this.$table = $table.children('table');
+    this.cols = this.$table.find('th');
     this.sort_case_sensitive = false;
-    this.init()
+    this.init();
   }
 
   init() {
+    console.log('TDS', this.cols);
+
+    const colW = this.$table.outerWidth() / this.cols.length;
+    this.cols.css('width', colW);
+
     this.sortByFullDate();
     this.sortByMoney();
     this.addSortIcons();

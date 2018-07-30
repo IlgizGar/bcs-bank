@@ -9,7 +9,7 @@ module.exports = (elem) => {
       this.dropdown = $(selector);
       this.select = this.dropdown.find('select');
       this.options = this.select.find('option');
-      this.list = this.dropdown.find('.js-dropdown-list');
+      // this.list = this.dropdown.find('.js-dropdown-list');
       this.input = this.dropdown.find('.js-input');
       this.clear = this.dropdown.find('.js-dropdown-clear');
       this.scrollBarInited = false;
@@ -18,6 +18,9 @@ module.exports = (elem) => {
     }
 
     init() {
+      this.list = $('<div class="dropdown__list state_inactive scroll-pane js-dropdown-list mt-10"><ul></ul></div>');
+      $('body').append(this.list);
+
       for (const option of this.options) {
         this.list.find('ul').append(`
           <li data-val="${$(option).val()}">${$(option).html()}</li>
@@ -27,8 +30,6 @@ module.exports = (elem) => {
           this.input.val($(option).html());
         }
       }
-
-
     }
 
     events() {
@@ -49,17 +50,20 @@ module.exports = (elem) => {
 
           $(e.currentTarget).toggleClass('state_explored');
           this.list.toggleClass('state_inactive');
+          this.list.css('min-width', this.dropdown.outerWidth());
+          this.list.css('top', this.dropdown.offset().top + this.dropdown.outerHeight());
+          this.list.css('left', this.dropdown.offset().left);
+        }
+      });
 
-          if ($(e.target).closest('.js-dropdown-list').length) {
-            if ($(e.target).closest('ul').length) {
+      this.list.on('click', (e) => {
+        if ($(e.target).closest('ul').length) {
 
-              this.dropdown.addClass('state_filled');
-              this.input.val($(e.target).html());
+          this.dropdown.addClass('state_filled');
+          this.input.val($(e.target).html());
 
-              this.options.attr('selected', false);
-              this.select.find('[value="' + $(e.target).data('val') + '"]').attr('selected', 'selected');
-            }
-          }
+          this.options.attr('selected', false);
+          this.select.find('[value="' + $(e.target).data('val') + '"]').attr('selected', 'selected');
         }
       });
 

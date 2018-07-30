@@ -1,4 +1,5 @@
 .context .context__button
+  cursor: pointer
   display: inline-flex
   align-items: flex-end
 
@@ -6,7 +7,7 @@
 
   height: 100%
   color: $color_default
-  line-height: 0.65
+  //line-height: 0.65
 
   transition: all $interval
 
@@ -14,6 +15,7 @@
     display: inline-block
     padding-right: 25px
     opensansBold(40px)
+    white-space: nowrap
 
   &:hover
     color: $color_hover
