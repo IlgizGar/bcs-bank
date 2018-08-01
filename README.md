@@ -1,6 +1,4 @@
-# Website Starter
-
-Шаблон быстрого старта для верстки новых проектов по методологии [БЭМ](https://ru.bem.info/methodology/). В качестве шаблонизатора используется [Nunjucks](https://mozilla.github.io/nunjucks/), препроцессор [Stylus](http://stylus-lang.com/), скрипты собираются с помощью [Browserify](http://browserify.org/).
+﻿# bcs-bank
 
 ## Команды
 
@@ -41,3 +39,4 @@
 ### `app/styles`
 
 Здесь находится общий файл стилей, а также вспомогательные модули `helpers` и микшины `mixins`.
+=======
