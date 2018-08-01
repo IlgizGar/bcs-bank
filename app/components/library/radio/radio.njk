@@ -2,7 +2,7 @@
 
 {% macro radio( options ) %}
   <div class="radio {{ options.class }}">
-      <input class="radio__field" id="{{ options.id }}" type="radio" name="{{ options.name }}" value="{{ options.value }}" {% if options.checked %}checked{% endif %}/>
+      <input class="radio__field" id="{{ options.id }}" type="radio" name="{{ options.name }}" value="{{ options.value }}" {% if options.data %}data-{{ options.data.name }}="{{ options.data.value }}"{% endif %} {% if options.checked %}checked{% endif %}/>
       <label for="{{ options.id }}" class="radio__label">
         {% if options.view === "currency" %}
           {{ Currency.currency({ 'value': options.label, 'state': options.state }) }}

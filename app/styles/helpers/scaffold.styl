@@ -1,6 +1,9 @@
 *
   box-sizing border-box
 
+body
+  position: relative
+
 a, button, input
   padding: 0
   border: none
@@ -38,7 +41,7 @@ h1, h2, h3, h4, h5, p, ul
 .jspContainer
   position: relative
   overflow: hidden
-  width: 100%
+  width: 100% !important
   height: 100%
   outline: none
 
@@ -61,13 +64,11 @@ h1, h2, h3, h4, h5, p, ul
   border-radius 2px
   background-color $color_borders
 
-.jspCap
-{
+.jspCap {
   display: block;
   background: none;
 }
 
-.jspVerticalBar .jspCap
-{
+.jspVerticalBar .jspCap {
   height: 16px
 }

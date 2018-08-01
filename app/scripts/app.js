@@ -18,6 +18,7 @@ import TableSort from '../components/library/table/table';
 import Collapse from '../components/library/collapse/collapse';
 import Modal from '../components/library/modal/modal';
 import FileInput from '../components/library/file-input/file-input';
+import Form from '../components/library/form/form';
 import Input from '../components/library/input/input';
 import Tabs from '../components/modules/tabbar/tabbar';
 import PageHeader from '../components/modules/page-header/page-header';
@@ -78,10 +79,10 @@ $(() => {
   }
 
   global.sortableTables = [];
-  if ($('.table_sortable').length) {
-    $('.table_sortable').each((i, el) => {
-      global.sortableTables.push(new TableSort($(el)))
-    })
+  if ($('.js-table-sortable').length) {
+    $('.js-table-sortable').each((i, el) => {
+      global.sortableTables.push(new TableSort($(el)));
+    });
   }
 
   global.modals = [];
@@ -101,6 +102,12 @@ $(() => {
     new FileInput();
   }
 
+  global.forms = [];
+  if ($('.js-form').length) {
+    $('.js-form').each((i, el) => {
+      global.forms.push(new Form($(el).find('form')));
+    });
+  }
 
   // global.datepickers = [];
   // for (const datepicker of $('.js-datepicker')) {
