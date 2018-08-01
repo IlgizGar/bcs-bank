@@ -19,8 +19,8 @@ module.exports = (elem) => {
       if(this.context.data('prefix')) {
         this.context.prepend('<span class="context__prefix">' + this.context.data('prefix') + '</span>');
       }
-      $('body').append('<div class="dropdown__list state_inactive scroll-pane js-context-list mt-16"><ul></ul></div>');
-      this.list = $('.js-context-list');
+      this.list = $('<div class="dropdown__list state_inactive scroll-pane js-context-list mt-16"><ul></ul></div>');
+      $('body').append(this.list);
 
       for (const option of this.options) {
         this.list.find('ul').append(`
@@ -46,7 +46,7 @@ module.exports = (elem) => {
       this.context.on('click', (e) => {
         $(e.currentTarget).toggleClass('state_explored');
         this.list.toggleClass('state_inactive');
-        this.list.css('top', this.context.offset().top + this.context.outerHeight());
+        this.list.css('top', this.context.offset().top + this.context.outerHeight() - 5);
         this.list.css('left', this.context.offset().left);
       });
 

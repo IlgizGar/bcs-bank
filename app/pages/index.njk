@@ -22,7 +22,7 @@
       <section class="section page__section">
         <div class="section__header section__header_theme-blue">
           {{ Menubar.menubar({ 'theme': 'blue', 'class': 'section__menubar section__menubar_theme-simple' }) }}
-          <div class="carousel carousel_theme-index">
+          <div class="carousel">
             <div class="carousel__progressbar">
               <div class="carousel__progressbar-bar js-carousel-progressbar"></div>
             </div>
@@ -165,12 +165,12 @@
                     </div>
                     <div class="services__transfer-controls">
                       {{ Input.input({ 'label': 'Сумма перевода', 'name': 'ruble', 'class': 'services__card-summ', 'field': 'js-numeric-input js-transfer-input' }) }}
-                      <input class="js-commission-result" value="123456" hidden>
+                      <input class="js-commission-amount" value="0" hidden>
                       <div class="services__card-commission">
-                        <p >Комиссия за перевод будет <br> расчитана автоматически</p>
-                        <div class="services__card-commission-res state_hidden">
+                        <p class="js-commission-info">Комиссия за перевод будет <br> расчитана автоматически</p>
+                        <div class="services__card-commission-res js-commission-res state_hidden">
                           <p>Сумма перевода с комиссией</p>
-                          <p><span class="js-commission-amount">123435</span> {{ Icon.icon({ 'name': 'ruble' }) }}</p>
+                          <p><span class="js-commission-user-amount">0</span> {{ Icon.icon({ 'name': 'rub' }) }}</p>
                         </div>
                       </div>
                       <div class="services__card-legal">

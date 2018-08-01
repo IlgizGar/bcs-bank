@@ -24,18 +24,18 @@
       <tbody>
       <tr>
         <td>USD</td>
-        <td>{{ Radio.radio({ 'view': 'currency', 'label': '62.34', 'state': 'rise', 'name': 'course-fix', 'id': 'course-buy_usd', 'checked': 'true' }) }}</td>
-        <td>{{ Radio.radio({'view': 'currency', 'label': '62.79', 'state': 'fall', 'name': 'course-fix', 'id': 'course-cell_usd'}) }}</td>
+        <td>{{ Radio.radio({ 'class': 'js-course-radio', 'view': 'currency', 'label': '62.34', 'value': '62.34', 'state': 'rise', 'name': 'course-fix', 'id': 'course-buy_usd', 'data': {'name': 'currency', 'value': 'USD'}, 'checked': 'true' }) }}</td>
+        <td>{{ Radio.radio({ 'class': 'js-course-radio', 'view': 'currency', 'label': '62.79', 'value': '62.79', 'state': 'fall', 'name': 'course-fix', 'id': 'course-cell_usd', 'data': {'name': 'currency', 'value': 'USD'} }) }}</td>
       </tr>
       <tr>
         <td>EUR</td>
-        <td>{{ Radio.radio({ 'view': 'currency', 'label': '62.34', 'state': 'fall', 'name': 'course-fix', 'id': 'course-buy_eur', 'checked': 'true' }) }}</td>
-        <td>{{ Radio.radio({ 'view': 'currency', 'label': '62.79', 'state': 'fall', 'name': 'course-fix', 'id': 'course-cell_eur'}) }}</td>
+        <td>{{ Radio.radio({ 'class': 'js-course-radio', 'view': 'currency', 'label': '59.4', 'value': '59.4', 'state': 'fall', 'name': 'course-fix', 'id': 'course-buy_eur', 'data': {'name': 'currency', 'value': 'EUR'} }) }}</td>
+        <td>{{ Radio.radio({ 'class': 'js-course-radio', 'view': 'currency', 'label': '57.12', 'value': '57.12', 'state': 'fall', 'name': 'course-fix', 'id': 'course-cell_eur', 'data': {'name': 'currency', 'value': 'EUR'} }) }}</td>
       </tr>
       </tbody>
     </table>
 
-    {{ Input.input({ 'label': 'Сумма', 'title': 'RUB', 'class': 'mb-16', 'field': 'js-numeric-input' }) }}
+    {{ Input.input({ 'label': 'Сумма', 'title': 'USD', 'class': 'js-course-input mb-16', 'field': 'js-numeric-input' }) }}
     <input class="js-course-amount" name="input_course-result" hidden value="">
     <div class="course__result">
       <p>Сумма сделки</p>

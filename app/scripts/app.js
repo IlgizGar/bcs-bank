@@ -79,10 +79,10 @@ $(() => {
   }
 
   global.sortableTables = [];
-  if ($('.table_sortable').length) {
-    $('.table_sortable').each((i, el) => {
-      global.sortableTables.push(new TableSort($(el)))
-    })
+  if ($('.js-table-sortable').length) {
+    $('.js-table-sortable').each((i, el) => {
+      global.sortableTables.push(new TableSort($(el)));
+    });
   }
 
   global.modals = [];

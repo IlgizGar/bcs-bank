@@ -10,8 +10,6 @@ export default class TableSort {
   }
 
   init() {
-    console.log('TDS', this.cols);
-
     const colW = this.$table.outerWidth() / this.cols.length;
     this.cols.css('width', colW);
 
@@ -21,7 +19,7 @@ export default class TableSort {
     this.$table.tablesorter({
       headers: {
         '[data-sort="fullDate"]': { sorter:'fullDate' },
-        '[data-sort="money"]': { sorter:'money' }
+        '[data-sort="money"]': { sorter:'money' },
       }
     })
   }
