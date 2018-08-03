@@ -10,16 +10,20 @@
     {% set tag = options.tag %}
   {% endif %}
 
+  {% set type = 'form' %}
+  {% if options.href %}
+    {% set type = 'div' %}
+  {% endif %}
+
   {#
     hoverType:
       button - заливка фона при ховере на кнопку
       card - заливка фона при ховере на карточку
   #}
-  <div
-    class="card js-card {{ "card_type-" + options.type }} {% if options.hoverType %}{{ "card_hover-type-" + options.hoverType }}{% endif %} {% if options.view %}{{ "card_view-" + options.view }}{% endif %} {% if options.theme %} {{ "card_theme-"+options.theme }}{% endif %} {{ options.class }}">
-    <div class="card__wrap" data-href={{ options.href }}>
+  <div class="card js-card {% if type === 'form' %}js-form{% endif %} {{ "card_type-" + options.type }} {% if options.hoverType %}{{ "card_hover-type-" + options.hoverType }}{% endif %} {% if options.view %}{{ "card_view-" + options.view }}{% endif %} {% if options.theme %} {{ "card_theme-"+options.theme }}{% endif %} {{ options.class }}">
+    <{{ type }} class="card__wrap" {% if options.href %}data-href={{ options.href }}{% endif %}>
 
-      <div class="card__action">
+      <button class="card__action" {% if type === 'form' %}type="submit"{% endif %}>
 
         {% if options.link %}
           <div class="card__button">
@@ -31,37 +35,37 @@
           </div>
         {% endif %}
 
-      </div>
+      </button>
 
       <div class="card__content">
 
         {% if options.block %}
-        {% include "../../" + options.block + ".njk" %}
+          {% include "../../" + options.block + ".njk" %}
         {% else %}
 
-        <div class="card__heading">
-          <{{ tag }} class="card__title">{{ options.title }}</{{ tag }}>
-        {% if options.subtitle %}
-          <p class="card__subtitle">{{ options.subtitle }}</p>
-        {% endif %}
-      </div>
-
-      {% if options.type === 'figure' %}
-        <img class="card__figure" src="{{ options.img }}" alt="{{ options.subtitle }}">
-      {% endif %}
-
-      {% if options.type === 'vacancy' %}
-        <div class="section__text mt-40">
-          <ul class="list">
-            {% for item in options.items %}
-              <li>{{ item }}</li>
-            {% endfor %}
-          </ul>
+          <div class="card__heading">
+            <{{ tag }} class="card__title">{{ options.title }}</{{ tag }}>
+          {% if options.subtitle %}
+            <p class="card__subtitle">{{ options.subtitle }}</p>
+          {% endif %}
         </div>
-      {% endif %}
+
+        {% if options.type === 'figure' %}
+          <img class="card__figure" src="{{ options.img }}" alt="{{ options.subtitle }}">
+        {% endif %}
+
+        {% if options.type === 'vacancy' %}
+          <div class="section__text mt-40">
+            <ul class="list">
+              {% for item in options.items %}
+                <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
       {% endif %}
 
-    </div>
+    </{{ type }}>
 
   </div>
 

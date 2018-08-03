@@ -1,17 +1,17 @@
 {% import "../../../components/icon/icon.njk" as Icon %}
 
 {% macro input( options ) %}
-  <div class="input js-input state_init {{ options.class }}">
+  <div class="input js-input state_init {{ options.class }}" {{ options.data }}>
     <label class="input__group">
       <span class="input__label js-label">{{ options.label }}</span>
       {% if options.tag === "textarea" %}
-        <textarea class="input__field" rows="{{ options.rows }}" type="{{ options.type }}" name="{{ options.name }} value={{ options.value }}"></textarea>
+        <textarea class="input__field" rows="{{ options.rows }}"  name="{{ options.name }}" value="{{ options.value }}" {{ options.state }}></textarea>
       {% else %}
-        <input class="input__field {{ options.field }}" type="{{ options.type }}" name="{{ options.name }}" value="{{ options.value }}" {% if options.disabled %}disabled{% endif %}>
+        <input class="input__field {{ options.field }}" type="{% if options.type %}{{ options.type }}{% else %}text{% endif %}" name="{{ options.name }}" value="{{ options.value }}" {{ options.state }}>
       {% endif %}
     </label>
-    {% if options.name %}
-      {{ Icon.icon({ 'name': options.name }) }}
+    {% if options.icon %}
+      {{ Icon.icon({ 'name': options.icon }) }}
     {% endif %}
     {% if options.title %}
       <span class="input__title js-title">{{ options.title }}</span>

@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import modal from 'jquery-modal';
+import Form from "../form/form";
 
 export default class Modal {
   constructor($openLink) {
@@ -30,7 +31,8 @@ export default class Modal {
   }
 
   openWindow() {
-    $(this.windowId).modal()
+    $(this.windowId).modal();
+    global.forms.push(new Form($(this.windowId).find('form')));
   }
 
   closeWindow() {
