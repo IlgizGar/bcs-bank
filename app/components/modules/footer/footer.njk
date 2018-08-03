@@ -65,7 +65,7 @@
       <div class="form__agreements">
         {# TODO: вынести в шаблон #}
         <label class="checkbox checkbox_theme-dark">
-          <input type="checkbox" class="checkbox__control">
+          <input type="checkbox" class="checkbox__control" name="question__personal" required="required">
           <span class="checkbox__state"></span>
           <span class="checkbox__label">
             Даю согласие на обработку
@@ -73,8 +73,7 @@
           </span>
         </label>
       </div>
-      {{ Button.button({ 'title': 'Отправить', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
-
+      {{ Button.button({ 'title': 'Отправить', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
     </div>
 
   </form>

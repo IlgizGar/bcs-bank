@@ -25,11 +25,7 @@ module.exports = (elem) => {
       // this.formEvents();
       this.blockEvents(); // Обработчик событий не свзяанных непосредственно с работой формы
 
-      this.addValidateCardNumber();
-      this.addValidateCardCVV();
-      this.addValidateCardPeriod();
-      this.addValidateTransferAmount();
-      this.addValidateCourseAmount();
+      this.validateMethods();
       this.validateForm();
     }
 
@@ -55,6 +51,11 @@ module.exports = (elem) => {
         },
         'js-fix-course': {
           checkCourseAmount: true,
+        },
+        'js-fio-masked': {
+          fullname: {
+            required: true,
+          },
         },
       };
     }
@@ -237,15 +238,17 @@ module.exports = (elem) => {
         focusInvalid: false,
         errorElement: 'div',
         errorClass: 'input__error',
-        // onkeyup: false,
         errorPlacement(error, element) {
           error.appendTo(element.closest('.js-input'));
+          error.appendTo(element.closest('.js-dropdown'));
         },
         highlight(element, errorClass, validClass) {
           $(element).parents('.js-input').addClass('state_error');
+          $(element).parents('.js-dropdown').addClass('state_error');
         },
         unhighlight(element, errorClass, validClass) {
           $(element).parents('.js-input').removeClass('state_error');
+          $(element).parents('.js-dropdown').removeClass('state_error');
         },
         submitHandler(form) {
           console.log('SEND');
@@ -263,7 +266,16 @@ module.exports = (elem) => {
         checkTransferAmount: 'Не более 75 000 ₽ с учетом комиссии',
         minlength: '',
         checkCourseAmount: 'Сумма не должна превышать 4 000 ' + this.currencyType,
+        fullname: 'Укажите Ф.И.О.',
       });
+    }
+
+    validateMethods() {
+      this.addValidateCardNumber();
+      this.addValidateCardCVV();
+      this.addValidateCardPeriod();
+      this.addValidateTransferAmount();
+      this.addValidateCourseAmount();
     }
 
     addValidateCardNumber() {
