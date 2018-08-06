@@ -9,7 +9,7 @@
     <{{ tag }} class="heading heading_type-{{ options.type }} heading_margin-{{ options.margin }} heading_theme-{{ options.theme }} {{ options.class }}">
         <span>{{ options.title }}</span>
         {% if options.context %}
-            {{ Context.context({'title': options.context}) }}
+            {{ Context.context({'title': options.context, 'items': options.items}) }}
         {% endif %}
     </{{ tag }}>
 {% endmacro %}

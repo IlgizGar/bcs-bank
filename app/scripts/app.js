@@ -1,8 +1,6 @@
-//Три этих файла нужны для нормальной работы JS в IE
-
-require('babel-polyfill');
-import "core-js/fn/symbol/iterator.js";
-import "core-js/es6/symbol.js";
+// Три этих файла нужны для нормальной работы JS в IE
+import 'core-js/fn/symbol/iterator';
+import 'core-js/es6/symbol';
 
 import $ from 'jquery';
 import svg4everybody from 'svg4everybody';
@@ -22,93 +20,81 @@ import Form from '../components/library/form/form';
 import Input from '../components/library/input/input';
 import Tabs from '../components/modules/tabbar/tabbar';
 import PageHeader from '../components/modules/page-header/page-header';
+
+require('babel-polyfill');
 // import Datepicker from '../components/library/datepicker/datepicker';
 
 
 $(() => {
   svg4everybody();
   global.header = Header('.js-header');
-
   global.dropdowns = [];
-  for (const dropdown of $('.js-dropdown')) {
-    global.dropdowns.push(Dropdown(dropdown));
-  }
-
+  $('.js-dropdown').each((i, el) => {
+    global.dropdowns.push(Dropdown(el));
+  });
   global.contexts = [];
-  for (const context of $('.js-context')) {
-    global.contexts.push(Context(context));
-  }
-
+  $('.js-context').each((i, el) => {
+    global.contexts.push(Context(el));
+  });
   global.contacts = [];
-  for (const contact of $('.js-contact')) {
-    global.contacts.push(Contact(contact));
-  }
-
+  $('.js-contact').each((i, el) => {
+    global.contacts.push(Contact(el));
+  });
   global.tabs = [];
-  for (const tab of $('.js-tabbar')) {
-    global.tabs.push(Tabs(tab));
-  }
-
+  $('.js-tabbar').each((i, el) => {
+    global.tabs.push(Tabs(el));
+  });
   global.accordions = [];
-  for (const accordion of $('.js-accordion')) {
-    global.accordions.push(Accordion(accordion));
-  }
-
+  $('.js-accordion').each((i, el) => {
+    global.accordions.push(Accordion(el));
+  });
   global.carousels = [];
-  for (const carousel of $('.js-carousel')) {
-    global.carousels.push(Carousel(carousel));
-  }
-
+  $('.js-carousel').each((i, el) => {
+    global.carousels.push(Carousel(el));
+  });
   global.inputs = [];
-  for (const input of $('.js-input')) {
-    global.inputs.push(Input(input));
-  }
-
+  $('.js-input').each((i, el) => {
+    global.inputs.push(Input(el));
+  });
   global.mediaSliders = [];
   if ($('.media-slider').length) {
     $('.media-slider').each((i, el) => {
       global.mediaSliders.push(MediaSlider($(el)));
     });
   }
-
   global.collapses = [];
   if ($('.collapse').length) {
     $('.collapse').each((i, el) => {
       global.collapses.push(new Collapse($(el)));
-    })
+    });
   }
-
   global.sortableTables = [];
   if ($('.js-table-sortable').length) {
     $('.js-table-sortable').each((i, el) => {
       global.sortableTables.push(new TableSort($(el)));
     });
   }
-
   global.modals = [];
   if ($('.js-open-modal').length) {
     $('.js-open-modal').each((i, el) => {
-      global.modals.push(new Modal($(el)))
-    })
+      global.modals.push(new Modal($(el)));
+    });
   }
-
   if ($('.page-header_vacancy').length) {
-    let headerHandler = new PageHeader();
+    const headerHandler = new PageHeader();
     headerHandler.nav = $('.page-header_vacancy .page-header__nav');
     headerHandler.addStickyTitle();
     headerHandler.stickyHandler();
   }
   if ($('.file-input').length) {
-    new FileInput();
+    global.fileInput = new FileInput();
   }
-
   global.forms = [];
   if ($('.js-form').length) {
     $('.js-form').each((i, el) => {
       global.forms.push(new Form($(el).find('form')));
     });
   }
-
   // global.datepickers = [];
   // for (const datepicker of $('.js-datepicker')) {
   //   global.datepickers.push(Datepicker(datepicker));
