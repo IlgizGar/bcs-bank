@@ -26,10 +26,8 @@ module.exports = (elem) => {
       this.field.on('keyup', () => {
         if (this.field.val().length < 1) {
           this.input.removeClass('state_filled');
-        } else {
-          if (!this.input.hasClass('state_filled')) {
-            this.input.addClass('state_filled');
-          }
+        } else if (!this.input.hasClass('state_filled')) {
+          this.input.addClass('state_filled');
         }
       });
     }

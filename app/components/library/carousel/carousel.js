@@ -12,15 +12,15 @@ module.exports = (elem) => {
     }
 
     init() {
-      let self = this;
+      const self = this;
 
-      this.carousel.on('init reInit afterChange', function (event, slick, currentSlide, nextSlide) {
+      this.carousel.on('init reInit afterChange', (event, slick, currentSlide) => {
         const i = (!currentSlide ? 0 : currentSlide) + 1;
-        self.paging.find('span:first-child').html(i < 10 ? '0' + i : i);
-        self.paging.find('span:last-child').html(slick.slideCount < 10 ? '0' + slick.slideCount : slick.slideCount);
+        self.paging.find('span:first-child').html(i < 10 ? `0${i}` : i);
+        self.paging.find('span:last-child').html(slick.slideCount < 10 ? `0${slick.slideCount}` : slick.slideCount);
         self.progressbar.addClass('state_busy');
       });
-      this.carousel.on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+      this.carousel.on('beforeChange', () => {
         self.progressbar.removeClass('state_busy');
       });
 

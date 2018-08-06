@@ -24,8 +24,6 @@ module.exports = (elem) => {
       this.maskFields();
       // this.formEvents();
       this.blockEvents(); // Обработчик событий не свзяанных непосредственно с работой формы
-
-      this.validateMethods();
       this.validateForm();
     }
 
@@ -89,21 +87,21 @@ module.exports = (elem) => {
         placeholder: ' ',
         showMaskOnHover: false,
         definitions: {
-          "M": {
-            validator: function (chrs, buffer, pos, strict, opts) {
-              var valExp = new RegExp("0[1-9]|1[0-2]");
+          M: {
+            validator(chrs) {
+              const valExp = new RegExp('0[1-9]|1[0-2]');
               return valExp.test(chrs);
             },
             cardinality: 2,
             prevalidator: [
-              {validator: "[01]", cardinality: 1},
-              {validator: "0[1-9]", cardinality: 2},
-              {validator: "1[012]", cardinality: 2},
-            ]
+              { validator: '[01]', cardinality: 1 },
+              { validator: '0[1-9]', cardinality: 2 },
+              { validator: '1[012]', cardinality: 2 },
+            ],
           },
-          "Y": {
-            validator: function (chrs, buffer, pos, strict, opts) {
-              var valExp2 = new RegExp("1[8-9]|[2-9][0-9]");
+          Y: {
+            validator(chrs) {
+              const valExp2 = new RegExp('1[8-9]|[2-9][0-9]');
               return valExp2.test(chrs);
             },
             cardinality: 2,
@@ -114,7 +112,7 @@ module.exports = (elem) => {
             //   {validator: "3[01]", cardinality: 2},
             // ]
           },
-        }
+        },
       });
 
       this.nameField.inputmask({
@@ -122,7 +120,7 @@ module.exports = (elem) => {
         placeholder: '',
         definitions: {
           '*': {
-            validator: '[А-я \-]',
+            validator: '[А-я]',
           },
         },
       });
@@ -141,20 +139,17 @@ module.exports = (elem) => {
       });
 
       this.mailField.inputmask({
-        mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]",
+        mask: '*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]',
         showMaskOnHover: false,
         greedy: false,
         placeholder: '',
-        onBeforePaste: (pastedValue, opts) => {
-          pastedValue = pastedValue.toLowerCase();
-          return pastedValue;
-        },
+        onBeforePaste: pastedValue => pastedValue.toLowerCase(),
         definitions: {
           '*': {
-            validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~\-]",
-            casing: "lower"
-          }
-        }
+            validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~]",
+            casing: 'lower',
+          },
+        },
       });
     }
 
@@ -233,8 +228,7 @@ module.exports = (elem) => {
     }
 
     validateForm() {
-
-      const result = this.form.validate({
+      this.form.validate({
         focusInvalid: false,
         errorElement: 'div',
         errorClass: 'input__error',
@@ -242,16 +236,18 @@ module.exports = (elem) => {
           error.appendTo(element.closest('.js-input'));
           error.appendTo(element.closest('.js-dropdown'));
         },
-        highlight(element, errorClass, validClass) {
+        highlight(element) {
           $(element).parents('.js-input').addClass('state_error');
           $(element).parents('.js-dropdown').addClass('state_error');
         },
-        unhighlight(element, errorClass, validClass) {
+        unhighlight(element) {
           $(element).parents('.js-input').removeClass('state_error');
           $(element).parents('.js-dropdown').removeClass('state_error');
         },
         submitHandler(form) {
           console.log('SEND');
+
+          form.serializeArray();
           return false;
         },
       });
@@ -265,33 +261,25 @@ module.exports = (elem) => {
         checkCardPeriod: '',
         checkTransferAmount: 'Не более 75 000 ₽ с учетом комиссии',
         minlength: '',
-        checkCourseAmount: 'Сумма не должна превышать 4 000 ' + this.currencyType,
+        checkCourseAmount: `Сумма не должна превышать 4 000 ${this.currencyType}`,
         fullname: 'Укажите Ф.И.О.',
       });
     }
 
-    validateMethods() {
-      this.addValidateCardNumber();
-      this.addValidateCardCVV();
-      this.addValidateCardPeriod();
-      this.addValidateTransferAmount();
-      this.addValidateCourseAmount();
-    }
-
-    addValidateCardNumber() {
+    static addValidateCardNumber() {
       $.validator.addMethod(
         'checkCardNumber',
-        (value, element) => {
+        (value) => {
           const num = value.replace(/ /g, '');
           return num.length === 16 || num.length === 19;
         },
       );
     }
 
-    addValidateCardCVV() {
+    static addValidateCardCVV() {
       $.validator.addMethod(
         'checkCardCVV',
-        (value, element) => {
+        (value) => {
           const num = value.replace(/ /g, '');
 
           return num.length === 3;
@@ -299,10 +287,10 @@ module.exports = (elem) => {
       );
     }
 
-    addValidateCardPeriod() {
+    static addValidateCardPeriod() {
       $.validator.addMethod(
         'checkCardPeriod',
-        (value, element) => {
+        (value) => {
           const num = value.replace(/ /g, '');
 
           return num.length === 5;
@@ -310,11 +298,11 @@ module.exports = (elem) => {
       );
     }
 
-    addValidateTransferAmount() {
+    static addValidateTransferAmount() {
       $.validator.addMethod(
         'checkTransferAmount',
         (value, element) => {
-          const max = parseInt($(element).closest('.js-input').data('max'));
+          const max = parseInt($(element).closest('.js-input').data('max'), 0);
           const commission = parseFloat($(element).closest('.js-input').data('commission'));
           const num = parseFloat(value.replace(/ /g, ''));
 
@@ -323,11 +311,11 @@ module.exports = (elem) => {
       );
     }
 
-    addValidateCourseAmount() {
+    static addValidateCourseAmount() {
       $.validator.addMethod(
         'checkCourseAmount',
         (value, element) => {
-          const max = parseInt($(element).closest('.js-input').data('max'));
+          const max = parseInt($(element).closest('.js-input').data('max'), 0);
           const num = parseFloat(value.replace(/ /g, ''));
 
           return num <= max;

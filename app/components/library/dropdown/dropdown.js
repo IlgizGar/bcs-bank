@@ -9,7 +9,6 @@ module.exports = (elem) => {
       this.dropdown = $(selector);
       this.select = this.dropdown.find('select');
       this.options = this.select.find('option');
-      // this.list = this.dropdown.find('.js-dropdown-list');
       this.input = this.dropdown.find('.js-input');
       this.clear = this.dropdown.find('.js-dropdown-clear');
       this.scrollBarInited = false;
@@ -21,15 +20,15 @@ module.exports = (elem) => {
       this.list = $('<div class="dropdown__list state_inactive scroll-pane js-dropdown-list mt-10"><ul></ul></div>');
       $('body').append(this.list);
 
-      for (const option of this.options) {
+      this.options.each((i, el) => {
         this.list.find('ul').append(`
-          <li data-val="${$(option).val()}">${$(option).html()}</li>
+          <li data-val="${$(el).val()}">${$(el).html()}</li>
         `);
-        if ($(option).attr('selected')) {
+        if ($(el).attr('selected')) {
           this.dropdown.addClass('state_filled');
-          this.input.val($(option).html());
+          this.input.val($(el).html());
         }
-      }
+      });
     }
 
     events() {
@@ -47,7 +46,6 @@ module.exports = (elem) => {
           this.scrollBarInited = true;
         }
         if (!$(e.target).closest('.js-dropdown-clear').length) {
-
           $(e.currentTarget).toggleClass('state_explored');
           this.list.toggleClass('state_inactive');
           this.list.css('min-width', this.dropdown.outerWidth());
@@ -58,12 +56,11 @@ module.exports = (elem) => {
 
       this.list.on('click', (e) => {
         if ($(e.target).closest('ul').length) {
-
           this.dropdown.addClass('state_filled');
           this.input.val($(e.target).html());
 
           this.options.attr('selected', false);
-          this.select.find('[value="' + $(e.target).data('val') + '"]').attr('selected', 'selected');
+          this.select.find(`[value="${$(e.target).data('val')}"]`).attr('selected', 'selected');
         }
       });
 
@@ -76,9 +73,9 @@ module.exports = (elem) => {
 
       $(window).on('click', (e) => {
         if (!$(e.target).closest('.js-dropdown').length) {
-          for (const dropdown of global.dropdowns) {
-            dropdown.hideList();
-          }
+          global.dropdowns.forEach((el) => {
+            el.hideList();
+          });
         }
       });
     }

@@ -16,21 +16,21 @@ module.exports = (elem) => {
     }
 
     init() {
-      if(this.context.data('prefix')) {
-        this.context.prepend('<span class="context__prefix">' + this.context.data('prefix') + '</span>');
+      if (this.context.data('prefix')) {
+        this.context.prepend(`<span class="context__prefix">${this.context.data('prefix')}</span>`);
       }
       this.list = $('<div class="dropdown__list state_inactive scroll-pane js-context-list mt-16"><ul></ul></div>');
       $('body').append(this.list);
 
-      for (const option of this.options) {
+      this.options.each((i, el) => {
         this.list.find('ul').append(`
-          <li data-val="${$(option).val()}">${$(option).html()}</li>
+          <li data-val="${$(el).val()}">${$(el).html()}</li>
         `);
-        if ($(option).attr('selected')) {
+        if ($(el).attr('selected')) {
           this.context.addClass('state_filled');
-          this.title.html($(option).html());
+          this.title.html($(el).html());
         }
-      }
+      });
 
       this.context.find('.scroll-pane').jScrollPane({
         contentWidth: 100,
@@ -46,7 +46,7 @@ module.exports = (elem) => {
       this.context.on('click', (e) => {
         $(e.currentTarget).toggleClass('state_explored');
         this.list.toggleClass('state_inactive');
-        this.list.css('top', this.context.offset().top + this.context.outerHeight() - 5);
+        this.list.css('top', this.context.offset().top + (this.context.outerHeight() - 5));
         this.list.css('left', this.context.offset().left);
       });
 
@@ -56,15 +56,15 @@ module.exports = (elem) => {
           this.title.html($(e.target).html());
 
           this.options.attr('selected', false);
-          this.select.find('[value="' + $(e.target).data('val') + '"]').attr('selected', 'selected');
+          this.select.find(`[value="${$(e.target).data('val')}"]`).attr('selected', 'selected');
         }
       });
 
       $(window).on('click', (e) => {
         if (!$(e.target).closest('.js-context').length) {
-          for (const context of global.contexts) {
-            context.hideList();
-          }
+          global.contexts.forEach((el) => {
+            el.hideList();
+          });
         }
       });
     }
