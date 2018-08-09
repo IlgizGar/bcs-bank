@@ -6,15 +6,29 @@
 {% import "../../../components/library/dropdown/dropdown.njk" as Dropdown %}
 
 
-
-
 {% set menu = [
   {'title': 'О банке',
-    'items': ['Новости', 'Общая информация', 'Руководство', 'Вакансии', 'Офисы и банкоматы', 'Вся группа']},
+    'items': [
+      {'name': 'Новости', 'href': 'http://juravlev.rusrobots.ru/bks/news.html'},
+      {'name': 'Общая информация', 'href': '#'},
+      {'name': 'Руководство', 'href': '#'},
+      {'name': 'Вакансии', 'href': 'http://juravlev.rusrobots.ru/bks/vacancies.html'},
+      {'name': 'Офисы и банкоматы', 'href': '#'},
+      {'name': 'Вся группа', 'href': '#'}
+    ]},
   {'title': 'Реквизиты',
-    'items': ['Cтрахованиe вкладов', 'Лицензии', 'БКС Онлайн', 'Депозитарий']},
+    'items': [
+      {'name': 'Cтрахованиe вкладов', 'href': '#'},
+      {'name': 'Лицензии', 'href': '#'},
+      {'name': 'БКС Онлайн', 'href': '#'},
+      {'name': 'Депозитарий', 'href': '#'}
+    ]},
   {'title': 'Инсайдерам',
-    'items': ['Раскрытие информации', 'Документы', 'Финансовым институтам']}
+    'items': [
+      {'name': 'Раскрытие информации', 'href': 'http://juravlev.rusrobots.ru/bks/disclosure.html'},
+      {'name': 'Документы', 'href': 'http://juravlev.rusrobots.ru/bks/documents.html'},
+      {'name': 'Финансовым институтам', 'href': 'http://juravlev.rusrobots.ru/bks/fin-institute.html'}
+    ]}
 ] %}
 
 <footer class="footer">
@@ -27,8 +41,7 @@
         <div class="footer__menu">
           <p class="footer__menu-title">{{ item.title }}</p>
           {% for el in item.items %}
-            {% set els = el %}
-            {{ Button.button({ 'href': '#', 'title': el, 'mods': {'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'footer__menu-link' }) }}
+            {{ Button.button({ 'href': el.href, 'title': el.name, 'mods': {'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'footer__menu-link' }) }}
           {% endfor %}
         </div>
       {% endfor %}
@@ -51,7 +64,7 @@
 </footer>
 
 {# TODO: Вынести в шаблон #}
-<div id="question-modal-form" class="modal js-form">
+<div id="question-modal-form" class="modal js-form" data-form="question-modal">
   <form id="question-form" action="/" class="form question-form">
     {{ Heading.heading({ 'title': 'У вас есть вопрос?' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'none', 'theme': 'default', 'class': 'form__title'}) }}
     {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': 'js-fio-masked', 'name': 'queston_name', 'state': 'required' }) }}
@@ -59,13 +72,13 @@
       {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': 'js-phone-masked', 'name': 'question_phone', 'state': 'required' }) }}
       {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': 'js-mail-masked', 'name': 'question_mail', 'state': 'required' }) }}
     </div>
-    {{ Dropdown.dropdown({ 'theme': 'bordered', 'label': 'Тема', 'items': [{'title': 'Предложения по сайту', 'val': '0'},{'title': 'Интернет-банк', 'val': '1'}], 'class': 'form__field-group form__field-group_dropdown' }) }}
+    {{ Dropdown.dropdown({ 'theme': 'bordered', 'label': 'Тема', 'name': 'question', 'items': [{'title': 'Предложения по сайту', 'val': '0'},{'title': 'Интернет-банк', 'val': '1'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required' }) }}
     {{ Input.input({ 'label': 'Текст вопроса', 'tag': 'textarea', 'rows': '6', 'class': 'input_textarea form__field-group', 'state': 'required', 'name': 'question_text' }) }}
     <div class="form__action">
       <div class="form__agreements">
         {# TODO: вынести в шаблон #}
-        <label class="checkbox checkbox_theme-dark">
-          <input type="checkbox" class="checkbox__control" name="question__personal" required="required">
+        <label class="checkbox checkbox_theme-dark js-checkbox js-personal-checkbox">
+          <input type="checkbox" class="checkbox__control" name="question__personal">
           <span class="checkbox__state"></span>
           <span class="checkbox__label">
             Даю согласие на обработку
@@ -73,8 +86,9 @@
           </span>
         </label>
       </div>
-      {{ Button.button({ 'title': 'Отправить', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
+      {{ Button.button({ 'title': 'Отправить', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button ', 'state': 'disabled' }) }}
     </div>
-
   </form>
 </div>
+
+{% include "../select-city/select-city.njk" %}

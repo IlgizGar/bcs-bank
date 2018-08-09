@@ -1,4 +1,3 @@
-// Три этих файла нужны для нормальной работы JS в IE
 import 'core-js/fn/symbol/iterator';
 import 'core-js/es6/symbol';
 
@@ -19,6 +18,8 @@ import FileInput from '../components/library/file-input/file-input';
 import Form from '../components/library/form/form';
 import Input from '../components/library/input/input';
 import Tabs from '../components/modules/tabbar/tabbar';
+import Card from '../components/library/card/card';
+import Checkbox from '../components/library/checkbox/checkbox';
 import PageHeader from '../components/modules/page-header/page-header';
 
 require('babel-polyfill');
@@ -93,6 +94,18 @@ $(() => {
   if ($('.js-form').length) {
     $('.js-form').each((i, el) => {
       global.forms.push(new Form($(el).find('form')));
+    });
+  }
+  global.cards = [];
+  if ($('.js-card').length) {
+    $('.js-card').each((i, el) => {
+      global.cards.push(new Card($(el)));
+    });
+  }
+  global.checkboxes = [];
+  if ($('.js-checkbox').length) {
+    $('.js-checkbox').each((i, el) => {
+      global.checkboxes.push(new Checkbox($(el)));
     });
   }
   // global.datepickers = [];

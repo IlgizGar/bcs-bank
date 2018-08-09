@@ -9,7 +9,16 @@
     <{{ tag }} class="heading heading_type-{{ options.type }} heading_margin-{{ options.margin }} heading_theme-{{ options.theme }} {{ options.class }}">
         <span>{{ options.title }}</span>
         {% if options.context %}
-            {{ Context.context({'title': options.context, 'items': options.items}) }}
+
+          {#{% set context_options = [] %}#}
+          {% set class_sep = joiner(', ') %}
+          {% set context_options %}
+            {% for key, value in options.context -%}
+              {{ class_sep() }} '{{ key }}': '{{ value }}'
+            {%- endfor %}
+          {% endset %}
+
+          {{ Context.context({ 'data': options.context }) }}
         {% endif %}
     </{{ tag }}>
 {% endmacro %}

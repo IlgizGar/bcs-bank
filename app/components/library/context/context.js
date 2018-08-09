@@ -19,18 +19,23 @@ module.exports = (elem) => {
       if (this.context.data('prefix')) {
         this.context.prepend(`<span class="context__prefix">${this.context.data('prefix')}</span>`);
       }
-      this.list = $('<div class="dropdown__list state_inactive scroll-pane js-context-list mt-16"><ul></ul></div>');
-      $('body').append(this.list);
-
-      this.options.each((i, el) => {
-        this.list.find('ul').append(`
+      if (!this.context.data('id')) {
+        this.list = $('<div class="dropdown__list state_invisible scroll-pane js-context-list mt-16"><ul></ul></div>');
+        $('body').append(this.list);
+        this.list.css('left', this.context.offset().left);
+        this.options.each((i, el) => {
+          this.list.find('ul').append(`
           <li data-val="${$(el).val()}">${$(el).html()}</li>
         `);
-        if ($(el).attr('selected')) {
-          this.context.addClass('state_filled');
-          this.title.html($(el).html());
-        }
-      });
+          if ($(el).attr('selected')) {
+            this.context.addClass('state_filled');
+            this.title.html($(el).html());
+          }
+        });
+      } else {
+        const id = this.context.data('id');
+        this.list = $(`.js-context-list#${id}`);
+      }
 
       this.context.find('.scroll-pane').jScrollPane({
         contentWidth: 100,
@@ -45,9 +50,8 @@ module.exports = (elem) => {
     events() {
       this.context.on('click', (e) => {
         $(e.currentTarget).toggleClass('state_explored');
-        this.list.toggleClass('state_inactive');
-        this.list.css('top', this.context.offset().top + (this.context.outerHeight() - 5));
-        this.list.css('left', this.context.offset().left);
+        this.list.toggleClass('state_invisible state_inactive');
+        this.list.css('top', `${this.context.offset().top + (this.context.outerHeight() - 5)}px`);
       });
 
       this.list.on('click', (e) => {

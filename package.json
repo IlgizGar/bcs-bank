@@ -71,6 +71,7 @@
     "gulp-svg-symbols": "^2.0.2",
     "gulp-svgmin": "^1.2.4",
     "gulp-uglify": "^3.0.0",
+    "postcss-cssnext": "^3.0.2",
     "postcss-inline-svg": "^3.0.0",
     "require-dir": "^0.3.2",
     "run-sequence": "^2.2.0",

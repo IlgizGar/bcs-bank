@@ -20,12 +20,11 @@
       button - заливка фона при ховере на кнопку
       card - заливка фона при ховере на карточку
   #}
-  <div class="card js-card {% if type === 'form' %}js-form{% endif %} {{ "card_type-" + options.type }} {% if options.hoverType %}{{ "card_hover-type-" + options.hoverType }}{% endif %} {% if options.view %}{{ "card_view-" + options.view }}{% endif %} {% if options.theme %} {{ "card_theme-"+options.theme }}{% endif %} {{ options.class }}">
-    <{{ type }} class="card__wrap" {% if options.href %}data-href={{ options.href }}{% endif %}>
+  <div class="card js-card {% if type === 'form' %}js-form{% endif %} {{ "card_type-" + options.type }} {% if options.hoverType %}{{ "card_hover-type-" + options.hoverType }}{% endif %} {% if options.view %}{{ "card_view-" + options.view }}{% endif %} {% if options.theme %} {{ "card_theme-"+options.theme }}{% endif %} {{ options.class }}" {% if options.href %}data-href={{ options.href }}{% endif %}>
+    <{{ type }} class="card__wrap">
 
-      <button class="card__action" {% if type === 'form' %}type="submit"{% endif %}>
-
-        {% if options.link %}
+      {% if options.link %}
+        <button class="card__action" {% if type === 'form' %}type="submit"{% endif %}>
           <div class="card__button">
             {% if options.icon %}
               {{ inlineSvg.inlineSvg({ 'path': options.icon }) }}
@@ -33,9 +32,16 @@
             <span>{{ options.link }}</span>
             {{ Icon.icon({ 'name': 'arrow' }) }}
           </div>
-        {% endif %}
-
-      </button>
+        </button>
+      {% else %}
+        <div class="card__action">
+          {% if options.type === 'vacancy' %}
+            {{ Button.button({ 'title': 'Откликнуться', 'mods': { 'theme': 'default' }, 'class': 'card__button card__button_type-respond' }) }}
+            {{ Button.button({ 'href': options.url, 'title': 'Узнать больше', 'mods': { 'theme': 'default', 'view': 'text' }, 'class': 'card__button card__button_type-more' }) }}
+            {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'}, 'class': 'card__button' }) }}
+          {% endif %}
+        </div>
+      {% endif %}
 
       <div class="card__content">
 
@@ -45,34 +51,28 @@
 
           <div class="card__heading">
             <{{ tag }} class="card__title">{{ options.title }}</{{ tag }}>
-          {% if options.subtitle %}
-            <p class="card__subtitle">{{ options.subtitle }}</p>
-          {% endif %}
-        </div>
-
-        {% if options.type === 'figure' %}
-          <img class="card__figure" src="{{ options.img }}" alt="{{ options.subtitle }}">
-        {% endif %}
-
-        {% if options.type === 'vacancy' %}
-          <div class="section__text mt-40">
-            <ul class="list">
-              {% for item in options.items %}
-                <li>{{ item }}</li>
-              {% endfor %}
-            </ul>
+            {% if options.subtitle %}
+              <p class="card__subtitle">{{ options.subtitle }}</p>
+            {% endif %}
           </div>
+
+          {% if options.type === 'figure' %}
+            <img class="card__figure" src="{{ options.img }}" alt="{{ options.subtitle }}">
+          {% endif %}
+
+          {% if options.type === 'vacancy' %}
+            <div class="section__text mt-40">
+              <ul class="list">
+                {% for item in options.items %}
+                  <li>{{ item }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+
         {% endif %}
-      {% endif %}
+      </div>
 
     </{{ type }}>
-
-  </div>
-
-  {% if options.type === 'vacancy' %}
-    {{ Button.button({ 'title': 'Откликнуться', 'mods': { 'theme': 'default' }, 'class': 'card__button card__button_type-respond' }) }}
-    {{ Button.button({ 'href': '#', 'title': 'Узнать больше', 'mods': { 'theme': 'default', 'view': 'text' }, 'class': 'card__button card__button_type-more' }) }}
-    {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'}, 'class': 'card__button' }) }}
-  {% endif %}
   </div>
 {% endmacro %}

@@ -30,6 +30,10 @@ module.exports = (elem) => {
           $(e.target).remove();
         }
       });
+
+      // $('body').on('keypress', (e) => {
+      //   console.log('BUT', e.which());
+      // });
     }
   }
 

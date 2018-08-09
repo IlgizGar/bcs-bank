@@ -12,15 +12,15 @@
 {% set title = "Новости" %}
 {% set card = [
   {'title': 'Как поужинать \n в любимом ресторане за счет банка',
-    'subtitle': '24 марта 2018'},
+    'subtitle': '24 марта 2018', 'href': 'http://juravlev.rusrobots.ru/bks/news-detail.html'},
   {'title': 'Как поужинать \n в любимом ресторане за счет банка',
-    'subtitle': '24 марта 2018'},
+    'subtitle': '24 марта 2018', 'href': 'http://juravlev.rusrobots.ru/bks/news-detail.html'},
   {'title': 'Как поужинать \n в любимом ресторане за счет банка',
-    'subtitle': '24 марта 2018'},
+    'subtitle': '24 марта 2018', 'href': 'http://juravlev.rusrobots.ru/bks/news-detail.html'},
   {'title': 'Как поужинать \n в любимом ресторане за счет банка',
-    'subtitle': '24 марта 2018'},
+    'subtitle': '24 марта 2018', 'href': 'http://juravlev.rusrobots.ru/bks/news-detail.html'},
   {'title': 'Как поужинать \n в любимом ресторане за счет банка',
-    'subtitle': '24 марта 2018'}
+    'subtitle': '24 марта 2018', 'href': 'http://juravlev.rusrobots.ru/bks/news-detail.html'}
 ] %}
 
 {% block body %}
@@ -43,7 +43,7 @@
               {{ Heading.heading({ 'tag': 'h1', 'title': 'Новости за', 'context': 'июнь 2018', 'type': 'default', 'margin': 'short', 'theme': 'default'}) }}
               <div class="js-news-cards">
                 {% for card in card %}
-                  {{ Card.card({ 'href': '#', 'type': 'default', 'view': 'uppercase', 'hoverType': 'card', 'title': card.title | striptags(true) | escape | nl2br, 'subtitle': card.subtitle, 'link': 'Читать' }) }}
+                  {{ Card.card({ 'href': card.href, 'type': 'default', 'view': 'uppercase', 'hoverType': 'card', 'title': card.title | striptags(true) | escape | nl2br, 'subtitle': card.subtitle, 'link': 'Читать' }) }}
                 {% endfor %}
               </div>
               {{ Button.button({ 'title': 'Показать еще', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'wide'} }) }}

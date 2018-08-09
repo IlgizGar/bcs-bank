@@ -1,7 +1,7 @@
 {% import "../button/button.njk" as Button %}
 
 {% macro dropdown( options ) %}
-  <div class="dropdown js-dropdown dropdown_theme-{{ options.theme }} {{ options.class }}">
+  <div class="dropdown js-dropdown dropdown_theme-{{ options.theme }} {{ options.class }}" data-error="{{ options.error }}">
     <div class="dropdown__wrap">
       <select class="dropdown__select" hidden name="{{ options.name }}_select">
         {% for item in options.items %}
@@ -10,7 +10,7 @@
       </select>
       <label class="dropdown__controls">
         <span class="dropdown__label">{{ options.label }}</span>
-        <input class="dropdown__input js-input" type="text" name="{{ options.name }}_input" disabled>
+        <input class="dropdown__input js-input" type="text" name="{{ options.name }}_input" {{ options.state }}>
       </label>
       {{ Button.button({ 'name': 'close', 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'text' }, 'class': 'dropdown__clear js-dropdown-clear' }) }}
     </div>

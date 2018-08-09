@@ -1,7 +1,9 @@
 import $ from 'jquery';
-import 'jquery-validation';
 import 'inputmask';
 import 'jquery.inputmask';
+import 'jquery-validation';
+import 'jquery-validation/dist/additional-methods';
+
 
 module.exports = (elem) => {
   class Form {
@@ -30,15 +32,12 @@ module.exports = (elem) => {
     init() {
       this.validateRules = {
         'js-card-masked': {
-          required: true,
           checkCardNumber: true,
         },
         'js-cvv-masked': {
-          required: true,
           checkCardCVV: 3,
         },
         'js-period-masked': {
-          required: true,
           checkCardPeriod: 5,
         },
         'js-transfer-input': {
@@ -49,11 +48,6 @@ module.exports = (elem) => {
         },
         'js-fix-course': {
           checkCourseAmount: true,
-        },
-        'js-fio-masked': {
-          fullname: {
-            required: true,
-          },
         },
       };
     }
@@ -215,7 +209,6 @@ module.exports = (elem) => {
       });
 
       const checkRadio = $('.js-check-radio');
-
       checkRadio.on('click', (e) => {
         if ($(e.currentTarget).data('check') === 'vu') {
           $('.js-check-vu').removeClass('state_hidden');
@@ -228,21 +221,31 @@ module.exports = (elem) => {
     }
 
     validateForm() {
+      $.validator.addClassRules(this.validateRules);
+      $.extend($.validator.messages, {
+        required: '',
+        minlength: '',
+        checkCardNumber: '',
+        checkCardCVV: '',
+        checkCardPeriod: '',
+        checkTransferAmount: 'Не более 75 000 ₽ с учетом комиссии',
+        checkCourseAmount: `Сумма не должна превышать 4 000 ${this.currencyType}`,
+      });
       this.form.validate({
         focusInvalid: false,
         errorElement: 'div',
         errorClass: 'input__error',
         errorPlacement(error, element) {
-          error.appendTo(element.closest('.js-input'));
-          error.appendTo(element.closest('.js-dropdown'));
+          error.appendTo($(element).closest('.js-input'));
+          error.appendTo($(element).closest('.js-dropdown'));
         },
         highlight(element) {
-          $(element).parents('.js-input').addClass('state_error');
-          $(element).parents('.js-dropdown').addClass('state_error');
+          $(element).closest('.js-input').addClass('state_error');
+          $(element).closest('.js-dropdown').addClass('state_error');
         },
         unhighlight(element) {
-          $(element).parents('.js-input').removeClass('state_error');
-          $(element).parents('.js-dropdown').removeClass('state_error');
+          $(element).closest('.js-input').removeClass('state_error');
+          $(element).closest('.js-dropdown').removeClass('state_error');
         },
         submitHandler(form) {
           console.log('SEND');
@@ -250,19 +253,6 @@ module.exports = (elem) => {
           form.serializeArray();
           return false;
         },
-      });
-
-      $.validator.addClassRules(this.validateRules);
-
-      $.extend($.validator.messages, {
-        required: '',
-        checkCardNumber: '',
-        checkCardCVV: '',
-        checkCardPeriod: '',
-        checkTransferAmount: 'Не более 75 000 ₽ с учетом комиссии',
-        minlength: '',
-        checkCourseAmount: `Сумма не должна превышать 4 000 ${this.currencyType}`,
-        fullname: 'Укажите Ф.И.О.',
       });
     }
 
@@ -315,10 +305,11 @@ module.exports = (elem) => {
       $.validator.addMethod(
         'checkCourseAmount',
         (value, element) => {
-          const max = parseInt($(element).closest('.js-input').data('max'), 0);
-          const num = parseFloat(value.replace(/ /g, ''));
-
-          return num <= max;
+          // const max = parseInt($(element).closest('.js-input').data('max'), 0);
+          // const num = parseFloat(value.replace(/ /g, ''));
+          console.log('ELEMENT', element);
+          return false;
+          // return num <= max;
         },
       );
     }

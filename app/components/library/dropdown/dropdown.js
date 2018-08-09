@@ -17,7 +17,7 @@ module.exports = (elem) => {
     }
 
     init() {
-      this.list = $('<div class="dropdown__list state_inactive scroll-pane js-dropdown-list mt-10"><ul></ul></div>');
+      this.list = $('<div class="dropdown__list state_invisible scroll-pane js-dropdown-list mt-10"><ul></ul></div>');
       $('body').append(this.list);
 
       this.options.each((i, el) => {
