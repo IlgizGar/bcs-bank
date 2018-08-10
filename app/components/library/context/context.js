@@ -21,7 +21,7 @@ module.exports = (elem) => {
       }
       if (!this.context.data('id')) {
         this.list = $('<div class="dropdown__list state_invisible scroll-pane js-context-list mt-16"><ul></ul></div>');
-        $('body').append(this.list);
+        $('.js-page').append(this.list);
         this.list.css('left', this.context.offset().left);
         this.options.each((i, el) => {
           this.list.find('ul').append(`
@@ -50,17 +50,21 @@ module.exports = (elem) => {
     events() {
       this.context.on('click', (e) => {
         $(e.currentTarget).toggleClass('state_explored');
-        this.list.toggleClass('state_invisible state_inactive');
+        this.list.toggleClass('state_invisible');
         this.list.css('top', `${this.context.offset().top + (this.context.outerHeight() - 5)}px`);
       });
 
       this.list.on('click', (e) => {
         if ($(e.target).closest('ul').length) {
-          this.context.addClass('state_filled');
-          this.title.html($(e.target).html());
+          if (this.list.attr('id') !== 'undefined') {
+            this.handleNamedList(this.list.attr('id'));
+          } else {
+            this.context.addClass('state_filled');
+            this.title.html($(e.target).html());
 
-          this.options.attr('selected', false);
-          this.select.find(`[value="${$(e.target).data('val')}"]`).attr('selected', 'selected');
+            this.options.attr('selected', false);
+            this.select.find(`[value="${$(e.target).data('val')}"]`).attr('selected', 'selected');
+          }
         }
       });
 
@@ -75,7 +79,14 @@ module.exports = (elem) => {
 
     hideList() {
       this.context.removeClass('state_explored');
-      this.list.addClass('state_inactive');
+      this.list.addClass('state_invisible');
+    }
+
+    handleNamedList(id) {
+      this.context.addClass('state_filled');
+      if (id === 'select-city') {
+        console.log('CITY');
+      }
     }
   }
 

@@ -18,7 +18,7 @@ module.exports = (elem) => {
 
     init() {
       this.list = $('<div class="dropdown__list state_invisible scroll-pane js-dropdown-list mt-10"><ul></ul></div>');
-      $('body').append(this.list);
+      $('.js-page').append(this.list);
 
       this.options.each((i, el) => {
         this.list.find('ul').append(`
@@ -47,7 +47,7 @@ module.exports = (elem) => {
         }
         if (!$(e.target).closest('.js-dropdown-clear').length) {
           $(e.currentTarget).toggleClass('state_explored');
-          this.list.toggleClass('state_inactive');
+          this.list.toggleClass('state_invisible');
           this.list.css('min-width', this.dropdown.outerWidth());
           this.list.css('top', this.dropdown.offset().top + this.dropdown.outerHeight());
           this.list.css('left', this.dropdown.offset().left);
@@ -82,7 +82,7 @@ module.exports = (elem) => {
 
     hideList() {
       this.dropdown.removeClass('state_explored');
-      this.list.addClass('state_inactive');
+      this.list.addClass('state_invisible');
     }
   }
 

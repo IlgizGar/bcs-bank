@@ -1,25 +1,50 @@
+{% import "../../../components/library/button/button.njk" as Button %}
+
 <div id="select-city" class="select-city js-context-list state_invisible">
   <div class="select-city__wrapper">
     <div class="page__container">
-      <ul>
-        <li class="select-city__group">А</li>
-        <li class="select-city__item">Астарахань</li>
-        <li class="select-city__group">А</li>
-        <li class="select-city__item">Астарахань</li>
-        <li class="select-city__group">А</li>
-        <li class="select-city__item">Астарахань</li>
-        <li class="select-city__group">А</li>
-        <li class="select-city__item">Астарахань</li>
-        <li class="select-city__group">А</li>
-        <li class="select-city__item">Астарахань</li>
-        <li class="select-city__group">А</li>
-        <li class="select-city__item">Астарахань</li>
-        <li class="select-city__group">А</li>
-        <li class="select-city__item">Астарахань</li>
-        <li class="select-city__group">А</li>
-        <li class="select-city__item">Астарахань</li>
+      <ul class="select-city__list">
+        <li>
+          <p class="select-city__group">А</p>
+          {{ Button.button({ 'title': 'Астрахань', 'mods': { 'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'select-city__button' }) }}
+          {{ Button.button({ 'title': 'Архангельск', 'mods': { 'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'select-city__button' }) }}
+          {{ Button.button({ 'title': 'Абакан', 'mods': { 'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'select-city__button' }) }}
+        </li>
+        <li>
+          <p class="select-city__group">Г</p>
+          {{ Button.button({ 'title': 'Горький', 'mods': { 'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'select-city__button' }) }}
+          {{ Button.button({ 'title': 'Геленджик', 'mods': { 'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'select-city__button' }) }}
+        </li>
+        <li>
+          <p class="select-city__group">М</p>
+          {{ Button.button({ 'title': 'Москва', 'mods': { 'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'select-city__button' }) }}
+          {{ Button.button({ 'title': 'Мытищи', 'mods': { 'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'select-city__button' }) }}
+          {{ Button.button({ 'title': 'Маленький Луг', 'mods': { 'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'select-city__button' }) }}
+          {{ Button.button({ 'title': 'Мадрид', 'mods': { 'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'select-city__button' }) }}
+        </li>
+        <li>
+          <p class="select-city__group">Н</p>
+          {{ Button.button({ 'title': 'Новороссийск', 'mods': { 'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'select-city__button' }) }}
+          {{ Button.button({ 'title': 'Нальчик', 'mods': { 'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'select-city__button' }) }}
+          {{ Button.button({ 'title': 'Нижний Новгород', 'mods': { 'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'select-city__button' }) }}
+          {{ Button.button({ 'title': 'Норильск', 'mods': { 'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'select-city__button' }) }}
+          {{ Button.button({ 'title': 'Надеждинск', 'mods': { 'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'select-city__button' }) }}
+          {{ Button.button({ 'title': 'Новый Уренгой', 'mods': { 'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'select-city__button' }) }}
+        </li>
+        <li>
+          <p class="select-city__group">П</p>
+          {{ Button.button({ 'title': 'Петропаловск', 'mods': { 'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'select-city__button' }) }}
+          {{ Button.button({ 'title': 'Петербург', 'mods': { 'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'select-city__button' }) }}
+        </li>
+        <li>
+          <p class="select-city__group">С</p>
+          {{ Button.button({ 'title': 'Самара', 'mods': { 'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'select-city__button' }) }}
+          {{ Button.button({ 'title': 'Саратов', 'mods': { 'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'select-city__button' }) }}
+          {{ Button.button({ 'title': 'Сочи', 'mods': { 'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'select-city__button' }) }}
+          {{ Button.button({ 'title': 'Ставрополь', 'mods': { 'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'select-city__button' }) }}
+        </li>
       </ul>
     </div>
   </div>
-  <div class="page__cover"></div>
+  <div class="page__cover js-cover"></div>
 </div>
