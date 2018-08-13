@@ -5,8 +5,11 @@
       position: relative
       padding: 32px 60px 31px 40px
       cursor: pointer
-      &:hover
-        background-color: $white_smoke_dark
-        & + .collapse__content
+  &.collapse_theme-grey
+    .collapse__item
+      .collapse__control
+        &:hover
           background-color: $white_smoke_dark
+          & + .collapse__content
+            background-color: $white_smoke_dark
 
