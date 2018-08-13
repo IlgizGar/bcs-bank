@@ -3,9 +3,9 @@
 {% macro tabbar( options ) %}
   <nav class="tabbar js-tabbar {{ options.class }}">
     {% for tab in options.tabs %}
-      {% set tabClass = 'js-anchor' %}
+      {% set tabClass = 'js-anchor ' + options.buttonClass %}
       {% if tab.state %}
-        {% set tabClass = 'js-anchor state_active' %}
+        {% set tabClass = 'js-anchor state_active ' + options.buttonClass %}
       {% endif %}
       {{ Button.button({ 'href': '#' + tab.id, 'title': tab.title, 'mods' : {'theme': options.theme, 'type': 'tab', 'view': options.view },
         'class': tabClass }) }}
