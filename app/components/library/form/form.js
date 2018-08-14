@@ -88,9 +88,16 @@ module.exports = (elem) => {
             },
             cardinality: 2,
             prevalidator: [
-              { validator: '[01]', cardinality: 1 },
-              { validator: '0[1-9]', cardinality: 2 },
-              { validator: '1[012]', cardinality: 2 },
+              {
+                validator: '[01]',
+                cardinality: 1
+              }, {
+                validator: '0[1-9]',
+                cardinality: 2
+              }, {
+                validator: '1[012]',
+                cardinality: 2
+              }
             ],
           },
           Y: {
@@ -153,21 +160,22 @@ module.exports = (elem) => {
       const commResultBlock = $('.js-commission-res');
       const commResultInfo = $('.js-commission-user-amount');
       const commResultField = $('.js-commission-amount');
-
-      transferAmountField.on('keyup', () => {
-        if (transferAmountField.val().length) {
-          const totalAmount = (parseFloat(transferAmountField.val().replace(/ /g, '').replace(',', '.')) * (1 + transferAmountField.closest('.js-input').data('commission'))).toFixed(2).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
-          commInfoBlock.addClass('state_hidden');
-          commResultBlock.removeClass('state_hidden');
-          commResultInfo.html(totalAmount.replace('.', ','));
-          commResultField.val(totalAmount);
-        } else {
-          commInfoBlock.removeClass('state_hidden');
-          commResultBlock.addClass('state_hidden');
-          commResultInfo.html('0');
-          commResultField.val(0);
-        }
-      });
+      if (transferAmountField.length) {
+        transferAmountField.on('keyup', () => {
+          if (transferAmountField.val().length) {
+            const totalAmount = (parseFloat(transferAmountField.val().replace(/ /g, '').replace(',', '.')) * (1 + transferAmountField.closest('.js-input').data('commission'))).toFixed(2).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+            commInfoBlock.addClass('state_hidden');
+            commResultBlock.removeClass('state_hidden');
+            commResultInfo.html(totalAmount.replace('.', ','));
+            commResultField.val(totalAmount);
+          } else {
+            commInfoBlock.removeClass('state_hidden');
+            commResultBlock.addClass('state_hidden');
+            commResultInfo.html('0');
+            commResultField.val(0);
+          }
+        });
+      }
 
       const courseRadio = $('.js-course-radio');
       const courseInput = $('.js-course-input');
@@ -178,46 +186,48 @@ module.exports = (elem) => {
 
       this.currencyType = 'USD';
 
-      let courseRadioField = courseRadio.find('input[type="radio"]:checked');
-      let currencyValue = courseRadioField.val();
-      let courseAmount = courseInputField.val().replace(',', '.');
-      let calculatedAmount = courseAmount * currencyValue;
-
-      courseRadio.on('click', (e) => {
-        courseRadioField = $(e.currentTarget).find('input[type="radio"]');
-        this.currencyType = $(e.currentTarget).data('currency');
-        this.validateForm();
-        courseCurrencyLabel.html(this.currencyType);
-        if (courseAmount) {
-          currencyValue = courseRadioField.val();
-          calculatedAmount = courseAmount * currencyValue;
-          courseResult.html(parseFloat(calculatedAmount).toFixed(2).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ').replace('.', ','));
-          courseResultField.val(calculatedAmount);
-        }
-      });
-
-      courseInputField.on('keyup', (e) => {
-        if ($(e.target).val().length) {
-          courseAmount = parseFloat(courseInputField.val().replace(/ /g, '').replace(',', '.'));
-          calculatedAmount = courseAmount * currencyValue;
-          courseResult.html(parseFloat(calculatedAmount).toFixed(2).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ').replace('.', ','));
-          courseResultField.val(calculatedAmount);
-        } else {
-          courseResult.html('0');
-          courseAmount = 0;
-        }
-      });
+      if (courseInput.length) {
+        let courseRadioField = courseRadio.find('input[type="radio"]:checked');
+        let currencyValue = courseRadioField.val();
+        let courseAmount = courseInputField.val().replace(',', '.');
+        let calculatedAmount = courseAmount * currencyValue;
+        courseRadio.on('click', (e) => {
+          courseRadioField = $(e.currentTarget).find('input[type="radio"]');
+          this.currencyType = $(e.currentTarget).data('currency');
+          this.validateForm();
+          courseCurrencyLabel.html(this.currencyType);
+          if (courseAmount) {
+            currencyValue = courseRadioField.val();
+            calculatedAmount = courseAmount * currencyValue;
+            courseResult.html(parseFloat(calculatedAmount).toFixed(2).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ').replace('.', ','));
+            courseResultField.val(calculatedAmount);
+          }
+        });
+        courseInputField.on('keyup', (e) => {
+          if ($(e.target).val().length) {
+            courseAmount = parseFloat(courseInputField.val().replace(/ /g, '').replace(',', '.'));
+            calculatedAmount = courseAmount * currencyValue;
+            courseResult.html(parseFloat(calculatedAmount).toFixed(2).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ').replace('.', ','));
+            courseResultField.val(calculatedAmount);
+          } else {
+            courseResult.html('0');
+            courseAmount = 0;
+          }
+        });
+      }
 
       const checkRadio = $('.js-check-radio');
-      checkRadio.on('click', (e) => {
-        if ($(e.currentTarget).data('check') === 'vu') {
-          $('.js-check-vu').removeClass('state_hidden');
-          $('.js-check-post').addClass('state_hidden');
-        } else {
-          $('.js-check-vu').addClass('state_hidden');
-          $('.js-check-post').removeClass('state_hidden');
-        }
-      });
+      if (checkRadio.length) {
+        checkRadio.on('click', (e) => {
+          if ($(e.currentTarget).data('check') === 'vu') {
+            $('.js-check-vu').removeClass('state_hidden');
+            $('.js-check-post').addClass('state_hidden');
+          } else {
+            $('.js-check-vu').addClass('state_hidden');
+            $('.js-check-post').removeClass('state_hidden');
+          }
+        });
+      }
     }
 
     validateForm() {
