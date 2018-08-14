@@ -3,7 +3,7 @@
 
 import $ from 'jquery';
 import 'jscrollpane';
-
+import Helpers from '../../../scripts/helpers';
 
 export default class Offices {
   constructor() {
@@ -13,25 +13,26 @@ export default class Offices {
 
   init() {
     this.initMap();
-    this.setScrollPane();
+    Offices.setScrollPane();
   }
 
   initMap() {
-    if (!$('[data-ymap]').length) {
-      Offices.loadScript('https://api-maps.yandex.ru/2.1/?lang=ru_RU', () => {
-        ymaps.ready(() => {
-          // Создание карты.
-          this.map = new ymaps.Map('map-container', {
-            center: [55.76, 37.64],
-            zoom: 13,
-          });
-          this.map.behaviors.disable('scrollZoom');
+    Helpers.getGeolocation((location) => {
+      ymaps.ready(() => {
+        Helpers.getGeolocation();
+        // Создание карты.
+        this.map = new ymaps.Map('map-container', {
+          center: [55.76, 37.57],
+          zoom: 13,
+          controls: [],
         });
+        this.map.behaviors.disable('scrollZoom');
+        this.map.options.set('suppressMapOpenBlock', true);
       });
-    }
+    });
   }
 
-  setScrollPane() {
+  static setScrollPane() {
     const pane = $('.offices__tabs.scroll-pane');
 
     pane.jScrollPane({
@@ -58,27 +59,5 @@ export default class Offices {
     setTimeout(() => {
       pane.data('jsp').reinitialise();
     }, time);
-  }
-
-  static loadScript(url, callback) {
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-
-    if (script.readyState) { // IE
-      script.onreadystatechange = () => {
-        if (script.readyState === 'loaded' ||
-          script.readyState === 'complete') {
-          script.onreadystatechange = null;
-          callback();
-        }
-      };
-    } else { // Others
-      script.onload = () => {
-        callback();
-      };
-    }
-
-    script.src = url;
-    document.getElementsByTagName('head')[0].appendChild(script);
   }
 }
