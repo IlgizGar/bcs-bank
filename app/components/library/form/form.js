@@ -90,14 +90,14 @@ module.exports = (elem) => {
             prevalidator: [
               {
                 validator: '[01]',
-                cardinality: 1
+                cardinality: 1,
               }, {
                 validator: '0[1-9]',
-                cardinality: 2
+                cardinality: 2,
               }, {
                 validator: '1[012]',
-                cardinality: 2
-              }
+                cardinality: 2,
+              },
             ],
           },
           Y: {

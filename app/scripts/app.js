@@ -6,7 +6,6 @@ import svg4everybody from 'svg4everybody';
 
 import Header from '../components/modules/header/header';
 import Contact from '../components/library/contact/contact';
-import Accordion from '../components/library/accordion/accordion';
 import Dropdown from '../components/library/dropdown/dropdown';
 import Context from '../components/library/context/context';
 import Carousel from '../components/library/carousel/carousel';
@@ -45,10 +44,6 @@ $(() => {
   global.tabs = [];
   $('.js-tabbar').each((i, el) => {
     global.tabs.push(Tabs(el));
-  });
-  global.accordions = [];
-  $('.js-accordion').each((i, el) => {
-    global.accordions.push(Accordion(el));
   });
   global.carousels = [];
   $('.js-carousel').each((i, el) => {

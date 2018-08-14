@@ -80,111 +80,162 @@
                   <div class="section__text">
                     <p>Тарифы по обслуживанию физических лиц, заключивших ДКБО с АО «БКС Банк»</p>
                   </div>
-                  <div class="accordion js-accordion mt-40">
-                    <div class="accordion__item">
-                      <div class="accordion__header js-accordion-header">
-                        {{ Heading.heading({ 'title': 'ПУ «Премьер Базовый», «Премьер Расширенный», \n «Ультима Базовый», «Ультима Расширенный»' | striptags(true) | escape | nl2br, 'type': 'small', 'margin': 'none' }) }}
+                  <div class="collapse collapse_theme-grey mt-40">
+                    <div class="collapse__item">
+                      <div class="collapse__control">
+                        <div class="collapse__control-title">ПУ «Премьер Базовый», «Премьер Расширенный», «Ультима Базовый», «Ультима Расширенный»</div>
+                        <div class="collapse__control-icon">
+                          {{ Icon.icon({ 'name': 'dropdown' }) }}
+                        </div>
                       </div>
-                      <div class="accordion__content"></div>
+                      <div class="collapse__content"></div>
                     </div>
-                    <div class="accordion__item">
-                      <div class="accordion__header js-accordion-header">
-                        {{ Heading.heading({ 'title': 'ПУ «Ультима»', 'type': 'small', 'margin': 'none' }) }}
+                    <div class="collapse__item">
+                      <div class="collapse__control">
+                        <div class="collapse__control-title">ПУ «Ультима»</div>
+                        <div class="collapse__control-icon">
+                          {{ Icon.icon({ 'name': 'dropdown' }) }}
+                        </div>
                       </div>
-                      <div class="accordion__content"></div>
+                      <div class="collapse__content"></div>
                     </div>
-                    <div class="accordion__item">
-                      <div class="accordion__header js-accordion-header">
-                        {{ Heading.heading({ 'title': 'ПУ «Директ», «Континенталь», «Глобал»', 'type': 'small', 'margin': 'none' }) }}
+                    <div class="collapse__item">
+                      <div class="collapse__control">
+                        <div class="collapse__control-title">ПУ «Директ», «Континенталь», «Глобал»</div>
+                        <div class="collapse__control-icon">
+                          {{ Icon.icon({ 'name': 'dropdown' }) }}
+                        </div>
                       </div>
-                      <div class="accordion__content"></div>
+                      <div class="collapse__content"></div>
                     </div>
-                    <div class="accordion__item">
-                      <div class="accordion__header js-accordion-header">
-                        {{ Heading.heading({ 'title': 'ПУ «Для своих»', 'type': 'small', 'margin': 'none' }) }}
+                    <div class="collapse__item">
+                      <div class="collapse__control">
+                        <div class="collapse__control-title">ПУ «Для своих»</div>
+                        <div class="collapse__control-icon">
+                          {{ Icon.icon({ 'name': 'dropdown' }) }}
+                        </div>
                       </div>
-                      <div class="accordion__content">
+                      <div class="collapse__content">
                         {{ Docs.docs({ 'title': 'Тарифы по обслуживанию физических лиц, заключивших ДКБО с АО «БКС БАНК» по пакету услуг «Для своих»', 'note': 'Действуют с 28.04.2018 по 31.05.2018 включительно', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-32'}) }}
                         {{ Docs.docs({ 'title': 'Тарифы по обслуживанию физических лиц, заключивших ДКБО с АО «БКС БАНК» по пакету услуг «Для своих»', 'note': 'Действуют с 9.04.2018 по 27.04.2018 включительно', 'href': '#', 'type': 'PDF', 'size': '213 КБ'}) }}
                       </div>
                     </div>
-                    <div class="accordion__item">
-                      <div class="accordion__header js-accordion-header">
-                        {{ Heading.heading({ 'title': 'ПУ «Корпоративный»', 'type': 'small', 'margin': 'none' }) }}
+                    <div class="collapse__item">
+                      <div class="collapse__control">
+                        <div class="collapse__control-title">ПУ «Корпоративный»</div>
+                        <div class="collapse__control-icon">
+                          {{ Icon.icon({ 'name': 'dropdown' }) }}
+                        </div>
                       </div>
-                      <div class="accordion__content"></div>
+                      <div class="collapse__content"></div>
                     </div>
-                    <div class="accordion__item">
-                      <div class="accordion__header js-accordion-header">
-                        {{ Heading.heading({ 'title': 'ПУ «Брокер»', 'type': 'small', 'margin': 'none' }) }}
+                    <div class="collapse__item">
+                      <div class="collapse__control">
+                        <div class="collapse__control-title">ПУ «Брокер»</div>
+                        <div class="collapse__control-icon">
+                          {{ Icon.icon({ 'name': 'dropdown' }) }}
+                        </div>
                       </div>
-                      <div class="accordion__content"></div>
+                      <div class="collapse__content"></div>
                     </div>
-                    <div class="accordion__item">
-                      <div class="accordion__header js-accordion-header">
-                        {{ Heading.heading({ 'title': 'ПУ «Ультима Discovery», «Ультима Confidence»', 'type': 'small', 'margin': 'none' }) }}
+                    <div class="collapse__item">
+                      <div class="collapse__control">
+                        <div class="collapse__control-title">ПУ «Ультима Discovery», «Ультима Confidence»</div>
+                        <div class="collapse__control-icon">
+                          {{ Icon.icon({ 'name': 'dropdown' }) }}
+                        </div>
                       </div>
-                      <div class="accordion__content"></div>
+                      <div class="collapse__content"></div>
                     </div>
-                    <div class="accordion__item">
-                      <div class="accordion__header js-accordion-header">
-                        {{ Heading.heading({ 'title': 'ПУ «Ультима Platinum», «Ультима Infinite», «Ультима Confidence»', 'type': 'small', 'margin': 'none' }) }}
+                    <div class="collapse__item">
+                      <div class="collapse__control">
+                        <div class="collapse__control-title">ПУ «Ультима Platinum», «Ультима Infinite», «Ультима Confidence»</div>
+                        <div class="collapse__control-icon">
+                          {{ Icon.icon({ 'name': 'dropdown' }) }}
+                        </div>
                       </div>
-                      <div class="accordion__content"></div>
+                      <div class="collapse__content"></div>
                     </div>
-                    <div class="accordion__item">
-                      <div class="accordion__header js-accordion-header">
-                        {{ Heading.heading({ 'title': 'ПУ «Особая серия», «Особая серия+», «Ультима Infinite», «Ультима Confidence»', 'type': 'small', 'margin': 'none' }) }}
+                    <div class="collapse__item">
+                      <div class="collapse__control">
+                        <div class="collapse__control-title">ПУ «Особая серия», «Особая серия+», «Ультима Infinite», «Ультима Confidence»</div>
+                        <div class="collapse__control-icon">
+                          {{ Icon.icon({ 'name': 'dropdown' }) }}
+                        </div>
                       </div>
-                      <div class="accordion__content"></div>
+                      <div class="collapse__content"></div>
                     </div>
-                    <div class="accordion__item">
-                      <div class="accordion__header js-accordion-header">
-                        {{ Heading.heading({ 'title': 'ПУ «Боцман», «Капитан»', 'type': 'small', 'margin': 'none' }) }}
+                    <div class="collapse__item">
+                      <div class="collapse__control">
+                        <div class="collapse__control-title">ПУ «Боцман», «Капитан»</div>
+                        <div class="collapse__control-icon">
+                          {{ Icon.icon({ 'name': 'dropdown' }) }}
+                        </div>
                       </div>
-                      <div class="accordion__content"></div>
+                      <div class="collapse__content"></div>
                     </div>
-                    <div class="accordion__item">
-                      <div class="accordion__header js-accordion-header">
-                        {{ Heading.heading({ 'title': 'ПУ «Fins»', 'type': 'small', 'margin': 'none' }) }}
+                    <div class="collapse__item">
+                      <div class="collapse__control">
+                        <div class="collapse__control-title">ПУ «Fins»</div>
+                        <div class="collapse__control-icon">
+                          {{ Icon.icon({ 'name': 'dropdown' }) }}
+                        </div>
                       </div>
-                      <div class="accordion__content"></div>
+                      <div class="collapse__content"></div>
                     </div>
-                    <div class="accordion__item">
-                      <div class="accordion__header js-accordion-header">
-                        {{ Heading.heading({ 'title': 'Кредитный продукт «Кредит Онлайн»', 'type': 'small', 'margin': 'none' }) }}
+                    <div class="collapse__item">
+                      <div class="collapse__control">
+                        <div class="collapse__control-title">Кредитный продукт «Кредит Онлайн»</div>
+                        <div class="collapse__control-icon">
+                          {{ Icon.icon({ 'name': 'dropdown' }) }}
+                        </div>
                       </div>
-                      <div class="accordion__content"></div>
+                      <div class="collapse__content"></div>
                     </div>
-                    <div class="accordion__item">
-                      <div class="accordion__header js-accordion-header">
-                        {{ Heading.heading({ 'title': 'Кредитный продукт «Выгодное предложение»', 'type': 'small', 'margin': 'none' }) }}
+                    <div class="collapse__item">
+                      <div class="collapse__control">
+                        <div class="collapse__control-title">Кредитный продукт «Выгодное предложение»</div>
+                        <div class="collapse__control-icon">
+                          {{ Icon.icon({ 'name': 'dropdown' }) }}
+                        </div>
                       </div>
-                      <div class="accordion__content"></div>
+                      <div class="collapse__content"></div>
                     </div>
-                    <div class="accordion__item">
-                      <div class="accordion__header js-accordion-header">
-                        {{ Heading.heading({ 'title': 'Тариф «Вкладчик» в рамках кредитного продукта \n «Кредитная карта БКС Банка»' | striptags(true) | escape | nl2br, 'type': 'small', 'margin': 'none' }) }}
+                    <div class="collapse__item">
+                      <div class="collapse__control">
+                        <div class="collapse__control-title">Тариф «Вкладчик» в рамках кредитного продукта <br> «Кредитная карта БКС Банка»</div>
+                        <div class="collapse__control-icon">
+                          {{ Icon.icon({ 'name': 'dropdown' }) }}
+                        </div>
                       </div>
-                      <div class="accordion__content"></div>
+                      <div class="collapse__content"></div>
                     </div>
-                    <div class="accordion__item">
-                      <div class="accordion__header js-accordion-header">
-                        {{ Heading.heading({ 'title': 'Тариф «Для своих» в рамках кредитного продукта \n «Кредитная карта БКС Банка»' | striptags(true) | escape | nl2br, 'type': 'small', 'margin': 'none' }) }}
+                    <div class="collapse__item">
+                      <div class="collapse__control">
+                        <div class="collapse__control-title">Тариф «Для своих» в рамках кредитного продукта <br> «Кредитная карта БКС Банка»</div>
+                        <div class="collapse__control-icon">
+                          {{ Icon.icon({ 'name': 'dropdown' }) }}
+                        </div>
                       </div>
-                      <div class="accordion__content"></div>
+                      <div class="collapse__content"></div>
                     </div>
-                    <div class="accordion__item">
-                      <div class="accordion__header js-accordion-header">
-                        {{ Heading.heading({ 'title': 'Тариф «Корпоративный» в рамках кредитного продукта \n «Кредитная карта БКС Банка»' | striptags(true) | escape | nl2br, 'type': 'small', 'margin': 'none' }) }}
+                    <div class="collapse__item">
+                      <div class="collapse__control">
+                        <div class="collapse__control-title">Тариф «Корпоративный» в рамках кредитного продукта <br> «Кредитная карта БКС Банка»</div>
+                        <div class="collapse__control-icon">
+                          {{ Icon.icon({ 'name': 'dropdown' }) }}
+                        </div>
                       </div>
-                      <div class="accordion__content"></div>
+                      <div class="collapse__content"></div>
                     </div>
-                    <div class="accordion__item">
-                      <div class="accordion__header js-accordion-header">
-                        {{ Heading.heading({ 'title': 'Тариф «Стандарт» в рамках кредитного продукта \n «Кредитная карта БКС Банка»' | striptags(true) | escape | nl2br, 'type': 'small', 'margin': 'none' }) }}
+                    <div class="collapse__item">
+                      <div class="collapse__control">
+                        <div class="collapse__control-title">Тариф «Стандарт» в рамках кредитного продукта <br> «Кредитная карта БКС Банка»</div>
+                        <div class="collapse__control-icon">
+                          {{ Icon.icon({ 'name': 'dropdown' }) }}
+                        </div>
                       </div>
-                      <div class="accordion__content"></div>
+                      <div class="collapse__content"></div>
                     </div>
                   </div>
 
@@ -238,26 +289,35 @@
                   {{ Docs.docs({ 'title': 'Правила акции «Льготная комиссия»', 'href': '#', 'type': 'PDF', 'size': '213 КБ'}) }}
                 </div>
                 <div id="entity" class="tabs__item documents__tab js-tab state_invisible">
-                  <div class="accordion js-accordion">
-                    <div class="accordion__item">
-                      <div class="accordion__header js-accordion-header">
-                        {{ Heading.heading({ 'title': 'Тарифы', 'type': 'small', 'margin': 'none' }) }}
+                  <div class="collapse collapse_theme-grey">
+                    <div class="collapse__item">
+                      <div class="collapse__control">
+                        <div class="collapse__control-title">Тарифы</div>
+                        <div class="collapse__control-icon">
+                          {{ Icon.icon({ 'name': 'dropdown' }) }}
+                        </div>
                       </div>
-                      <div class="accordion__content">
+                      <div class="collapse__content">
                         {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Надежное предложение»', 'href': '#', 'type': 'PDF', 'size': '213 КБ'}) }}
                       </div>
                     </div>
-                    <div class="accordion__item">
-                      <div class="accordion__header js-accordion-header">
-                        {{ Heading.heading({ 'title': 'Договоры', 'type': 'small', 'margin': 'none' }) }}
+                    <div class="collapse__item">
+                      <div class="collapse__control">
+                        <div class="collapse__control-title">Договоры</div>
+                        <div class="collapse__control-icon">
+                          {{ Icon.icon({ 'name': 'dropdown' }) }}
+                        </div>
                       </div>
-                      <div class="accordion__content"></div>
+                      <div class="collapse__content"></div>
                     </div>
-                    <div class="accordion__item">
-                      <div class="accordion__header js-accordion-header">
-                        {{ Heading.heading({ 'title': 'Акции', 'type': 'small', 'margin': 'none' }) }}
+                    <div class="collapse__item">
+                      <div class="collapse__control js-accordion-header">
+                        <div class="collapse__control-title">Акции</div>
+                        <div class="collapse__control-icon">
+                          {{ Icon.icon({ 'name': 'dropdown' }) }}
+                        </div>
                       </div>
-                      <div class="accordion__content">
+                      <div class="collapse__content">
                         {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Надежное предложение»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-32'}) }}
                         {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Бонус участникам ВЭД» ', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-32'}) }}
                         {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Осеннее предложение»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-32'}) }}

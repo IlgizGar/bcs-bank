@@ -13,7 +13,7 @@ export default class Offices {
 
   init() {
     this.initMap();
-    this.setScrollPane();
+    Offices.setScrollPane();
   }
 
   initMap() {
@@ -31,7 +31,7 @@ export default class Offices {
     }
   }
 
-  setScrollPane() {
+  static setScrollPane() {
     const pane = $('.offices__tabs.scroll-pane');
 
     pane.jScrollPane({
