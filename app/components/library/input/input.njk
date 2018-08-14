@@ -2,15 +2,15 @@
 
 {% macro input( options ) %}
 
-  {#{% set datas = '' %}#}
-  {#{% set class_sep = joiner(' ') %}#}
-  {#{% set datas %}#}
-    {#{% for key, value in options.data -%}#}
-      {#{{ class_sep() }} data-{{ key }} = {{ value }}#}
-    {#{%- endfor %}#}
-  {#{% endset %}#}
+  {% set data_array = '' %}
+  {% set class_sep = joiner(' ') %}
+  {% set data_array %}
+    {% for key, value in options.data -%}
+      {{ class_sep() }} data-{{ key }} = "{{ value }}"
+    {%- endfor %}
+  {% endset %}
 
-  <div class="input js-input state_init {{ options.class }}" {{ options.data }}>
+  <div class="input js-input state_init {{ options.class }}" {{ data_array | safe }}>
     <label class="input__group">
       <span class="input__label js-label">{{ options.label }}</span>
       {% if options.tag === "textarea" %}

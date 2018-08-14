@@ -4,7 +4,18 @@
   {% if options.data %}
     {% set options = options.data %}
   {% endif %}
-  <div class="context js-context {% if options.theme %}context_theme-{{ options.theme }}{%  endif %} {{ options.class }}" {% if options.prefix %}data-prefix="{{ options.prefix }}"{% endif %} {% if options.id %}data-id="{{ options.id }}"{% endif %}>
+
+  {% if options.attr %}
+    {% set data_array = '' %}
+    {% set class_sep = joiner(' ') %}
+    {% set data_array %}
+      {% for key, value in options.attr -%}
+        {{ class_sep() }} data-{{ key }} = "{{ value }}"
+      {%- endfor %}
+    {% endset %}
+  {% endif %}
+
+  <div class="context js-context {% if options.theme %}context_theme-{{ options.theme }}{%  endif %} {{ options.class }}" {{ data_array | safe }}>
     {% if options.items %}
       <select class="context__select" hidden name="{{ options.name }}_select">
         {% for item in options.items %}

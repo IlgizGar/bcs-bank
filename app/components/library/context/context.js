@@ -8,6 +8,7 @@ module.exports = (elem) => {
     constructor(selector) {
       this.context = $(selector);
       this.select = this.context.find('select');
+      this.input = this.context.find('input');
       this.options = this.select.find('option');
       this.title = this.context.find('.js-context-title');
 
@@ -52,12 +53,15 @@ module.exports = (elem) => {
         $(e.currentTarget).toggleClass('state_explored');
         this.list.toggleClass('state_invisible');
         this.list.css('top', `${this.context.offset().top + (this.context.outerHeight() - 5)}px`);
+        if ($(e.currentTarget).data('id') === 'select-city') {
+          $('body').toggleClass('state_unscroll');
+        }
       });
 
       this.list.on('click', (e) => {
         if ($(e.target).closest('ul').length) {
           if (this.list.attr('id') !== 'undefined') {
-            this.handleNamedList(this.list.attr('id'));
+            this.handleNamedList(this.list.attr('id'), $(e.target));
           } else {
             this.context.addClass('state_filled');
             this.title.html($(e.target).html());
@@ -66,6 +70,7 @@ module.exports = (elem) => {
             this.select.find(`[value="${$(e.target).data('val')}"]`).attr('selected', 'selected');
           }
         }
+        $('body').removeClass('state_unscroll');
       });
 
       $(window).on('click', (e) => {
@@ -82,10 +87,15 @@ module.exports = (elem) => {
       this.list.addClass('state_invisible');
     }
 
-    handleNamedList(id) {
+    handleNamedList(id, el) {
       this.context.addClass('state_filled');
       if (id === 'select-city') {
-        console.log('CITY');
+        if ($(el).closest('.js-button').length) {
+          const val = $(el).closest('.js-button').data('value');
+          const title = $(el).closest('.js-button').data('city');
+          this.input.val(val);
+          this.title.html(title);
+        }
       }
     }
   }

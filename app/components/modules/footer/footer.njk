@@ -67,7 +67,7 @@
 <div id="question-modal-form" class="modal js-form" data-form="question-modal">
   <form id="question-form" action="/" class="form question-form">
     {{ Heading.heading({ 'title': 'У вас есть вопрос?' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'none', 'theme': 'default', 'class': 'form__title'}) }}
-    {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': 'js-fio-masked', 'name': 'queston_name', 'state': 'required' }) }}
+    {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': 'js-fio-masked', 'name': 'queston_name', 'state': 'required', 'data': { 'error': 'Укажите Ф.И.О.', 'blala': 'blala' } }) }}
     <div class="form__line-group">
       {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': 'js-phone-masked', 'name': 'question_phone', 'state': 'required' }) }}
       {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': 'js-mail-masked', 'name': 'question_mail', 'state': 'required' }) }}
