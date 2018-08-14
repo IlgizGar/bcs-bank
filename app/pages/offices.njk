@@ -24,8 +24,9 @@
         <div class="page__container">
           <div class="section__row">
 
-            <div class="section__content section__content_theme-default">
-              {{ Heading.heading({ 'tag': 'h1', 'title': 'Офисы и банкоматы', 'context': {'id': 'select-city', 'title': 'в Москве'}, 'type': 'default', 'margin': 'short', 'theme' : 'default' }) }}
+            <div class="section__content">
+              {{ Heading.heading({ 'tag': 'h1', 'title': 'Офисы и банкоматы', 'type': 'default', 'margin': 'short', 'theme' : 'default',
+                'context': {'id': 'select-city', 'title': 'Москве', 'attr': {'id': 'select-city', 'prefix': 'в'} } }) }}
             </div>
           </div>
         </div>

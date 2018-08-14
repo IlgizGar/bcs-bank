@@ -1,5 +1,6 @@
 {% import "../tabbar/tabbar.njk" as Tabbar %}
 {% import "../../../components/icon/icon.njk" as Icon %}
+{% import "../../library/button/button.njk" as Button %}
 
 
 <div class="offices">
@@ -11,10 +12,13 @@
     <div class="tabs js-tabs offices__tabs scroll-pane">
       <div id="offices-tab" class="offices__tabs-item tabs__item js-tab state_invisible">
 
-        <div class="collapse">
+        <div class="collapse offices__collapse">
 
           <div class="collapse__item">
             <div class="collapse__control">
+              <div class="collapse__control-description">
+                Москва
+              </div>
               <div class="collapse__control-title">
                 На проспекте Мира
               </div>
@@ -23,19 +27,42 @@
               </div>
             </div>
             <div class="collapse__content">
-              <div class="text">
-                <p class="text__paragraph">
-                  Вносит изменения в программу лояльности по банковским картам клиентов «БКС Премьер»
-                  и «БКС Брокер» с 6 июня 2018 года. Изменения касаются начисления вознаграждений по бонусным программам,
-                  осуществляемым банком совместно с партнерами. Согласно новым условиям банк будет начислять бонусы
-                  за следующие операции, совершенные с помощью карт БКС Банка.
-                </p>
-              </div>
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
 
           <div class="collapse__item">
             <div class="collapse__control">
+              <div class="collapse__control-description">
+                Москва
+              </div>
               <div class="collapse__control-title">
                 На проспекте Мира
               </div>
@@ -44,19 +71,42 @@
               </div>
             </div>
             <div class="collapse__content">
-              <div class="text">
-                <p class="text__paragraph">
-                  Вносит изменения в программу лояльности по банковским картам клиентов «БКС Премьер»
-                  и «БКС Брокер» с 6 июня 2018 года. Изменения касаются начисления вознаграждений по бонусным программам,
-                  осуществляемым банком совместно с партнерами. Согласно новым условиям банк будет начислять бонусы
-                  за следующие операции, совершенные с помощью карт БКС Банка.
-                </p>
-              </div>
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
 
           <div class="collapse__item">
             <div class="collapse__control">
+              <div class="collapse__control-description">
+                Москва
+              </div>
               <div class="collapse__control-title">
                 На проспекте Мира
               </div>
@@ -65,19 +115,42 @@
               </div>
             </div>
             <div class="collapse__content">
-              <div class="text">
-                <p class="text__paragraph">
-                  Вносит изменения в программу лояльности по банковским картам клиентов «БКС Премьер»
-                  и «БКС Брокер» с 6 июня 2018 года. Изменения касаются начисления вознаграждений по бонусным программам,
-                  осуществляемым банком совместно с партнерами. Согласно новым условиям банк будет начислять бонусы
-                  за следующие операции, совершенные с помощью карт БКС Банка.
-                </p>
-              </div>
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
 
           <div class="collapse__item">
             <div class="collapse__control">
+              <div class="collapse__control-description">
+                Москва
+              </div>
               <div class="collapse__control-title">
                 На проспекте Мира
               </div>
@@ -86,19 +159,42 @@
               </div>
             </div>
             <div class="collapse__content">
-              <div class="text">
-                <p class="text__paragraph">
-                  Вносит изменения в программу лояльности по банковским картам клиентов «БКС Премьер»
-                  и «БКС Брокер» с 6 июня 2018 года. Изменения касаются начисления вознаграждений по бонусным программам,
-                  осуществляемым банком совместно с партнерами. Согласно новым условиям банк будет начислять бонусы
-                  за следующие операции, совершенные с помощью карт БКС Банка.
-                </p>
-              </div>
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
 
           <div class="collapse__item">
             <div class="collapse__control">
+              <div class="collapse__control-description">
+                Москва
+              </div>
               <div class="collapse__control-title">
                 На проспекте Мира
               </div>
@@ -107,19 +203,42 @@
               </div>
             </div>
             <div class="collapse__content">
-              <div class="text">
-                <p class="text__paragraph">
-                  Вносит изменения в программу лояльности по банковским картам клиентов «БКС Премьер»
-                  и «БКС Брокер» с 6 июня 2018 года. Изменения касаются начисления вознаграждений по бонусным программам,
-                  осуществляемым банком совместно с партнерами. Согласно новым условиям банк будет начислять бонусы
-                  за следующие операции, совершенные с помощью карт БКС Банка.
-                </p>
-              </div>
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
 
           <div class="collapse__item">
             <div class="collapse__control">
+              <div class="collapse__control-description">
+                Москва
+              </div>
               <div class="collapse__control-title">
                 На проспекте Мира
               </div>
@@ -128,25 +247,528 @@
               </div>
             </div>
             <div class="collapse__content">
-              <div class="text">
-                <p class="text__paragraph">
-                  Вносит изменения в программу лояльности по банковским картам клиентов «БКС Премьер»
-                  и «БКС Брокер» с 6 июня 2018 года. Изменения касаются начисления вознаграждений по бонусным программам,
-                  осуществляемым банком совместно с партнерами. Согласно новым условиям банк будет начислять бонусы
-                  за следующие операции, совершенные с помощью карт БКС Банка.
-                </p>
-              </div>
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </div>
 
       <div id="atm-tab" class="offices__tabs-item tabs__item js-tab state_invisible">
-        2
+        <div class="collapse offices__collapse">
+
+          <div class="collapse__item">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                На проспекте Мира
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse__item">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                Кутузовский
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse__item">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                На проспекте Мира
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse__item">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                На проспекте Мира
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse__item">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                На проспекте Мира
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse__item">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                На проспекте Мира
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div id="ultima-tab" class="offices__tabs-item tabs__item js-tab state_invisible">
-        3
+
+        {{ Button.button({ 'title': 'Посмотреть список банкоматов Росбанка', 'name': 'download', 'class': 'offices__external-link', 'mods': {  } }) }}
+
+
+        <div class="collapse offices__collapse">
+
+          <div class="collapse__item">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                109147, Россия, г. Москва,  ул. Марксистская, д. 3, строение 1
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse__item">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                115054, Россия, г. Москва, ул. Валовая, д. 2-4/44, строение 1
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    Выдача наличных
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    Круглосуточно
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse__item">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                109147, Россия, г. Москва,  ул. Марксистская, д. 3, строение 1
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse__item">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                109147, Россия, г. Москва,  ул. Марксистская, д. 3, строение 1
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse__item">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                109147, Россия, г. Москва,  ул. Марксистская, д. 3, строение 1
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse__item">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                109147, Россия, г. Москва,  ул. Марксистская, д. 3, строение 1
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
