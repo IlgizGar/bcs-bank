@@ -21,6 +21,7 @@ import Tabs from '../components/modules/tabbar/tabbar';
 import Card from '../components/library/card/card';
 import Checkbox from '../components/library/checkbox/checkbox';
 import PageHeader from '../components/modules/page-header/page-header';
+import Offices from '../components/modules/offices/offices';
 
 require('babel-polyfill');
 // import Datepicker from '../components/library/datepicker/datepicker';
@@ -108,6 +109,11 @@ $(() => {
       global.checkboxes.push(new Checkbox($(el)));
     });
   }
+
+  if ($('.offices').length) {
+    global.officesMap = new Offices();
+  }
+
   // global.datepickers = [];
   // for (const datepicker of $('.js-datepicker')) {
   //   global.datepickers.push(Datepicker(datepicker));
