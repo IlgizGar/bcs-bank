@@ -34,7 +34,9 @@ $(() => {
   });
   global.contexts = [];
   $('.js-context').each((i, el) => {
+    console.log('ID', $(el).data('id'));
     global.contexts[$(el).data('id')] = Context(el);
+    console.log('CONTEXTS', global.contexts);
   });
   global.contacts = [];
   $('.js-contact').each((i, el) => {
