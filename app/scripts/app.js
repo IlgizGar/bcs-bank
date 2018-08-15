@@ -25,7 +25,6 @@ import Offices from '../components/modules/offices/offices';
 require('babel-polyfill');
 // import Datepicker from '../components/library/datepicker/datepicker';
 
-
 $(() => {
   svg4everybody();
   global.header = Header('.js-header');
@@ -35,7 +34,7 @@ $(() => {
   });
   global.contexts = [];
   $('.js-context').each((i, el) => {
-    global.contexts.push(Context(el));
+    global.contexts[$(el).data('id')] = Context(el);
   });
   global.contacts = [];
   $('.js-contact').each((i, el) => {
