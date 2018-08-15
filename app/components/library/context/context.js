@@ -53,28 +53,15 @@ module.exports = (elem) => {
     events() {
       this.context.on('click', (e) => {
         e.preventDefault();
-        if (!this.scrollBarInited) {
-          this.context.find('.scroll-pane').jScrollPane({
-            contentWidth: 100,
-            verticalDragMinHeight: 16,
-            verticalDragMaxHeight: 16,
-            verticalGutter: 16,
-            mouseWheelSpeed: 1,
-            animateDuration: 1000,
-          });
-          this.scrollBarInited = true;
-        }
-        $(e.currentTarget).toggleClass('state_explored');
-        this.list.toggleClass('state_invisible');
-        this.list.css('top', `${this.context.offset().top + (this.context.outerHeight() - 5)}px`);
-        if (this.id === 'select-city') {
-          $('body').toggleClass('state_unscroll');
+        if (this.context.hasClass('state_explored')) {
+          this.hideList();
+        } else {
+          this.showList();
         }
       });
 
       this.list.on('click', (e) => {
         this.handleNamedList(this.list.attr('id'), $(e.target));
-        $('body').removeClass('state_unscroll');
       });
 
       $(window).on('click', (e) => {
@@ -86,9 +73,31 @@ module.exports = (elem) => {
       });
     }
 
+    showList() {
+      this.context.addClass('state_explored');
+
+      if (!this.scrollBarInited) {
+        this.context.find('.scroll-pane').jScrollPane({
+          contentWidth: 100,
+          verticalDragMinHeight: 16,
+          verticalDragMaxHeight: 16,
+          verticalGutter: 16,
+          mouseWheelSpeed: 1,
+          animateDuration: 1000,
+        });
+        this.scrollBarInited = true;
+      }
+      this.list.removeClass('state_invisible');
+      this.list.css('top', `${this.context.offset().top + (this.context.outerHeight() - 5)}px`);
+      if (this.id === 'select-city') {
+        $('body').addClass('state_unscroll');
+      }
+    }
+
     hideList() {
       this.context.removeClass('state_explored');
       this.list.addClass('state_invisible');
+      $('body').removeClass('state_unscroll');
     }
 
     handleNamedList(id, el) {

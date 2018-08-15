@@ -1,11 +1,31 @@
 {% import "../button/button.njk" as Button %}
 
 {% macro dropdown( options ) %}
-  <div class="dropdown js-dropdown dropdown_theme-{{ options.theme }} {{ options.class }}" data-error="{{ options.error }}">
+  {% if options.attr %}
+    {% set attr = '' %}
+    {% set class_sep = joiner(' ') %}
+    {% set attr %}
+      {% for key, value in options.attr -%}
+        {{ class_sep() }} data-{{ key }} = "{{ value }}"
+      {%- endfor %}
+    {% endset %}
+  {% endif %}
+
+  {% if options.mods %}
+    {% set mods = '' %}
+    {% set class_sep = joiner(' ') %}
+    {% set mods %}
+      {% for key, value in options.mods -%}
+        {{ class_sep() }} dropdown_{{ key }}-{{ value }}
+      {%- endfor %}
+    {% endset %}
+  {% endif %}
+
+  <div class="dropdown js-dropdown {{ mods | safe }} {{ options.class }}" {{ attr | safe }}>
     <div class="dropdown__wrap">
       <select class="dropdown__select" hidden name="{{ options.name }}_select">
         {% for item in options.items %}
-          <option value={{ item.val }} {% if item.selected %}selected{% endif %}>{{ item.title }}</option>
+          <option value={{ item.value }} {% if item.selected %}selected{% endif %}>{{ item.title }}</option>
         {% endfor %}
       </select>
       <label class="dropdown__controls">
@@ -14,8 +34,5 @@
       </label>
       {{ Button.button({ 'name': 'close', 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'text' }, 'class': 'dropdown__clear js-dropdown-clear' }) }}
     </div>
-    {#<div class="dropdown__list state_inactive scroll-pane js-dropdown-list">#}
-      {#<ul></ul>#}
-    {#</div>#}
   </div>
 {% endmacro %}
