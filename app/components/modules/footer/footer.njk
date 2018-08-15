@@ -72,7 +72,7 @@
       {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': 'js-phone-masked', 'name': 'question_phone', 'state': 'required' }) }}
       {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': 'js-mail-masked', 'name': 'question_mail', 'state': 'required' }) }}
     </div>
-    {{ Dropdown.dropdown({ 'theme': 'bordered', 'label': 'Тема', 'name': 'question', 'items': [{'title': 'Предложения по сайту', 'val': '0'},{'title': 'Интернет-банк', 'val': '1'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required' }) }}
+    {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Тема', 'name': 'question', 'items': [{'title': 'Предложения по сайту', 'value': '0'},{'title': 'Интернет-банк', 'value': '1'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'question-form-list'} }) }}
     {{ Input.input({ 'label': 'Текст вопроса', 'tag': 'textarea', 'rows': '6', 'class': 'input_textarea form__field-group', 'state': 'required', 'name': 'question_text' }) }}
     <div class="form__action">
       <div class="form__agreements">

@@ -1,9 +1,10 @@
 {% import "../button/button.njk" as Button %}
 
 {% macro dropdown( options ) %}
+  {% set class_sep = joiner(' ') %}
+
   {% if options.attr %}
     {% set attr = '' %}
-    {% set class_sep = joiner(' ') %}
     {% set attr %}
       {% for key, value in options.attr -%}
         {{ class_sep() }} data-{{ key }} = "{{ value }}"
@@ -13,7 +14,6 @@
 
   {% if options.mods %}
     {% set mods = '' %}
-    {% set class_sep = joiner(' ') %}
     {% set mods %}
       {% for key, value in options.mods -%}
         {{ class_sep() }} dropdown_{{ key }}-{{ value }}
@@ -21,7 +21,7 @@
     {% endset %}
   {% endif %}
 
-  <div class="dropdown js-dropdown {{ mods | safe }} {{ options.class }}" {{ attr | safe }}>
+  <div class="dropdown js-dropdown {{ mods }} {{ options.class }}" {{ attr | safe }}>
     <div class="dropdown__wrap">
       <select class="dropdown__select" hidden name="{{ options.name }}_select">
         {% for item in options.items %}
