@@ -32,7 +32,7 @@ $(() => {
   $('.js-dropdown').each((i, el) => {
     global.dropdowns.push(Dropdown(el));
   });
-  global.contexts = [];
+  global.contexts = {};
   $('.js-context').each((i, el) => {
     global.contexts[$(el).data('id')] = Context(el);
   });

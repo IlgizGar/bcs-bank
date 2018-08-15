@@ -66,8 +66,8 @@ module.exports = (elem) => {
 
       $(window).on('click', (e) => {
         if (!$(e.target).closest('.js-context').length) {
-          global.contexts.forEach((el) => {
-            el.hideList();
+          Object.values(global.contexts).forEach((context) => {
+            context.hideList();
           });
         }
       });
