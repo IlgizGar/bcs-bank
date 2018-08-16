@@ -278,11 +278,10 @@
           </div>
         </div>
       </div>
-      {#
       <div id="atm-tab" class="offices__tabs-item tabs__item js-tab state_invisible">
-        <div class="collapse offices__collapse" data-city="Москва">
+        <div class="collapse offices__collapse" data-city="Москва" data-id="atm-tab">
 
-          <div class="collapse__item">
+          <div class="collapse__item" data-coords="[55.76,37.587]">
             <div class="collapse__control">
               <div class="collapse__control-title">
                 На проспекте Мира
@@ -323,7 +322,7 @@
             </div>
           </div>
 
-          <div class="collapse__item">
+          <div class="collapse__item" data-coords="[55.747,37.57]">
             <div class="collapse__control">
               <div class="collapse__control-title">
                 Кутузовский
@@ -364,7 +363,7 @@
             </div>
           </div>
 
-          <div class="collapse__item">
+          <div class="collapse__item" data-coords="[55.77,37.48]">
             <div class="collapse__control">
               <div class="collapse__control-title">
                 На проспекте Мира
@@ -405,7 +404,7 @@
             </div>
           </div>
 
-          <div class="collapse__item">
+          <div class="collapse__item" data-coords="[55.76,37.57]">
             <div class="collapse__control">
               <div class="collapse__control-title">
                 На проспекте Мира
@@ -446,7 +445,7 @@
             </div>
           </div>
 
-          <div class="collapse__item">
+          <div class="collapse__item" data-coords="[55.77,37.55]">
             <div class="collapse__control">
               <div class="collapse__control-title">
                 На проспекте Мира
@@ -487,7 +486,7 @@
             </div>
           </div>
 
-          <div class="collapse__item">
+          <div class="collapse__item" data-coords="[55.746,37.578]">
             <div class="collapse__control">
               <div class="collapse__control-title">
                 На проспекте Мира
@@ -529,6 +528,7 @@
           </div>
         </div>
       </div>
+      {#
 
       <div id="ultima-tab" class="offices__tabs-item tabs__item js-tab state_invisible">
         {{ Button.button({ 'title': 'Посмотреть список банкоматов Росбанка', 'name': 'download', 'class': 'offices__external-link', 'mods': {  } }) }}

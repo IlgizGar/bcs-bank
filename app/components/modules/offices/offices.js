@@ -9,7 +9,19 @@ export default class Offices {
   constructor(offices) {
     this.appBlock = offices;
     this.pane = $('.offices__tabs.scroll-pane');
-    this.currentTabId = this.getCurrentTab();
+    this.iconNormal = {
+      iconLayout: 'default#image',
+      iconImageHref: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4gICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz4gICAgICAgIDxnPiAgICAgICAgICAgIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEyIiBmaWxsPSIjRkZGIi8+ICAgICAgICAgICAgPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiIGZpbGw9IiM0NTczRDkiLz4gICAgICAgICAgICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSI0IiBmaWxsPSIjRkZGIi8+ICAgICAgICA8L2c+ICAgIDwvZz48L3N2Zz4=',
+      iconImageSize: [24, 24],
+      iconImageOffset: [-12, -12]
+    };
+    this.iconActive = {
+      iconLayout: 'default#image',
+      iconImageHref: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSI1NiIgdmlld0JveD0iMCAwIDU2IDU2Ij4gICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoNTZ2NTZIMHoiLz4gICAgICAgIDxnIGZpbGwtcnVsZT0ibm9uemVybyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTMgNikiPiAgICAgICAgICAgIDxwYXRoIGZpbGw9IiMzQjY2QzUiIGQ9Ik0zMCAxNC45NDNjLS4wMDIuNDA5LS4wMTkuODE4LS4wNSAxLjIyNS0uNDkyIDYuMTgzLTQuNTk0IDEyLjUzMS04LjI1NiAxOC41OTRMMTUgNDVWMjkuODg2Yy04LjI4NCAwLTE1LTYuNjktMTUtMTQuOTQzUzYuNzE2IDAgMTUgMGM4LjI4NCAwIDE1IDYuNjkgMTUgMTQuOTQzeiIvPiAgICAgICAgICAgIDxjaXJjbGUgY3g9IjE1IiBjeT0iMTUiIHI9IjYiIGZpbGw9IiNGRkYiLz4gICAgICAgIDwvZz4gICAgPC9nPjwvc3ZnPg==',
+      iconImageSize: [56, 56],
+      iconImageOffset: [-28, -44]
+    };
+    this.currentTabId = null;
     this.map = null;
     this.markCollection = null;
     this.city = 'Москва';
@@ -18,13 +30,13 @@ export default class Offices {
   }
 
   init() {
+    this.getCurrentTab();
     this.getPoints();
     Helpers.getGeolocation((location) => {
       ymaps.ready(() => {
         this.initMap();
         this.initObjectCollection();
         this.addPoints();
-        this.getCurrentTab();
       });
     });
     this.setScrollPane();
@@ -125,7 +137,8 @@ export default class Offices {
 
   getPoints() {
     const citySelector = this.city ? `[data-city="${this.city}"]` : '';
-    this.appBlock.find(`.offices__collapse${citySelector}`).children('.collapse__item').each((i, el) => {
+    this.points = [];
+    this.appBlock.find(`.offices__collapse${citySelector}[data-id="${this.currentTabId}"]`).children('.collapse__item').each((i, el) => {
       this.points.push({
         id: Offices.generatePointId($(el).data('coords')),
         coordinates: $(el).data('coords'),
@@ -134,10 +147,12 @@ export default class Offices {
   }
 
   addPoints() {
+    this.markCollection.removeAll();
     Object.values(this.points).forEach((el) => {
       const placemark = new ymaps.Placemark(el.coordinates, {
         collapse_id: el.id,
-      });
+      },
+      this.iconNormal);
       placemark.events.add('click', (e) => {
         this.onPointEvent(e, el.coordinates);
       });
@@ -157,10 +172,21 @@ export default class Offices {
 
   togglePointState(point, collapse) {
     this.markCollection.each((el) => {
-      el.options.unset('preset');
+      el.options.set('iconImageHref', this.iconNormal.iconImageHref);
+      el.options.set('iconImageSize', this.iconNormal.iconImageSize);
+      el.options.set('iconImageOffset', this.iconNormal.iconImageOffset);
+
     });
     if (collapse.parent().hasClass('collapse__item_state-open')) {
-      point.options.set('preset', 'islands#greenIcon');
+      point.options.set('iconImageHref', this.iconActive.iconImageHref);
+      point.options.set('iconImageSize', this.iconActive.iconImageSize);
+      point.options.set('iconImageOffset', this.iconActive.iconImageOffset);
+      this.goToPoint(point);
+    } else {
+      this.map.setBounds(this.markCollection.getBounds(), {
+        checkZoomRange: true,
+        zoom: 10,
+      });
     }
   }
 
@@ -176,14 +202,23 @@ export default class Offices {
 
     // Пересчет высоты при раскрытии элементов
     $('.collapse__control').on('click', (e) => {
+      const point = this.getPointById(Offices.generatePointId($(e.target).closest('.collapse__item').data('coords')));
       this.scrollToCollapse($(e.target));
       Offices.reInitScroll(this.pane, 225);
-      this.togglePointState(this.getPointById(Offices.generatePointId($(e.target).closest('.collapse__item').data('coords'))), $(e.target).closest('.collapse__control'));
+      this.togglePointState(point, $(e.target).closest('.collapse__control'));
     });
 
     // Пересчет высоты при смене таба
     $('.offices__tab-control').on('click', () => {
       Offices.reInitScroll(this.pane);
+      this.getCurrentTab();
+      console.log(this.currentTabId);
+      this.getPoints();
+      this.addPoints();
+      this.map.setBounds(this.markCollection.getBounds(), {
+        checkZoomRange: true,
+        zoom: 10,
+      });
     });
   }
 
@@ -195,6 +230,13 @@ export default class Offices {
 
   scrollToCollapse(el) {
     this.pane.data('jsp').scrollToY(el.closest('.collapse__item')[0].offsetTop, 75);
+  }
+
+  goToPoint(point) {
+    this.map.setBounds(point.geometry.getBounds(), {
+      checkZoomRange: true,
+      zoom: 10,
+    });
   }
 
   getPointById(id) {
@@ -212,7 +254,7 @@ export default class Offices {
   }
 
   getCurrentTab() {
-    return this.appBlock.find('.offices__content .tabs .tabs__item:visible').attr('id');
+    this.currentTabId = this.appBlock.find('.offices__content .tabs .tabs__item:not(.state_invisible)').attr('id');
   }
 }
 
