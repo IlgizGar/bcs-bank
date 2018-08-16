@@ -11,10 +11,9 @@
     {{ Tabbar.tabbar({ 'theme': 'default-tab', 'view': 'underscore', 'type': 'tab', 'buttonClass': 'offices__tab-control', 'tabs': [{'title': 'Отделения', 'id': 'offices-tab' }, {'title': 'Банкоматы', 'id': 'atm-tab'}, {'title': 'Ультима', 'id': 'ultima-tab'}], 'class': 'offices__tabbar' }) }}
     <div class="tabs js-tabs offices__tabs scroll-pane">
       <div id="offices-tab" class="offices__tabs-item tabs__item js-tab state_invisible">
+        <div class="collapse offices__collapse" data-city="Москва" data-id="offices-tab">
 
-        <div class="collapse offices__collapse">
-
-          <div class="collapse__item">
+          <div class="collapse__item" data-coords="[55.76,37.57]">
             <div class="collapse__control">
               <div class="collapse__control-description">
                 Москва
@@ -58,7 +57,7 @@
             </div>
           </div>
 
-          <div class="collapse__item">
+          <div class="collapse__item" data-coords="[55.76,37.58]">
             <div class="collapse__control">
               <div class="collapse__control-description">
                 Москва
@@ -102,7 +101,7 @@
             </div>
           </div>
 
-          <div class="collapse__item">
+          <div class="collapse__item" data-coords="[55.73,37.57]">
             <div class="collapse__control">
               <div class="collapse__control-description">
                 Москва
@@ -146,7 +145,7 @@
             </div>
           </div>
 
-          <div class="collapse__item">
+          <div class="collapse__item" data-coords="[55.73,37.56]">
             <div class="collapse__control">
               <div class="collapse__control-description">
                 Москва
@@ -190,7 +189,7 @@
             </div>
           </div>
 
-          <div class="collapse__item">
+          <div class="collapse__item" data-coords="[55.78,37.56]">
             <div class="collapse__control">
               <div class="collapse__control-description">
                 Москва
@@ -234,7 +233,7 @@
             </div>
           </div>
 
-          <div class="collapse__item">
+          <div class="collapse__item" data-coords="[55.72,37.54]">
             <div class="collapse__control">
               <div class="collapse__control-description">
                 Москва
@@ -279,9 +278,9 @@
           </div>
         </div>
       </div>
-
+      {#
       <div id="atm-tab" class="offices__tabs-item tabs__item js-tab state_invisible">
-        <div class="collapse offices__collapse">
+        <div class="collapse offices__collapse" data-city="Москва">
 
           <div class="collapse__item">
             <div class="collapse__control">
@@ -532,11 +531,8 @@
       </div>
 
       <div id="ultima-tab" class="offices__tabs-item tabs__item js-tab state_invisible">
-
         {{ Button.button({ 'title': 'Посмотреть список банкоматов Росбанка', 'name': 'download', 'class': 'offices__external-link', 'mods': {  } }) }}
-
-
-        <div class="collapse offices__collapse">
+        <div class="collapse offices__collapse" data-city="Москва" >
 
           <div class="collapse__item">
             <div class="collapse__control">
@@ -770,6 +766,7 @@
           </div>
         </div>
       </div>
+      #}
     </div>
   </div>
 </div>

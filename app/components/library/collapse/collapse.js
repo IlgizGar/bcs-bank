@@ -9,13 +9,16 @@ export default class Collapse {
   init() {
     this.$itemsBlock.find('.collapse__control').each((i, el) => {
       $(el).on('click', (e) => {
-        $(e.currentTarget).next('.collapse__content').slideToggle(225).closest('.collapse__item')
-          .toggleClass('collapse__item_state-open')
-          .siblings()
-          .removeClass('collapse__item_state-open')
-          .children('.collapse__content')
-          .slideUp(225);
+        this.openContent(e.currentTarget);
       });
     });
+  }
+  openContent(el) {
+    $(el).next('.collapse__content').slideToggle(225).closest('.collapse__item')
+      .toggleClass('collapse__item_state-open')
+      .siblings()
+      .removeClass('collapse__item_state-open')
+      .children('.collapse__content')
+      .slideUp(225);
   }
 }
