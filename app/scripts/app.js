@@ -34,9 +34,7 @@ $(() => {
   });
   global.contexts = {};
   $('.js-context').each((i, el) => {
-    console.log('ID', $(el).data('id'));
     global.contexts[$(el).data('id')] = Context(el);
-    console.log('CONTEXTS', global.contexts);
   });
   global.contacts = [];
   $('.js-contact').each((i, el) => {
@@ -60,10 +58,10 @@ $(() => {
       global.mediaSliders.push(MediaSlider($(el)));
     });
   }
-  global.collapses = [];
+  global.collapses = {};
   if ($('.collapse').length) {
     $('.collapse').each((i, el) => {
-      global.collapses.push(new Collapse($(el)));
+      global.collapses[$(el).data('id')] = new Collapse($(el));
     });
   }
   global.sortableTables = [];
@@ -107,7 +105,7 @@ $(() => {
   }
 
   if ($('.offices').length) {
-    global.officesMap = new Offices();
+    global.officesMap = new Offices($('.offices'));
   }
 
   // global.datepickers = [];

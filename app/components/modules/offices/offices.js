@@ -6,30 +6,58 @@ import 'jscrollpane';
 import Helpers from '../../../scripts/helpers';
 
 export default class Offices {
-  constructor() {
+  constructor(offices) {
+    this.appBlock = offices;
+    this.pane = $('.offices__tabs.scroll-pane');
+    this.iconNormal = {
+      iconLayout: 'default#image',
+      iconImageHref: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4gICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz4gICAgICAgIDxnPiAgICAgICAgICAgIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEyIiBmaWxsPSIjRkZGIi8+ICAgICAgICAgICAgPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiIGZpbGw9IiM0NTczRDkiLz4gICAgICAgICAgICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSI0IiBmaWxsPSIjRkZGIi8+ICAgICAgICA8L2c+ICAgIDwvZz48L3N2Zz4=',
+      iconImageSize: [24, 24],
+      iconImageOffset: [-12, -12]
+    };
+    this.iconActive = {
+      iconLayout: 'default#image',
+      iconImageHref: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSI1NiIgdmlld0JveD0iMCAwIDU2IDU2Ij4gICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoNTZ2NTZIMHoiLz4gICAgICAgIDxnIGZpbGwtcnVsZT0ibm9uemVybyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTMgNikiPiAgICAgICAgICAgIDxwYXRoIGZpbGw9IiMzQjY2QzUiIGQ9Ik0zMCAxNC45NDNjLS4wMDIuNDA5LS4wMTkuODE4LS4wNSAxLjIyNS0uNDkyIDYuMTgzLTQuNTk0IDEyLjUzMS04LjI1NiAxOC41OTRMMTUgNDVWMjkuODg2Yy04LjI4NCAwLTE1LTYuNjktMTUtMTQuOTQzUzYuNzE2IDAgMTUgMGM4LjI4NCAwIDE1IDYuNjkgMTUgMTQuOTQzeiIvPiAgICAgICAgICAgIDxjaXJjbGUgY3g9IjE1IiBjeT0iMTUiIHI9IjYiIGZpbGw9IiNGRkYiLz4gICAgICAgIDwvZz4gICAgPC9nPjwvc3ZnPg==',
+      iconImageSize: [56, 56],
+      iconImageOffset: [-28, -44]
+    };
+    this.currentTabId = null;
     this.map = null;
+    this.markCollection = null;
+    this.city = 'Москва';
+    this.points = [];
     this.init();
   }
 
   init() {
-    this.initMap();
-    Offices.setScrollPane();
+    this.getCurrentTab();
+    this.getPoints();
+    Helpers.getGeolocation((location) => {
+      ymaps.ready(() => {
+        this.initMap();
+        this.initObjectCollection();
+        this.addPoints();
+      });
+    });
+    this.setScrollPane();
   }
 
   initMap() {
-    Helpers.getGeolocation((location) => {
-      ymaps.ready(() => {
-        Helpers.getGeolocation();
-        // Создание карты.
-        this.map = new ymaps.Map('map-container', {
-          center: [55.76, 37.57],
-          zoom: 13,
-          controls: [],
-        });
-        this.map.behaviors.disable('scrollZoom');
-        this.map.options.set('suppressMapOpenBlock', true);
-        this.setZoomControls();
-      });
+    Helpers.getGeolocation();
+    // Создание карты.
+    this.map = new ymaps.Map('map-container', {
+      center: [55.76, 37.57],
+      zoom: 13,
+      controls: [],
+    });
+    this.map.behaviors.disable('scrollZoom');
+    this.map.options.set('suppressMapOpenBlock', true);
+    this.setZoomControls();
+  }
+
+  initObjectCollection() {
+    this.markCollection = new ymaps.GeoObjectCollection(null, {
+      preset: 'islands#blueIcon',
     });
   }
 
@@ -107,10 +135,63 @@ export default class Offices {
     });
   }
 
-  static setScrollPane() {
-    const pane = $('.offices__tabs.scroll-pane');
+  getPoints() {
+    const citySelector = this.city ? `[data-city="${this.city}"]` : '';
+    this.points = [];
+    this.appBlock.find(`.offices__collapse${citySelector}[data-id="${this.currentTabId}"]`).children('.collapse__item').each((i, el) => {
+      this.points.push({
+        id: Offices.generatePointId($(el).data('coords')),
+        coordinates: $(el).data('coords'),
+      });
+    });
+  }
 
-    pane.jScrollPane({
+  addPoints() {
+    this.markCollection.removeAll();
+    Object.values(this.points).forEach((el) => {
+      const placemark = new ymaps.Placemark(el.coordinates, {
+        collapse_id: el.id,
+      },
+      this.iconNormal);
+      placemark.events.add('click', (e) => {
+        this.onPointEvent(e, el.coordinates);
+      });
+      this.markCollection.add(placemark);
+    });
+    this.map.geoObjects.add(this.markCollection);
+  }
+
+  onPointEvent(e, coordinates) {
+    const currentCollapse = global.collapses[this.currentTabId];
+    const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${coordinates.join()}]"] .collapse__control`);
+    this.scrollToCollapse(target);
+    currentCollapse.openContent(target);
+    Offices.reInitScroll(this.pane, 225);
+    this.togglePointState(e.get('target'), target);
+  }
+
+  togglePointState(point, collapse) {
+    this.markCollection.each((el) => {
+      el.options.set('iconImageHref', this.iconNormal.iconImageHref);
+      el.options.set('iconImageSize', this.iconNormal.iconImageSize);
+      el.options.set('iconImageOffset', this.iconNormal.iconImageOffset);
+
+    });
+    if (collapse.parent().hasClass('collapse__item_state-open')) {
+      point.options.set('iconImageHref', this.iconActive.iconImageHref);
+      point.options.set('iconImageSize', this.iconActive.iconImageSize);
+      point.options.set('iconImageOffset', this.iconActive.iconImageOffset);
+      this.goToPoint(point);
+    } else {
+      this.map.setBounds(this.markCollection.getBounds(), {
+        checkZoomRange: true,
+        zoom: 10,
+      });
+    }
+  }
+
+  setScrollPane() {
+    this.pane.jScrollPane({
       contentWidth: 100,
       verticalDragMinHeight: 16,
       verticalDragMaxHeight: 16,
@@ -120,13 +201,24 @@ export default class Offices {
     });
 
     // Пересчет высоты при раскрытии элементов
-    $('.collapse__control').on('click', () => {
-      Offices.reInitScroll(pane, 225);
+    $('.collapse__control').on('click', (e) => {
+      const point = this.getPointById(Offices.generatePointId($(e.target).closest('.collapse__item').data('coords')));
+      this.scrollToCollapse($(e.target));
+      Offices.reInitScroll(this.pane, 225);
+      this.togglePointState(point, $(e.target).closest('.collapse__control'));
     });
 
     // Пересчет высоты при смене таба
     $('.offices__tab-control').on('click', () => {
-      Offices.reInitScroll(pane);
+      Offices.reInitScroll(this.pane);
+      this.getCurrentTab();
+      console.log(this.currentTabId);
+      this.getPoints();
+      this.addPoints();
+      this.map.setBounds(this.markCollection.getBounds(), {
+        checkZoomRange: true,
+        zoom: 10,
+      });
     });
   }
 
@@ -135,4 +227,34 @@ export default class Offices {
       pane.data('jsp').reinitialise();
     }, time);
   }
+
+  scrollToCollapse(el) {
+    this.pane.data('jsp').scrollToY(el.closest('.collapse__item')[0].offsetTop, 75);
+  }
+
+  goToPoint(point) {
+    this.map.setBounds(point.geometry.getBounds(), {
+      checkZoomRange: true,
+      zoom: 10,
+    });
+  }
+
+  getPointById(id) {
+    let point = null;
+    this.markCollection.each((el) => {
+      if (id === el.properties.get('collapse_id')) {
+        point = el;
+      }
+    });
+    return point;
+  }
+
+  static generatePointId(coords) {
+    return coords.join().replace(/[. ,]+/g, '');
+  }
+
+  getCurrentTab() {
+    this.currentTabId = this.appBlock.find('.offices__content .tabs .tabs__item:not(.state_invisible)').attr('id');
+  }
 }
+
