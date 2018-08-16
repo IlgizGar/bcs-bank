@@ -7,12 +7,12 @@
 </div>
 <div class="services__block services__block_theme-check">
   <div class="services__radio-group">
-    {{ Radio.radio({'class': 'js-check-radio', 'label': 'По номеру ВУ/СТС', 'name': 'check-exist', 'id': 'check_vu', 'checked': 'true', 'data': 'data-check=vu' }) }}
-    {{ Radio.radio({'class': 'js-check-radio', 'label': 'По номеру постановления', 'name': 'check-exist', 'id': 'check_post', 'data': 'data-check=post'}) }}
+    {{ Radio.radio({'class': 'js-check-radio', 'label': 'По номеру ВУ/СТС', 'name': 'check-exist', 'id': 'check_vu', 'state': 'checked', 'attr': {'check': 'vu'} }) }}
+    {{ Radio.radio({'class': 'js-check-radio', 'label': 'По номеру постановления', 'name': 'check-exist', 'id': 'check_post', 'attr': {'data': 'post'} }) }}
   </div>
 
   {{ Input.input({ 'label': 'Водительское удостоверение', 'class': 'js-check-vu mb-16', 'field': 'js-license-masked', 'name': 'driver_license' }) }}
   {{ Input.input({ 'class': 'js-check-vu', 'label': 'Свидетельство о регистрации', 'field': 'js-license-masked', 'name': 'driver_registration'}) }}
-  {{ Input.input({ 'label': 'Номер постановления о штрафе', 'name': 'driver_post', 'class': 'js-check-post state_hidden mb-16'}) }}
-  {{ Input.input({ 'label': '', 'class': 'js-check-post state_hidden state_inactive'}) }}
+  {{ Input.input({ 'class': 'js-check-post state_hidden mb-16', 'label': 'Номер постановления о штрафе', 'name': 'driver_post'}) }}
+  {{ Input.input({ 'class': 'js-check-post state_hidden state_inactive', 'label': '' }) }}
 </div>
