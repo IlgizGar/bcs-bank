@@ -156,15 +156,15 @@
                     <div class="services__credit-card">
                       {{ Heading.heading({ 'title': 'Данные отправителя', 'type': 'small', 'margin': 'none', 'theme': 'default'}) }}
                       {{ Input.input({ 'label': 'Номер карты', 'name': 'card_sender', 'class': 'services__card-sender', 'field': 'js-card-masked', 'state': 'required' }) }}
-                      {{ Input.input({ 'label': 'CVV/CVV2', 'name': 'card_cvv', 'class': 'services__card-code mt-16', 'field': 'js-cvv-masked', 'state': 'required' }) }}
-                      {{ Input.input({ 'label': 'Срок действия', 'name': 'card_period', 'class': 'services__card-period mt-16', 'field': 'js-period-masked', 'state': 'required' }) }}
+                      {{ Input.input({ 'label': 'CVV/CVV2', 'name': 'card_cvv', 'class': 'services__card-code mt-16', 'field': 'js-cvv-masked', 'state': 'required maxlength=3' }) }}
+                      {{ Input.input({ 'label': 'Срок действия', 'name': 'card_period', 'class': 'services__card-period mt-16', 'field': 'js-period-masked', 'state': 'required maxlength=5' }) }}
                     </div>
                     <div class="services__credit-card">
                       {{ Heading.heading({ 'title': 'Данные получателя', 'type': 'small', 'margin': 'none', 'theme': 'default'}) }}
                       {{ Input.input({ 'label': 'Номер карты', 'name': 'card_reciever', 'class': 'services__card-sender', 'field': 'js-card-masked', 'state': 'required' }) }}
                     </div>
                     <div class="services__transfer-controls">
-                      {{ Input.input({ 'label': 'Сумма перевода', 'name': 'transfer_amount', 'icon': 'ruble', 'class': 'services__card-summ', 'field': 'js-numeric-input js-transfer-input', 'state': 'maxlength=6 required', 'data': 'data-max=75000 data-commission=0.02' }) }}
+                      {{ Input.input({ 'label': 'Сумма перевода', 'name': 'transfer_amount', 'icon': 'ruble', 'class': 'services__card-summ', 'field': 'js-numeric-input js-transfer-input', 'state': 'maxlength=6 required', 'attr': {'max': '75000', 'commission': '0.02'} }) }}
                       <input class="js-commission-amount" value="0" hidden>
                       <div class="services__card-commission">
                         <p class="js-commission-info">Комиссия за перевод будет <br> расчитана автоматически</p>

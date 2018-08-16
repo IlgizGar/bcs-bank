@@ -1,11 +1,31 @@
 {% import "../currency/currency.njk" as Currency %}
 
 {% macro radio( options ) %}
-  <div class="radio {{ options.class }}" {{ options.data }}>
-      <input class="radio__field" id="{{ options.id }}" type="radio" name="{{ options.name }}" value="{{ options.value }}" {% if options.checked %}checked{% endif %}/>
+  {% set class_sep = joiner(' ') %}
+
+  {% if options.attr %}
+    {% set attr = '' %}
+    {% set attr %}
+      {% for key, value in options.attr -%}
+        {{ class_sep() }} data-{{ key }} = "{{ value }}"
+      {%- endfor %}
+    {% endset %}
+  {% endif %}
+
+  {% if options.mods %}
+    {% set mods = '' %}
+    {% set mods %}
+      {% for key, value in options.mods -%}
+        {{ class_sep() }} dropdown_{{ key }}-{{ value }}
+      {%- endfor %}
+    {% endset %}
+  {% endif %}
+
+  <div class="radio {{ options.class }} {{ mods | safe }}" {{ attr | safe }}>
+      <input class="radio__field" id="{{ options.id }}" type="radio" name="radio_{{ options.name }}" value="{{ options.value }}" {{ options.state | safe }}/>
       <label for="{{ options.id }}" class="radio__label">
-        {% if options.view === "currency" %}
-          {{ Currency.currency({ 'value': options.label, 'state': options.state }) }}
+        {% if options.currency %}
+          {{ Currency.currency({ 'value': options.currency.label, 'state': options.currency.state }) }}
         {% else %}
           {{ options.label }}
         {% endif %}

@@ -23,19 +23,20 @@
       <tbody>
       <tr>
         <td>USD</td>
-        <td>{{ Radio.radio({ 'class': 'js-course-radio', 'view': 'currency', 'label': '62.34', 'value': '62.34', 'state': 'rise', 'name': 'course-fix', 'id': 'course-buy_usd', 'data': 'data-currency=USD', 'checked': 'true' }) }}</td>
-        <td>{{ Radio.radio({ 'class': 'js-course-radio', 'view': 'currency', 'label': '62.79', 'value': '62.79', 'state': 'fall', 'name': 'course-fix', 'id': 'course-cell_usd', 'data': 'data-currency=USD' }) }}</td>
+        <td>{{ Radio.radio({ 'class': 'js-course-radio', 'currency' : {'state': 'rise', 'label': '62.34'}, 'value': '62.34', 'name': 'course-fix', 'id': 'course-buy_usd', 'attr': { 'currency': 'USD'}, 'state': 'checked' }) }}</td>
+        <td>{{ Radio.radio({ 'class': 'js-course-radio', 'currency' : {'state': 'fall', 'label': '62.79'}, 'value': '62.79', 'name': 'course-fix', 'id': 'course-cell_usd', 'attr': {'currency': 'USD'} }) }}</td>
       </tr>
       <tr>
         <td>EUR</td>
-        <td>{{ Radio.radio({ 'class': 'js-course-radio', 'view': 'currency', 'label': '59.4', 'value': '59.4', 'state': 'fall', 'name': 'course-fix', 'id': 'course-buy_eur', 'data': 'data-currency=EUR' }) }}</td>
-        <td>{{ Radio.radio({ 'class': 'js-course-radio', 'view': 'currency', 'label': '57.12', 'value': '57.12', 'state': 'fall', 'name': 'course-fix', 'id': 'course-cell_eur', 'data': 'data-currency=EUR' }) }}</td>
+        <td>{{ Radio.radio({ 'class': 'js-course-radio', 'currency': {'state': 'fall', 'label': '59.4'}, 'value': '59.4', 'name': 'course-fix', 'id': 'course-buy_eur', 'attr': {'currency': 'EUR'} }) }}</td>
+        <td>{{ Radio.radio({ 'class': 'js-course-radio', 'currency': {'state': 'fall', 'label': '57.12'}, 'value': '57.12', 'name': 'course-fix', 'id': 'course-cell_eur', 'attr': {'currency': 'EUR'} }) }}</td>
       </tr>
       </tbody>
     </table>
 
-    {{ Input.input({ 'label': 'Сумма', 'name': 'fix_course', 'title': 'USD', 'class': 'js-course-input mb-16', 'field': 'js-numeric-input js-fix-course', 'state': 'maxlength=5 required', 'data': 'data-max=4000' }) }}
-    <input class="js-course-amount" name="input_course-result" hidden value="">
+    {{ Input.input({ 'label': 'Сумма', 'title': 'USD', 'name': 'fix-course', 'class': 'js-course-field mb-16', 'field': 'js-numeric-input js-course-input', 'attr': {'max': '4000'}, 'state': 'maxlength=5 required' }) }}
+    <label><input class="js-course-result-field" name="course-result-field" hidden value="0"></label>
+
     <div class="course__result">
       <p>Сумма сделки</p>
       <p><span class="js-course-result">0</span> RUB</p>

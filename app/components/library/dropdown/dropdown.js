@@ -47,7 +47,9 @@ module.exports = (elem) => {
         if ($(e.target).closest('ul').length) {
           this.dropdown.addClass('state_filled');
           this.input.val($(e.target).html());
-
+          if (this.input.closest('form').length) {
+            this.input.valid();
+          }
           this.options.attr('selected', false);
           this.select.find(`[value="${$(e.target).data('val')}"]`).attr('selected', 'selected');
         }
@@ -58,6 +60,9 @@ module.exports = (elem) => {
         this.hideList();
         this.input.val('');
         this.options.attr('selected', false);
+        if (this.input.closest('form').length) {
+          this.input.valid();
+        }
       });
 
       $(window).on('click', (e) => {
