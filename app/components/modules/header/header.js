@@ -31,9 +31,13 @@ module.exports = (elem) => {
         }
       });
 
-      // $('body').on('keypress', (e) => {
-      //   console.log('BUT', e.which());
-      // });
+      $('html').keydown((e) => {
+        if (e.keyCode === 27) {
+          this.btnContacts.removeClass('state_active');
+          this.contacts.removeClass('state_explored');
+          $('main').find('.js-cover').remove();
+        }
+      });
     }
   }
 
