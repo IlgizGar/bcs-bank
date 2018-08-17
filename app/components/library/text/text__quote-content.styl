@@ -1,2 +1,24 @@
-.text .text__quote-content
-  opensansBold()
+.text
+  .text__quote
+    .text__quote-content
+      opensansBold()
+      position: relative
+      &:before
+        content: ''
+        display: block
+        height: 24px
+        width: 24px
+        position: absolute
+        left: -44px
+        right: 0
+        background-image: url("/assets/images/svg/quote.svg")
+        background-repeat: no-repeat
+        background-position: center center
+    &.text__quote_theme-blue
+      .text__quote-content
+        max-width: 750px
+        line-height: 1.5
+        color: $white
+        &:before
+          background-image: url("/assets/images/svg/quote-light.svg")
+

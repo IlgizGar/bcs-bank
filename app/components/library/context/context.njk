@@ -4,10 +4,10 @@
   {% if options.data %}
     {% set options = options.data %}
   {% endif %}
+  {% set class_sep = joiner(' ') %}
 
   {% if options.attr %}
     {% set attr = '' %}
-    {% set class_sep = joiner(' ') %}
     {% set attr %}
       {% for key, value in options.attr -%}
         {{ class_sep() }} data-{{ key }} = "{{ value }}"
@@ -17,7 +17,6 @@
 
   {% if options.mods %}
     {% set mods = '' %}
-    {% set class_sep = joiner(' ') %}
     {% set mods %}
       {% for key, value in options.mods -%}
         {{ class_sep() }} context_{{ key }}-{{ value }}

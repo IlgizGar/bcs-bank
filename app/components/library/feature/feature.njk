@@ -1,6 +1,24 @@
 {% macro feature( options ) %}
-  <div class="feature {{ options.class }}">
-    <p>{{ options.title }}</p>
-    <p>{{ options.subtitle }}</p>
+  {% set class_sep = joiner(' ') %}
+  {% if options.mods %}
+    {% set mods = '' %}
+    {% set mods %}
+      {% for key, value in options.mods -%}
+        {{ class_sep() }} feature_{{ key }}-{{ value }}
+      {%- endfor %}
+    {% endset %}
+  {% endif %}
+
+  <div class="feature {{ mods | safe }} {{ options.class }}">
+    {% if options.iconPath %}
+      <div class="feature__icon">
+        <img src="{{ options.iconPath }}">
+      </div>
+    {% endif %}
+    <div class="feature__content">
+      <span class="feature__title">{{ options.title }}</span>
+      <span class="feature__text">{{ options.text }}</span>
+    </div>
   </div>
 {% endmacro %}
+
