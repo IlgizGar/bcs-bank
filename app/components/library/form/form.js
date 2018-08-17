@@ -6,38 +6,23 @@ module.exports = (elem) => {
   class Form {
     constructor(selector) {
       this.form = $(selector);
-      const validator = Validator(this.form);
+      this.validator = Validator(this.form);
 
-      const submitHandler = () => {
-        console.log('SUBMITTED');
-      };
-
-      validator.validateForm(submitHandler);
-      // this.numericField = this.form.find('.js-numeric-input');
-      // this.phoneField = this.form.find('.js-phone-masked');
-      // this.mailField = this.form.find('.js-mail-masked');
-      // this.bankCardNumber = this.form.find('.js-card-masked');
-      // this.bankCardCode = this.form.find('.js-cvv-masked');
-      // this.bankCardPeriod = this.form.find('.js-period-masked');
-      // this.transferAmount = this.form.find('.js-transfer-amount');
-      //
-      //
-      // this.driveLicense = this.form.find('.js-license-masked');
-      //
-      // this.nameField = this.form.find('.js-fio-masked');
-      //
-      // this.init();
-      // this.maskFields();
-      // // this.formEvents();
+      this.validateForm();
       this.blockEvents(); // Обработчик событий не свзяанных непосредственно с работой формы
-      // this.validateForm();
     }
 
-    // maskFields() {
-    //   this.mailField.inputmask({
-    //
-    //   });
-    // }
+    validateForm() {
+      const submitHandler = () => {
+        const $msgSuccess = this.form.closest('.js-form').find('.js-form-success');
+        const $msgError = this.form.closest('.js-form').find('.js-form-error');
+
+        $msgError.removeClass('state_hidden');
+        this.form.addClass('state_hidden');
+      };
+
+      this.validator.validateForm(submitHandler);
+    }
 
     blockEvents() {
       const transferAmountField = $('.js-transfer-input');
