@@ -7,17 +7,33 @@ module.exports = (elem) => {
     constructor(selector) {
       this.form = $(selector);
       this.validator = Validator(this.form);
+      this.msgSucess = this.form.closest('.js-form').find('.js-form-success');
+      this.msgError = this.form.closest('.js-form').find('.js-form-error');
 
       this.validateForm();
       this.blockEvents(); // Обработчик событий не свзяанных непосредственно с работой формы
+      this.events();
+    }
+
+    events() {
+      if (this.form.closest('.modal').length) {
+        this.form.closest('.modal').on($.modal.BEFORE_CLOSE, () => {
+          // if (this.msgError.hasClass('state_hidden') || this.msgSucess.hasClass('state_hidden')) {
+          //   this.form.find('.js-input').each((el) => {
+          //     $(el).removeClass('state_filled');
+          //   });
+          //   this.form.removeClass('state_hidden');
+          //   this.msgError.addClass('state_hidden');
+          //   this.msgSucess.addClass('state_hidden');
+          // }
+        });
+      }
     }
 
     validateForm() {
       const submitHandler = () => {
-        const $msgSuccess = this.form.closest('.js-form').find('.js-form-success');
-        const $msgError = this.form.closest('.js-form').find('.js-form-error');
-
-        $msgError.removeClass('state_hidden');
+        // const data = this.form.serializeArray();
+        this.msgError.removeClass('state_hidden');
         this.form.addClass('state_hidden');
       };
 
