@@ -1,0 +1,10 @@
+{% macro info( options ) %}
+  <div class="info {{ options.class }}">
+    <div class="info__title">{{ options.title }}</div>
+    {% if options.href%}
+    <div class="info__text"><a href="{{ options.href }}">{{ options.text }}</a></div>
+    {% else %}
+    <div class="info__text">{{ options.text }}</div>
+    {% endif %}
+  </div>
+{% endmacro %}

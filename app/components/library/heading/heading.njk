@@ -6,7 +6,7 @@
         {% set tag = options.tag %}
     {% endif %}
 
-    <{{ tag }} class="heading heading_type-{{ options.type }} heading_margin-{{ options.margin }} heading_theme-{{ options.theme }} {{ options.class }}">
+    <{{ tag }} class="heading heading_type-{{ options.type }} heading_margin-top-{{ options.marginTop }} heading_margin-{{ options.margin }} heading_theme-{{ options.theme }} {{ options.class }}">
         <span>{{ options.title }}</span>
         {% if options.context %}
 
