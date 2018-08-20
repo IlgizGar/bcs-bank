@@ -37,6 +37,7 @@
     "simple-scrollbar": "^0.4.0",
     "slick-carousel": "^1.8.1",
     "smart-grid": "^2.1.1",
+    "stickyfilljs": "^2.1.0",
     "svg4everybody": "^2.1.9",
     "tablesorter": "^2.30.7"
   },

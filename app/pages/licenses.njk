@@ -7,32 +7,27 @@
 {% import "../components/modules/menubar/menubar.njk" as Menubar %}
 {% import "../components/icon/icon.njk" as Icon %}
 
-
 {% set root = "." %}
 {% set title = "Лицензии" %}
 
 {% block body %}
-  <div class="page js-page">
-
-    {% include "../components/modules/header/header.njk" %}
-
+  <div class="page js-page"> {% include "../components/modules/header/header.njk" %}
     <main role="main">
-      <section class="section page__section page__section_theme-large">
-
-        {# Чтобы установить картинку на фон, необходимо добавить style="backgraun-image: url(путь до картинки)" #}
-        <div class="section__header section__header_theme-blue">
+      <section
+        class="section page__section page__section_theme-large"> {# Чтобы установить картинку на фон, необходимо добавить style="backgraun-image: url(путь до картинки)" #}
+        <div
+          class="section__header section__header_theme-blue">
           {{ Menubar.menubar({ 'theme': 'blue', 'class': 'section__menubar' }) }}
-          <div class="page__container page__container_type-header">
-            {{ Heading.heading({ 'tag': 'h1', 'title': 'Лицензии' | striptags(true) | escape | nl2br, 'type': 'large', 'margin': 'long' }) }}
-          </div>
+          <div
+            class="page__container page__container_type-header">
+            {{ Heading.heading({ 'tag': 'h1', 'title': 'Лицензии' | striptags(true) | escape | nl2br, 'type': 'large', 'margin': 'long' }) }} </div>
         </div>
-
       </section>
-
       <section class="section page__section page__section_theme-last">
         <div class="page__container">
           <div class="section__row">
-            <div class="section__content section__content_theme-centered">
+            <div
+              class="section__content section__content_theme-centered">
               {{ Docs.docs({ 'title': 'Генеральная лицензия на осуществление банковских операций №101', 'href': '#', 'type': 'ZIP', 'size': '213 КБ', 'class': 'mb-32'}) }}
               {{ Docs.docs({ 'title': 'Лицензия на осуществление банковских операций №101', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'class': 'mb-32'}) }}
               {{ Docs.docs({ 'title': 'Лицензия профессионального участника рынка ценных бумаг на осуществление брокерской деятельности', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'class': 'mb-32'}) }}
@@ -40,23 +35,15 @@
               {{ Docs.docs({ 'title': 'Лицензия на осуществление депозитарной деятельности', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'class': 'mb-32'}) }}
               {{ Docs.docs({ 'title': 'Лицензия на осуществление деятельности по распространению шифровальных средств', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'class': 'mb-32'}) }}
               {{ Docs.docs({ 'title': 'Лицензия на осуществление деятельности по распространению шифровальных средств', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'class': 'mb-64'}) }}
-
-              <div class="text">
-                <p class="text__paragraph">
-                  Факты приостановления действия лицензий, возобновления действия лицензий, направления профессиональным
-                  участником заявления об аннулировании лицензий и принятия Банком России решения об аннулировании
-                  лицензий отсутствуют.
-                </p>
-                <p class="text__paragraph text__paragraph_theme-last">
-                  Дата раскрытия информации: 20.05.2016 г. <br>
-                  Период актуальности: с 19.02.2015 – по настоящее время.
-                </p>
-              </div>
+              <div class="text"><p class="text__paragraph"> Факты приостановления действия лицензий, возобновления
+                  действия лицензий, направления профессиональным участником заявления об аннулировании лицензий и
+                  принятия Банком России решения об аннулировании лицензий отсутствуют. </p>
+                <p class="text__paragraph text__paragraph_theme-last"> Дата раскрытия информации: 20.05.2016 г. <br>
+                  Период актуальности: с 19.02.2015 – по настоящее время. </p></div>
             </div>
           </div>
         </div>
       </section>
-
     </main>
 
     {% include "../components/modules/footer/footer.njk" %}
