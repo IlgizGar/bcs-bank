@@ -40,292 +40,330 @@
             <div class="section__content section__content_medium section__content_theme-centered">
               <div class="tabs js-tabs">
                 <div id="charter" class="tabs__item js-tab state_invisible">
-                  {{ Heading.heading({ 'title': 'Устав банка' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'normal' }) }}
+                  <div class="documents__group js-documents-group">
+                    {{ Heading.heading({ 'title': 'Устав банка' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'normal' }) }}
 
-                  {{ Docs.docs({ 'title': 'Изменения №5 в устав', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Изменения №4 в устав', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Изменения №3 в устав', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Изменения №2 в устав', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Изменения №1 в устав', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Устав', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'note': 'В редакции от 10.11.2015', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Устав', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'note': 'В редакции от 10.03.2015', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Устав', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'note': 'В редакции от 03.10.2014', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Изменения №1 в устав', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Изменения №2 в устав', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'class': ''}) }}
+                    {{ Docs.docs({ 'title': 'Изменения №5 в устав', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Изменения №4 в устав', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Изменения №3 в устав', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Изменения №2 в устав', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Изменения №1 в устав', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Устав', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'note': 'В редакции от 10.11.2015', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Устав', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'note': 'В редакции от 10.03.2015', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Устав', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'note': 'В редакции от 03.10.2014', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Изменения №1 в устав', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Изменения №2 в устав', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'attr': { 'documents-year': '2015' } }) }}
+                  </div>
 
-                  {{ Heading.heading({ 'title': 'Зарегистрированные решения \n о выпуске ценных бумаг' | striptags(true) | escape | nl2br, 'type': 'normal', 'margin': 'short', 'class': 'mt-64' }) }}
+                  <div class="documents__group js-documents-group">
+                    {{ Heading.heading({ 'title': 'Зарегистрированные решения \n о выпуске ценных бумаг' | striptags(true) | escape | nl2br, 'type': 'normal', 'margin': 'short', 'class': 'mt-64' }) }}
 
-                  {{ Docs.docs({ 'title': 'Решение о выпуске 31.03.2010', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Решение о выпуске 16.01.2009', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Решение о выпуске 24.05.2007', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Решение о выпуске 1.12.2006', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Решение о выпуске 26.04.2005', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'class': ''}) }}
+                    {{ Docs.docs({ 'title': 'Решение о выпуске 31.03.2010', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Решение о выпуске 16.01.2009', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Решение о выпуске 24.05.2007', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Решение о выпуске 1.12.2006', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Решение о выпуске 26.04.2005', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'attr': { 'documents-year': '2015' } }) }}
 
-                  {{ Heading.heading({ 'title': 'Годовая отчетность', 'type': 'normal', 'margin': 'short', 'class': 'mt-64' }) }}
+                    {{ Heading.heading({ 'title': 'Годовая отчетность', 'type': 'normal', 'margin': 'short', 'class': 'mt-64' }) }}
 
-                  {{ Docs.docs({ 'title': 'Публикуемая отчетность 1 квартал 2018 ', 'note': 'В редакции от 03.10.2014', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ'}) }}
+                    {{ Docs.docs({ 'title': 'Публикуемая отчетность 1 квартал 2018 ', 'note': 'В редакции от 03.10.2014', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'attr': { 'documents-year': '2015' } }) }}
+                  </div>
                 </div>
                 <div id="individual" class="tabs__item documents__tab js-tab state_invisible">
-                  {{ Heading.heading({ 'title': 'Архив договоров комплексного \n банковского обслуживания ФЛ (ДКБО)' | striptags(true) | escape | nl2br, 'type': 'normal', 'margin': 'short' }) }}
+                  <div class="documents__group js-documents-group">
+                    {{ Heading.heading({ 'title': 'Архив договоров комплексного \n банковского обслуживания ФЛ (ДКБО)' | striptags(true) | escape | nl2br, 'type': 'normal', 'margin': 'short' }) }}
 
-                  {{ Docs.docs({ 'title': 'Редакция №123', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 28.04.2018 по 31.05.2018 включительно', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Редакция №122', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 23.04.2018 по 27.04.2018 включительно', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Редакция №121', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 16.04.2018 по 22.04.2018 включительно', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Редакция №120', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 6.04.2018 по 15.04.2018 включительно', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Редакция №119', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 12.02.2018 по 5.04.2018 включительно', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Редакция №118', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 29.01.2018 по 11.02.2018 включительно'}) }}
-
-                  {{ Heading.heading({ 'title': 'Архив тарифов для ФЛ', 'type': 'normal', 'margin': 'short', 'class': 'mt-64' }) }}
-
-                  <div class="section__text">
-                    <p>Тарифы по обслуживанию физических лиц, заключивших ДКБО с АО «БКС Банк»</p>
-                  </div>
-                  <div class="collapse collapse_theme-grey mt-40">
-                    <div class="collapse__item">
-                      <div class="collapse__control">
-                        <div class="collapse__control-title">ПУ «Премьер Базовый», «Премьер Расширенный», «Ультима Базовый», «Ультима Расширенный»</div>
-                        <div class="collapse__control-icon">
-                          {{ Icon.icon({ 'name': 'dropdown' }) }}
-                        </div>
-                      </div>
-                      <div class="collapse__content"></div>
-                    </div>
-                    <div class="collapse__item">
-                      <div class="collapse__control">
-                        <div class="collapse__control-title">ПУ «Ультима»</div>
-                        <div class="collapse__control-icon">
-                          {{ Icon.icon({ 'name': 'dropdown' }) }}
-                        </div>
-                      </div>
-                      <div class="collapse__content"></div>
-                    </div>
-                    <div class="collapse__item">
-                      <div class="collapse__control">
-                        <div class="collapse__control-title">ПУ «Директ», «Континенталь», «Глобал»</div>
-                        <div class="collapse__control-icon">
-                          {{ Icon.icon({ 'name': 'dropdown' }) }}
-                        </div>
-                      </div>
-                      <div class="collapse__content"></div>
-                    </div>
-                    <div class="collapse__item">
-                      <div class="collapse__control">
-                        <div class="collapse__control-title">ПУ «Для своих»</div>
-                        <div class="collapse__control-icon">
-                          {{ Icon.icon({ 'name': 'dropdown' }) }}
-                        </div>
-                      </div>
-                      <div class="collapse__content">
-                        {{ Docs.docs({ 'title': 'Тарифы по обслуживанию физических лиц, заключивших ДКБО с АО «БКС БАНК» по пакету услуг «Для своих»', 'note': 'Действуют с 28.04.2018 по 31.05.2018 включительно', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-32'}) }}
-                        {{ Docs.docs({ 'title': 'Тарифы по обслуживанию физических лиц, заключивших ДКБО с АО «БКС БАНК» по пакету услуг «Для своих»', 'note': 'Действуют с 9.04.2018 по 27.04.2018 включительно', 'href': '#', 'type': 'PDF', 'size': '213 КБ'}) }}
-                      </div>
-                    </div>
-                    <div class="collapse__item">
-                      <div class="collapse__control">
-                        <div class="collapse__control-title">ПУ «Корпоративный»</div>
-                        <div class="collapse__control-icon">
-                          {{ Icon.icon({ 'name': 'dropdown' }) }}
-                        </div>
-                      </div>
-                      <div class="collapse__content"></div>
-                    </div>
-                    <div class="collapse__item">
-                      <div class="collapse__control">
-                        <div class="collapse__control-title">ПУ «Брокер»</div>
-                        <div class="collapse__control-icon">
-                          {{ Icon.icon({ 'name': 'dropdown' }) }}
-                        </div>
-                      </div>
-                      <div class="collapse__content"></div>
-                    </div>
-                    <div class="collapse__item">
-                      <div class="collapse__control">
-                        <div class="collapse__control-title">ПУ «Ультима Discovery», «Ультима Confidence»</div>
-                        <div class="collapse__control-icon">
-                          {{ Icon.icon({ 'name': 'dropdown' }) }}
-                        </div>
-                      </div>
-                      <div class="collapse__content"></div>
-                    </div>
-                    <div class="collapse__item">
-                      <div class="collapse__control">
-                        <div class="collapse__control-title">ПУ «Ультима Platinum», «Ультима Infinite», «Ультима Confidence»</div>
-                        <div class="collapse__control-icon">
-                          {{ Icon.icon({ 'name': 'dropdown' }) }}
-                        </div>
-                      </div>
-                      <div class="collapse__content"></div>
-                    </div>
-                    <div class="collapse__item">
-                      <div class="collapse__control">
-                        <div class="collapse__control-title">ПУ «Особая серия», «Особая серия+», «Ультима Infinite», «Ультима Confidence»</div>
-                        <div class="collapse__control-icon">
-                          {{ Icon.icon({ 'name': 'dropdown' }) }}
-                        </div>
-                      </div>
-                      <div class="collapse__content"></div>
-                    </div>
-                    <div class="collapse__item">
-                      <div class="collapse__control">
-                        <div class="collapse__control-title">ПУ «Боцман», «Капитан»</div>
-                        <div class="collapse__control-icon">
-                          {{ Icon.icon({ 'name': 'dropdown' }) }}
-                        </div>
-                      </div>
-                      <div class="collapse__content"></div>
-                    </div>
-                    <div class="collapse__item">
-                      <div class="collapse__control">
-                        <div class="collapse__control-title">ПУ «Fins»</div>
-                        <div class="collapse__control-icon">
-                          {{ Icon.icon({ 'name': 'dropdown' }) }}
-                        </div>
-                      </div>
-                      <div class="collapse__content"></div>
-                    </div>
-                    <div class="collapse__item">
-                      <div class="collapse__control">
-                        <div class="collapse__control-title">Кредитный продукт «Кредит Онлайн»</div>
-                        <div class="collapse__control-icon">
-                          {{ Icon.icon({ 'name': 'dropdown' }) }}
-                        </div>
-                      </div>
-                      <div class="collapse__content"></div>
-                    </div>
-                    <div class="collapse__item">
-                      <div class="collapse__control">
-                        <div class="collapse__control-title">Кредитный продукт «Выгодное предложение»</div>
-                        <div class="collapse__control-icon">
-                          {{ Icon.icon({ 'name': 'dropdown' }) }}
-                        </div>
-                      </div>
-                      <div class="collapse__content"></div>
-                    </div>
-                    <div class="collapse__item">
-                      <div class="collapse__control">
-                        <div class="collapse__control-title">Тариф «Вкладчик» в рамках кредитного продукта <br> «Кредитная карта БКС Банка»</div>
-                        <div class="collapse__control-icon">
-                          {{ Icon.icon({ 'name': 'dropdown' }) }}
-                        </div>
-                      </div>
-                      <div class="collapse__content"></div>
-                    </div>
-                    <div class="collapse__item">
-                      <div class="collapse__control">
-                        <div class="collapse__control-title">Тариф «Для своих» в рамках кредитного продукта <br> «Кредитная карта БКС Банка»</div>
-                        <div class="collapse__control-icon">
-                          {{ Icon.icon({ 'name': 'dropdown' }) }}
-                        </div>
-                      </div>
-                      <div class="collapse__content"></div>
-                    </div>
-                    <div class="collapse__item">
-                      <div class="collapse__control">
-                        <div class="collapse__control-title">Тариф «Корпоративный» в рамках кредитного продукта <br> «Кредитная карта БКС Банка»</div>
-                        <div class="collapse__control-icon">
-                          {{ Icon.icon({ 'name': 'dropdown' }) }}
-                        </div>
-                      </div>
-                      <div class="collapse__content"></div>
-                    </div>
-                    <div class="collapse__item">
-                      <div class="collapse__control">
-                        <div class="collapse__control-title">Тариф «Стандарт» в рамках кредитного продукта <br> «Кредитная карта БКС Банка»</div>
-                        <div class="collapse__control-icon">
-                          {{ Icon.icon({ 'name': 'dropdown' }) }}
-                        </div>
-                      </div>
-                      <div class="collapse__content"></div>
-                    </div>
+                    {{ Docs.docs({ 'title': 'Редакция №123', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 28.04.2018 по 31.05.2018 включительно', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Редакция №122', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 23.04.2018 по 27.04.2018 включительно', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Редакция №121', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 16.04.2018 по 22.04.2018 включительно', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Редакция №120', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 6.04.2018 по 15.04.2018 включительно', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Редакция №119', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 12.02.2018 по 5.04.2018 включительно', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Редакция №118', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 29.01.2018 по 11.02.2018 включительно', 'attr': { 'documents-year': '2015' } }) }}
                   </div>
 
-                  {{ Heading.heading({ 'title': 'Архив условий по депозитам', 'type': 'normal', 'margin': 'short', 'class': 'mt-64' }) }}
+                  <div class="documents__group js-documents-group">
+                    {{ Heading.heading({ 'title': 'Архив тарифов для ФЛ', 'type': 'normal', 'margin': 'short', 'class': 'mt-64' }) }}
 
-                  {{ Docs.docs({ 'title': 'Редакция №92', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 28.04.2018 по 3.06.2018 включительно', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Редакция №91', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 17.04.2018 по 27.04.2018 включительно', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Редакция №90', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 16.04.2018 по 16.04.2018 включительно', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Редакция №89', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 9.04.2018 по 15.04.2018 включительно', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Редакция №88', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 6.04.2018 по 8.04.2018 включительно', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Редакция №87', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 30.03.2018 по 5.04.2018 включительно', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Редакция №86', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 21.03.2018 по 29.03.2018 включительно', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Редакция №85', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 1.03.2018 по 20.03.2018 включительно', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Редакция №84', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 20.02.2018 по 28.02.2018 включительно', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Редакция №83', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 15.02.2018 по 19.02.2018 включительно', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Редакция №82', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 8.02.2018 по 14.02.2018 включительно', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Редакция №81', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 29.01.2018 по 7.02.2018 включительно'}) }}
+                    <div class="section__text">
+                      <p>Тарифы по обслуживанию физических лиц, заключивших ДКБО с АО «БКС Банк»</p>
+                    </div>
+                    <div class="collapse collapse_theme-grey mt-40">
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">ПУ «Премьер Базовый», «Премьер Расширенный», «Ультима
+                            Базовый», «Ультима Расширенный»
+                          </div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content"></div>
+                      </div>
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">ПУ «Ультима»</div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content"></div>
+                      </div>
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">ПУ «Директ», «Континенталь», «Глобал»</div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content"></div>
+                      </div>
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">ПУ «Для своих»</div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content">
+                          {{ Docs.docs({ 'title': 'Тарифы по обслуживанию физических лиц, заключивших ДКБО с АО «БКС БАНК» по пакету услуг «Для своих»', 'note': 'Действуют с 28.04.2018 по 31.05.2018 включительно', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2015' } }) }}
+                          {{ Docs.docs({ 'title': 'Тарифы по обслуживанию физических лиц, заключивших ДКБО с АО «БКС БАНК» по пакету услуг «Для своих»', 'note': 'Действуют с 9.04.2018 по 27.04.2018 включительно', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2015' } }) }}
+                        </div>
+                      </div>
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">ПУ «Корпоративный»</div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content"></div>
+                      </div>
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">ПУ «Брокер»</div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content"></div>
+                      </div>
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">ПУ «Ультима Discovery», «Ультима Confidence»</div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content"></div>
+                      </div>
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">ПУ «Ультима Platinum», «Ультима Infinite», «Ультима
+                            Confidence»
+                          </div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content"></div>
+                      </div>
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">ПУ «Особая серия», «Особая серия+», «Ультима Infinite»,
+                            «Ультима Confidence»
+                          </div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content"></div>
+                      </div>
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">ПУ «Боцман», «Капитан»</div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content"></div>
+                      </div>
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">ПУ «Fins»</div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content"></div>
+                      </div>
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">Кредитный продукт «Кредит Онлайн»</div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content"></div>
+                      </div>
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">Кредитный продукт «Выгодное предложение»</div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content"></div>
+                      </div>
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">Тариф «Вкладчик» в рамках кредитного продукта <br>
+                            «Кредитная карта БКС Банка»
+                          </div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content"></div>
+                      </div>
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">Тариф «Для своих» в рамках кредитного продукта <br>
+                            «Кредитная карта БКС Банка»
+                          </div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content"></div>
+                      </div>
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">Тариф «Корпоративный» в рамках кредитного продукта <br>
+                            «Кредитная карта БКС Банка»
+                          </div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content"></div>
+                      </div>
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">Тариф «Стандарт» в рамках кредитного продукта <br>
+                            «Кредитная карта БКС Банка»
+                          </div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content"></div>
+                      </div>
+                    </div>
+                  </div>
 
-                  {{ Heading.heading({ 'title': 'Архив документов по услуге \n резервирования валюты в безналичной форме' | striptags(true) | escape | nl2br, 'type': 'normal', 'margin': 'short', 'class': 'mt-64' }) }}
+                  <div class="documents__group js-documents-group">
+                    {{ Heading.heading({ 'title': 'Архив условий по депозитам', 'type': 'normal', 'margin': 'short', 'class': 'mt-64' }) }}
 
-                  {{ Docs.docs({ 'title': 'Публичная оферта (предложение) на предоставление услуг по резервированию валюты в безналичной форме', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действуeт с 10.03.2017', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Публичная оферта (предложение) на предоставление услуг по резервированию валюты в безналичной форме', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действуeт с 30.12.2016', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Публичная оферта (предложение) на предоставление услуг по резервированию валюты в безналичной форме', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действуeт с 22.09.2016', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Публичная оферта (предложение) на предоставление услуг по резервированию валюты в безналичной форме', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действуeт сo 2.08.2016', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Публичная оферта (предложение) на предоставление услуг по резервированию валюты в безналичной форме', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действуeт с 28.06.2016', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Публичная оферта (предложение) на предоставление услуг по резервированию валюты в безналичной форме', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действуeт с 15.03.2016', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Публичная оферта (предложение) на предоставление услуг по резервированию валюты в безналичной форме', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действуeт с 15.10.2015', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Публичная оферта (предложение) на предоставление услуг по резервированию валюты в безналичной форме', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действуeт с 26.08.2015'}) }}
+                    {{ Docs.docs({ 'title': 'Редакция №92', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 28.04.2018 по 3.06.2018 включительно', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Редакция №91', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 17.04.2018 по 27.04.2018 включительно', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Редакция №90', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 16.04.2018 по 16.04.2018 включительно', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Редакция №89', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 9.04.2018 по 15.04.2018 включительно', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Редакция №88', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 6.04.2018 по 8.04.2018 включительно', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Редакция №87', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 30.03.2018 по 5.04.2018 включительно', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Редакция №86', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 21.03.2018 по 29.03.2018 включительно', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Редакция №85', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 1.03.2018 по 20.03.2018 включительно', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Редакция №84', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 20.02.2018 по 28.02.2018 включительно', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Редакция №83', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 15.02.2018 по 19.02.2018 включительно', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Редакция №82', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 8.02.2018 по 14.02.2018 включительно', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Редакция №81', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'С 29.01.2018 по 7.02.2018 включительно', 'attr': { 'documents-year': '2015' } }) }}
+                  </div>
 
-                  {{ Heading.heading({ 'title': 'Архив документов по услуге \n предоставления электронного средства платежа' | striptags(true) | escape | nl2br, 'type': 'normal', 'margin': 'short', 'class': 'mt-64' }) }}
-                  {{ Docs.docs({ 'title': 'Публичная оферта (предложение) на предоставление электронного средства платежа', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действуeт с 10.03.2017'}) }}
+                  <div class="documents__group js-documents-group">
+                    {{ Heading.heading({ 'title': 'Архив документов по услуге \n резервирования валюты в безналичной форме' | striptags(true) | escape | nl2br, 'type': 'normal', 'margin': 'short', 'class': 'mt-64' }) }}
 
-                  {{ Heading.heading({ 'title': 'Архив документов по общим \n условиям потребительского кредитования' | striptags(true) | escape | nl2br, 'type': 'normal', 'margin': 'short', 'class': 'mt-64' }) }}
-                  {{ Docs.docs({ 'title': 'Общие условия потребительского кредитования ', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действует с 23.04.2018 по 9.05.2018 включительно'}) }}
+                    {{ Docs.docs({ 'title': 'Публичная оферта (предложение) на предоставление услуг по резервированию валюты в безналичной форме', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действуeт с 10.03.2017', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Публичная оферта (предложение) на предоставление услуг по резервированию валюты в безналичной форме', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действуeт с 30.12.2016', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Публичная оферта (предложение) на предоставление услуг по резервированию валюты в безналичной форме', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действуeт с 22.09.2016', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Публичная оферта (предложение) на предоставление услуг по резервированию валюты в безналичной форме', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действуeт сo 2.08.2016', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Публичная оферта (предложение) на предоставление услуг по резервированию валюты в безналичной форме', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действуeт с 28.06.2016', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Публичная оферта (предложение) на предоставление услуг по резервированию валюты в безналичной форме', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действуeт с 15.03.2016', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Публичная оферта (предложение) на предоставление услуг по резервированию валюты в безналичной форме', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действуeт с 15.10.2015', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Публичная оферта (предложение) на предоставление услуг по резервированию валюты в безналичной форме', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действуeт с 26.08.2015', 'attr': { 'documents-year': '2015' } }) }}
+                  </div>
 
-                  {{ Heading.heading({ 'title': 'Архив документов по условиям страхования', 'type': 'normal', 'margin': 'short', 'class': 'mt-64' }) }}
-                  {{ Docs.docs({ 'title': 'Условия страхования выезжающих за рубеж по страховой сумме 50 000 долларов США', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действует с 10.08.2012 по 14.08.2016 включительно', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Условия страхования выезжающих за рубеж по страховой сумме 100 000 долларов США', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действует с 10.08.2012 по 14.08.2016 включительно'}) }}
+                  <div class="documents__group js-documents-group">
+                    {{ Heading.heading({ 'title': 'Архив документов по услуге \n предоставления электронного средства платежа' | striptags(true) | escape | nl2br, 'type': 'normal', 'margin': 'short', 'class': 'mt-64' }) }}
+                    {{ Docs.docs({ 'title': 'Публичная оферта (предложение) на предоставление электронного средства платежа', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действуeт с 10.03.2017', 'attr': { 'documents-year': '2015' } }) }}
+                  </div>
 
-                  {{ Heading.heading({ 'title': 'Архив заявлений-анкет клиента', 'type': 'normal', 'margin': 'short', 'class': 'mt-64' }) }}
-                  {{ Docs.docs({ 'title': 'Заявление-анкета клиента — физического лица ', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действует с 27.06.2017 по 18.02.2018 включительно', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Заявление-анкета клиента — физического лица ', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действует с 6.02.2017 по 26.06.2017 включительно'}) }}
+                  <div class="documents__group js-documents-group">
+                    {{ Heading.heading({ 'title': 'Архив документов по общим \n условиям потребительского кредитования' | striptags(true) | escape | nl2br, 'type': 'normal', 'margin': 'short', 'class': 'mt-64' }) }}
+                    {{ Docs.docs({ 'title': 'Общие условия потребительского кредитования ', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действует с 23.04.2018 по 9.05.2018 включительно', 'attr': { 'documents-year': '2015' } }) }}
+                  </div>
 
-                  {{ Heading.heading({ 'title': 'Архив документов', 'type': 'normal', 'margin': 'short', 'class': 'mt-64' }) }}
-                  {{ Docs.docs({ 'title': 'Условия акции «БКС Путешествия» ', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действует с 6.02.2017 по 26.06.2017 включительно', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Условия акции «Льготная комиссия»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Условия акции «Приветственное вознаграждение»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Правила акции «5% кэшбэк на подарки к 23 февраля»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Правила акции «8% кэшбэк на подарки к 8 марта»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Информация об установлении товарных групп по cервисным пакетам услуг «Comfort»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-32'}) }}
-                  {{ Docs.docs({ 'title': 'Правила акции «Льготная комиссия»', 'href': '#', 'type': 'PDF', 'size': '213 КБ'}) }}
+                  <div class="documents__group js-documents-group">
+                    {{ Heading.heading({ 'title': 'Архив документов по условиям страхования', 'type': 'normal', 'margin': 'short', 'class': 'mt-64' }) }}
+                    {{ Docs.docs({ 'title': 'Условия страхования выезжающих за рубеж по страховой сумме 50 000 долларов США', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действует с 10.08.2012 по 14.08.2016 включительно', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Условия страхования выезжающих за рубеж по страховой сумме 100 000 долларов США', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действует с 10.08.2012 по 14.08.2016 включительно', 'attr': { 'documents-year': '2015' } }) }}
+                  </div>
+
+                  <div class="documents__group js-documents-group">
+                    {{ Heading.heading({ 'title': 'Архив заявлений-анкет клиента', 'type': 'normal', 'margin': 'short', 'class': 'mt-64' }) }}
+                    {{ Docs.docs({ 'title': 'Заявление-анкета клиента — физического лица ', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действует с 27.06.2017 по 18.02.2018 включительно', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Заявление-анкета клиента — физического лица ', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действует с 6.02.2017 по 26.06.2017 включительно', 'attr': { 'documents-year': '2015' } }) }}
+                  </div>
+
+                  <div class="documents__group js-documents-group">
+                    {{ Heading.heading({ 'title': 'Архив документов', 'type': 'normal', 'margin': 'short', 'class': 'mt-64' }) }}
+                    {{ Docs.docs({ 'title': 'Условия акции «БКС Путешествия» ', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': 'Действует с 6.02.2017 по 26.06.2017 включительно', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Условия акции «Льготная комиссия»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Условия акции «Приветственное вознаграждение»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Правила акции «5% кэшбэк на подарки к 23 февраля»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Правила акции «8% кэшбэк на подарки к 8 марта»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Информация об установлении товарных групп по cервисным пакетам услуг «Comfort»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Правила акции «Льготная комиссия»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2015' } }) }}
+                  </div>
                 </div>
                 <div id="entity" class="tabs__item documents__tab js-tab state_invisible">
-                  <div class="collapse collapse_theme-grey">
-                    <div class="collapse__item">
-                      <div class="collapse__control">
-                        <div class="collapse__control-title">Тарифы</div>
-                        <div class="collapse__control-icon">
-                          {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  <div class="documents__group js-documents-group">
+                    <div class="collapse collapse_theme-grey">
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">Тарифы</div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content">
+                          {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Надежное предложение»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2015' } }) }}
                         </div>
                       </div>
-                      <div class="collapse__content">
-                        {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Надежное предложение»', 'href': '#', 'type': 'PDF', 'size': '213 КБ'}) }}
-                      </div>
-                    </div>
-                    <div class="collapse__item">
-                      <div class="collapse__control">
-                        <div class="collapse__control-title">Договоры</div>
-                        <div class="collapse__control-icon">
-                          {{ Icon.icon({ 'name': 'dropdown' }) }}
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">Договоры</div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
                         </div>
+                        <div class="collapse__content"></div>
                       </div>
-                      <div class="collapse__content"></div>
-                    </div>
-                    <div class="collapse__item">
-                      <div class="collapse__control js-accordion-header">
-                        <div class="collapse__control-title">Акции</div>
-                        <div class="collapse__control-icon">
-                          {{ Icon.icon({ 'name': 'dropdown' }) }}
+                      <div class="collapse__item">
+                        <div class="collapse__control js-accordion-header">
+                          <div class="collapse__control-title">Акции</div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
                         </div>
-                      </div>
-                      <div class="collapse__content">
-                        {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Надежное предложение»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-32'}) }}
-                        {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Бонус участникам ВЭД» ', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-32'}) }}
-                        {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Осеннее предложение»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-32'}) }}
-                        {{ Docs.docs({ 'title': 'Условия акции «Бонус Участникам ВЭД»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-32'}) }}
-                        {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Летнее предложение»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-32'}) }}
-                        {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Летнее предложение в честь Дня рождения — 22%»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-32'}) }}
-                        {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Шанс» ', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-32'}) }}
-                        {{ Docs.docs({ 'title': 'ПУсловия акции «Бонус Участникам ВЭД»', 'href': '#', 'type': 'PDF', 'size': '213 КБ'}) }}
+                        <div class="collapse__content">
+                          {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Надежное предложение»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2015' } }) }}
+                          {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Бонус участникам ВЭД» ', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2015' } }) }}
+                          {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Осеннее предложение»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2015' } }) }}
+                          {{ Docs.docs({ 'title': 'Условия акции «Бонус Участникам ВЭД»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2015' } }) }}
+                          {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Летнее предложение»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2015' } }) }}
+                          {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Летнее предложение в честь Дня рождения — 22%»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2015' } }) }}
+                          {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Шанс» ', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2015' } }) }}
+                          {{ Docs.docs({ 'title': 'ПУсловия акции «Бонус Участникам ВЭД»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2015' } }) }}
+                        </div>
                       </div>
                     </div>
                   </div>

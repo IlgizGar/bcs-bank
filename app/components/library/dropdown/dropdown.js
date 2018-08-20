@@ -13,6 +13,7 @@ module.exports = (elem) => {
       this.clear = this.dropdown.find('.js-dropdown-clear');
       this.scrollBarInited = false;
       this.id = '';
+
       this.init();
       this.events();
     }

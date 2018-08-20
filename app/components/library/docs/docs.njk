@@ -1,8 +1,19 @@
 {% import "../../../components/icon/icon.njk" as Icon %}
 
 {% macro docs( options ) %}
+  {% set class_sep = joiner(' ') %}
+
+  {% if options.attr %}
+    {% set data_array = '' %}
+    {% set data_array %}
+      {% for key, value in options.attr -%}
+        {{ class_sep() }} data-{{ key }} = "{{ value }}"
+      {%- endfor %}
+    {% endset %}
+  {% endif %}
+
   <a class="docs {% if options.theme %}docs_theme-{{ options.theme }}{% endif %} {{ options.class | safe }}"
-     href={{ options.href }}>
+     href={{ options.href }} {{ data_array | safe }}>
     {% if not options.icon %}
       <div class="docs__icon">
         {{ Icon.icon({ 'name': 'downloads' }) }}

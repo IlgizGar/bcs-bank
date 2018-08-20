@@ -21,6 +21,7 @@ import Card from '../components/library/card/card';
 import Checkbox from '../components/library/checkbox/checkbox';
 import PageHeader from '../components/modules/page-header/page-header';
 import Offices from '../components/modules/offices/offices';
+import DocumentsFilter from '../components/modules/documents/documents';
 
 require('babel-polyfill');
 // import Datepicker from '../components/library/datepicker/datepicker';
@@ -106,6 +107,10 @@ $(() => {
 
   if ($('.offices').length) {
     global.officesMap = new Offices($('.offices'));
+  }
+
+  if ($('.js-dropdown[data-id="documents-filter"]').length) {
+    global.documentsFilter = DocumentsFilter(('.js-dropdown[data-id="documents-filter"]'));
   }
 
   // global.datepickers = [];

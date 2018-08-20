@@ -106,7 +106,6 @@
                   {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': 'js-phone-masked', 'name': 'feedback_phone', 'state': 'required' }) }}
                   {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': 'js-mail-masked', 'name': 'feedback_mail', 'state': 'required' }) }}
                 </div>
-                {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Тема', 'name': 'question', 'items': [{'title': 'Предложения по сайту', 'value': '0'},{'title': 'Интернет-банк', 'value': '1'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'feedback-form-list'}, 'field': 'js-question-topic' }) }}
 
                 {{ FileInput.fileInput({ 'settings': {'extensions': 'image/png, image/jpeg', 'fileSize': '1MB', 'sizeError': 'Файл слишком большой', 'maxFiles': '3'}, 'class': '' }) }}
 
