@@ -1,7 +1,7 @@
 {% import "../../../components/icon/icon.njk" as Icon %}
 
 {% macro docs( options ) %}
-  <a class="docs {% if options.theme %}docs_theme-{{ options.theme }}{% endif %} {{ options.class }}"
+  <a class="docs {% if options.theme %}docs_theme-{{ options.theme }}{% endif %} {{ options.class | safe }}"
      href={{ options.href }}>
     {% if not options.icon %}
       <div class="docs__icon">
