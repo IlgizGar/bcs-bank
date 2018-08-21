@@ -16,7 +16,7 @@
 {% set title = "Вакансия детально" %}
 
 {% block body %}
-  <div class="page">
+  <div class="page js-page">
 
     {% include "../components/modules/header/header.njk" %}
 
@@ -27,13 +27,13 @@
         <div class="section__header section__header_theme-blue">
           {{ Menubar.menubar({ 'theme': 'blue', 'class': 'section__menubar' }) }}
           <div class="page__container page__container_type-header">
-            {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Новости', 'link': '/news.html' }, 'current': 'Москва' }) }}
-            {{ Heading.heading({ 'tag': 'h1', 'title': 'Старший клиентский менеджер \n по привлечению корпоративных клиентов' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'default', 'class': 'page-header__title' }) }}
+            {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Вакансии', 'link': 'http://juravlev.rusrobots.ru/bks/vacancies.html' }, 'current': 'Москва' }) }}
+            {{ Heading.heading({ 'tag': 'h1', 'title': 'Старший клиентский менеджер \n по привлечению корпоративных клиентов' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'default' }, 'class': 'page-header__title' }) }}
           </div>
           <div class="page-header__nav section__nav">
             <div class="page__container">
               <div class="section__wrap">
-                {{ Button.button({ 'title': 'Откликнуться', 'mods': { 'theme': 'white' }, 'class': 'mr-a' }) }}
+                {{ Button.button({ 'href': '#vacancy-feedback', 'title': 'Откликнуться', 'mods': { 'theme': 'white' }, 'class': 'mr-a' }) }}
                 {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'white', 'view': 'outlined' }, 'class': ''}) }}
               </div>
             </div>
@@ -47,7 +47,7 @@
           <div class="section__row">
             <div class="section__content section__content_medium section__content_theme-centered">
 
-              {{ Heading.heading({ 'tag': 'h2', 'title': 'Требования:' | striptags(true) | escape | nl2br, 'type': 'normal', 'margin': 'normal-small', 'class': 'news-detail__title' }) }}
+              {{ Heading.heading({ 'tag': 'h2', 'title': 'Требования:' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'normal-small' }, 'class': 'news-detail__title' }) }}
               <ul class="brand-list brand-list_type-disc brand-list_margin-medium">
                 <li>Наличие собственной клиентской базы;</li>
                 <li>Знание всех банковских продуктов и технологий для корпоративных клиентов;</li>
@@ -59,7 +59,7 @@
                 <li>Успешный опыт привлечения корпоративных клиентов на активы и пассивы.</li>
               </ul>
 
-              {{ Heading.heading({ 'tag': 'h2', 'title': 'Задачи:' | striptags(true) | escape | nl2br, 'type': 'normal', 'margin': 'normal-small', 'class': 'news-detail__title' }) }}
+              {{ Heading.heading({ 'tag': 'h2', 'title': 'Задачи:' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'normal-small' }, 'class': 'news-detail__title' }) }}
               <ul class="brand-list brand-list_type-disc brand-list_margin-medium">
                 <li>Привлечение крупных корпоративных клиентов на обслуживание в Банк;</li>
                 <li>Выполнение плановых показателей по приросту активов, пассивов и комиссионного дохода Банка,
@@ -82,7 +82,7 @@
                 <li>Составление периодической отчетности.</li>
               </ul>
 
-              {{ Heading.heading({ 'tag': 'h2', 'title': 'Условия:' | striptags(true) | escape | nl2br, 'type': 'normal', 'margin': 'normal-small', 'class': 'news-detail__title' }) }}
+              {{ Heading.heading({ 'tag': 'h2', 'title': 'Условия:' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'normal-small' }, 'class': 'news-detail__title' }) }}
               <ul class="brand-list brand-list_type-disc brand-list_margin-big">
                 <li>Высокий уровень фиксированного оклада + бонусы;</li>
                 <li>Широкие возможности профессионального роста, корпоративная система обучения в компании;</li>
@@ -95,38 +95,35 @@
         </div>
       </section>
 
-      <section class="section section_theme-white-smoke vacancy-feedback">
+      <section id="vacancy-feedback" class="section section_theme-white-smoke vacancy-feedback">
         <div class="page__container">
           <div class="section__row">
-            <div class="section__content section__content_medium section__content_theme-centered">
+            <div class="section__content section__content_medium section__content_theme-centered js-form">
               <form id="vacancy-feedback__form" action="/" class="form vacancy-feedback__form">
-                {{ Heading.heading({ 'title': 'Откликнуться на вакансию' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'none', 'theme': 'default', 'class': 'form__title'}) }}
-                {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group' }) }}
+                {{ Heading.heading({ 'title': 'Откликнуться на вакансию' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'none', 'theme': 'default' }, 'class': 'form__title'}) }}
+                {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': 'js-fio-masked', 'name': 'feedback_name', 'state': 'required' }) }}
                 <div class="form__line-group">
-                  {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group' }) }}
-                  {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group' }) }}
+                  {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': 'js-phone-masked', 'name': 'feedback_phone', 'state': 'required' }) }}
+                  {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': 'js-mail-masked', 'name': 'feedback_mail', 'state': 'required' }) }}
                 </div>
-                {{ Dropdown.dropdown({ 'theme': 'bordered', 'label': 'Тема', 'items': [{'title': 'Предложения по сайту', 'val': '0'},{'title': 'Интернет-банк', 'val': '1'}], 'class': 'form__field-group form__field-group_dropdown' }) }}
 
                 {{ FileInput.fileInput({ 'settings': {'extensions': 'image/png, image/jpeg', 'fileSize': '1MB', 'sizeError': 'Файл слишком большой', 'maxFiles': '3'}, 'class': '' }) }}
 
-                {{ Input.input({ 'label': 'Сопроводительное письмо (по желанию)', 'tag': 'textarea', 'rows': '6', 'class': 'input_textarea form__field-group' }) }}
+                {{ Input.input({ 'label': 'Сопроводительное письмо (по желанию)', 'tag': 'textarea', 'name': 'feedback-letter', 'rows': '6', 'class': 'input_textarea form__field-group' }) }}
                 <div class="form__action">
                   <div class="form__agreements">
                     {# TODO: вынести в шаблон #}
-                    <label class="checkbox checkbox_theme-dark">
-                      <input type="checkbox" class="checkbox__control">
+                    <label class="checkbox checkbox_theme-dark js-checkbox js-personal-checkbox">
+                      <input type="checkbox" class="checkbox__control" checked>
                       <span class="checkbox__state"></span>
                       <span class="checkbox__label">
                         Даю согласие на обработку <br>
                         {{ Button.button({ 'href': '#', 'title': 'персональных данных', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
-                </span>
+                      </span>
                     </label>
                   </div>
-                  {{ Button.button({ 'title': 'Отправить', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
-
+                  {{ Button.button({ 'title': 'Отправить', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
                 </div>
-
               </form>
             </div>
           </div>

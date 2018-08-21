@@ -4,17 +4,32 @@
 {% import "../../../components/library/heading/heading.njk" as Heading %}
 {% import "../../../components/library/input/input.njk" as Input %}
 {% import "../../../components/library/dropdown/dropdown.njk" as Dropdown %}
-
-
+{% import "../../../components/library/contact/contact.njk" as Contact %}
 
 
 {% set menu = [
   {'title': 'О банке',
-    'items': ['Новости', 'Общая информация', 'Руководство', 'Вакансии', 'Офисы и банкоматы', 'Вся группа']},
+    'items': [
+      {'name': 'Новости', 'href': 'http://juravlev.rusrobots.ru/bks/news.html'},
+      {'name': 'Общая информация', 'href': '#'},
+      {'name': 'Руководство', 'href': '#'},
+      {'name': 'Вакансии', 'href': 'http://juravlev.rusrobots.ru/bks/vacancies.html'},
+      {'name': 'Офисы и банкоматы', 'href': '#'},
+      {'name': 'Вся группа', 'href': '#'}
+    ]},
   {'title': 'Реквизиты',
-    'items': ['Cтрахованиe вкладов', 'Лицензии', 'БКС Онлайн', 'Депозитарий']},
+    'items': [
+      {'name': 'Cтрахованиe вкладов', 'href': '#'},
+      {'name': 'Лицензии', 'href': '#'},
+      {'name': 'БКС Онлайн', 'href': '#'},
+      {'name': 'Депозитарий', 'href': '#'}
+    ]},
   {'title': 'Инсайдерам',
-    'items': ['Раскрытие информации', 'Документы', 'Финансовым институтам']}
+    'items': [
+      {'name': 'Раскрытие информации', 'href': 'http://juravlev.rusrobots.ru/bks/disclosure.html'},
+      {'name': 'Документы', 'href': 'http://juravlev.rusrobots.ru/bks/documents.html'},
+      {'name': 'Финансовым институтам', 'href': 'http://juravlev.rusrobots.ru/bks/fin-institute.html'}
+    ]}
 ] %}
 
 <footer class="footer">
@@ -27,8 +42,7 @@
         <div class="footer__menu">
           <p class="footer__menu-title">{{ item.title }}</p>
           {% for el in item.items %}
-            {% set els = el %}
-            {{ Button.button({ 'href': '#', 'title': el, 'mods': {'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'footer__menu-link' }) }}
+            {{ Button.button({ 'href': el.href, 'title': el.name, 'mods': {'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'footer__menu-link' }) }}
           {% endfor %}
         </div>
       {% endfor %}
@@ -51,7 +65,7 @@
 </footer>
 
 {# TODO: Вынести в шаблон #}
-<div id="question-modal-form" class="modal js-form">
+<div id="question-modal-form" class="modal js-form" data-form="question-modal">
   <form id="question-form" action="/" class="form question-form">
     {{ Heading.heading({ 'title': 'У вас есть вопрос?' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'none', 'theme': 'default', 'class': 'form__title'}) }}
     {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': 'js-fio-masked', 'name': 'queston_name', 'state': 'required' }) }}
@@ -59,22 +73,41 @@
       {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': 'js-phone-masked', 'name': 'question_phone', 'state': 'required' }) }}
       {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': 'js-mail-masked', 'name': 'question_mail', 'state': 'required' }) }}
     </div>
-    {{ Dropdown.dropdown({ 'theme': 'bordered', 'label': 'Тема', 'items': [{'title': 'Предложения по сайту', 'val': '0'},{'title': 'Интернет-банк', 'val': '1'}], 'class': 'form__field-group form__field-group_dropdown' }) }}
-    {{ Input.input({ 'label': 'Текст вопроса', 'tag': 'textarea', 'rows': '6', 'class': 'input_textarea form__field-group', 'state': 'required', 'name': 'question_text' }) }}
+    {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Тема', 'name': 'question', 'items': [{'title': 'Предложения по сайту', 'value': '0'},{'title': 'Интернет-банк', 'value': '1'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'question-form-list'}, 'field': 'js-question-topic' }) }}
+    {{ Input.input({ 'label': 'Текст вопроса', 'tag': 'textarea', 'rows': '6', 'class': 'input_textarea form__field-group', 'state': 'required', 'name': 'question_text', 'field': 'js-question-textarea' }) }}
     <div class="form__action">
       <div class="form__agreements">
         {# TODO: вынести в шаблон #}
-        <label class="checkbox checkbox_theme-dark">
-          <input type="checkbox" class="checkbox__control" name="question__personal" required="required">
+        <label class="checkbox checkbox_theme-dark js-checkbox js-personal-checkbox">
+          <input type="checkbox" class="checkbox__control" name="question__personal" checked>
           <span class="checkbox__state"></span>
           <span class="checkbox__label">
-            Даю согласие на обработку
+            Даю согласие на обработку <br>
             {{ Button.button({ 'href': '#', 'title': 'персональных данных', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
           </span>
         </label>
       </div>
       {{ Button.button({ 'title': 'Отправить', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
     </div>
-
   </form>
+  <div class="question-form-success js-form-success state_hidden">
+    {{ Heading.heading({ 'title': 'Сообщение отправлено' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'none', 'theme': 'default', 'class': 'form__title'}) }}
+    <p class="text mt-16">Вам ответят в ближайшее время</p>
+    {{ Contact.contact({ 'title': 'По срочным вопросам можно позвонить',
+      'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500 70 65', 'href': '+78005007065' }, { 'name': 'Если вы звоните из-за рубежа', 'value': '+7 (495) 967 11 11', 'href': '+74959671111' }],
+      'class': 'js-contact mt-40' }) }}
+    {{ Heading.heading({ 'title': 'Присоединяйтесь к нам в социальных сетях', 'class': 'mt-56' }) }}
+    {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'}, 'class': 'mt-32'}) }}
+  </div>
+  <div class="question-form-success js-form-error state_hidden">
+    {{ Heading.heading({ 'title': 'Сообщение не отправлено' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'none', 'theme': 'default', 'class': 'form__title'}) }}
+    <p class="text mt-16">К сожалению, что-то пошло не так. Попробуйте повторить запрос позже.</p>
+    {{ Contact.contact({ 'title': 'По срочным вопросам можно позвонить',
+      'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500 70 65', 'href': '+78005007065' }, { 'name': 'Если вы звоните из-за рубежа', 'value': '+7 (495) 967 11 11', 'href': '+74959671111' }],
+      'class': 'js-contact mt-40' }) }}
+    {{ Heading.heading({ 'title': 'Присоединяйтесь к нам в социальных сетях', 'class': 'mt-56' }) }}
+    {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'}, 'class': 'mt-32'}) }}
+  </div>
 </div>
+
+{% include "../select-city/select-city.njk" %}

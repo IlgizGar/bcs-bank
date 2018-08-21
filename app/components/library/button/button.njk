@@ -7,15 +7,25 @@
         {% set tag = 'a' %}
     {% endif %}
 
-    {% set mods = '' %}
     {% set class_sep = joiner(' ') %}
+
+    {% set mods = '' %}
     {% set mods %}
         {% for key, value in options.mods -%}
             {{ class_sep() }} button_{{ key }}-{{ value }}
         {%- endfor %}
     {% endset %}
 
-    <{{ tag }} class='button {{ mods }} {{ options.class }}' {% if options.href %} href={{ options.href }} {% endif %} {% if options.type %}type={{ options.type }} {% endif %}>
+    {% if options.attr %}
+      {% set data_array = '' %}
+      {% set data_array %}
+        {% for key, value in options.attr -%}
+          {{ class_sep() }} data-{{ key }} = "{{ value }}"
+        {%- endfor %}
+      {% endset %}
+    {% endif %}
+
+    <{{ tag }} class='button {{ mods }} {{ options.class }} js-button' {% if options.href %} href={{ options.href }} {% endif %} {% if options.type %}type={{ options.type }} {% endif %} {{ options.state }} {{ data_array | safe }}>
         <span class='button__wrap'>
             {% if options.title %}
                 <span class='button__title'>{{ options.title }}</span>

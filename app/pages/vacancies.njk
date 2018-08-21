@@ -11,17 +11,20 @@
 {% set vacancies = [
   { 'title': 'Начальник отдела \n методологии риск-менеджмента',
     'subtitle': 'Москва',
+    'url': 'http://juravlev.rusrobots.ru/bks/vacancy.html',
     'items': ['Высшее образование (экономическое);', 'Опыт работы от 3-х лет на аналогичной должности в коммерческих банках;', 'Обширная практика написания внутренних документов, обязтаельно в части корпоративного кредитования и резервирования по 254-П, 283-П, регламентов по взаимодействию подразделений.'] },
   { 'title': 'Специалист отдела \n поддержки продаж',
     'subtitle': 'Москва',
+    'url': 'http://juravlev.rusrobots.ru/bks/vacancy.html',
     'items': ['Высшее образование (экономическое, юридическое);', 'Аналогичный опыт работы (желательно);', 'Коммуникативные навыки;', 'Умение работать с документами.']},
   { 'title': 'Старший клиентский менеджер \n по привлечению корпоративных клиентов',
     'subtitle': 'Москва',
+    'url': 'http://juravlev.rusrobots.ru/bks/vacancy.html',
     'items': ['Наличие собственной клиентской базы;', 'Знание всех банковских продуктов и технологий для корпоративных клиентов;', 'Опыт проведения презентаций, переговоров;', 'Опыт продаж финансовых продуктов от двух лет.']}
 ] %}
 
 {% block body %}
-  <div class="page">
+  <div class="page js-page">
 
     {% include "../components/modules/header/header.njk" %}
 
@@ -37,14 +40,15 @@
           <div class="section__row">
 
             <div class="section__content section__content_theme-default">
-              {{ Heading.heading({ 'tag': 'h1', 'title': 'Вакансии', 'context': 'в Москве', 'items': [{'title': 'БКС-онлайн', 'val': 'bks', 'selected': true},{'title': 'Отделениях банка', 'val': 'bank'}], 'type': 'default', 'margin': 'short', 'theme' : 'default' }) }}
+              {{ Heading.heading({ 'tag': 'h1', 'title': 'Вакансии', 'mods': { 'type': 'default', 'margin': 'short', 'theme' : 'default' },
+                                   'context': { 'title': 'Москве', 'attr': {'id': 'select-city', 'prefix': 'в'} } }) }}
               {% for vacancy in vacancies %}
-                {{ Card.card({ 'type': 'vacancy', 'view': 'lowercase', 'href': '#', 'title': vacancy.title | striptags(true) | escape | nl2br, 'subtitle': vacancy.subtitle, 'items': vacancy.items }) }}
+                {{ Card.card({ 'type': 'vacancy', 'view': 'lowercase', 'url': vacancy.url, 'title': vacancy.title | striptags(true) | escape | nl2br, 'subtitle': vacancy.subtitle, 'items': vacancy.items }) }}
               {% endfor %}
             </div>
 
             <div class="section__aside">
-              <div class="js-fixed-area">
+              <div class="section__sticky js-sticky">
                 {{ Contact.contact({ 'title': 'Контакты HR департамента',
                   'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500 03 05', 'href': '+78005000305' }, { 'name': 'Почтовый и юридический адрес', 'value': 'г. Москва, просп. Мира \n д.69, стр. 1' | striptags(true) | escape | nl2br }],
                   'class': 'vacancies__contact js-contact' }) }}

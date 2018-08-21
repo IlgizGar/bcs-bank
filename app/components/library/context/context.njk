@@ -1,18 +1,42 @@
 {% import "../../../components/icon/icon.njk" as Icon %}
 
 {% macro context( options ) %}
-  <div class="context js-context {% if options.theme %}context_theme-{{ options.theme }}{%  endif %} {{ options.class }}" {% if options.prefix %}data-prefix="{{ options.prefix }}"{% endif %}>
-    <select class="context__select" hidden name="{{ options.name }}_select">
-      {% for item in options.items %}
-        <option value={{ item.val }} {% if item.selected %}selected{% endif %}>{{ item.title }}</option>
-      {% endfor %}
-    </select>
-    <button class="context__button">
-        <span class="js-context-title">{%  if options.title %}{{ options.title }}{% endif %}</span>
+  {% if options.data %}
+    {% set options = options.data %}
+  {% endif %}
+  {% set class_sep = joiner(' ') %}
+
+  {% if options.attr %}
+    {% set attr = '' %}
+    {% set attr %}
+      {% for key, value in options.attr -%}
+        {{ class_sep() }} data-{{ key }} = "{{ value }}"
+      {%- endfor %}
+    {% endset %}
+  {% endif %}
+
+  {% if options.mods %}
+    {% set mods = '' %}
+    {% set mods %}
+      {% for key, value in options.mods -%}
+        {{ class_sep() }} context_{{ key }}-{{ value }}
+      {%- endfor %}
+    {% endset %}
+  {% endif %}
+
+  <div class="context js-context {{ options.class }} {{ mods | safe }}" {{ attr | safe }}>
+    {% if options.items %}
+      <select class="context__select" hidden name="{{ options.name }}_select">
+        {% for item in options.items %}
+          <option value={{ item.value }} {% if item.selected %}selected{% endif %}>{{ item.title }}</option>
+        {% endfor %}
+      </select>
+    {% else %}
+      <input type="text" hidden name="{{ options.name }}_input" value="{{ options.value }}">
+    {% endif %}
+    <button class="context__button" type="button">
+        <span class="js-context-title">{{ options.title }}</span>
         {{ Icon.icon({'name': 'dropdown'}) }}
     </button>
   </div>
-  {#<div class="dropdown__list state_inactive scroll-pane js-context-list">#}
-    {#<ul></ul>#}
-  {#</div>#}
 {% endmacro %}

@@ -4,6 +4,7 @@
 {% macro fileInput( options ) %}
   <div class="file-input">
     <div class="dz-message needsclick">
+      {{ Icon.icon({ 'name': 'file-download' }) }}
       <span class="file-input__text">Перетащите файл сюда</span>
       {{ Button.button({ 'title': 'Выбрать файл', 'mods': { 'theme': 'white' }, 'class': '', 'type': 'button' }) }}
     </div>

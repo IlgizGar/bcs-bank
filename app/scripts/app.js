@@ -1,4 +1,3 @@
-// Три этих файла нужны для нормальной работы JS в IE
 import 'core-js/fn/symbol/iterator';
 import 'core-js/es6/symbol';
 
@@ -7,7 +6,6 @@ import svg4everybody from 'svg4everybody';
 
 import Header from '../components/modules/header/header';
 import Contact from '../components/library/contact/contact';
-import Accordion from '../components/library/accordion/accordion';
 import Dropdown from '../components/library/dropdown/dropdown';
 import Context from '../components/library/context/context';
 import Carousel from '../components/library/carousel/carousel';
@@ -19,11 +17,14 @@ import FileInput from '../components/library/file-input/file-input';
 import Form from '../components/library/form/form';
 import Input from '../components/library/input/input';
 import Tabs from '../components/modules/tabbar/tabbar';
+import Card from '../components/library/card/card';
+import Checkbox from '../components/library/checkbox/checkbox';
 import PageHeader from '../components/modules/page-header/page-header';
+import Offices from '../components/modules/offices/offices';
+import DocumentsFilter from '../components/modules/documents/documents';
 
 require('babel-polyfill');
 // import Datepicker from '../components/library/datepicker/datepicker';
-
 
 $(() => {
   svg4everybody();
@@ -32,9 +33,9 @@ $(() => {
   $('.js-dropdown').each((i, el) => {
     global.dropdowns.push(Dropdown(el));
   });
-  global.contexts = [];
+  global.contexts = {};
   $('.js-context').each((i, el) => {
-    global.contexts.push(Context(el));
+    global.contexts[$(el).data('id')] = Context(el);
   });
   global.contacts = [];
   $('.js-contact').each((i, el) => {
@@ -43,10 +44,6 @@ $(() => {
   global.tabs = [];
   $('.js-tabbar').each((i, el) => {
     global.tabs.push(Tabs(el));
-  });
-  global.accordions = [];
-  $('.js-accordion').each((i, el) => {
-    global.accordions.push(Accordion(el));
   });
   global.carousels = [];
   $('.js-carousel').each((i, el) => {
@@ -62,10 +59,10 @@ $(() => {
       global.mediaSliders.push(MediaSlider($(el)));
     });
   }
-  global.collapses = [];
+  global.collapses = {};
   if ($('.collapse').length) {
     $('.collapse').each((i, el) => {
-      global.collapses.push(new Collapse($(el)));
+      global.collapses[$(el).data('id')] = new Collapse($(el));
     });
   }
   global.sortableTables = [];
@@ -95,6 +92,27 @@ $(() => {
       global.forms.push(new Form($(el).find('form')));
     });
   }
+  global.cards = [];
+  if ($('.js-card').length) {
+    $('.js-card').each((i, el) => {
+      global.cards.push(new Card($(el)));
+    });
+  }
+  global.checkboxes = [];
+  if ($('.js-checkbox').length) {
+    $('.js-checkbox').each((i, el) => {
+      global.checkboxes.push(new Checkbox($(el)));
+    });
+  }
+
+  if ($('.offices').length) {
+    global.officesMap = new Offices($('.offices'));
+  }
+
+  if ($('.js-dropdown[data-id="documents-filter"]').length) {
+    global.documentsFilter = DocumentsFilter(('.js-dropdown[data-id="documents-filter"]'));
+  }
+
   // global.datepickers = [];
   // for (const datepicker of $('.js-datepicker')) {
   //   global.datepickers.push(Datepicker(datepicker));

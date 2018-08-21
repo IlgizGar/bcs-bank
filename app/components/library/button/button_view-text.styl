@@ -2,6 +2,14 @@
   background-color: transparent
   .button__wrap
     color: currentColor
+
+  &.button_theme-white
+    .button__wrap .button__icon
+      color: $color_tab
+    &:hover
+      .button__wrap .button__icon
+        color: $color_default
+
   &:hover
     background-color: transparent
     .button__wrap

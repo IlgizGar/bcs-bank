@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import 'jquery-modal';
 import Form from '../form/form';
+import Checkbox from '../checkbox/checkbox';
 
 export default class Modal {
   constructor($openLink) {
@@ -33,6 +34,7 @@ export default class Modal {
   openWindow() {
     $(this.windowId).modal();
     global.forms.push(new Form($(this.windowId).find('form')));
+    global.checkboxes.push(new Checkbox($(this.windowId).find('.js-checkbox')));
   }
 
   static closeWindow() {
