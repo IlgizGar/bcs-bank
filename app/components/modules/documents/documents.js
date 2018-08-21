@@ -10,7 +10,9 @@ module.exports = (elem) => {
     }
 
     init() {
-      this.applyFilter(this.filter.find('option:selected').val());
+      if (this.filter.find('.js-input').val().length) {
+        this.applyFilter(this.filter.find('option:selected').val());
+      }
     }
 
     applyFilter(year) {
@@ -41,7 +43,6 @@ module.exports = (elem) => {
         if ($(el).find('.js-documents-group:not(.state_hidden)').length) {
           $(el).find('.documents__no-result').addClass('state_hidden');
         } else {
-          // $(el).find('.documents__no-result').remove();
           $(el).append('<div class="documents__no-result">\n' +
             '                    <p>Документов этого года нет.</p>\n' +
             '                    <p>Попробуйте выбрать другой год.</p>\n' +
