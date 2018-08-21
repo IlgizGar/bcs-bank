@@ -103,7 +103,6 @@ module.exports = (form) => {
           });
         }
       });
-      console.log('MESSAGES', formMessages);
       return formMessages;
     }
 
@@ -249,7 +248,6 @@ module.exports = (form) => {
         'minPhoneLength',
         (value, element) => {
           const len = $(element).val().replace(/ /g, '').length;
-          console.log('LEN', len);
           return len === 16;
         },
       );
@@ -257,7 +255,6 @@ module.exports = (form) => {
 
     validateForm(handler) {
       $.validator.addClassRules(this.validateRules);
-      console.log('MSGS', this.setFieldMessages());
       return this.form.validate({
         focusInvalid: false,
         errorElement: 'div',

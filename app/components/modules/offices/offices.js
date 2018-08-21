@@ -213,7 +213,6 @@ export default class Offices {
     $('.offices__tab-control').on('click', () => {
       Offices.reInitScroll(this.pane);
       this.getCurrentTab();
-      console.log(this.currentTabId);
       this.getPoints();
       this.addPoints();
       this.map.setBounds(this.markCollection.getBounds(), {
