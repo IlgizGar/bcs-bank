@@ -7,8 +7,9 @@
         {% set tag = 'a' %}
     {% endif %}
 
-    {% set mods = '' %}
     {% set class_sep = joiner(' ') %}
+
+    {% set mods = '' %}
     {% set mods %}
         {% for key, value in options.mods -%}
             {{ class_sep() }} button_{{ key }}-{{ value }}
@@ -17,7 +18,6 @@
 
     {% if options.attr %}
       {% set data_array = '' %}
-      {% set class_sep = joiner(' ') %}
       {% set data_array %}
         {% for key, value in options.attr -%}
           {{ class_sep() }} data-{{ key }} = "{{ value }}"

@@ -12,6 +12,7 @@ module.exports = (elem) => {
       this.input = this.dropdown.find('.js-input');
       this.clear = this.dropdown.find('.js-dropdown-clear');
       this.scrollBarInited = false;
+      this.handle = null;
       this.id = '';
 
       this.init();
@@ -53,6 +54,10 @@ module.exports = (elem) => {
           }
           this.options.attr('selected', false);
           this.select.find(`[value="${$(e.target).data('val')}"]`).attr('selected', 'selected');
+
+          if (this.id === 'documents-filter') {
+            global.documentsFilter.applyFilter($(e.target).html());
+          }
         }
       });
 
@@ -63,6 +68,10 @@ module.exports = (elem) => {
         this.options.attr('selected', false);
         if (this.input.closest('form').length) {
           this.input.valid();
+        }
+
+        if (this.id === 'documents-filter') {
+          global.documentsFilter.applyFilter('');
         }
       });
 

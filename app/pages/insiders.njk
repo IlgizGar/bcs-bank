@@ -18,7 +18,7 @@
         <div class="section__header section__header_theme-blue">
           {{ Menubar.menubar({ 'theme': 'blue', 'class': 'section__menubar' }) }}
           <div class="page__container">
-            {{ Heading.heading({ 'tag': 'h1', 'title': 'Сведения \n для инсайдеров' | striptags(true) | escape | nl2br, 'type': 'large', 'margin': 'long' }) }}
+            {{ Heading.heading({ 'tag': 'h1', 'title': 'Сведения \n для инсайдеров' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'long' } }) }}
           </div>
         </div>
 
@@ -48,7 +48,7 @@
                   организаторах торговли.
                 </p>
               </div>
-              {{ Heading.heading({ 'title': 'Контактное лицо, ответственное за ведение списка инсайдеров', 'type': 'small', 'margin': 'min', 'class': 'mt-40' }) }}
+              {{ Heading.heading({ 'title': 'Контактное лицо, ответственное за ведение списка инсайдеров', 'mods': { 'type': 'small', 'margin': 'min' }, 'class': 'mt-40' }) }}
               <div class="section__text section__text_theme-split">
                 <p>Камаева Екатерина Викторовна</p>
                 <a href="mailto:ekamaeva@bcs.ru">ekamaeva@bcs.ru</a>

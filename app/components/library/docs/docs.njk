@@ -12,8 +12,7 @@
     {% endset %}
   {% endif %}
 
-  <a class="docs {% if options.theme %}docs_theme-{{ options.theme }}{% endif %} {{ options.class | safe }}"
-     href={{ options.href }} {{ data_array | safe }}>
+  <a class="docs{% if options.theme %} docs_theme-{{ options.theme }}{% endif %} {{ options.class | safe }}"  href={{ options.href }} {{ data_array | safe }}>
     {% if not options.icon %}
       <div class="docs__icon">
         {{ Icon.icon({ 'name': 'downloads' }) }}

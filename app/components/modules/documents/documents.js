@@ -14,8 +14,22 @@ module.exports = (elem) => {
     }
 
     applyFilter(year) {
-      console.log('FILTER_YEAR', year);
-      console.log('FILTER_GROUPS', this.groups);
+      this.groups.each((i, el) => {
+        const $docs = $(el).find('[data-documents-year]');
+        const $actual = $(el).find(`[data-documents-year="${year}"]`);
+        if (year.length) {
+          $docs.addClass('state_hidden');
+          if ($actual.length) {
+            $(el).removeClass('state_hidden');
+            $actual.removeClass('state_hidden');
+          } else {
+            $(el).addClass('state_hidden');
+          }
+        } else {
+          $(el).removeClass('state_hidden');
+          $docs.removeClass('state_hidden');
+        }
+      });
     }
   }
 

@@ -40,7 +40,7 @@
           <div class="section__row">
 
             <div class="section__content section__content_theme-default">
-              {{ Heading.heading({ 'tag': 'h1', 'title': 'Вакансии', 'type': 'default', 'margin': 'short', 'theme' : 'default',
+              {{ Heading.heading({ 'tag': 'h1', 'title': 'Вакансии', 'mods': { 'type': 'default', 'margin': 'short', 'theme' : 'default' },
                                    'context': { 'title': 'Москве', 'attr': {'id': 'select-city', 'prefix': 'в'} } }) }}
               {% for vacancy in vacancies %}
                 {{ Card.card({ 'type': 'vacancy', 'view': 'lowercase', 'url': vacancy.url, 'title': vacancy.title | striptags(true) | escape | nl2br, 'subtitle': vacancy.subtitle, 'items': vacancy.items }) }}

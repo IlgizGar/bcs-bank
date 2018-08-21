@@ -6,17 +6,19 @@
         <div
           class="section__header section__header_theme-blue"> {{ Menubar.menubar({ 'theme': 'blue', 'class': 'section__menubar' }) }}
           <div
-            class="page__container page__container_type-header"> {{ Heading.heading({ 'tag': 'h1', 'title': 'Реквизиты' | striptags(true) | escape | nl2br, 'type': 'large', 'margin': 'long' }) }} </div>
+            class="page__container page__container_type-header"> {{ Heading.heading({ 'tag': 'h1', 'title': 'Реквизиты' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'long' } }) }} </div>
         </div>
       </section>
       <section class="section page__section page__section_theme-last">
         <div class="page__container">
           <div class="section__row">
             <div
-              class="section__content section__content_theme-centered"> {{ Heading.heading({ 'tag': 'h2', 'title': 'Наименование' | striptags(true) | escape | nl2br, 'type': 'normal', 'margin': 'short' }) }} {{ Info.info({'title': 'Полное фирменное наименование', 'text': 'Акционерное общество «БКС — Инвестиционный Банк»', 'class': 'mb-24'}) }} {{ Info.info({'title': 'Сокращенное фирменное наименование', 'text': 'АО «БКС Банк»', 'class': 'mb-24'}) }} {{ Info.info({'title': 'Фирменное наименование на английском языке', 'text': 'Joint-stock company «BCS — Investment Bank»', 'class': 'mb-64'}) }} {{ Heading.heading({ 'tag': 'h2', 'title': 'Платежные реквизиты' | striptags(true) | escape | nl2br, 'type': 'normal', 'margin': 'short' }) }} {{ Heading.heading({ 'tag': 'h3', 'title': 'Для переводов в валюте РФ' | striptags(true) | escape | nl2br, 'type': 'small', 'margin': 'small' }) }} {{ Info.info({'title': 'Корреспондентский счет', 'text': '30101.810.5.50040000761', 'class': 'mb-24'}) }} {{ Info.info({'title': 'ИНН', 'text': '5460000016', 'class': 'mb-24'}) }} {{ Info.info({'title': 'КПП', 'text': '540701001', 'class': 'mb-24'}) }} {{ Info.info({'title': 'БИК', 'text': '045004761', 'class': 'mb-24'}) }} {{ Info.info({'title': 'Регистрационный номер', 'text': '101', 'class': 'mb-24'}) }} {{ Info.info({'title': 'Дата государственной регистрации', 'text': '01.06.1989', 'class': 'mb-24'}) }} {{ Info.info({'title': 'ОГРН Банка', 'text': '1055400000369', 'class': 'mb-24'}) }} {{ Info.info({'title': 'Дата внесения в Единый государственный реестр юридических лиц', 'text': '02.02.2005', 'class': 'mb-24'}) }} {{ Info.info({'title': 'Коды', 'text': 'ОКПО 16578422, ОКАТО 50401386000, ОКТМО 50701000001, ОКОГУ 1500010, ОКВЭД 64.19, ОКФС 16, ОКОПФ 12267', 'class': 'mb-40'}) }} {{ Heading.heading({ 'tag': 'h3', 'title': 'Для переводов в валюте РФ' | striptags(true) | escape | nl2br, 'type': 'small', 'margin': 'small' }) }}
+              class="section__content section__content_theme-centered">
+              {{ Heading.heading({ 'tag': 'h2', 'title': 'Наименование' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'short' } }) }}
+              {{ Info.info({'title': 'Полное фирменное наименование', 'text': 'Акционерное общество «БКС — Инвестиционный Банк»', 'class': 'mb-24'}) }} {{ Info.info({'title': 'Сокращенное фирменное наименование', 'text': 'АО «БКС Банк»', 'class': 'mb-24'}) }} {{ Info.info({'title': 'Фирменное наименование на английском языке', 'text': 'Joint-stock company «BCS — Investment Bank»', 'class': 'mb-64'}) }} {{ Heading.heading({ 'tag': 'h2', 'title': 'Платежные реквизиты' | striptags(true) | escape | nl2br, 'type': 'normal', 'margin': 'short' }) }} {{ Heading.heading({ 'tag': 'h3', 'title': 'Для переводов в валюте РФ' | striptags(true) | escape | nl2br, 'type': 'small', 'margin': 'small' }) }} {{ Info.info({'title': 'Корреспондентский счет', 'text': '30101.810.5.50040000761', 'class': 'mb-24'}) }} {{ Info.info({'title': 'ИНН', 'text': '5460000016', 'class': 'mb-24'}) }} {{ Info.info({'title': 'КПП', 'text': '540701001', 'class': 'mb-24'}) }} {{ Info.info({'title': 'БИК', 'text': '045004761', 'class': 'mb-24'}) }} {{ Info.info({'title': 'Регистрационный номер', 'text': '101', 'class': 'mb-24'}) }} {{ Info.info({'title': 'Дата государственной регистрации', 'text': '01.06.1989', 'class': 'mb-24'}) }} {{ Info.info({'title': 'ОГРН Банка', 'text': '1055400000369', 'class': 'mb-24'}) }} {{ Info.info({'title': 'Дата внесения в Единый государственный реестр юридических лиц', 'text': '02.02.2005', 'class': 'mb-24'}) }} {{ Info.info({'title': 'Коды', 'text': 'ОКПО 16578422, ОКАТО 50401386000, ОКТМО 50701000001, ОКОГУ 1500010, ОКВЭД 64.19, ОКФС 16, ОКОПФ 12267', 'class': 'mb-40'}) }} {{ Heading.heading({ 'tag': 'h3', 'title': 'Для переводов в валюте РФ' | striptags(true) | escape | nl2br, 'type': 'small', 'margin': 'small' }) }}
               <div class="text mb-64">
                 <div class="text__paragraph"> Beneficiary Bank: «BCS Bank», JSC, SWIFT: BCSBRU55</div>
-              </div> {{ Heading.heading({ 'tag': 'h2', 'title': 'Корреспондентский счет' | striptags(true) | escape | nl2br, 'type': 'normal', 'margin': 'short' }) }}
+              </div> {{ Heading.heading({ 'tag': 'h2', 'title': 'Корреспондентский счет' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'short' } }) }}
               <div class="table table_sortable table_theme-default">
                 <table class="table__content">
                   <thead class="table__head">
@@ -81,7 +83,7 @@
                   </tr>
                   </tbody>
                 </table>
-              </div> {{ Heading.heading({ 'tag': 'h2', 'title': 'Контакты' | striptags(true) | escape | nl2br, 'type': 'normal', 'marginTop': 'normal', 'margin': 'normal' }) }} {{ Info.info({'title': 'Адрес', 'text': '630099, г. Новосибирск, ул. Советская, д. 37', 'class': 'mb-24'}) }}
+              </div> {{ Heading.heading({ 'tag': 'h2', 'title': 'Контакты' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin-top': 'normal', 'margin': 'normal' } }) }} {{ Info.info({'title': 'Адрес', 'text': '630099, г. Новосибирск, ул. Советская, д. 37', 'class': 'mb-24'}) }}
               <div class="info mb-24">
                 <div class="info__title">Телефон</div>
                 <div class="info__text"><a href="tel:+73832305544">+7 (383) 230-55-44</a>,<a href="tel:+73832300202">+7

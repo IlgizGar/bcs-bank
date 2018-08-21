@@ -6,7 +6,7 @@
         <div
           class="section__header section__header_theme-blue"> {{ Menubar.menubar({ 'theme': 'blue', 'class': 'section__menubar' }) }}
           <div
-            class="page__container page__container_type-header"> {{ Heading.heading({ 'tag': 'h1', 'title': 'О БКС Банке' | striptags(true) | escape | nl2br, 'type': 'large', 'margin': 'medium' }) }}
+            class="page__container page__container_type-header"> {{ Heading.heading({ 'tag': 'h1', 'title': 'О БКС Банке' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
             <div
               class="page__features"> {{ Feature.feature({ 'title': 'ruBBB+', 'text': 'Pейтинг высокой кредитоспособности' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': ''}) }} {{ Feature.feature({ 'title': '29 лет', 'text': 'На рынке с 1989 года' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': ''}) }} </div>
           </div>
@@ -16,7 +16,7 @@
         <div class="page__container">
           <div class="section__row">
             <div
-              class="section__content section__content_theme-centered-left"> {{ Heading.heading({ 'title': 'КС Банк — часть российской группы компаний, предоставляющей частным и институциональным клиентам полный спектр финансовых услуг. Также является крупнейшей инвестиционной российской компанией по объему операций с ценными бумагами.', 'type': 'normal', 'margin': 'short', 'class': 'mb-64' }) }} </div>
+              class="section__content section__content_theme-centered-left"> {{ Heading.heading({ 'title': 'КС Банк — часть российской группы компаний, предоставляющей частным и институциональным клиентам полный спектр финансовых услуг. Также является крупнейшей инвестиционной российской компанией по объему операций с ценными бумагами.', 'mods': { 'type': 'normal', 'margin': 'short' }, 'class': 'mb-64' }) }} </div>
           </div>
         </div>
       </section>
