@@ -19,9 +19,6 @@ module.exports = (elem) => {
     }
 
     init() {
-      if (this.context.data('prefix')) {
-        this.context.prepend(`<span class="context__prefix">${this.context.data('prefix')}</span>`);
-      }
       this.id = this.context.data('id');
       this.list = $(`.js-context-list#${this.id}`);
 
@@ -30,24 +27,16 @@ module.exports = (elem) => {
         $('.js-page').append(this.list);
         this.list.css('left', this.context.offset().left);
         this.options.each((i, el) => {
-          this.list.find('ul').append(`
-          <li data-val="${$(el).val()}">${$(el).html()}</li>
-        `);
+          const item = `<li class="js-context-item" data-val="${$(el).val()}" data-prefix="${$(el).data('prefix')}" data-title="${$(el).data('title')}">${$(el).html()}</li>`;
+          this.list.find('ul').append($(item));
           if ($(el).attr('selected')) {
-            this.context.addClass('state_filled');
-            this.title.html($(el).html());
+            this.handleNamedList($(item));
           }
         });
+      } else {
+        const $item = this.list.find('.js-context-item.state_selected');
+        this.handleNamedList($item);
       }
-
-      // this.context.find('.scroll-pane').jScrollPane({
-      //   contentWidth: 100,
-      //   verticalDragMinHeight: 16,
-      //   verticalDragMaxHeight: 16,
-      //   verticalGutter: 16,
-      //   mouseWheelSpeed: 1,
-      //   animateDuration: 1000,
-      // });
     }
 
     events() {
@@ -61,7 +50,11 @@ module.exports = (elem) => {
       });
 
       this.list.on('click', (e) => {
-        this.handleNamedList(this.list.attr('id'), $(e.target));
+        const $item = $(e.target).closest('.js-context-item');
+
+        if ($item.length) {
+          this.handleNamedList($item);
+        }
       });
 
       $(window).on('click', (e) => {
@@ -69,6 +62,12 @@ module.exports = (elem) => {
           Object.values(global.contexts).forEach((context) => {
             context.hideList();
           });
+        }
+      });
+
+      this.input.on('change', () => {
+        if ($('.js-page-vacancies').length) {
+          Context.handleVacancies(this.input.val());
         }
       });
     }
@@ -100,23 +99,62 @@ module.exports = (elem) => {
       $('body').removeClass('state_unscroll');
     }
 
-    handleNamedList(id, el) {
-      this.context.addClass('state_filled');
-      switch (id) {
-        case 'select-city':
-          if ($(el).closest('.js-button').length) {
-            const val = $(el).closest('.js-button').data('value');
-            const title = $(el).closest('.js-button').data('city');
-            this.input.val(val);
-            this.title.html(title);
-          }
-          break;
-        default:
-          this.context.addClass('state_filled');
-          this.title.html($(el).html());
+    handleNamedList($el) {
+      console.log('ELEM', $el);
 
-          this.options.attr('selected', false);
-          this.select.find(`[value="${$(el).data('val')}"]`).attr('selected', 'selected');
+      const val = $el.data('value');
+      const title = $el.data('title');
+
+      this.context.addClass('state_filled');
+
+      if ($el.data('prefix')) {
+        if (this.context.find('.js-context-prefix').length) {
+          this.context.find('.js-context-prefix').html($el.data('prefix'));
+        } else {
+          this.context.prepend(`<span class="context__prefix js-context-prefix">${$el.data('prefix')}</span>`);
+        }
+      } else {
+        this.context.find('.js-context-prefix').remove();
+      }
+
+      if (title.length) {
+        this.title.html(title);
+      } else {
+        this.title.html($el.html());
+      }
+      this.input.val(val);
+      this.input.trigger('change');
+
+      this.options.attr('selected', false);
+      this.select.find(`[value="${$el.data('val')}"]`).attr('selected', 'selected');
+
+      // switch (id) {
+      //   case 'select-city':
+      //     break;
+      //   default:
+      // }
+    }
+
+    static handleVacancies(id) {
+      const $vacancies = $('.js-card[data-city]');
+      const $active = $(`.js-card[data-city=${id}]`);
+
+
+      $('.js-vacancies').find('.documents__no-result').remove();
+      $vacancies.removeClass('state_no-margin-bottom');
+      if (id === 'all') {
+        $vacancies.removeClass('state_hidden');
+      } else {
+        $vacancies.addClass('state_hidden');
+        if ($active.length) {
+          $active.removeClass('state_hidden');
+          $active.last().addClass('state_no-margin-bottom');
+        } else {
+          $('.js-vacancies').append('<div class="documents__no-result">\n' +
+            '                    <p>Вакансий в этом городе нет.</p>\n' +
+            '                    <p>Попробуйте выбрать другой город.</p>\n' +
+            '                  </div>');
+        }
       }
     }
   }

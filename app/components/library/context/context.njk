@@ -28,7 +28,7 @@
     {% if options.items %}
       <select class="context__select" hidden name="{{ options.name }}_select">
         {% for item in options.items %}
-          <option value={{ item.value }} {% if item.selected %}selected{% endif %}>{{ item.title }}</option>
+          <option value={{ item.value }} {% if item.attr.prefix %}data-prefix="{{ item.attr.prefix | safe }}"{% endif %} {% if item.attr.title %}data-title="{{ item.attr.title | safe }}"{% endif %} {% if item.selected %}selected{% endif %}>{{ item.title }}</option>
         {% endfor %}
       </select>
     {% else %}
