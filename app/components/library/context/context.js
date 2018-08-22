@@ -89,7 +89,15 @@ module.exports = (elem) => {
       this.list.removeClass('state_invisible');
       this.list.css('top', `${this.context.offset().top + (this.context.outerHeight() - 5)}px`);
       if (this.id === 'select-city') {
-        $('body').addClass('state_unscroll');
+        const totalHeight = this.list.offset().top + this.list.outerHeight();
+        if (totalHeight > window.outerHeight) {
+          $('.js-page').css({
+            overflow: 'hidden',
+            maxHeight: totalHeight,
+          });
+        } else {
+          $('body').addClass('state_unscroll');
+        }
       }
     }
 
@@ -97,11 +105,13 @@ module.exports = (elem) => {
       this.context.removeClass('state_explored');
       this.list.addClass('state_invisible');
       $('body').removeClass('state_unscroll');
+      $('.js-page').css({
+        overflow: 'auto',
+        maxHeight: 'none',
+      });
     }
 
     handleNamedList($el) {
-      console.log('ELEM', $el);
-
       const val = $el.data('value');
       const title = $el.data('title');
 
@@ -127,12 +137,6 @@ module.exports = (elem) => {
 
       this.options.attr('selected', false);
       this.select.find(`[value="${$el.data('val')}"]`).attr('selected', 'selected');
-
-      // switch (id) {
-      //   case 'select-city':
-      //     break;
-      //   default:
-      // }
     }
 
     static handleVacancies(id) {
