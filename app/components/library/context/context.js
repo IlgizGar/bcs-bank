@@ -104,11 +104,13 @@ module.exports = (elem) => {
     hideList() {
       this.context.removeClass('state_explored');
       this.list.addClass('state_invisible');
-      $('body').removeClass('state_unscroll');
-      $('.js-page').css({
-        overflow: 'auto',
-        maxHeight: 'none',
-      });
+      if (this.id === 'select-city') {
+        $('body').removeClass('state_unscroll');
+        $('.js-page').css({
+          overflow: 'auto',
+          maxHeight: 'none',
+        });
+      }
     }
 
     handleNamedList($el) {
