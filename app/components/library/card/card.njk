@@ -15,12 +15,23 @@
     {% set type = 'div' %}
   {% endif %}
 
+  {% set class_sep = joiner(' ') %}
+
+  {% if options.attr %}
+    {% set attr = '' %}
+    {% set attr %}
+      {% for key, value in options.attr -%}
+        {{ class_sep() }} data-{{ key }} = "{{ value }}"
+      {%- endfor %}
+    {% endset %}
+  {% endif %}
+
   {#
     hoverType:
       button - заливка фона при ховере на кнопку
       card - заливка фона при ховере на карточку
   #}
-  <div class="card js-card {% if type === 'form' %}js-form{% endif %} {{ "card_type-" + options.type }} {% if options.hoverType %}{{ "card_hover-type-" + options.hoverType }}{% endif %} {% if options.view %}{{ "card_view-" + options.view }}{% endif %} {% if options.theme %} {{ "card_theme-"+options.theme }}{% endif %} {{ options.class }}" {% if options.href %}data-href={{ options.href }}{% endif %}>
+  <div class="card js-card {% if type === 'form' %}js-form{% endif %} {{ "card_type-" + options.type }} {% if options.hoverType %}{{ "card_hover-type-" + options.hoverType }}{% endif %} {% if options.view %}{{ "card_view-" + options.view }}{% endif %} {% if options.theme %} {{ "card_theme-"+options.theme }}{% endif %} {{ options.class }}" {% if options.href %}data-href={{ options.href }}{% endif %} {{ attr | safe }}>
     <{{ type }} class="card__wrap">
 
       {% if options.link %}

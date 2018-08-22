@@ -12,15 +12,18 @@
   { 'title': 'Начальник отдела \n методологии риск-менеджмента',
     'subtitle': 'Москва',
     'url': 'http://juravlev.rusrobots.ru/bks/vacancy.html',
-    'items': ['Высшее образование (экономическое);', 'Опыт работы от 3-х лет на аналогичной должности в коммерческих банках;', 'Обширная практика написания внутренних документов, обязтаельно в части корпоративного кредитования и резервирования по 254-П, 283-П, регламентов по взаимодействию подразделений.'] },
+    'items': ['Высшее образование (экономическое);', 'Опыт работы от 3-х лет на аналогичной должности в коммерческих банках;', 'Обширная практика написания внутренних документов, обязтаельно в части корпоративного кредитования и резервирования по 254-П, 283-П, регламентов по взаимодействию подразделений.'],
+    'city': '213'},
   { 'title': 'Специалист отдела \n поддержки продаж',
     'subtitle': 'Москва',
     'url': 'http://juravlev.rusrobots.ru/bks/vacancy.html',
-    'items': ['Высшее образование (экономическое, юридическое);', 'Аналогичный опыт работы (желательно);', 'Коммуникативные навыки;', 'Умение работать с документами.']},
+    'items': ['Высшее образование (экономическое, юридическое);', 'Аналогичный опыт работы (желательно);', 'Коммуникативные навыки;', 'Умение работать с документами.'],
+    'city': '35'},
   { 'title': 'Старший клиентский менеджер \n по привлечению корпоративных клиентов',
     'subtitle': 'Москва',
     'url': 'http://juravlev.rusrobots.ru/bks/vacancy.html',
-    'items': ['Наличие собственной клиентской базы;', 'Знание всех банковских продуктов и технологий для корпоративных клиентов;', 'Опыт проведения презентаций, переговоров;', 'Опыт продаж финансовых продуктов от двух лет.']}
+    'items': ['Наличие собственной клиентской базы;', 'Знание всех банковских продуктов и технологий для корпоративных клиентов;', 'Опыт проведения презентаций, переговоров;', 'Опыт продаж финансовых продуктов от двух лет.'],
+    'city': '213'}
 ] %}
 
 {% block body %}
@@ -28,7 +31,7 @@
 
     {% include "../components/modules/header/header.njk" %}
 
-    <main role="main" class="vacancies">
+    <main role="main" class="vacancies js-page-vacancies">
       <section class="section page__section">
         <div class="section__header">
           {{ Menubar.menubar({ 'theme': 'black', 'class': 'section__menubar' }) }}
@@ -39,11 +42,11 @@
         <div class="page__container">
           <div class="section__row">
 
-            <div class="section__content section__content_theme-default">
+            <div class="section__content section__content_theme-default js-vacancies">
               {{ Heading.heading({ 'tag': 'h1', 'title': 'Вакансии', 'mods': { 'type': 'default', 'margin': 'short', 'theme' : 'default' },
-                                   'context': { 'title': 'Москве', 'attr': {'id': 'select-city', 'prefix': 'в'} } }) }}
+                                   'context': { 'title': 'Москве', 'attr': {'id': 'select-city'} } }) }}
               {% for vacancy in vacancies %}
-                {{ Card.card({ 'type': 'vacancy', 'view': 'lowercase', 'url': vacancy.url, 'title': vacancy.title | striptags(true) | escape | nl2br, 'subtitle': vacancy.subtitle, 'items': vacancy.items }) }}
+                {{ Card.card({ 'type': 'vacancy', 'view': 'lowercase', 'url': vacancy.url, 'title': vacancy.title | striptags(true) | escape | nl2br, 'subtitle': vacancy.subtitle, 'items': vacancy.items, 'attr': { 'city': vacancy.city } }) }}
               {% endfor %}
             </div>
 

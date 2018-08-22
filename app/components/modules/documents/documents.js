@@ -41,7 +41,8 @@ module.exports = (elem) => {
 
       $('.js-tab').each((i, el) => {
         if ($(el).find('.js-documents-group:not(.state_hidden)').length) {
-          $(el).find('.documents__no-result').addClass('state_hidden');
+          // $(el).find('.documents__no-result').addClass('state_hidden');
+          $(el).find('.documents__no-result').remove();
         } else {
           $(el).append('<div class="documents__no-result">\n' +
             '                    <p>Документов этого года нет.</p>\n' +

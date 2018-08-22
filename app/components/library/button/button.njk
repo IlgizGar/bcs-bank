@@ -17,15 +17,15 @@
     {% endset %}
 
     {% if options.attr %}
-      {% set data_array = '' %}
-      {% set data_array %}
+      {% set attr = '' %}
+      {% set attr %}
         {% for key, value in options.attr -%}
           {{ class_sep() }} data-{{ key }} = "{{ value }}"
         {%- endfor %}
       {% endset %}
     {% endif %}
 
-    <{{ tag }} class='button {{ mods }} {{ options.class }} js-button' {% if options.href %} href={{ options.href }} {% endif %} {% if options.type %}type={{ options.type }} {% endif %} {{ options.state }} {{ data_array | safe }}>
+    <{{ tag }} class='button {{ mods }} {{ options.class }} js-button' {% if options.href %} href={{ options.href }} {% endif %} {% if options.type %}type={{ options.type }} {% endif %} {{ options.state }} {{ attr | safe }}>
         <span class='button__wrap'>
             {% if options.title %}
                 <span class='button__title'>{{ options.title }}</span>
