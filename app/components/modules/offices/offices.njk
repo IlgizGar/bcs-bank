@@ -8,8 +8,13 @@
   <div class="offices__content">
     {{ Tabbar.tabbar({ 'theme': 'default-tab', 'view': 'underscore', 'type': 'tab', 'buttonClass': 'offices__tab-control', 'tabs': [{'title': 'Отделения', 'id': 'offices-tab' }, {'title': 'Банкоматы', 'id': 'atm-tab'}, {'title': 'Ультима', 'id': 'ultima-tab'}], 'class': 'offices__tabbar' }) }}
     <div class="tabs js-tabs offices__tabs scroll-pane">
+      {#
+        data-city - geoid города
+        data-id - привязка списка к табу
+        data-coords - координаты точки. Без бробелов!
+      #}
       <div id="offices-tab" class="offices__tabs-item tabs__item js-tab state_invisible">
-        <div class="collapse offices__collapse" data-city="Москва" data-id="offices-tab">
+        <div class="collapse offices__collapse" data-city="213" data-id="offices-tab">
 
           <div class="collapse__item" data-coords="[55.76,37.57]">
             <div class="collapse__control">
@@ -275,9 +280,275 @@
             </div>
           </div>
         </div>
+        <div class="collapse offices__collapse" data-city="35" data-id="offices-tab">
+
+          <div class="collapse__item" data-coords="[45.037538,38.967756]">
+            <div class="collapse__control">
+              <div class="collapse__control-description">
+                Москва
+              </div>
+              <div class="collapse__control-title">
+                На проспекте Мира
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[45.060537,39.022001]">
+            <div class="collapse__control">
+              <div class="collapse__control-description">
+                Москва
+              </div>
+              <div class="collapse__control-title">
+                На проспекте Мира
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[45.061511,38.962091]">
+            <div class="collapse__control">
+              <div class="collapse__control-description">
+                Москва
+              </div>
+              <div class="collapse__control-title">
+                На проспекте Мира
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[45.030114,38.996424]">
+            <div class="collapse__control">
+              <div class="collapse__control-description">
+                Москва
+              </div>
+              <div class="collapse__control-title">
+                На проспекте Мира
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[45.054697,39.010843]">
+            <div class="collapse__control">
+              <div class="collapse__control-description">
+                Москва
+              </div>
+              <div class="collapse__control-title">
+                На проспекте Мира
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[45.019887,38.967241]">
+            <div class="collapse__control">
+              <div class="collapse__control-description">
+                Москва
+              </div>
+              <div class="collapse__control-title">
+                На проспекте Мира
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
       <div id="atm-tab" class="offices__tabs-item tabs__item js-tab state_invisible">
-        <div class="collapse offices__collapse" data-city="Москва" data-id="atm-tab">
+        <div class="collapse offices__collapse" data-city="213" data-id="atm-tab">
 
           <div class="collapse__item" data-coords="[55.76,37.587]">
             <div class="collapse__control">
@@ -525,11 +796,259 @@
             </div>
           </div>
         </div>
+        <div class="collapse offices__collapse" data-city="35" data-id="atm-tab">
+
+          <div class="collapse__item" data-coords="[45.019887,38.967241]">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                На проспекте Мира
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[45.035469,38.968443]">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                Кутузовский
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[45.055792,38.983377]">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                На проспекте Мира
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[45.047761,38.939947]">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                На проспекте Мира
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[45.061024,38.973764]">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                На проспекте Мира
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[45.057009,38.939947]">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                На проспекте Мира
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div id="ultima-tab" class="offices__tabs-item tabs__item js-tab state_invisible">
         {{ Button.button({ 'title': 'Посмотреть список банкоматов Росбанка', 'name': 'download', 'class': 'offices__external-link' }) }}
-        <div class="collapse offices__collapse" data-city="Москва" data-id="ultima-tab">
+        <div class="collapse offices__collapse" data-city="213" data-id="ultima-tab">
 
           <div class="collapse__item" data-coords="[55.76,37.57]">
             <div class="collapse__control">
@@ -762,6 +1281,48 @@
             </div>
           </div>
 
+        </div>
+        <div class="collapse offices__collapse" data-city="35" data-id="ultima-tab">
+          <div class="collapse__item" data-coords="[45.057131,38.984407]">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                109147, Россия, г. Москва, ул. Марксистская, д. 3, строение 1
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    121059, Москва, ул. Большая Дорогомиловская, 14
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>

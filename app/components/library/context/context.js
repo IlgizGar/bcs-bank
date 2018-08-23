@@ -13,6 +13,7 @@ module.exports = (elem) => {
       this.title = this.context.find('.js-context-title');
       this.scrollBarInited = false;
       this.id = '';
+      this.list = null;
 
       this.init();
       this.events();
@@ -38,7 +39,16 @@ module.exports = (elem) => {
         this.handleNamedList($item);
       }
     }
-
+    getListData() {
+      const listData = [];
+      this.list.find('.js-context-item').each((i, el) => {
+        listData.push({
+          id: $(el).attr('data-value') ? $(el).attr('data-value') : null,
+          title: $(el).text().trim(),
+        });
+      });
+      return listData;
+    }
     events() {
       this.context.on('click', (e) => {
         e.preventDefault();
@@ -115,6 +125,7 @@ module.exports = (elem) => {
 
     handleNamedList($el) {
       const val = $el.data('value');
+      const name = $el.text().trim();
       const title = $el.data('title');
 
       this.context.addClass('state_filled');
@@ -135,6 +146,7 @@ module.exports = (elem) => {
         this.title.html($el.html());
       }
       this.input.val(val);
+      this.input.attr('data-text', name);
       this.input.trigger('change');
 
       this.options.attr('selected', false);
