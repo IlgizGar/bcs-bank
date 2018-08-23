@@ -21,30 +21,68 @@ export default class Offices {
       iconImageSize: [56, 56],
       iconImageOffset: [-28, -44],
     };
+    this.cityInput= $('.context input[name="current-city_input"]');
+    this.city = null;
     this.currentTabId = null;
     this.map = null;
     this.markCollection = null;
-    this.city = 'Москва';
     this.points = [];
     this.init();
   }
 
   init() {
+    this.onCityChange();
     this.getCurrentTab();
-    this.getPoints();
     Helpers.getGeolocation((location) => {
       ymaps.ready(() => {
+        const userCity = this.checkUserCity(location.GeocoderMetaData.InternalToponymInfo.geoid);
         this.initMap();
         this.initObjectCollection();
-        this.addPoints();
+        if (!!userCity) {
+          global.contexts['select-city'].handleNamedList($(`.js-context-item[data-value="${userCity}"]`))
+        } else {
+          this.changeCity();
+        }
       });
     });
     this.setScrollPane();
   }
 
+  checkUserCity(id) {
+    let cityId = null;
+    global.contexts['select-city'].getListData().forEach((el) => {
+      if (el.id.toString() === id.toString()) {
+        cityId = id;
+        return cityId;
+      }
+    });
+    return cityId;
+  }
+
+  onCityChange() {
+    this.cityInput.on('change', (e) => {
+      if (e.target.value === 'all') {
+        this.city = null;
+        this.changeCity();
+        return
+      }
+
+      var myGeocoder = ymaps.geocode(e.target.getAttribute('data-text'), {
+        kind: 'locality'
+      });
+      myGeocoder.then(
+        (res) => {
+          this.city = res.geoObjects.get(0).properties.get('metaDataProperty').GeocoderMetaData.InternalToponymInfo.geoid;
+          this.changeCity();
+        },
+        (err) => {
+          console.log('Обшибка', err);
+        }
+      );
+    })
+  }
+
   initMap() {
-    Helpers.getGeolocation();
-    // Создание карты.
     this.map = new ymaps.Map('map-container', {
       center: [55.76, 37.57],
       zoom: 13,
@@ -136,7 +174,7 @@ export default class Offices {
   }
 
   getPoints() {
-    const citySelector = this.city ? `[data-city="${this.city}"]` : '';
+    const citySelector = this.city ? `[data-city="${this.city}"]` : '[data-city]';
     this.points = [];
     this.appBlock.find(`.offices__collapse${citySelector}[data-id="${this.currentTabId}"]`).children('.collapse__item').each((i, el) => {
       this.points.push({
@@ -161,6 +199,12 @@ export default class Offices {
       this.markCollection.add(placemark);
     });
     this.map.geoObjects.add(this.markCollection);
+  }
+
+  changeCity() {
+    this.getPoints();
+    this.addPoints();
+    this.goToPoints();
   }
 
   onPointEvent(e, coordinates) {
@@ -215,10 +259,7 @@ export default class Offices {
       this.getCurrentTab();
       this.getPoints();
       this.addPoints();
-      this.map.setBounds(this.markCollection.getBounds(), {
-        checkZoomRange: true,
-        zoom: 10,
-      });
+      this.goToPoints();
     });
   }
 
@@ -234,6 +275,13 @@ export default class Offices {
 
   goToPoint(point) {
     this.map.setBounds(point.geometry.getBounds(), {
+      checkZoomRange: true,
+      zoom: 10,
+    });
+  }
+
+  goToPoints() {
+    this.map.setBounds(this.markCollection.getBounds(), {
       checkZoomRange: true,
       zoom: 10,
     });
