@@ -13,6 +13,7 @@ module.exports = (elem) => {
       this.title = this.context.find('.js-context-title');
       this.scrollBarInited = false;
       this.id = '';
+      this.list = null;
 
       this.init();
       this.events();
@@ -138,6 +139,7 @@ module.exports = (elem) => {
 
     handleNamedList($el) {
       const val = $el.data('value');
+      const name = $el.text().trim();
       const title = $el.data('title');
 
       this.context.addClass('state_filled');
@@ -158,6 +160,7 @@ module.exports = (elem) => {
         this.title.html($el.html());
       }
       this.input.val(val);
+      this.input.attr('data-text', name);
       this.input.trigger('change');
 
       this.options.attr('selected', false);
