@@ -38,7 +38,6 @@ export default class Offices {
         const userCity = this.checkUserCity(location.GeocoderMetaData.InternalToponymInfo.geoid);
         this.initMap();
         this.initObjectCollection();
-        console.log(userCity);
         if (!!userCity) {
           global.contexts['select-city'].handleNamedList($(`.js-context-item[data-value="${userCity}"]`))
         } else {
@@ -50,12 +49,14 @@ export default class Offices {
   }
 
   checkUserCity(id) {
+    let cityId = null;
     global.contexts['select-city'].getListData().forEach((el) => {
       if (el.id.toString() === id.toString()) {
-        return id;
+        cityId = id;
+        return cityId;
       }
     });
-    return false;
+    return cityId;
   }
 
   onCityChange() {
