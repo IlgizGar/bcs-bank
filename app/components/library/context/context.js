@@ -111,14 +111,19 @@ module.exports = (elem) => {
         this.scrollBarInited = true;
       }
       this.list.removeClass('state_invisible');
+
+      let listLeft = this.context.offset().left;
+      const attr = this.context.attr('data-list-on-right');
+      if (typeof attr !== typeof undefined && attr !== false) {
+        listLeft -= this.list.outerWidth() - this.context.outerWidth();
+      }
+      this.list.css('left', listLeft);
+
       this.list.css('top', `${this.context.offset().top + (this.context.outerHeight() - 5)}px`);
       if (this.id === 'select-city') {
         const totalHeight = this.list.offset().top + this.list.outerHeight();
         if (totalHeight > window.outerHeight) {
-          $('.js-page').css({
-            overflow: 'hidden',
-            maxHeight: totalHeight,
-          });
+          $('.js-page').css('max-height', totalHeight).addClass('state_no-overflow');
         } else {
           $('body').addClass('state_unscroll');
         }
@@ -130,10 +135,7 @@ module.exports = (elem) => {
       this.list.addClass('state_invisible');
       if (this.id === 'select-city') {
         $('body').removeClass('state_unscroll');
-        $('.js-page').css({
-          overflow: 'auto',
-          maxHeight: 'none',
-        });
+        $('.js-page').css('max-height', 'none').removeClass('state_no-overflow');
       }
     }
 
