@@ -13,7 +13,6 @@ module.exports = (elem) => {
       this.title = this.context.find('.js-context-title');
       this.scrollBarInited = false;
       this.id = '';
-      this.list = null;
 
       this.init();
       this.events();
@@ -26,9 +25,23 @@ module.exports = (elem) => {
       if (!this.list.length) {
         this.list = $(`<div id="${this.id}" class="dropdown__list state_invisible scroll-pane js-context-list mt-16"><ul></ul></div>`);
         $('.js-page').append(this.list);
-        this.list.css('left', this.context.offset().left);
         this.options.each((i, el) => {
-          const item = `<li class="js-context-item" data-val="${$(el).val()}" data-prefix="${$(el).data('prefix')}" data-title="${$(el).data('title')}">${$(el).html()}</li>`;
+          let itemLeft = `<li class="dropdown__list-item js-context-item" data-val="${$(el).val()}"`;
+          let item = '';
+
+          if ($(el).data('href')) {
+            item = `><a href="${$(el).data('href')}">${$(el).html()}</a></li>`;
+          } else {
+            item = `>${$(el).html()}</li>`;
+          }
+
+          if ($(el).data('title')) {
+            itemLeft += ` data-title="${$(el).data('title')}"`;
+          }
+          if ($(el).data('prefix')) {
+            itemLeft += ` data-prefix="${$(el).data('prefix')}"`;
+          }
+          item = itemLeft + item;
           this.list.find('ul').append($(item));
           if ($(el).attr('selected')) {
             this.handleNamedList($(item));
@@ -125,7 +138,6 @@ module.exports = (elem) => {
 
     handleNamedList($el) {
       const val = $el.data('value');
-      const name = $el.text().trim();
       const title = $el.data('title');
 
       this.context.addClass('state_filled');
@@ -146,7 +158,6 @@ module.exports = (elem) => {
         this.title.html($el.html());
       }
       this.input.val(val);
-      this.input.attr('data-text', name);
       this.input.trigger('change');
 
       this.options.attr('selected', false);
