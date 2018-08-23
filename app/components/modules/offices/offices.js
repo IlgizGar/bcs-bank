@@ -74,6 +74,7 @@ export default class Offices {
         (res) => {
           this.city = res.geoObjects.get(0).properties.get('metaDataProperty').GeocoderMetaData.InternalToponymInfo.geoid;
           this.changeCity();
+          Offices.reInitScroll(this.pane);
         },
         (err) => {
           console.log('Обшибка', err);
@@ -201,7 +202,18 @@ export default class Offices {
     this.map.geoObjects.add(this.markCollection);
   }
 
+  updateList() {
+    this.appBlock.find(`.offices__collapse`).each((i, el) => {
+      if (this.city === null || el.getAttribute('data-city') === this.city.toString()) {
+        $(el).show()
+      } else {
+        $(el).hide()
+      }
+    });
+  }
+
   changeCity() {
+    this.updateList();
     this.getPoints();
     this.addPoints();
     this.goToPoints();
