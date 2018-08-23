@@ -1,0 +1,15 @@
+.context.context_theme-white
+  .context__button
+    color: $color_light
+
+    .icon
+      color: $color_tab
+
+      transition: color $interval
+
+  &:hover, &.state_explored
+    .context__button
+      color: $color_default
+
+      .icon
+        color: $color_default

@@ -25,9 +25,23 @@ module.exports = (elem) => {
       if (!this.list.length) {
         this.list = $(`<div id="${this.id}" class="dropdown__list state_invisible scroll-pane js-context-list mt-16"><ul></ul></div>`);
         $('.js-page').append(this.list);
-        this.list.css('left', this.context.offset().left);
         this.options.each((i, el) => {
-          const item = `<li class="js-context-item" data-val="${$(el).val()}" data-prefix="${$(el).data('prefix')}" data-title="${$(el).data('title')}">${$(el).html()}</li>`;
+          let itemLeft = `<li class="dropdown__list-item js-context-item" data-val="${$(el).val()}"`;
+          let item = '';
+
+          if ($(el).data('href')) {
+            item = `><a href="${$(el).data('href')}">${$(el).html()}</a></li>`;
+          } else {
+            item = `>${$(el).html()}</li>`;
+          }
+
+          if ($(el).data('title')) {
+            itemLeft += ` data-title="${$(el).data('title')}"`;
+          }
+          if ($(el).data('prefix')) {
+            itemLeft += ` data-prefix="${$(el).data('prefix')}"`;
+          }
+          item = itemLeft + item;
           this.list.find('ul').append($(item));
           if ($(el).attr('selected')) {
             this.handleNamedList($(item));
@@ -87,6 +101,14 @@ module.exports = (elem) => {
         this.scrollBarInited = true;
       }
       this.list.removeClass('state_invisible');
+
+      let listLeft = this.context.offset().left;
+      const attr = this.context.attr('data-list-on-right');
+      if (typeof attr !== typeof undefined && attr !== false) {
+        listLeft -= this.list.outerWidth() - this.context.outerWidth();
+      }
+      this.list.css('left', listLeft);
+
       this.list.css('top', `${this.context.offset().top + (this.context.outerHeight() - 5)}px`);
       if (this.id === 'select-city') {
         const totalHeight = this.list.offset().top + this.list.outerHeight();
@@ -107,38 +129,39 @@ module.exports = (elem) => {
       if (this.id === 'select-city') {
         $('body').removeClass('state_unscroll');
         $('.js-page').css({
-          overflow: 'auto',
+          overflow: 'inherit',
           maxHeight: 'none',
         });
       }
     }
 
     handleNamedList($el) {
-      const val = $el.data('value');
-      const title = $el.data('title');
+      if (!$el.find('a').length) {
+        const val = $el.data('value');
 
-      this.context.addClass('state_filled');
+        this.context.addClass('state_filled');
 
-      if ($el.data('prefix')) {
-        if (this.context.find('.js-context-prefix').length) {
-          this.context.find('.js-context-prefix').html($el.data('prefix'));
+        if ($el.data('prefix')) {
+          if (this.context.find('.js-context-prefix').length) {
+            this.context.find('.js-context-prefix').html($el.data('prefix'));
+          } else {
+            this.context.prepend(`<span class="context__prefix js-context-prefix">${$el.data('prefix')}</span>`);
+          }
         } else {
-          this.context.prepend(`<span class="context__prefix js-context-prefix">${$el.data('prefix')}</span>`);
+          this.context.find('.js-context-prefix').remove();
         }
-      } else {
-        this.context.find('.js-context-prefix').remove();
-      }
 
-      if (title.length) {
-        this.title.html(title);
-      } else {
-        this.title.html($el.html());
-      }
-      this.input.val(val);
-      this.input.trigger('change');
+        if ($el.data('title')) {
+          this.title.html($el.data('title'));
+        } else {
+          this.title.html($el.text().trim());
+        }
+        this.input.val(val);
+        this.input.trigger('change');
 
-      this.options.attr('selected', false);
-      this.select.find(`[value="${$el.data('val')}"]`).attr('selected', 'selected');
+        this.options.attr('selected', false);
+        this.select.find(`[value="${$el.data('val')}"]`).attr('selected', 'selected');
+      }
     }
 
     static handleVacancies(id) {
