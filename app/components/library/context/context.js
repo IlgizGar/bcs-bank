@@ -53,6 +53,7 @@ module.exports = (elem) => {
         this.handleNamedList($item);
       }
     }
+
     getListData() {
       const listData = [];
       this.list.find('.js-context-item').each((i, el) => {
@@ -63,6 +64,7 @@ module.exports = (elem) => {
       });
       return listData;
     }
+
     events() {
       this.context.on('click', (e) => {
         e.preventDefault();
@@ -140,33 +142,34 @@ module.exports = (elem) => {
     }
 
     handleNamedList($el) {
-      const val = $el.data('value');
-      const name = $el.text().trim();
-      const title = $el.data('title');
+      if (!$el.find('a').length) {
+        const val = $el.data('value');
+        const name = $el.text().trim();
 
-      this.context.addClass('state_filled');
+        this.context.addClass('state_filled');
 
-      if ($el.data('prefix')) {
-        if (this.context.find('.js-context-prefix').length) {
-          this.context.find('.js-context-prefix').html($el.data('prefix'));
+        if ($el.data('prefix')) {
+          if (this.context.find('.js-context-prefix').length) {
+            this.context.find('.js-context-prefix').html($el.data('prefix'));
+          } else {
+            this.context.prepend(`<span class="context__prefix js-context-prefix">${$el.data('prefix')}</span>`);
+          }
         } else {
-          this.context.prepend(`<span class="context__prefix js-context-prefix">${$el.data('prefix')}</span>`);
+          this.context.find('.js-context-prefix').remove();
         }
-      } else {
-        this.context.find('.js-context-prefix').remove();
-      }
 
-      if (title.length) {
-        this.title.html(title);
-      } else {
-        this.title.html($el.html());
-      }
-      this.input.val(val);
-      this.input.attr('data-text', name);
-      this.input.trigger('change');
+        if ($el.data('title')) {
+          this.title.html($el.data('title'));
+        } else {
+          this.title.html($el.text().trim());
+        }
+        this.input.val(val);
+        this.input.attr('data-text', name);
+        this.input.trigger('change');
 
-      this.options.attr('selected', false);
-      this.select.find(`[value="${$el.data('val')}"]`).attr('selected', 'selected');
+        this.options.attr('selected', false);
+        this.select.find(`[value="${$el.data('val')}"]`).attr('selected', 'selected');
+      }
     }
 
     static handleVacancies(id) {

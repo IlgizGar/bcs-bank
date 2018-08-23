@@ -22,6 +22,7 @@ import Checkbox from '../components/library/checkbox/checkbox';
 import PageHeader from '../components/modules/page-header/page-header';
 import Offices from '../components/modules/offices/offices';
 import DocumentsFilter from '../components/modules/documents/documents';
+import IndexSearch from '../components/modules/index-search/index-search';
 
 require('babel-polyfill');
 // import Datepicker from '../components/library/datepicker/datepicker';
@@ -111,6 +112,10 @@ $(() => {
 
   if ($('.js-dropdown[data-id="documents-filter"]').length) {
     global.documentsFilter = DocumentsFilter(('.js-dropdown[data-id="documents-filter"]'));
+  }
+
+  if ($('.js-index-search').length) {
+    global.indexSearch = IndexSearch($('.js-index-search'));
   }
 
   // global.datepickers = [];
