@@ -5,7 +5,7 @@ import $ from 'jquery';
 import 'jscrollpane';
 import Cookie from 'js-cookie';
 import Helpers from '../../../scripts/helpers';
-import AskQuestion from '../../library/ask-question/ask-question';
+import AskQuestion from '../../library/question-popup/question-popup';
 
 export default class Offices {
   constructor(offices) {

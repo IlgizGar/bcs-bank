@@ -1,10 +1,10 @@
 import $ from 'jquery';
 
-export default class AskQuestion {
+export default class QuestionPopup {
   constructor(id, text) {
     this.id = id;
     this.questionText = text;
-    this.popup = $(`<div style="position: absolute;" data-id="${this.id}" class="js-question question-popup" data-list-on-right>
+    this.popup = $(`<div style="position: absolute;" data-id="${this.id}" class="js-question question-popup">
         <div class="question-popup__text">${this.questionText}</div>
       </div>`);
   }
