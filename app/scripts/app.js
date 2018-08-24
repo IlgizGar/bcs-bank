@@ -25,8 +25,7 @@ import DocumentsFilter from '../components/modules/documents/documents';
 import IndexSearch from '../components/modules/index-search/index-search';
 
 require('babel-polyfill');
-// import Datepicker from '../components/library/datepicker/datepicker';
-
+import Datepicker from '../components/library/datepicker/datepicker';
 $(() => {
   svg4everybody();
   global.header = Header('.js-header');
@@ -118,8 +117,8 @@ $(() => {
     global.indexSearch = IndexSearch($('.js-index-search'));
   }
 
-  // global.datepickers = [];
-  // for (const datepicker of $('.js-datepicker')) {
-  //   global.datepickers.push(Datepicker(datepicker));
-  // }
+  global.datepickers = [];
+  for (const datepicker of $('.datepicker-here2')) {
+    global.datepickers.push(Datepicker(datepicker));
+  }
 });

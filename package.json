@@ -19,8 +19,8 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "air-datepicker": "^2.2.3",
     "babel-polyfill": "^6.26.0",
-    "bootstrap-datepicker": "^1.8.0",
     "core-js": "^2.5.7",
     "dropzone": "^5.5.1",
     "filepond": "^1.8.8",
