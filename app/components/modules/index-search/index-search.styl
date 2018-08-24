@@ -1,11 +1,12 @@
 .index-search
   width: 100%
-  max-width: 0
+  max-width: 20px
 
   transition: max-width $interval
 
   .index-search__wrapper
     padding-right: 20px
+    overflow: hidden
     form
       display: flex
       align-items: center
@@ -13,9 +14,9 @@
       fieldset
         position: relative
 
-        overflow: hidden
+        //overflow: hidden
         flex-grow: 1
-        max-width: 0
+        //max-width: 0
         padding-right: 20px
 
         opacity: 0
@@ -61,7 +62,7 @@
     animation: setBackground $interval forwards
     form
       fieldset
-        max-width: none
+        //max-width: none
         opacity: 1
 
         label
