@@ -1,4 +1,5 @@
 {% import "../../../components/library/button/button.njk" as Button %}
+{% import "../../../components/library/context/context.njk" as Context %}
 
 {% macro menu( options ) %}
       <div class="menu js-menu {{ options.class }}">
@@ -6,7 +7,9 @@
             {% for item in options.basic %}
                 {{ Button.button({ 'href': item.href, 'title': item.title, 'mods': {'theme': options.theme, 'view': 'text', 'size': 'low'}, 'class': 'menu__item' }) }}
             {% endfor %}
-            {{ Button.button({ 'title': 'Еще', 'name': 'dropdown', 'mods': {'type': 'icon-right', 'theme': options.theme, 'view': 'text', 'size': 'low'}, 'class': 'menu__item' }) }}
+            {{ Context.context({ 'title': 'Еще', 'name': 'dropdown', 'mods': { 'type': 'menu', 'theme': options.theme }, 'attr': {'id': 'menu-explore', 'list-on-right': '' }, 'class': 'menu__item',
+                                 'items': [{ 'title': 'Тарифы', 'value': 'tariffs', 'attr': { 'href': '#' } } ,
+                                           { 'title': 'Сервисы и услуги', 'value': 'services', 'attr': { 'href': '#' } }] }) }}
         </div>
     </div>
 {% endmacro %}

@@ -33,8 +33,9 @@ module.exports = (elem) => {
     validateForm() {
       const submitHandler = () => {
         // const data = this.form.serializeArray();
-        this.msgError.removeClass('state_hidden');
-        this.form.addClass('state_hidden');
+        // this.msgError.removeClass('state_hidden');
+        // this.form.addClass('state_hidden');
+        console.log('SUBMIT');
       };
 
       this.validator.validateForm(submitHandler);

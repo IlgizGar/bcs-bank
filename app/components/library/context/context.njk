@@ -28,11 +28,21 @@
     {% if options.items %}
       <select class="context__select" hidden name="{{ options.name }}_select">
         {% for item in options.items %}
-          <option value={{ item.value }} {% if item.attr.prefix %}data-prefix="{{ item.attr.prefix | safe }}"{% endif %} {% if item.attr.title %}data-title="{{ item.attr.title | safe }}"{% endif %} {% if item.selected %}selected{% endif %}>{{ item.title }}</option>
+
+          {% if item.attr %}
+            {% set item_attr = '' %}
+            {% set item_attr %}
+              {% for key, value in item.attr -%}
+                {{ class_sep() }} data-{{ key }} = "{{ value }}"
+              {%- endfor %}
+            {% endset %}
+          {% endif %}
+
+          <option value={{ item.value }} {{ item_attr | safe }} {% if item.selected %}selected{% endif %}>{{ item.title }}</option>
         {% endfor %}
       </select>
     {% else %}
-      <input type="text" hidden name="{{ options.name }}_input" value="{{ options.value }}">
+      <input type="text" hidden name="{{ options.name }}_input" value="{{ options.value }}" class="{{ options.field | safe }}">
     {% endif %}
     <button class="context__button" type="button">
         <span class="js-context-title">{{ options.title }}</span>

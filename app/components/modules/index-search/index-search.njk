@@ -1,0 +1,16 @@
+{% import "../../../components/library/button/button.njk" as Button %}
+
+<div class="index-search js-index-search">
+  <div class="index-search__wrapper js-form">
+    <form>
+      {{ Button.button({ 'name': 'search', 'mods' : {'type': 'icon', 'theme': 'default', 'view': 'text'}, 'class': 'js-search-submit' }) }}
+      <fieldset>
+        <label>
+          <span class="js-search-label">Поиск по сайту</span>
+          <input type="search">
+        </label>
+      </fieldset>
+      {{ Button.button({ 'name': 'thin-close', 'mods' : {'type': 'icon', 'theme': 'gray', 'view': 'text'}, 'class': 'index-search__close js-search-close' }) }}
+    </form>
+  </div>
+</div>

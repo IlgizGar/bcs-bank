@@ -1,0 +1,88 @@
+.index-search
+  width: 100%
+  max-width: 20px
+
+  transition: max-width $interval
+
+  .index-search__wrapper
+    padding-right: 20px
+    overflow: hidden
+    form
+      display: flex
+      align-items: center
+
+      fieldset
+        position: relative
+
+        //overflow: hidden
+        flex-grow: 1
+        //max-width: 0
+        padding-right: 20px
+
+        opacity: 0
+
+        transition: opacity $interval 200ms
+
+        label
+          cursor: text
+          span
+            position: absolute
+            top: 50%
+            transform: translateY(-50%)
+            left: 0
+
+            opacity: 0
+
+            pointer-events: none
+            opensansRegular()
+            color: $color_link
+
+            transition: opacity $interval / 4
+
+          input
+            width: 100%
+            height: 100%
+
+            opensansRegular()
+            color: $color_text
+
+    .index-search__close
+      opacity: 0
+
+      width: 16px
+      height: 16px
+
+      transition: opacity $interval / 4
+
+  &:not(.state_explored)
+    animation: clearBackground $interval forwards
+
+  &.state_explored
+    max-width: 500px
+    animation: setBackground $interval forwards
+    form
+      fieldset
+        //max-width: none
+        opacity: 1
+
+        label
+          span
+            opacity: 1
+
+            transition: opacity $interval
+
+    .index-search__close
+      opacity: 1
+
+      transition: opacity $interval 200ms
+
+@keyframes setBackground
+  0%
+    background-color: transparent;
+  100%
+    background-color: $color_card;
+@keyframes clearBackground
+  0%
+    background-color: $color_card;
+  100%
+    background-color: transparent;
