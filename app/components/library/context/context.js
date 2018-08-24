@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import 'jscrollpane';
+import Cookie from 'js-cookie';
 
 require('jquery-mousewheel')($);
 
@@ -22,7 +23,6 @@ module.exports = (elem) => {
     init() {
       this.id = this.context.data('id');
       this.list = $(`.js-context-list#${this.id}`);
-
       if (!this.list.length) {
         this.list = $(`<div id="${this.id}" class="dropdown__list state_invisible scroll-pane js-context-list mt-16"><ul></ul></div>`);
         $('.js-page').append(this.list);
@@ -77,7 +77,7 @@ module.exports = (elem) => {
 
       this.list.on('click', (e) => {
         const $item = $(e.target).closest('.js-context-item');
-
+        Cookie.set(this.id, $item.attr('data-value'));
         if ($item.length) {
           this.handleNamedList($item);
         }
@@ -113,10 +113,16 @@ module.exports = (elem) => {
         this.scrollBarInited = true;
       }
       this.list.removeClass('state_invisible');
-      this.list.css('top', `${this.context.offset().top + (this.context.outerHeight() - 5)}px`);
+      this.setPosition();
+    }
 
-      if (this.id === 'select-city') {
-        const totalHeight = this.list.offset().top + this.list.outerHeight();
+    setPosition(el) {
+      const list = el ? el : this.list;
+
+      list.css('top', `${this.context.offset().top + (this.context.outerHeight() - 5)}px`);
+
+      if (this.id === 'select-city' && !el) {
+        const totalHeight = list.offset().top + list.outerHeight();
         if (totalHeight > window.outerHeight) {
           $('.js-page').css('max-height', totalHeight).addClass('state_no-overflow');
         } else {
@@ -126,9 +132,9 @@ module.exports = (elem) => {
         let listLeft = this.context.offset().left;
         const attr = this.context.attr('data-list-on-right');
         if (typeof attr !== typeof undefined && attr !== false) {
-          listLeft -= this.list.outerWidth() - this.context.outerWidth();
+          listLeft -= list.outerWidth() - this.context.outerWidth();
         }
-        this.list.css('left', listLeft);
+        list.css('left', listLeft);
       }
     }
 

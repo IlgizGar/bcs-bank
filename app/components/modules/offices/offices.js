@@ -4,6 +4,8 @@
 import $ from 'jquery';
 import 'jscrollpane';
 import Helpers from '../../../scripts/helpers';
+import AskQuestion from '../../library/ask-question/ask-question';
+import Cookie from 'js-cookie';
 
 export default class Offices {
   constructor(offices) {
@@ -35,8 +37,9 @@ export default class Offices {
     this.getCurrentTab();
     Helpers.getGeolocation((location) => {
       ymaps.ready(() => {
-        const userCity = this.checkUserCity(location.GeocoderMetaData.InternalToponymInfo.geoid);
+        const userCity = Cookie.get('select-city') !== undefined ? Cookie.get('select-city') : this.checkUserCity(location.GeocoderMetaData.InternalToponymInfo.geoid);
         this.initMap();
+        this.questionHandler();
         this.initObjectCollection();
         if (!!userCity) {
           global.contexts['select-city'].handleNamedList($(`.js-context-item[data-value="${userCity}"]`))
@@ -46,6 +49,25 @@ export default class Offices {
       });
     });
     this.setScrollPane();
+  }
+
+  questionHandler() {
+    if (Cookie.get('select-city') !== undefined) return;
+
+    const questionPopup = new AskQuestion('select-city', 'Мы правильно определили Ваше местоположение?');
+    global.contexts['select-city'].setPosition(questionPopup.popup);
+
+    questionPopup.popup.on('questionresolve', (e, detail) => {
+      if (!detail.response) {
+        setTimeout(() => {
+          global.contexts['select-city'].showList();
+          Cookie.remove('select-city');
+        }, 10)
+      } else {
+        Cookie.set('select-city', this.city);
+      }
+    });
+    questionPopup.generatePopup();
   }
 
   checkUserCity(id) {
@@ -85,8 +107,8 @@ export default class Offices {
 
   initMap() {
     this.map = new ymaps.Map('map-container', {
-      center: [55.76, 37.57],
-      zoom: 13,
+      center: [61.698653, 99.505405],
+      zoom: 5,
       controls: [],
     });
     this.map.behaviors.disable('scrollZoom');
