@@ -1,14 +1,12 @@
-import $ from "jquery";
+import $ from 'jquery';
 
 export default class AskQuestion {
   constructor(id, text) {
     this.id = id;
     this.questionText = text;
-    this.popup = this.popup = $(
-      `<div style="position: absolute;" data-id="${this.id}" class="js-question question-popup" data-list-on-right>
+    this.popup = $(`<div style="position: absolute;" data-id="${this.id}" class="js-question question-popup" data-list-on-right>
         <div class="question-popup__text">${this.questionText}</div>
-      </div>`
-    );
+      </div>`);
   }
 
   generatePopup() {
@@ -19,28 +17,24 @@ export default class AskQuestion {
   }
 
   generatePopupButtons() {
-    const buttonWrapper = $(`<div class="question-popup__buttons"></div>`);
-    const allowButton = $(
-      `<button class="button button_theme-default button_view-text js-button-allow" type="button">
+    const buttonWrapper = $('<div class="question-popup__buttons"></div>');
+    const allowButton = $(`<button class="button button_theme-default button_view-text js-button-allow" type="button">
         <span class="button__wrap">
           <span class="button__title">Да</span>
         </span>
-       </button>`
-    );
-    const disallowButton = $(
-      `<button class="button button_theme-default button_view-text js-button-disallow" type="button">
+       </button>`);
+    const disallowButton = $(`<button class="button button_theme-default button_view-text js-button-disallow" type="button">
          <span class="button__wrap">
            <span class="button__title">Нет</span>
          </span>
-       </button>`
-    );
+       </button>`);
     allowButton.on('click', (e) => {
       $(e.target).closest('.js-question').hide();
-      this.popup.trigger('questionresolve', {response: true});
+      this.popup.trigger('questionresolve', { response: true });
     });
     disallowButton.on('click', (e) => {
       $(e.target).closest('.js-question').hide();
-      this.popup.trigger('questionresolve',  {response: false});
+      this.popup.trigger('questionresolve', { response: false });
     });
     buttonWrapper.append(allowButton);
     buttonWrapper.append(disallowButton);
@@ -48,9 +42,8 @@ export default class AskQuestion {
   }
 
   onQuestionResolve(e) {
-    const event = new CustomEvent("questionresolve", {'detail': e.response});
+    const event = new CustomEvent('questionresolve', { detail: e.response });
     this.popup.dispatchEvent(event);
   }
-
 }
 

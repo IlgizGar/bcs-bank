@@ -3,9 +3,9 @@
 
 import $ from 'jquery';
 import 'jscrollpane';
+import Cookie from 'js-cookie';
 import Helpers from '../../../scripts/helpers';
 import AskQuestion from '../../library/ask-question/ask-question';
-import Cookie from 'js-cookie';
 
 export default class Offices {
   constructor(offices) {
@@ -23,7 +23,7 @@ export default class Offices {
       iconImageSize: [56, 56],
       iconImageOffset: [-28, -44],
     };
-    this.cityInput= $('.context input[name="current-city_input"]');
+    this.cityInput = $('.context input[name="current-city_input"]');
     this.city = null;
     this.currentTabId = null;
     this.map = null;
@@ -41,8 +41,8 @@ export default class Offices {
         this.initMap();
         this.questionHandler();
         this.initObjectCollection();
-        if (!!userCity) {
-          global.contexts['select-city'].handleNamedList($(`.js-context-item[data-value="${userCity}"]`))
+        if (userCity) {
+          global.contexts['select-city'].handleNamedList($(`.js-context-item[data-value="${userCity}"]`));
         } else {
           this.changeCity();
         }
@@ -62,7 +62,7 @@ export default class Offices {
         setTimeout(() => {
           global.contexts['select-city'].showList();
           Cookie.remove('select-city');
-        }, 10)
+        }, 10);
       } else {
         Cookie.set('select-city', this.city);
       }
@@ -75,7 +75,7 @@ export default class Offices {
     global.contexts['select-city'].getListData().forEach((el) => {
       if (el.id.toString() === id.toString()) {
         cityId = id;
-        return cityId;
+        return id;
       }
     });
     return cityId;
@@ -86,11 +86,11 @@ export default class Offices {
       if (e.target.value === 'all') {
         this.city = null;
         this.changeCity();
-        return
+        return;
       }
 
-      var myGeocoder = ymaps.geocode(e.target.getAttribute('data-text'), {
-        kind: 'locality'
+      const myGeocoder = ymaps.geocode(e.target.getAttribute('data-text'), {
+        kind: 'locality',
       });
       myGeocoder.then(
         (res) => {
@@ -100,9 +100,9 @@ export default class Offices {
         },
         (err) => {
           console.log('Обшибка', err);
-        }
+        },
       );
-    })
+    });
   }
 
   initMap() {
@@ -225,11 +225,11 @@ export default class Offices {
   }
 
   updateList() {
-    this.appBlock.find(`.offices__collapse`).each((i, el) => {
+    this.appBlock.find('.offices__collapse').each((i, el) => {
       if (this.city === null || el.getAttribute('data-city') === this.city.toString()) {
-        $(el).show()
+        $(el).show();
       } else {
-        $(el).hide()
+        $(el).hide();
       }
     });
   }
