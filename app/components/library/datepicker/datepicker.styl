@@ -1,1 +1,77 @@
 @import '../../../../node_modules/air-datepicker/dist/css/datepicker.min.css'
+
+.datepicker
+  border: none
+
+  .datepicker--nav
+    border: none
+
+  .datepicker--nav-title
+    opensansBold()
+    color: $cyprus
+    i
+      color: currentColor
+    &:hover
+      background-color: transparent
+      color: $speech_blue
+  .datepicker--nav-action
+    color: $cyprus
+    path
+      stroke: currentColor
+    &:hover
+      background-color: transparent
+      color: $speech_blue
+
+  .datepicker--day-name
+    opensansBold()
+    color: $cyprus
+    text-transform: none
+
+  .datepicker--cell-day.-other-month-,
+  .datepicker--cell-year.-other-decade-
+    opensansRegular()
+    color: $slate_grey
+
+  .datepicker--cell
+    opensansRegular()
+    stroke: $cyprus
+    margin-top: 2px;
+    margin-bottom: 2px;
+    &.-focus-
+      border: none
+      color: $royal_blue
+      background-color: transparent
+    &.-range-to-,
+    &.-range-from-
+      background-color: $periwinkle
+      border: none
+    &:nth-child(7n + 1)
+      border-bottom-left-radius: 4px
+      border-top-left-radius: 4px
+    &:nth-child(7n)
+      border-bottom-right-radius: 4px
+      border-top-right-radius: 4px
+  .datepicker--cell.-current-
+    color: $royal_blue
+
+
+  .datepicker--cell.-selected-,
+   .datepicker--cell.-selected-.-current-
+    background-color: $royal_blue
+    color: $white
+    transform: scale(1.1);
+    z-index: 3;
+    border-radius: 4px;
+    font-size: 15px
+
+  .datepicker--cell.-in-range-
+    background-color: $periwinkle
+
+  .datepicker--cell.datepicker--cell-month,
+  .datepicker--cell.datepicker--cell-year
+    color: $cyprus
+    &.-selected-
+      background-color: transparent
+      color: $cyprus
+    &:hover
+      color: $royal_blue

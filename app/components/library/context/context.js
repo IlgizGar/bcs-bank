@@ -73,6 +73,7 @@ module.exports = (elem) => {
         } else {
           this.showList();
         }
+
       });
 
       this.list.on('click', (e) => {
@@ -84,7 +85,7 @@ module.exports = (elem) => {
       });
 
       $(window).on('click', (e) => {
-        if (!$(e.target).closest('.js-context').length) {
+        if (!$(e.target).closest('.js-context').length && e.target.getAttribute('class').indexOf('datepicker') === -1) {
           Object.values(global.contexts).forEach((context) => {
             context.hideList();
           });

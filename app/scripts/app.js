@@ -118,7 +118,7 @@ $(() => {
   }
 
   global.datepickers = [];
-  for (const datepicker of $('.datepicker-here2')) {
+  for (const datepicker of $('.datepicker-news-period')) {
     global.datepickers.push(Datepicker(datepicker));
   }
 });
