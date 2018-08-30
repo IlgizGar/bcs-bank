@@ -20,7 +20,6 @@ module.exports = (elem) => {
             const arDate = formattedDate.split(',');
             global.contexts['news-period'].hideList();
             $(inst.el).prev('.js-context-item').text(`с ${arDate[0]} по ${arDate[1]}`).trigger('click');
-            console.log(global.contexts['news-period']);
           }
         }
       }).data('datepicker');

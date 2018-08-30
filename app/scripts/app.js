@@ -23,6 +23,7 @@ import PageHeader from '../components/modules/page-header/page-header';
 import Offices from '../components/modules/offices/offices';
 import DocumentsFilter from '../components/modules/documents/documents';
 import IndexSearch from '../components/modules/index-search/index-search';
+import News from '../components/modules/news/news';
 
 require('babel-polyfill');
 import Datepicker from '../components/library/datepicker/datepicker';
@@ -97,6 +98,11 @@ $(() => {
     $('.js-card').each((i, el) => {
       global.cards.push(new Card($(el)));
     });
+    $(document).on('click', '.js-card', (e) => {
+      if ($(e.currentTarget).data('href')) {
+        window.location.href = $(e.currentTarget).data('href');
+      }
+    });
   }
   global.checkboxes = [];
   if ($('.js-checkbox').length) {
@@ -121,4 +127,5 @@ $(() => {
   for (const datepicker of $('.datepicker-news-period')) {
     global.datepickers.push(Datepicker(datepicker));
   }
+  new News();
 });

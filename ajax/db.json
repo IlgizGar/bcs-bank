@@ -1,9 +1,50 @@
 {
-  "news": [
-    {
-      "title": "Как поужинать <br> в любимом ресторане за счет банка",
-      "date": "24 марта 2018",
-      "detailLink": "/news-detail.html"
-    }
-  ]
+  "news": {
+    "pagination": {
+      "currentPage": 2,
+      "nextPage": false
+    },
+    "items": [
+      {
+        "title": "Как поужинать <br> в любимом ресторане за счет банка",
+        "date": "24 марта 2018",
+        "detailLink": "/news-detail.html"
+      },
+      {
+        "title": "Как сходить <br> в кино за счет банка",
+        "date": "22 марта 2018",
+        "detailLink": "/news-detail.html"
+      },
+      {
+        "title": "Как получать зарплату <br> за счет банка",
+        "date": "18 апреля 2018",
+        "detailLink": "/news-detail.html"
+      },
+      {
+        "title": "Как воспитать ребенка <br> за счет банка",
+        "date": "11 мая 2018",
+        "detailLink": "/news-detail.html"
+      },
+      {
+        "title": "Как встретить <br> новый год за счет банка",
+        "date": "31 декабря 2017",
+        "detailLink": "/news-detail.html"
+      },
+      {
+        "title": "Как перестать <br> беспокоиться и начать жить за счет банка",
+        "date": "1 апреля 2017",
+        "detailLink": "/news-detail.html"
+      },
+      {
+        "title": "Как получить <br> квартиру за счет банка",
+        "date": "17 марта 2017",
+        "detailLink": "/news-detail.html"
+      },
+      {
+        "title": "Как получить престижный <br> автомобиль без привлечения банка",
+        "date": "8 марта 2017",
+        "detailLink": "/news-detail.html"
+      }
+    ]
+  }
 }
