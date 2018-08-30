@@ -1,6 +1,7 @@
 {% import "../../../components/library/button/button.njk" as Button %}
 {% import "../../../components/library/contact/contact.njk" as Contact %}
 {% import "../../../components/library/heading/heading.njk" as Heading %}
+{% import "../../../components/modules/menubar/menubar.njk" as Menubar %}
 
 
 <header class="header js-header">
@@ -14,7 +15,6 @@
       </div>
     </div>
   </div>
-
   <div class="header__contacts js-header-contacts">
     <div class="page__container">
       {{ Heading.heading({ 'title': 'Свяжитесь с нами', 'type': 'default', 'margin': 'normal' }) }}
@@ -32,6 +32,6 @@
       </div>
     </div>
   </div>
-
+  {{ Menubar.menubar({ 'theme': 'blue', 'class': 'section__menubar section__menubar_theme-simple' }) }}
 </header>
 

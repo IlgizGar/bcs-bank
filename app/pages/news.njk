@@ -6,7 +6,6 @@
 {% import "../components/library/button/button.njk" as Button %}
 {% import "../components/library/datepicker/datepicker.njk" as Datepicker %}
 {% import "../components/icon/icon.njk" as Icon %}
-{% import "../components/modules/menubar/menubar.njk" as Menubar %}
 
 {% set root = "." %}
 {% set title = "Новости" %}
@@ -29,16 +28,9 @@
     {% include "../components/modules/header/header.njk" %}
 
     <main role="main" class="news">
-      <section class="section page__section">
-        <div class="section__header">
-          {{ Menubar.menubar({ 'theme': 'black', 'class': 'section__menubar' }) }}
-        </div>
-      </section>
-
       <section class="section page__section page__section_theme-last">
         <div class="page__container">
           <div class="section__row">
-
             <div class="section__content section__content_theme-default">
               {{ Heading.heading({ 'tag': 'h1', 'title': 'Новости за', 'context': {'title': 'июнь 2018', 'name': 'news', 'attr': {'id': 'news-period', 'list-on-right': ''} }, 'mods': { 'type': 'default', 'margin': 'short', 'theme': 'default' } }) }}
               <div class="js-news-cards">

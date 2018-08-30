@@ -1,9 +1,13 @@
-{% extends "layout/layout.njk" %} {% import "../components/library/heading/heading.njk" as Heading %} {% import "../components/library/contact/contact.njk" as Contact %} {% import "../components/modules/menubar/menubar.njk" as Menubar %} {% set root = "." %} {% set title = "Офисы и банкоматы" %} {% block body %}
+{% extends "layout/layout.njk" %}
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/library/contact/contact.njk" as Contact %}
+
+{% set root = "." %}
+{% set title = "Офисы и банкоматы" %}
+
+{% block body %}
   <div class="page js-page"> {% include "../components/modules/header/header.njk" %}
     <main role="main">
-      <section class="section page__section">
-        <div class="section__header"> {{ Menubar.menubar({ 'theme': 'black', 'class': 'section__menubar' }) }} </div>
-      </section>
       <section class="section page__section">
         <div class="page__container">
           <div class="section__row">
