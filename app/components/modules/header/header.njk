@@ -10,7 +10,7 @@
       <div class="navbar__wrapper">
         {% include "../../../components/modules/nav/nav.njk" %}
         {{ Button.button({ 'title': 'Контакты', 'name': 'dropdown', 'mods': {'type': 'icon-right', 'theme': 'gray', 'view': 'text'}, 'class': 'navbar__button navbar__button_contacts navbar__button_type-dropdown js-btn-header-contacts button_type-tab' }) }}
-        {{ Button.button({ 'title': 'Офисы и банкоматы', 'href': 'http://juravlev.rusrobots.ru/bks/offices.html', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'navbar__button' }) }}
+        {{ Button.button({ 'title': 'Офисы и банкоматы', 'href': 'http://juravlev.rusrobots.ru/bks/offices.html', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'navbar__button js-btn-header-offices', 'attr': {'title': 'На карте'} }) }}
         {% include "../index-search/index-search.njk" %}
       </div>
     </div>
@@ -32,6 +32,10 @@
       </div>
     </div>
   </div>
-  {{ Menubar.menubar({ 'theme': 'blue', 'class': 'section__menubar section__menubar_theme-simple' }) }}
+  <div class="mobile-menu js-mobile-menu">
+    <div class="js-cloned-nav"></div>
+    <div class="js-cloned-menu"></div>
+  </div>
+  {{ Menubar.menubar({ 'class': 'section__menubar' }) }}
 </header>
 
