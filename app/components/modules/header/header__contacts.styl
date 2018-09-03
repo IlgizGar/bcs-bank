@@ -8,7 +8,15 @@
   background-color: $color_light
 
   transform: translateY(-700px)
-  transition: transform 2 * $interval
+  transition: transform 2 * $interval, opacity 0.1s ease
+  transition-delay 0, $interval - 0.1s
+  @media (max-width: 1279px)
+    opacity: 0
+    padding-top: 40px
+    padding-bottom: 30px
 
   &.state_explored
     transform: translateY(0)
+    @media (max-width: 1279px)
+      transform translateY(100%)
+      opacity: 1

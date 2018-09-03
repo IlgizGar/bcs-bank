@@ -5,6 +5,7 @@ import $ from 'jquery';
 import svg4everybody from 'svg4everybody';
 
 import Header from '../components/modules/header/header';
+import Menubar from '../components/modules/Menubar/menubar';
 import Contact from '../components/library/contact/contact';
 import Dropdown from '../components/library/dropdown/dropdown';
 import Context from '../components/library/context/context';
@@ -121,4 +122,9 @@ $(() => {
   for (const datepicker of $('.datepicker-news-period')) {
     global.datepickers.push(Datepicker(datepicker));
   }
+
+  if ($('.js-menubar').length) {
+    global.menubar = new Menubar();
+  }
+
 });

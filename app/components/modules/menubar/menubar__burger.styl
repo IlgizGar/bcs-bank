@@ -1,0 +1,51 @@
+.menubar__burger
+  display: flex
+  align-items center
+  z-index: 1
+  -webkit-user-select: none
+  user-select: none
+  padding: 0
+  border: none
+  background-color: transparent
+  outline: none
+  color: $cyprus
+  .menubar__burger-title
+    opensansBold()
+    margin-right: 10px
+    line-height: 16px
+  .menubar__burger-line
+    display: block
+    width: 20px
+    height: 2px
+    margin-bottom: 4px
+    position: relative
+    background: $cyprus
+    z-index: 1
+    transform-origin: 2px 0
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+      background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0),
+      opacity 0.55s ease
+
+    &.menubar__burger-line_first
+      transform-origin: 0 0
+
+    &.menubar__burger-line_second
+      transform-origin: 50% 0
+    &.menubar__burger-line_third
+      margin-bottom: 0
+
+&.menubar__burger_state-open
+    .menubar__burger-line
+       &.menubar__burger-line_first
+         transform: rotate(45deg) translate(1px, -1px)
+       &.menubar__burger-line_second
+         opacity: 0
+         transform: rotate(0deg) scale(0.2, 0.2)
+
+       &.menubar__burger-line_third
+         transform: rotate(-45deg) translate(-1px, 0px)
+
+
+
+
+
