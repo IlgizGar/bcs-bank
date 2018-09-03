@@ -1,23 +1,74 @@
+import Datepicker from '../../../components/library/datepicker/datepicker';
+import $ from "jquery";
+
+
 export default class News {
   constructor() {
-    // this.getNews()
+    this.newsBlock = $('.js-news');
+    this.contentBlock = this.newsBlock.find('.js-news-cards');
+    this.moreButton = this.newsBlock.find('.js-button[data-see-more]');
+    this.apiUrl = this.newsBlock.data('api');
     this.currentPage = 1;
-    this.nextPage = this.checkNextPage();
+    this.dateFrom = null;
+    this.dateTo = null;
+    this.datepicker = Datepicker($('.datepicker-news-period'));
+
+    this.init();
   }
+
+  init() {
+    this.pageLoadHandler();
+    this.datepicker.init();
+    this.datepicker.el.datepicker({
+      onSelect: (formattedDate, date, inst) => {
+        if (date.length === 2) {
+          const arDate = formattedDate.split(',');
+          global.contexts['news-period'].hideList();
+          $(inst.el).prev('.js-context-item').text(`с ${arDate[0]} по ${arDate[1]}`).trigger('click');
+          this.contentBlock.html('');
+          this.dateFrom = date[0].getTime();
+          this.dateTo = date[1].getTime();
+          this.currentPage = 1;
+          this.getNews();
+        }
+      }
+    });
+    $('.js-context-item-datepicker').on('click', () => {
+      this.dateFrom = null;
+      this.dateTo = null;
+      this.currentPage = 1;
+      this.getNews();
+    })
+  }
+
   getNews() {
     $.ajax({
-      url: $('.news').data('api'),
+      url: this.apiUrl,
+      data: {
+        from: this.dateFrom,
+        to: this.dateTo,
+        page: this.currentPage
+      },
       method: 'GET',
+      dataType: 'json',
       success: (e) => {
+        if (e.pagination.nextPage) {
+          this.currentPage = e.pagination.currentPage;
+        } else {
+          this.moreButton.hide()
+        }
         e.items.forEach((el, i) => {
-          $('.js-news-cards').append(this.itemTemplate(el));
+          this.contentBlock.append(this.itemTemplate(el));
         })
       }
     })
   }
 
-  checkNextPage() {
-    return !!$('.js-button[data-see-more]').lenght
+  pageLoadHandler() {
+    this.moreButton.on('click', (e) => {
+      this.currentPage++;
+      this.getNews();
+    })
   }
 
   itemTemplate(data) {

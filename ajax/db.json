@@ -2,7 +2,7 @@
   "news": {
     "pagination": {
       "currentPage": 2,
-      "nextPage": false
+      "nextPage": true
     },
     "items": [
       {

@@ -26,7 +26,7 @@ import IndexSearch from '../components/modules/index-search/index-search';
 import News from '../components/modules/news/news';
 
 require('babel-polyfill');
-import Datepicker from '../components/library/datepicker/datepicker';
+
 $(() => {
   svg4everybody();
   global.header = Header('.js-header');
@@ -123,9 +123,5 @@ $(() => {
     global.indexSearch = IndexSearch($('.js-index-search'));
   }
 
-  global.datepickers = [];
-  for (const datepicker of $('.datepicker-news-period')) {
-    global.datepickers.push(Datepicker(datepicker));
-  }
   new News();
 });
