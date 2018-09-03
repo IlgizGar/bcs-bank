@@ -1,4 +1,5 @@
 import $ from 'jquery';
+
 window.$ = $;
 require('air-datepicker');
 
@@ -17,13 +18,11 @@ module.exports = (elem) => {
 
       $('.js-context-item-datepicker').on('click', () => {
         this.datepickerInst.clear();
-      })
+      });
     }
 
-
-
-    getDate(date) {
-      return `${date.getDate()}.${date.getMonth()}.${date.getFullYear()}`
+    static getDate(date) {
+      return `${Datepicker.getDate()}.${date.getMonth()}.${date.getFullYear()}`;
     }
   }
 

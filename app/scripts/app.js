@@ -122,6 +122,8 @@ $(() => {
   if ($('.js-index-search').length) {
     global.indexSearch = IndexSearch($('.js-index-search'));
   }
-
-  new News();
+  global.news = [];
+  if ($('.js-news').length) {
+    global.news.push(new News());
+  }
 });

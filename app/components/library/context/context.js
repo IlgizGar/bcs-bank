@@ -73,7 +73,6 @@ module.exports = (elem) => {
         } else {
           this.showList();
         }
-
       });
 
       this.list.on('click', (e) => {

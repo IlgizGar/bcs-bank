@@ -1,6 +1,5 @@
-import Datepicker from '../../../components/library/datepicker/datepicker';
-import $ from "jquery";
-
+import $ from 'jquery';
+import Datepicker from '../../library/datepicker/datepicker';
 
 export default class News {
   constructor() {
@@ -31,14 +30,14 @@ export default class News {
           this.currentPage = 1;
           this.getNews();
         }
-      }
+      },
     });
     $('.js-context-item-datepicker').on('click', () => {
       this.dateFrom = null;
       this.dateTo = null;
       this.currentPage = 1;
       this.getNews();
-    })
+    });
   }
 
   getNews() {
@@ -47,7 +46,7 @@ export default class News {
       data: {
         from: this.dateFrom,
         to: this.dateTo,
-        page: this.currentPage
+        page: this.currentPage,
       },
       method: 'GET',
       dataType: 'json',
@@ -55,20 +54,20 @@ export default class News {
         if (e.pagination.nextPage) {
           this.currentPage = e.pagination.currentPage;
         } else {
-          this.moreButton.hide()
+          this.moreButton.hide();
         }
-        e.items.forEach((el, i) => {
+        e.items.forEach((el) => {
           this.contentBlock.append(this.itemTemplate(el));
-        })
-      }
-    })
+        });
+      },
+    });
   }
 
   pageLoadHandler() {
-    this.moreButton.on('click', (e) => {
-      this.currentPage++;
+    this.moreButton.on('click', () => {
+      this.currentPage += 1;
       this.getNews();
-    })
+    });
   }
 
   itemTemplate(data) {
