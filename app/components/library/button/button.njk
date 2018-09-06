@@ -28,7 +28,7 @@
     <{{ tag }} class='button {{ mods }} {{ options.class }} js-button' {% if options.href %} href={{ options.href }} {% endif %} {% if options.type %}type={{ options.type }} {% endif %} {{ options.state }} {{ attr | safe }}>
         <span class='button__wrap'>
             {% if options.title %}
-                <span class='button__title'>{{ options.title }}</span>
+                <span class='button__title js-button-title'>{{ options.title }}</span>
             {% endif %}
             {% if options.path  %}
                 <span class='button__icon'>{{ Svg.inlineSvg({ 'path': options.path }) }}</span>

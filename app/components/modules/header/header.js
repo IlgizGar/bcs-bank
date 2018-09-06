@@ -6,6 +6,8 @@ module.exports = (elem) => {
       this.header = $(selector);
       this.contacts = this.header.find('.js-header-contacts');
       this.btnContacts = this.header.find('.js-btn-header-contacts');
+      this.btnOffices = this.header.find('.js-btn-header-offices');
+      this.mobileMenu = this.header.find('.js-mobile-menu');
 
       this.events();
     }
@@ -28,6 +30,20 @@ module.exports = (elem) => {
           this.btnContacts.removeClass('state_active');
           this.contacts.removeClass('state_explored');
           $(e.target).remove();
+        }
+      });
+
+      $(window).on('resize', () => {
+        if (window.innerWidth < 1280) {
+          if (!this.mobileMenu.hasClass('state_filled')) {
+            const $menu = $.extend(true, {}, $('.js-menu').clone());
+            const $nav = $.extend(true, {}, $('.js-nav').clone());
+            const $online = $.extend(true, {}, $('.js-online-bank').clone());
+            $menu.appendTo(this.mobileMenu.find('.js-mobile-menu'));
+            $nav.appendTo(this.mobileMenu.find('.js-mobile-nav'));
+            $online.appendTo(this.mobileMenu);
+            this.mobileMenu.addClass('state_filled');
+          }
         }
       });
 
