@@ -3,8 +3,12 @@
     opensansRegular()
     position: relative
     padding-left: 55px
+    @media (max-width 1279px)
+      padding-left: 32px
     &:not(:last-child)
       padding-bottom: 14px
+      @media (max-width 1279px)
+        padding-bottom: 8px
     &:before
       content: ''
       position: absolute
@@ -20,7 +24,8 @@
       background-size: cover
       background-position: center
       background-repeat: no-repeat
-
+      @media (max-width 1279px)
+        left: 0
     & > ul
       padding-top: 14px
       padding-bottom: 4px

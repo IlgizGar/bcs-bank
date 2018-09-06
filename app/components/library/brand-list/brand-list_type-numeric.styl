@@ -7,6 +7,8 @@
     padding-left: 55px
     line-height: 1.5
     opensansRegular()
+    @media (max-width 1279px)
+      padding-left: 30px
     & + li,
     &:first-child
       padding-bottom: 12px
@@ -30,6 +32,8 @@
           position: static
           content: counters(item, ".") " ";
           margin-right: 20px
+          @media (max-width 1279px)
+            margin-right: 4px
         &>.brand-list_type-numeric // third level
           margin-bottom: 8px
           li
