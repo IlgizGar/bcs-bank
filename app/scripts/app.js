@@ -5,6 +5,7 @@ import $ from 'jquery';
 import svg4everybody from 'svg4everybody';
 
 import Header from '../components/modules/header/header';
+import Menubar from '../components/modules/Menubar/menubar';
 import Contact from '../components/library/contact/contact';
 import Dropdown from '../components/library/dropdown/dropdown';
 import Context from '../components/library/context/context';
@@ -23,9 +24,10 @@ import PageHeader from '../components/modules/page-header/page-header';
 import Offices from '../components/modules/offices/offices';
 import DocumentsFilter from '../components/modules/documents/documents';
 import IndexSearch from '../components/modules/index-search/index-search';
+import News from '../components/modules/news/news';
 
 require('babel-polyfill');
-import Datepicker from '../components/library/datepicker/datepicker';
+
 $(() => {
   svg4everybody();
   global.header = Header('.js-header');
@@ -97,6 +99,11 @@ $(() => {
     $('.js-card').each((i, el) => {
       global.cards.push(new Card($(el)));
     });
+    $(document).on('click', '.js-card', (e) => {
+      if ($(e.currentTarget).data('href')) {
+        window.location.href = $(e.currentTarget).data('href');
+      }
+    });
   }
   global.checkboxes = [];
   if ($('.js-checkbox').length) {
@@ -116,9 +123,13 @@ $(() => {
   if ($('.js-index-search').length) {
     global.indexSearch = IndexSearch($('.js-index-search'));
   }
-
-  global.datepickers = [];
-  for (const datepicker of $('.datepicker-here2')) {
-    global.datepickers.push(Datepicker(datepicker));
+  global.news = [];
+  if ($('.js-news').length) {
+    global.news.push(new News());
   }
+
+  if ($('.js-menubar').length) {
+    global.menubar = new Menubar();
+  }
+
 });

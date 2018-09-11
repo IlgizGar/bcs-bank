@@ -1,24 +1,28 @@
 import $ from 'jquery';
+
 window.$ = $;
 require('air-datepicker');
 
 module.exports = (elem) => {
   class Datepicker {
     constructor(selector) {
-      this.datepicker = $(selector);
-
-      this.init();
-      this.events();
+      this.el = $(selector);
+      this.datepickerInst = null;
     }
 
     init() {
-      $('.datepicker-here2').datepicker({
-        inline: true
+      this.datepickerInst = this.el.datepicker({
+        inline: true,
+        range: true,
+      }).data('datepicker');
+
+      $('.js-context-item-datepicker').on('click', () => {
+        this.datepickerInst.clear();
       });
     }
 
-    events() {
-
+    static getDate(date) {
+      return `${Datepicker.getDate()}.${date.getMonth()}.${date.getFullYear()}`;
     }
   }
 

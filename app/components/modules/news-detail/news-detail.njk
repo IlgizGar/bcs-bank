@@ -3,7 +3,7 @@
 
 
 <div class="news-detail">
-  {{ Heading.heading({ 'tag': 'h2', 'title': 'Значимость этих проблем настолько очевидна, что консультация с широким активом играет важную роль в формировании форм развития. Разнообразный и богатый опыт начало повседневной работы.' | striptags(true) | escape | nl2br, 'type': 'normal', 'margin': 'default', 'class': 'news-detail__title' }) }}
+  {{ Heading.heading({ 'tag': 'h2', 'title': 'Значимость этих проблем настолько очевидна, что консультация с широким активом играет важную роль в формировании форм развития. Разнообразный и богатый опыт начало повседневной работы.' | striptags(true) | escape | nl2br, mods: {'type': 'normal', 'margin': 'default'}, 'class': 'news-detail__title' }) }}
   <div class="news-detail__text-wrapper">
     <div class="text news-detail__text">
       <p class="text__paragraph">
@@ -40,13 +40,13 @@
 
   <div class="news-detail__text-wrapper">
     <div class="text">
-      {{ Heading.heading({ 'tag': 'h3', 'title': 'Таким образом укрепление \n и развитие структуры требуют \n от нас' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'default', 'class': 'text__title' }) }}
+      {{ Heading.heading({ 'tag': 'h3', 'title': 'Таким образом укрепление \n и развитие структуры требуют \n от нас' | striptags(true) | escape | nl2br, 'mods': {'type': 'default', 'margin': 'default'}, 'class': 'text__title' }) }}
       <p class="text__paragraph">
         Идейные соображения высшего порядка, а также консультация с широким активом требуют от нас анализа системы
         обучения кадров, соответствует насущным потребностям. Разнообразный и богатый опыт новая модель организационной
         деятельности представляет собой интересный эксперимент.
       </p>
-      {{ Heading.heading({ 'tag': 'h2', 'title': 'Таким образом консультация с широким активом' | striptags(true) | escape | nl2br, 'type': 'normal', 'margin': 'default', 'class': 'text__subtitle' }) }}
+      {{ Heading.heading({ 'tag': 'h2', 'title': 'Таким образом консультация с широким активом' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal', 'margin': 'default'}, 'class': 'text__subtitle' }) }}
       <p class="text__paragraph">
         Синтетическая история искусств позиционирует прагматический имидж. Аллегория без оглядки на авторитеты
         категорически программирует антропологический целевой трафик. Рыночная ситуация, однако, существенно доказывает
@@ -55,7 +55,7 @@
         монотонно продолжает незначительный филогенез. Познавательная сфера, анализируя результаты рекламной кампании,
         продуцирует эмпирический импрессионизм.
       </p>
-      {{ Heading.heading({ 'tag': 'h2', 'title': 'Индекс ММВБ - Архив торгов' | striptags(true) | escape | nl2br, 'type': 'normal', 'margin': 'default', 'class': 'text__subtitle' }) }}
+      {{ Heading.heading({ 'tag': 'h2', 'title': 'Индекс ММВБ - Архив торгов' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal', 'margin': 'default'}, 'class': 'text__subtitle' }) }}
 
       <div class="table table_sortable js-table-sortable">
         <table class="table__content">
@@ -259,7 +259,7 @@
         </div>
       </div>
     </div>
-    {{ Heading.heading({ 'title': 'Тарифы', 'type': 'normal', 'margin': 'short', 'class': 'mt-82' }) }}
+    {{ Heading.heading({ 'title': 'Тарифы', 'mods': {'type': 'normal', 'margin': 'short'}, 'class': 'mt-82' }) }}
     {{ Docs.docs({ 'title': '    БКС Банк вносит изменения в программу лояльности по банковским картам клиентов «БКС Премьер» и «БКС Брокер» с 6 июня 2018 года. Изменения касаются начисления вознаграждений', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': '23.05.2018', 'class': 'mb-32'}) }}
     {{ Docs.docs({ 'title': 'БКС Банк вносит изменения в программу', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'note': '23.05.2018'}) }}
   </div>

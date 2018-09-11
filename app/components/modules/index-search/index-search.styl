@@ -46,6 +46,9 @@
             opensansRegular()
             color: $color_text
 
+    .index-search__control-button
+      @media (max-width 1279px)
+        color: $gainsboro
     .index-search__close
       opacity: 0
 
@@ -75,6 +78,9 @@
       opacity: 1
 
       transition: opacity $interval 200ms
+
+  @media (max-width: 1279px)
+    margin-left: auto
 
 @keyframes setBackground
   0%
