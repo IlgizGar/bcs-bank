@@ -44,7 +44,6 @@ module.exports = (elem) => {
           this.label.removeClass('state_hidden');
         } else {
           this.search.removeClass('state_explored');
-          // this.label.addClass('state_hidden');
           setTimeout(() => {
             this.search.parent().find('.navbar__button').removeClass('state_hidden');
           }, 300);

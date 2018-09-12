@@ -30,70 +30,83 @@ require('babel-polyfill');
 
 $(() => {
   svg4everybody();
-  global.header = Header('.js-header');
+
   global.dropdowns = [];
   $('.js-dropdown').each((i, el) => {
     global.dropdowns.push(Dropdown(el));
   });
+
   global.contexts = {};
   $('.js-context').each((i, el) => {
     global.contexts[$(el).data('id')] = Context(el);
   });
+
   global.contacts = [];
   $('.js-contact').each((i, el) => {
     global.contacts.push(Contact(el));
   });
+
   global.tabs = [];
   $('.js-tabbar').each((i, el) => {
     global.tabs.push(Tabs(el));
   });
+
   global.carousels = [];
   $('.js-carousel').each((i, el) => {
     global.carousels.push(Carousel(el));
   });
+
   global.inputs = [];
   $('.js-input').each((i, el) => {
     global.inputs.push(Input(el));
   });
+
   global.mediaSliders = [];
   if ($('.media-slider').length) {
     $('.media-slider').each((i, el) => {
       global.mediaSliders.push(MediaSlider($(el)));
     });
   }
+
   global.collapses = {};
   if ($('.collapse').length) {
     $('.collapse').each((i, el) => {
       global.collapses[$(el).data('id')] = new Collapse($(el));
     });
   }
+
   global.sortableTables = [];
   if ($('.js-table-sortable').length) {
     $('.js-table-sortable').each((i, el) => {
       global.sortableTables.push(new TableSort($(el)));
     });
   }
+
   global.modals = [];
   if ($('.js-open-modal').length) {
     $('.js-open-modal').each((i, el) => {
       global.modals.push(new Modal($(el)));
     });
   }
+
   if ($('.page-header_vacancy').length) {
     const headerHandler = new PageHeader();
     headerHandler.nav = $('.page-header_vacancy .page-header__nav');
     headerHandler.addStickyTitle();
     headerHandler.stickyHandler();
   }
+
   if ($('.file-input').length) {
     global.fileInput = new FileInput();
   }
+
   global.forms = [];
   if ($('.js-form').length) {
     $('.js-form').each((i, el) => {
       global.forms.push(new Form($(el).find('form')));
     });
   }
+
   global.cards = [];
   if ($('.js-card').length) {
     $('.js-card').each((i, el) => {
@@ -105,6 +118,7 @@ $(() => {
       }
     });
   }
+
   global.checkboxes = [];
   if ($('.js-checkbox').length) {
     $('.js-checkbox').each((i, el) => {
@@ -123,6 +137,7 @@ $(() => {
   if ($('.js-index-search').length) {
     global.indexSearch = IndexSearch($('.js-index-search'));
   }
+
   global.news = [];
   if ($('.js-news').length) {
     global.news.push(new News());
@@ -132,4 +147,5 @@ $(() => {
     global.menubar = new Menubar();
   }
 
+  global.header = Header('.js-header');
 });

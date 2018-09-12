@@ -21,6 +21,7 @@
       </div>
     </div>
   </div>
+
   <div class="header__contacts js-header-contacts">
     <div class="page__container">
       {{ Heading.heading({ 'title': 'Свяжитесь с нами', 'type': 'default', 'margin': 'normal', 'class': 'header__contacts-heading' }) }}
@@ -39,10 +40,13 @@
       </div>
     </div>
   </div>
-  <div class="mobile-menu js-mobile-menu">
-    <div class="js-cloned-nav"></div>
-    <div class="js-cloned-menu"></div>
-  </div>
-  {{ Menubar.menubar({ 'class': 'section__menubar js-menubar' }) }}
+
+  <div class="mobile-menu js-mobile-menu"></div>
+
+  {% if header === 'blue' %}
+    {{ Menubar.menubar({ "class": "section__menubar js-menubar", 'vars': {'header': 'blue'} }) }}
+  {% else %}
+    {{ Menubar.menubar({ "class": "section__menubar js-menubar" }) }}
+  {% endif %}
 </header>
 

@@ -1,8 +1,11 @@
+import $ from 'jquery';
+
 export default class Menubar {
   constructor() {
     this.menubar = $('.js-menubar');
-    this.menuControl = this.menubar.find('.js-menubar__burger');
+    this.menuControl = this.menubar.find('.js-menubar-burger');
     this.breakpoint = 1280;
+    this.mobileMenu = $('.js-mobile-menu');
     this.init();
   }
 
@@ -14,8 +17,9 @@ export default class Menubar {
 
   controlHandler() {
     this.menuControl.on('click', () => {
-      this.menuControl.toggleClass('menubar__burger_state-open');
-    })
+      this.menuControl.toggleClass('state_open');
+      this.mobileMenu.toggleClass('state_explored');
+    });
   }
 
   checkWidth() {

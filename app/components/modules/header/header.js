@@ -7,9 +7,20 @@ module.exports = (elem) => {
       this.contacts = this.header.find('.js-header-contacts');
       this.btnContacts = this.header.find('.js-btn-header-contacts');
       this.btnOffices = this.header.find('.js-btn-header-offices');
-      this.mobileMenu = this.header.find('.js-mobile-menu');
 
+      this.mobileMenu = this.header.find('.js-mobile-menu');
+      if ($('#menu-explore').length) {
+        this.exploreMenu = $('#menu-explore');
+      } else {
+        this.exploreMenu = null;
+      }
+
+      this.init();
       this.events();
+    }
+
+    init() {
+      this.fillMobileMenu();
     }
 
     events() {
@@ -34,17 +45,11 @@ module.exports = (elem) => {
       });
 
       $(window).on('resize', () => {
-        if (window.innerWidth < 1280) {
-          if (!this.mobileMenu.hasClass('state_filled')) {
-            const $menu = $.extend(true, {}, $('.js-menu').clone());
-            const $nav = $.extend(true, {}, $('.js-nav').clone());
-            const $online = $.extend(true, {}, $('.js-online-bank').clone());
-            $menu.appendTo(this.mobileMenu.find('.js-mobile-menu'));
-            $nav.appendTo(this.mobileMenu.find('.js-mobile-nav'));
-            $online.appendTo(this.mobileMenu);
-            this.mobileMenu.addClass('state_filled');
-          }
-        }
+        // if (window.innerWidth < 1280) {
+        //   if (!this.mobileMenu.hasClass('state_filled')) {
+        //     this.fillMobileMenu();
+        //   }
+        // }
       });
 
       $('html').keydown((e) => {
@@ -54,6 +59,28 @@ module.exports = (elem) => {
           $('main').find('.js-cover').remove();
         }
       });
+    }
+
+    fillMobileMenu() {
+      const $menu = $.extend(true, {}, $('.js-menu').clone());
+      const $nav = $.extend(true, {}, $('.js-nav').clone());
+      const $online = $.extend(true, {}, $('.js-online-bank').clone());
+      const $explore = $.extend(true, {}, this.exploreMenu.clone());
+
+      $nav.appendTo(this.mobileMenu);
+      $menu.find('.js-button')
+        .removeClass('button_theme-white')
+        .addClass('button_theme-black mobile-menu__link');
+      $menu.appendTo(this.mobileMenu);
+      $explore.find('a')
+        .addClass('button button_view-text button_size-low menu__item js-button button_theme-black mobile-menu__link')
+        .appendTo(this.mobileMenu.find('.js-menu .menu__wrapper'));
+      $online
+        .addClass('button_theme-default mobile-menu__online-bank')
+        .removeClass('hidden-mobile button_theme-white button_view-outlined')
+        .appendTo(this.mobileMenu);
+
+      this.mobileMenu.addClass('state_filled');
     }
   }
 

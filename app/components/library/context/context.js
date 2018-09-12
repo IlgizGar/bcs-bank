@@ -117,7 +117,7 @@ module.exports = (elem) => {
     }
 
     setPosition(el) {
-      const list = el ? el : this.list;
+      const list = el || this.list;
 
       list.css('top', `${this.context.offset().top + (this.context.outerHeight() - 5)}px`);
 

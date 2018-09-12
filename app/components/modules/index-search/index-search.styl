@@ -1,12 +1,8 @@
 .index-search
-  width: 100%
-  max-width: 20px
-
-  transition: max-width $interval
-
   .index-search__wrapper
     padding-right: 20px
     overflow: hidden
+
     form
       display: flex
       align-items: center
@@ -58,11 +54,22 @@
       transition: opacity $interval / 4
 
   &:not(.state_explored)
+    width: 100%
+    max-width: 20px
+
+    transition: max-width $interval
     animation: clearBackground $interval forwards
 
   &.state_explored
-    max-width: 500px
+    width: 100%
+    max-width: 100%
+
     animation: setBackground $interval forwards
+    transition: max-width $interval
+
+    @media (min-width: 1280px)
+      max-width: 500px
+
     form
       fieldset
         //max-width: none
@@ -82,13 +89,13 @@
   @media (max-width: 1279px)
     margin-left: auto
 
-@keyframes setBackground
-  0%
-    background-color: transparent;
-  100%
-    background-color: $color_card;
-@keyframes clearBackground
-  0%
-    background-color: $color_card;
-  100%
-    background-color: transparent;
+  @keyframes setBackground
+    0%
+      background-color: transparent;
+    100%
+      background-color: $color_card;
+  @keyframes clearBackground
+    0%
+      background-color: $color_card;
+    100%
+      background-color: transparent;
