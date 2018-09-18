@@ -8,8 +8,11 @@
   background-color: $color_card
 
   transition: background-color $interval
-  @media (max-width 1279px)
-    padding: 24px 16px
+  @media (min-width: 768px) and (max-width 1279px)
+    padding: 24px 56px 24px 16px
+
+  @media (max-width: 767px)
+    padding: 16px 56px 16px 16px
 
   &:hover
     background-color: $color_card_hover
@@ -22,7 +25,7 @@
 
 
 
-  .icon-download
+  .icon
     position: absolute
     top: 48px
     right: 36px
@@ -31,3 +34,11 @@
     height: 16px
 
     color: $color_text
+
+    @media (min-width: 768px) and (max-width 1279px)
+      top: 32px
+      right: 16px
+
+    @media (max-width: 767px)
+      top: 16px
+      right: 16px

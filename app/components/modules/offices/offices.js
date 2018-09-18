@@ -106,6 +106,7 @@ export default class Offices {
   }
 
   initMap() {
+    console.log('MAP', $('#map-container'));
     this.map = new ymaps.Map('map-container', {
       center: [61.698653, 99.505405],
       zoom: 5,

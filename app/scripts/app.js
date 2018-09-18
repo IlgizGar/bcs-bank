@@ -5,7 +5,7 @@ import $ from 'jquery';
 import svg4everybody from 'svg4everybody';
 
 import Header from '../components/modules/header/header';
-import Menubar from '../components/modules/Menubar/menubar';
+import Menubar from '../components/modules/menubar/menubar';
 import Contact from '../components/library/contact/contact';
 import Dropdown from '../components/library/dropdown/dropdown';
 import Context from '../components/library/context/context';
@@ -33,12 +33,14 @@ $(() => {
 
   global.dropdowns = [];
   $('.js-dropdown').each((i, el) => {
-    global.dropdowns.push(Dropdown(el));
+    global.dropdowns[$(el).data('id')] = Dropdown(el);
+    // global.dropdowns.push(Dropdown(el));
   });
 
   global.contexts = {};
   $('.js-context').each((i, el) => {
     global.contexts[$(el).data('id')] = Context(el);
+    console.log('INIT', global.contexts);
   });
 
   global.contacts = [];
@@ -127,6 +129,7 @@ $(() => {
   }
 
   if ($('.offices').length) {
+      console.log('INIT_MAP', $('#map-container'));
     global.officesMap = new Offices($('.offices'));
   }
 

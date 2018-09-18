@@ -9,11 +9,7 @@ module.exports = (elem) => {
       this.btnOffices = this.header.find('.js-btn-header-offices');
 
       this.mobileMenu = this.header.find('.js-mobile-menu');
-      if ($('#menu-explore').length) {
-        this.exploreMenu = $('#menu-explore');
-      } else {
-        this.exploreMenu = null;
-      }
+      this.exploreMenu = $('#menu-explore');
 
       this.init();
       this.events();

@@ -84,10 +84,12 @@ module.exports = (elem) => {
       });
 
       $(window).on('click', (e) => {
-        if (!$(e.target).closest('.js-context').length && e.target.getAttribute('class').indexOf('datepicker') === -1) {
-          Object.values(global.contexts).forEach((context) => {
-            context.hideList();
-          });
+        if (!$(e.target).closest('.js-context').length && e.target.getAttribute('class') !== null) {
+          if (e.target.getAttribute('class').indexOf('datepicker') === -1) {
+            Object.values(global.contexts).forEach((context) => {
+              context.hideList();
+            });
+          }
         }
       });
 

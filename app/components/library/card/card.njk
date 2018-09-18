@@ -38,7 +38,7 @@
         <button class="card__action" {% if type === 'form' %}type="submit"{% endif %}>
           <div class="card__button">
             {% if options.icon %}
-              {{ inlineSvg.inlineSvg({ 'path': options.icon }) }}
+              {{ inlineSvg.inlineSvg({ 'path': [options.icon] }) }}
             {% endif %}
             <span>{{ options.link }}</span>
             {{ Icon.icon({ 'name': 'arrow' }) }}

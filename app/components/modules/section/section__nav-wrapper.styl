@@ -1,0 +1,32 @@
+.section__nav-wrapper
+  position: relative
+
+  @media (max-width: 991px)
+    &.gradient_left
+      &:before
+        content: ''
+
+        pointer-events: none
+
+        position: absolute
+        z-index: 100
+
+        width: 40px
+        height: 100%
+
+        background-image: linear-gradient(to left, rgba(81, 129, 236, 0), #5282ed 100%)
+
+    &.gradient_right
+      &:after
+        content: ''
+
+        pointer-events: none
+
+        position: absolute
+        top: 0
+        right: 0
+
+        width: 40px
+        height: 100%
+
+        background-image: linear-gradient(to right, rgba(81, 129, 236, 0), #5282ed 100%)

@@ -2,6 +2,7 @@
 
 {% set root = "." %}
 {% set title = "Документы" %}
+{% set header = 'blue' %}
 
 {% import "../components/modules/tabbar/tabbar.njk" as Tabbar %}
 {% import "../components/library/docs/docs.njk" as Docs %}
@@ -10,7 +11,7 @@
 {% import "../components/library/dropdown/dropdown.njk" as Dropdown %}
 
 {% block body %}
-  <div class="page js-page">
+  <div class="documents page js-page">
 
     {% include "../components/modules/header/header.njk" %}
 
@@ -21,11 +22,13 @@
           <div class="page__container">
             {{ Heading.heading({ 'tag': 'h1', 'title': 'Документы' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'default' } }) }}
           </div>
-          <div class="section__nav">
-            <div class="page__container">
-              <div class="section__wrap">
-                {{ Tabbar.tabbar({ 'theme': 'light-tab', 'view': 'upperscore', 'tabs': [{'title': 'Актуальные документы', 'id': 'charter' }, {'title': 'Архив для физических лиц', 'id': 'individual'}, {'title': 'Архив для юридических лиц', 'id': 'entity'}] }) }}
-                {{ Dropdown.dropdown({ 'mods': {'theme': 'white'}, 'label': 'Год', 'name': 'documents-filter', 'items': [ {'title': '2018', 'value': '2018' }, {'title': '2017', 'value': '2017'}, {'title': '2016', 'value': '2016'} ], 'class': 'dropdown_type-documents ml-a', 'attr': {'id': 'documents-filter'} }) }}
+          <div class="section__nav-wrapper">
+            <div class="section__nav js-tab-scroll">
+              <div class="page__container">
+                <div class="section__wrap">
+                  {{ Tabbar.tabbar({ 'theme': 'light-tab', 'view': 'upperscore', 'tabs': [{'title': 'Актуальные документы', 'id': 'charter' }, {'title': 'Архив для физических лиц', 'id': 'individual'}, {'title': 'Архив для юридических лиц', 'id': 'entity'}] }) }}
+                  {{ Dropdown.dropdown({ 'mods': {'theme': 'white'}, 'label': 'Год', 'name': 'documents-filter', 'items': [ {'title': '2018', 'value': '2018' }, {'title': '2017', 'value': '2017'}, {'title': '2016', 'value': '2016'} ], 'class': 'dropdown_type-documents ml-a', 'attr': {'id': 'documents-filter'} }) }}
+                </div>
               </div>
             </div>
           </div>
@@ -33,11 +36,11 @@
       </section>
 
       <section class="section page__section page__section_theme-last">
-        <div class="page__container">
-          <div class="section__row">
-            <div class="section__content section__content_medium section__content_theme-centered">
-              <div class="tabs js-tabs">
-                <div id="charter" class="tabs__item js-tab state_invisible">
+        <div class="tabs js-tabs">
+          <div id="charter" class="tabs__item js-tab state_invisible">
+            <div class="page__container">
+              <div class="section__row">
+                <div class="section__content section__content_medium section__content_theme-centered">
                   <div class="documents__group js-documents-group">
                     {{ Heading.heading({ 'title': 'Устав банка' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'normal' } }) }}
 
@@ -68,7 +71,13 @@
                     {{ Docs.docs({ 'title': 'Публикуемая отчетность 1 квартал 2018 ', 'note': 'В редакции от 03.10.2014', 'href': '#', 'type': 'ZIP', 'size': '0,3 МБ', 'attr': { 'documents-year': '2018' } }) }}
                   </div>
                 </div>
-                <div id="individual" class="tabs__item documents__tab js-tab state_invisible">
+              </div>
+            </div>
+          </div>
+          <div id="individual" class="tabs__item documents__tab js-tab state_invisible">
+            <div class="page__container">
+              <div class="section__row">
+                <div class="section__content section__content_medium section__content_theme-centered">
                   <div class="documents__group js-documents-group">
                     {{ Heading.heading({ 'title': 'Архив договоров комплексного \n банковского обслуживания ФЛ (ДКБО)' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'short' } }) }}
 
@@ -85,179 +94,187 @@
                     <div class="section__text">
                       <p>Тарифы по обслуживанию физических лиц, заключивших ДКБО с АО «БКС Банк»</p>
                     </div>
-                    <div class="collapse collapse_theme-grey mt-40">
-                      <div class="collapse__item">
-                        <div class="collapse__control">
-                          <div class="collapse__control-title">ПУ «Премьер Базовый», «Премьер Расширенный», «Ультима
-                            Базовый», «Ультима Расширенный»
-                          </div>
-                          <div class="collapse__control-icon">
-                            {{ Icon.icon({ 'name': 'dropdown' }) }}
-                          </div>
-                        </div>
-                        <div class="collapse__content"></div>
-                      </div>
-                      <div class="collapse__item">
-                        <div class="collapse__control">
-                          <div class="collapse__control-title">ПУ «Ультима»</div>
-                          <div class="collapse__control-icon">
-                            {{ Icon.icon({ 'name': 'dropdown' }) }}
-                          </div>
-                        </div>
-                        <div class="collapse__content"></div>
-                      </div>
-                      <div class="collapse__item">
-                        <div class="collapse__control">
-                          <div class="collapse__control-title">ПУ «Директ», «Континенталь», «Глобал»</div>
-                          <div class="collapse__control-icon">
-                            {{ Icon.icon({ 'name': 'dropdown' }) }}
-                          </div>
-                        </div>
-                        <div class="collapse__content"></div>
-                      </div>
-                      <div class="collapse__item">
-                        <div class="collapse__control">
-                          <div class="collapse__control-title">ПУ «Для своих»</div>
-                          <div class="collapse__control-icon">
-                            {{ Icon.icon({ 'name': 'dropdown' }) }}
-                          </div>
-                        </div>
-                        <div class="collapse__content">
-                          {{ Docs.docs({ 'title': 'Тарифы по обслуживанию физических лиц, заключивших ДКБО с АО «БКС БАНК» по пакету услуг «Для своих»', 'note': 'Действуют с 28.04.2018 по 31.05.2018 включительно', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2016' } }) }}
-                          {{ Docs.docs({ 'title': 'Тарифы по обслуживанию физических лиц, заключивших ДКБО с АО «БКС БАНК» по пакету услуг «Для своих»', 'note': 'Действуют с 9.04.2018 по 27.04.2018 включительно', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2016' } }) }}
-                        </div>
-                      </div>
-                      <div class="collapse__item">
-                        <div class="collapse__control">
-                          <div class="collapse__control-title">ПУ «Корпоративный»</div>
-                          <div class="collapse__control-icon">
-                            {{ Icon.icon({ 'name': 'dropdown' }) }}
-                          </div>
-                        </div>
-                        <div class="collapse__content"></div>
-                      </div>
-                      <div class="collapse__item">
-                        <div class="collapse__control">
-                          <div class="collapse__control-title">ПУ «Брокер»</div>
-                          <div class="collapse__control-icon">
-                            {{ Icon.icon({ 'name': 'dropdown' }) }}
-                          </div>
-                        </div>
-                        <div class="collapse__content"></div>
-                      </div>
-                      <div class="collapse__item">
-                        <div class="collapse__control">
-                          <div class="collapse__control-title">ПУ «Ультима Discovery», «Ультима Confidence»</div>
-                          <div class="collapse__control-icon">
-                            {{ Icon.icon({ 'name': 'dropdown' }) }}
-                          </div>
-                        </div>
-                        <div class="collapse__content"></div>
-                      </div>
-                      <div class="collapse__item">
-                        <div class="collapse__control">
-                          <div class="collapse__control-title">ПУ «Ультима Platinum», «Ультима Infinite», «Ультима
-                            Confidence»
-                          </div>
-                          <div class="collapse__control-icon">
-                            {{ Icon.icon({ 'name': 'dropdown' }) }}
-                          </div>
-                        </div>
-                        <div class="collapse__content"></div>
-                      </div>
-                      <div class="collapse__item">
-                        <div class="collapse__control">
-                          <div class="collapse__control-title">ПУ «Особая серия», «Особая серия+», «Ультима Infinite»,
-                            «Ультима Confidence»
-                          </div>
-                          <div class="collapse__control-icon">
-                            {{ Icon.icon({ 'name': 'dropdown' }) }}
-                          </div>
-                        </div>
-                        <div class="collapse__content"></div>
-                      </div>
-                      <div class="collapse__item">
-                        <div class="collapse__control">
-                          <div class="collapse__control-title">ПУ «Боцман», «Капитан»</div>
-                          <div class="collapse__control-icon">
-                            {{ Icon.icon({ 'name': 'dropdown' }) }}
-                          </div>
-                        </div>
-                        <div class="collapse__content"></div>
-                      </div>
-                      <div class="collapse__item">
-                        <div class="collapse__control">
-                          <div class="collapse__control-title">ПУ «Fins»</div>
-                          <div class="collapse__control-icon">
-                            {{ Icon.icon({ 'name': 'dropdown' }) }}
-                          </div>
-                        </div>
-                        <div class="collapse__content"></div>
-                      </div>
-                      <div class="collapse__item">
-                        <div class="collapse__control">
-                          <div class="collapse__control-title">Кредитный продукт «Кредит Онлайн»</div>
-                          <div class="collapse__control-icon">
-                            {{ Icon.icon({ 'name': 'dropdown' }) }}
-                          </div>
-                        </div>
-                        <div class="collapse__content"></div>
-                      </div>
-                      <div class="collapse__item">
-                        <div class="collapse__control">
-                          <div class="collapse__control-title">Кредитный продукт «Выгодное предложение»</div>
-                          <div class="collapse__control-icon">
-                            {{ Icon.icon({ 'name': 'dropdown' }) }}
-                          </div>
-                        </div>
-                        <div class="collapse__content"></div>
-                      </div>
-                      <div class="collapse__item">
-                        <div class="collapse__control">
-                          <div class="collapse__control-title">Тариф «Вкладчик» в рамках кредитного продукта <br>
-                            «Кредитная карта БКС Банка»
-                          </div>
-                          <div class="collapse__control-icon">
-                            {{ Icon.icon({ 'name': 'dropdown' }) }}
-                          </div>
-                        </div>
-                        <div class="collapse__content"></div>
-                      </div>
-                      <div class="collapse__item">
-                        <div class="collapse__control">
-                          <div class="collapse__control-title">Тариф «Для своих» в рамках кредитного продукта <br>
-                            «Кредитная карта БКС Банка»
-                          </div>
-                          <div class="collapse__control-icon">
-                            {{ Icon.icon({ 'name': 'dropdown' }) }}
-                          </div>
-                        </div>
-                        <div class="collapse__content"></div>
-                      </div>
-                      <div class="collapse__item">
-                        <div class="collapse__control">
-                          <div class="collapse__control-title">Тариф «Корпоративный» в рамках кредитного продукта <br>
-                            «Кредитная карта БКС Банка»
-                          </div>
-                          <div class="collapse__control-icon">
-                            {{ Icon.icon({ 'name': 'dropdown' }) }}
-                          </div>
-                        </div>
-                        <div class="collapse__content"></div>
-                      </div>
-                      <div class="collapse__item">
-                        <div class="collapse__control">
-                          <div class="collapse__control-title">Тариф «Стандарт» в рамках кредитного продукта <br>
-                            «Кредитная карта БКС Банка»
-                          </div>
-                          <div class="collapse__control-icon">
-                            {{ Icon.icon({ 'name': 'dropdown' }) }}
-                          </div>
-                        </div>
-                        <div class="collapse__content"></div>
-                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="documents__group js-documents-group">
+              <div class="collapse collapse_theme-grey mt-40">
+                <div class="collapse__item">
+                  <div class="collapse__control">
+                    <div class="collapse__control-title">ПУ «Премьер Базовый», «Премьер Расширенный», «Ультима
+                      Базовый», «Ультима Расширенный»
+                    </div>
+                    <div class="collapse__control-icon">
+                      {{ Icon.icon({ 'name': 'dropdown' }) }}
                     </div>
                   </div>
+                  <div class="collapse__content"></div>
+                </div>
+                <div class="collapse__item">
+                  <div class="collapse__control">
+                    <div class="collapse__control-title">ПУ «Ультима»</div>
+                    <div class="collapse__control-icon">
+                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    </div>
+                  </div>
+                  <div class="collapse__content"></div>
+                </div>
+                <div class="collapse__item">
+                  <div class="collapse__control">
+                    <div class="collapse__control-title">ПУ «Директ», «Континенталь», «Глобал»</div>
+                    <div class="collapse__control-icon">
+                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    </div>
+                  </div>
+                  <div class="collapse__content"></div>
+                </div>
+                <div class="collapse__item">
+                  <div class="collapse__control">
+                    <div class="collapse__control-title">ПУ «Для своих»</div>
+                    <div class="collapse__control-icon">
+                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    </div>
+                  </div>
+                  <div class="collapse__content">
+                    {{ Docs.docs({ 'title': 'Тарифы по обслуживанию физических лиц, заключивших ДКБО с АО «БКС БАНК» по пакету услуг «Для своих»', 'note': 'Действуют с 28.04.2018 по 31.05.2018 включительно', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2016' } }) }}
+                    {{ Docs.docs({ 'title': 'Тарифы по обслуживанию физических лиц, заключивших ДКБО с АО «БКС БАНК» по пакету услуг «Для своих»', 'note': 'Действуют с 9.04.2018 по 27.04.2018 включительно', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2016' } }) }}
+                  </div>
+                </div>
+                <div class="collapse__item">
+                  <div class="collapse__control">
+                    <div class="collapse__control-title">ПУ «Корпоративный»</div>
+                    <div class="collapse__control-icon">
+                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    </div>
+                  </div>
+                  <div class="collapse__content"></div>
+                </div>
+                <div class="collapse__item">
+                  <div class="collapse__control">
+                    <div class="collapse__control-title">ПУ «Брокер»</div>
+                    <div class="collapse__control-icon">
+                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    </div>
+                  </div>
+                  <div class="collapse__content"></div>
+                </div>
+                <div class="collapse__item">
+                  <div class="collapse__control">
+                    <div class="collapse__control-title">ПУ «Ультима Discovery», «Ультима Confidence»</div>
+                    <div class="collapse__control-icon">
+                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    </div>
+                  </div>
+                  <div class="collapse__content"></div>
+                </div>
+                <div class="collapse__item">
+                  <div class="collapse__control">
+                    <div class="collapse__control-title">ПУ «Ультима Platinum», «Ультима Infinite», «Ультима
+                      Confidence»
+                    </div>
+                    <div class="collapse__control-icon">
+                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    </div>
+                  </div>
+                  <div class="collapse__content"></div>
+                </div>
+                <div class="collapse__item">
+                  <div class="collapse__control">
+                    <div class="collapse__control-title">ПУ «Особая серия», «Особая серия+», «Ультима Infinite»,
+                      «Ультима Confidence»
+                    </div>
+                    <div class="collapse__control-icon">
+                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    </div>
+                  </div>
+                  <div class="collapse__content"></div>
+                </div>
+                <div class="collapse__item">
+                  <div class="collapse__control">
+                    <div class="collapse__control-title">ПУ «Боцман», «Капитан»</div>
+                    <div class="collapse__control-icon">
+                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    </div>
+                  </div>
+                  <div class="collapse__content"></div>
+                </div>
+                <div class="collapse__item">
+                  <div class="collapse__control">
+                    <div class="collapse__control-title">ПУ «Fins»</div>
+                    <div class="collapse__control-icon">
+                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    </div>
+                  </div>
+                  <div class="collapse__content"></div>
+                </div>
+                <div class="collapse__item">
+                  <div class="collapse__control">
+                    <div class="collapse__control-title">Кредитный продукт «Кредит Онлайн»</div>
+                    <div class="collapse__control-icon">
+                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    </div>
+                  </div>
+                  <div class="collapse__content"></div>
+                </div>
+                <div class="collapse__item">
+                  <div class="collapse__control">
+                    <div class="collapse__control-title">Кредитный продукт «Выгодное предложение»</div>
+                    <div class="collapse__control-icon">
+                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    </div>
+                  </div>
+                  <div class="collapse__content"></div>
+                </div>
+                <div class="collapse__item">
+                  <div class="collapse__control">
+                    <div class="collapse__control-title">Тариф «Вкладчик» в рамках кредитного продукта <br>
+                      «Кредитная карта БКС Банка»
+                    </div>
+                    <div class="collapse__control-icon">
+                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    </div>
+                  </div>
+                  <div class="collapse__content"></div>
+                </div>
+                <div class="collapse__item">
+                  <div class="collapse__control">
+                    <div class="collapse__control-title">Тариф «Для своих» в рамках кредитного продукта <br>
+                      «Кредитная карта БКС Банка»
+                    </div>
+                    <div class="collapse__control-icon">
+                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    </div>
+                  </div>
+                  <div class="collapse__content"></div>
+                </div>
+                <div class="collapse__item">
+                  <div class="collapse__control">
+                    <div class="collapse__control-title">Тариф «Корпоративный» в рамках кредитного продукта <br>
+                      «Кредитная карта БКС Банка»
+                    </div>
+                    <div class="collapse__control-icon">
+                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    </div>
+                  </div>
+                  <div class="collapse__content"></div>
+                </div>
+                <div class="collapse__item">
+                  <div class="collapse__control">
+                    <div class="collapse__control-title">Тариф «Стандарт» в рамках кредитного продукта <br>
+                      «Кредитная карта БКС Банка»
+                    </div>
+                    <div class="collapse__control-icon">
+                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    </div>
+                  </div>
+                  <div class="collapse__content"></div>
+                </div>
+              </div>
+            </div>
+            <div class="page__container">
+              <div class="section__row">
+                <div class="section__content section__content_medium section__content_theme-centered">
                   <div class="documents__group js-documents-group">
                     {{ Heading.heading({ 'title': 'Архив условий по депозитам', 'mods': { 'type': 'normal', 'margin': 'short' }, 'class': 'mt-64' }) }}
 
@@ -315,54 +332,61 @@
                     {{ Docs.docs({ 'title': 'Правила акции «Льготная комиссия»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2017' } }) }}
                   </div>
                 </div>
-                <div id="entity" class="tabs__item documents__tab js-tab state_invisible">
-                  <div class="documents__group js-documents-group">
-                    <div class="collapse collapse_theme-grey">
-                      <div class="collapse__item">
-                        <div class="collapse__control">
-                          <div class="collapse__control-title">Тарифы</div>
-                          <div class="collapse__control-icon">
-                            {{ Icon.icon({ 'name': 'dropdown' }) }}
-                          </div>
-                        </div>
-                        <div class="collapse__content">
-                          {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Надежное предложение»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2018' } }) }}
-                        </div>
-                      </div>
-                      <div class="collapse__item">
-                        <div class="collapse__control">
-                          <div class="collapse__control-title">Договоры</div>
-                          <div class="collapse__control-icon">
-                            {{ Icon.icon({ 'name': 'dropdown' }) }}
-                          </div>
-                        </div>
-                        <div class="collapse__content"></div>
-                      </div>
-                      <div class="collapse__item">
-                        <div class="collapse__control js-accordion-header">
-                          <div class="collapse__control-title">Акции</div>
-                          <div class="collapse__control-icon">
-                            {{ Icon.icon({ 'name': 'dropdown' }) }}
-                          </div>
-                        </div>
-                        <div class="collapse__content">
-                          {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Надежное предложение»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2015' } }) }}
-                          {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Бонус участникам ВЭД» ', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2015' } }) }}
-                          {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Осеннее предложение»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2016' } }) }}
-                          {{ Docs.docs({ 'title': 'Условия акции «Бонус Участникам ВЭД»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2016' } }) }}
-                          {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Летнее предложение»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2018' } }) }}
-                          {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Летнее предложение в честь Дня рождения — 22%»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2018' } }) }}
-                          {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Шанс» ', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2018' } }) }}
-                          {{ Docs.docs({ 'title': 'ПУсловия акции «Бонус Участникам ВЭД»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2018' } }) }}
-                        </div>
-                      </div>
+              </div>
+            </div>
+          </div>
+          <div id="entity" class="tabs__item documents__tab js-tab state_invisible">
+            <div class="documents__group js-documents-group">
+              <div class="collapse collapse_theme-grey">
+                <div class="collapse__item">
+                  <div class="collapse__control">
+                    <div class="collapse__control-title">Тарифы</div>
+                    <div class="collapse__control-icon">
+                      {{ Icon.icon({ 'name': 'dropdown' }) }}
                     </div>
+                  </div>
+                  <div class="collapse__content">
+                    {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Надежное предложение»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2018' } }) }}
+                  </div>
+                </div>
+                <div class="collapse__item">
+                  <div class="collapse__control">
+                    <div class="collapse__control-title">Договоры</div>
+                    <div class="collapse__control-icon">
+                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    </div>
+                  </div>
+                  <div class="collapse__content"></div>
+                </div>
+                <div class="collapse__item">
+                  <div class="collapse__control js-accordion-header">
+                    <div class="collapse__control-title">Акции</div>
+                    <div class="collapse__control-icon">
+                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    </div>
+                  </div>
+                  <div class="collapse__content">
+                    {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Надежное предложение»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Бонус участникам ВЭД» ', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2015' } }) }}
+                    {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Осеннее предложение»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2016' } }) }}
+                    {{ Docs.docs({ 'title': 'Условия акции «Бонус Участникам ВЭД»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2016' } }) }}
+                    {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Летнее предложение»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2018' } }) }}
+                    {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Летнее предложение в честь Дня рождения — 22%»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2018' } }) }}
+                    {{ Docs.docs({ 'title': 'Правила проведения маркетинговой акции «Шанс» ', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2018' } }) }}
+                    {{ Docs.docs({ 'title': 'ПУсловия акции «Бонус Участникам ВЭД»', 'href': '#', 'type': 'PDF', 'size': '213 КБ', 'attr': { 'documents-year': '2018' } }) }}
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+        {#<div class="page__container">#}
+        {#<div class="section__row">#}
+        {#<div class="section__content section__content_medium section__content_theme-centered">#}
+        {##}
+        {#</div>#}
+        {#</div>#}
+        {#</div>#}
       </section>
     </main>
 
