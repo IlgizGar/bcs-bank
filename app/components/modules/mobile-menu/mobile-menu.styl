@@ -3,7 +3,7 @@
   flex-direction: column
 
   position: fixed
-  z-index: 250
+  z-index: 400
   top: 0
   left: 0
 
@@ -43,5 +43,23 @@
 
 
   .nav
-    overflow-x: auto
-    padding-left: 16px
+    overflow: auto
+    max-width: 100%
+
+    .nav__wrapper
+      padding-left: 16px
+
+      white-space nowrap
+
+      .nav__button:last-child
+        margin-right: 16px
+
+    &::-webkit-scrollbar
+      width: 0
+      height: 0
+
+    &
+      -ms-overflow-style: none
+
+    &
+      overflow: -moz-scrollbars-none

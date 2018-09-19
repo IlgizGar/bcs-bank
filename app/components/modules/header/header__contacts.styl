@@ -1,23 +1,40 @@
 .header .header__contacts
+  z-index: 300
   position: absolute
-  z-index: 100
+  top: -100vh
 
+  overflow: auto
   width: 100%
+  max-height: calc(100vh - 135px)
   padding: 80px 0 120px
 
   background-color: $color_light
 
-  transform: translateY(-700px)
-  transition: transform 2 * $interval, opacity 0.1s ease
+  transition: top 2 * $interval, opacity 0.1s ease
   transition-delay 0, $interval - 0.1s
+
   @media (max-width: 1279px)
-    opacity: 0
-    padding-top: 40px
-    padding-bottom: 30px
+    padding-top: 0
+    padding-bottom: 115px
+
+    .header__contacts-links > .button
+      opacity: 0
+      transition: 2 * $interval 2 * $interval;
 
   &.state_explored
-    transform: translateY(0)
+    top: 57px
+
     @media (max-width: 1279px)
-      transform translateY(100%)
+      top: 135px
       opacity: 1
 
+      .header__contacts-links > .button
+        z-index: 500
+        position: fixed
+        left: 0
+        bottom: 0
+        width: 100%
+
+        opacity: 1
+
+        border-radius: 0

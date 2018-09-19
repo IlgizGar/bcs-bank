@@ -11,6 +11,7 @@
 
 {% set root = "." %}
 {% set title = "Вакансия детально" %}
+{% set header = 'blue' %}
 
 {% block body %}
   <div class="page js-page">
@@ -18,10 +19,10 @@
     {% include "../components/modules/header/header.njk" %}
 
     <main role="main">
-      <section class="page-header page-header_vacancy section page__section">
+      <section class="page-header section page__section">
 
         {# Чтобы установить картинку на фон, необходимо добавить style="backgraun-image: url(путь до картинки)" #}
-        <div class="section__header section__header_theme-blue">
+        <div class="page-header__vacancy section__header section__header_theme-blue">
           <div class="page__container page__container_type-header">
             {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Вакансии', 'link': 'http://juravlev.rusrobots.ru/bks/vacancies.html' }, 'current': 'Москва' }) }}
             {{ Heading.heading({ 'tag': 'h1', 'title': 'Старший клиентский менеджер \n по привлечению корпоративных клиентов' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'default' }, 'class': 'page-header__title' }) }}
@@ -29,7 +30,7 @@
           <div class="page-header__nav section__nav">
             <div class="page__container">
               <div class="section__wrap">
-                {{ Button.button({ 'href': '#vacancy-feedback', 'title': 'Откликнуться', 'mods': { 'theme': 'white' }, 'class': 'mr-a' }) }}
+                {{ Button.button({ 'href': '#vacancy-feedback', 'title': 'Откликнуться', 'mods': { 'theme': 'white' }, 'class': 'page-header__button mr-a' }) }}
                 {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'white', 'view': 'outlined' }, 'class': ''}) }}
               </div>
             </div>

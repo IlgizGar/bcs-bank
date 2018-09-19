@@ -7,6 +7,7 @@ module.exports = (elem) => {
       this.contacts = this.header.find('.js-header-contacts');
       this.btnContacts = this.header.find('.js-btn-header-contacts');
       this.btnOffices = this.header.find('.js-btn-header-offices');
+      this.btnOfficesState = false;
 
       this.mobileMenu = this.header.find('.js-mobile-menu');
       this.exploreMenu = $('#menu-explore');
@@ -21,14 +22,29 @@ module.exports = (elem) => {
 
     events() {
       this.btnContacts.on('click', (e) => {
+        this.btnContacts = this.header.find('.js-btn-header-contacts'); // Не удалять! Требуется для синхронизации мобильных и десктопных версий меню.
+
         if (!$(e.currentTarget).hasClass('state_active')) {
-          $(e.currentTarget).addClass('state_active');
+          this.btnContacts.addClass('state_active');
           this.contacts.addClass('state_explored');
           $('main').append('<div class="page__cover js-cover"></div>');
+          $('body').addClass('state_unscroll');
+          $('.js-navbar').removeClass('state_init');
+          if (this.btnOffices.hasClass('state_active')) {
+            this.btnOfficesState = true;
+            this.btnOffices.removeClass('state_active');
+          }
         } else {
-          $(e.currentTarget).removeClass('state_active');
+          this.btnContacts.removeClass('state_active');
           this.contacts.removeClass('state_explored');
           $('main').find('.js-cover').remove();
+          $('body').removeClass('state_unscroll');
+            if (this.btnOfficesState) {
+              this.btnOffices.addClass('state_active');
+              this.btnOfficesState = false;
+            } else {
+                $('.js-navbar').addClass('state_init');
+            }
         }
       });
 
@@ -53,6 +69,7 @@ module.exports = (elem) => {
           this.btnContacts.removeClass('state_active');
           this.contacts.removeClass('state_explored');
           $('main').find('.js-cover').remove();
+          $('body').removeClass('state_unscroll');
         }
       });
     }
