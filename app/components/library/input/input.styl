@@ -9,7 +9,9 @@
   border: solid 1px $color_borders
   transition: all $interval
   &:not(.input_textarea)
-    height: 64px
+    height: 65px
+    @media (max-width: 767px)
+      height: 55px
 
   &:hover
     border-color: $color_borders_light

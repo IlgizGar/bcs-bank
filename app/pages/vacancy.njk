@@ -44,7 +44,7 @@
           <div class="section__row">
             <div class="section__content section__content_medium section__content_theme-centered">
 
-              {{ Heading.heading({ 'tag': 'h2', 'title': 'Требования:' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'normal-small' }, 'class': 'news-detail__title' }) }}
+              {{ Heading.heading({ 'tag': 'h2', 'title': 'Требования:' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'normal-small' }, 'class': 'news-detail__title pb-32' }) }}
               <ul class="brand-list brand-list_type-disc brand-list_margin-medium">
                 <li>Наличие собственной клиентской базы;</li>
                 <li>Знание всех банковских продуктов и технологий для корпоративных клиентов;</li>
@@ -80,7 +80,7 @@
               </ul>
 
               {{ Heading.heading({ 'tag': 'h2', 'title': 'Условия:' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'normal-small' }, 'class': 'news-detail__title' }) }}
-              <ul class="brand-list brand-list_type-disc brand-list_margin-big">
+              <ul class="brand-list brand-list_type-disc brand-list_margin-big mb-64">
                 <li>Высокий уровень фиксированного оклада + бонусы;</li>
                 <li>Широкие возможности профессионального роста, корпоративная система обучения в компании;</li>
                 <li>Работа в команде профессионалов, в молодом и дружном коллективе;</li>
@@ -97,7 +97,8 @@
           <div class="section__row">
             <div class="section__content section__content_medium section__content_theme-centered js-form">
               <form id="vacancy-feedback__form" action="/" class="form vacancy-feedback__form">
-                {{ Heading.heading({ 'title': 'Откликнуться на вакансию' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'none', 'theme': 'default' }, 'class': 'form__title'}) }}
+                {{ Heading.heading({ 'title': 'Откликнуться <span>на вакансию<span>' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'none', 'theme': 'default' }, 'class': 'form__title'}) }}
+                <p class="text mb-32">Старший клиентский менеджер по привлечению копроративных клиентов</p>
                 {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': 'js-fio-masked', 'name': 'feedback_name', 'state': 'required' }) }}
                 <div class="form__line-group">
                   {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': 'js-phone-masked', 'name': 'feedback_phone', 'state': 'required' }) }}

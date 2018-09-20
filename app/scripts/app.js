@@ -6,7 +6,6 @@ import svg4everybody from 'svg4everybody';
 
 import Header from '../components/modules/header/header';
 import Menubar from '../components/modules/menubar/menubar';
-import Nav from '../components/modules/nav/nav';
 import Contact from '../components/library/contact/contact';
 import Dropdown from '../components/library/dropdown/dropdown';
 import Context from '../components/library/context/context';
@@ -146,7 +145,6 @@ $(() => {
   }
 
   global.menubar = new Menubar();
-  global.nav = new Nav();
 
   global.header = Header('.js-header');
 });

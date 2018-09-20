@@ -2,12 +2,14 @@
   border: 1px dashed $gainsboro
   border-radius: 4px
   margin-bottom: 32px
+  @media (max-width: 767px)
+    margin-bottom: 16px
   .needsclick
     opensansSemibold()
     display: flex
     align-items: center
     color: $madison
-    padding: 14px 24px
+    padding: 9px
     cursor: pointer
 
     .file-input__text
