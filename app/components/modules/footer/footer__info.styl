@@ -1,4 +1,18 @@
 .footer .footer__info
   col()
-  shift-left(1)
-  size(3)
+
+  @media (min-width: 1280px)
+    shift-left(1)
+    size(3)
+
+  @media (max-width: 1279px)
+    order: -1
+    shift-left(2)
+    size(8)
+
+    margin-bottom: 30px
+
+  @media (max-width: 575px)
+    order: -1
+    shift-left(0)
+    size(12)

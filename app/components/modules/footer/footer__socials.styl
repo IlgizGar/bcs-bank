@@ -1,7 +1,19 @@
 .footer .footer__socials
   col()
-  shift-left(1)
-  size(3)
 
   display: flex
   align-items: flex-end
+
+  @media(min-width: 1280px)
+    shift-left(1)
+    size(3)
+
+  @media(max-width: 1279px)
+    margin-top: 32px
+
+    shift-left(2)
+    size(8)
+
+  @media (max-width: 575px)
+    shift-left(0)
+    size(12)

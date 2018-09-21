@@ -1,6 +1,24 @@
 .footer .footer__menu
-  col()
-  size(2)
-
   display: flex
   flex-direction column
+
+  @media(min-width: 1280px)
+    col()
+    size(2)
+    
+    .icon
+      display: none
+
+  @media (max-width: 1279px)
+    margin-top: -1px
+    width: 100%
+    padding: 16px 0
+
+    border-bottom: solid 1px $color_borders
+    border-top: solid 1px $color_borders
+
+    .icon
+      width: 16px
+      height: 16px
+
+      color: $color_borders

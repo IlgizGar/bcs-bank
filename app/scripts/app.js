@@ -5,6 +5,7 @@ import $ from 'jquery';
 import svg4everybody from 'svg4everybody';
 
 import Header from '../components/modules/header/header';
+import Footer from '../components/modules/footer/footer';
 import Menubar from '../components/modules/menubar/menubar';
 import Contact from '../components/library/contact/contact';
 import Dropdown from '../components/library/dropdown/dropdown';
@@ -147,4 +148,5 @@ $(() => {
   global.menubar = new Menubar();
 
   global.header = Header('.js-header');
+  global.footer = new Footer();
 });
