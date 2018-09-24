@@ -39,12 +39,12 @@
                 {{ Svg.inlineSvg({ 'path': ['assets/images/svg/logo-dark.svg'] }) }}
             </div>
             {% for item in menu %}
-                <div class="footer__menu">
+                <div class="footer__menu js-footer-menu">
                     <div class="footer__menu-title">
                         {{ item.title }}
                         {{ Icon.icon({ 'name': 'dropdown' }) }}
                     </div>
-                    <div class="footer__menu-content">
+                    <div class="footer__menu-content js-footer-menu-content">
                         {% for el in item.items %}
                             {{ Button.button({ 'href': el.href, 'title': el.name, 'mods': {'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'footer__menu-link' }) }}
                         {% endfor %}

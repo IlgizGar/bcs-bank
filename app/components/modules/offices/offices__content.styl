@@ -11,9 +11,17 @@
   box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1), 0 0 50px 0 rgba(255, 255, 255, 0.5)
 
 
-  @include media(ma-width: 1239px) {
-
+  @include media(max-width: 1239px) {
     left: 16px
   }
 
+  @media (max-width: 1279px)
+    top: -80px
+    left: 0
 
+    width: 100%
+    max-width: unset
+
+    transform: translateX(0)
+    box-shadow: none
+    border-radius: 0
