@@ -10,16 +10,16 @@
   border-radius: 4px
   box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1), 0 0 50px 0 rgba(255, 255, 255, 0.5)
 
+  @media (min-width: 992px) and (max-width: 1279px) {
+    max-width: 376px;
 
-  @include media(max-width: 1239px) {
-    left: 16px
+    transform: translateX(-48vw);
   }
 
-  @media (max-width: 1279px)
-    top: -80px
+  @media (max-width: 991px)
     left: 0
-
     width: 100%
+    height: auto
     max-width: unset
 
     transform: translateX(0)

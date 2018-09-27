@@ -128,8 +128,8 @@ $(() => {
     });
   }
 
-  if ($('.offices').length) {
-    global.officesMap = new Offices($('.offices'));
+  if ($('.js-offices').length) {
+    global.officesMap = new Offices($('.js-offices'));
   }
 
   if ($('.js-dropdown[data-id="documents-filter"]').length) {

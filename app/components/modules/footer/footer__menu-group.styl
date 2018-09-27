@@ -1,0 +1,31 @@
+.footer .footer__wrap
+  .footer__menu
+    .footer__menu-group
+
+      flex: 1
+
+      @media (min-width: 1280px)
+        max-width: 225px
+
+      @media (min-width: 768px) and (max-width: 1279px)
+        width: 25%
+      
+      @media (min-width: 768px)
+        .icon
+          display: none
+
+      @media (max-width: 767px)
+        margin-top: -1px
+
+        border-bottom: solid 1px $color_borders
+        border-top: solid 1px $color_borders
+
+        .icon
+          width: 16px
+          height: 16px
+
+          color: $color_borders
+
+      &.state_explored
+        .icon
+          transform: scale(1,-1)

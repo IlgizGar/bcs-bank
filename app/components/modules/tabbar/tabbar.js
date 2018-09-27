@@ -43,6 +43,10 @@ module.exports = (elem) => {
     }
 
     setAnchorPosition() {
+      
+      console.log('TABWIDTH', this.tabbar.outerWidth());
+      console.log('WINDOW', window.innerWidth);
+
       if (window.innerWidth < this.tabbar.outerWidth()) {
         if (this.anchors.index(this.active) === 0) {
           this.wrapper.addClass('gradient_right').removeClass('gradient_left');
