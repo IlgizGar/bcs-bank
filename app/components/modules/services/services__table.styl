@@ -1,0 +1,26 @@
+.services .services__table
+  width: 100%
+  thead
+    tr
+      th
+        width: calc(50% - 20px)
+        padding-bottom: 25px
+
+      th:first-child
+        @media (min-width: 1280px)
+          width: 40px
+  tbody
+    tr
+      td
+        width: calc(50% - 20px)
+        height: 54px
+
+        text-align: right
+
+      td:first-child
+        @media (min-width: 1280px)
+          width: 40px
+
+  @media (max-width 1279px)
+    width: 100%
+    overflow-x auto

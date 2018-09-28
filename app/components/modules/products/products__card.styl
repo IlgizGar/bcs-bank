@@ -1,6 +1,49 @@
 .products
   .products__card
-    min-height: 560px
+
+    @media (min-width: 1280px)
+      min-height: 560px
+
+    @media (max-width: 1279px)
+      .card__action
+        display: flex
+      
+    @media (min-width: 992px) and (max-width: 1279px)
+      max-width: 295px
+      min-height: 455px
+
+    @media (max-width: 991px)
+      flex-shrink: 0
+      width: 100%
+      max-width: 212px
+      min-height: 300px
+
+    @media (max-width: 767px)
+      margin: 0 8px
+
+      &:first-child
+        margin-left: 16px
+
+      &:last-child
+        display: flex
+
+        .card__wrap
+          min-width: 100%
+
+        &:after
+          content: ''
+          padding: 0 8px
+          height: 100%
+
     .card__title
-      formular(40px)
+      formular()
       font-weight: normal
+
+      @media (min-width: 1280px)
+        font-size: 40px
+
+      @media (min-width: 992px) and (max-width: 1279px)
+        font-size: 32px
+
+      @media (max-width: 991px)
+        font-size: 24px

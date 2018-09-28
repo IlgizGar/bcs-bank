@@ -40,7 +40,10 @@
             {% if options.icon %}
               {{ inlineSvg.inlineSvg({ 'path': [options.icon] }) }}
             {% endif %}
-            <span>{{ options.link }}</span>
+            <span class="{% if options.mobile %}hidden-mobile{% endif %}">{{ options.link }}</span>
+            {% if options.mobile %}
+              <span class="hidden-desktop">{{ options.mobile }}</span>
+            {% endif %}
             {{ Icon.icon({ 'name': 'arrow' }) }}
           </div>
         </button>

@@ -1,0 +1,21 @@
+.products .products__list
+
+  display: flex
+
+  @media (min-width: 768px)
+    justify-content: center
+    flex: 1
+
+  @media (max-width: 767px)
+    overflow-x: auto
+    width: 100%
+
+    &::-webkit-scrollbar
+      width: 0
+      height: 0
+
+    &
+      -ms-overflow-style: none
+
+    &
+      overflow: -moz-scrollbars-none

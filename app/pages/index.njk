@@ -20,116 +20,119 @@
     {% include "../components/modules/header/header.njk" %}
 
     <main role="main">
-      <section class="section page__section">
-        <div class="section__header section__header_theme-blue">
+      {#<section class="section page__section">#}
+      {#<div class="section__header section__header_theme-blue">#}
 
-          <div class="carousel">
-            <div class="carousel__progressbar">
-              <div class="carousel__progressbar-bar js-carousel-progressbar"></div>
-            </div>
-            <div class="index-carousel js-carousel" data-id="index-header">
-              <div class="index-carousel__slide">
-                <div class="page__container">
-                  <div class="index-carousel__wrap">
-                    <div class="index-carousel__content">
-                      {{ Heading.heading({ 'tag': 'h1', 'title': 'Отпуск легче \n с кредитом БКС' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}
-                      <div class="index-carousel__features">
-                        {{ Feature.feature({ 'title': 'До 55 дней', 'text': 'беспроцентный \n период' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
-                        <div class="feature feature_type-normal index-carousel__feature">
-                          <div class="feature__content">
-                            <span class="feature__title">
-                              До 1 млн. {{ Icon.icon({ 'name': 'ruble' }) }}
-                            </span>
-                            <span class="feature__text">
-                              максимальная <br> сумма кредита
-                            </span>
-                          </div>
-                        </div>
-                        {{ Feature.feature({ 'title': 'До 30%', 'text': 'от покупок \n возвращаются на карту' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
-                      </div>
-                    </div>
-                    <div class="index-carousel__image">
-                      <img src="assets/images/banner-family.png" alt="Отпуск легче с кредитом БКС">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="index-carousel__slide">
-                <div class="page__container">
-                  <div class="index-carousel__wrap">
-                    <div class="index-carousel__content">
-                      {{ Heading.heading({ 'tag': 'h1', 'title': 'Отпуск легче \n с кредитом БКС' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}
-                      <div class="index-carousel__features">
-                        {{ Feature.feature({ 'title': 'До 55 дней', 'text': 'беспроцентный \n период' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
-                        <div class="feature feature_type-normal index-carousel__feature">
-                          <div class="feature__content">
-                            <span class="feature__title">
-                              До 1 млн. {{ Icon.icon({ 'name': 'ruble' }) }}
-                            </span>
-                            <span class="feature__text">
-                              максимальная <br> сумма кредита
-                            </span>
-                          </div>
-                        </div>
-                        {{ Feature.feature({ 'title': 'До 30%', 'text': 'от покупок \n возвращаются на карту' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
-                      </div>
-                    </div>
-                    <div class="index-carousel__image">
-                      <img src="assets/images/banner-family.png" alt="Отпуск легче с кредитом БКС">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="index-carousel__slide">
-                <div class="page__container">
-                  <div class="index-carousel__wrap">
-                    <div class="index-carousel__content">
-                      {{ Heading.heading({ 'tag': 'h1', 'title': 'Отпуск легче \n с кредитом БКС' | striptags(true) | escape | nl2br, 'mods' : { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}
-                      <div class="index-carousel__features">
-                        {{ Feature.feature({ 'title': 'До 55 дней', 'text': 'беспроцентный \n период' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
-                        <div class="feature feature_type-normal index-carousel__feature">
-                          <div class="feature__content">
-                            <span class="feature__title">
-                              До 1 млн. {{ Icon.icon({ 'name': 'ruble' }) }}
-                            </span>
-                            <span class="feature__text">
-                              максимальная <br> сумма кредита
-                            </span>
-                          </div>
-                        </div>
-                        {{ Feature.feature({ 'title': 'До 30%', 'text': 'от покупок \n возвращаются на карту' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
-                      </div>
-                    </div>
-                    <div class="index-carousel__image">
-                      <img src="assets/images/banner-family.png" alt="Отпуск легче с кредитом БКС">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="page__container">
-            <div class="section__header-controls">
+      {#<div class="carousel">#}
+      {#<div class="carousel__progressbar">#}
+      {#<div class="carousel__progressbar-bar js-carousel-progressbar"></div>#}
+      {#</div>#}
+      {#<div class="index-carousel js-carousel" data-id="index-header">#}
+      {#<div class="index-carousel__slide">#}
+      {#<div class="page__container">#}
+      {#<div class="index-carousel__wrap">#}
+      {#<div class="index-carousel__content">#}
+      {#{{ Heading.heading({ 'tag': 'h1', 'title': 'Отпуск легче \n с кредитом БКС' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}#}
+      {#<div class="index-carousel__features">#}
+      {#{{ Feature.feature({ 'title': 'До 55 дней', 'text': 'беспроцентный \n период' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}#}
+      {#<div class="feature feature_type-normal index-carousel__feature">#}
+      {#<div class="feature__content">#}
+      {#<span class="feature__title">#}
+      {#До 1 млн. {{ Icon.icon({ 'name': 'ruble' }) }}#}
+      {#</span>#}
+      {#<span class="feature__text">#}
+      {#максимальная <br> сумма кредита#}
+      {#</span>#}
+      {#</div>#}
+      {#</div>#}
+      {#{{ Feature.feature({ 'title': 'До 30%', 'text': 'от покупок \n возвращаются на карту' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}#}
+      {#</div>#}
+      {#</div>#}
+      {#<div class="index-carousel__image">#}
+      {#<img src="assets/images/banner-family.png" alt="Отпуск легче с кредитом БКС">#}
+      {#</div>#}
+      {#</div>#}
+      {#</div>#}
+      {#</div>#}
+      {#<div class="index-carousel__slide">#}
+      {#<div class="page__container">#}
+      {#<div class="index-carousel__wrap">#}
+      {#<div class="index-carousel__content">#}
+      {#{{ Heading.heading({ 'tag': 'h1', 'title': 'Отпуск легче \n с кредитом БКС' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}#}
+      {#<div class="index-carousel__features">#}
+      {#{{ Feature.feature({ 'title': 'До 55 дней', 'text': 'беспроцентный \n период' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}#}
+      {#<div class="feature feature_type-normal index-carousel__feature">#}
+      {#<div class="feature__content">#}
+      {#<span class="feature__title">#}
+      {#До 1 млн. {{ Icon.icon({ 'name': 'ruble' }) }}#}
+      {#</span>#}
+      {#<span class="feature__text">#}
+      {#максимальная <br> сумма кредита#}
+      {#</span>#}
+      {#</div>#}
+      {#</div>#}
+      {#{{ Feature.feature({ 'title': 'До 30%', 'text': 'от покупок \n возвращаются на карту' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}#}
+      {#</div>#}
+      {#</div>#}
+      {#<div class="index-carousel__image">#}
+      {#<img src="assets/images/banner-family.png" alt="Отпуск легче с кредитом БКС">#}
+      {#</div>#}
+      {#</div>#}
+      {#</div>#}
+      {#</div>#}
+      {#<div class="index-carousel__slide">#}
+      {#<div class="page__container">#}
+      {#<div class="index-carousel__wrap">#}
+      {#<div class="index-carousel__content">#}
+      {#{{ Heading.heading({ 'tag': 'h1', 'title': 'Отпуск легче \n с кредитом БКС' | striptags(true) | escape | nl2br, 'mods' : { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}#}
+      {#<div class="index-carousel__features">#}
+      {#{{ Feature.feature({ 'title': 'До 55 дней', 'text': 'беспроцентный \n период' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}#}
+      {#<div class="feature feature_type-normal index-carousel__feature">#}
+      {#<div class="feature__content">#}
+      {#<span class="feature__title">#}
+      {#До 1 млн. {{ Icon.icon({ 'name': 'ruble' }) }}#}
+      {#</span>#}
+      {#<span class="feature__text">#}
+      {#максимальная <br> сумма кредита#}
+      {#</span>#}
+      {#</div>#}
+      {#</div>#}
+      {#{{ Feature.feature({ 'title': 'До 30%', 'text': 'от покупок \n возвращаются на карту' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}#}
+      {#</div>#}
+      {#</div>#}
+      {#<div class="index-carousel__image">#}
+      {#<img src="assets/images/banner-family.png" alt="Отпуск легче с кредитом БКС">#}
+      {#</div>#}
+      {#</div>#}
+      {#</div>#}
+      {#</div>#}
+      {#</div>#}
+      {#</div>#}
+      {#<div class="page__container">#}
+      {#<div class="section__header-controls">#}
 
-              {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'white' }, 'class': 'section__header-button' }) }}
-              {{ Button.button({ 'href': '#', 'title': 'Узнать больше', 'mods': { 'theme': 'white', 'view': 'text' } }) }}
+      {#{{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'white' }, 'class': 'section__header-button' }) }}#}
+      {#{{ Button.button({ 'href': '#', 'title': 'Узнать больше', 'mods': { 'theme': 'white', 'view': 'text' } }) }}#}
 
-              <div class="carousel-controls js-carousel-controls">
-                <div class="carousel-controls__pagination js-carousel-pagination">
-                  <span>01</span><span></span><span></span>
-                </div>
-              </div>
+      {#<div class="carousel-controls js-carousel-controls">#}
+      {#<div class="carousel-controls__pagination js-carousel-pagination">#}
+      {#<span>01</span><span></span><span></span>#}
+      {#</div>#}
+      {#</div>#}
 
-            </div>
-          </div>
-        </div>
-      </section>
+      {#</div>#}
+      {#</div>#}
+      {#</div>#}
+      {#</section>#}
       <section class="products section">
         <div class="page__container">
           <div class="section__row">
-            {{ Card.card({ 'href': '#', 'type': 'figure', 'img': 'assets/images/baby-boy.png', 'view': 'uppercase', 'theme': 'black', 'hoverType': 'button', 'title': '12,9%', 'subtitle': 'ставка по кредиту \n без переплат' | striptags(true) | escape | nl2br, 'link': 'Потребительский кредит', 'class': 'section__element products__card' }) }}
-            {{ Card.card({ 'href': '#', 'type': 'figure', 'img': 'assets/images/woman.png', 'view': 'uppercase', 'theme': 'black', 'hoverType': 'button', 'title': '30%', 'subtitle': 'кешбек за покупки \n у партнеров' | striptags(true) | escape | nl2br, 'link': 'Кредитная карта', 'class': 'section__element products__card' }) }}
-            {{ Card.card({ 'href': '#', 'type': 'figure', 'img': 'assets/images/man.png', 'view': 'uppercase', 'theme': 'black', 'hoverType': 'button', 'title': '8,1%', 'subtitle': 'годовых по вкладу \n в рублях' | striptags(true) | escape | nl2br, 'link': 'Вклад', 'class': 'section__element products__card' }) }}
+            <div class="products__list">
+
+              {{ Card.card({ 'href': '#', 'type': 'figure', 'img': 'assets/images/baby-boy.png', 'view': 'uppercase', 'theme': 'black', 'hoverType': 'button', 'title': '12,9%', 'subtitle': 'ставка по кредиту \n без переплат' | striptags(true) | escape | nl2br, 'link': 'Потребительский кредит', 'mobile': 'Кредит', 'class': 'section__element products__card' }) }}
+              {{ Card.card({ 'href': '#', 'type': 'figure', 'img': 'assets/images/woman.png', 'view': 'uppercase', 'theme': 'black', 'hoverType': 'button', 'title': '30%', 'subtitle': 'кешбек за покупки \n у партнеров' | striptags(true) | escape | nl2br, 'link': 'Кредитная карта', 'mobile': 'Карта', 'class': 'section__element products__card' }) }}
+              {{ Card.card({ 'href': '#', 'type': 'figure', 'img': 'assets/images/man.png', 'view': 'uppercase', 'theme': 'black', 'hoverType': 'button', 'title': '8,1%', 'subtitle': 'годовых по вкладу \n в рублях' | striptags(true) | escape | nl2br, 'link': 'Вклад', 'class': 'section__element products__card' }) }}
+            </div>
           </div>
         </div>
       </section>
@@ -161,9 +164,18 @@
             {{ Button.button({ 'href': '#', 'title': 'Все сервисы', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
           </div>
           <div class="section__row">
-            {{ Card.card({ 'block': 'modules/services/fix-course', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Зафиксировать курс', 'class': 'section__element services__card' }) }}
-            {{ Card.card({ 'block': 'modules/services/exchange', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Обменять валюту', 'class': 'section__element services__card' }) }}
-            {{ Card.card({ 'block': 'modules/services/check-exist', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Проверить наличие', 'class': 'section__element services__card' }) }}
+            <div class="services__carousel carousel carousel_type-mobile">
+              <div class="js-carousel carousel__content" data-id="index-services" data-breakpoint="992">
+                {{ Card.card({ 'block': 'modules/services/fix-course', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Зафиксировать курс', 'class': 'section__element services__card' }) }}
+                {{ Card.card({ 'block': 'modules/services/exchange', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Обменять валюту', 'class': 'section__element services__card' }) }}
+                {{ Card.card({ 'block': 'modules/services/check-exist', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Проверить наличие', 'class': 'section__element services__card' }) }}
+              </div>
+              <div class="carousel-controls carousel-controls_theme-dark js-carousel-controls">
+                <div class="carousel-controls__pagination js-carousel-pagination">
+                  <span>01</span><span></span><span></span>
+                </div>
+              </div>
+            </div>
 
             <div class="services__transfer">
               <div class="services__transfer-bkg"></div>
@@ -206,16 +218,16 @@
           </div>
         </div>
       </section>
-      <section class="advice section page__section page__section_theme-large">
+      <section class="advices section page__section page__section_theme-large">
         <div class="page__container">
           <div class="section__heading">
             {{ Heading.heading({ 'title': 'Только нужные советы' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'none', 'theme': 'default' } }) }}
             {{ Button.button({ 'href': '#', 'title': 'Все советы', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
           </div>
           <div class="section__row">
-            {{ Advice.advice({ 'href': '#', 'title': 'Как поужинать \n в любимом ресторане \n за счет банка' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice-1.jpg', 'class': 'section__element' }) }}
-            {{ Advice.advice({ 'href': '#', 'title': 'Где срочно взять \n деньги' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice-2.jpg', 'class': 'section__element' }) }}
-            {{ Advice.advice({ 'href': '#', 'title': 'Как экономить \n на путешествиях до 25%' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice-3.jpg', 'class': 'section__element' }) }}
+            {{ Advice.advice({ 'href': '#', 'title': 'Как поужинать в любимом ресторане за счет банка' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice-1.jpg', 'class': 'section__element' }) }}
+            {{ Advice.advice({ 'href': '#', 'title': 'Где срочно взять деньги' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice-2.jpg', 'class': 'section__element' }) }}
+            {{ Advice.advice({ 'href': '#', 'title': 'Как экономить на путешествиях до 25%' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice-3.jpg', 'class': 'section__element' }) }}
           </div>
         </div>
       </section>
@@ -224,9 +236,18 @@
           <img class="company__figure" src="assets/images/flying.png" alt="Безграничные возможности">
           {{ Heading.heading({ 'title': 'Откройте безграничные \n возможности сгруппой \n компаний БКС' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'normal', 'theme': 'light' } }) }}
           <div class="section__row">
-            {{ Card.card({ 'href': '#', 'icon': 'assets/images/svg/premier.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Ваш персональный финансовый советник в БКС онлайн', 'subtitle': 'Инвестиции доступные \n каждому' | striptags(true) | escape | nl2br, 'link': 'БКС Премьер', 'class': 'section__element company__card' }) }}
-            {{ Card.card({ 'href': '#', 'icon': 'assets/images/svg/logo-dark.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Инвестируйте \n с крупнейшим \n брокером России' | striptags(true) | escape | nl2br, 'subtitle': 'Достижение ваших \n финансовых целей' | striptags(true) | escape | nl2br, 'link': 'БКС Брокер', 'class': 'section__element company__card' }) }}
-            {{ Card.card({ 'href': '#', 'icon': 'assets/images/svg/ultima.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Персональный банк самых амбициозных', 'subtitle': 'Уникальные привилегии \n и безграничные возможности' | striptags(true) | escape | nl2br, 'link': 'БКС Ультима', 'class': 'section__element company__card' }) }}
+            <div class="company__carousel carousel carousel_type-mobile">
+              <div class="js-carousel carousel__content" data-id="index-company" data-breakpoint="768">
+                {{ Card.card({ 'href': '#', 'icon': 'assets/images/svg/premier.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Ваш персональный финансовый советник в БКС онлайн', 'subtitle': 'Инвестиции доступные \n каждому' | striptags(true) | escape | nl2br, 'link': 'БКС Премьер', 'class': 'section__element company__card' }) }}
+                {{ Card.card({ 'href': '#', 'icon': 'assets/images/svg/logo-dark.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Инвестируйте \n с крупнейшим \n брокером России' | striptags(true) | escape | nl2br, 'subtitle': 'Достижение ваших \n финансовых целей' | striptags(true) | escape | nl2br, 'link': 'БКС Брокер', 'class': 'section__element company__card' }) }}
+                {{ Card.card({ 'href': '#', 'icon': 'assets/images/svg/ultima.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Персональный банк самых амбициозных', 'subtitle': 'Уникальные привилегии \n и безграничные возможности' | striptags(true) | escape | nl2br, 'link': 'БКС Ультима', 'class': 'section__element company__card' }) }}
+              </div>
+              <div class="carousel-controls js-carousel-controls">
+                <div class="carousel-controls__pagination js-carousel-pagination">
+                  <span>01</span><span></span><span></span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
