@@ -1,2 +1,10 @@
 .index-carousel .index-carousel__feature
-  width: 200px
+  @media (min-width: 768px)
+    width: 200px
+
+  @media (max-width: 767px)
+    width: 150px
+    
+    &:nth-child(n+3) {
+      display: none
+    }

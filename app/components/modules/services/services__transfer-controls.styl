@@ -1,12 +1,26 @@
 .services .services__transfer-controls
-  col()
-  shift-left(1)
-  size(10)
-
   display: flex
-  align-items center
+  align-items: center
   justify-content space-between
 
   margin-top: 40px
 
-  height: 64px
+  @media (min-width: 1279px)
+    height: 64px
+
+  @media (min-width: 992px)
+    col()
+    shift-left(1)
+    size(10)
+
+  @media (max-width: 991px)
+    col()
+    size(12)
+    margin-top: auto
+
+  @media (max-width: 767px)
+    flex-direction: column
+
+    margin-top: auto
+
+    width: calc(100% - 32px)

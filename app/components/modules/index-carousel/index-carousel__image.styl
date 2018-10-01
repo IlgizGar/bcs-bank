@@ -2,6 +2,30 @@
   position: relative
   img
     position absolute
-    top: -140px;
-    left: 70px;
-    max-width: 610px;
+
+    @media (min-width: 1280px)
+      top: -140px
+      left: 70px
+
+      max-width: 610px
+
+    @media (min-width: 992px) and (max-width: 1279px)
+      top: -120px
+      left: 17px
+
+      max-width: 468px
+
+    @media (min-width: 768px) and (max-width: 991px)
+      top: -108px
+      left: -71px
+
+      max-width: 300px
+      
+    @media (max-width: 767px)
+      order: 0
+
+      position: relative
+      margin: 0 auto 16px
+
+      width: 100%
+      max-width: 200px
