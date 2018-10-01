@@ -1,2 +1,41 @@
 .offices
   position: relative
+
+  @media (max-width: 991px)
+    margin-top: 80px
+    padding-bottom: 56px
+
+  &:not(.state_listed)
+    @media (max-width: 991px)
+      .offices__content
+        top: -80px
+
+      .offices__tabs
+        display: none
+
+  &.state_listed
+
+    .offices__tabs
+      display: block
+
+    .offices__map-wrapper
+      @media (max-width: 991px)
+        visibility: hidden
+
+    .offices__content
+      @media (max-width: 991px)
+        position: relative
+        top: 0
+
+      @media (min-width: 768px) and (max-width: 991px)
+        margin-top: -520px
+        min-height: 440px
+
+      @media (max-width: 767px)
+        margin-top: -410px
+        min-height: 330px
+
+  //&.state_listed.state_explored
+  //  .offices__map-wrapper
+  //    @media (max-width: 991px)
+  //      visibility: visible

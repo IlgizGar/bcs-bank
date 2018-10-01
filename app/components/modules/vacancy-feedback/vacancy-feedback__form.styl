@@ -1,1 +1,30 @@
-//.vacancy-feedback .vacancy-feedback__form
+.vacancy-feedback .vacancy-feedback__form
+
+  .checkbox__state
+    flex-shrink: 0
+
+  @media (max-width: 575px)
+    .form__line-group
+      flex-wrap: wrap
+
+      .form__field-group
+        margin-right: 0
+
+    .dz-clickable
+      .dz-message
+        .icon-file-download, .file-input__text
+          display: none
+
+        .button
+          width: 100%
+
+    .form__action
+      flex-wrap: wrap
+
+      .form__agreements
+        br
+          display: none
+
+      .form__submit-button
+        width: 100%
+        margin-top: 25px

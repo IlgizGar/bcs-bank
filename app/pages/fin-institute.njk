@@ -8,237 +8,247 @@
 
 {% set root = "." %}
 {% set title = "Финансовым институтам" %}
+{% set header = 'blue' %}
 
 {% block body %}
-  <div class="page js-page">
+    <div class="page js-page">
 
-    {% include "../components/modules/header/header.njk" %}
+        {% include "../components/modules/header/header.njk" %}
 
-    <main role="main">
-      <section class="section page__section page__section_theme-large">
+        <main role="main">
+            <section class="section page__section page__section_theme-large">
 
-        {# Чтобы установить картинку на фон, необходимо добавить style="backgraun-image: url(путь до картинки)" #}
-        <div class="section__header section__header_theme-blue">
-          <div class="page__container page__container_type-header">
-            {{ Heading.heading({ 'tag': 'h1', 'title': 'Финансовым институтам' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'long' } }) }}
-          </div>
-        </div>
+                {# Чтобы установить картинку на фон, необходимо добавить style="backgraun-image: url(путь до картинки)" #}
+                <div class="section__header section__header_theme-blue">
+                    <div class="page__container page__container_type-header">
+                        {{ Heading.heading({ 'tag': 'h1', 'title': 'Финансовым институтам' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'long' } }) }}
+                    </div>
+                </div>
 
-      </section>
+            </section>
 
-      <section class="section page__section">
-        <div class="page__container">
-          <div class="section__row">
-            <div class="section__content section__content_theme-centered">
-              {{ Heading.heading({ 'tag': 'h2', 'title': 'Тарифы' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'short' } }) }}
+            <section class="section page__section">
+                <div class="page__container">
+                    <div class="section__row">
+                        <div class="section__content section__content_theme-centered">
+                            {{ Heading.heading({ 'tag': 'h2', 'title': 'Тарифы' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'short' } }) }}
 
-              <div class="table table_sortable table_theme-default">
-                <table class="table__content">
-                  <thead class="table__head">
-                  <tr>
-                    {# data-sort="date" for sort by date #}
-                    {# data-sort="money" for sort by money #}
-                    <th>
-                      <span class="table__column-title">Пакет услуг</span>
-                    </th>
-                    <th>
-                      <span class="table__column-title">Онлайн</span>
-                    </th>
-                    <th>
-                      <span class="table__column-title">Безграничный</span>
-                    </th>
-                    <th>
-                      <span class="table__column-title">Абсолютный</span>
-                    </th>
-                  </tr>
-                  </thead>
-                  <tbody class="table__body">
-                  <tr>
-                    <td>1 счет</td>
-                    <td>Включено</td>
-                    <td>Включено</td>
-                    <td>Включено</td>
-                  </tr>
-                  <tr>
-                    <td>2й и последующие счета</td>
-                    <td>Неограниченное кол-во счетов в RUB и 2 счета в валютах: USD, EUR, GBR, CHF</td>
-                    <td colspan="2">Кол-во счетов не ограниченно, <br> открываются на выбор в любой из валют</td>
-                  </tr>
-                  <tr>
-                    <td>Обслуживание системы БКС «Интернет-банк»</td>
-                    <td>500 {{ Icon.icon({ 'name': 'rub' }) }}</td>
-                    <td>Включено</td>
-                    <td>Включено</td>
-                  </tr>
-                  <tr>
-                    <td>Конвертация</td>
-                    <td>Курс Банка, Онлайн Курс, Курс дилера <br> + 0,1%</td>
-                    <td colspan="2">Курс Банка, Онлайн курс, Курс Дилера <br> без доп. комиссий</td>
-                  </tr>
-                  <tr>
-                    <td>Переводы внешние</td>
-                    <td>16-20 {{ Icon.icon({ 'name': 'rub' }) }}</td>
-                    <td>30 {{ Icon.icon({ 'name': 'rub' }) }} (100 включено)</td>
-                    <td>25 {{ Icon.icon({ 'name': 'rub' }) }} (500 включено)</td>
-                  </tr>
-                  <tr>
-                    <td>Переводы внутрибанковские</td>
-                    <td>Включено</td>
-                    <td>Включено</td>
-                    <td>Включено</td>
-                  </tr>
-                  <tr class="table__row table__row_theme-wide">
-                    <td>Валютный контроль</td>
-                    <td>
-                      <p class="table__subtitle">От операции</p>
-                      <p>0.15% (мин 600 {{ Icon.icon({ 'name': 'rub' }) }})</p>
-                    </td>
-                    <td>
-                      <p class="table__subtitle">От месячного оборота</p>
-                      <p>0.12% (мин 1500 {{ Icon.icon({ 'name': 'rub' }) }}, <br> макс 12
-                        900 {{ Icon.icon({ 'name': 'rub' }) }})</p>
-                    </td>
-                    <td>
-                      <p class="table__subtitle">От месячного оборота</p>
-                      <p>30 000 {{ Icon.icon({ 'name': 'rub' }) }}</p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Переводы в ни.вал. (OUR) от</td>
-                    <td>35 USD / 40 EUR</td>
-                    <td>35 USD / 40 EUR</td>
-                    <td>40 USD / 50 EUR</td>
-                  </tr>
-                  <tr>
-                    <td>Принятие на обслуживание Контракта</td>
-                    <td>1000 {{ Icon.icon({ 'name': 'rub' }) }}</td>
-                    <td>Включено</td>
-                    <td>Включено</td>
-                  </tr>
-                  <tr>
-                    <td>Внесение наличных</td>
-                    <td>0,27% (мин 150 {{ Icon.icon({ 'name': 'rub' }) }})</td>
-                    <td>0,12% на все операции не более 1 млн {{ Icon.icon({ 'name': 'rub' }) }}, далее 0,27%</td>
-                    <td>Включены все операции не более 500 000 {{ Icon.icon({ 'name': 'rub' }) }}, далее 0,2%</td>
-                  </tr>
-                  <tr>
-                    <td>Снятие наличных</td>
-                    <td>1% (мин 330 {{ Icon.icon({ 'name': 'rub' }) }})</td>
-                    <td>Включено: 1 выдача не более 200 000 {{ Icon.icon({ 'name': 'rub' }) }} за месяц, далее 0,5%</td>
-                    <td>Включено: 1 выдача не более 300 000 {{ Icon.icon({ 'name': 'rub' }) }} за месяц, далее 0,5%</td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+                            <div class="table table_sortable table_theme-default">
+                                <table class="table__content">
+                                    <thead class="table__head">
+                                    <tr>
+                                        {# data-sort="date" for sort by date #}
+                                        {# data-sort="money" for sort by money #}
+                                        <th>
+                                            <span class="table__column-title">Пакет услуг</span>
+                                        </th>
+                                        <th>
+                                            <span class="table__column-title">Онлайн</span>
+                                        </th>
+                                        <th>
+                                            <span class="table__column-title">Безграничный</span>
+                                        </th>
+                                        <th>
+                                            <span class="table__column-title">Абсолютный</span>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="table__body">
+                                    <tr>
+                                        <td>1 счет</td>
+                                        <td>Включено</td>
+                                        <td>Включено</td>
+                                        <td>Включено</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2й и последующие счета</td>
+                                        <td>Неограниченное кол-во счетов в RUB и 2 счета в валютах: USD, EUR, GBR, CHF
+                                        </td>
+                                        <td colspan="2">Кол-во счетов не ограниченно, <br> открываются на выбор в любой
+                                            из валют
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Обслуживание системы БКС «Интернет-банк»</td>
+                                        <td>500 {{ Icon.icon({ 'name': 'rub' }) }}</td>
+                                        <td>Включено</td>
+                                        <td>Включено</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Конвертация</td>
+                                        <td>Курс Банка, Онлайн Курс, Курс дилера <br> + 0,1%</td>
+                                        <td colspan="2">Курс Банка, Онлайн курс, Курс Дилера <br> без доп. комиссий</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Переводы внешние</td>
+                                        <td>16-20 {{ Icon.icon({ 'name': 'rub' }) }}</td>
+                                        <td>30 {{ Icon.icon({ 'name': 'rub' }) }} (100 включено)</td>
+                                        <td>25 {{ Icon.icon({ 'name': 'rub' }) }} (500 включено)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Переводы внутрибанковские</td>
+                                        <td>Включено</td>
+                                        <td>Включено</td>
+                                        <td>Включено</td>
+                                    </tr>
+                                    <tr class="table__row table__row_theme-wide">
+                                        <td class="table__row_theme-shifted">Валютный контроль</td>
+                                        <td>
+                                            <p class="table__subtitle">От операции</p>
+                                            <p>0.15% (мин 600 {{ Icon.icon({ 'name': 'rub' }) }})</p>
+                                        </td>
+                                        <td>
+                                            <p class="table__subtitle">От месячного оборота</p>
+                                            <p>0.12% (мин 1500 {{ Icon.icon({ 'name': 'rub' }) }}, <br> макс 12
+                                                900 {{ Icon.icon({ 'name': 'rub' }) }})</p>
+                                        </td>
+                                        <td>
+                                            <p class="table__subtitle">От месячного оборота</p>
+                                            <p>30 000 {{ Icon.icon({ 'name': 'rub' }) }}</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Переводы в ни.вал. (OUR) от</td>
+                                        <td>35 USD / 40 EUR</td>
+                                        <td>35 USD / 40 EUR</td>
+                                        <td>40 USD / 50 EUR</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Принятие на обслуживание Контракта</td>
+                                        <td>1000 {{ Icon.icon({ 'name': 'rub' }) }}</td>
+                                        <td>Включено</td>
+                                        <td>Включено</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Внесение наличных</td>
+                                        <td>0,27% (мин 150 {{ Icon.icon({ 'name': 'rub' }) }})</td>
+                                        <td>0,12% на все операции не более 1 млн {{ Icon.icon({ 'name': 'rub' }) }},
+                                            далее 0,27%
+                                        </td>
+                                        <td>Включены все операции не более 500 000 {{ Icon.icon({ 'name': 'rub' }) }},
+                                            далее 0,2%
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Снятие наличных</td>
+                                        <td>1% (мин 330 {{ Icon.icon({ 'name': 'rub' }) }})</td>
+                                        <td>Включено: 1 выдача не более 200 000 {{ Icon.icon({ 'name': 'rub' }) }} за
+                                            месяц, далее 0,5%
+                                        </td>
+                                        <td>Включено: 1 выдача не более 300 000 {{ Icon.icon({ 'name': 'rub' }) }} за
+                                            месяц, далее 0,5%
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-      <section class="section page__section page__section_theme-last">
-        <div class="page__container">
-          <div class="section__row">
-            <div class="section__content section__content_theme-centered">
-              <div class="collapse collapse_theme-grey">
-                <div class="collapse__item">
-                  <div class="collapse__control">
-                    <div class="collapse__control-title">Полное описание тарифов РКО</div>
-                    <div class="collapse__control-icon">
-                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+            <section class="section page__section page__section_theme-last">
+                <div class="collapse collapse_theme-grey">
+                    <div class="collapse__item">
+                        <div class="collapse__control">
+                            <div class="collapse__control-title">Полное описание тарифов РКО</div>
+                            <div class="collapse__control-icon">
+                                {{ Icon.icon({ 'name': 'dropdown' }) }}
+                            </div>
+                        </div>
+                        <div class="collapse__content"></div>
                     </div>
-                  </div>
-                  <div class="collapse__content"></div>
-                </div>
-                <div class="collapse__item">
-                  <div class="collapse__control">
-                    <div class="collapse__control-title">Тарифы для кредитных организаций</div>
-                    <div class="collapse__control-icon">
-                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    <div class="collapse__item">
+                        <div class="collapse__control">
+                            <div class="collapse__control-title">Тарифы для кредитных организаций</div>
+                            <div class="collapse__control-icon">
+                                {{ Icon.icon({ 'name': 'dropdown' }) }}
+                            </div>
+                        </div>
+                        <div class="collapse__content"></div>
                     </div>
-                  </div>
-                  <div class="collapse__content"></div>
-                </div>
-                <div class="collapse__item">
-                  <div class="collapse__control">
-                    <div class="collapse__control-title">Договоры банковского счета в АО «БКС Банк»</div>
-                    <div class="collapse__control-icon">
-                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    <div class="collapse__item">
+                        <div class="collapse__control">
+                            <div class="collapse__control-title">Договоры банковского счета в АО «БКС Банк»</div>
+                            <div class="collapse__control-icon">
+                                {{ Icon.icon({ 'name': 'dropdown' }) }}
+                            </div>
+                        </div>
+                        <div class="collapse__content"></div>
                     </div>
-                  </div>
-                  <div class="collapse__content"></div>
-                </div>
-                <div class="collapse__item">
-                  <div class="collapse__control">
-                    <div class="collapse__control-title">Перечень документов, необходимых для открытия счета</div>
-                    <div class="collapse__control-icon">
-                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    <div class="collapse__item">
+                        <div class="collapse__control">
+                            <div class="collapse__control-title">Перечень документов, необходимых для открытия счета
+                            </div>
+                            <div class="collapse__control-icon">
+                                {{ Icon.icon({ 'name': 'dropdown' }) }}
+                            </div>
+                        </div>
+                        <div class="collapse__content"></div>
                     </div>
-                  </div>
-                  <div class="collapse__content"></div>
-                </div>
-                <div class="collapse__item">
-                  <div class="collapse__control">
-                    <div class="collapse__control-title">Перечень документов, необходимых для открытия покрытого аккредитива</div>
-                    <div class="collapse__control-icon">
-                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    <div class="collapse__item">
+                        <div class="collapse__control">
+                            <div class="collapse__control-title">Перечень документов, необходимых для открытия покрытого
+                                аккредитива
+                            </div>
+                            <div class="collapse__control-icon">
+                                {{ Icon.icon({ 'name': 'dropdown' }) }}
+                            </div>
+                        </div>
+                        <div class="collapse__content"></div>
                     </div>
-                  </div>
-                  <div class="collapse__content"></div>
-                </div>
-                <div class="collapse__item">
-                  <div class="collapse__control">
-                    <div class="collapse__control-title">Формы доверенностей для юридических лиц</div>
-                    <div class="collapse__control-icon">
-                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    <div class="collapse__item">
+                        <div class="collapse__control">
+                            <div class="collapse__control-title">Формы доверенностей для юридических лиц</div>
+                            <div class="collapse__control-icon">
+                                {{ Icon.icon({ 'name': 'dropdown' }) }}
+                            </div>
+                        </div>
+                        <div class="collapse__content"></div>
                     </div>
-                  </div>
-                  <div class="collapse__content"></div>
-                </div>
-                <div class="collapse__item">
-                  <div class="collapse__control">
-                    <div class="collapse__control-title">Формы заявлений о проведении расследования <br> по переводу/уточнению платежа</div>
-                    <div class="collapse__control-icon">
-                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    <div class="collapse__item">
+                        <div class="collapse__control">
+                            <div class="collapse__control-title">Формы заявлений о проведении расследования <br> по
+                                переводу/уточнению платежа
+                            </div>
+                            <div class="collapse__control-icon">
+                                {{ Icon.icon({ 'name': 'dropdown' }) }}
+                            </div>
+                        </div>
+                        <div class="collapse__content"></div>
                     </div>
-                  </div>
-                  <div class="collapse__content"></div>
-                </div>
-                <div class="collapse__item">
-                  <div class="collapse__control">
-                    <div class="collapse__control-title">Обслуживание ВЭД и валютный контроль</div>
-                    <div class="collapse__control-icon">
-                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    <div class="collapse__item">
+                        <div class="collapse__control">
+                            <div class="collapse__control-title">Обслуживание ВЭД и валютный контроль</div>
+                            <div class="collapse__control-icon">
+                                {{ Icon.icon({ 'name': 'dropdown' }) }}
+                            </div>
+                        </div>
+                        <div class="collapse__content"></div>
                     </div>
-                  </div>
-                  <div class="collapse__content"></div>
-                </div>
-                <div class="collapse__item">
-                  <div class="collapse__control">
-                    <div class="collapse__control-title">Формы заявлений для клиентов по корпоративным картам</div>
-                    <div class="collapse__control-icon">
-                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    <div class="collapse__item">
+                        <div class="collapse__control">
+                            <div class="collapse__control-title">Формы заявлений для клиентов по корпоративным картам
+                            </div>
+                            <div class="collapse__control-icon">
+                                {{ Icon.icon({ 'name': 'dropdown' }) }}
+                            </div>
+                        </div>
+                        <div class="collapse__content"></div>
                     </div>
-                  </div>
-                  <div class="collapse__content"></div>
-                </div>
-                <div class="collapse__item">
-                  <div class="collapse__control">
-                    <div class="collapse__control-title">Маркетинговые акции</div>
-                    <div class="collapse__control-icon">
-                      {{ Icon.icon({ 'name': 'dropdown' }) }}
+                    <div class="collapse__item">
+                        <div class="collapse__control">
+                            <div class="collapse__control-title">Маркетинговые акции</div>
+                            <div class="collapse__control-icon">
+                                {{ Icon.icon({ 'name': 'dropdown' }) }}
+                            </div>
+                        </div>
+                        <div class="collapse__content"></div>
                     </div>
-                  </div>
-                  <div class="collapse__content">
-                    232323232
-                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+            </section>
+        </main>
 
-    {% include "../components/modules/footer/footer.njk" %}
-  </div>
+        {% include "../components/modules/footer/footer.njk" %}
+    </div>
 {% endblock %}

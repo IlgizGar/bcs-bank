@@ -23,6 +23,7 @@ module.exports = (elem) => {
     init() {
       this.id = this.context.data('id');
       this.list = $(`.js-context-list#${this.id}`);
+
       if (!this.list.length) {
         this.list = $(`<div id="${this.id}" class="dropdown__list state_invisible scroll-pane js-context-list mt-16"><ul></ul></div>`);
         $('.js-page').append(this.list);
@@ -84,10 +85,12 @@ module.exports = (elem) => {
       });
 
       $(window).on('click', (e) => {
-        if (!$(e.target).closest('.js-context').length && e.target.getAttribute('class').indexOf('datepicker') === -1) {
-          Object.values(global.contexts).forEach((context) => {
-            context.hideList();
-          });
+        if (!$(e.target).closest('.js-context').length && e.target.getAttribute('class') !== null) {
+          if (e.target.getAttribute('class').indexOf('datepicker') === -1) {
+            Object.values(global.contexts).forEach((context) => {
+              context.hideList();
+            });
+          }
         }
       });
 
@@ -117,7 +120,7 @@ module.exports = (elem) => {
     }
 
     setPosition(el) {
-      const list = el ? el : this.list;
+      const list = el || this.list;
 
       list.css('top', `${this.context.offset().top + (this.context.outerHeight() - 5)}px`);
 
@@ -139,11 +142,13 @@ module.exports = (elem) => {
     }
 
     hideList() {
-      this.context.removeClass('state_explored');
-      this.list.addClass('state_invisible');
-      if (this.id === 'select-city') {
-        $('body').removeClass('state_unscroll');
-        $('.js-page').css('max-height', 'none').removeClass('state_no-overflow');
+      if (this.context.hasClass('state_explored')) {
+        this.context.removeClass('state_explored');
+        this.list.addClass('state_invisible');
+        if (this.id === 'select-city') {
+          $('body').removeClass('state_unscroll');
+          $('.js-page').css('max-height', 'none').removeClass('state_no-overflow');
+        }
       }
     }
 

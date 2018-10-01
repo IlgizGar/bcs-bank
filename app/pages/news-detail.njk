@@ -8,33 +8,33 @@
 
 {% set root = "." %}
 {% set title = "Новость детально" %}
+{% set header = 'blue' %}
 
 {% block body %}
-  <div class="page js-page">
+    <div class="page js-page">
 
-    {% include "../components/modules/header/header.njk" %}
+        {% include "../components/modules/header/header.njk" %}
 
-    <main role="main">
-      <section class="section page__section">
-        {# Чтобы установить картинку на фон, необходимо добавить style="backgraun-image: url(путь до картинки)" #}
-        <div class="section__header section__header_theme-blue">
-          <div class="page__container page__container_type-header">
-            {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Новости', 'link': 'http://juravlev.rusrobots.ru/bks/news.html' }, 'current': '24 марта 2018' }) }}
-            {{ Heading.heading({ 'tag': 'h1', 'title': 'Как поужинать \n в любимом ресторане \n за счет банка' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'long' } }) }}
-            {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'white'}, 'class': 'mt-a social_placement-header'}) }}
-          </div>
-        </div>
-      </section>
+        <main role="main">
+            <section class="section page__section">
+                {# Чтобы установить картинку на фон, необходимо добавить style="backgraun-image: url(путь до картинки)" #}
+                <div class="section__header section__header_theme-blue">
+                    <div class="page__container page__container_type-header">
+                        {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Новости', 'link': 'http://juravlev.rusrobots.ru/bks/news.html' }, 'current': '24 марта 2018' }) }}
+                        {{ Heading.heading({ 'tag': 'h1', 'title': 'Как поужинать \n в любимом ресторане \n за счет банка' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'long' } }) }}
+                        {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'white'}, 'class': 'mt-a social_placement-header'}) }}
+                    </div>
+                </div>
+            </section>
 
-      <section class="section page__section">
-        <div class="page__container">
-          {% include "../components/modules/news-detail/news-detail.njk" %}
-        </div>
-      </section>
-      {% include "../components/modules/similar-news/similar-news.njk" %}
+            <section class="section page__section">
+                {% include "../components/modules/news-detail/news-detail.njk" %}
+            </section>
 
-    </main>
+            {% include "../components/modules/similar-news/similar-news.njk" %}
 
-    {% include "../components/modules/footer/footer.njk" %}
-  </div>
+        </main>
+
+        {% include "../components/modules/footer/footer.njk" %}
+    </div>
 {% endblock %}

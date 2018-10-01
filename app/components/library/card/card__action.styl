@@ -1,13 +1,19 @@
-.card .card__action {
+.card .card__action
   display: flex
   align-items: center
   flex-shrink: 0
 
-  height: 80px
   transition: all $interval
   border-top: solid 1px $color_borders
-}
 
-.card button.card__action {
+  @media (min-width: 1280px)
+    height: 80px
+
+  @media (min-width: 992px) and (max-width: 1279px)
+    height: 64px
+
+  @media (max-width: 991px)
+    height: 55px
+
+.card button.card__action
   cursor: pointer
-}

@@ -5,60 +5,91 @@
 {% import "../../../components/library/input/input.njk" as Input %}
 {% import "../../../components/library/dropdown/dropdown.njk" as Dropdown %}
 {% import "../../../components/library/contact/contact.njk" as Contact %}
+{% import "../../../components/icon/icon.njk" as Icon %}
 
 
 {% set menu = [
+  {'title': 'Услуги',
+    'items': [
+    {'name': 'Кредиты', 'href': '#'},
+    {'name': 'Дебетовые карты', 'href': '#'},
+    {'name': 'Кредитные карты', 'href': '#'},
+    {'name': 'Пакеты услуг', 'href': 'http://juravlev.rusrobots.ru/bks/vacancies.html'},
+    {'name': 'Вклады', 'href': '#'},
+    {'name': 'БКС-Бонус', 'href': '#'},
+    {'name': 'Интернет-банк', 'href': '#'}]
+  },
   {'title': 'О банке',
     'items': [
-      {'name': 'Новости', 'href': 'http://juravlev.rusrobots.ru/bks/news.html'},
-      {'name': 'Общая информация', 'href': '#'},
-      {'name': 'Руководство', 'href': '#'},
-      {'name': 'Вакансии', 'href': 'http://juravlev.rusrobots.ru/bks/vacancies.html'},
-      {'name': 'Офисы и банкоматы', 'href': '#'},
-      {'name': 'Вся группа', 'href': '#'}
-    ]},
+    {'name': 'Новости', 'href': 'http://juravlev.rusrobots.ru/bks/news.html'},
+    {'name': 'Общая информация', 'href': '#'},
+    {'name': 'Руководство', 'href': '#'},
+    {'name': 'Вакансии', 'href': 'http://juravlev.rusrobots.ru/bks/vacancies.html'},
+    {'name': 'Офисы и банкоматы', 'href': '#'},
+    {'name': 'Вся группа', 'href': '#'}]
+  },
   {'title': 'Реквизиты',
     'items': [
-      {'name': 'Cтрахованиe вкладов', 'href': '#'},
-      {'name': 'Лицензии', 'href': '#'},
-      {'name': 'БКС Онлайн', 'href': '#'},
-      {'name': 'Депозитарий', 'href': '#'}
-    ]},
+    {'name': 'Cтрахованиe вкладов', 'href': '#'},
+    {'name': 'Лицензии', 'href': '#'},
+    {'name': 'БКС Онлайн', 'href': '#'},
+    {'name': 'Депозитарий', 'href': '#'}
+  ]},
   {'title': 'Инсайдерам',
     'items': [
-      {'name': 'Раскрытие информации', 'href': 'http://juravlev.rusrobots.ru/bks/disclosure.html'},
-      {'name': 'Документы', 'href': 'http://juravlev.rusrobots.ru/bks/documents.html'},
-      {'name': 'Финансовым институтам', 'href': 'http://juravlev.rusrobots.ru/bks/fin-institute.html'}
-    ]}
+    {'name': 'Раскрытие информации', 'href': 'http://juravlev.rusrobots.ru/bks/disclosure.html'},
+    {'name': 'Документы', 'href': 'http://juravlev.rusrobots.ru/bks/documents.html'},
+    {'name': 'Финансовым институтам', 'href': '#'}
+  ]}
 ] %}
 
-<footer class="footer">
+<footer class="footer js-footer">
   <div class="page__container">
     <div class="footer__wrap">
-      <div class="footer__logo">
-        {{ Svg.inlineSvg({ 'path': 'assets/images/svg/logo-dark.svg' }) }}
-      </div>
-      {% for item in menu %}
-        <div class="footer__menu">
-          <p class="footer__menu-title">{{ item.title }}</p>
-          {% for el in item.items %}
-            {{ Button.button({ 'href': el.href, 'title': el.name, 'mods': {'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'footer__menu-link' }) }}
-          {% endfor %}
-        </div>
-      {% endfor %}
       <div class="footer__info">
-        <p class="footer__info-phone">8 800 500 7065</p>
-        <p class="footer__info-inform">Бесплатный звонок по России</p>
-        {{ Button.button({ 'title': 'Задать вопрос', 'href': '#question-modal-form', 'mods': {'theme': 'default'}, 'class': 'js-open-modal'  }) }}
+        <div class="footer__contacts">
+          <p class="footer__contacts-phone">8 800 500 7065</p>
+          <p class="footer__contacts-inform">Бесплатный звонок по России</p>
+          {{ Button.button({ 'title': 'Задать вопрос', 'href': '#question-modal-form', 'mods': {'theme': 'default'}, 'class': 'footer__contacts-button js-open-modal'  }) }}
+        </div>
+        <div class="footer__socials footer__socials_state-desktop">
+          {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'}, 'title': 'Присоединяйтесь' }) }}
+          {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'}, 'title': 'Доступно для устройств', 'device': 'true' }) }}
+        </div>
       </div>
-      <div class="footer__credentials">
-        {{ Button.button({ 'href': '#', 'title': 'Информация о максимальных процентных ставках по вкладам физических лиц', 'mods': {'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'footer__credentials-link' }) }}
-        <p>Финансовая Группа БКС</p>
-        <p>© 1989–2018, АО «БКС Банк», официальный сайт, генеральная лицензия на осуществление банковских операций №101
-          от 15.12.2014.</p>
+      <div class="footer__menu">
+        {% for item in menu %}
+          <div class="footer__menu-group js-footer-menu">
+            <div class="footer__menu-title">
+              {{ item.title }}
+              {{ Icon.icon({ 'name': 'dropdown' }) }}
+            </div>
+            <div class="footer__menu-content js-footer-menu-content">
+              {% for el in item.items %}
+                {{ Button.button({ 'href': el.href, 'title': el.name, 'mods': {'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'footer__menu-link' }) }}
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
       </div>
-      <div class="footer__socials">
-        {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'} }) }}
+    </div>
+  </div>
+  <div class="footer__about">
+    <div class="page__container">
+      <div class="footer__about-wrap">
+        <div class="footer__credentials">
+          {{ Button.button({ 'href': '#', 'title': 'Информация о максимальных процентных ставках по вкладам физических лиц', 'mods': {'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'footer__credentials-link' }) }}
+          <p>© 1989–2018, АО «БКС Банк», официальный сайт,</p>
+          <p>генеральная лицензия на осуществление банковских операций №101 от 15.12.2014.</p>
+        </div>
+        <div class="footer__socials footer__socials_state-mobile">
+          {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'} }) }}
+          {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'}, 'device': 'true' }) }}
+        </div>
+        <div class="footer__developer">
+          <p>Сделано в </p>
+          {{ Icon.icon({ 'name': 'aic' }) }}
+        </div>
       </div>
     </div>
   </div>

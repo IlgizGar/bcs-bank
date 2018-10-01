@@ -39,16 +39,21 @@ module.exports = (elem) => {
       });
 
       this.close.on('click', () => {
-        if (this.input.val().length) {
-          this.input.val('');
-          this.label.removeClass('state_hidden');
-        } else {
-          this.search.removeClass('state_explored');
-          // this.label.addClass('state_hidden');
-          setTimeout(() => {
-            this.search.parent().find('.navbar__button').removeClass('state_hidden');
-          }, 300);
-        }
+        this.input.val('');
+        this.label.removeClass('state_hidden');
+        this.search.removeClass('state_explored');
+        setTimeout(() => {
+          this.search.parent().find('.navbar__button').removeClass('state_hidden');
+        }, 300);
+        // if (this.input.val().length) {
+        //   this.input.val('');
+        //   this.label.removeClass('state_hidden');
+        // } else {
+        //   this.search.removeClass('state_explored');
+        //   setTimeout(() => {
+        //     this.search.parent().find('.navbar__button').removeClass('state_hidden');
+        //   }, 300);
+        // }
       });
     }
   }

@@ -1,9 +1,18 @@
 .navbar .navbar__button
   margin-right: 40px
-  color: $color_inactive
+  //color: $color_inactive
+
+  @media (max-width: 1279px)
+    .button__wrap .button__title
+      opensansSemibold();
+
   &.navbar__button_contacts
     .button__icon
       padding-top: 3px
 
   &.state_invisible
     transition: opacity 100ms $interval
+
+  &.hidden-desktop
+    margin-right: 25px
+    height: 100%

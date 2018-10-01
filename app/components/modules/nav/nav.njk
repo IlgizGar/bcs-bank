@@ -1,7 +1,9 @@
 {% import "../../../components/library/button/button.njk" as Button %}
 
 <nav class="nav header__nav js-nav">
-    {{ Button.button({ 'title': 'Частным лицам', 'href': '#', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'nav__button state_active' }) }}
-    {{ Button.button({ 'title': 'Малому бизнесу', 'href': '#', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'nav__button' }) }}
-    {{ Button.button({ 'title': 'Крупному бизнесу', 'href': '#', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'nav__button' }) }}
+    <div class="nav__wrapper">
+        {{ Button.button({ 'title': 'Частным лицам', 'href': '#', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'nav__button state_active' }) }}
+        {{ Button.button({ 'title': 'Малому бизнесу', 'href': '#', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'nav__button' }) }}
+        {{ Button.button({ 'title': 'Крупному бизнесу', 'href': '#', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'nav__button' }) }}
+    </div>
 </nav>

@@ -1,4 +1,5 @@
 {% extends "layout/layout.njk" %}
+
 {% import "../components/library/heading/heading.njk" as Heading %}
 {% import "../components/library/socials/socials.njk" as Socials %}
 {% import "../components/library/button/button.njk" as Button %}
@@ -7,36 +8,55 @@
 
 {% set root = "." %}
 {% set title = "О БКС Банке" %}
+{% set header = 'blue' %}
 
 {% block body %}
-  <div class="page js-page">
+  <div class="about-bank page js-page">
     {% include "../components/modules/header/header.njk" %}
     <main role="main">
+
       <section class="section page__section page__section_theme-large"> {# Чтобы установить картинку на фон, необходимо добавить style="backgraun-image: url(путь до картинки)" #}
         <div class="section__header section__header_theme-blue">
-          <div class="page__container page__container_type-header"> {{ Heading.heading({ 'tag': 'h1', 'title': 'О БКС Банке' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
-            <div class="page__features"> {{ Feature.feature({ 'title': 'ruBBB+', 'text': 'Pейтинг высокой кредитоспособности' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': ''}) }} {{ Feature.feature({ 'title': '29 лет', 'text': 'На рынке с 1989 года' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': ''}) }} </div>
-          </div>
-        </div>
-      </section>
-      <section class="section">
-        <div class="page__container">
-          <div class="section__row">
-            <div
-              class="section__content section__content_theme-centered-left-large">
-              {{ Heading.heading({ 'title': 'КС Банк — часть российской группы компаний, предоставляющей частным и институциональным клиентам полный спектр финансовых услуг. Также является крупнейшей инвестиционной российской компанией по объему операций с ценными бумагами.', 'mods': { 'type': 'normal', 'margin': 'short' }, 'class': 'mb-64' }) }}
+          <div class="page__container page__container_type-header">
+            {{ Heading.heading({ 'tag': 'h1', 'title': 'О БКС Банке' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
+            <div class="page__features">
+              {{ Feature.feature({ 'title': 'ruBBB+', 'text': 'Pейтинг высокой кредитоспособности' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': ''}) }} {{ Feature.feature({ 'title': '29 лет', 'text': 'На рынке с 1989 года' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': ''}) }}
             </div>
           </div>
         </div>
       </section>
-      <section class="section page__section">
+
+      <section class="section about-bank__prolog">
         <div class="page__container">
           <div class="section__row">
-            <div
-              class="section__content section__content_theme-centered"> {{ Feature.feature({ 'title': 'Внимательное обслуживание', 'text': 'Высокий уровень обслуживания клиентов и оказания услуг. \n Мы делаем сложный банковский мир доступным каждому клиенту.' | striptags(true) | escape | nl2br, 'mods': {'type': 'iconed'}, 'iconPath': 'assets/images/svg/shield-image.svg', 'class': 'mb-56'}) }} {{ Feature.feature({ 'title': 'Широкий спектр услуг', 'text': 'Продукты и услуги для частных и корпоративных клиентов: \n вклады, кредитование, денежные переводы и операции с ценными бумагами.' | striptags(true) | escape | nl2br, 'mods': {'type': 'iconed'}, 'iconPath': 'assets/images/svg/shield-image.svg', 'class': 'mb-56'}) }} {{ Feature.feature({ 'title': 'Индивидуальный подход', 'text': 'Мы учитываем потребности каждого клиента, и готовы разрабатывать нестандартные решения с использованием любых финансовых инструментов.' | striptags(true) | escape | nl2br, 'mods': {'type': 'iconed'}, 'iconPath': 'assets/images/svg/shield-image.svg'}) }} </div>
+            <div class="section__content section__content_theme-centered-left-large">
+              {{ Heading.heading({ 'title': 'БКС Банк — часть российской группы компаний, предоставляющей частным и институциональным клиентам полный спектр финансовых услуг. Также является крупнейшей инвестиционной российской компанией по объему операций с ценными бумагами.', 'mods': { 'type': 'normal', 'margin': 'short' }, 'class': 'mb-64' }) }}
+            </div>
           </div>
         </div>
       </section>
+
+      <section class="section page__section">
+        <div class="page__container">
+          <div class="section__row">
+            <div class="section__content section__content_theme-centered">
+              <div class="about-bank__carousel carousel carousel_type-mobile">
+                <div class="js-carousel" data-id="about-bank" data-breakpoint="992">
+                  {{ Feature.feature({ 'title': 'Внимательное обслуживание', 'text': 'Высокий уровень обслуживания клиентов и оказания услуг. \n Мы делаем сложный банковский мир доступным каждому клиенту.' | striptags(true) | escape | nl2br, 'mods': {'type': 'iconed'}, 'iconPath': 'assets/images/svg/shield-image.svg', 'class': 'feature_mobile-centered mb-56'}) }}
+                  {{ Feature.feature({ 'title': 'Широкий спектр услуг', 'text': 'Продукты и услуги для частных и корпоративных клиентов: \n вклады, кредитование, денежные переводы и операции с ценными бумагами.' | striptags(true) | escape | nl2br, 'mods': {'type': 'iconed'}, 'iconPath': 'assets/images/svg/shield-image.svg', 'class': 'feature_mobile-centered mb-56'}) }}
+                  {{ Feature.feature({ 'title': 'Индивидуальный подход', 'text': 'Мы учитываем потребности каждого клиента, и готовы разрабатывать нестандартные решения с использованием любых финансовых инструментов.' | striptags(true) | escape | nl2br, 'mods': {'type': 'iconed'}, 'iconPath': 'assets/images/svg/shield-image.svg', 'class': 'feature_mobile-centered'}) }}
+                </div>
+                <div class="carousel-controls carousel-controls_theme-dark js-carousel-controls">
+                  <div class="carousel-controls__pagination js-carousel-pagination">
+                    <span>01</span><span></span><span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="section page__section page__section_theme-last">
         <div class="page__container">
           <div class="section__row">

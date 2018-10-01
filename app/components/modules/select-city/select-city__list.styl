@@ -1,11 +1,15 @@
 .select-city .select-city__list
   column-count: 6
   column-gap: 20px
+  @media (max-width 1279px)
+    column-count: 2
+    .button__title
+      text-align: left
+
   li
     display: flex
     flex-direction: column
     align-items: flex-start
-
     margin-bottom: 20px
 
     -webkit-column-break-inside: avoid

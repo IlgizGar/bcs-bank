@@ -3,10 +3,16 @@
 {% import "../../library/button/button.njk" as Button %}
 
 
-<div class="offices">
+<div class="offices js-offices">
   <div id="map-container" class="offices__map-wrapper" style="height: 678px;"></div>
-  <div class="offices__content">
-    {{ Tabbar.tabbar({ 'theme': 'default-tab', 'view': 'underscore', 'type': 'tab', 'buttonClass': 'offices__tab-control', 'tabs': [{'title': 'Отделения', 'id': 'offices-tab' }, {'title': 'Банкоматы', 'id': 'atm-tab'}, {'title': 'Ультима', 'id': 'ultima-tab'}], 'class': 'offices__tabbar' }) }}
+  <div class="collapse offices__detail js-offices-detail state_hidden">
+    <div class="js-detail-content"></div>
+    {{ Icon.icon({ 'name': 'close', 'elementClass': 'offices__detail-icon js-offices-detail-close' }) }}
+  </div>
+  <div class="offices__content js-tab-scroll">
+
+      {{ Tabbar.tabbar({ 'theme': 'default-tab', 'view': 'underscore', 'type': 'tab', 'buttonClass': 'offices__tab-control', 'tabs': [{'title': 'Отделения', 'id': 'offices-tab' }, {'title': 'Банкоматы', 'id': 'atm-tab'}, {'title': 'Ультима', 'id': 'ultima-tab'}], 'class': 'offices__tabbar' }) }}
+
     <div class="tabs js-tabs offices__tabs scroll-pane">
       {#
         data-city - geoid города
@@ -1327,4 +1333,5 @@
       </div>
     </div>
   </div>
+  {{ Button.button({ 'title': 'Показать списком', 'mods': {'theme': 'default'}, 'attr': {'state': 'map'}, 'class': 'offices__switch-view js-offices-switcher' }) }}
 </div>

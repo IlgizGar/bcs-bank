@@ -7,12 +7,22 @@ module.exports = (elem) => {
       this.groups = $('.js-documents-group');
 
       this.init();
+      this.events();
     }
 
     init() {
       if (this.filter.find('.js-input').val().length) {
         this.applyFilter(this.filter.find('option:selected').val());
       }
+    }
+
+    events() {
+      $(window).on('resize', () => {
+        if (window.innerWidth < 992) {
+          global.dropdowns['documents-filter'].clearDropdown();
+          this.applyFilter('');
+        }
+      });
     }
 
     applyFilter(year) {

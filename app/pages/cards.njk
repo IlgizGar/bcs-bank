@@ -1,0 +1,36 @@
+{% extends "layout/layout.njk" %}
+
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/library/button/button.njk" as Button %}
+
+{% set root = "." %}
+{% set title = "Карты" %}
+
+{% block body %}
+    <div class="page js-page">
+
+        {% include "../components/modules/header/header.njk" %}
+
+        <main role="main" class="plastic-cards js-plastic-cards">
+
+            <section class="section page__section page__section_theme-first">
+                <div class="page__container">
+                    <div class="section__row">
+                        <div class="section__content section__content_theme-default">
+                            {{ Heading.heading({ 'tag': 'h1', 'title': 'Карты', 'mods': { 'type': 'default', 'margin': 'short', 'theme': 'default' } }) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="plastic-cards__tabs">
+                    {{ Button.button({ 'title': 'Дебетовые', 'href': '#', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'nav__button state_active' }) }}
+                    {{ Button.button({ 'title': 'Кредитные', 'href': '#', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'nav__button' }) }}
+                    {{ Button.button({ 'title': 'Пакеты услуг', 'href': '#', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'nav__button' }) }}
+                </div>
+            </section>
+
+        </main>
+
+        {% include "../components/modules/footer/footer.njk" %}
+
+    </div>
+{% endblock %}

@@ -1,7 +1,15 @@
 .services .services__card
+  @media (min-width: 1280px)
+    height: 564px
+
+  @media (max-width: 1279px)
+    max-width: 288px
+    height: 513px
+
   .card__content
     display: flex
     flex-direction: column
     justify-content: space-between
 
-  min-height: 564px
+    @media (max-width: 991px)
+      text-align: left
