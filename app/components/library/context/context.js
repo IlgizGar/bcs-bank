@@ -78,18 +78,27 @@ module.exports = (elem) => {
 
       this.list.on('click', (e) => {
         const $item = $(e.target).closest('.js-context-item');
-        Cookie.set(this.id, $item.attr('data-value'));
-        if ($item.length) {
-          this.handleNamedList($item);
+
+        if (!$item.length) {
+          if ($item.hasClass('js-checkbox')) {
+            console.log('SELECT_INPUT');
+          } else {
+            Cookie.set(this.id, $item.attr('data-value'));
+            if ($item.length) {
+              this.handleNamedList($item);
+            }
+          }
         }
       });
 
       $(window).on('click', (e) => {
-        if (!$(e.target).closest('.js-context').length && e.target.getAttribute('class') !== null) {
-          if (e.target.getAttribute('class').indexOf('datepicker') === -1) {
-            Object.values(global.contexts).forEach((context) => {
-              context.hideList();
-            });
+        if (!$(e.target).closest('.js-checkbox').length) {
+          if (!$(e.target).closest('.js-context').length && e.target.getAttribute('class') !== null) {
+            if (e.target.getAttribute('class').indexOf('datepicker') === -1) {
+              Object.values(global.contexts).forEach((context) => {
+                context.hideList();
+              });
+            }
           }
         }
       });
@@ -124,7 +133,7 @@ module.exports = (elem) => {
 
       list.css('top', `${this.context.offset().top + (this.context.outerHeight() - 5)}px`);
 
-      if (this.id === 'select-city' && !el) {
+      if (this.list.data('type') === 'modal-view' && !el) {
         const totalHeight = list.offset().top + list.outerHeight();
         if (totalHeight > window.outerHeight) {
           $('.js-page').css('max-height', totalHeight).addClass('state_no-overflow');
@@ -145,7 +154,7 @@ module.exports = (elem) => {
       if (this.context.hasClass('state_explored')) {
         this.context.removeClass('state_explored');
         this.list.addClass('state_invisible');
-        if (this.id === 'select-city') {
+        if (this.list.data('type') === 'modal-view') {
           $('body').removeClass('state_unscroll');
           $('.js-page').css('max-height', 'none').removeClass('state_no-overflow');
         }
@@ -153,33 +162,36 @@ module.exports = (elem) => {
     }
 
     handleNamedList($el) {
-      if (!$el.find('a').length) {
-        const val = $el.data('value');
-        const name = $el.text().trim();
 
-        this.context.addClass('state_filled');
+      if ($el.length) {
+        if (!$el.find('a').length) {
+          const val = $el.data('value');
+          const name = $el.text().trim();
 
-        if ($el.data('prefix')) {
-          if (this.context.find('.js-context-prefix').length) {
-            this.context.find('.js-context-prefix').html($el.data('prefix'));
+          this.context.addClass('state_filled');
+
+          if ($el.data('prefix')) {
+            if (this.context.find('.js-context-prefix').length) {
+              this.context.find('.js-context-prefix').html($el.data('prefix'));
+            } else {
+              this.context.prepend(`<span class="context__prefix js-context-prefix">${$el.data('prefix')}</span>`);
+            }
           } else {
-            this.context.prepend(`<span class="context__prefix js-context-prefix">${$el.data('prefix')}</span>`);
+            this.context.find('.js-context-prefix').remove();
           }
-        } else {
-          this.context.find('.js-context-prefix').remove();
-        }
 
-        if ($el.data('title')) {
-          this.title.html($el.data('title'));
-        } else {
-          this.title.html($el.text().trim());
-        }
-        this.input.val(val);
-        this.input.attr('data-text', name);
-        this.input.trigger('change');
+          if ($el.data('title')) {
+            this.title.html($el.data('title'));
+          } else {
+            this.title.html($el.text().trim());
+          }
+          this.input.val(val);
+          this.input.attr('data-text', name);
+          this.input.trigger('change');
 
-        this.options.attr('selected', false);
-        this.select.find(`[value="${$el.data('val')}"]`).attr('selected', 'selected');
+          this.options.attr('selected', false);
+          this.select.find(`[value="${$el.data('val')}"]`).attr('selected', 'selected');
+        }
       }
     }
 
