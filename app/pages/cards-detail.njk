@@ -1,0 +1,91 @@
+{% extends "layout/layout.njk" %}
+
+{% import "../components/library/breadcrumbs/breadcrumbs.njk" as Breadcrumbs %}
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/library/button/button.njk" as Button %}
+{% import "../components/modules/tabbar/tabbar.njk" as Tabbar %}
+{% import "../components/library/feature/feature.njk" as Feature %}
+{% import "../components/modules/brand-features/brand-features.njk" as BrandFeatures %}
+
+
+{% set root = "." %}
+{% set title = "Карта дебетовая" %}
+{% set header = 'blue' %}
+
+{% block body %}
+  <div class="page js-page">
+
+    {% include "../components/modules/header/header.njk" %}
+
+    <main role="main" class="cards-detail">
+      <section class="section page__section">
+        <div class="section__header section__header_theme-blue">
+          <div class="page__container">
+            {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Дебетовые карты', 'link': '#' } }) }}
+            {{ Heading.heading({ 'tag': 'h1', 'title': 'MORE \n Visa platinum' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'default' } }) }}
+            <div class="features">
+              {{ Feature.feature({ 'title': '3%', 'text': 'от всех покупок возвращаем на карту', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+              {{ Feature.feature({ 'title': '0#ruble', 'text': 'страхование путешествующих', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+              {{ Feature.feature({ 'title': 'От 0#ruble', 'text': 'стоимость обслуживания', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+            </div>
+            <div class="brand-figure cards-detail__figure">
+              <img src="assets/images/detail-card_banner.png" alt="Отпуск легче с кредитом БКС">
+            </div>
+          </div>
+          <div class="section__nav-wrapper">
+            <div class="section__nav js-tab-scroll">
+              <div class="page__container">
+                <div class="section__wrap">
+                  {{ Tabbar.tabbar({ 'anchor': { 'theme': 'light-tab', 'view': 'upperscore' }, 'tabs': [{'title': 'О карте', 'id': 'about-card' }, {'title': 'Тарифы и документы', 'id': 'card-docs'}, {'title': 'Частые вопросы', 'id': 'card-faq'}] }) }}
+                  {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'white' }, 'class': 'ml-a' }) }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="tabs js-tabs">
+        <div id="about-card" class="tabs__item js-tab state_invisible">
+          <section class="section page__section">
+            {{ BrandFeatures.brandFeatures({ 'items': [
+              {
+                'title': 'Удобно',
+                'subtitle': 'Все самое необходимое для путешествий в одной карте',
+                'props': {
+                  'large': '0#ruble',
+                  'small': 'тыс. #ruble'
+                },
+                'descr': 'Снятие наличных в месяц без комиссии по всему миру'
+              },
+              {
+                'title': 'Удобно',
+                'subtitle': 'Все самое необходимое для путешествий в одной карте',
+                'props': {
+                'large': '0#ruble',
+                'small': 'тыс. #ruble'
+              },
+                'descr': 'Снятие наличных в месяц без комиссии по всему миру'
+              },
+              {
+                'title': 'Удобно',
+                'subtitle': 'Все самое необходимое для путешествий в одной карте',
+                'props': {
+                'large': '0#ruble',
+                'small': 'тыс. #ruble'
+              },
+                'descr': 'Снятие наличных в месяц без комиссии по всему миру'
+              }
+            ] }) }}
+          </section>
+        </div>
+        <div id="card-docs" class="tabs__item js-tab state_invisible">
+        </div>
+        <div id="card-faq" class="tabs__item js-tab state_invisible">
+        </div>
+      </div>
+    </main>
+
+    {% include "../components/modules/footer/footer.njk" %}
+  </div>
+{% endblock %}

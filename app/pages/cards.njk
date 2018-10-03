@@ -126,9 +126,22 @@
           </div>
           <div id="credit" class="tabs__item js-tab state_invisible">
             <div class="page__container">
-              <div class="section__row">
-                credit
-              </div>
+              {{ PlasticCard.plasticCard({ 'title': 'БКС Платинум',
+                'image': 'assets/images/card-infinite.png',
+                'features': [
+                  { 'title': 'До 55 дней',
+                    'text': 'беспроцентный период',
+                    'mods': {'type': 'normal'},
+                    'class': 'plastic-card__feature'},
+                  { 'title': 'До 1 млн. #ruble',
+                    'text': 'кредитный лимит',
+                    'mods': {'type': 'normal'},
+                    'class': 'plastic-card__feature'},
+                  { 'title': 'До 30%',
+                    'text': 'от покупок возвращаются на карту',
+                    'mods': {'type': 'normal'},
+                    'class': 'plastic-card__feature'}
+                ] }) }}
             </div>
           </div>
           <div id="packets" class="tabs__item js-tab state_invisible">
