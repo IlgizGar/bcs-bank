@@ -83,7 +83,7 @@
                 {{ Heading.heading({ 'title': 'Расчитайте свой бонус' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'default' } }) }}
                 <div class="section__row">
                   <div class="calculator-bonus__form">
-                    {{ Input.input({ 'label': 'Расходы на АЗС', 'name': 'card_fuel_costs', 'class': 'cards-detail__input', 'field': 'js-numeric-input', 'title': '#rubleмес.' }) }}
+                    {{ Input.input({ 'label': 'Расходы на АЗС', 'name': 'card_fuel_costs', 'class': 'cards-detail__input', 'field': 'js-numeric-input', 'title': '#rubleмес.', 'slider': { 'min': 0, 'max': 100000, 'from': 30000, 'step': 1000 } }) }}
                   </div>
                   <div class="calculator-bonus__calculation"></div>
                 </div>
