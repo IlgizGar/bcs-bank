@@ -1,4 +1,5 @@
 import $ from 'jquery';
+// import Slider from 'nouislider';
 
 module.exports = (elem) => {
   class Input {
@@ -6,7 +7,23 @@ module.exports = (elem) => {
       this.input = $(selector);
       this.field = this.input.find('input, textarea');
 
+      this.init();
       this.events();
+    }
+
+    init() {
+      this.slider = this.input.find('.js-input-slider');
+      if (this.slider.length) {
+        // Slider.create(this.slider, {
+        //   start: [20, 80],
+        //   connect: true,
+        //   range: {
+        //     'min': 0,
+        //     'max': 100
+        //   }
+        // });
+        // this.slider.slider();
+      }
     }
 
     events() {

@@ -6,7 +6,7 @@
 {% import "../components/modules/tabbar/tabbar.njk" as Tabbar %}
 {% import "../components/library/feature/feature.njk" as Feature %}
 {% import "../components/modules/brand-features/brand-features.njk" as BrandFeatures %}
-
+{% import "../components/library/input/input.njk" as Input %}
 
 {% set root = "." %}
 {% set title = "Карта дебетовая" %}
@@ -53,30 +53,42 @@
                 'title': 'Удобно',
                 'subtitle': 'Все самое необходимое для путешествий в одной карте',
                 'props': {
-                  'large': '0#ruble',
+                  'large': '150',
                   'small': 'тыс. #ruble'
                 },
                 'descr': 'Снятие наличных в месяц без комиссии по всему миру'
               },
               {
-                'title': 'Удобно',
-                'subtitle': 'Все самое необходимое для путешествий в одной карте',
+                'title': 'Безопасно',
+                'subtitle': 'Страховка для путешествий по всему миру до 500 #ruble',
                 'props': {
-                'large': '0#ruble',
-                'small': 'тыс. #ruble'
-              },
-                'descr': 'Снятие наличных в месяц без комиссии по всему миру'
+                  'small': 'до',
+                  'large': '30%'
+                },
+                'descr': 'Бонусами за покупки по спецпредложениям'
               },
               {
-                'title': 'Удобно',
-                'subtitle': 'Все самое необходимое для путешествий в одной карте',
+                'title': 'Выгодно',
+                'subtitle': '1 карта с 3 валютными счетами #ruble, #ruble, #ruble',
                 'props': {
-                'large': '0#ruble',
-                'small': 'тыс. #ruble'
-              },
-                'descr': 'Снятие наличных в месяц без комиссии по всему миру'
+                  'large': '0#ruble'
+                },
+                'descr': 'Онлайн консультация Доктор рядом из любой точки мира'
               }
             ] }) }}
+          </section>
+          <section class="section section_theme-white-smoke section_padding-default page__section">
+            <div class="calculator-bonus">
+              <div class="page__container">
+                {{ Heading.heading({ 'title': 'Расчитайте свой бонус' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'default' } }) }}
+                <div class="section__row">
+                  <div class="calculator-bonus__form">
+                    {{ Input.input({ 'label': 'Расходы на АЗС', 'name': 'card_fuel_costs', 'class': 'cards-detail__input', 'field': 'js-numeric-input', 'title': '#rubleмес.' }) }}
+                  </div>
+                  <div class="calculator-bonus__calculation"></div>
+                </div>
+              </div>
+            </div>
           </section>
         </div>
         <div id="card-docs" class="tabs__item js-tab state_invisible">

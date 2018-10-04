@@ -40,7 +40,8 @@
     "smart-grid": "^2.1.1",
     "stickyfilljs": "^2.1.0",
     "svg4everybody": "^2.1.9",
-    "tablesorter": "^2.30.7"
+    "tablesorter": "^2.30.7",
+    "nouislider": "^12.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.4",

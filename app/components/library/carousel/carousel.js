@@ -38,12 +38,15 @@ module.exports = (elem) => {
         '  </svg>' +
         '</button>';
 
+      console.log('ID', this.id);
+
+
       switch (this.id) {
         case 'index-header':
           this.carousel.not('.slick-initialized').slick({
             autoplay: true,
             autoplaySpeed: 12000,
-            appendArrows: $('.js-carousel-controls'),
+            appendArrows: $('.js-index-carousel-controls'),
             nextArrow: this.next,
             prevArrow: this.prev,
           });
