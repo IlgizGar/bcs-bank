@@ -2,8 +2,8 @@ import 'core-js/fn/symbol/iterator';
 import 'core-js/es6/symbol';
 
 import $ from 'jquery';
-import svg4everybody from 'svg4everybody';
 
+import svg4everybody from 'svg4everybody';
 import Header from '../components/modules/header/header';
 import Footer from '../components/modules/footer/footer';
 import Menubar from '../components/modules/menubar/menubar';
