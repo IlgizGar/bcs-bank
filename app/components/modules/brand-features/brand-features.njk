@@ -3,24 +3,40 @@
 
 {% macro brandFeatures( options ) %}
 
-  <div class="brand-features {{ options.class }}">
-    <div class="page__container">
-      <div class="section__row">
-        {% for item in options.items %}
-          <div class="brand-features__item">
-            {{ Svg.inlineSvg({ 'path': ['assets/images/svg/shield-image.svg'] }) }}
-            <p class="brand-features__title">{{ item.title | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | safe }}</p>
-            <p class="text">{{ item.subtitle | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | safe }}</p>
-            <div class="brand-features__props">
-              {% for key, value in item.props %}
-                <p class="state_{{ key }}">{{ value | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | safe }}</p>
-              {% endfor %}
+    {% set class_sep = joiner(' ') %}
+
+    <div class="brand-features {{ options.class }}">
+        <div class="page__container">
+            <div class="section__row">
+                {% for item in options.items %}
+
+                    {% set mods = '' %}
+                    {% set mods %}
+                        {% for key, value in item.mods -%}
+                            {{ class_sep() }} brand-features__item_{{ key }}-{{ value }}
+                        {%- endfor %}
+                    {% endset %}
+
+                    <div class="brand-features__item {{ mods | safe }}">
+                        <div class="brand-features__icon">
+                            {{ Svg.inlineSvg({ 'path': [ item.icon ] }) }}
+                        </div>
+                        <p class="brand-features__title">{{ item.title | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | safe }}</p>
+                        <p class="text">{{ item.subtitle | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | safe }}</p>
+                        {% if item.props %}
+                            <div class="brand-features__props">
+                                {% for key, value in item.props %}
+                                    <p class="state_{{ key }}">{{ value | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | safe }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        {% if item.descr %}
+                            <p class="text">{{ item.descr | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | safe }}</p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
             </div>
-            <p class="text">{{ item.descr | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | safe }}</p>
-          </div>
-        {% endfor %}
-      </div>
+        </div>
     </div>
-  </div>
 
 {% endmacro %}
