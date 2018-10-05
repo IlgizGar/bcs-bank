@@ -28,6 +28,7 @@ module.exports = (elem) => {
                 });
                 this.field.val(this.slider.data('from'));
                 this.input.removeClass('state_init');
+                this.input.addClass('state_filled');
 
                 this.ionSlider = this.slider.data('ionRangeSlider');
             }
@@ -47,10 +48,8 @@ module.exports = (elem) => {
                 } else {
                     if(this.field.val().length < 1) {
                         if (this.ionSlider !== null) {
-                            console.log('FROM', this.slider.data('from'));
-
-                            this.field.val(this.slider.data('from'));
-                            this.ionSlider.update({from: this.slider.data('from')})
+                            this.field.val(this.slider.attr('data-from'));
+                            this.ionSlider.update({from: this.slider.attr('data-from')})
                         }
                     }
                 }
@@ -68,6 +67,12 @@ module.exports = (elem) => {
                     }
 
                     if (this.ionSlider !== null) {
+                        if (parseFloat(this.field.val().replace(/ /g, '')) > this.slider.data('max')) {
+                            this.field.val(this.slider.data('max'));
+                        }
+                        if (parseFloat(this.field.val().replace(/ /g, '')) < this.slider.data('min')) {
+                            this.field.val(this.slider.data('min'));
+                        }
                         this.ionSlider.update({
                             from: parseFloat(this.field.val().replace(/ /g, ''))
                         });

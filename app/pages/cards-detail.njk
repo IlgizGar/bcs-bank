@@ -13,91 +13,103 @@
 {% set header = 'blue' %}
 
 {% block body %}
-  <div class="page js-page">
+    <div class="page js-page">
 
-    {% include "../components/modules/header/header.njk" %}
+        {% include "../components/modules/header/header.njk" %}
 
-    <main role="main" class="cards-detail">
-      <section class="section page__section">
-        <div class="section__header section__header_theme-blue">
-          <div class="page__container">
-            {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Дебетовые карты', 'link': '#' } }) }}
-            {{ Heading.heading({ 'tag': 'h1', 'title': 'MORE \n Visa platinum' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'default' } }) }}
-            <div class="features">
-              {{ Feature.feature({ 'title': '3%', 'text': 'от всех покупок возвращаем на карту', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-              {{ Feature.feature({ 'title': '0#ruble', 'text': 'страхование путешествующих', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-              {{ Feature.feature({ 'title': 'От 0#ruble', 'text': 'стоимость обслуживания', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-            </div>
-            <div class="brand-figure cards-detail__figure">
-              <img src="assets/images/detail-card_banner.png" alt="Отпуск легче с кредитом БКС">
-            </div>
-          </div>
-          <div class="section__nav-wrapper">
-            <div class="section__nav js-tab-scroll">
-              <div class="page__container">
-                <div class="section__wrap">
-                  {{ Tabbar.tabbar({ 'anchor': { 'theme': 'light-tab', 'view': 'upperscore' }, 'tabs': [{'title': 'О карте', 'id': 'about-card' }, {'title': 'Тарифы и документы', 'id': 'card-docs'}, {'title': 'Частые вопросы', 'id': 'card-faq'}] }) }}
-                  {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'white' }, 'class': 'ml-a' }) }}
+        <main role="main" class="cards-detail">
+            <section class="section page__section">
+                <div class="section__header section__header_theme-blue">
+                    <div class="page__container">
+                        {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Дебетовые карты', 'link': '#' } }) }}
+                        {{ Heading.heading({ 'tag': 'h1', 'title': 'MORE \n Visa platinum' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'default' } }) }}
+                        <div class="features">
+                            {{ Feature.feature({ 'title': '3%', 'text': 'от всех покупок возвращаем на карту', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                            {{ Feature.feature({ 'title': '0#ruble', 'text': 'страхование путешествующих', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                            {{ Feature.feature({ 'title': 'От 0#ruble', 'text': 'стоимость обслуживания', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                        </div>
+                        <div class="brand-figure cards-detail__figure">
+                            <img src="assets/images/detail-card_banner.png" alt="Отпуск легче с кредитом БКС">
+                        </div>
+                    </div>
+                    <div class="section__nav-wrapper">
+                        <div class="section__nav js-tab-scroll">
+                            <div class="page__container">
+                                <div class="section__wrap">
+                                    {{ Tabbar.tabbar({ 'anchor': { 'theme': 'light-tab', 'view': 'upperscore' }, 'tabs': [{'title': 'О карте', 'id': 'about-card' }, {'title': 'Тарифы и документы', 'id': 'card-docs'}, {'title': 'Частые вопросы', 'id': 'card-faq'}] }) }}
+                                    {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'white' }, 'class': 'ml-a' }) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+            </section>
 
-      <div class="tabs js-tabs">
-        <div id="about-card" class="tabs__item js-tab state_invisible">
-          <section class="section page__section">
-            {{ BrandFeatures.brandFeatures({ 'items': [
-              {
-                'title': 'Удобно',
-                'subtitle': 'Все самое необходимое для путешествий в одной карте',
-                'props': {
-                  'large': '150',
-                  'small': 'тыс. #ruble'
-                },
-                'descr': 'Снятие наличных в месяц без комиссии по всему миру'
-              },
-              {
-                'title': 'Безопасно',
-                'subtitle': 'Страховка для путешествий по всему миру до 500 #ruble',
-                'props': {
-                  'small': 'до',
-                  'large': '30%'
-                },
-                'descr': 'Бонусами за покупки по спецпредложениям'
-              },
-              {
-                'title': 'Выгодно',
-                'subtitle': '1 карта с 3 валютными счетами #ruble, #ruble, #ruble',
-                'props': {
-                  'large': '0#ruble'
-                },
-                'descr': 'Онлайн консультация Доктор рядом из любой точки мира'
-              }
-            ] }) }}
-          </section>
-          <section class="section section_theme-white-smoke section_padding-default page__section">
-            <div class="calculator-bonus">
-              <div class="page__container">
-                {{ Heading.heading({ 'title': 'Расчитайте свой бонус' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'default' } }) }}
-                <div class="section__row">
-                  <div class="calculator-bonus__form">
-                    {{ Input.input({ 'label': 'Расходы на АЗС', 'name': 'card_fuel_costs', 'class': 'cards-detail__input', 'field': 'js-numeric-input', 'title': '#rubleмес.', 'slider': { 'min': 0, 'max': 100000, 'from': 30000, 'step': 1000 } }) }}
-                  </div>
-                  <div class="calculator-bonus__calculation"></div>
+            <div class="tabs js-tabs">
+                <div id="about-card" class="tabs__item js-tab state_invisible">
+                    <section class="section page__section">
+                        {{ BrandFeatures.brandFeatures({ 'items': [
+                            {
+                                'title': 'Удобно',
+                                'subtitle': 'Все самое необходимое для путешествий в одной карте',
+                                'props': {
+                                'large': '150',
+                                'small': 'тыс. #ruble'
+                            },
+                                'descr': 'Снятие наличных в месяц без комиссии по всему миру'
+                            },
+                            {
+                                'title': 'Безопасно',
+                                'subtitle': 'Страховка для путешествий по всему миру до 500 #ruble',
+                                'props': {
+                                'small': 'до',
+                                'large': '30%'
+                            },
+                                'descr': 'Бонусами за покупки по спецпредложениям'
+                            },
+                            {
+                                'title': 'Выгодно',
+                                'subtitle': '1 карта с 3 валютными счетами #ruble, #ruble, #ruble',
+                                'props': {
+                                'large': '0#ruble'
+                            },
+                                'descr': 'Онлайн консультация Доктор рядом из любой точки мира'
+                            }
+                        ] }) }}
+                    </section>
+                    <section class="section section_theme-white-smoke section_padding-default page__section">
+                        <div class="calculator calculator-bonus">
+                            <div class="page__container">
+                                {{ Heading.heading({ 'title': 'Расчитайте свой бонус' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'default' } }) }}
+                                <div class="section__row">
+                                    <div class="calculator-bonus__form">
+                                        {{ Input.input({ 'label': 'Расходы на АЗС', 'class': 'calculator__input', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_fuel_costs', 'class': 'js-numeric-input' }, 'title': '#rubleмес.', 'slider': { 'min': 0, 'max': 100000, 'from': 30000, 'step': 1000 } }) }}
+                                        {{ Input.input({ 'label': 'Расходы на рестораны', 'class': 'calculator__input', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_cafe_costs', 'class': 'js-numeric-input' }, 'title': '#rubleмес.', 'slider': { 'min': 0, 'max': 300000, 'from': 50000, 'step': 1000 } }) }}
+                                        {{ Input.input({ 'label': 'Расходы на театр и кино', 'class': 'calculator__input', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_film_costs', 'class': 'js-numeric-input' }, 'title': '#rubleмес.', 'slider': { 'min': 0, 'max': 100000, 'from': 10000, 'step': 1000 } }) }}
+                                        {{ Input.input({ 'label': 'Расходы на спорт и красоту', 'class': 'calculator__input', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_sport_costs', 'class': 'js-numeric-input' }, 'title': '#rubleмес.', 'slider': { 'min': 0, 'max': 300000, 'from': 100000, 'step': 1000 } }) }}
+                                        {{ Input.input({ 'label': 'Расходы на продукты', 'class': 'calculator__input', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_meal_costs', 'class': 'js-numeric-input' }, 'title': '#rubleмес.', 'slider': { 'min': 0, 'max': 100000, 'from': 5000, 'step': 1000 } }) }}
+                                        {{ Input.input({ 'label': 'Расходы на прочие покупки', 'class': 'calculator__input', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_others_costs', 'class': 'js-numeric-input' }, 'title': '#rubleмес.', 'slider': { 'min': 0, 'max': 300000, 'from': 20000, 'step': 1000 } }) }}
+                                    </div>
+                                    <div class="calculator-bonus__calculation">
+                                        <div class="calculator-bonus__thumbnail">
+                                            <div class="text">Вы заработаете за год</div>
+                                            <div class="calculator-bonus__result">10 500</div>
+                                            <div class="calculator-bonus__conclusion text">Этих бонусов будет достаточно для покупки авиабилета в Милан.</div>
+                                            {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'default' } }) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
-              </div>
+                <div id="card-docs" class="tabs__item js-tab state_invisible">
+                </div>
+                <div id="card-faq" class="tabs__item js-tab state_invisible">
+                </div>
             </div>
-          </section>
-        </div>
-        <div id="card-docs" class="tabs__item js-tab state_invisible">
-        </div>
-        <div id="card-faq" class="tabs__item js-tab state_invisible">
-        </div>
-      </div>
-    </main>
+        </main>
 
-    {% include "../components/modules/footer/footer.njk" %}
-  </div>
+        {% include "../components/modules/footer/footer.njk" %}
+    </div>
 {% endblock %}

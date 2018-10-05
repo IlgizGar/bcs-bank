@@ -4,35 +4,37 @@
 
     {% set class_sep = joiner(' ') %}
 
-    {% if options.attr %}
-        {% set attr = '' %}
-        {% set attr %}
-            {% for key, value in options.attr -%}
-                {{ class_sep() }} data-{{ key }} = "{{ value }}"
-            {%- endfor %}
-        {% endset %}
-    {% endif %}
+    {% set attr = '' %}
+    {% set attr %}
+        {% for key, value in options.attr -%}
+            {{ class_sep() }} data-{{ key }} = "{{ value }}"
+        {%- endfor %}
+    {% endset %}
 
-    {% if options.mods %}
-        {% set mods = '' %}
-        {% set mods %}
-            {% for key, value in options.mods -%}
-                {{ class_sep() }} dropdown_{{ key }}-{{ value }}
-            {%- endfor %}
-        {% endset %}
-    {% endif %}
+    {% set mods = '' %}
+    {% set mods %}
+        {% for key, value in options.mods -%}
+            {{ class_sep() }} dropdown_{{ key }}-{{ value }}
+        {%- endfor %}
+    {% endset %}
+
+    {% set field = '' %}
+    {% set field %}
+        {% for key, value in options.field -%}
+            {% if key !== 'class' %}
+                {{ class_sep() }} {{ key }} = "{{ value }}"
+            {% endif %}
+        {%- endfor %}
+    {% endset %}
 
     <div class="input js-input state_init {{ mods | safe }} {{ options.class | safe }}" {{ attr | safe }}>
 
         <label class="input__group">
             <span class="input__label js-label">{{ options.label }}</span>
             {% if options.tag === "textarea" %}
-                <textarea class="input__field js-input-field {{ options.field | safe }}" rows="{{ options.rows }}"
-                          name="{{ options.name }}" {{ options.state | safe }}></textarea>
+                <textarea class="input__field js-input-field {{ options.field.class | safe }}" {{ field | safe }}></textarea>
             {% else %}
-                <input class="input__field js-input-field {{ options.field | safe }}"
-                       type="{% if options.type %}{{ options.type }}{% else %}text{% endif %}"
-                       name="input_{{ options.name }}" value="{{ options.value }}" {{ options.state }}>
+                <input class="input__field js-input-field {{ options.field.class | safe }}" {{ field | safe }}>
             {% endif %}
         </label>
 
@@ -46,7 +48,8 @@
 
         {% if options.slider %}
             <div class="input__slider">
-                <input class="js-input-slider" data-min="{{ options.slider.min }}" data-max="{{ options.slider.max }}" data-from="{{ options.slider.from }}" data-step="{{ options.slider.step }}">
+                <input class="js-input-slider" data-min="{{ options.slider.min }}" data-max="{{ options.slider.max }}"
+                       data-from="{{ options.slider.from }}" data-step="{{ options.slider.step }}">
             </div>
         {% endif %}
 
