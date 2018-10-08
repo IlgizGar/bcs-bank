@@ -52,6 +52,7 @@ module.exports = (elem) => {
         if ($(e.target).closest('.js-cover').length) {
           this.btnContacts.removeClass('state_active');
           this.contacts.removeClass('state_explored');
+          $('body').removeClass('state_unscroll');
           $(e.target).remove();
         }
       });

@@ -37,6 +37,7 @@ module.exports = (form) => {
         'js-mail-masked': {},
         'js-question-textarea': {},
         'js-question-topic': {},
+        'js-city-select': {},
       };
 
       this.validateMessages = {
@@ -87,6 +88,9 @@ module.exports = (form) => {
         },
         'js-question-topic': {
           required: 'Выберите тему',
+        },
+        'js-city-select': {
+          required: 'Укажите Ваш город',
         },
       };
 

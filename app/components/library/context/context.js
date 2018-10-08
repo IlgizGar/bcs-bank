@@ -79,13 +79,16 @@ module.exports = (elem) => {
       this.list.on('click', (e) => {
         const $item = $(e.target).closest('.js-context-item');
 
-        if (!$item.length) {
+        if ($item.length) {
           if ($item.hasClass('js-checkbox')) {
             console.log('SELECT_INPUT');
           } else {
             Cookie.set(this.id, $item.attr('data-value'));
             if ($item.length) {
               this.handleNamedList($item);
+              if(this.id === 'credit-types') {
+                Context.handleCreditCardTypes(this.context);
+              }
             }
           }
         }
@@ -162,7 +165,6 @@ module.exports = (elem) => {
     }
 
     handleNamedList($el) {
-
       if ($el.length) {
         if (!$el.find('a').length) {
           const val = $el.data('value');
@@ -216,6 +218,18 @@ module.exports = (elem) => {
             '                  </div>');
         }
       }
+    }
+
+    static handleCreditCardTypes($el) {
+      const $options = $el.find('select option');
+
+      $options.each((i, item) => {
+        if($(item).is(':selected')) {
+          $('#' + $(item).val()).removeClass('state_invisible');
+        } else {
+          $('#' + $(item).val()).addClass('state_invisible');
+        }
+      })
     }
   }
 

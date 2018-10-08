@@ -26,6 +26,7 @@ import Offices from '../components/modules/offices/offices';
 import DocumentsFilter from '../components/modules/documents/documents';
 import IndexSearch from '../components/modules/index-search/index-search';
 import News from '../components/modules/news/news';
+import Lottie from 'lottie-web';
 
 require('babel-polyfill');
 
@@ -149,4 +150,16 @@ $(() => {
 
   global.header = Header('.js-header');
   global.footer = new Footer();
+
+  if($('[data-illustration]').length) {
+    $('[data-illustration]').each((i, el) => {
+      Lottie.loadAnimation({
+        container: el,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: `assets/illustrations/${$(el).data('illustration')}.json`
+      })
+    });
+  }
 });
