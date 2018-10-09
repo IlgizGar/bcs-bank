@@ -46,11 +46,21 @@ module.exports = (elem) => {
         if (!this.input.hasClass('state_filled')) {
           this.input.addClass('state_init');
         } else {
-          if (this.field.val().length < 1) {
-            if (this.ionSlider !== null) {
-              this.field.val(this.slider.attr('data-from'));
-              this.ionSlider.update({from: this.slider.attr('data-from')})
+          if (this.ionSlider !== null) {
+            if (parseFloat(this.field.val().replace(/ /g, '')) > this.slider.data('max')) {
+              console.log('MAX', this.slider.data('max'));
+
+              this.field.val(this.slider.data('max'));
+            } else if (parseFloat(this.field.val().replace(/ /g, '')) < this.slider.data('min')) {
+              this.field.val(this.slider.data('min'));
+            } else {
+              if (this.field.val().length < 1) {
+                this.field.val(this.slider.attr('data-from'));
+              }
             }
+            this.ionSlider.update({
+              from: parseFloat(this.field.val().replace(/ /g, ''))
+            });
           }
         }
       });
@@ -67,12 +77,6 @@ module.exports = (elem) => {
           }
 
           if (this.ionSlider !== null) {
-            if (parseFloat(this.field.val().replace(/ /g, '')) > this.slider.data('max')) {
-              this.field.val(this.slider.data('max'));
-            }
-            if (parseFloat(this.field.val().replace(/ /g, '')) < this.slider.data('min')) {
-              this.field.val(this.slider.data('min'));
-            }
             this.ionSlider.update({
               from: parseFloat(this.field.val().replace(/ /g, ''))
             });
