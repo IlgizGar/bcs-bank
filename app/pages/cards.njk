@@ -31,13 +31,13 @@
               {{ Tabbar.tabbar({ 'anchor': { 'view': 'underscore', 'theme': 'default-tab' }, 'tabs': [{'title': 'Дебетовые', 'id': 'debet', 'state': 'active' }, {'title': 'Кредитные', 'id': 'credit'}, {'title': 'Пакеты услуг', 'id': 'packets'}], 'class': 'plastic-cards__tabbar' }) }}
               <div class="filter plastic-cards__filter">
                 <div class="filter__wrapper">
-                  <div class="filter__title">Бонусы за:</div>
-                  <div class="filter__select">
+                  <div class="filter__title hidden-mobile">Бонусы за:</div>
+                  <div class="filter__select hidden-mobile">
                     {{ Checkbox.checkbox({ 'label': 'АЗС', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'filter__item' }) }}
                     {{ Checkbox.checkbox({ 'label': 'Кафе и рестораны', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'filter__item' }) }}
                     {{ Checkbox.checkbox({ 'label': 'Театр и кино', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'filter__item' }) }}
                   </div>
-                  {{ Context.context({ 'title': 'Еще', 'name': 'dropdown', 'mods': { 'type': 'menu', 'theme': 'black' }, 'attr': {'id': 'select-filter'}, 'class': 'filter__item' }) }}
+                  {{ Context.context({ 'title': 'Еще', 'name': 'dropdown', 'icon': 'dropdown', 'mods': { 'type': 'menu', 'theme': 'black' }, 'attr': {'id': 'select-filter'}, 'class': 'filter__item' }) }}
                 </div>
               </div>
             </div>

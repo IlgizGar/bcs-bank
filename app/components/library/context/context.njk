@@ -49,6 +49,9 @@
     <button class="context__button" type="button">
         <span class="js-context-title">{{ options.title }}</span>
         {{ Icon.icon({'name': 'dropdown'}) }}
+        {% if options.icon %}
+          {{ Icon.icon({'name': options.icon, 'elementClass': 'hidden-desctop' }) }}
+        {% endif %}
     </button>
   </div>
 {% endmacro %}
