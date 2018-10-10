@@ -21,6 +21,7 @@ module.exports = (elem) => {
           max: this.slider.data('max'),
           from: this.slider.data('from'),
           step: this.slider.data('step'),
+          postfix: this.slider.data('postfix') || '',
           prettify_enabled: true,
           onChange: (data) => {
             this.field.val(data.from);

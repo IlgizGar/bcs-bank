@@ -13,7 +13,7 @@
 {% import "../components/icon/icon.njk" as Icon %}
 
 {% set root = "." %}
-{% set title = "Вклады детальная" %}
+{% set title = "Кредиты детальная" %}
 {% set header = 'blue' %}
 
 {% block body %}
@@ -28,20 +28,20 @@
             <div class="brand-figure products-detail__figure" data-illustration="">
               <img src="assets/images/detail-card_banner.png" alt="Отпуск легче с кредитом БКС">
             </div>
-            {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Вклады', 'link': '#' } }) }}
-            {{ Heading.heading({ 'tag': 'h1', 'title': 'Накопительный', 'mods': { 'type': 'large', 'margin': 'default' } }) }}
+            {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Кредиты', 'link': '#' } }) }}
+            {{ Heading.heading({ 'tag': 'h1', 'title': 'Кредит Онлайн', 'mods': { 'type': 'large', 'margin': 'default' } }) }}
             <div class="features">
-              {{ Feature.feature({ 'title': 'До 6,5%', 'text': 'годовая ставка', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-              {{ Feature.feature({ 'title': '5 000 #ruble', 'text': 'минимальная сумма вклада', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-              {{ Feature.feature({ 'title': '1 год', 'text': 'максимальный срок вклада', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+              {{ Feature.feature({ 'title': 'От 12,9%', 'text': 'ставка \n по кредиту', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+              {{ Feature.feature({ 'title': 'До 1,5 млн.  #ruble', 'text': 'сумма \n кредита', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+              {{ Feature.feature({ 'title': 'До 5 лет', 'text': 'срок \n кредитования', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
             </div>
           </div>
           <div class="section__nav-wrapper">
             <div class="section__nav js-tab-scroll">
               <div class="page__container">
                 <div class="section__wrap">
-                  {{ Tabbar.tabbar({ 'anchor': { 'theme': 'light-tab', 'view': 'upperscore' }, 'tabs': [{'title': 'О вкладе', 'id': 'about-deposit' }, {'title': 'Тарифы и документы', 'id': 'deposit-docs'}, {'title': 'Частые вопросы', 'id': 'deposit-faq'}] }) }}
-                  {{ Button.button({ 'title': 'Оформите вклад', 'mods': { 'theme': 'white' }, 'class': 'ml-a' }) }}
+                  {{ Tabbar.tabbar({ 'anchor': { 'theme': 'light-tab', 'view': 'upperscore' }, 'tabs': [{'title': 'О кредите', 'id': 'about-credit' }, {'title': 'Тарифы и документы', 'id': 'credit-docs'}, {'title': 'Частые вопросы', 'id': 'credit-faq'}] }) }}
+                  {{ Button.button({ 'title': 'Оформите кредит', 'mods': { 'theme': 'white' }, 'class': 'ml-a' }) }}
                 </div>
               </div>
             </div>
@@ -50,76 +50,71 @@
       </section>
 
       <div class="tabs js-tabs">
-        <div id="about-deposit" class="tabs__item js-tab state_invisible">
+        <div id="about-credit" class="tabs__item js-tab state_invisible">
           <section class="section page__section">
             {{ BrandFeatures.brandFeatures({ 'items': [
               {
                 'icon': 'assets/images/svg/shield-image.svg',
-                'title': 'Надежно',
-                'subtitle': 'Вклад до 1 400 000 #ruble застрахован ACB',
+                'title': 'Чкстно',
+                'subtitle': 'Предварительное решение в день одобрения',
                 'props': {
-                'small': 'от',
-                'large': '1#ruble'
-              },
-                'descr': 'Сумма пополнения вклада'
+                  'large': '13',
+                  'small': 'мес'
+                },
+                'descr': 'Минимальный срок редитования'
               },
               {
                 'icon': 'assets/images/svg/shield-image.svg',
                 'title': 'Быстро',
-                'subtitle': 'Ежемесячная выплата процентов',
+                'subtitle': 'Получение кредита онлайн на карту БКС Банка за 20 мин',
                 'props': {
-                'small': 'до',
-                'large': '365'
-              },
-                'descr': 'Срок вклада на выбор'
+                  'large': '50',
+                  'small': 'тыс. #ruble'
+                },
+                'descr': 'Минимальная сумма кредита'
               },
               {
                 'icon': 'assets/images/svg/shield-image.svg',
                 'title': 'Удобно',
-                'subtitle': 'Возможно пополнение вклада и частичное снятие средств',
+                'subtitle': 'Бесплатный выезд специалиста для оформления документов',
                 'props': {
-                'large': '#ruble/#ruble'
-              },
-                'descr': 'Открывается в двух валютах'
+                  'large': '0#ruble'
+                },
+                'descr': 'Без комиссий, без страховок и дополнительных сборов'
               }
             ] }) }}
           </section>
           <section class="section section_theme-white-smoke section_padding-default page__section">
             <div class="calculator">
               <div class="page__container">
-                {{ Heading.heading({ 'title': 'Расчитайте свой доход', 'mods': { 'type': 'default', 'margin': 'default' } }) }}
+                {{ Heading.heading({ 'title': 'Расчитайте свой кредит', 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+                <div class="text mb-56">Расчет носит информационный характер и не является <br> публичной офертой.</div>
                 <div class="section__row">
                   <div class="form form_layout-narrow">
                     <form>
                       <fieldset>
-                        {{ Heading.heading({ 'tag': 'h3', 'title': 'Валюта вклада', 'mods': { 'type': 'small', 'margin': 'small' } }) }}
-                        <div class="form__field-group form__field-group_radio">
-                          {{ Radio.radio({'class': 'js-check-radio mr-56', 'label': '#ruble', 'name': 'accum_deposit_currency', 'id': 'accum_deposit_rub', 'state': 'checked', 'attr': {'check': 'vu'} }) }}
-                          {{ Radio.radio({'class': 'js-check-radio', 'label': '#ruble', 'name': 'accum_deposit_currency', 'id': 'accum_deposit_eur', 'attr': {'data': 'post'} }) }}
-                        </div>
-                        {{ Heading.heading({ 'tag': 'h3', 'title': 'Срок вклада в днях', 'mods': { 'type': 'small', 'margin': 'small' } }) }}
-                        <div class="form__field-group form__field-group_radio">
-                          {{ Radio.radio({'class': 'js-check-radio mr-56', 'label': '181', 'name': 'accim_deposit_period', 'id': 'accim_deposit_half', 'state': 'checked', 'attr': {'check': 'vu'} }) }}
-                          {{ Radio.radio({'class': 'js-check-radio', 'label': '365', 'name': 'accim_deposit_period', 'id': 'accim_deposit_full', 'attr': {'data': 'post'} }) }}
-                        </div>
-                        {{ Input.input({ 'label': 'Сумма вклада', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'accum_deposit_amount', 'class': 'js-numeric-input' }, 'title': '#ruble', 'slider': { 'min': 5000, 'max': 9999999, 'from': 15000, 'step': 1000 } }) }}
-                        {{ Input.input({ 'label': 'Операции по карте в месяц', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'accum_deposit_costs', 'class': 'js-numeric-input' }, 'title': '#ruble', 'slider': { 'min': 0, 'max': 100000, 'from': 30000, 'step': 1000 } }) }}
+                        {{ Input.input({ 'label': 'Сумма кредита', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'credit_amount', 'class': 'js-numeric-input' }, 'title': '#ruble', 'slider': { 'min': 50000, 'max': 1500000, 'from': 800000, 'step': 1000 } }) }}
+                        {{ Input.input({ 'label': 'Срок кредита', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '2', 'name': 'credit_period', 'class': 'js-numeric-input' }, 'slider': { 'min': 13, 'max': 60, 'from': 16, 'step': 1, 'postfix': ' мес.' } }) }}
                       </fieldset>
                     </form>
                   </div>
                   <div class="calculation">
                     <div class="calculation__thumbnail">
-                      <div class="text">Сумма к концу срока</div>
-                      <div class="calculation__result"><span>10 340</span> {{ Icon.icon({ 'name': 'ruble'}) }}</div>
+                      <div class="text">Ежемесячный платеж</div>
+                      <div class="calculation__result"><span>10 500</span> {{ Icon.icon({ 'name': 'ruble'}) }}</div>
                       <div class="calculation__conclusion text">
-                        <p>Ожидаемый доход</p>
-                        <p><span>22 340</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
+                        <p>Ставка</p>
+                        <p>12,9%</p>
                       </div>
                       <div class="calculation__conclusion text">
-                        <p>Процентная ставка</p>
-                        <p>4%</p>
+                        <p>Необходимый доход</p>
+                        <p><span>567 000</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
                       </div>
-                      {{ Button.button({ 'title': 'Оформите вклад', 'mods': { 'theme': 'default' }, 'type': 'submit', 'class': 'mt-40' }) }}
+                      <div class="calculation__conclusion text">
+                        <p>Сумма выплат с %</p>
+                        <p><span>6 768</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
+                      </div>
+                      {{ Button.button({ 'title': 'Оформите кредит', 'mods': { 'theme': 'default' }, 'type': 'submit', 'class': 'mt-40' }) }}
                     </div>
                   </div>
                 </div>
@@ -130,7 +125,7 @@
             <div class="page__container">
               <div class="section__wrap">
                 <div class="mobile__content">
-                  {{ Heading.heading({ 'title': 'Легкий мобильный банк' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small', 'theme': 'light' } }) }}
+                  {{ Heading.heading({ 'title': 'Легкий мобильный банк', 'mods': { 'type': 'default', 'margin': 'small', 'theme': 'light' } }) }}
                   <div class="section__text section__text_theme-normal section__text_theme-light">
                     <p>Управление банковскими и инвестиционными продуктами</p>
                     <p>Оплата услуг без комиссии</p>
@@ -150,37 +145,37 @@
           </section>
           <section class="section page__section">
             <div class="page__container">
-              {{ Heading.heading({ 'title': 'Оформите заявку на вклад', 'mods': { 'type': 'default', 'margin': 'normal' } }) }}
+              {{ Heading.heading({ 'title': 'Оформите заявку - получите \n кредит на любые цели', 'mods': { 'type': 'default', 'margin': 'normal' } }) }}
             </div>
             {{ BrandFeatures.brandFeatures({ 'items': [
               {
                 'icon': 'assets/images/svg/shield-image.svg',
                 'title': 'Оставьте заявку',
-                'subtitle': 'Заполнение заявки займет 5 минут',
+                'subtitle': 'Заполнение заявки займет всего 7 минут',
                 'mods': {
                 'theme': 'lined'
               }
               },
               {
                 'icon': 'assets/images/svg/shield-image.svg',
-                'title': 'Получите карту',
-                'subtitle': 'Наш специалист доставит Вам документы и карту бесплатно',
+                'title': 'Одобрение банка',
+                'subtitle': 'Получите решение по кредиту в течении 2-х рабочих дней',
                 'mods': {
                 'theme': 'lined'
               }
               },
               {
                 'icon': 'assets/images/svg/shield-image.svg',
-                'title': 'Откройте вклад',
-                'subtitle': 'Откройте вклад через БКС Банк онлайн'
+                'title': 'Получите кредит',
+                'subtitle': 'Дождитесь курьера и получите деньги на карту БКС Банка'
               }
             ] }) }}
           </section>
           <section class="section section_theme-white-smoke section_padding-default page__section">
             <div class="deposit-request">
               <div class="page__container">
-                {{ Heading.heading({ 'title': 'Заявка на открытие вклада' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
-                <div class="text mb-56">При открытии вклада предоставляется бесплатная карта Visa Classic</div>
+                {{ Heading.heading({ 'title': 'Заявка на кредит', 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+                <div class="text mb-56">При оформлении кредита предоставляется бесплатная карта Visa Classic</div>
                 <div class="section__row">
                   <div class="form form_layout-narrow js-form">
                     <div class="form__steps">
@@ -195,6 +190,9 @@
                           {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': {'class': 'js-mail-masked', 'name': 'question_mail', 'required': 'true' } }) }}
                         </div>
                         {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Выберите город', 'name': 'bid_select-city', 'items': [{'title': 'Краснодар', 'value': '12345'}, {'title': 'Москва', 'value': '13456'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'bid-city-list'}, 'field': 'js-city-select' }) }}
+                        {{ Input.input({ 'label': 'Сумма кредита', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'credit_amount', 'class': 'js-numeric-input' }, 'title': '#ruble', 'slider': { 'min': 50000, 'max': 1500000, 'from': 800000, 'step': 1000 } }) }}
+                        {{ Input.input({ 'label': 'Срок кредита', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '2', 'name': 'credit_period', 'class': 'js-numeric-input' }, 'slider': { 'min': 13, 'max': 60, 'from': 16, 'step': 1, 'postfix': ' мес.' } }) }}
+                        {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Цель кредита', 'name': 'credit-aims', 'items': [{'title': 'На еду', 'value': '12345'}, {'title': 'На развлечения', 'value': '13456'}, {'title': 'Отправить малого в школу', 'value': '136'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'credit-aims'}, 'field': 'js-aims-select' }) }}
                       </fieldset>
                       <div class="form__agreements">
                         <label class="checkbox checkbox_theme-dark js-checkbox js-personal-checkbox">
@@ -212,17 +210,21 @@
                   </div>
                   <div class="calculation calculation_theme-uslugi">
                     <div class="calculation__thumbnail">
-                      <div class="text">Сумма к концу срока</div>
-                      <div class="calculation__result">10 340 {{ Icon.icon({ 'name': 'ruble'}) }}</div>
+                      <div class="text">Ежемесячный платеж</div>
+                      <div class="calculation__result"><span>10 500</span> {{ Icon.icon({ 'name': 'ruble'}) }}</div>
                       <div class="calculation__conclusion text">
-                        <p>Ожидаемый доход</p>
-                        <p><span>22 340</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
+                        <p>Ставка</p>
+                        <p>12,9%</p>
                       </div>
                       <div class="calculation__conclusion text">
-                        <p>Процентная ставка</p>
-                        <p>4%</p>
+                        <p>Необходимый доход</p>
+                        <p><span>567 000</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
                       </div>
-                      {{ Button.button({ 'title': 'Оформите вклад', 'mods': { 'theme': 'default' }, 'type': 'submit', 'class': 'mt-40' }) }}
+                      <div class="calculation__conclusion text">
+                        <p>Сумма выплат с %</p>
+                        <p><span>6 768</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
+                      </div>
+                      {{ Button.button({ 'title': 'Оформите кредит', 'mods': { 'theme': 'default' }, 'type': 'submit', 'class': 'mt-40' }) }}
                     </div>
                     {{ Button.button({ 'href': '#', 'title': 'Оформите через госуслуги', 'path': 'assets/images/uslugi.svg', 'mods': {'theme': 'white', 'type': 'icon-left'}, 'class': 'button_theme-uslugi' }) }}
                   </div>
@@ -231,7 +233,7 @@
             </div>
           </section>
         </div>
-        <div id="deposit-docs" class="tabs__item js-tab state_invisible">
+        <div id="credit-docs" class="tabs__item js-tab state_invisible">
           <section class="section page__section page__section_theme-last">
             <div class="page__container">
               <div class="section__row">
@@ -456,7 +458,7 @@
             </div>
           </section>
         </div>
-        <div id="deposit-faq" class="tabs__item js-tab state_invisible">
+        <div id="credit-faq" class="tabs__item js-tab state_invisible">
           <section class="section page__section page__section_theme-last">
             <div class="page__container">
               <div class="section__row">

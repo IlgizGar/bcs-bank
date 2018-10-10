@@ -1,0 +1,75 @@
+{% extends "layout/layout.njk" %}
+
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/library/button/button.njk" as Button %}
+{% import "../components/library/context/context.njk" as Context %}
+{% import "../components/library/checkbox/checkbox.njk" as Checkbox %}
+{% import "../components/modules/tabbar/tabbar.njk" as Tabbar %}
+{% import "../components/modules/plastic-card/plastic-card.njk" as PlasticCard %}
+
+{% set root = "." %}
+{% set title = "Кредиты" %}
+
+{% block body %}
+  <div class="page js-page">
+
+    {% include "../components/modules/header/header.njk" %}
+
+    <main role="main" class="products js-credits">
+
+      <section class="section page__section page__section_theme-first">
+        <div class="page__container">
+          <div class="section__row">
+            <div class="section__content section__content_theme-default">
+              {{ Heading.heading({ 'tag': 'h1', 'title': 'Кредиты', 'mods': { 'type': 'default', 'margin': 'short', 'theme': 'default' } }) }}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {#TODO Плдправить компонент feature где используется согласно новым правкам в компоненте#}
+      <section class="section page__section page__section_theme-last">
+        <div class="page__container">
+
+          {{ PlasticCard.plasticCard({ 'title': 'Кредит Онлайн',
+            'image': 'assets/images/card-infinite.png',
+            'theme': 'blue',
+            'features': [
+              { 'title': 'От 12.9%',
+                'text': 'ставка \n по кредиту',
+                'mods': {'type': 'normal', 'theme': 'light'},
+                'class': 'plastic-card__feature'},
+              { 'title': 'До 1,5 млн. #ruble',
+                'text': 'сумма \n кредита',
+                'mods': {'type': 'normal', 'theme': 'light'},
+                'class': 'plastic-card__feature'},
+              { 'title': 'До 5 лет',
+                'text': 'срок \n кредитования',
+                'mods': {'type': 'normal', 'theme': 'light'},
+                'class': 'plastic-card__feature'}
+            ] }) }}
+          {{ PlasticCard.plasticCard({ 'title': 'Рефинансирование Онлайн',
+            'image': 'assets/images/card-infinite.png',
+            'features': [
+              { 'title': 'От 12.9%',
+                'text': 'ставка \n по кредиту',
+                'mods': {'type': 'normal'},
+                'class': 'plastic-card__feature'},
+              { 'title': 'До 1,5 млн. #ruble',
+                'text': 'сумма \n кредита',
+                'mods': {'type': 'normal'},
+                'class': 'plastic-card__feature'},
+              { 'title': 'До 5 лет',
+                'text': 'срок \n кредитования',
+                'mods': {'type': 'normal'},
+                'class': 'plastic-card__feature'}
+            ] }) }}
+        </div>
+      </section>
+
+    </main>
+
+    {% include "../components/modules/footer/footer.njk" %}
+
+  </div>
+{% endblock %}

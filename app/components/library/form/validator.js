@@ -38,6 +38,7 @@ module.exports = (form) => {
         'js-question-textarea': {},
         'js-question-topic': {},
         'js-city-select': {},
+        'js-aims-select': {},
       };
 
       this.validateMessages = {
@@ -91,6 +92,9 @@ module.exports = (form) => {
         },
         'js-city-select': {
           required: 'Укажите Ваш город',
+        },
+        'js-aims-select': {
+          required: 'Укажите цель кредита',
         },
       };
 
