@@ -53,8 +53,8 @@
           {{ Button.button({ 'title': 'Задать вопрос', 'href': '#question-modal-form', 'mods': {'theme': 'default'}, 'class': 'footer__contacts-button js-open-modal'  }) }}
         </div>
         <div class="footer__socials footer__socials_state-desktop">
-          {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'}, 'title': 'Присоединяйтесь' }) }}
-          {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'}, 'title': 'Доступно для устройств', 'device': 'true' }) }}
+          {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'title': 'Присоединяйтесь' }) }}
+          {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'title': 'Доступно для устройств', 'device': 'true' }) }}
         </div>
       </div>
       <div class="footer__menu">
@@ -128,7 +128,7 @@
       'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500 70 65', 'href': '+78005007065' }, { 'name': 'Если вы звоните из-за рубежа', 'value': '+7 (495) 967 11 11', 'href': '+74959671111' }],
       'class': 'js-contact mt-40' }) }}
     {{ Heading.heading({ 'title': 'Присоединяйтесь к нам в социальных сетях', 'class': 'mt-56' }) }}
-    {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'}, 'class': 'mt-32'}) }}
+    {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'class': 'mt-32'}) }}
   </div>
   <div class="question-form-success js-form-error state_hidden">
     {{ Heading.heading({ 'title': 'Сообщение не отправлено' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'none', 'theme': 'default', 'class': 'form__title'}) }}
@@ -137,7 +137,7 @@
       'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500 70 65', 'href': '+78005007065' }, { 'name': 'Если вы звоните из-за рубежа', 'value': '+7 (495) 967 11 11', 'href': '+74959671111' }],
       'class': 'js-contact mt-40' }) }}
     {{ Heading.heading({ 'title': 'Присоединяйтесь к нам в социальных сетях', 'class': 'mt-56' }) }}
-    {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'}, 'class': 'mt-32'}) }}
+    {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'class': 'mt-32'}) }}
   </div>
 </div>
 
