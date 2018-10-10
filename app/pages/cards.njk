@@ -15,7 +15,7 @@
 
     {% include "../components/modules/header/header.njk" %}
 
-    <main role="main" class="plastic-cards js-plastic-cards">
+    <main role="main" class="products js-plastic-cards">
 
       <section class="section page__section page__section_theme-first">
         <div class="page__container">
@@ -25,11 +25,11 @@
             </div>
           </div>
         </div>
-        <div class="plastic-cards__header">
+        <div class="products__header">
           <div class="page__container">
-            <div class="plastic-cards__controls">
-              {{ Tabbar.tabbar({ 'anchor': { 'view': 'underscore', 'theme': 'default-tab' }, 'tabs': [{'title': 'Дебетовые', 'id': 'debet', 'state': 'active' }, {'title': 'Кредитные', 'id': 'credit'}, {'title': 'Пакеты услуг', 'id': 'packets'}], 'class': 'plastic-cards__tabbar' }) }}
-              <div class="filter plastic-cards__filter">
+            <div class="products__controls">
+              {{ Tabbar.tabbar({ 'anchor': { 'view': 'underscore', 'theme': 'default-tab' }, 'tabs': [{'title': 'Дебетовые', 'id': 'debet', 'state': 'active' }, {'title': 'Кредитные', 'id': 'credit'}, {'title': 'Пакеты услуг', 'id': 'packets'}], 'class': 'products__tabbar' }) }}
+              <div class="filter products__filter">
                 <div class="filter__wrapper">
                   <div class="filter__title hidden-mobile">Бонусы за:</div>
                   <div class="filter__select hidden-mobile">
