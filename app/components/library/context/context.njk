@@ -47,10 +47,14 @@
     {% endif %}
     <span class="context__count js-context-count state_hidden"></span>
     <button class="context__button" type="button">
-        <span class="js-context-title">{{ options.title }}</span>
-        {{ Icon.icon({'name': 'dropdown'}) }}
+        {% set hideIcon = '' %}
         {% if options.icon %}
-          {{ Icon.icon({'name': options.icon, 'elementClass': 'hidden-desctop' }) }}
+          {% set hideIcon = 'hidden-mobile' %}
+        {% endif %}
+        <span class="js-context-title {{ hideIcon }}">{{ options.title }}</span>
+        {{ Icon.icon({'name': 'dropdown', 'elementClass': hideIcon}) }}
+        {% if options.icon %}
+          {{ Icon.icon({'name': options.icon, 'elementClass': 'context__mobile-icon' }) }}
         {% endif %}
     </button>
   </div>
