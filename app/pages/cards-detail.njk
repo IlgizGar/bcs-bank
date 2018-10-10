@@ -87,8 +87,8 @@
             <div class="calculator">
               <div class="page__container">
                 {{ Heading.heading({ 'title': 'Расчитайте свой бонус' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'default' } }) }}
-                <div class="section__row">
-                  <div class="form form_layout-narrow">
+                <div class="section__row calculator__row">
+                  <div class="form form_layout-narrow calculator__form">
                     <form>
                       <fieldset>
                         {{ Input.input({ 'label': 'Расходы на АЗС', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_fuel_costs', 'class': 'js-numeric-input' }, 'title': '#rubleмес.', 'slider': { 'min': 0, 'max': 100000, 'from': 30000, 'step': 1000 } }) }}
@@ -168,7 +168,10 @@
             <div class="dcard-request">
               <div class="page__container">
                 {{ Heading.heading({ 'title': 'Заявка на карту' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
-                <div class="text mb-56">Банковскя карта MORE Visa Platinum с повышенным статусом <br> и набором привилегий. Открывается в рамках {{ Button.button({ 'href': '#', 'title': 'пакета услуг "MORE".', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}</div>
+                <div class="text mb-56">Банковскя карта MORE Visa Platinum с повышенным статусом <br> и набором
+                  привилегий. Открывается в
+                  рамках {{ Button.button({ 'href': '#', 'title': 'пакета услуг "MORE".', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
+                </div>
                 <div class="section__row">
                   <div class="form form_layout-narrow js-form">
                     <div class="form__steps">

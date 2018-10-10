@@ -6,8 +6,8 @@
     {% set class_sep = joiner(' ') %}
 
     <div class="brand-features {{ options.class }}">
-        <div class="page__container">
-            <div class="section__row">
+        <div class="page__container brand-features__carousel carousel carousel_type-mobile">
+            <div class="section__row js-carousel" data-id="product-cards" data-breakpoint="992">
                 {% for item in options.items %}
 
                     {% set mods = '' %}
@@ -35,6 +35,11 @@
                         {% endif %}
                     </div>
                 {% endfor %}
+            </div>
+            <div class="carousel-controls carousel-controls_theme-dark js-carousel-controls">
+              <div class="carousel-controls__pagination js-carousel-pagination">
+                <span>01</span><span></span><span></span>
+              </div>
             </div>
         </div>
     </div>
