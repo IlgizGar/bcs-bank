@@ -107,7 +107,7 @@
                       <div class="calculation__conclusion text">Этих бонусов будет достаточно
                         для покупки авиабилета в Милан.
                       </div>
-                      {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'default' }, 'type': 'submit' }) }}
+                      {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'default' }, 'type': 'submit', 'class': 'mt-40' }) }}
                     </div>
                   </div>
                 </div>
@@ -168,11 +168,9 @@
             <div class="dcard-request">
               <div class="page__container">
                 {{ Heading.heading({ 'title': 'Заявка на карту' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+                <div class="text mb-56">Банковскя карта MORE Visa Platinum с повышенным статусом <br> и набором привилегий. Открывается в рамках {{ Button.button({ 'href': '#', 'title': 'пакета услуг "MORE".', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}</div>
                 <div class="section__row">
                   <div class="form form_layout-narrow js-form">
-                    <div class="text mb-56">Банковскя карта MORE Visa Platinum с повышенным статусом
-                      и набором привилегий. Открывается в
-                      рамках {{ Button.button({ 'href': '#', 'title': 'пакета услуг "MORE".', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}</div>
                     <div class="form__steps">
                       Шаг <span>1</span> из <span>4</span>
                     </div>

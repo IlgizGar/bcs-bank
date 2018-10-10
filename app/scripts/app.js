@@ -151,15 +151,17 @@ $(() => {
   global.header = Header('.js-header');
   global.footer = new Footer();
 
-  if($('[data-illustration]').length) {
+  if ($('[data-illustration]').length) {
     $('[data-illustration]').each((i, el) => {
-      Lottie.loadAnimation({
-        container: el,
-        renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: `assets/illustrations/${$(el).data('illustration')}.json`
-      })
+      if ($(el).data('illustration').length) {
+        Lottie.loadAnimation({
+          container: el,
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          path: `assets/illustrations/${$(el).data('illustration')}.json`
+        })
+      }
     });
   }
 });
