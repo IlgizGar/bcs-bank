@@ -1,0 +1,94 @@
+{% extends "layout/layout.njk" %}
+{#{% extends "library/card/card.njk" %}#}
+
+{% set root = "." %}
+{% set title = "Главная" %}
+{% set header = 'blue' %}
+
+{% import "../components/modules/menubar/menubar.njk" as Menubar %}
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/library/feature/feature.njk" as Feature %}
+{% import "../components/library/button/button.njk" as Button %}
+{% import "../components/icon/icon.njk" as Icon %}
+
+{% block body %}
+  <div class="page js-page">
+
+    {% include "../components/modules/header/header.njk" %}
+
+    <main role="main">
+      <section class="section page__section">
+        <div class="section__header section__header_theme-blue">
+
+          <div class="carousel">
+            <div class="carousel__progressbar">
+              <div class="carousel__progressbar-bar js-carousel-progressbar"></div>
+            </div>
+            <div class="index-carousel index-carousel_image-normal js-carousel" data-id="index-header">
+              <div class="index-carousel__slide">
+                <div class="page__container">
+                  <div class="index-carousel__wrap">
+                    <div class="index-carousel__content">
+                      {{ Heading.heading({ 'tag': 'h1', 'title': 'Зарабатывайте \n без усилий', 'mods': { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}
+                      <div class="index-carousel__features">
+                        {{ Feature.feature({ 'title': '1 бонус = 1 #ruble', 'text': 'Получайте бонусы с каждой покупки карой БКС \n и обменивайте их на деньги', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                      </div>
+                    </div>
+                    <div class="index-carousel__image" data-illustration="test">
+                      {#<img src="assets/images/bonus-banner.png" alt="Отпуск легче с кредитом БКС">#}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="index-carousel__slide">
+                <div class="page__container">
+                  <div class="index-carousel__wrap">
+                    <div class="index-carousel__content">
+                      {{ Heading.heading({ 'tag': 'h1', 'title': 'Зарабатывайте \n без усилий', 'mods': { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}
+                      <div class="index-carousel__features">
+                        {{ Feature.feature({ 'title': '1 бонус = 1 #ruble', 'text': 'Получайте бонусы с каждой покупки карой БКС \n и обменивайте их на деньги', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                      </div>
+                    </div>
+                    <div class="index-carousel__image">
+                      <img src="assets/images/bonus-banner.png" alt="Отпуск легче с кредитом БКС">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="index-carousel__slide">
+                <div class="page__container">
+                  <div class="index-carousel__wrap">
+                    <div class="index-carousel__content">
+                      {{ Heading.heading({ 'tag': 'h1', 'title': 'Зарабатывайте \n без усилий', 'mods': { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}
+                      <div class="index-carousel__features">
+                        {{ Feature.feature({ 'title': '1 бонус = 1 #ruble', 'text': 'Получайте бонусы с каждой покупки карой БКС \n и обменивайте их на деньги', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                      </div>
+                    </div>
+                    <div class="index-carousel__image">
+                      <img src="assets/images/bonus-banner.png" alt="Отпуск легче с кредитом БКС">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="page__container">
+            <div class="section__header-controls">
+
+              {{ Button.button({ 'title': 'Узнать больше', 'mods': { 'theme': 'white' }, 'class': 'section__header-button' }) }}
+
+              <div class="carousel-controls js-index-carousel-controls">
+                <div class="carousel-controls__pagination js-carousel-pagination">
+                  <span>01</span><span></span><span></span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+    {% include "../components/modules/footer/footer.njk" %}
+  </div>
+{% endblock %}
