@@ -6,10 +6,13 @@
 {% set header = 'blue' %}
 
 {% import "../components/modules/menubar/menubar.njk" as Menubar %}
+{% import "../components/modules/brand-features/brand-features.njk" as BrandFeatures %}
 {% import "../components/library/heading/heading.njk" as Heading %}
 {% import "../components/library/feature/feature.njk" as Feature %}
 {% import "../components/library/button/button.njk" as Button %}
+{% import "../components/library/checkbox/checkbox.njk" as Checkbox %}
 {% import "../components/icon/icon.njk" as Icon %}
+{% import "../components/inline-svg/inline-svg.njk" as Svg %}
 
 {% block body %}
   <div class="page js-page">
@@ -86,6 +89,93 @@
             </div>
           </div>
 
+        </div>
+      </section>
+      <section class="section page__section">
+        <div class="page__container">
+          {{ Heading.heading({ 'title': 'Зарабатывайте, когда тратите', 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered' }) }}
+        </div>
+        {{ BrandFeatures.brandFeatures({ 'items': [
+          {
+            'icon': 'assets/images/svg/shield-image.svg',
+            'title': 'Бонусы каждый день',
+            'subtitle': 'За покупки, перелёты, бронирование отелей и т.п.'
+          },
+          {
+            'icon': 'assets/images/svg/shield-image.svg',
+            'title': '1 бонус = 1 #ruble',
+            'subtitle': 'Конвертируйте бонусы в рубли'
+          },
+          {
+            'icon': 'assets/images/svg/shield-image.svg',
+            'title': 'Не сгорают',
+            'subtitle': 'Накопленные бонусы не сгорают никогда'
+          }
+        ] }) }}
+      </section>
+      <section class="bonus section section_theme-white-smoke section_padding-default page__section page__section_theme-last">
+        <div class="page__container">
+          {{ Heading.heading({ 'title': 'Получайте больше выгоды', 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+          <div class="text mb-56">Покупки картой БКС по спецпредложениям от наших партнеров</div>
+          <div class="section__row">
+            <div class="bonus__content">
+              <div class="bonus__item">
+                <div class="bonus__icon">
+                  {{ Svg.inlineSvg({ 'path': ['assets/images/aviasales.png'] }) }}
+                </div>
+                <a href="#" class="bonus__link">
+                  <div class="bonus__name mr-a">
+                    <p class="bonus__title">Авиабилеты</p>
+                  </div>
+                  <p class="text">Бонус</p>
+                  <p class="bonus__amount">2%</p>
+                </a>
+              </div>
+              <div class="bonus__item">
+                <div class="bonus__icon">
+                  {{ Svg.inlineSvg({ 'path': ['assets/images/ostrovok.png'] }) }}
+                </div>
+                <a href="#" class="bonus__link">
+                  <div class="bonus__name mr-a">
+                    <p class="bonus__title">Отели</p>
+                  </div>
+                  <p class="text">Бонус</p>
+                  <p class="bonus__amount">7%</p>
+                </a>
+              </div>
+              <div class="bonus__item">
+                <div class="bonus__icon">
+                  {{ Svg.inlineSvg({ 'path': ['assets/images/taxfree.png'] }) }}
+                </div>
+                <a href="#" class="bonus__link">
+                  <div class="bonus__name mr-a">
+                    <p class="bonus__title">Возврат НДС</p>
+                    <p class="text">За покупки в Европе</p>
+                  </div>
+                  <p class="text">Бонус до</p>
+                  <p class="bonus__amount">19%</p>
+                </a>
+              </div>
+              <div class="bonus__item">
+                <div class="bonus__icon">
+                  {{ Svg.inlineSvg({ 'path': ['assets/images/bks.png'] }) }}
+                </div>
+                <a href="#" class="bonus__link">
+                  <div class="bonus__name mr-a">
+                    <p class="bonus__title">Обмен валюты</p>
+                    <p class="text">Самый выгодный курс</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="bonus__filter">
+              {{ Checkbox.checkbox({ 'label': 'Все', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox mb-32', 'state': 'checked' }) }}
+              {{ Checkbox.checkbox({ 'label': 'Путешествия', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox mb-32' }) }}
+              {{ Checkbox.checkbox({ 'label': 'Покупки', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox mb-32' }) }}
+              {{ Checkbox.checkbox({ 'label': 'Услуги', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox mb-32' }) }}
+              {{ Checkbox.checkbox({ 'label': 'Танспорт', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox' }) }}
+            </div>
+          </div>
         </div>
       </section>
     </main>
