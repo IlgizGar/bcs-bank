@@ -1,2 +1,6 @@
 .form .form__line-group
   display: flex
+  @media (max-width 767px)
+    flex-direction column
+    .input:not(:last-child)
+      margin-right: 0

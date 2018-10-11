@@ -1,15 +1,15 @@
 .brand-features .brand-features__item
-  col()
-  size(4)
-
   flex-direction: column
 
   color: $color_elem
-
+  @media(min-width 768px)
+    col()
+    size(4)
   & > .text
 
     padding-right: 33%
-
+    @media(max-width 767px)
+      padding-right: 0
     .icon
       width: 17px
       height: 17px

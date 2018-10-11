@@ -1,3 +1,14 @@
 .form.form_layout-narrow
   col()
   size(6)
+  @media(max-width 767px)
+    size(12)
+    fieldset
+      min-width: auto
+      .form__field-slider.state_filled
+        .input__group
+          flex-basis 75%
+          min-width: 75%
+      .input
+        margin-bottom: 48px
+      margin-bottom: 8px

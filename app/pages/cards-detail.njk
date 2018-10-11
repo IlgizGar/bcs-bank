@@ -83,7 +83,7 @@
               }
             ] }) }}
           </section>
-          <section class="section section_theme-white-smoke section_padding-default page__section">
+          <section class="section section_theme-white-smoke section_padding-default page__section mobile-mb-0">
             <div class="calculator">
               <div class="page__container">
                 {{ Heading.heading({ 'title': 'Расчитайте свой бонус' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'default' } }) }}
@@ -138,7 +138,7 @@
           </section>
           <section class="section page__section">
             <div class="page__container">
-              {{ Heading.heading({ 'title': 'Оформите заявку - получите \n карту на следующий день' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'normal' } }) }}
+              {{ Heading.heading({ 'title': 'Оформите заявку - получите \n карту на следующий день' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered' }) }}
             </div>
             {{ BrandFeatures.brandFeatures({ 'items': [
               {

@@ -15,7 +15,10 @@
 
     border-radius: 50%
     background-color: $color_default
-
+    @media(max-width 767px)
+      display: none
+      & + .text
+        display: none
     p.state_large
       formularBold(24px)
       color: currentColor
