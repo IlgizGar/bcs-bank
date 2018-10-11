@@ -52,7 +52,7 @@
           {% if options.type === 'vacancy' %}
             {{ Button.button({ 'title': 'Откликнуться', 'mods': { 'theme': 'default' }, 'class': 'card__button card__button_type-respond' }) }}
             {{ Button.button({ 'href': options.url, 'title': 'Узнать больше', 'mods': { 'theme': 'default', 'view': 'text' }, 'class': 'card__button card__button_type-more' }) }}
-            {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'}, 'class': 'card__button' }) }}
+            {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'class': 'card__button' }) }}
           {% endif %}
         </div>
       {% endif %}

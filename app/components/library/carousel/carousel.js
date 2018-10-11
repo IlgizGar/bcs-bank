@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import 'slick-carousel';
+import Context from "../context/context";
 
 module.exports = (elem) => {
   class Carousel {
@@ -76,6 +77,9 @@ module.exports = (elem) => {
             settings: 'unslick',
           },
         ],
+      });
+      this.carousel.find('.js-context').each((i, el) => {
+        global.contexts[$(el).data('id')] = Context(el);
       });
     }
   }
