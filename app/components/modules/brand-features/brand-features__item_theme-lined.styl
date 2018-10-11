@@ -4,16 +4,16 @@
     .brand-features__icon
 
       position: relative
+      @media (min-width 768px)
+        &:after {
+          content: ''
 
-      &:after {
-        content: ''
+          position: absolute
+          top: 50%
+          right: 30px
 
-        position: absolute
-        top: 50%
-        right: 30px
+          width: 50%
+          height: 1px
 
-        width: 50%
-        height: 1px
-
-        background-color: $color_borders
-      }
+          background-color: $color_borders
+        }
