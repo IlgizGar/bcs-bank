@@ -4,6 +4,10 @@
   width: 1px
   height: 100%
 
+  @media (max-width: 767px)
+    width: auto
+    height: auto
+
   svg
     position: absolute
     right: 0
@@ -20,14 +24,14 @@
       height: calc(100% + 140px)
 
     @media (min-width: 992px) and (max-width: 1279px)
-      top: -120px
+      top: -85px
 
-      height: calc(100% + 120px)
+      height: calc(100% + 25px)
 
     @media (min-width: 768px) and (max-width: 991px)
-      top: -108px
+      top: -45px
 
-      height: calc(100% + 108px)
+      height: 70%
 
     @media (max-width: 767px)
       order: 0
@@ -35,5 +39,5 @@
       position: relative
       margin: 0 auto 16px
 
-      width: 100%
+      width: auto
       max-width: 200px

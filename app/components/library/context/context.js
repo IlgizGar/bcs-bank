@@ -24,6 +24,9 @@ module.exports = (elem) => {
       this.id = this.context.data('id');
       this.list = $(`.js-context-list#${this.id}`);
 
+      console.log('ID', this.id);
+
+
       if (!this.list.length) {
         this.list = $(`<div id="${this.id}" class="dropdown__list state_invisible scroll-pane js-context-list mt-16"><ul></ul></div>`);
         $('.js-page').append(this.list);
@@ -67,12 +70,15 @@ module.exports = (elem) => {
     }
 
     events() {
-      this.context.on('click', (e) => {
-        e.preventDefault();
-        if (this.context.hasClass('state_explored')) {
-          this.hideList();
-        } else {
-          this.showList();
+
+      $(window).on('click', (e) => {
+        if ($(e.target.closest('.js-context'))) {
+          e.preventDefault();
+          if (this.context.hasClass('state_explored')) {
+            this.hideList();
+          } else {
+            this.showList();
+          }
         }
       });
 
@@ -86,7 +92,7 @@ module.exports = (elem) => {
             Cookie.set(this.id, $item.attr('data-value'));
             if ($item.length) {
               this.handleNamedList($item);
-              if(this.id === 'credit-types') {
+              if (this.id === 'credit-types') {
                 Context.handleCreditCardTypes(this.context);
               }
             }
@@ -224,7 +230,7 @@ module.exports = (elem) => {
       const $options = $el.find('select option');
 
       $options.each((i, item) => {
-        if($(item).is(':selected')) {
+        if ($(item).is(':selected')) {
           $('#' + $(item).val()).removeClass('state_invisible');
         } else {
           $('#' + $(item).val()).addClass('state_invisible');
