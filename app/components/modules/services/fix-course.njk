@@ -12,7 +12,7 @@
   </div>
 </div>
 <div class="services__block services__block_theme-course">
-    <table class="services__table mb-32">
+    <table class="services__table mb-24">
       <thead>
         <tr class="hidden-mobile">
           <th></th>
@@ -50,7 +50,7 @@
       </tbody>
     </table>
 
-    {{ Input.input({ 'label': 'Сумма', 'title': 'USD', 'name': 'fix-course', 'class': 'services__input js-course-field', 'field': 'js-numeric-input js-course-input', 'attr': {'max': '4000'}, 'state': 'maxlength=5 required' }) }}
+    {{ Input.input({ 'label': 'Сумма', 'title': 'USD', 'class': 'services__input js-course-field', 'field': {'class': 'js-numeric-input js-course-input', 'name': 'fix-course', 'maxlength': '5', 'required': 'required'}, 'attr': {'max': '4000'} }) }}
     <label><input class="js-course-result-field" name="course-result-field" hidden value="0"></label>
 
     <div class="course__result">

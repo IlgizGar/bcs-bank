@@ -38,9 +38,6 @@ module.exports = (elem) => {
         '  </svg>' +
         '</button>';
 
-      console.log('ID', this.id);
-
-
       switch (this.id) {
         case 'index-header':
           this.carousel.not('.slick-initialized').slick({
