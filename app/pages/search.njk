@@ -1,0 +1,74 @@
+{% extends "layout/layout.njk" %}
+
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/library/input/input.njk" as Input %}
+{% import "../components/modules/search/search-card/search-card.njk" as SearchCard %}
+{% import "../components/library/button/button.njk" as Button %}
+{% import "../components/library/contact/contact.njk" as Contact %}
+
+{% set root = "." %}
+{% set title = "Результаты поиска" %}
+
+{% block body %}
+  <div class="page js-page">
+
+    {% include "../components/modules/header/header.njk" %}
+
+    <main role="main" class="search js-search" data-api="http://localhost:3002/search">
+
+      <section class="section page__section page__section_theme-first">
+        <div class="page__container">
+          <div class="section__row">
+            <div class="section__content section__content_theme-default">
+              {{ Heading.heading({ 'tag': 'h1', 'title': 'Результаты поиска', 'mods': { 'type': 'default', 'margin': 'short', 'theme': 'default' } }) }}
+              <form class="search__form" action="/search.html" method="get">
+                {{ Input.input({ 'label': 'Поиск', 'class': 'search__field-group', 'name': 'search' }) }}
+                <div class="search__result-info">
+                  По запросу «Карта» найдено 23 результата
+                </div>
+              </form>
+              <div class="js-search-cards">
+                {{ SearchCard.searchCard({ 'title': 'ТАРИФЫ | Условия подключения Бонусной программы Тип карты', 'content': 'До четырех мультивалютных <span class="search-card__match">карт</span> категории Platinum. Бесплатное обслуживание при поддержании среднемесячного баланса.' | safe }) }}
+                {{ SearchCard.searchCard({ 'title': 'ТАРИФЫ | карты', 'content': 'До четырех мультивалютных <span class="search-card__match">карт</span> категории Platinum. Бесплатное обслуживание при поддержании среднемесячного баланса.' | safe }) }}
+                {{ SearchCard.searchCard({ 'title': 'БКС Банк | Закажите карту прямо сейчас', 'content': 'Заявка на кредитную <span class="search-card__match">карт</span> Заполните простую заявку и получите предварительное решение Банка в течение 5 минут.' | safe }) }}
+                {{ SearchCard.searchCard({ 'title': 'Дебетовые карты - БКС Банк. Оформление, обслуживание...', 'content': 'включено в пакет услуг. 3. Выпуск и обслуживание <span class="search-card__match">карт</span>. Категории основных карт, предусмотренные 3.1 пакетом услуг.' | safe }) }}
+                {{ SearchCard.searchCard({ 'title': 'Дебетовые карты - БКС Банк. Оформление, обслуживание...', 'content': 'До четырех мультивалютных <span class="search-card__match">карт</span> категории Platinum. Бесплатное обслуживание при поддержании среднемесячного баланса.' | safe }) }}
+                {{ SearchCard.searchCard({ 'title': 'ТАРИФЫ | Условия подключения Бонусной программы Тип карты', 'content': 'До четырех мультивалютных <span class="search-card__match">карт</span> категории Platinum. Бесплатное обслуживание при поддержании среднемесячного баланса.' | safe }) }}
+                {{ SearchCard.searchCard({ 'title': 'ТАРИФЫ | карты', 'content': 'До четырех мультивалютных <span class="search-card__match">карт</span> категории Platinum. Бесплатное обслуживание при поддержании среднемесячного баланса.' | safe }) }}
+                {{ SearchCard.searchCard({ 'title': 'БКС Банк | Закажите карту прямо сейчас', 'content': 'Заявка на кредитную <span class="search-card__match">карт</span> Заполните простую заявку и получите предварительное решение Банка в течение 5 минут.' | safe }) }}
+                {{ SearchCard.searchCard({ 'title': 'Дебетовые карты - БКС Банк. Оформление, обслуживание...', 'content': 'включено в пакет услуг. 3. Выпуск и обслуживание <span class="search-card__match">карт</span>. Категории основных карт, предусмотренные 3.1 пакетом услуг.' | safe }) }}
+                {{ SearchCard.searchCard({ 'title': 'Дебетовые карты - БКС Банк. Оформление, обслуживание...', 'content': 'До четырех мультивалютных <span class="search-card__match">карт</span> категории Platinum. Бесплатное обслуживание при поддержании среднемесячного баланса.' | safe }) }}
+                {{ Button.button({ 'title': 'Показать все результаты (13)', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'wide'}, 'class': 'search__see-more', 'attr': {'see-more': ''} }) }}
+              </div>
+            </div>
+            <div class="section__aside hidden-mobile">
+              <div class="section__sticky js-sticky">
+                {{ Contact.contact({ 'title': 'Частным клиентам' | striptags(true) | escape | nl2br,
+                  'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500-70-65', 'href': 'tel:88005007065' }],
+                  'class': 'search__contact js-contact' }) }}
+                {{ Contact.contact({ 'title': 'Малому и среднему бизнесу' | striptags(true) | escape | nl2br,
+                  'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500-03-05', 'href': 'tel:88005000305' }],
+                  'class': 'search__contact js-contact' }) }}
+                {{ Contact.contact({ 'title': 'Корпоративным клиентам' | striptags(true) | escape | nl2br,
+                  'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500-05-59', 'href': 'tel:88005000559' }],
+                  'class': 'search__contact js-contact' }) }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {#TODO Плдправить компонент feature где используется согласно новым правкам в компоненте#}
+      <section class="section page__section page__section_theme-last">
+        <div class="page__container">
+
+
+        </div>
+      </section>
+
+    </main>
+
+    {% include "../components/modules/footer/footer.njk" %}
+
+  </div>
+{% endblock %}
