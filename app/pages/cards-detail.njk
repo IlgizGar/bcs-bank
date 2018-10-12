@@ -20,13 +20,10 @@
 
     {% include "../components/modules/header/header.njk" %}
 
-    <main role="main" class="cards-detail">
+    <main role="main" class="products-detail">
       <section class="section page__section">
         <div class="section__header section__header_theme-blue">
           <div class="page__container">
-            <div class="brand-figure cards-detail__figure" data-illustration="">
-              <img src="assets/images/detail-card_banner.png" alt="Отпуск легче с кредитом БКС">
-            </div>
             {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Дебетовые карты', 'link': '#' } }) }}
             {{ Heading.heading({ 'tag': 'h1', 'title': 'MORE \n Visa platinum' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'default' } }) }}
             <div class="features">
@@ -34,13 +31,18 @@
               {{ Feature.feature({ 'title': '0#ruble', 'text': 'страхование путешествующих', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
               {{ Feature.feature({ 'title': 'От 0#ruble', 'text': 'стоимость обслуживания', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
             </div>
+            <div class="brand-figure products-detail__figure" data-illustration="">
+              <img src="assets/images/detail-card_banner.png" alt="Отпуск легче с кредитом БКС">
+            </div>
           </div>
           <div class="section__nav-wrapper">
-            <div class="section__nav js-tab-scroll">
+            <div class="section__nav products-detail__nav">
               <div class="page__container">
                 <div class="section__wrap">
-                  {{ Tabbar.tabbar({ 'anchor': { 'theme': 'light-tab', 'view': 'upperscore' }, 'tabs': [{'title': 'О карте', 'id': 'about-card' }, {'title': 'Тарифы и документы', 'id': 'card-docs'}, {'title': 'Частые вопросы', 'id': 'card-faq'}] }) }}
-                  {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'white' }, 'class': 'ml-a' }) }}
+                  <div class="tabbar__scroll-wrapper js-tab-scroll">
+                    {{ Tabbar.tabbar({ 'anchor': { 'theme': 'light-tab', 'view': 'upperscore' }, 'tabs': [{'title': 'О карте', 'id': 'about-card' }, {'title': 'Тарифы и документы', 'id': 'card-docs'}, {'title': 'Частые вопросы', 'id': 'card-faq'}] }) }}
+                  </div>
+                  {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'white' }, 'class': 'products-detail__nav-button' }) }}
                 </div>
               </div>
             </div>
@@ -204,7 +206,8 @@
                   <div class="calculation">
                     <img src="assets/images/credit-card.png" class="calculation__image hidden-mobile"
                          alt="БКС Банк">
-                    <div class="text calculation__text hidden-mobile">2 дополнительные карты Visa Platinum бесплатно</div>
+                    <div class="text calculation__text hidden-mobile">2 дополнительные карты Visa Platinum бесплатно
+                    </div>
                     {{ Button.button({ 'href': '#', 'title': 'Оформите через госуслуги', 'path': 'assets/images/uslugi.svg', 'mods': {'theme': 'white', 'type': 'icon-left'}, 'class': 'button_theme-uslugi' }) }}
                   </div>
                 </div>

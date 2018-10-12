@@ -25,9 +25,6 @@
       <section class="section page__section">
         <div class="section__header section__header_theme-blue">
           <div class="page__container">
-            <div class="brand-figure products-detail__figure" data-illustration="">
-              <img src="assets/images/detail-card_banner.png" alt="Отпуск легче с кредитом БКС">
-            </div>
             {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Кредиты', 'link': '#' } }) }}
             {{ Heading.heading({ 'tag': 'h1', 'title': 'Кредит Онлайн', 'mods': { 'type': 'large', 'margin': 'default' } }) }}
             <div class="features">
@@ -35,13 +32,18 @@
               {{ Feature.feature({ 'title': 'До 1,5 млн.  #ruble', 'text': 'сумма \n кредита', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
               {{ Feature.feature({ 'title': 'До 5 лет', 'text': 'срок \n кредитования', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
             </div>
+            <div class="brand-figure products-detail__figure" data-illustration="">
+              <img src="assets/images/detail-card_banner.png" alt="Отпуск легче с кредитом БКС">
+            </div>
           </div>
           <div class="section__nav-wrapper">
-            <div class="section__nav js-tab-scroll">
+            <div class="section__nav products-detail__nav">
               <div class="page__container">
                 <div class="section__wrap">
-                  {{ Tabbar.tabbar({ 'anchor': { 'theme': 'light-tab', 'view': 'upperscore' }, 'tabs': [{'title': 'О кредите', 'id': 'about-credit' }, {'title': 'Тарифы и документы', 'id': 'credit-docs'}, {'title': 'Частые вопросы', 'id': 'credit-faq'}] }) }}
-                  {{ Button.button({ 'title': 'Оформите кредит', 'mods': { 'theme': 'white' }, 'class': 'ml-a' }) }}
+                  <div class="tabbar__scroll-wrapper js-tab-scroll">
+                    {{ Tabbar.tabbar({ 'anchor': { 'theme': 'light-tab', 'view': 'upperscore' }, 'tabs': [{'title': 'О кредите', 'id': 'about-credit' }, {'title': 'Тарифы и документы', 'id': 'credit-docs'}, {'title': 'Частые вопросы', 'id': 'credit-faq'}] }) }}
+                  </div>
+                  {{ Button.button({ 'title': 'Оформите кредит', 'mods': { 'theme': 'white' }, 'class': 'products-detail__nav-button' }) }}
                 </div>
               </div>
             </div>
@@ -58,9 +60,9 @@
                 'title': 'Чкстно',
                 'subtitle': 'Предварительное решение в день одобрения',
                 'props': {
-                  'large': '13',
-                  'small': 'мес'
-                },
+                'large': '13',
+                'small': 'мес'
+              },
                 'descr': 'Минимальный срок редитования'
               },
               {
@@ -68,9 +70,9 @@
                 'title': 'Быстро',
                 'subtitle': 'Получение кредита онлайн на карту БКС Банка за 20 мин',
                 'props': {
-                  'large': '50',
-                  'small': 'тыс. #ruble'
-                },
+                'large': '50',
+                'small': 'тыс. #ruble'
+              },
                 'descr': 'Минимальная сумма кредита'
               },
               {
@@ -78,8 +80,8 @@
                 'title': 'Удобно',
                 'subtitle': 'Бесплатный выезд специалиста для оформления документов',
                 'props': {
-                  'large': '0#ruble'
-                },
+                'large': '0#ruble'
+              },
                 'descr': 'Без комиссий, без страховок и дополнительных сборов'
               }
             ] }) }}
