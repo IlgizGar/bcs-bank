@@ -26,6 +26,7 @@ import Offices from '../components/modules/offices/offices';
 import DocumentsFilter from '../components/modules/documents/documents';
 import IndexSearch from '../components/modules/index-search/index-search';
 import News from '../components/modules/news/news';
+import Search from '../components/modules/search/search';
 import Lottie from 'lottie-web';
 
 require('babel-polyfill');
@@ -144,6 +145,11 @@ $(() => {
   global.news = [];
   if ($('.js-news').length) {
     global.news.push(new News());
+  }
+
+  global.search = [];
+  if ($('.js-search').length) {
+    global.search.push(new Search());
   }
 
   global.menubar = new Menubar();

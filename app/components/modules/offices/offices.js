@@ -448,7 +448,10 @@ export default class Offices {
 
   scrollToCollapse(el) {
     if (window.innerWidth > 991) {
-      this.pane.data('jsp').scrollToY(el.closest('.collapse__item')[0].offsetTop, 75);
+      this.pane.bind('jsp-initialised', (event, isScrollable) => {
+        this.pane.data('jsp').scrollToElement(el.closest('.collapse__item'), 75);
+        this.pane.unbind('jsp-initialised');
+      });
     }
   }
 
