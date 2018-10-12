@@ -12,29 +12,45 @@
   </div>
 </div>
 <div class="services__block services__block_theme-course">
-    <table class="table mb-32">
+    <table class="services__table mb-24">
       <thead>
-      <tr>
-        <th></th>
-        <th>Покупаю по</th>
-        <th>Продаю по</th>
-      </tr>
+        <tr class="hidden-mobile">
+          <th></th>
+          <th class="services__table-action">Покупаю по</th>
+          <th class="services__table-action">Продаю по</th>
+        </tr>
       </thead>
       <tbody>
+        <tr class="hidden-desktop">
+          <td class="services__table-currency">USD</td>
+          <td></td>
+        </tr>
+        <tr class="hidden-desktop">
+          <td class="services__table-action">Покупаю по</td>
+          <td class="services__table-action">Продаю по</td>
+        </tr>
+        <tr>
+          <td class="services__table-currency hidden-mobile">USD</td>
+          <td class="services__table-value">{{ Radio.radio({ 'class': 'js-course-radio', 'currency' : {'state': 'rise', 'label': '62.34'}, 'value': '62.34', 'name': 'course-fix', 'id': 'course-buy_usd', 'attr': { 'currency': 'USD'}, 'state': 'checked' }) }}</td>
+          <td class="services__table-value">{{ Radio.radio({ 'class': 'js-course-radio', 'currency' : {'state': 'fall', 'label': '62.79'}, 'value': '62.79', 'name': 'course-fix', 'id': 'course-cell_usd', 'attr': {'currency': 'USD'} }) }}</td>
+        </tr>
+        <tr class="hidden-desktop">
+          <td class="services__table-currency">EUR</td>
+          <td></td>
+        </tr>
+        <tr class="hidden-desktop">
+          <td class="services__table-action">Покупаю по</td>
+          <td class="services__table-action">Продаю по</td>
+        </tr>
       <tr>
-        <td>USD</td>
-        <td>{{ Radio.radio({ 'class': 'js-course-radio', 'currency' : {'state': 'rise', 'label': '62.34'}, 'value': '62.34', 'name': 'course-fix', 'id': 'course-buy_usd', 'attr': { 'currency': 'USD'}, 'state': 'checked' }) }}</td>
-        <td>{{ Radio.radio({ 'class': 'js-course-radio', 'currency' : {'state': 'fall', 'label': '62.79'}, 'value': '62.79', 'name': 'course-fix', 'id': 'course-cell_usd', 'attr': {'currency': 'USD'} }) }}</td>
-      </tr>
-      <tr>
-        <td>EUR</td>
-        <td>{{ Radio.radio({ 'class': 'js-course-radio', 'currency': {'state': 'fall', 'label': '59.4'}, 'value': '59.4', 'name': 'course-fix', 'id': 'course-buy_eur', 'attr': {'currency': 'EUR'} }) }}</td>
-        <td>{{ Radio.radio({ 'class': 'js-course-radio', 'currency': {'state': 'fall', 'label': '57.12'}, 'value': '57.12', 'name': 'course-fix', 'id': 'course-cell_eur', 'attr': {'currency': 'EUR'} }) }}</td>
+        <td class="services__table-currency hidden-mobile">EUR</td>
+        <td class="services__table-value">{{ Radio.radio({ 'class': 'js-course-radio', 'currency': {'state': 'fall', 'label': '59.4'}, 'value': '59.4', 'name': 'course-fix', 'id': 'course-buy_eur', 'attr': {'currency': 'EUR'} }) }}</td>
+        <td class="services__table-value">{{ Radio.radio({ 'class': 'js-course-radio', 'currency': {'state': 'fall', 'label': '57.12'}, 'value': '57.12', 'name': 'course-fix', 'id': 'course-cell_eur', 'attr': {'currency': 'EUR'} }) }}</td>
       </tr>
       </tbody>
     </table>
 
-    {{ Input.input({ 'label': 'Сумма', 'title': 'USD', 'name': 'fix-course', 'class': 'js-course-field mb-16', 'field': 'js-numeric-input js-course-input', 'attr': {'max': '4000'}, 'state': 'maxlength=5 required' }) }}
+    {{ Input.input({ 'label': 'Сумма', 'title': 'USD', 'class': 'services__input js-course-field', 'field': {'class': 'js-numeric-input js-course-input', 'name': 'fix-course', 'maxlength': '5', 'required': 'required'}, 'attr': {'max': '4000'} }) }}
     <label><input class="js-course-result-field" name="course-result-field" hidden value="0"></label>
 
     <div class="course__result">

@@ -1,11 +1,20 @@
 .card .card__opsys
+  display: inline-flex
+  flex-direction: column
+
   position: absolute
   top: 37px
-  right: 51px
-
-  width: 24px
+  right: 35px
 
   color: $color_default
+
+  @media (min-width: 992px) and (max-width: 1279px)
+    top: 28px
+    right: 24px
+
+  @media (max-width: 991px)
+    top: 14px
+    right: 17px
 
   .button .button__icon
     width: 24px

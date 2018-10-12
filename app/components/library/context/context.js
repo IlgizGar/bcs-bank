@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import 'jscrollpane';
+import Cookie from 'js-cookie';
 
 require('jquery-mousewheel')($);
 
@@ -13,6 +14,7 @@ module.exports = (elem) => {
       this.title = this.context.find('.js-context-title');
       this.scrollBarInited = false;
       this.id = '';
+      this.list = null;
 
       this.init();
       this.events();
@@ -22,12 +24,29 @@ module.exports = (elem) => {
       this.id = this.context.data('id');
       this.list = $(`.js-context-list#${this.id}`);
 
+      console.log('ID', this.id);
+
+
       if (!this.list.length) {
         this.list = $(`<div id="${this.id}" class="dropdown__list state_invisible scroll-pane js-context-list mt-16"><ul></ul></div>`);
         $('.js-page').append(this.list);
-        this.list.css('left', this.context.offset().left);
         this.options.each((i, el) => {
-          const item = `<li class="js-context-item" data-val="${$(el).val()}" data-prefix="${$(el).data('prefix')}" data-title="${$(el).data('title')}">${$(el).html()}</li>`;
+          let itemLeft = `<li class="dropdown__list-item js-context-item" data-val="${$(el).val()}"`;
+          let item = '';
+
+          if ($(el).data('href')) {
+            item = `><a href="${$(el).data('href')}">${$(el).html()}</a></li>`;
+          } else {
+            item = `>${$(el).html()}</li>`;
+          }
+
+          if ($(el).data('title')) {
+            itemLeft += ` data-title="${$(el).data('title')}"`;
+          }
+          if ($(el).data('prefix')) {
+            itemLeft += ` data-prefix="${$(el).data('prefix')}"`;
+          }
+          item = itemLeft + item;
           this.list.find('ul').append($(item));
           if ($(el).attr('selected')) {
             this.handleNamedList($(item));
@@ -39,7 +58,19 @@ module.exports = (elem) => {
       }
     }
 
+    getListData() {
+      const listData = [];
+      this.list.find('.js-context-item').each((i, el) => {
+        listData.push({
+          id: $(el).attr('data-value') ? $(el).attr('data-value') : null,
+          title: $(el).text().trim(),
+        });
+      });
+      return listData;
+    }
+
     events() {
+
       this.context.on('click', (e) => {
         e.preventDefault();
         if (this.context.hasClass('state_explored')) {
@@ -53,15 +84,29 @@ module.exports = (elem) => {
         const $item = $(e.target).closest('.js-context-item');
 
         if ($item.length) {
-          this.handleNamedList($item);
+          if ($item.hasClass('js-checkbox')) {
+            console.log('SELECT_INPUT');
+          } else {
+            Cookie.set(this.id, $item.attr('data-value'));
+            if ($item.length) {
+              this.handleNamedList($item);
+              if(this.id === 'credit-types') {
+                Context.handleCreditCardTypes(this.context);
+              }
+            }
+          }
         }
       });
 
       $(window).on('click', (e) => {
-        if (!$(e.target).closest('.js-context').length) {
-          Object.values(global.contexts).forEach((context) => {
-            context.hideList();
-          });
+        if (!$(e.target).closest('.js-checkbox').length) {
+          if (!$(e.target).closest('.js-context').length && e.target.getAttribute('class') !== null) {
+            if (e.target.getAttribute('class').indexOf('datepicker') === -1) {
+              Object.values(global.contexts).forEach((context) => {
+                context.hideList();
+              });
+            }
+          }
         }
       });
 
@@ -87,56 +132,73 @@ module.exports = (elem) => {
         this.scrollBarInited = true;
       }
       this.list.removeClass('state_invisible');
-      this.list.css('top', `${this.context.offset().top + (this.context.outerHeight() - 5)}px`);
-      if (this.id === 'select-city') {
-        const totalHeight = this.list.offset().top + this.list.outerHeight();
+      this.setPosition();
+    }
+
+    setPosition(el) {
+      const list = el || this.list;
+
+      list.css('top', `${this.context.offset().top + (this.context.outerHeight() - 5)}px`);
+
+      if (this.list.data('type') === 'modal-view' && !el) {
+        const totalHeight = list.offset().top + list.outerHeight();
         if (totalHeight > window.outerHeight) {
-          $('.js-page').css({
-            overflow: 'hidden',
-            maxHeight: totalHeight,
-          });
+          $('.js-page').css('max-height', totalHeight).addClass('state_no-overflow');
         } else {
           $('body').addClass('state_unscroll');
         }
+      } else {
+        let listLeft = this.context.offset().left;
+        const attr = this.context.attr('data-list-on-right');
+        if (typeof attr !== typeof undefined && attr !== false) {
+          listLeft -= list.outerWidth() - this.context.outerWidth();
+        }
+        list.css('left', listLeft);
       }
     }
 
     hideList() {
-      this.context.removeClass('state_explored');
-      this.list.addClass('state_invisible');
-      $('body').removeClass('state_unscroll');
-      $('.js-page').css({
-        overflow: 'auto',
-        maxHeight: 'none',
-      });
+      if (this.context.hasClass('state_explored')) {
+        this.context.removeClass('state_explored');
+        this.list.addClass('state_invisible');
+        if (this.list.data('type') === 'modal-view') {
+          $('body').removeClass('state_unscroll');
+          $('.js-page').css('max-height', 'none').removeClass('state_no-overflow');
+        }
+      }
     }
 
     handleNamedList($el) {
-      const val = $el.data('value');
-      const title = $el.data('title');
+      if ($el.length) {
+        if (!$el.find('a').length) {
+          const val = $el.data('value');
+          const name = $el.text().trim();
 
-      this.context.addClass('state_filled');
+          this.context.addClass('state_filled');
 
-      if ($el.data('prefix')) {
-        if (this.context.find('.js-context-prefix').length) {
-          this.context.find('.js-context-prefix').html($el.data('prefix'));
-        } else {
-          this.context.prepend(`<span class="context__prefix js-context-prefix">${$el.data('prefix')}</span>`);
+          if ($el.data('prefix')) {
+            if (this.context.find('.js-context-prefix').length) {
+              this.context.find('.js-context-prefix').html($el.data('prefix'));
+            } else {
+              this.context.prepend(`<span class="context__prefix js-context-prefix">${$el.data('prefix')}</span>`);
+            }
+          } else {
+            this.context.find('.js-context-prefix').remove();
+          }
+
+          if ($el.data('title')) {
+            this.title.html($el.data('title'));
+          } else {
+            this.title.html($el.text().trim());
+          }
+          this.input.val(val);
+          this.input.attr('data-text', name);
+          this.input.trigger('change');
+
+          this.options.attr('selected', false);
+          this.select.find(`[value="${$el.data('val')}"]`).attr('selected', 'selected');
         }
-      } else {
-        this.context.find('.js-context-prefix').remove();
       }
-
-      if (title.length) {
-        this.title.html(title);
-      } else {
-        this.title.html($el.html());
-      }
-      this.input.val(val);
-      this.input.trigger('change');
-
-      this.options.attr('selected', false);
-      this.select.find(`[value="${$el.data('val')}"]`).attr('selected', 'selected');
     }
 
     static handleVacancies(id) {
@@ -160,6 +222,18 @@ module.exports = (elem) => {
             '                  </div>');
         }
       }
+    }
+
+    static handleCreditCardTypes($el) {
+      const $options = $el.find('select option');
+
+      $options.each((i, item) => {
+        if($(item).is(':selected')) {
+          $('#' + $(item).val()).removeClass('state_invisible');
+        } else {
+          $('#' + $(item).val()).addClass('state_invisible');
+        }
+      })
     }
   }
 

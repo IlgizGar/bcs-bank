@@ -16,6 +16,10 @@
     opensansBold()
     font-size: inherit
     white-space: nowrap
+    @media(max-width 767px)
+      white-space normal
+      text-align left
+
 
   &:hover
     color: $color_hover
@@ -23,12 +27,13 @@
   .icon
     position: absolute
 
-    top: 55%
-    right: -8px
+    //top: 55%
+    top: 50%
+    right: -14px
 
     width: 24px
     height: 24px
 
     transform: translateY(-50%)
     transform-origin: 50% 25%
-    transition: all $interval
+    //transition: all $interval

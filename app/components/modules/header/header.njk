@@ -1,23 +1,38 @@
 {% import "../../../components/library/button/button.njk" as Button %}
 {% import "../../../components/library/contact/contact.njk" as Contact %}
 {% import "../../../components/library/heading/heading.njk" as Heading %}
+{% import "../../../components/library/socials/socials.njk" as Socials %}
+{% import "../../../components/modules/menubar/menubar.njk" as Menubar %}
 
 
 <header class="header js-header">
-  <div class="navbar">
+  <div class="navbar js-navbar {% if page !== 'offices' %}state_init{% endif %}">
     <div class="page__container">
       <div class="navbar__wrapper">
         {% include "../../../components/modules/nav/nav.njk" %}
-        {{ Button.button({ 'title': 'Контакты', 'name': 'dropdown', 'mods': {'type': 'icon-right', 'theme': 'gray', 'view': 'text'}, 'class': 'navbar__button navbar__button_contacts navbar__button_type-dropdown js-btn-header-contacts button_type-tab' }) }}
-        {{ Button.button({ 'title': 'Офисы и банкоматы', 'href': '#', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'navbar__button' }) }}
-        {{ Button.button({ 'name': 'search', 'mods' : {'type': 'icon', 'theme': 'default', 'view': 'text'} }) }}
+        {# Mobile #}
+        {% if page === 'offices' %}
+            {{ Button.button({ 'title': 'На карте', 'href': 'http://juravlev.rusrobots.ru/bks/offices.html', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'navbar__button js-btn-header-offices hidden-desktop state_active', 'attr': {'title': 'На карте'} }) }}
+        {% else %}
+            {{ Button.button({ 'title': 'На карте', 'href': 'http://juravlev.rusrobots.ru/bks/offices.html', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'navbar__button js-btn-header-offices hidden-desktop', 'attr': {'title': 'На карте'} }) }}
+        {% endif %}
+        {{ Button.button({ 'title': 'Контакты', 'mods': {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'navbar__button navbar__button_contacts navbar__button_type-dropdown js-btn-header-contacts button_type-tab hidden-desktop' }) }}
+
+        {# Desktop #}
+        {{ Button.button({ 'title': 'Контакты', 'name': 'dropdown', 'mods': {'type': 'icon-right', 'theme': 'gray', 'view': 'text'}, 'class': 'navbar__button navbar__button_contacts navbar__button_type-dropdown js-btn-header-contacts button_type-tab hidden-mobile' }) }}
+        {% if page === 'offices' %}
+          {{ Button.button({ 'title': 'Офисы и банкоматы', 'href': 'http://juravlev.rusrobots.ru/bks/offices.html', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'navbar__button js-btn-header-offices hidden-mobile state_active', 'attr': {'title': 'На карте'} }) }}
+        {% else %}
+            {{ Button.button({ 'title': 'Офисы и банкоматы', 'href': 'http://juravlev.rusrobots.ru/bks/offices.html', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'navbar__button js-btn-header-offices hidden-mobile', 'attr': {'title': 'На карте'} }) }}
+        {% endif %}
+        {% include "../index-search/index-search.njk" %}
       </div>
     </div>
   </div>
 
   <div class="header__contacts js-header-contacts">
     <div class="page__container">
-      {{ Heading.heading({ 'title': 'Свяжитесь с нами', 'type': 'default', 'margin': 'normal' }) }}
+      {{ Heading.heading({ 'title': 'Свяжитесь с нами', 'mods': {'type': 'default', 'margin': 'normal'}, 'class': 'header__contacts-heading' }) }}
       <div class="header__contacts-wrap">
         {{ Contact.contact({ 'title': 'Частным клиентам', 'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500-70-65', 'href': 'tel:+78005007065' },
           { 'name': 'Если вы звоните из-за рубежа', 'value': '+7 (495) 967-11-11', 'href': 'tel:+74959671111' }], 'class': 'header__contact' }) }}
@@ -27,11 +42,19 @@
           { 'name': 'Если вы звоните из-за рубежа', 'value': '+7 (495) 777-57-03', 'href': 'tel:+74957775703' }], 'class': 'header__contact' }) }}
         <div class="header__contacts-links">
           {{ Button.button({ 'title': 'Задать вопрос', 'href': '#question-modal-form', 'mods' : {'theme': 'default', 'size': 'wide'}, 'class': 'js-open-modal' }) }}
-          <p>Вам ответят в ближайшее время</p>
+          {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'class': 'hidden-desktop' }) }}
+          <p class="hidden-mobile">Вам ответят в ближайшее время</p>
         </div>
       </div>
     </div>
   </div>
 
+  <div class="mobile-menu js-mobile-menu"></div>
+
+  {% if header === 'blue' %}
+    {{ Menubar.menubar({ "class": "section__menubar js-menubar", 'vars': {'header': 'blue'} }) }}
+  {% else %}
+    {{ Menubar.menubar({ "class": "section__menubar js-menubar" }) }}
+  {% endif %}
 </header>
 

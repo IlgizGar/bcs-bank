@@ -1,0 +1,31 @@
+{% import "../../../../components/library/button/button.njk" as Button %}
+{% import "../../../../components/library/checkbox/checkbox.njk" as Checkbox %}
+
+<div id="deposit-filter" class="deposit-filter context__list js-context-list state_invisible" data-type="modal-view">
+  <div class="deposit-filter__wrapper">
+    <a href="#" class="select-filter__close-icon"></a>
+    <div class="page__container">
+      {{ Heading.heading({ 'tag': 'h3', 'title': 'Подобрать вклад', 'mods': { 'type': 'normal', 'margin': 'short', 'theme': 'default' }, 'class': 'deposit-filter__title hidden-desktop' }) }}
+      <div class="deposit-filter__content">
+        <div class="filter__select deposit-filter__select hidden-desktop">
+          {{ Button.button({ 'name': 'ruble', 'mods': { 'type': 'icon', 'view': 'outlined', 'theme': 'gray', 'size': 'low', 'color': 'dark' }, 'class': 'mr-16 state_active' }) }}
+          {{ Button.button({ 'name': 'ruble', 'mods': { 'type': 'icon', 'view': 'outlined', 'theme': 'gray', 'size': 'low', 'color': 'dark' }, 'class': 'mr-16' }) }}
+          {{ Button.button({ 'name': 'ruble', 'mods': { 'type': 'icon', 'view': 'outlined', 'theme': 'gray', 'size': 'low', 'color': 'dark' }, 'class': 'mr-16 state_active' }) }}
+          {{ Button.button({ 'name': 'ruble', 'mods': { 'type': 'icon', 'view': 'outlined', 'theme': 'gray', 'size': 'low', 'color': 'dark' } }) }}
+          {{ Input.input({ 'label': 'Сумма вклада', 'class': 'filter__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'deposit_amount', 'class': 'js-numeric-input' }, 'title': '#rubleмес.', 'slider': { 'min': 500, 'max': 100000, 'from': 8600, 'step': 1000 } }) }}
+          {{ Input.input({ 'label': 'Срок вклада', 'class': 'filter__field-slider', 'field': { 'type': 'text', 'maxlength': '5', 'name': 'deposit_period', 'class': 'js-numeric-input' }, 'title': 'дней', 'slider': { 'min': 500, 'max': 1095, 'from': 620, 'step': 1 } }) }}
+        </div>
+        <div class="deposit-filter__list">
+          {{ Button.button({ 'title': 'Пополнять', 'mods': { 'view': 'outlined', 'theme': 'gray', 'color': 'dark' }, 'class': 'deposit-filter__item mr-16' }) }}
+          {{ Button.button({ 'title': 'Снимать', 'mods': { 'view': 'outlined', 'theme': 'gray', 'color': 'dark'}, 'class': 'deposit-filter__item mr-16' }) }}
+          {{ Button.button({ 'title': 'Выплата % ежемесячно', 'mods': { 'view': 'outlined', 'theme': 'gray', 'color': 'dark' }, 'class': 'deposit-filter__item' }) }}
+        </div>
+        <div class="deposit-filter__controls">
+          {{ Button.button({ 'title': 'Применить', 'mods': { 'theme': 'default' } }) }}
+          {{ Button.button({ 'title': 'Сбросить все', 'mods': { 'view': 'text', 'theme': 'default' } }) }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page__cover page__cover_theme-fixed js-cover"></div>
+</div>

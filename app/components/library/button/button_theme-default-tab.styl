@@ -1,11 +1,18 @@
 .button.button_theme-default-tab
   .button__wrap
     color: $color_inactive
+  //@media (max-width 1279px)
+  //  color: $madison
+
   &:after
     background-color: $color_selector
+
   &:hover
     .button__wrap
-      color: $color_hover
+      color: $color_inactive
+      @media (min-width: 1200px)
+        color: $color_hover
+
   &.state_active
     .button__wrap
       color: $color_text

@@ -1,3 +1,17 @@
 .company .company__card
   min-height: 468px
   background-color $white
+
+  @media (min-width: 992px) and (max-width: 1279px)
+    max-width: 295px
+    min-height: 400px
+
+  @media (min-width: 768px) and (max-width: 991px)
+    max-width: 212px
+    min-height: 342px
+
+  @media (max-width: 767px)
+    max-width: 288px
+    min-height: 342px
+
+    text-align: left

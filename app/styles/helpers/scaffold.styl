@@ -4,12 +4,14 @@
 body
   position: relative
 
-a, button, input
+a, button, input, fieldset
+  margin: 0
   padding: 0
   border: none
   background: none
   outline: none
   text-decoration: none
+  -webkit-tap-highlight-color: transparent
 
 h1, h2, h3, h4, h5, p, ul
   margin: 0
@@ -28,11 +30,16 @@ h1, h2, h3, h4, h5, p, ul
 .state_hidden
   display: none !important
 
+.state_no-overflow
+  overflow: hidden !important
+
 .state_invisible
   opacity: 0 !important
   visibility: hidden !important
   height: 0 !important
   overflow: hidden !important;
+  margin: 0 !important
+  border: none !important
 
 .state_inactive
   opacity: 0 !important

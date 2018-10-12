@@ -1,0 +1,42 @@
+{% import "../../../../components/library/button/button.njk" as Button %}
+{% import "../../../../components/library/checkbox/checkbox.njk" as Checkbox %}
+
+<div id="select-filter" class="select-filter context__list js-context-list state_invisible" data-type="modal-view">
+  <div class="select-filter__wrapper">
+    <a href="#" class="select-filter__close-icon"></a>
+    <div class="page__container">
+      {{ Heading.heading({ 'tag': 'h3', 'title': 'Подобрать карту', 'mods': { 'type': 'normal', 'margin': 'short', 'theme': 'default' }, 'class': 'select-filter__title hidden-desktop' }) }}
+      <div class="select-filter__subtitle hidden-desktop">Бонусы за:</div>
+      <div class="select-filter__content">
+        <ul class="select-filter__list">
+          <li>
+            {{ Checkbox.checkbox({ 'label': 'АЗС', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'select-filter__item js-context-item' }) }}
+          </li>
+          <li>
+            {{ Checkbox.checkbox({ 'label': 'Кафе и рестораны', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'select-filter__item js-context-item' }) }}
+          </li>
+          <li>
+            {{ Checkbox.checkbox({ 'label': 'Театр и кино', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'select-filter__item js-context-item' }) }}
+          </li>
+          <li>
+            {{ Checkbox.checkbox({ 'label': 'АЗС', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'select-filter__item js-context-item' }) }}
+          </li>
+          <li>
+            {{ Checkbox.checkbox({ 'label': 'Кафе и рестораны', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'select-filter__item js-context-item' }) }}
+          </li>
+          <li>
+            {{ Checkbox.checkbox({ 'label': 'Театр и кино', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'select-filter__item js-context-item' }) }}
+          </li>
+          <li>
+            {{ Checkbox.checkbox({ 'label': 'Театр и кино', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'select-filter__item js-context-item' }) }}
+          </li>
+        </ul>
+        <div class="select-filter__controls">
+          {{ Button.button({ 'title': 'Применить', 'mods': { 'theme': 'default' } }) }}
+          {{ Button.button({ 'title': 'Сбросить все', 'mods': { 'view': 'text', 'theme': 'default' } }) }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page__cover page__cover_theme-fixed js-cover"></div>
+</div>

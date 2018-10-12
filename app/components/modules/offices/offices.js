@@ -3,12 +3,15 @@
 
 import $ from 'jquery';
 import 'jscrollpane';
+import Cookie from 'js-cookie';
 import Helpers from '../../../scripts/helpers';
+import AskQuestion from '../../library/question-popup/question-popup';
 
 export default class Offices {
   constructor(offices) {
     this.appBlock = offices;
-    this.pane = $('.offices__tabs.scroll-pane');
+    this.pane = $('.offices__tabs');
+    this.content = this.pane.parent();
     this.iconNormal = {
       iconLayout: 'default#image',
       iconImageHref: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4gICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz4gICAgICAgIDxnPiAgICAgICAgICAgIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEyIiBmaWxsPSIjRkZGIi8+ICAgICAgICAgICAgPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiIGZpbGw9IiM0NTczRDkiLz4gICAgICAgICAgICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSI0IiBmaWxsPSIjRkZGIi8+ICAgICAgICA8L2c+ICAgIDwvZz48L3N2Zz4=',
@@ -21,38 +24,197 @@ export default class Offices {
       iconImageSize: [56, 56],
       iconImageOffset: [-28, -44],
     };
+    this.switcher = $('.js-offices-switcher');
+    this.detailBlock = $('.js-offices-detail');
+    this.detailBlockClose = $('.js-offices-detail-close');
+    this.cityInput = $('.context input[name="current-city_input"]');
+    this.city = null;
     this.currentTabId = null;
     this.map = null;
     this.markCollection = null;
-    this.city = 'Москва';
     this.points = [];
     this.init();
   }
 
   init() {
+    this.onCityChange();
     this.getCurrentTab();
-    this.getPoints();
     Helpers.getGeolocation((location) => {
       ymaps.ready(() => {
+        const userCity = Cookie.get('select-city') !== undefined ? Cookie.get('select-city') : this.checkUserCity(location.GeocoderMetaData.InternalToponymInfo.geoid);
         this.initMap();
+        this.questionHandler();
         this.initObjectCollection();
-        this.addPoints();
+        if (userCity) {
+          global.contexts['select-city'].handleNamedList($(`.js-context-item[data-value="${userCity}"]`));
+        } else {
+          this.changeCity();
+        }
       });
     });
     this.setScrollPane();
+
+    // Блок обработки карты и списка на мобильной версии
+    this.handleSwitch();
+
+    if (window.innerWidth > 991) {
+      this.appBlock.removeClass('state_listed');
+      Offices.reInitScroll(this.pane, 250);
+    } else {
+      this.pane.data('jsp').destroy();
+    }
+
+    $(window).on('resize', () => {
+      this.handleMapSize();
+      if (window.innerWidth > 991) {
+        if (this.appBlock.hasClass('state_listed')) {
+          this.appBlock.removeClass('state_listed');
+        }
+        if (this.appBlock.hasClass('state_explored')) {
+          this.removeExploredDetail();
+        }
+      } else {
+        if (this.switcher.data('state') === 'list') {
+          if (!this.appBlock.hasClass('state_listed')) {
+            this.appBlock.addClass('state_listed');
+          }
+        }
+      }
+    });
+  }
+
+  handleMapSize() {
+    if (!this.appBlock.hasClass('state_explored')) {
+      if (window.innerWidth > 991) {
+        Offices.reInitScroll(this.pane);
+        if (this.map.container.getSize()[1] !== 678) {
+          $('#map-container').css('height', '678px');
+          this.map.container.fitToViewport();
+        }
+      } else if (window.innerWidth < 992 && window.innerWidth > 767) {
+        if (this.map.container.getSize()[1] !== 440) {
+          $('#map-container').css('height', '440px');
+          this.map.container.fitToViewport();
+        }
+      } else {
+        if (this.map.container.getSize()[1] !== 330) {
+          $('#map-container').css('height', '330px');
+          this.map.container.fitToViewport();
+        }
+      }
+    } else {
+      if (window.innerWidth < 992 && window.innerWidth > 575) {
+        $('#map-container').css('height', '300px');
+        this.map.container.fitToViewport();
+      } else {
+        $('#map-container').css('height', '200px');
+        this.map.container.fitToViewport();
+      }
+    }
+  }
+
+  handleSwitch() {
+    this.switcher.on('click', () => {
+      if (this.appBlock.hasClass('state_listed')) {
+        this.appBlock.removeClass('state_listed');
+        this.switcher.data('state', 'map');
+        this.switcher.find('.js-button-title').html('Показать списком');
+      } else {
+        this.appBlock.addClass('state_listed');
+        this.switcher.data('state', 'list');
+        this.switcher.find('.js-button-title').html('Показать на карте');
+      }
+    });
+
+    this.detailBlockClose.on('click', () => {
+      this.removeExploredDetail();
+    });
+  }
+
+  removeExploredDetail() {
+    this.appBlock.removeClass('state_explored');
+    if (this.switcher.data('state') === 'list') {
+      this.appBlock.addClass('state_listed');
+    }
+    const currentCollapse = global.collapses[this.currentTabId];
+    currentCollapse.closeContent();
+    this.togglePointState(this.point, this.target);
+    this.point = null;
+    this.target = null;
+    this.handleMapSize();
+    this.switcher.removeClass('state_hidden');
+    this.detailBlock.find('.js-detail-content').html('');
+    this.detailBlock.addClass('state_hidden');
+    $('.js-footer').removeClass('state_hidden');
+    $('html, body').scrollTop(0).removeClass('state_unscroll');
+
+    this.goToPoints();
+  }
+
+  questionHandler() {
+    if (Cookie.get('select-city') !== undefined) return;
+
+    const questionPopup = new AskQuestion('select-city', 'Мы правильно определили Ваше местоположение?');
+    global.contexts['select-city'].setPosition(questionPopup.popup);
+
+    questionPopup.popup.on('questionresolve', (e, detail) => {
+      if (!detail.response) {
+        setTimeout(() => {
+          global.contexts['select-city'].showList();
+          Cookie.remove('select-city');
+        }, 10);
+      } else {
+        Cookie.set('select-city', this.city);
+      }
+    });
+    questionPopup.generatePopup();
+  }
+
+  checkUserCity(id) {
+    let cityId = null;
+    global.contexts['select-city'].getListData().forEach((el) => {
+      if (el.id.toString() === id.toString()) {
+        cityId = id;
+        return id;
+      }
+    });
+    return cityId;
+  }
+
+  onCityChange() {
+    this.cityInput.on('change', (e) => {
+      if (e.target.value === 'all') {
+        this.city = null;
+        this.changeCity();
+        return;
+      }
+
+      const myGeocoder = ymaps.geocode(e.target.getAttribute('data-text'), {
+        kind: 'locality',
+      });
+      myGeocoder.then(
+        (res) => {
+          this.city = res.geoObjects.get(0).properties.get('metaDataProperty').GeocoderMetaData.InternalToponymInfo.geoid;
+          this.changeCity();
+          Offices.reInitScroll(this.pane);
+        },
+        (err) => {
+          console.log('Обшибка', err);
+        },
+      );
+    });
   }
 
   initMap() {
-    Helpers.getGeolocation();
-    // Создание карты.
     this.map = new ymaps.Map('map-container', {
-      center: [55.76, 37.57],
-      zoom: 13,
+      center: [61.698653, 99.505405],
+      zoom: 5,
       controls: [],
     });
     this.map.behaviors.disable('scrollZoom');
     this.map.options.set('suppressMapOpenBlock', true);
     this.setZoomControls();
+    this.handleMapSize();
   }
 
   initObjectCollection() {
@@ -115,18 +277,18 @@ export default class Offices {
 
       zoomIn() {
         const map = this.getData().control.getMap();
-        map.setZoom(map.getZoom() + 1, { checkZoomRange: true });
+        map.setZoom(map.getZoom() + 1, {checkZoomRange: true});
       },
 
       zoomOut() {
         const map = this.getData().control.getMap();
-        map.setZoom(map.getZoom() - 1, { checkZoomRange: true });
+        map.setZoom(map.getZoom() - 1, {checkZoomRange: true});
       },
     });
     const zoomControl = new ymaps.control.ZoomControl({
       options: {
         layout: ZoomLayout,
-        position: { bottom: 80 },
+        position: {bottom: 80},
       },
     });
     this.map.controls.add(zoomControl);
@@ -136,7 +298,7 @@ export default class Offices {
   }
 
   getPoints() {
-    const citySelector = this.city ? `[data-city="${this.city}"]` : '';
+    const citySelector = this.city ? `[data-city="${this.city}"]` : '[data-city]';
     this.points = [];
     this.appBlock.find(`.offices__collapse${citySelector}[data-id="${this.currentTabId}"]`).children('.collapse__item').each((i, el) => {
       this.points.push({
@@ -163,13 +325,57 @@ export default class Offices {
     this.map.geoObjects.add(this.markCollection);
   }
 
+  updateList() {
+    this.appBlock.find('.offices__collapse').each((i, el) => {
+      if (this.city === null || el.getAttribute('data-city') === this.city.toString()) {
+        $(el).show();
+      } else {
+        $(el).hide();
+      }
+    });
+  }
+
+  changeCity() {
+    this.updateList();
+    this.getPoints();
+    this.addPoints();
+    this.goToPoints();
+  }
+
   onPointEvent(e, coordinates) {
     const currentCollapse = global.collapses[this.currentTabId];
     const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${coordinates.join()}]"] .collapse__control`);
-    this.scrollToCollapse(target);
-    currentCollapse.openContent(target);
-    Offices.reInitScroll(this.pane, 225);
-    this.togglePointState(e.get('target'), target);
+
+    if (!this.appBlock.hasClass('state_explored')) {
+      this.scrollToCollapse(target);
+      currentCollapse.openContent(target);
+      Offices.reInitScroll(this.pane, 225);
+      this.togglePointState(e.get('target'), target);
+
+      if (window.innerWidth < 992) {
+        if (!this.appBlock.hasClass('state_explored')) {
+          this.appBlock.addClass('state_explored');
+          this.initPointMobileDetail(target);
+
+          this.point = e.get('target');
+          this.target = target;
+        }
+      }
+    }
+  }
+
+  initPointMobileDetail(target) {
+    this.handleMapSize();
+    this.goToPoints();
+
+    $('html, body').addClass('state_unscroll').animate({scrollTop: this.appBlock.offset().top}, () => {
+      const $collapse = $.extend(true, {}, target.parent().clone());
+      this.switcher.addClass('state_hidden');
+      if (this.detailBlock.hasClass('state_hidden')) {
+        this.detailBlock.removeClass('state_hidden').find('.js-detail-content').append($collapse);
+      }
+      $('.js-footer').addClass('state_hidden');
+    });
   }
 
   togglePointState(point, collapse) {
@@ -203,10 +409,23 @@ export default class Offices {
 
     // Пересчет высоты при раскрытии элементов
     $('.collapse__control').on('click', (e) => {
-      const point = this.getPointById(Offices.generatePointId($(e.target).closest('.collapse__item').data('coords')));
-      this.scrollToCollapse($(e.target));
-      Offices.reInitScroll(this.pane, 225);
-      this.togglePointState(point, $(e.target).closest('.collapse__control'));
+      if (!this.appBlock.hasClass('state_explored')) {
+        const point = this.getPointById(Offices.generatePointId($(e.target).closest('.collapse__item').data('coords')));
+        // const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${$(e.target).closest('.collapse__item').data('coords')}]"] .collapse__control`);
+        this.scrollToCollapse($(e.target));
+        Offices.reInitScroll(this.pane, 225);
+        this.togglePointState(point, $(e.target).closest('.collapse__control'));
+
+        if (window.innerWidth < 992) {
+          if (!this.appBlock.hasClass('state_explored')) {
+            this.appBlock.removeClass('state_listed').addClass('state_explored');
+            this.initPointMobileDetail($(e.target).closest('.collapse__control'));
+
+            this.point = point;
+            this.target = $(e.target).closest('.collapse__control');
+          }
+        }
+      }
     });
 
     // Пересчет высоты при смене таба
@@ -215,25 +434,33 @@ export default class Offices {
       this.getCurrentTab();
       this.getPoints();
       this.addPoints();
-      this.map.setBounds(this.markCollection.getBounds(), {
-        checkZoomRange: true,
-        zoom: 10,
-      });
+      this.goToPoints();
     });
   }
 
   static reInitScroll(pane, time = 0) {
-    setTimeout(() => {
-      pane.data('jsp').reinitialise();
-    }, time);
+    if (window.innerWidth > 991) {
+      setTimeout(() => {
+        pane.data('jsp').reinitialise();
+      }, time);
+    }
   }
 
   scrollToCollapse(el) {
-    this.pane.data('jsp').scrollToY(el.closest('.collapse__item')[0].offsetTop, 75);
+    if (window.innerWidth > 991) {
+      this.pane.data('jsp').scrollToY(el.closest('.collapse__item')[0].offsetTop, 75);
+    }
   }
 
   goToPoint(point) {
     this.map.setBounds(point.geometry.getBounds(), {
+      checkZoomRange: true,
+      zoom: 10,
+    });
+  }
+
+  goToPoints() {
+    this.map.setBounds(this.markCollection.getBounds(), {
       checkZoomRange: true,
       zoom: 10,
     });

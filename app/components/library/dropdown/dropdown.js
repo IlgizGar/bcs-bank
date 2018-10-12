@@ -54,6 +54,7 @@ module.exports = (elem) => {
           }
           this.options.attr('selected', false);
           this.select.find(`[value="${$(e.target).data('val')}"]`).attr('selected', 'selected');
+          this.hideList();
 
           if (this.id === 'documents-filter') {
             global.documentsFilter.applyFilter($(e.target).html());
@@ -62,13 +63,7 @@ module.exports = (elem) => {
       });
 
       this.clear.on('click', () => {
-        this.dropdown.removeClass('state_filled');
-        this.hideList();
-        this.input.val('');
-        this.options.attr('selected', false);
-        if (this.input.closest('form').length) {
-          this.input.valid();
-        }
+        this.clearDropdown();
 
         if (this.id === 'documents-filter') {
           global.documentsFilter.applyFilter('');
@@ -108,6 +103,18 @@ module.exports = (elem) => {
     hideList() {
       this.dropdown.removeClass('state_explored');
       this.list.addClass('state_invisible');
+    }
+
+    clearDropdown() {
+      if (this.dropdown.hasClass('state_filled')) {
+        this.dropdown.removeClass('state_filled');
+        this.hideList();
+        this.input.val('');
+        this.options.attr('selected', false);
+        if (this.input.closest('form').length) {
+          this.input.valid();
+        }
+      }
     }
   }
 

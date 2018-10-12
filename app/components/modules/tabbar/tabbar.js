@@ -5,6 +5,8 @@ module.exports = (elem) => {
     constructor(selector) {
       this.tabbar = $(selector);
       this.anchors = this.tabbar.find('.js-anchor');
+      this.scroller = this.tabbar.closest('.js-tab-scroll');
+      this.wrapper = this.scroller.parent();
 
       this.init();
       this.events();
@@ -33,10 +35,30 @@ module.exports = (elem) => {
 
           this.active = $anchor;
           this.active.addClass('state_active');
+          this.setAnchorPosition();
           this.$tab = $(this.active.attr('href'));
           this.$tab.removeClass('state_invisible');
         }
       });
+    }
+
+    setAnchorPosition() {
+      
+      console.log('TABWIDTH', this.tabbar.outerWidth());
+      console.log('WINDOW', window.innerWidth);
+
+      if (window.innerWidth < this.tabbar.outerWidth()) {
+        if (this.anchors.index(this.active) === 0) {
+          this.wrapper.addClass('gradient_right').removeClass('gradient_left');
+        } else if (this.anchors.index(this.active) === this.anchors.length - 1) {
+          this.wrapper.addClass('gradient_left').removeClass('gradient_right');
+        } else {
+          this.wrapper.addClass('gradient_left gradient_right');
+        }
+        this.scroller.animate({ scrollLeft: this.active[0].offsetLeft - ((window.innerWidth / 2) - (this.active.outerWidth() / 2)) }, 300);
+      } else {
+        this.wrapper.removeClass('gradient_left gradient_right');
+      }
     }
   }
 

@@ -38,9 +38,12 @@
         <button class="card__action" {% if type === 'form' %}type="submit"{% endif %}>
           <div class="card__button">
             {% if options.icon %}
-              {{ inlineSvg.inlineSvg({ 'path': options.icon }) }}
+              {{ inlineSvg.inlineSvg({ 'path': [options.icon] }) }}
             {% endif %}
-            <span>{{ options.link }}</span>
+            <span class="{% if options.mobile %}hidden-mobile{% endif %}">{{ options.link }}</span>
+            {% if options.mobile %}
+              <span class="hidden-desktop">{{ options.mobile }}</span>
+            {% endif %}
             {{ Icon.icon({ 'name': 'arrow' }) }}
           </div>
         </button>
@@ -49,7 +52,7 @@
           {% if options.type === 'vacancy' %}
             {{ Button.button({ 'title': 'Откликнуться', 'mods': { 'theme': 'default' }, 'class': 'card__button card__button_type-respond' }) }}
             {{ Button.button({ 'href': options.url, 'title': 'Узнать больше', 'mods': { 'theme': 'default', 'view': 'text' }, 'class': 'card__button card__button_type-more' }) }}
-            {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined'}, 'class': 'card__button' }) }}
+            {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'class': 'card__button' }) }}
           {% endif %}
         </div>
       {% endif %}

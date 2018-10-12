@@ -1,9 +1,17 @@
 .services .services__transfer-heading
-  col()
-  shift-left(1)
-  size(10)
-
   display: flex
   align-items: flex-start
 
   position: relative
+
+  @media (min-width: 992px)
+    col()
+    shift-left(1)
+    size(10)
+
+  @media (max-width: 991px)
+    col()
+    size(12)
+
+  @media (max-width: 767px)
+    flex-direction: column

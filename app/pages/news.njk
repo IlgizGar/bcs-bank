@@ -28,25 +28,20 @@
 
     {% include "../components/modules/header/header.njk" %}
 
-    <main role="main" class="news">
-      <section class="section page__section">
-        <div class="section__header">
-          {{ Menubar.menubar({ 'theme': 'black', 'class': 'section__menubar' }) }}
-        </div>
-      </section>
+    <main role="main" class="news js-news" data-api="http://localhost:3002/news">
 
       <section class="section page__section page__section_theme-last">
         <div class="page__container">
           <div class="section__row">
-
             <div class="section__content section__content_theme-default">
-              {{ Heading.heading({ 'tag': 'h1', 'title': 'Новости за', 'context': {'title': 'июнь 2018', 'name': 'news', 'attr': {'id': 'news-period'} }, 'mods': { 'type': 'default', 'margin': 'short', 'theme': 'default' } }) }}
+              {{ Heading.heading({ 'tag': 'h1', 'title': 'Новости за', 'context': {'title': 'июнь 2018', 'name': 'news', 'attr': {'id': 'news-period', 'list-on-right': ''} }, 'mods': { 'type': 'default', 'margin': 'short', 'theme': 'default' } }) }}
               <div class="js-news-cards">
+                {# Для первой страницы сразу вывести новости #}
                 {% for card in card %}
                   {{ Card.card({ 'href': card.href, 'type': 'default', 'view': 'uppercase', 'hoverType': 'card', 'title': card.title | striptags(true) | escape | nl2br, 'subtitle': card.subtitle, 'link': 'Читать' }) }}
                 {% endfor %}
               </div>
-              {{ Button.button({ 'title': 'Показать еще', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'wide'} }) }}
+              {{ Button.button({ 'title': 'Показать еще', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'wide'}, 'attr': {'see-more': ''} }) }}
             </div>
 
             <div class="section__aside">
@@ -63,5 +58,14 @@
     </main>
 
     {% include "../components/modules/footer/footer.njk" %}
+    <div id="news-period" class="dropdown__list dropdown__list_datepicker state_invisible js-context-list">
+      <div class="js-context-item state_selected">все время</div>
+      <div class="datepicker-news-period"></div>
+      <button class="button button_theme-default button_view-text js-context-item js-context-item-datepicker" data-title="все время" type="button">
+        <span class="button__wrap">
+          <span class="button__title">Новости за все время</span>
+        </span>
+      </button>
+    </div>
   </div>
 {% endblock %}

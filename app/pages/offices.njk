@@ -1,14 +1,20 @@
-{% extends "layout/layout.njk" %} {% import "../components/library/heading/heading.njk" as Heading %} {% import "../components/library/contact/contact.njk" as Contact %} {% import "../components/modules/menubar/menubar.njk" as Menubar %} {% set root = "." %} {% set title = "Офисы и банкоматы" %} {% block body %}
+{% extends "layout/layout.njk" %}
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/library/contact/contact.njk" as Contact %}
+
+{% set root = "." %}
+{% set title = "Офисы и банкоматы" %}
+{% set page = "offices" %}
+
+{% block body %}
   <div class="page js-page"> {% include "../components/modules/header/header.njk" %}
     <main role="main">
       <section class="section page__section">
-        <div class="section__header"> {{ Menubar.menubar({ 'theme': 'black', 'class': 'section__menubar' }) }} </div>
-      </section>
-      <section class="section page__section">
         <div class="page__container">
           <div class="section__row">
-            <div
-              class="section__content"> {{ Heading.heading({ 'tag': 'h1', 'title': 'Офисы и банкоматы', 'mods': { 'type': 'default', 'margin': 'short', 'theme' : 'default' }, 'context': {'title': 'Москве', 'name': 'current-city', 'attr': {'id': 'select-city', 'prefix': 'в'} } }) }} </div>
+            <div class="section__content">
+                {{ Heading.heading({ 'tag': 'h1', 'title': 'Офисы и банкоматы', 'mods': { 'type': 'default', 'margin': 'short', 'margin-top': 'normal', 'theme' : 'default' }, 'context': {'title': 'всех городах', 'name': 'current-city', 'attr': {'id': 'select-city', 'prefix': 'во'} } }) }}
+            </div>
           </div>
         </div> {% include "../components/modules/offices/offices.njk" %} </section>
     </main> {% include "../components/modules/footer/footer.njk" %} </div> {% endblock %}

@@ -16,10 +16,9 @@
   {% endset %}
 
   <{{ tag }} class="heading {{ options.class }} {{ mods | safe }}">
-  <span>{{ options.title }}</span>
+    <span>{{ options.title | striptags(true) | escape | nl2br }}</span>
   {% if options.context %}
 
-    {#{% set context_options = [] %}#}
     {% set class_sep = joiner(', ') %}
     {% set context_options %}
       {% for key, value in options.context -%}

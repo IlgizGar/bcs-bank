@@ -1,0 +1,16 @@
+.calculation
+  .calculation__thumbnail
+
+    display: flex
+    flex-direction: column
+
+    width: 100%
+    padding: 40px
+
+    border-radius: 4px
+    background-color: $color_light
+    box-shadow: 0 0 80px rgba($color_dark, 0.1)
+    @media(max-width 767px)
+      padding: 24px 16px 16px
+    & > .text:first-child
+      color: $color_link

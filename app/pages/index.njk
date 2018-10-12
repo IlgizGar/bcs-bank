@@ -3,6 +3,7 @@
 
 {% set root = "." %}
 {% set title = "Главная" %}
+{% set header = 'blue' %}
 
 {% import "../components/modules/menubar/menubar.njk" as Menubar %}
 {% import "../components/library/heading/heading.njk" as Heading %}
@@ -21,30 +22,21 @@
     <main role="main">
       <section class="section page__section">
         <div class="section__header section__header_theme-blue">
-          {{ Menubar.menubar({ 'theme': 'blue', 'class': 'section__menubar section__menubar_theme-simple' }) }}
+
           <div class="carousel">
             <div class="carousel__progressbar">
               <div class="carousel__progressbar-bar js-carousel-progressbar"></div>
             </div>
-            <div class="index-carousel js-carousel">
+            <div class="index-carousel js-carousel" data-id="index-header">
               <div class="index-carousel__slide">
                 <div class="page__container">
                   <div class="index-carousel__wrap">
                     <div class="index-carousel__content">
-                      {{ Heading.heading({ 'tag': 'h1', 'title': 'Отпуск легче \n с кредитом БКС' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}
-                      <div class="index-carousel__features">
-                        {{ Feature.feature({ 'title': 'До 55 дней', 'text': 'беспроцентный \n период' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
-                        <div class="feature feature_type-normal index-carousel__feature">
-                          <div class="feature__content">
-                            <span class="feature__title">
-                              До 1 млн. {{ Icon.icon({ 'name': 'ruble' }) }}
-                            </span>
-                            <span class="feature__text">
-                              максимальная <br> сумма кредита
-                            </span>
-                          </div>
-                        </div>
-                        {{ Feature.feature({ 'title': 'До 30%', 'text': 'от покупок \n возвращаются на карту' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
+                      {{ Heading.heading({ 'tag': 'h1', 'title': 'Отпуск легче \n с кредитом БКС', 'mods': { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}
+                      <div class="features index-carousel__features">
+                        {{ Feature.feature({ 'title': 'До 55 дней', 'text': 'беспроцентный \n период', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
+                        {{ Feature.feature({ 'title': 'До 1 млн. #ruble', 'text': 'максимальная \n сумма кредита', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
+                        {{ Feature.feature({ 'title': 'До 30%', 'text': 'от покупок \n возвращаются на карту', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
                       </div>
                     </div>
                     <div class="index-carousel__image">
@@ -57,20 +49,11 @@
                 <div class="page__container">
                   <div class="index-carousel__wrap">
                     <div class="index-carousel__content">
-                      {{ Heading.heading({ 'tag': 'h1', 'title': 'Отпуск легче \n с кредитом БКС' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}
-                      <div class="index-carousel__features">
-                        {{ Feature.feature({ 'title': 'До 55 дней', 'text': 'беспроцентный \n период' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
-                        <div class="feature feature_type-normal index-carousel__feature">
-                          <div class="feature__content">
-                            <span class="feature__title">
-                              До 1 млн. {{ Icon.icon({ 'name': 'ruble' }) }}
-                            </span>
-                            <span class="feature__text">
-                              максимальная <br> сумма кредита
-                            </span>
-                          </div>
-                        </div>
-                        {{ Feature.feature({ 'title': 'До 30%', 'text': 'от покупок \n возвращаются на карту' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
+                      {{ Heading.heading({ 'tag': 'h1', 'title': 'Отпуск легче', 'mods': { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}
+                      <div class="features index-carousel__features">
+                        {{ Feature.feature({ 'title': 'До 55 дней', 'text': 'беспроцентный \n период', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
+                        {{ Feature.feature({ 'title': 'До 1 млн. #ruble', 'text': 'максимальная \n сумма кредита', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
+                        {{ Feature.feature({ 'title': 'До 30%', 'text': 'от покупок \n возвращаются на карту', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
                       </div>
                     </div>
                     <div class="index-carousel__image">
@@ -83,20 +66,11 @@
                 <div class="page__container">
                   <div class="index-carousel__wrap">
                     <div class="index-carousel__content">
-                      {{ Heading.heading({ 'tag': 'h1', 'title': 'Отпуск легче \n с кредитом БКС' | striptags(true) | escape | nl2br, 'mods' : { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}
-                      <div class="index-carousel__features">
-                        {{ Feature.feature({ 'title': 'До 55 дней', 'text': 'беспроцентный \n период' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
-                        <div class="feature feature_type-normal index-carousel__feature">
-                          <div class="feature__content">
-                            <span class="feature__title">
-                              До 1 млн. {{ Icon.icon({ 'name': 'ruble' }) }}
-                            </span>
-                            <span class="feature__text">
-                              максимальная <br> сумма кредита
-                            </span>
-                          </div>
-                        </div>
-                        {{ Feature.feature({ 'title': 'До 30%', 'text': 'от покупок \n возвращаются на карту' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
+                      {{ Heading.heading({ 'tag': 'h1', 'title': 'Отпуск легче \n с кредитом БКС', 'mods' : { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}
+                      <div class="features index-carousel__features">
+                        {{ Feature.feature({ 'title': 'До 55 дней', 'text': 'беспроцентный \n период', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
+                        {{ Feature.feature({ 'title': 'До 1 млн. #ruble', 'text': 'максимальная \n сумма кредита', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
+                        {{ Feature.feature({ 'title': 'До 30%', 'text': 'от покупок \n возвращаются на карту', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
                       </div>
                     </div>
                     <div class="index-carousel__image">
@@ -111,9 +85,9 @@
             <div class="section__header-controls">
 
               {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'white' }, 'class': 'section__header-button' }) }}
-              {{ Button.button({ 'href': '#', 'title': 'Узнать больше', 'mods': { 'theme': 'white', 'view': 'text' } }) }}
+              {{ Button.button({ 'href': '#', 'title': 'Узнать больше', 'mods': { 'theme': 'white', 'view': 'text' }, 'class': 'section__header-button_type-more' }) }}
 
-              <div class="carousel-controls js-carousel-controls">
+              <div class="carousel-controls js-index-carousel-controls">
                 <div class="carousel-controls__pagination js-carousel-pagination">
                   <span>01</span><span></span><span></span>
                 </div>
@@ -121,14 +95,17 @@
 
             </div>
           </div>
+
         </div>
       </section>
-      <section class="products section">
+      <section class="index-products section page__section">
         <div class="page__container">
           <div class="section__row">
-            {{ Card.card({ 'href': '#', 'type': 'figure', 'img': 'assets/images/baby-boy.png', 'view': 'uppercase', 'theme': 'black', 'hoverType': 'button', 'title': '12,9%', 'subtitle': 'ставка по кредиту \n без переплат' | striptags(true) | escape | nl2br, 'link': 'Потребительский кредит', 'class': 'section__element products__card' }) }}
-            {{ Card.card({ 'href': '#', 'type': 'figure', 'img': 'assets/images/woman.png', 'view': 'uppercase', 'theme': 'black', 'hoverType': 'button', 'title': '30%', 'subtitle': 'кешбек за покупки \n у партнеров' | striptags(true) | escape | nl2br, 'link': 'Кредитная карта', 'class': 'section__element products__card' }) }}
-            {{ Card.card({ 'href': '#', 'type': 'figure', 'img': 'assets/images/man.png', 'view': 'uppercase', 'theme': 'black', 'hoverType': 'button', 'title': '8,1%', 'subtitle': 'годовых по вкладу \n в рублях' | striptags(true) | escape | nl2br, 'link': 'Вклад', 'class': 'section__element products__card' }) }}
+            <div class="index-products__list">
+              {{ Card.card({ 'href': '#', 'type': 'figure', 'img': 'assets/images/baby-boy.png', 'view': 'uppercase', 'theme': 'black', 'hoverType': 'button', 'title': '12,9%', 'subtitle': 'ставка по кредиту \n без переплат' | striptags(true) | escape | nl2br, 'link': 'Потребительский кредит', 'mobile': 'Кредит', 'class': 'section__element index-products__card' }) }}
+              {{ Card.card({ 'href': '#', 'type': 'figure', 'img': 'assets/images/woman.png', 'view': 'uppercase', 'theme': 'black', 'hoverType': 'button', 'title': '30%', 'subtitle': 'кешбек за покупки \n у партнеров' | striptags(true) | escape | nl2br, 'link': 'Кредитная карта', 'mobile': 'Карта', 'class': 'section__element index-products__card' }) }}
+              {{ Card.card({ 'href': '#', 'type': 'figure', 'img': 'assets/images/man.png', 'view': 'uppercase', 'theme': 'black', 'hoverType': 'button', 'title': '8,1%', 'subtitle': 'годовых по вкладу \n в рублях' | striptags(true) | escape | nl2br, 'link': 'Вклад', 'class': 'section__element index-products__card' }) }}
+            </div>
           </div>
         </div>
       </section>
@@ -136,7 +113,7 @@
         <div class="page__container">
           <div class="section__wrap">
             <div class="mobile__content">
-              {{ Heading.heading({ 'title': 'Легкий мобильный банк' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small', 'theme': 'light' } }) }}
+              {{ Heading.heading({ 'title': 'Легкий мобильный банк', 'mods': { 'type': 'default', 'margin': 'small', 'theme': 'light' } }) }}
               <div class="section__text section__text_theme-normal section__text_theme-light">
                 <p>Управление банковскими и инвестиционными продуктами</p>
                 <p>Оплата услуг без комиссии</p>
@@ -160,9 +137,18 @@
             {{ Button.button({ 'href': '#', 'title': 'Все сервисы', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
           </div>
           <div class="section__row">
-            {{ Card.card({ 'block': 'modules/services/fix-course', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Зафиксировать курс', 'class': 'section__element services__card' }) }}
-            {{ Card.card({ 'block': 'modules/services/exchange', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Обменять валюту', 'class': 'section__element services__card' }) }}
-            {{ Card.card({ 'block': 'modules/services/check-exist', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Проверить наличие', 'class': 'section__element services__card' }) }}
+            <div class="services__carousel carousel carousel_type-mobile">
+              <div class="js-carousel carousel__content" data-id="index-services" data-breakpoint="992">
+                {{ Card.card({ 'block': 'modules/services/fix-course', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Зафиксировать курс', 'class': 'section__element services__card' }) }}
+                {{ Card.card({ 'block': 'modules/services/exchange', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Обменять валюту', 'class': 'section__element services__card' }) }}
+                {{ Card.card({ 'block': 'modules/services/check-exist', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Проверить наличие', 'class': 'section__element services__card' }) }}
+              </div>
+              <div class="carousel-controls carousel-controls_theme-dark js-carousel-controls">
+                <div class="carousel-controls__pagination js-carousel-pagination">
+                  <span>01</span><span></span><span></span>
+                </div>
+              </div>
+            </div>
 
             <div class="services__transfer">
               <div class="services__transfer-bkg"></div>
@@ -173,30 +159,34 @@
               <div class="js-form">
                 <form>
                   <div class="services__transfer-cards section__row">
-                    <div class="services__credit-card">
+                    <div class="services__credit-card services__credit-card_type-sender">
                       {{ Heading.heading({ 'title': 'Данные отправителя', 'mods': { 'type': 'small', 'margin': 'none', 'theme': 'default' } }) }}
-                      {{ Input.input({ 'label': 'Номер карты', 'name': 'card_sender', 'class': 'services__card-sender', 'field': 'js-card-masked', 'state': 'required' }) }}
-                      {{ Input.input({ 'label': 'CVV/CVV2', 'name': 'card_cvv', 'class': 'services__card-code mt-16', 'field': 'js-cvv-masked', 'state': 'required maxlength=3' }) }}
-                      {{ Input.input({ 'label': 'Срок действия', 'name': 'card_period', 'class': 'services__card-period mt-16', 'field': 'js-period-masked', 'state': 'required maxlength=5' }) }}
+                      {{ Input.input({ 'label': 'Номер карты', 'class': 'services__card-sender', 'field': {'class': 'js-card-masked', 'name': 'card_sender', 'required': 'required'} }) }}
+                      {{ Input.input({ 'label': 'CVV/CVV2', 'class': 'services__card-code mt-16', 'field': {'class': 'js-cvv-masked', 'name': 'card_cvv', 'required': 'required', 'maxlength': '3'} }) }}
+                      {{ Input.input({ 'label': 'Срок действия', 'class': 'services__card-period mt-16', 'field': {'class': 'js-period-masked', 'name': 'card_period', 'required': 'required', 'maxlength' :'5'} }) }}
                     </div>
-                    <div class="services__credit-card">
+                    <div class="services__credit-card services__credit-card_type-receiver">
                       {{ Heading.heading({ 'title': 'Данные получателя', 'mods': { 'type': 'small', 'margin': 'none', 'theme': 'default' } }) }}
-                      {{ Input.input({ 'label': 'Номер карты', 'name': 'card_reciever', 'class': 'services__card-sender', 'field': 'js-card-masked', 'state': 'required' }) }}
+                      {{ Input.input({ 'label': 'Номер карты', 'class': 'services__card-sender', 'field': {'class': 'js-card-masked', 'name': 'card_reciever', 'required': 'required'} }) }}
                     </div>
                     <div class="services__transfer-controls">
-                      {{ Input.input({ 'label': 'Сумма перевода', 'name': 'transfer_amount', 'icon': 'ruble', 'class': 'services__card-summ', 'field': 'js-numeric-input js-transfer-input', 'state': 'maxlength=6 required', 'attr': {'max': '75000', 'commission': '0.02'} }) }}
-                      <input class="js-commission-amount" value="0" hidden>
-                      <div class="services__card-commission">
-                        <p class="js-commission-info">Комиссия за перевод будет <br> расчитана автоматически</p>
-                        <div class="services__card-commission-res js-commission-res state_hidden">
-                          <p>Сумма перевода с комиссией</p>
-                          <p><span class="js-commission-user-amount">0</span> {{ Icon.icon({ 'name': 'rub' }) }}</p>
+                      <div class="services__transfer-amount">
+                        {{ Input.input({ 'label': 'Сумма перевода', 'icon': 'ruble', 'class': 'services__card-summ', 'field': {'class': 'js-numeric-input js-transfer-input', 'name': 'transfer_amount', 'maxlength' : '6', 'required': 'required'}, 'attr': {'max': '75000', 'commission': '0.02'} }) }}
+                        <input class="js-commission-amount" value="0" hidden>
+                        <div class="services__card-commission">
+                          <p class="js-commission-info">Комиссия за перевод будет <br> расчитана автоматически</p>
+                          <div class="services__card-commission-res js-commission-res state_hidden">
+                            <p>Сумма перевода с комиссией</p>
+                            <p><span class="js-commission-user-amount">0</span> {{ Icon.icon({ 'name': 'rub' }) }}</p>
+                          </div>
                         </div>
                       </div>
-                      <div class="services__card-legal">
-                        <span>Нажимая «Перевести деньги», <br>я принимаю </span>{{ Button.button({ 'href': '#', 'title': 'условия сервиса', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
+                      <div class="services__transfer-submit">
+                        {{ Button.button({ 'title': 'Перевести деньги', 'type': 'submit', 'mods': { 'theme': 'default' } }) }}
+                        <div class="services__card-legal">
+                          <span>Нажимая «Перевести деньги», <br>я принимаю </span>{{ Button.button({ 'href': '#', 'title': 'условия сервиса', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
+                        </div>
                       </div>
-                      {{ Button.button({ 'title': 'Перевести деньги', 'type': 'submit', 'mods': { 'theme': 'default' } }) }}
                     </div>
                   </div>
                 </form>
@@ -205,16 +195,16 @@
           </div>
         </div>
       </section>
-      <section class="advice section page__section page__section_theme-large">
+      <section class="advices section page__section page__section_theme-large">
         <div class="page__container">
           <div class="section__heading">
             {{ Heading.heading({ 'title': 'Только нужные советы' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'none', 'theme': 'default' } }) }}
             {{ Button.button({ 'href': '#', 'title': 'Все советы', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
           </div>
           <div class="section__row">
-            {{ Advice.advice({ 'href': '#', 'title': 'Как поужинать \n в любимом ресторане \n за счет банка' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice-1.jpg', 'class': 'section__element' }) }}
-            {{ Advice.advice({ 'href': '#', 'title': 'Где срочно взять \n деньги' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice-2.jpg', 'class': 'section__element' }) }}
-            {{ Advice.advice({ 'href': '#', 'title': 'Как экономить \n на путешествиях до 25%' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice-3.jpg', 'class': 'section__element' }) }}
+            {{ Advice.advice({ 'href': '#', 'title': 'Как поужинать в любимом ресторане за счет банка' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice-1.jpg', 'class': 'section__element' }) }}
+            {{ Advice.advice({ 'href': '#', 'title': 'Где срочно взять деньги' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice-2.jpg', 'class': 'section__element' }) }}
+            {{ Advice.advice({ 'href': '#', 'title': 'Как экономить на путешествиях до 25%' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice-3.jpg', 'class': 'section__element' }) }}
           </div>
         </div>
       </section>
@@ -223,9 +213,18 @@
           <img class="company__figure" src="assets/images/flying.png" alt="Безграничные возможности">
           {{ Heading.heading({ 'title': 'Откройте безграничные \n возможности сгруппой \n компаний БКС' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'normal', 'theme': 'light' } }) }}
           <div class="section__row">
-            {{ Card.card({ 'href': '#', 'icon': 'assets/images/svg/premier.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Ваш персональный финансовый советник в БКС онлайн', 'subtitle': 'Инвестиции доступные \n каждому' | striptags(true) | escape | nl2br, 'link': 'БКС Премьер', 'class': 'section__element company__card' }) }}
-            {{ Card.card({ 'href': '#', 'icon': 'assets/images/svg/logo-dark.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Инвестируйте \n с крупнейшим \n брокером России' | striptags(true) | escape | nl2br, 'subtitle': 'Достижение ваших \n финансовых целей' | striptags(true) | escape | nl2br, 'link': 'БКС Брокер', 'class': 'section__element company__card' }) }}
-            {{ Card.card({ 'href': '#', 'icon': 'assets/images/svg/ultima.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Персональный банк самых амбициозных', 'subtitle': 'Уникальные привилегии \n и безграничные возможности' | striptags(true) | escape | nl2br, 'link': 'БКС Ультима', 'class': 'section__element company__card' }) }}
+            <div class="company__carousel carousel carousel_type-mobile">
+              <div class="js-carousel carousel__content" data-id="index-company" data-breakpoint="768">
+                {{ Card.card({ 'href': '#', 'icon': 'assets/images/svg/premier.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Ваш персональный финансовый советник в БКС онлайн', 'subtitle': 'Инвестиции доступные \n каждому' | striptags(true) | escape | nl2br, 'link': 'БКС Премьер', 'class': 'section__element company__card' }) }}
+                {{ Card.card({ 'href': '#', 'icon': 'assets/images/svg/logo-dark.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Инвестируйте \n с крупнейшим \n брокером России' | striptags(true) | escape | nl2br, 'subtitle': 'Достижение ваших \n финансовых целей' | striptags(true) | escape | nl2br, 'link': 'БКС Брокер', 'class': 'section__element company__card' }) }}
+                {{ Card.card({ 'href': '#', 'icon': 'assets/images/svg/ultima.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Персональный банк самых амбициозных', 'subtitle': 'Уникальные привилегии \n и безграничные возможности' | striptags(true) | escape | nl2br, 'link': 'БКС Ультима', 'class': 'section__element company__card' }) }}
+              </div>
+              <div class="carousel-controls js-carousel-controls">
+                <div class="carousel-controls__pagination js-carousel-pagination">
+                  <span>01</span><span></span><span></span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

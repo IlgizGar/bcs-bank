@@ -1,0 +1,52 @@
+.index-search
+  border-radius: 4px
+
+  &:not(.state_explored)
+    width: 100%
+    max-width: 36px
+
+    transition: max-width $interval
+    animation: clearBackground $interval forwards
+
+  &.state_explored
+    width: 100%
+    max-width: 100%
+
+    animation: setBackground $interval forwards
+    transition: max-width $interval
+
+    @media (min-width: 1280px)
+      max-width: 500px
+
+    @media (max-width: 767px)
+      height: 40px
+
+    form
+      fieldset
+        //max-width: none
+        opacity: 1
+
+        label
+          span
+            opacity: 1
+
+            transition: opacity $interval
+
+    .index-search__close
+      opacity: 1
+
+      transition: opacity $interval 200ms
+
+  @media (max-width: 1279px)
+    margin-left: auto
+
+  @keyframes setBackground
+    0%
+      background-color: transparent;
+    100%
+      background-color: $color_card;
+  @keyframes clearBackground
+    0%
+      background-color: $color_card;
+    100%
+      background-color: transparent;

@@ -1,13 +1,24 @@
 .card .card__button
   display: flex
-  //justify-content: space-between
   align-items: center
 
   width: 100%
-  padding: 0 40px
 
   opensansBold()
   color: $color_default
+
+  @media (min-width: 1280px)
+    padding: 0 40px
+
+  @media (min-width: 992px) and (max-width: 1279px)
+    padding: 0 24px
+
+    font-size: 14px
+
+  @media (max-width: 991px)
+    padding: 0 16px
+
+    font-size: 12px
 
   .icon
     margin-left: auto
@@ -16,3 +27,11 @@
 
   .image
     margin-right: 20px
+
+    @media (min-width: 768px) and (max-width: 991px)
+      margin-right: 14px
+      height: 28px
+
+    @media (max-width: 767px)
+      margin-right: 8px
+      height: 24px

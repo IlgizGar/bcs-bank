@@ -1,4 +1,6 @@
 {% macro inlineSvg(data) %}
-  <img class='image' src="{{ data.path }}">
+  {% for value in data.path -%}
+    <img class='image' src="{{ value | safe }}">
+  {%- endfor %}
   {#<!-- inject:{{ data.path }} --><!-- endinject -->#}
 {% endmacro %}

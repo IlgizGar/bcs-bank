@@ -2,8 +2,8 @@
 
 {% set root = "." %}
 {% set title = "Инсайдеры" %}
+{% set header = 'blue' %}
 
-{% import "../components/modules/menubar/menubar.njk" as Menubar %}
 {% import "../components/library/docs/docs.njk" as Docs %}
 {% import "../components/library/heading/heading.njk" as Heading %}
 
@@ -16,7 +16,6 @@
       <section class="section page__section">
 
         <div class="section__header section__header_theme-blue">
-          {{ Menubar.menubar({ 'theme': 'blue', 'class': 'section__menubar' }) }}
           <div class="page__container">
             {{ Heading.heading({ 'tag': 'h1', 'title': 'Сведения \n для инсайдеров' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'long' } }) }}
           </div>

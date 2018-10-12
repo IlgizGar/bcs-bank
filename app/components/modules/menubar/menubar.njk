@@ -3,24 +3,40 @@
 {% import "../../../components/library/button/button.njk" as Button %}
 
 {% macro menubar( options ) %}
-  <div class="menubar {{ options.class }}">
+  {% set class_sep = joiner(' ') %}
+
+  {% set mods = '' %}
+  {% set mods %}
+    {% for key, value in options.mods -%}
+      {{ class_sep() }} button_{{ key }}-{{ value }}
+    {%- endfor %}
+  {% endset %}
+
+  <div class="menubar {{ options.class }} {{ mods | safe }}">
     <div class="page__container">
       <div class="menubar__wrapper">
-        {% if options.theme === 'blue' %}
-          <a href="http://juravlev.rusrobots.ru/bks/index.html" class="menubar__logo">
-            {{ Svg.inlineSvg({'path': 'assets/images/svg/full-logo-light.svg'}) }}
-          </a>
+        <a href="http://juravlev.rusrobots.ru/bks/index.html" class="menubar__logo {% if options.vars.header === 'blue' %} menubar__logo_theme-white {% endif %}">
+          {{ Svg.inlineSvg({'path': ['assets/images/svg/full-logo-light.svg', 'assets/images/svg/full-logo-dark.svg']}) }}
+        </a>
+        {% if options.vars.header === 'blue' %}
           {{ Menu.menu({ 'basic': [{'href': '#', 'title': 'Карты'}, {'href': '#', 'title': 'Кредиты'}, {'href': '#', 'title': 'Вклады'}, {'href': '#', 'title': 'Платежи'}, {'href': '#', 'title': 'БКС Бонус'}],
             'more': [], 'theme': 'white', 'class': 'header__menu' }) }}
-          {{ Button.button({ 'title': 'Интернет-банк', 'mods' : {'theme': 'white', 'view': 'outlined', 'size': 'low'} }) }}
+          {{ Button.button({ 'href': 'https://online.bcs.ru/cy/web/guest/home', 'title': 'Интернет-банк', 'mods' : {'theme': 'white', 'view': 'outlined', 'size': 'low'}, 'class': 'js-online-bank hidden-mobile' }) }}
         {% else %}
-          <a href="http://juravlev.rusrobots.ru/bks/index.html" class="menubar__logo">
-            {{ Svg.inlineSvg({'path': 'assets/images/svg/full-logo-dark.svg'}) }}
-          </a>
           {{ Menu.menu({ 'basic': [{'href': '#', 'title': 'Карты'}, {'href': '#', 'title': 'Кредиты'}, {'href': '#', 'title': 'Вклады'}, {'href': '#', 'title': 'Платежи'}, {'href': '#', 'title': 'БКС Бонус'}],
             'more': [], 'theme': 'black', 'class': 'header__menu' }) }}
-          {{ Button.button({ 'href': 'https://online.bcs.ru/cy/web/guest/home', 'title': 'Интернет-банк', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low'} }) }}
+          {{ Button.button({ 'href': 'https://online.bcs.ru/cy/web/guest/home', 'title': 'Интернет-банк', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low'}, 'class': 'js-online-bank hidden-mobile' }) }}
         {% endif %}
+
+        <button class="menubar__burger js-menubar-burger">
+          <span class="menubar__burger-title">Меню</span>
+          <span class="menubar__burger-control">
+            <span class="menubar__burger-line menubar__burger-line_first"></span>
+            <span class="menubar__burger-line menubar__burger-line_second"></span>
+            <span class="menubar__burger-line menubar__burger-line_third"></span>
+          </span>
+        </button>
+
       </div>
     </div>
   </div>

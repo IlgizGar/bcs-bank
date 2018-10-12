@@ -1,10 +1,13 @@
 .navbar .navbar__button
-  &.navbar__button_type-dropdown
-    &:hover, &.state_active
+  &:not(.hidden-desktop).navbar__button_type-dropdown
+    &:hover
+      .button__wrap
+          color: $color_hover
+
+    &.state_active
       .button__wrap
         color: $color_hover
 
-    &.state_active
       .button__icon .icon
         color: $color_hover
         transform: scale(1, -1)

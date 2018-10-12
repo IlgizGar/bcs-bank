@@ -1,0 +1,25 @@
+{% macro checkbox( options ) %}
+
+  {% set class_sep = joiner(' ') %}
+
+  {% set mods = '' %}
+  {% set mods %}
+    {% for key, value in options.mods -%}
+      {{ class_sep() }} checkbox_{{ key }}-{{ value }}
+    {%- endfor %}
+  {% endset %}
+
+  {% set attr = '' %}
+  {% set attr %}
+    {% for key, value in options.attr -%}
+      {{ class_sep() }} data-{{ key }} = "{{ value }}"
+    {%- endfor %}
+  {% endset %}
+
+  <label class="checkbox js-checkbox {{ options.class }} {{ mods | safe }}" {{ attr | safe }}>
+    <input type="checkbox" class="checkbox__control" name="{{ options.name }}" {{ options.state }}>
+    <span class="checkbox__state"></span>
+    <span class="checkbox__label">{{ options.label }}</span>
+  </label>
+
+{% endmacro %}

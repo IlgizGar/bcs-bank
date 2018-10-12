@@ -1,0 +1,21 @@
+.calculation
+  .calculation__thumbnail
+    .calculation__conclusion
+
+      display: flex
+      justify-content: space-between
+
+      margin: 32px 0 0
+
+      color: $color_link
+      @media(max-width 767px)
+        margin-top: 20px
+      .icon
+        width: 16px
+        height: 16px
+
+        transform: translateY(1px)
+
+      p:last-child
+        formularMedium()
+        color: $color_elem

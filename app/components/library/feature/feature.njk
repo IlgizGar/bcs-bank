@@ -1,3 +1,5 @@
+{% import "../../../components/icon/icon.njk" as Icon %}
+
 {% macro feature( options ) %}
   {% set class_sep = joiner(' ') %}
   {% if options.mods %}
@@ -16,8 +18,8 @@
       </div>
     {% endif %}
     <div class="feature__content">
-      <span class="feature__title">{{ options.title }}</span>
-      <span class="feature__text">{{ options.text }}</span>
+      <span class="feature__title">{{ options.title | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | safe }}</span>
+      <span class="feature__text">{{ options.text | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | safe }}</span>
     </div>
   </div>
 {% endmacro %}

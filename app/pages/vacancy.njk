@@ -4,16 +4,14 @@
 {% import "../components/library/heading/heading.njk" as Heading %}
 {% import "../components/library/socials/socials.njk" as Socials %}
 {% import "../components/library/button/button.njk" as Button %}
-{% import "../components/modules/menubar/menubar.njk" as Menubar %}
 {% import "../components/library/input/input.njk" as Input %}
 {% import "../components/library/file-input/file-input.njk" as FileInput %}
 {% import "../components/library/dropdown/dropdown.njk" as Dropdown %}
 
 
-
-
 {% set root = "." %}
 {% set title = "Вакансия детально" %}
+{% set header = 'blue' %}
 
 {% block body %}
   <div class="page js-page">
@@ -21,11 +19,10 @@
     {% include "../components/modules/header/header.njk" %}
 
     <main role="main">
-      <section class="page-header page-header_vacancy section page__section">
+      <section class="page-header section page__section">
 
         {# Чтобы установить картинку на фон, необходимо добавить style="backgraun-image: url(путь до картинки)" #}
-        <div class="section__header section__header_theme-blue">
-          {{ Menubar.menubar({ 'theme': 'blue', 'class': 'section__menubar' }) }}
+        <div class="page-header__vacancy section__header section__header_theme-blue">
           <div class="page__container page__container_type-header">
             {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Вакансии', 'link': 'http://juravlev.rusrobots.ru/bks/vacancies.html' }, 'current': 'Москва' }) }}
             {{ Heading.heading({ 'tag': 'h1', 'title': 'Старший клиентский менеджер \n по привлечению корпоративных клиентов' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'default' }, 'class': 'page-header__title' }) }}
@@ -33,7 +30,7 @@
           <div class="page-header__nav section__nav">
             <div class="page__container">
               <div class="section__wrap">
-                {{ Button.button({ 'href': '#vacancy-feedback', 'title': 'Откликнуться', 'mods': { 'theme': 'white' }, 'class': 'mr-a' }) }}
+                {{ Button.button({ 'href': '#vacancy-feedback', 'title': 'Откликнуться', 'mods': { 'theme': 'white' }, 'class': 'page-header__button mr-a' }) }}
                 {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'white', 'view': 'outlined' }, 'class': ''}) }}
               </div>
             </div>
@@ -47,7 +44,7 @@
           <div class="section__row">
             <div class="section__content section__content_medium section__content_theme-centered">
 
-              {{ Heading.heading({ 'tag': 'h2', 'title': 'Требования:' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'normal-small' }, 'class': 'news-detail__title' }) }}
+              {{ Heading.heading({ 'tag': 'h2', 'title': 'Требования:' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'normal-small' }, 'class': 'news-detail__title pb-32' }) }}
               <ul class="brand-list brand-list_type-disc brand-list_margin-medium">
                 <li>Наличие собственной клиентской базы;</li>
                 <li>Знание всех банковских продуктов и технологий для корпоративных клиентов;</li>
@@ -83,7 +80,7 @@
               </ul>
 
               {{ Heading.heading({ 'tag': 'h2', 'title': 'Условия:' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'normal-small' }, 'class': 'news-detail__title' }) }}
-              <ul class="brand-list brand-list_type-disc brand-list_margin-big">
+              <ul class="brand-list brand-list_type-disc brand-list_margin-big mb-64">
                 <li>Высокий уровень фиксированного оклада + бонусы;</li>
                 <li>Широкие возможности профессионального роста, корпоративная система обучения в компании;</li>
                 <li>Работа в команде профессионалов, в молодом и дружном коллективе;</li>
@@ -100,7 +97,8 @@
           <div class="section__row">
             <div class="section__content section__content_medium section__content_theme-centered js-form">
               <form id="vacancy-feedback__form" action="/" class="form vacancy-feedback__form">
-                {{ Heading.heading({ 'title': 'Откликнуться на вакансию' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'none', 'theme': 'default' }, 'class': 'form__title'}) }}
+                {{ Heading.heading({ 'title': 'Откликнуться <span>на вакансию<span>' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'none', 'theme': 'default' }, 'class': 'form__title'}) }}
+                <p class="text mb-32">Старший клиентский менеджер по привлечению копроративных клиентов</p>
                 {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': 'js-fio-masked', 'name': 'feedback_name', 'state': 'required' }) }}
                 <div class="form__line-group">
                   {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': 'js-phone-masked', 'name': 'feedback_phone', 'state': 'required' }) }}

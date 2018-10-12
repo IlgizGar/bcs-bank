@@ -2,9 +2,16 @@
   .input__label
     pointer-events: none
 
+    overflow: hidden
+    min-width: 100%
+
+    white-space: nowrap
+    text-overflow: ellipsis
+
     opensansRegular()
     color: $color_link
 
     transition: all $interval
     transform-origin: left
     transform: scale(0.75)
+    width: 150%

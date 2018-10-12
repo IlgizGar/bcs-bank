@@ -1,7 +1,29 @@
-.footer .footer__socials
-  col()
-  shift-left(1)
-  size(3)
+.footer
+  .footer__socials
 
-  display: flex
-  align-items: flex-end
+    @media (min-width: 768px) and (max-width: 1279px)
+      display: flex
+      justify-content: flex-end
+      align-items: flex-end
+      width: 74%
+
+    @media (max-width: 767px)
+      display: flex
+
+    .socials
+      &:nth-child(1)
+        @media (min-width: 1279px)
+          margin-top: 32px
+
+        @media (min-width: 768px) and (max-width: 1279px)
+          width: 34%
+
+        @media (max-width: 767px)
+          margin-right: 40px
+
+      &:nth-child(2)
+        @media (min-width: 768px)
+          margin-top: 24px
+
+        @media (min-width: 768px) and (max-width: 1279px)
+          width: 34%
