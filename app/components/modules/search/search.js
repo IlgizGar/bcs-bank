@@ -18,7 +18,6 @@ export default class Search {
     $.ajax({
       url: this.apiUrl,
       data: {
-        page: this.currentPage,
       },
       method: 'GET',
       dataType: 'json',
