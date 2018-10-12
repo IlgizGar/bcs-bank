@@ -1,7 +1,18 @@
-.plastic-card .plastic-card__content
-  .plastic-card__header
-    .plastic-card__category
-      margin-left: 40px
-      @media (max-width: 767px)
-        margin-left: 0
-        white-space nowrap
+.plastic-card
+  .plastic-card__content
+    .plastic-card__header
+      .plastic-card__category
+        margin-left: 40px
+        @media (max-width: 767px)
+          margin-left: 0
+          white-space nowrap
+        .button
+          color: $slate_grey
+          box-shadow 0 0 0 1px $gainsboro
+  &.plastic-card_theme-blue
+    .plastic-card__content
+      .plastic-card__header
+        .plastic-card__category
+          .button
+            color: $perano
+            box-shadow 0 0 0 1px $perano
