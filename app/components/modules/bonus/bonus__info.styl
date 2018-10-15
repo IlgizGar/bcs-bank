@@ -1,0 +1,22 @@
+.bonus
+  .bonus__item
+    .bonus__info
+      display: flex
+      justify-content: space-between
+      align-items: center
+
+      @media (min-width: 768px)
+        flex-shrink: 0
+
+        width: 210px
+        height: 96px
+        padding-right: 30px
+        padding-left: 32px
+
+        border-right: solid 1px $color_borders
+
+      @media (max-width: 767px)
+        height: 64px
+        padding: 0 24px
+
+        border-top: solid 1px $color_borders

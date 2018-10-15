@@ -142,6 +142,7 @@ module.exports = (elem) => {
 
       if (this.list.data('type') === 'modal-view' && !el) {
         const totalHeight = list.offset().top + list.outerHeight();
+
         if (totalHeight > window.outerHeight) {
           $('.js-page').css('max-height', totalHeight).addClass('state_no-overflow');
         } else {

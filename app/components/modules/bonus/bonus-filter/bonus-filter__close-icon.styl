@@ -1,0 +1,30 @@
+.bonus-filter
+  .bonus-filter__close-icon
+    @media (min-width: 992px)
+      display: none
+
+    @media (max-width: 991px)
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      display: block;
+      width: 31px;
+      height: 31px;
+      text-indent: -9999px;
+      padding: 16px;
+      &:after,
+      &:before
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: block;
+        width: 18px;
+        height: 2px;
+        background-color: #d8d8d8;
+        transition: background-color 300ms linear;
+      &:before
+        transform: translate(-50%, -50%) rotate(-45deg);
+      &:after
+        transform: translate(-50%, -50%) rotate(45deg);
+        transform-origin: center;

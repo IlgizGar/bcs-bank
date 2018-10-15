@@ -120,54 +120,82 @@
           <div class="text mb-56">Покупки картой БКС по спецпредложениям от наших партнеров</div>
           <div class="bonus__content">
             <div class="bonus__list">
-              <div class="bonus__item">
-                <div class="bonus__icon">
-                  {{ Svg.inlineSvg({ 'path': ['assets/images/aviasales.png'] }) }}
-                </div>
-                <a href="#" class="bonus__link">
-                  <div class="bonus__name mr-a">
-                    <p class="bonus__title">Авиабилеты</p>
+              <a href="#" class="bonus__item">
+                <div class="bonus__info">
+                  <div class="bonus__icon">
+                    {{ Svg.inlineSvg({ 'path': ['assets/images/aviasales.png'] }) }}
                   </div>
-                  <p class="text">Бонус</p>
-                  <p class="bonus__amount">2%</p>
-                </a>
-              </div>
-              <div class="bonus__item">
-                <div class="bonus__icon">
-                  {{ Svg.inlineSvg({ 'path': ['assets/images/ostrovok.png'] }) }}
-                </div>
-                <a href="#" class="bonus__link">
-                  <div class="bonus__name mr-a">
-                    <p class="bonus__title">Отели</p>
+                  <div class="bonus__detail">
+                    <p class="bonus__amount">2</p>
+                    <p class="bonus__symbol">%</p>
+                    <p class="text">Бонус</p>
+                    <p class="text mobile">бонус</p>
                   </div>
-                  <p class="text">Бонус</p>
-                  <p class="bonus__amount">7%</p>
-                </a>
-              </div>
-              <div class="bonus__item">
-                <div class="bonus__icon">
-                  {{ Svg.inlineSvg({ 'path': ['assets/images/taxfree.png'] }) }}
                 </div>
-                <a href="#" class="bonus__link">
-                  <div class="bonus__name mr-a">
-                    <p class="bonus__title">Возврат НДС</p>
-                    <p class="text">За покупки в Европе</p>
-                  </div>
-                  <p class="text">Бонус до</p>
-                  <p class="bonus__amount">19%</p>
-                </a>
-              </div>
-              <div class="bonus__item">
-                <div class="bonus__icon">
-                  {{ Svg.inlineSvg({ 'path': ['assets/images/bks.png'] }) }}
+                <div class="bonus__caption">
+                  <p class="bonus__name">Авиабилеты</p>
+                  {{ Icon.icon({ 'name': 'download' }) }}
                 </div>
-                <a href="#" class="bonus__link">
-                  <div class="bonus__name mr-a">
-                    <p class="bonus__title">Обмен валюты</p>
-                    <p class="text">Самый выгодный курс</p>
+              </a>
+              <a href="#" class="bonus__item">
+                <div class="bonus__info">
+                  <div class="bonus__icon">
+                    {{ Svg.inlineSvg({ 'path': ['assets/images/ostrovok.png'] }) }}
                   </div>
-                </a>
-              </div>
+                  <div class="bonus__detail">
+                    <p class="bonus__amount">7</p>
+                    <p class="bonus__symbol">%</p>
+                    <p class="text">Бонус</p>
+                    <p class="text mobile">бонус</p>
+                  </div>
+                </div>
+                <div class="bonus__caption">
+                  <p class="bonus__name">Отели</p>
+                  {{ Icon.icon({ 'name': 'download' }) }}
+                </div>
+              </a>
+              <a href="#" class="bonus__item">
+                <div class="bonus__info">
+                  <div class="bonus__icon">
+                    {{ Svg.inlineSvg({ 'path': ['assets/images/taxfree.png'] }) }}
+                  </div>
+                  <div class="bonus__detail">
+                    <p class="bonus__amount">19</p>
+                    <p class="bonus__symbol">%</p>
+                    <p class="text">Бонус до</p>
+                    <p class="text mobile">бонус</p>
+                  </div>
+                </div>
+                <div class="bonus__caption">
+                  <p class="bonus__name">Возврат НДС</p>
+                  <p class="bonus__title">За покупки в Европе</p>
+                  {{ Icon.icon({ 'name': 'download' }) }}
+                </div>
+              </a>
+              <a href="#" class="bonus__item">
+                <div class="bonus__info">
+                  <div class="bonus__icon">
+                    {{ Svg.inlineSvg({ 'path': ['assets/images/bks.png'] }) }}
+                  </div>
+                </div>
+                <div class="bonus__caption">
+                  <p class="bonus__name">Обмен валюты</p>
+                  <p class="bonus__title">Самый выгодный курс</p>
+                  {{ Icon.icon({ 'name': 'download' }) }}
+                </div>
+              </a>
+
+              {#<div class="bonus__item">#}
+                {#<div class="bonus__icon">#}
+                  {#{{ Svg.inlineSvg({ 'path': ['assets/images/bks.png'] }) }}#}
+                {#</div>#}
+                {#<a href="#" class="bonus__link">#}
+                  {#<div class="bonus__name mr-a">#}
+                    {#<p class="bonus__title">Обмен валюты</p>#}
+                    {#<p class="text">Самый выгодный курс</p>#}
+                  {#</div>#}
+                {#</a>#}
+              {#</div>#}
             </div>
             <div class="bonus__filter">
               {{ Context.context({ 'title': 'Фильтровать категории', 'name': 'dropdown', 'icon': 'filter', 'mods': { 'type': 'menu', 'theme': 'black' }, 'attr': {'id': 'bonus-filter'}, 'class': 'bonus__filter-explore' }) }}

@@ -1,14 +1,21 @@
 {% import "../../../../components/library/button/button.njk" as Button %}
 {% import "../../../../components/library/checkbox/checkbox.njk" as Checkbox %}
+{% import "../../../../components/library/heading/heading.njk" as Heading %}
 
-<div id="bonus-filter" class="bonus-filter context__list js-context-list" data-type="modal-view">
+<div id="bonus-filter" class="bonus-filter context__list js-context-list state_invisible" data-type="modal-view">
   <div class="bonus-filter__wrapper">
+    <a href="#" class="bonus-filter__close-icon"></a>
+    {{ Heading.heading({ 'title': 'Подобрать партнера', 'mods': { 'margin': 'small', 'type': 'normal' }, 'class': 'bonus-filter__heading' }) }}
     <a href="#" class="select-filter__close-icon"></a>
     {{ Checkbox.checkbox({ 'label': 'Все', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox mb-32', 'state': 'checked' }) }}
     {{ Checkbox.checkbox({ 'label': 'Путешествия', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox mb-32' }) }}
     {{ Checkbox.checkbox({ 'label': 'Покупки', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox mb-32' }) }}
     {{ Checkbox.checkbox({ 'label': 'Услуги', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox mb-32' }) }}
     {{ Checkbox.checkbox({ 'label': 'Танспорт', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox' }) }}
+    <div class="bonus-filter__controls">
+      {{ Button.button({ 'title': 'Применить', 'mods': { 'theme': 'default' } }) }}
+      {{ Button.button({ 'title': 'Сбросить все', 'mods': { 'view': 'text', 'theme': 'default' } }) }}
+    </div>
   </div>
   <div class="page__cover page__cover_theme-fixed js-cover"></div>
 </div>
