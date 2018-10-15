@@ -11,6 +11,7 @@
 {% import "../components/library/feature/feature.njk" as Feature %}
 {% import "../components/library/button/button.njk" as Button %}
 {% import "../components/library/checkbox/checkbox.njk" as Checkbox %}
+{% import "../components/library/context/context.njk" as Context %}
 {% import "../components/icon/icon.njk" as Icon %}
 {% import "../components/inline-svg/inline-svg.njk" as Svg %}
 
@@ -117,8 +118,8 @@
         <div class="page__container">
           {{ Heading.heading({ 'title': 'Получайте больше выгоды', 'mods': { 'type': 'default', 'margin': 'small' } }) }}
           <div class="text mb-56">Покупки картой БКС по спецпредложениям от наших партнеров</div>
-          <div class="section__row">
-            <div class="bonus__content">
+          <div class="bonus__content">
+            <div class="bonus__list">
               <div class="bonus__item">
                 <div class="bonus__icon">
                   {{ Svg.inlineSvg({ 'path': ['assets/images/aviasales.png'] }) }}
@@ -169,11 +170,8 @@
               </div>
             </div>
             <div class="bonus__filter">
-              {{ Checkbox.checkbox({ 'label': 'Все', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox mb-32', 'state': 'checked' }) }}
-              {{ Checkbox.checkbox({ 'label': 'Путешествия', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox mb-32' }) }}
-              {{ Checkbox.checkbox({ 'label': 'Покупки', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox mb-32' }) }}
-              {{ Checkbox.checkbox({ 'label': 'Услуги', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox mb-32' }) }}
-              {{ Checkbox.checkbox({ 'label': 'Танспорт', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox' }) }}
+              {{ Context.context({ 'title': 'Фильтровать категории', 'name': 'dropdown', 'icon': 'filter', 'mods': { 'type': 'menu', 'theme': 'black' }, 'attr': {'id': 'bonus-filter'}, 'class': 'bonus__filter-explore' }) }}
+              {% include "../components/modules/bonus/bonus-filter/bonus-filter.njk" %}
             </div>
           </div>
         </div>
