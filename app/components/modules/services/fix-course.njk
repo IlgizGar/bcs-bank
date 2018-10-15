@@ -32,7 +32,7 @@
         <tr>
           <td class="services__table-currency hidden-mobile">USD</td>
           <td class="services__table-value">{{ Radio.radio({ 'class': 'js-course-radio', 'currency' : {'state': 'rise', 'label': '62.34'}, 'value': '62.34', 'name': 'course-fix', 'id': 'course-buy_usd', 'attr': { 'currency': 'USD'}, 'state': 'checked' }) }}</td>
-          <td class="services__table-value">{{ Radio.radio({ 'class': 'js-course-radio', 'currency' : {'state': 'fall', 'label': '62.79'}, 'value': '62.79', 'name': 'course-fix', 'id': 'course-cell_usd', 'attr': {'currency': 'USD'} }) }}</td>
+          <td class="services__table-value">{{ Radio.radio({ 'class': 'js-course-radio', 'currency' : {'state': 'fall', 'label': '62.79'}, 'value': '62.79', 'name': 'course-fix', 'id': 'course-sell_usd', 'attr': {'currency': 'USD'} }) }}</td>
         </tr>
         <tr class="hidden-desktop">
           <td class="services__table-currency">EUR</td>
@@ -45,11 +45,11 @@
       <tr>
         <td class="services__table-currency hidden-mobile">EUR</td>
         <td class="services__table-value">{{ Radio.radio({ 'class': 'js-course-radio', 'currency': {'state': 'fall', 'label': '59.4'}, 'value': '59.4', 'name': 'course-fix', 'id': 'course-buy_eur', 'attr': {'currency': 'EUR'} }) }}</td>
-        <td class="services__table-value">{{ Radio.radio({ 'class': 'js-course-radio', 'currency': {'state': 'fall', 'label': '57.12'}, 'value': '57.12', 'name': 'course-fix', 'id': 'course-cell_eur', 'attr': {'currency': 'EUR'} }) }}</td>
+        <td class="services__table-value">{{ Radio.radio({ 'class': 'js-course-radio', 'currency': {'state': 'fall', 'label': '57.12'}, 'value': '57.12', 'name': 'course-fix', 'id': 'course-sell_eur', 'attr': {'currency': 'EUR'} }) }}</td>
       </tr>
       </tbody>
     </table>
-
+  <input type="hidden" name="partner" value="bcs-bank">
     {{ Input.input({ 'label': 'Сумма', 'title': 'USD', 'class': 'services__input js-course-field', 'field': {'class': 'js-numeric-input js-course-input', 'name': 'fix-course', 'maxlength': '5', 'required': 'required'}, 'attr': {'max': '4000'} }) }}
     <label><input class="js-course-result-field" name="course-result-field" hidden value="0"></label>
 
