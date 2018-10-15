@@ -213,7 +213,8 @@
       <section class="company section section_theme-blue page__section">
         <div class="page__container">
           <img class="company__figure" src="assets/images/flying.png" alt="Безграничные возможности">
-          {{ Heading.heading({ 'title': 'Откройте безграничные \n возможности сгруппой \n компаний БКС' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'normal', 'theme': 'light' } }) }}
+          {{ Heading.heading({ 'title': 'Откройте безграничные \n возможности сгруппой \n компаний БКС' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'normal', 'theme': 'light' }, 'class': 'hidden-mobile' }) }}
+          {{ Heading.heading({ 'title': 'Группа компаний БКС' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'normal', 'theme': 'light' }, 'class': 'hidden-desktop' }) }}
           <div class="section__row">
             <div class="company__carousel carousel carousel_type-mobile">
               <div class="js-carousel carousel__content" data-id="index-company" data-breakpoint="768">
