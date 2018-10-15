@@ -1,11 +1,4 @@
 .services .services__credit-card
-  col()
-  size(5)
-
-  &:first-child {
-    shift-left(1)
-  }
-
   display: flex
   flex-wrap: wrap
 
@@ -16,6 +9,32 @@
   background-color: $color_light
   box-shadow: 0 7px 60px 0 rgba(0, 12, 58, 0.08);
 
+  @media (max-width: 991px)
+    position: absolute
+
+    height: 216px
+    padding: 24px 16px 16px
+
   .input
     align-self: flex-end
     margin-top: auto
+
+  @media (min-width: 768px) and (max-width: 991px)
+    col()
+    size(6)
+    shift-left(3)
+
+  @media (max-width: 767px)
+    col()
+    size(12)
+
+    margin-left: 0
+    margin-right: 0
+
+    left: 50%
+    transform: translateX(-50%)
+
+    max-width: 370px
+
+
+

@@ -2,40 +2,56 @@
 
 {% macro input( options ) %}
 
-  {% set class_sep = joiner(' ') %}
+    {% set class_sep = joiner(' ') %}
 
-  {% if options.attr %}
     {% set attr = '' %}
     {% set attr %}
-      {% for key, value in options.attr -%}
-        {{ class_sep() }} data-{{ key }} = "{{ value }}"
-      {%- endfor %}
+        {% for key, value in options.attr -%}
+            {{ class_sep() }} data-{{ key }} = "{{ value }}"
+        {%- endfor %}
     {% endset %}
-  {% endif %}
 
-  {% if options.mods %}
     {% set mods = '' %}
     {% set mods %}
-      {% for key, value in options.mods -%}
-        {{ class_sep() }} dropdown_{{ key }}-{{ value }}
-      {%- endfor %}
+        {% for key, value in options.mods -%}
+            {{ class_sep() }} dropdown_{{ key }}-{{ value }}
+        {%- endfor %}
     {% endset %}
-  {% endif %}
 
-  <div class="input js-input state_init {{ mods | safe }} {{ options.class | safe }}" {{ attr | safe }}>
-    <label class="input__group">
-      <span class="input__label js-label">{{ options.label }}</span>
-      {% if options.tag === "textarea" %}
-        <textarea class="input__field {{ options.field | safe }}" rows="{{ options.rows }}"  name="{{ options.name }}" {{ options.state | safe }}></textarea>
-      {% else %}
-        <input class="input__field {{ options.field | safe }}" type="{% if options.type %}{{ options.type }}{% else %}text{% endif %}" name="input_{{ options.name }}" value="{{ options.value }}" {{ options.state }}>
-      {% endif %}
-    </label>
-    {% if options.icon %}
-      {{ Icon.icon({ 'name': options.icon }) }}
-    {% endif %}
-    {% if options.title %}
-      <span class="input__title js-title">{{ options.title }}</span>
-    {% endif %}
-  </div>
+    {% set field = '' %}
+    {% set field %}
+        {% for key, value in options.field -%}
+            {% if key !== 'class' %}
+                {{ class_sep() }} {{ key }} = "{{ value }}"
+            {% endif %}
+        {%- endfor %}
+    {% endset %}
+
+    <div class="input js-input state_init {{ mods | safe }} {{ options.class | safe }}" {{ attr | safe }}>
+
+        <label class="input__group">
+            <span class="input__label js-label">{{ options.label }}</span>
+            {% if options.tag === "textarea" %}
+                <textarea class="input__field js-input-field {{ options.field.class | safe }}" {{ field | safe }}></textarea>
+            {% else %}
+                <input class="input__field js-input-field {{ options.field.class | safe }}" {{ field | safe }}>
+            {% endif %}
+        </label>
+
+        {% if options.icon %}
+            {{ Icon.icon({ 'name': options.icon }) }}
+        {% endif %}
+
+        {% if options.title %}
+            <span class="input__title js-title">{{ options.title | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | safe }}</span>
+        {% endif %}
+
+        {% if options.slider %}
+            <div class="input__slider">
+                <input class="js-input-slider" data-min="{{ options.slider.min }}" data-max="{{ options.slider.max }}"
+                       data-from="{{ options.slider.from }}" data-step="{{ options.slider.step }}" data-postfix="{{ options.slider.postfix }}">
+            </div>
+        {% endif %}
+
+    </div>
 {% endmacro %}

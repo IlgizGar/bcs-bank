@@ -1,18 +1,18 @@
-.footer .footer__info
-  col()
+.footer .footer__wrap
+  .footer__info
 
-  @media (min-width: 1280px)
-    shift-left(1)
-    size(3)
+    display: flex
 
-  @media (max-width: 1279px)
-    order: -1
-    shift-left(2)
-    size(8)
+    @media (min-width: 1280px)
+      flex-direction: column
+      width: 300px
 
-    margin-bottom: 30px
+    @media (min-width: 768px) and (max-width: 1279px)
+      flex-direction: row
+      justify-content: space-between
+      align-content: stretch
 
-  @media (max-width: 575px)
-    order: -1
-    shift-left(0)
-    size(12)
+      margin-bottom: 32px
+
+    @media (max-width: 1279px)
+      width: 100%

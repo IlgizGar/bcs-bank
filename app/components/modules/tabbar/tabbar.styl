@@ -1,5 +1,5 @@
 .tabbar
-  display: flex
+  display: inline-flex
   align-items: center
   flex-shrink: 0
 
@@ -9,6 +9,13 @@
     margin-right: 40px
 
     height: 100%
+    @media (max-width 991px)
+      &:first-child
+        margin-left: 16px
 
-    &:last-child
-      margin-right: 16px
+      &:last-child
+        margin-right: 16px
+
+  //@media (max-width: 991px)
+  //  max-width: 100%
+  //  overflow: auto

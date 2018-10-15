@@ -1,0 +1,31 @@
+.footer .footer__about
+  .footer__developer
+
+    display: flex
+    align-items: flex-end
+
+    @media (min-width: 1280px)
+      width: 225px
+
+    @media (min-width: 768px) and (max-width: 1279px)
+      width: 25%
+
+    @media (max-width: 767px)
+      width: calc(100% + 32px)
+      margin: 32px -16px 0
+      padding: 20px 16px
+
+      border-top: solid 1px $color_borders
+
+    p
+      margin-right: 10px
+
+      line-height: 0.8
+      opensansRegular(12px)
+      color: $color_link
+
+    .icon
+      width: 52px
+      height: 27px
+
+      color: $color_dark

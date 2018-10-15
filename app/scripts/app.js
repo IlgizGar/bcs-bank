@@ -2,8 +2,8 @@ import 'core-js/fn/symbol/iterator';
 import 'core-js/es6/symbol';
 
 import $ from 'jquery';
-import svg4everybody from 'svg4everybody';
 
+import svg4everybody from 'svg4everybody';
 import Header from '../components/modules/header/header';
 import Footer from '../components/modules/footer/footer';
 import Menubar from '../components/modules/menubar/menubar';
@@ -26,6 +26,8 @@ import Offices from '../components/modules/offices/offices';
 import DocumentsFilter from '../components/modules/documents/documents';
 import IndexSearch from '../components/modules/index-search/index-search';
 import News from '../components/modules/news/news';
+import Search from '../components/modules/search/search';
+import Lottie from 'lottie-web';
 
 require('babel-polyfill');
 
@@ -128,8 +130,8 @@ $(() => {
     });
   }
 
-  if ($('.offices').length) {
-    global.officesMap = new Offices($('.offices'));
+  if ($('.js-offices').length) {
+    global.officesMap = new Offices($('.js-offices'));
   }
 
   if ($('.js-dropdown[data-id="documents-filter"]').length) {
@@ -145,8 +147,27 @@ $(() => {
     global.news.push(new News());
   }
 
+  global.search = [];
+  if ($('.js-search').length) {
+    global.search.push(new Search());
+  }
+
   global.menubar = new Menubar();
 
   global.header = Header('.js-header');
   global.footer = new Footer();
+
+  if ($('[data-illustration]').length) {
+    $('[data-illustration]').each((i, el) => {
+      if ($(el).data('illustration').length) {
+        Lottie.loadAnimation({
+          container: el,
+          renderer: 'svg',
+          loop: true,
+          autoplay: true,
+          path: `assets/illustrations/${$(el).data('illustration')}.json`
+        })
+      }
+    });
+  }
 });

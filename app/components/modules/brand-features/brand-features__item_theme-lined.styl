@@ -1,0 +1,19 @@
+.brand-features
+  .brand-features__item.brand-features__item_theme-lined
+
+    .brand-features__icon
+
+      position: relative
+      @media (min-width 991px)
+        &:after {
+          content: ''
+
+          position: absolute
+          top: 50%
+          right: 30px
+
+          width: 50%
+          height: 1px
+
+          background-color: $color_borders
+        }

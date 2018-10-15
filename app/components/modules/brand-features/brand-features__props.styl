@@ -1,0 +1,43 @@
+.brand-features .brand-features__item
+  .brand-features__props
+
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+
+    margin: 64px 0 32px
+
+    width: 84px
+    height: 84px
+
+    color: $color_light
+
+    border-radius: 50%
+    background-color: $color_default
+    @media(max-width 991px)
+      display: none
+      & + .text
+        display: none
+    p.state_large
+      formularBold(24px)
+      color: currentColor
+
+      .icon
+
+        margin-left: -10px
+
+        height: 24px
+        width: 24px
+
+        transform: translateY(1px)
+
+    p.state_small
+      formularBold(12px)
+      color: currentColor
+
+      .icon
+        height: 14px
+        width: 14px
+
+        transform: translate(-3px, 1px)

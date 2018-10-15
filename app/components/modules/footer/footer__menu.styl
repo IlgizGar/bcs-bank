@@ -1,29 +1,16 @@
-.footer .footer__menu
-  display: flex
-  flex-direction column
+.footer .footer__wrap
+  .footer__menu
 
-  @media(min-width: 1280px)
-    col()
-    size(2)
-    
-    .icon
-      display: none
+    display: flex
 
-  @media (max-width: 1279px)
-    margin-top: -1px
-    width: 100%
-    padding: 16px 0
+    @media (min-width: 1280px)
+      justify-content: space-between
 
-    border-bottom: solid 1px $color_borders
-    border-top: solid 1px $color_borders
+      width: 900px
 
-    .icon
-      width: 16px
-      height: 16px
+    @media (max-width: 1279px)
+      width: calc(100% + 32px)
 
-      color: $color_borders
-
-
-    &.state_explored
-      .icon
-        transform: scale(1,-1)
+    @media (max-width: 767px)
+      flex-direction: column
+      margin: 32px -16px 0

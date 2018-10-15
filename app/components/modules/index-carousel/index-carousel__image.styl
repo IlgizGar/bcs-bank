@@ -1,7 +1,43 @@
 .index-carousel .index-carousel__image
   position: relative
+
+  width: 1px
+  height: 100%
+
+  @media (max-width: 767px)
+    width: auto
+    height: auto
+
+  svg
+    position: absolute
+    right: 0
+
+    width: auto !important
+
   img
     position absolute
-    top: -140px;
-    left: 70px;
-    max-width: 610px;
+    right: 0
+
+    @media (min-width: 1280px)
+      top: -140px
+
+      height: calc(100% + 140px)
+
+    @media (min-width: 992px) and (max-width: 1279px)
+      top: -85px
+
+      height: calc(100% + 25px)
+
+    @media (min-width: 768px) and (max-width: 991px)
+      top: -45px
+
+      height: 70%
+
+    @media (max-width: 767px)
+      order: 0
+
+      position: relative
+      margin: 0 auto 16px
+
+      width: auto
+      max-width: 200px

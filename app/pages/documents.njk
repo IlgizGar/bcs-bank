@@ -26,7 +26,7 @@
             <div class="section__nav js-tab-scroll">
               <div class="page__container">
                 <div class="section__wrap">
-                  {{ Tabbar.tabbar({ 'theme': 'light-tab', 'view': 'upperscore', 'tabs': [{'title': 'Актуальные документы', 'id': 'charter' }, {'title': 'Архив для физических лиц', 'id': 'individual'}, {'title': 'Архив для юридических лиц', 'id': 'entity'}] }) }}
+                  {{ Tabbar.tabbar({ 'anchor': { 'theme': 'light-tab', 'view': 'upperscore' }, 'tabs': [{'title': 'Актуальные документы', 'id': 'charter' }, {'title': 'Архив для физических лиц', 'id': 'individual'}, {'title': 'Архив для юридических лиц', 'id': 'entity'}] }) }}
                   {{ Dropdown.dropdown({ 'mods': {'theme': 'white'}, 'label': 'Год', 'name': 'documents-filter', 'items': [ {'title': '2018', 'value': '2018' }, {'title': '2017', 'value': '2017'}, {'title': '2016', 'value': '2016'} ], 'class': 'dropdown_type-documents ml-a', 'attr': {'id': 'documents-filter'} }) }}
                 </div>
               </div>

@@ -31,11 +31,16 @@ module.exports = (elem) => {
     }
 
     validateForm() {
-      const submitHandler = () => {
+      const submitHandler = (form) => {
         // const data = this.form.serializeArray();
         // this.msgError.removeClass('state_hidden');
         // this.form.addClass('state_hidden');
         console.log('SUBMIT');
+        if (form.getAttribute('data-fix-course') !== undefined) {
+          console.log(form.getAttribute('action'));
+          const redirectUrl = `${form.getAttribute('action')}?partner=bcs-bank&operation=${form.querySelector('.radio__field:checked').id.match(/buy|sell/g)}&amount=${form.querySelector('.js-course-input').value.replace(' ', '')}&currency=${form.querySelector('.js-course-field .js-title').innerText}`;
+          document.location.href = redirectUrl;
+        }
       };
 
       this.validator.validateForm(submitHandler);

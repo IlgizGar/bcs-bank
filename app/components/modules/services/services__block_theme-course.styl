@@ -1,12 +1,36 @@
 .services .services__block.services__block_theme-course
-  margin-top: 55px
+
+  tbody, thead
+    tr td
+      text-align: left !important
+
+      @media (max-width: 1279px)
+        height: auto !important
+
+  @media (min-width: 1280px)
+    margin-top: 55px
+
+    .services__input
+      margin-bottom: 32px
+
+  @media (max-width: 1279px)
+    margin-top: 0
+
+    .services__table-currency
+      padding:22px 0 12px
+
+    .services__input
+      height: 55px
+
+      margin-bottom: 24px
+
   .course__result
     display: flex
     justify-content: space-between
     align-items: flex-start
     align-content: stretch
 
-    margin-top: 24px
+    //margin-bottom: 16px
 
     p:first-child
       opensansRegular()

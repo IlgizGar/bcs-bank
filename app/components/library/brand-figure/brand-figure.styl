@@ -1,0 +1,27 @@
+.brand-figure
+  z-index: 250
+  position: absolute
+  top: 0
+  right: 0
+
+  width: 1px
+  height: 100%
+  
+  @media (max-width: 767px)
+    position: relative
+
+    width: 100%
+    height: auto
+
+  svg, img
+    position: absolute
+    top: 0
+    right: 0
+
+    width: auto !important
+    height: 100% !important
+
+    @media (max-width: 767px)
+      right: 50%
+      transform: translateX(50%)
+

@@ -1,4 +1,5 @@
 {% import "../currency/currency.njk" as Currency %}
+{% import "../../icon/icon.njk" as Icon %}
 
 {% macro radio( options ) %}
   {% set class_sep = joiner(' ') %}
@@ -22,12 +23,12 @@
   {% endif %}
 
   <div class="radio {{ options.class }} {{ mods | safe }}" {{ attr | safe }}>
-      <input class="radio__field" id="{{ options.id }}" type="radio" name="radio_{{ options.name }}" value="{{ options.value }}" {{ options.state | safe }}/>
+      <input class="radio__field" id="{{ options.id }}" type="radio" name="{{ options.name }}" value="{{ options.value }}" {{ options.state | safe }}/>
       <label for="{{ options.id }}" class="radio__label">
         {% if options.currency %}
-          {{ Currency.currency({ 'value': options.currency.label, 'state': options.currency.state }) }}
+          {{ Currency.currency({ 'value': options.currency.label | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | safe, 'state': options.currency.state }) }}
         {% else %}
-          {{ options.label }}
+          {{ options.label | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | safe }}
         {% endif %}
       </label>
   </div>

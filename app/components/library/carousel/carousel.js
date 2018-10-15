@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import 'slick-carousel';
+import Context from "../context/context";
 
 module.exports = (elem) => {
   class Carousel {
@@ -43,41 +44,42 @@ module.exports = (elem) => {
           this.carousel.not('.slick-initialized').slick({
             autoplay: true,
             autoplaySpeed: 12000,
-            appendArrows: $('.js-carousel-controls'),
+            appendArrows: $('.js-index-carousel-controls'),
             nextArrow: this.next,
             prevArrow: this.prev,
           });
           break;
-        case 'about-bank':
-          this.initAboutBankSlick();
-          break;
         default:
-          console.log('DEFAULT');
+          this.initMobileSlick(this.carousel.data('breakpoint') - 1);
+          break;
       }
     }
 
     events() {
       $(window).on('resize', () => {
-        if (window.innerWidth < 992) {
-          if (this.carousel.data('id') === 'about-bank') {
-            this.initAboutBankSlick();
+        if (typeof this.carousel.data('breakpoint') !== 'undefined') {
+          if (parseInt(this.carousel.data('breakpoint'), 0) - 1 >= window.innerWidth) {
+            this.initMobileSlick(parseInt(this.carousel.data('breakpoint'), 0) - 1);
           }
         }
       });
     }
 
-    initAboutBankSlick() {
+    initMobileSlick(bpoint) {
       this.carousel.not('.slick-initialized').slick({
-        appendArrows: $('.js-carousel-controls'),
+        appendArrows: this.carousel.next('.js-carousel-controls'),
         nextArrow: this.next,
         prevArrow: this.prev,
         mobileFirst: true,
         responsive: [
           {
-            breakpoint: 992,
+            breakpoint: bpoint,
             settings: 'unslick',
           },
         ],
+      });
+      this.carousel.find('.js-context').each((i, el) => {
+        global.contexts[$(el).data('id')] = Context(el);
       });
     }
   }

@@ -1,0 +1,35 @@
+.bonus
+  .bonus__item
+    .bonus__info
+      .bonus__detail
+        display: inline-flex
+        
+        @media (min-width: 768px)
+          flex-direction: row
+          align-items: center
+
+          z-index: 20
+          position: absolute
+          right: 32px
+
+          .text
+            order: -1
+
+          .text.mobile
+            display: none
+
+        @media (max-width: 767px)
+          flex-direction: column
+          align-items: flex-start
+          justify-content: space-between
+          flex-wrap: wrap
+
+          width: 87px
+          max-height: 35px
+
+          .text
+            display: none
+
+          .text.mobile
+            display: inline
+            font-size: 12px

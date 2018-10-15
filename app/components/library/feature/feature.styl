@@ -1,4 +1,17 @@
 .feature
+
+  position: relative
+  z-index: 250
+  
+  .feature__content
+    .feature__title. .feature__text
+      color: $color_elem
+
   svg
-    height: 24px
-    width: 24px
+    @media (min-width: 768px)
+      height: 24px
+      width: 24px
+
+    @media (max-width: 767px)
+      height: 14px
+      width: 14px

@@ -1,14 +1,16 @@
 {% import "../../../components/library/button/button.njk" as Button %}
 
 {% macro tabbar( options ) %}
+
   <nav class="tabbar js-tabbar {{ options.class }}">
     {% for tab in options.tabs %}
-      {% set tabClass = 'js-anchor ' + options.buttonClass %}
+
+      {% set tabClass = 'js-anchor ' + options.anchor.class %}
       {% if tab.state %}
-        {% set tabClass = 'js-anchor state_active ' + options.buttonClass %}
+        {% set tabClass = 'js-anchor state_active ' + options.anchor.class %}
       {% endif %}
-      {{ Button.button({ 'href': '#' + tab.id, 'title': tab.title, 'mods' : {'theme': options.theme, 'type': 'tab', 'view': options.view },
-        'class': tabClass }) }}
+
+      {{ Button.button({ 'href': '#' + tab.id, 'title': tab.title, 'class': tabClass, 'mods': {'type': 'tab', 'theme': options.anchor.theme, 'view': options.anchor.view} }) }}
     {% endfor %}
   </nav>
 {% endmacro %}

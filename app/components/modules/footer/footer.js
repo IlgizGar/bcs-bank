@@ -10,8 +10,10 @@ export default class Footer {
 
   events() {
     this.menu.on('click', (e) => {
-      $(e.currentTarget).find('.js-footer-menu-content').slideToggle(255);
-      $(e.currentTarget).toggleClass('state_explored');
+      if (window.innerWidth < 767) {
+        $(e.currentTarget).find('.js-footer-menu-content').slideToggle(255);
+        $(e.currentTarget).toggleClass('state_explored');
+      }
     });
   }
 }

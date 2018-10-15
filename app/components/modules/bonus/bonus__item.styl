@@ -1,0 +1,31 @@
+.bonus .bonus__content
+  .bonus__item
+    display: flex
+
+    position: relative
+    margin-bottom: 24px
+
+    border-radius: 4px
+    background-color: $color_light
+
+    &:last-child
+      margin-bottom: 0
+
+    @media (min-width: 768px)
+      min-height: 96px
+
+      &:hover
+        .bonus__caption
+          &, .bonus__title
+            color: $color_light
+
+          background-color: $color_default
+
+        .bonus__info .bonus__detail
+          .bonus__amount, .bonus__symbol, .text
+            color: $color_light
+
+    @media (max-width: 767px)
+      flex-direction: column
+
+      height: auto

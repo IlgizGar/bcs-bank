@@ -1,6 +1,11 @@
 .feature
-  .feature__text
+  &.feature_type-normal
+    .feature__text
       opensansRegular()
+
+      @media (max-width: 767px)
+        font-size: 12px
+
   &.feature_type-iconed
     .feature__text
       color: $madison

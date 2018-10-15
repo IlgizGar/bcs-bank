@@ -1,0 +1,43 @@
+{% import "../../library/currency/currency.njk" as Currency %}
+{% import "../../library/context/context.njk" as Context %}
+
+<div class="card__heading card__heading_theme-exchange">
+  <h2 class="card__title">Обмен валюты <br> в отделениях банка в</h2>
+  {{ Context.context({ 'name': 'exchange', 'mods': {'theme': 'small'}, 'attr': {'id': 'index-exchange'},
+    'items': [{ 'title': 'Москве', 'value': 'bks', 'attr': { 'prefix': '', 'title': 'Москве' }, 'selected': true },
+      { 'title': 'Краснодаре', 'value': 'bank', 'attr': { 'prefix': '', 'title': 'Краснодаре' } }] }) }}
+  <p class="card__subtitle mt-0">До 13 апреля 2018</p>
+</div>
+<div class="services__block services__block_theme-exchange">
+  <table class="services__table">
+    <thead>
+    <tr>
+      <th></th>
+      <th class="services__table-action">Покупаю по</th>
+      <th class="services__table-action">Продаю по</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td class="services__table-currency">USD</td>
+      <td>{{ Currency.currency({ 'value': '45.6', 'state': 'rise' }) }}</td>
+      <td>{{ Currency.currency({ 'value': '54.2', 'state': 'fall'}) }}</td>
+    </tr>
+    <tr>
+      <td class="services__table-currency">EUR</td>
+      <td>{{ Currency.currency({ 'value': '5.9', 'state': 'rise' }) }}</td>
+      <td>{{ Currency.currency({ 'value': '6', 'state': 'rise' }) }}</td>
+    </tr>
+    <tr>
+      <td class="services__table-currency">GBR</td>
+      <td>{{ Currency.currency({ 'value': '5.9', 'state': 'rise' }) }}</td>
+      <td>{{ Currency.currency({ 'value': '6', 'state': 'rise' }) }}</td>
+    </tr>
+    <tr>
+      <td class="services__table-currency">CHF</td>
+      <td>{{ Currency.currency({ 'value': '5.9', 'state': 'rise' }) }}</td>
+      <td>{{ Currency.currency({ 'value': '6', 'state': 'rise' }) }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
