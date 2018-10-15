@@ -11,7 +11,7 @@
   {% endif %}
 
   {% set type = 'form' %}
-  {% if options.href %}
+  {% if options.href or options.linkhref %}
     {% set type = 'div' %}
   {% endif %}
 
@@ -33,20 +33,34 @@
   #}
   <div class="card js-card {% if type === 'form' %}js-form{% endif %} {{ "card_type-" + options.type }} {% if options.hoverType %}{{ "card_hover-type-" + options.hoverType }}{% endif %} {% if options.view %}{{ "card_view-" + options.view }}{% endif %} {% if options.theme %} {{ "card_theme-"+options.theme }}{% endif %} {{ options.class }}" {% if options.href %}data-href={{ options.href }}{% endif %} {{ attr | safe }}>
     <{{ type }} class="card__wrap">
-
       {% if options.link %}
-        <button class="card__action" {% if type === 'form' %}type="submit"{% endif %}>
-          <div class="card__button">
-            {% if options.icon %}
-              {{ inlineSvg.inlineSvg({ 'path': [options.icon] }) }}
-            {% endif %}
-            <span class="{% if options.mobile %}hidden-mobile{% endif %}">{{ options.link }}</span>
-            {% if options.mobile %}
-              <span class="hidden-desktop">{{ options.mobile }}</span>
-            {% endif %}
-            {{ Icon.icon({ 'name': 'arrow' }) }}
-          </div>
-        </button>
+        {% if options.linkhref %}
+          <a class="card__action" href="{{ options.linkhref }}">
+            <div class="card__button">
+              {% if options.icon %}
+                {{ inlineSvg.inlineSvg({ 'path': [options.icon] }) }}
+              {% endif %}
+              <span class="{% if options.mobile %}hidden-mobile{% endif %}">{{ options.link }}</span>
+              {% if options.mobile %}
+                <span class="hidden-desktop">{{ options.mobile }}</span>
+              {% endif %}
+              {{ Icon.icon({ 'name': 'arrow' }) }}
+            </div>
+          </a>
+        {% else %}
+            <button class="card__action" {% if type === 'form' %}type="submit"{% endif %}>
+              <div class="card__button">
+                {% if options.icon %}
+                  {{ inlineSvg.inlineSvg({ 'path': [options.icon] }) }}
+                {% endif %}
+                <span class="{% if options.mobile %}hidden-mobile{% endif %}">{{ options.link }}</span>
+                {% if options.mobile %}
+                  <span class="hidden-desktop">{{ options.mobile }}</span>
+                {% endif %}
+                {{ Icon.icon({ 'name': 'arrow' }) }}
+              </div>
+            </button>
+        {% endif %}
       {% else %}
         <div class="card__action">
           {% if options.type === 'vacancy' %}
@@ -71,7 +85,7 @@
           </div>
 
           {% if options.type === 'figure' %}
-            <img class="card__figure" src="{{ options.img }}" alt="{{ options.subtitle }}">
+            <img class="card__figure" src="{{      ns.img }}" alt="{{ options.subtitle }}">
           {% endif %}
 
           {% if options.type === 'vacancy' %}
