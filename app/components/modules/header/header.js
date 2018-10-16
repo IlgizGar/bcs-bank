@@ -83,7 +83,7 @@ module.exports = (elem) => {
 
       $nav.appendTo(this.mobileMenu);
       $menu.find('.js-button')
-        .removeClass('button_theme-white')
+        .removeClass('state_active')
         .addClass('button_theme-black mobile-menu__link');
       $menu.appendTo(this.mobileMenu);
       $explore.find('a')

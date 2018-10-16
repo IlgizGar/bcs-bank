@@ -28,7 +28,7 @@
             {{ Heading.heading({ 'title': options.title }) }}
             <div class="plastic-card__category">
               {% for key, value in options.category %}
-                {{ Button.button({ 'title': value, 'mods': { 'theme': 'gray', 'view': 'outlined', 'size': 'mini' }, 'attr': { 'category': key } }) }}
+                {{ Button.button({ 'title': value, 'mods': { 'view': 'outlined', 'size': 'mini' }, 'attr': { 'category': key } }) }}
               {% endfor %}
             </div>
           </div>

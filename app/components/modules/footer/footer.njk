@@ -99,13 +99,13 @@
 <div id="question-modal-form" class="modal js-form" data-form="question-modal">
   <form id="question-form" action="/" class="form question-form">
     {{ Heading.heading({ 'title': 'У вас есть вопрос?' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'none', 'theme': 'default', 'class': 'form__title'}) }}
-    {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': 'js-fio-masked', 'name': 'queston_name', 'state': 'required' }) }}
+    {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': {'class': 'js-fio-masked', 'name': 'queston_name', 'required': 'required'} }) }}
     <div class="form__line-group">
-      {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': 'js-phone-masked', 'name': 'question_phone', 'state': 'required' }) }}
-      {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': 'js-mail-masked', 'name': 'question_mail', 'state': 'required' }) }}
+      {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': { 'class': 'js-phone-masked', 'name': 'question_phone', 'required': 'required' } }) }}
+      {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': { 'class': 'js-mail-masked', 'name': 'question_mail', 'required': 'required' } }) }}
     </div>
     {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Тема', 'name': 'question', 'items': [{'title': 'Предложения по сайту', 'value': '0'},{'title': 'Интернет-банк', 'value': '1'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'question-form-list'}, 'field': 'js-question-topic' }) }}
-    {{ Input.input({ 'label': 'Текст вопроса', 'tag': 'textarea', 'rows': '6', 'class': 'input_textarea form__field-group', 'state': 'required', 'name': 'question_text', 'field': 'js-question-textarea' }) }}
+    {{ Input.input({ 'label': 'Текст вопроса', 'tag': 'textarea', 'rows': '6', 'class': 'input_textarea form__field-group', 'field': { 'required': 'required', 'name': 'question_text', 'class': 'js-question-textarea' } }) }}
     <div class="form__action">
       <div class="form__agreements">
         {# TODO: вынести в шаблон #}
