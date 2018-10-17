@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="94px" height="108px" viewBox="0 0 94 108" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 16 Copy 7</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="8.05150067%" y1="90.0095889%" x2="94.8419426%" y2="16.8162884%" id="linearGradient-1">
+            <stop stop-color="#3E6CD5" offset="0%"></stop>
+            <stop stop-color="#578AFF" offset="100%"></stop>
+        </linearGradient>
+        <path d="M3,0 L32.7585865,0 C33.3108712,-1.01453063e-16 33.7585865,0.44771525 33.7585865,1 L33.7585865,7.51074785 C33.7585865,9.1676021 35.1017322,10.5107478 36.7585865,10.5107478 L45,10.5107478 C45.5522847,10.5107478 46,10.9584631 46,11.5107478 L46,68 C46,69.6568542 44.6568542,71 43,71 L3,71 C1.34314575,71 2.02906125e-16,69.6568542 0,68 L0,3 C-2.02906125e-16,1.34314575 1.34314575,3.04359188e-16 3,0 Z" id="path-2"></path>
+        <filter x="-18.5%" y="-9.2%" width="137.0%" height="123.9%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0.116224869   0 0 0 0 0.481584821  0 0 0 0.0923629982 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="графика-/-иконка-/-большая-/-документ">
+            <g id="Group-16-Copy-7">
+                <circle id="Oval-Copy" fill="url(#linearGradient-1)" cx="47" cy="47" r="47"></circle>
+                <g id="Group-26-Copy-11" transform="translate(24.000000, 30.000000)">
+                    <g id="Group-25">
+                        <polygon id="Path-6" fill="#EDF3FA" points="33.2073595 0.133221693 45.8131242 10.8604293 33.0607639 10.5653212"></polygon>
+                        <g id="Rectangle-23">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                        </g>
+                        <circle id="Oval-8" fill="#FE7F5F" cx="31.5" cy="58.5" r="4.5"></circle>
+                        <rect id="Rectangle-10" fill="#E4ECF6" x="8" y="13" width="16" height="2" rx="1"></rect>
+                        <rect id="Rectangle-10-Copy-2" fill="#E4ECF6" x="8" y="23" width="12" height="2" rx="1"></rect>
+                        <rect id="Rectangle-10-Copy" fill="#E4ECF6" x="8" y="18" width="22" height="2" rx="1"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
