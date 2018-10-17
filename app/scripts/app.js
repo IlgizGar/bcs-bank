@@ -23,6 +23,7 @@ import Card from '../components/library/card/card';
 import Checkbox from '../components/library/checkbox/checkbox';
 import PageHeader from '../components/modules/page-header/page-header';
 import Offices from '../components/modules/offices/offices';
+import Transfer from '../components/modules/services/transfer';
 import DocumentsFilter from '../components/modules/documents/documents';
 import IndexSearch from '../components/modules/index-search/index-search';
 import News from '../components/modules/news/news';
@@ -150,6 +151,11 @@ $(() => {
   global.search = [];
   if ($('.js-search').length) {
     global.search.push(new Search());
+  }
+
+  global.transfer = [];
+  if ($('.js-transfer').length) {
+    global.transfer.push(new Transfer($('.js-transfer')));
   }
 
   global.menubar = new Menubar();
