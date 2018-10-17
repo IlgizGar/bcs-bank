@@ -20,9 +20,6 @@
 
     <div class="plastic-card plastic-card_theme-blue {{ mods | safe }}">
       <div class="plastic-card__wrapper">
-        <div class="plastic-card__image">
-          {{ Icon.inlineSvg({ 'path': [options.image] }) }}
-        </div>
         <div class="plastic-card__content">
           <div class="plastic-card__header">
             {{ Heading.heading({ 'title': options.title }) }}
@@ -42,6 +39,9 @@
             {{ Button.button({ 'href': '#', 'title': 'Подробнее', 'mods': { 'view': 'text', 'theme': 'white' } }) }}
           </div>
         </div>
+        <div class="plastic-card__image">
+          {{ Icon.inlineSvg({ 'path': [options.image] }) }}
+        </div>
       </div>
     </div>
 
@@ -49,9 +49,6 @@
 
     <div class="plastic-card {{ mods | safe }}">
       <div class="plastic-card__wrapper">
-        <div class="plastic-card__image">
-          {{ Icon.inlineSvg({ 'path': [options.image] }) }}
-        </div>
         <div class="plastic-card__content">
           <div class="plastic-card__header">
             {{ Heading.heading({ 'title': options.title }) }}
@@ -70,6 +67,9 @@
             {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'default' } }) }}
             {{ Button.button({ 'href': '#', 'title': 'Подробнее', 'mods': { 'view': 'text', 'theme': 'default' } }) }}
           </div>
+        </div>
+        <div class="plastic-card__image">
+          {{ Icon.inlineSvg({ 'path': [options.image] }) }}
         </div>
       </div>
     </div>

@@ -39,14 +39,14 @@ module.exports = (elem) => {
           this.$tab = $(this.active.attr('href'));
           this.$tab.removeClass('state_invisible');
         }
+
+        if($anchor.closest('.js-products-tabbar').length) {
+          this.handleProductsFilter($anchor);
+        }
       });
     }
 
     setAnchorPosition() {
-      
-      console.log('TABWIDTH', this.tabbar.outerWidth());
-      console.log('WINDOW', window.innerWidth);
-
       if (window.innerWidth < this.tabbar.outerWidth()) {
         if (this.anchors.index(this.active) === 0) {
           this.wrapper.addClass('gradient_right').removeClass('gradient_left');
@@ -58,6 +58,17 @@ module.exports = (elem) => {
         this.scroller.animate({ scrollLeft: this.active[0].offsetLeft - ((window.innerWidth / 2) - (this.active.outerWidth() / 2)) }, 300);
       } else {
         this.wrapper.removeClass('gradient_left gradient_right');
+      }
+    }
+
+    handleProductsFilter($el) {
+      const id = $el.attr('href').slice(1);
+      const $filter = $('.js-products-filter');
+
+      if(id !== 'debet') {
+        $filter.addClass('state_hidden');
+      } else {
+        $filter.removeClass('state_hidden');
       }
     }
   }

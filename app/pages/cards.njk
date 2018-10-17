@@ -28,8 +28,8 @@
         <div class="products__header">
           <div class="page__container">
             <div class="products__controls js-tab-scroll">
-              {{ Tabbar.tabbar({ 'anchor': { 'view': 'underscore', 'theme': 'default-tab' }, 'tabs': [{'title': 'Дебетовые', 'id': 'debet', 'state': 'active' }, {'title': 'Кредитные', 'id': 'credit'}, {'title': 'Пакеты услуг', 'id': 'packets'}], 'class': 'products__tabbar' }) }}
-              <div class="filter products__filter">
+              {{ Tabbar.tabbar({ 'anchor': { 'view': 'underscore', 'theme': 'default-tab' }, 'tabs': [{'title': 'Дебетовые', 'id': 'debet', 'state': 'active' }, {'title': 'Кредитные', 'id': 'credit'}, {'title': 'Пакеты услуг', 'id': 'packets'}], 'class': 'products__tabbar js-products-tabbar' }) }}
+              <div class="filter products__filter js-products-filter">
                 <div class="filter__wrapper">
                   <div class="filter__title hidden-mobile">Бонусы за:</div>
                   <div class="filter__select hidden-mobile">
@@ -51,74 +51,74 @@
           <div id="debet" class="tabs__item js-tab state_invisible">
             <div class="page__container">
 
-              {{ PlasticCard.plasticCard({ 'title': 'Цифровой Visa Infinite',
+              {{ PlasticCard.plasticCard({ 'title': 'MORE Visa Platinum',
                 'category': {'travel': 'Путешествия'},
-                'image': 'assets/images/card-infinite.png',
+                'image': 'assets/illustrations/more visa platinum.png',
                 'theme': 'blue',
                 'features': [
                   { 'title': '3%',
-                    'text': 'от всех покупок возвращаем на карту',
+                    'text': 'кэшбека \n за покупки',
                     'mods': {'type': 'normal', 'theme': 'light'},
                     'class': 'plastic-card__feature'},
                   { 'title': '0#ruble',
-                    'text': 'страхование путешествующих',
+                    'text': 'страхование \n путешествующих',
                     'mods': {'type': 'normal', 'theme': 'light'},
                     'class': 'plastic-card__feature'},
-                  { 'title': 'От 0 #ruble',
-                    'text': 'стоимость обслуживания',
+                  { 'title': 'От 0#ruble',
+                    'text': 'стоимость \n обслуживания',
                     'mods': {'type': 'normal', 'theme': 'light'},
                     'class': 'plastic-card__feature'}
                 ] }) }}
-              {{ PlasticCard.plasticCard({ 'title': 'Цифровой Visa Infinite',
-                'category': {'shopping': 'Все покупки'},
-                'image': 'assets/images/card-infinite.png',
+              {{ PlasticCard.plasticCard({ 'title': 'Цифровой Signature',
+                'category': {'lifestyle': 'Стиль жизни', 'vip': 'VIP'},
+                'image': 'assets/illustrations/digital signature.png',
                 'features': [
                   { 'title': '12%',
-                    'text': 'от покупок в любимых категориях',
+                    'text': 'в выбранной \n категории',
                     'mods': {'type': 'normal'},
                     'class': 'plastic-card__feature'},
                   { 'title': '0#ruble',
-                    'text': 'доступ в бизнес залы Priority Pass',
+                    'text': 'доступ в бизнес \n залы Priority Pass',
                     'mods': {'type': 'normal'},
                     'class': 'plastic-card__feature'},
                   { 'title': 'От 0#ruble',
-                    'text': 'стоимость обслуживания',
+                    'text': 'стоимость \n обслуживания',
                     'mods': {'type': 'normal'},
                     'class': 'plastic-card__feature'}
                 ] }) }}
               {{ PlasticCard.plasticCard({
                 'title': 'Цифровой Visa Platinum',
-                'category': {'travel': 'Путешествия'},
-                'image': 'assets/images/card-infinite.png',
+                'category': {'lifestyle': 'Стиль жизни'},
+                'image': 'assets/illustrations/digital visa platinum.png',
                 'features': [
                   { 'title': '7%',
-                    'text': 'от покупок в любимых категориях',
+                    'text': 'в выбранной \n категории',
                     'mods': {'type': 'normal'},
                     'class': 'plastic-card__feature'},
                   { 'title': '0#ruble',
-                    'text': 'комиссия за онлайн платежи и переводы',
+                    'text': 'комиссия за онлайн \n платежи и переводы',
                     'mods': {'type': 'normal'},
                     'class': 'plastic-card__feature'},
                   { 'title': 'От 0#ruble',
-                    'text': 'стоимость обслуживания',
+                    'text': 'стоимость \n обслуживания',
                     'mods': {'type': 'normal'},
                     'class': 'plastic-card__feature'}
                 ] }) }}
               {{ PlasticCard.plasticCard({
-                'title': 'MORE Visa Infinite',
-                'category': {'travel': 'Путешествия'},
-                'image': 'assets/images/card-more-infinite.png',
+                'title': 'MORE Signature',
+                'category': {'travel': 'Путешествия', 'vip': 'VIP'},
+                'image': 'assets/illustrations/more signature.png',
                 'features': [
                   { 'title': '5%',
-                    'text': 'от всех покупок возвращаем на карту',
+                    'text': 'кэшбека \n за покупки',
                     'mods': {'type': 'normal'},
                     'class': 'plastic-card__feature'},
                   { 'title': '0#ruble',
-                    'text': 'комиссия за онлайн платежи и переводы',
+                    'text': 'посещение бизнес \n залов Lounge Key',
                     'mods': {'type': 'normal'},
                     'class': 'plastic-card__feature'},
                   { 'title': 'От 0#ruble',
-                    'text': 'стоимость обслуживания',
+                    'text': 'стоимость \n обслуживания',
                     'mods': {'type': 'normal'},
                     'class': 'plastic-card__feature'}
                 ] }) }}
@@ -127,18 +127,18 @@
           <div id="credit" class="tabs__item js-tab state_invisible">
             <div class="page__container">
               {{ PlasticCard.plasticCard({ 'title': 'БКС Платинум',
-                'image': 'assets/images/card-infinite.png',
+                'image': 'assets/illustrations/bks platinum.png',
                 'features': [
                   { 'title': 'До 55 дней',
-                    'text': 'беспроцентный период',
+                    'text': 'беспроцентный \n период',
                     'mods': {'type': 'normal'},
                     'class': 'plastic-card__feature'},
                   { 'title': 'До 1 млн. #ruble',
-                    'text': 'кредитный лимит',
+                    'text': 'кредитный \n лимит',
                     'mods': {'type': 'normal'},
                     'class': 'plastic-card__feature'},
                   { 'title': 'До 30%',
-                    'text': 'от покупок возвращаются на карту',
+                    'text': 'кэшбек \n за покупки',
                     'mods': {'type': 'normal'},
                     'class': 'plastic-card__feature'}
                 ] }) }}
@@ -147,7 +147,82 @@
           <div id="packets" class="tabs__item js-tab state_invisible">
             <div class="page__container">
               <div class="section__row">
-                packets
+                {{ PlasticCard.plasticCard({ 'title': 'MORE',
+                  'theme': 'blue',
+                  'features': [
+                    { 'title': 'От 0#ruble',
+                      'text': 'стоимость \n за обслуживание',
+                      'mods': {'type': 'normal', 'theme': 'light'},
+                      'class': 'plastic-card__feature'},
+                    { 'title': '0#ruble',
+                      'text': 'страхование \n путешествующих',
+                      'mods': {'type': 'normal', 'theme': 'light'},
+                      'class': 'plastic-card__feature'},
+                    { 'title': '3%',
+                      'text': 'кэшбек \n за покупки',
+                      'mods': {'type': 'normal', 'theme': 'light'},
+                      'class': 'plastic-card__feature'}
+                  ] }) }}
+                {{ PlasticCard.plasticCard({ 'title': 'MORE Prime',
+                  'features': [
+                    { 'title': 'От 0#ruble',
+                      'text': 'стоимость \n за обслуживание',
+                      'mods': {'type': 'normal'},
+                      'class': 'plastic-card__feature'},
+                    { 'title': '0#ruble',
+                      'text': 'посещение Lounge Key \n залов по всему миру',
+                      'mods': {'type': 'normal'},
+                      'class': 'plastic-card__feature'},
+                    { 'title': '5%',
+                      'text': 'кэшбек \n за покупки',
+                      'mods': {'type': 'normal'},
+                      'class': 'plastic-card__feature'}
+                  ] }) }}
+                {{ PlasticCard.plasticCard({ 'title': 'Брокер',
+                  'features': [
+                    { 'title': 'От 0#ruble',
+                      'text': 'стоимость \n за обслуживание',
+                      'mods': {'type': 'normal'},
+                      'class': 'plastic-card__feature'},
+                    { 'title': 'До 10%',
+                      'text': 'возвращаем бонус \n от покупок',
+                      'mods': {'type': 'normal'},
+                      'class': 'plastic-card__feature'},
+                    { 'title': '0#ruble',
+                      'text': 'переводы в БКС \n Онлайн и Мобильном',
+                      'mods': {'type': 'normal'},
+                      'class': 'plastic-card__feature'}
+                  ] }) }}
+                {{ PlasticCard.plasticCard({ 'title': 'Цифровой Прайм',
+                  'features': [
+                    { 'title': 'От 0#ruble',
+                      'text': 'стоимость \n обслуживания',
+                      'mods': {'type': 'normal'},
+                      'class': 'plastic-card__feature'},
+                    { 'title': '0#ruble',
+                      'text': 'доступ в Priority Pass \n залы по всему миру',
+                      'mods': {'type': 'normal'},
+                      'class': 'plastic-card__feature'},
+                    { 'title': '12%',
+                      'text': 'от покупок \n в любимых категориях',
+                      'mods': {'type': 'normal'},
+                      'class': 'plastic-card__feature'}
+                  ] }) }}
+                {{ PlasticCard.plasticCard({ 'title': 'Цифровой Оптимум',
+                  'features': [
+                    { 'title': 'От 0#ruble',
+                      'text': 'стоимость \n обслуживания',
+                      'mods': {'type': 'normal'},
+                      'class': 'plastic-card__feature'},
+                    { 'title': '0#ruble',
+                      'text': 'комиссия за онлайн \n платежи и переводы',
+                      'mods': {'type': 'normal'},
+                      'class': 'plastic-card__feature'},
+                    { 'title': '7%',
+                      'text': 'от покупок \n в любимых категориях',
+                      'mods': {'type': 'normal'},
+                      'class': 'plastic-card__feature'}
+                  ] }) }}
               </div>
             </div>
           </div>
