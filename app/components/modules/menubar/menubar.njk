@@ -19,12 +19,12 @@
           {{ Svg.inlineSvg({'path': ['assets/images/svg/full-logo-light.svg', 'assets/images/svg/full-logo-dark.svg']}) }}
         </a>
         {% if options.vars.header === 'blue' %}
-          {{ Menu.menu({ 'basic': [{'href': '#', 'title': 'Карты'}, {'href': '#', 'title': 'Кредиты'}, {'href': '#', 'title': 'Вклады'}, {'href': '#', 'title': 'Платежи'}, {'href': '#', 'title': 'БКС Бонус'}],
-            'more': [], 'theme': 'white', 'class': 'header__menu' }) }}
+          {{ Menu.menu({ 'basic': [{'href': '#', 'title': 'Карты', 'selected': true}, {'href': '#', 'title': 'Кредиты'}, {'href': '#', 'title': 'Вклады'}, {'href': '#', 'title': 'Платежи'}, {'href': '#', 'title': 'БКС Бонус'}],
+            'more': [], 'theme': 'white-tab', 'class': 'header__menu' }) }}
           {{ Button.button({ 'href': 'https://online.bcs.ru/cy/web/guest/home', 'title': 'Интернет-банк', 'mods' : {'theme': 'white', 'view': 'outlined', 'size': 'low'}, 'class': 'js-online-bank hidden-mobile' }) }}
         {% else %}
-          {{ Menu.menu({ 'basic': [{'href': '#', 'title': 'Карты'}, {'href': '#', 'title': 'Кредиты'}, {'href': '#', 'title': 'Вклады'}, {'href': '#', 'title': 'Платежи'}, {'href': '#', 'title': 'БКС Бонус'}],
-            'more': [], 'theme': 'black', 'class': 'header__menu' }) }}
+          {{ Menu.menu({ 'basic': [{'href': '#', 'title': 'Карты', 'selected': true}, {'href': '#', 'title': 'Кредиты'}, {'href': '#', 'title': 'Вклады'}, {'href': '#', 'title': 'Платежи'}, {'href': '#', 'title': 'БКС Бонус'}],
+            'more': [], 'theme': 'dark-tab', 'class': 'header__menu' }) }}
           {{ Button.button({ 'href': 'https://online.bcs.ru/cy/web/guest/home', 'title': 'Интернет-банк', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low'}, 'class': 'js-online-bank hidden-mobile' }) }}
         {% endif %}
 
