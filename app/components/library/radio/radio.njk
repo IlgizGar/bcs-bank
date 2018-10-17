@@ -26,9 +26,9 @@
       <input class="radio__field" id="{{ options.id }}" type="radio" name="{{ options.name }}" value="{{ options.value }}" {{ options.state | safe }}/>
       <label for="{{ options.id }}" class="radio__label">
         {% if options.currency %}
-          {{ Currency.currency({ 'value': options.currency.label | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | safe, 'state': options.currency.state }) }}
+          {{ Currency.currency({ 'value': options.currency.label | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | replace("#euro", Icon.icon({ 'name': 'euro' })) | replace("#pound", Icon.icon({ 'name': 'pound' })) | replace("#dollar", Icon.icon({ 'name': 'baks' })) | safe, 'state': options.currency.state }) }}
         {% else %}
-          {{ options.label | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | safe }}
+          {{ options.label | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | replace("#euro", Icon.icon({ 'name': 'euro' })) | replace("#pound", Icon.icon({ 'name': 'pound' })) | replace("#dollar", Icon.icon({ 'name': 'baks' })) | safe }}
         {% endif %}
       </label>
   </div>

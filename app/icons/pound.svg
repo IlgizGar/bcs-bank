@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="12px" viewBox="0 0 10 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>£</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="графика-/-инпут-/-валюта-/-фунт-/-дефолт" transform="translate(-3.000000, -2.000000)" fill="#B2BAC2">
+            <path d="M6.408,12.752 L12.552,12.752 L12.552,14 L3.96,14 L3.96,12.768 L4.264,12.768 C5.096,12.768 5.4,12.24 5.4,11.296 L5.4,9.44 L3.96,9.44 L3.96,8.256 L5.4,8.256 L5.4,6.032 C5.4,3.856 6.68,2.576 8.76,2.576 C10.76,2.576 11.96,3.776 12.024,5.792 L10.632,5.792 C10.6,4.624 10.088,3.824 8.776,3.824 C7.368,3.824 6.808,4.784 6.808,6.032 L6.808,8.256 L10.264,8.256 L10.264,9.44 L6.808,9.44 L6.808,11.152 C6.808,11.696 6.776,12.08 6.408,12.432 L6.408,12.752 Z" id="£"></path>
+        </g>
+    </g>
+</svg>

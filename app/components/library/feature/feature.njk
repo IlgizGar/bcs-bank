@@ -18,8 +18,8 @@
       </div>
     {% endif %}
     <div class="feature__content">
-      <span class="feature__title">{{ options.title | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | safe }}</span>
-      <span class="feature__text">{{ options.text | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | safe }}</span>
+      <span class="feature__title">{{ options.title | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | replace("#euro", Icon.icon({ 'name': 'euro' })) | replace("#pound", Icon.icon({ 'name': 'pound' })) | replace("#dollar", Icon.icon({ 'name': 'baks' })) | safe }}</span>
+      <span class="feature__text">{{ options.text | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | replace("#euro", Icon.icon({ 'name': 'euro' })) | replace("#pound", Icon.icon({ 'name': 'pound' })) | replace("#dollar", Icon.icon({ 'name': 'baks' })) | safe }}</span>
     </div>
   </div>
 {% endmacro %}
