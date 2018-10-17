@@ -87,7 +87,7 @@
           <section class="section section_theme-white-smoke section_padding-default page__section mobile-mb-0">
             <div class="calculator">
               <div class="page__container">
-                {{ Heading.heading({ 'title': 'Рассчитайте свой бонус', 'mods': { 'type': 'default', 'margin': 'medium' } }) }}
+                {{ Heading.heading({ 'title': 'Рассчитайте свои бонусы', 'mods': { 'type': 'default', 'margin': 'medium' } }) }}
                 <div class="section__row calculator__row">
                   <div class="form form_layout-narrow calculator__form">
                     <form>
@@ -132,36 +132,36 @@
                     {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
                   </div>
                 </div>
-                <img class="mobile__figure" src="assets/illustrations/bks platinum.png"
-                     alt="Легкий мобильный банк">
+                <img class="mobile__figure" src="assets/illustrations/mobile-bank.png"
+                     alt="Удобный мобильный банк">
               </div>
             </div>
           </section>
           <section class="section page__section">
             <div class="page__container">
-              {{ Heading.heading({ 'title': 'Оформите заявку - получите \n карту на следующий день', 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered' }) }}
+              {{ Heading.heading({ 'title': 'Оформите заявку - получите \n карту не выходя из дома', 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered' }) }}
             </div>
             {{ BrandFeatures.brandFeatures({ 'items': [
               {
                 'icon': 'assets/images/svg/list-image.svg',
                 'title': 'Оставьте заявку',
-                'subtitle': 'Заполнение заявки \n займет 5 минут',
+                'subtitle': 'Это займет \n всего 7 минут',
                 'mods': {
                 'theme': 'lined'
               }
               },
               {
                 'icon': 'assets/images/svg/sand-clock-image.svg',
-                'title': 'Получите карту',
-                'subtitle': 'Наш специалист доставит Вам \n документы и карту бесплатно',
+                'title': 'Одобрение банка',
+                'subtitle': 'Банк примет итоговое решение \n в течении 2-х рабочих дней',
                 'mods': {
                 'theme': 'lined'
               }
               },
               {
                 'icon': 'assets/images/svg/card-image.svg',
-                'title': 'Пользуйтесь картой',
-                'subtitle': 'Получайте бонусы с каждой \n покупки и меняйте их на рубли'
+                'title': 'Получите карту',
+                'subtitle': 'Наш специалист доставит Вам \n кредитную карту бесплатно'
               }
             ] }) }}
           </section>
@@ -169,16 +169,13 @@
             <div class="dcard-request">
               <div class="page__container">
                 {{ Heading.heading({ 'title': 'Заявка на карту', 'mods': { 'type': 'default', 'margin': 'small' } }) }}
-                <div class="text mb-56">Банковскя карта Цифровой Signature с повышенным статусом <br> и набором
-                  привилегий. Открывается в
-                  рамках {{ Button.button({ 'href': '#', 'title': 'пакета услуг "Цифровой Прайм".', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
-                </div>
+                <div class="text mb-56">Открывается в рамках любого пакета услуг</div>
                 <div class="section__row">
                   <div class="form form_layout-narrow js-form">
                     <div class="form__steps">
                       Шаг <span>1</span> из <span>4</span>
                     </div>
-                    {{ Heading.heading({ 'title': 'Общая информация', 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
+                    {{ Heading.heading({ 'title': 'Общая информация' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
                     <form>
                       <fieldset>
                         {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': 'js-fio-masked', 'maxlength': '64', 'name': 'bid_user-name', 'required': 'true' } }) }}
@@ -187,6 +184,10 @@
                           {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': {'class': 'js-mail-masked', 'name': 'question_mail', 'required': 'true' } }) }}
                         </div>
                         {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Выберите город', 'name': 'bid_select-city', 'items': [{'title': 'Краснодар', 'value': '12345'}, {'title': 'Москва', 'value': '13456'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'bid-city-list'}, 'field': 'js-city-select' }) }}
+                        <div class="form__line-group">
+                          {{ Input.input({ 'label': 'Сумма кредита', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'credit_amount', 'class': 'js-numeric-input' }, 'title': '#ruble', 'slider': { 'min': 50000, 'max': 1000000, 'from': 800000, 'step': 1000 } }) }}
+                          {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Цель кредита', 'name': 'credit-aims', 'items': [{'title': 'На развлечения', 'value': '13456'}, {'title': 'Отправить малого в школу', 'value': '136'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'credit-aims'}, 'field': 'js-aims-select' }) }}
+                        </div>
                       </fieldset>
                       <div class="form__agreements">
                         <label class="checkbox checkbox_theme-dark js-checkbox js-personal-checkbox">
@@ -203,7 +204,7 @@
                     </form>
                   </div>
                   <div class="calculation">
-                    <img src="assets/images/card digital signature.png" class="calculation__image hidden-mobile"
+                    <img src="assets/images/card bks platinum.png" class="calculation__image hidden-mobile"
                          alt="БКС Банк">
                     <div class="text calculation__text hidden-mobile">2 дополнительные карты Visa Platinum бесплатно
                     </div>
@@ -219,6 +220,9 @@
             <div class="page__container">
               <div class="section__row">
                 <div class="section__content section__content_theme-centered">
+                  {{ Heading.heading({ 'title': '', 'mods': { 'type': 'default', 'margin': 'short', 'theme' : 'default' },
+                    'context': { 'title': '', 'attr': {'id': 'credit-types', 'list-on-right': 'true'}, 'items': [{ 'title': 'Кредитная карта БКС Платинум', 'value': 'bks-platinum', 'attr': { 'title': 'Кредитная карта БКС Платинум' }, 'selected': true },
+                      { 'title': 'Карта с овердрафтом', 'value': 'bks-overdraft', 'attr': { 'title': 'Карта с овердрафтом' } }] } }) }}
                   <div id="bks-platinum">
                     <div class="table table_sortable table_theme-default mb-64">
                       <table class="table__content">
@@ -251,7 +255,10 @@
                         </tr>
                         <tr>
                           <td>Карта Priority Pass</td>
-                          <td>При среднемесячном балансе клиента до 30 млн руб. — все проходы клиента и 1 гость бесплатно. При среднемесячном балансе клиента от 30 млн руб. — все проходы клиента и все гости бесплатно.</td>
+                          <td>При среднемесячном балансе клиента до 30 млн руб. — все проходы клиента и 1 гость
+                            бесплатно. При среднемесячном балансе клиента от 30 млн руб. — все проходы клиента и все
+                            гости бесплатно.
+                          </td>
                         </tr>
                         <tr>
                           <td>Консьерж-служба</td>

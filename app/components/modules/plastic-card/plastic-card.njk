@@ -39,9 +39,11 @@
             {{ Button.button({ 'href': options.href, 'title': 'Подробнее', 'mods': { 'view': 'text', 'theme': 'white' } }) }}
           </div>
         </div>
-        <div class="plastic-card__image">
-          {{ Icon.inlineSvg({ 'path': [options.image] }) }}
-        </div>
+        {% if options.image %}
+          <div class="plastic-card__image">
+            {{ Icon.inlineSvg({ 'path': [options.image] }) }}
+          </div>
+        {% endif %}
       </div>
     </div>
 
@@ -68,9 +70,11 @@
             {{ Button.button({ 'href': options.href, 'title': 'Подробнее', 'mods': { 'view': 'text', 'theme': 'default' } }) }}
           </div>
         </div>
-        <div class="plastic-card__image">
-          {{ Icon.inlineSvg({ 'path': [options.image] }) }}
-        </div>
+        {% if options.image %}
+          <div class="plastic-card__image">
+            {{ Icon.inlineSvg({ 'path': [options.image] }) }}
+          </div>
+        {% endif %}
       </div>
     </div>
 
