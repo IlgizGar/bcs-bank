@@ -27,12 +27,12 @@
             {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Кредитные карты', 'link': '#' } }) }}
             {{ Heading.heading({ 'tag': 'h1', 'title': 'БКС Платинум', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
             <div class="features">
-              {{ Feature.feature({ 'title': 'До 55 дней', 'text': 'от покупок в \n любимых категориях', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-              {{ Feature.feature({ 'title': '0#ruble', 'text': 'доступ в бизнес \n залы Priority Pass', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-              {{ Feature.feature({ 'title': '0#ruble', 'text': 'стоимость \n обслуживания', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+              {{ Feature.feature({ 'title': 'До 55 дней', 'text': 'беспроцентный \n период', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+              {{ Feature.feature({ 'title': 'До 1 млн #ruble', 'text': 'кредитный \n лимит', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+              {{ Feature.feature({ 'title': 'До 30%', 'text': 'от покупок \n возвращается на карту', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
             </div>
             <div class="brand-figure products-detail__figure" data-illustration="">
-              <img src="assets/illustrations/digital signature.png" alt="Цифровой Signature">
+              <img src="assets/illustrations/bks platinum.png" alt="Цифровой Signature">
             </div>
           </div>
           <div class="section__nav-wrapper">
@@ -55,33 +55,32 @@
           <section class="section page__section">
             {{ BrandFeatures.brandFeatures({ 'items': [
               {
-                'icon': 'assets/images/svg/shield-image.svg',
-                'title': 'Надежно',
-                'subtitle': 'Оплата интернет покупок \n с технологией 3D Secure',
+                'icon': 'assets/images/svg/kopeiki-image.svg',
+                'title': 'Выгодно',
+                'subtitle': 'Без процентов \n по кредиту до 55 дней',
+                'props': {
+                'large': '2%'
+              },
+                'descr': 'Бонусы за любые \n покупки с карты'
+              },
+              {
+                'icon': 'assets/images/svg/sand-clock-image.svg',
+                'title': 'Быстро',
+                'subtitle': 'Получаете карту на следующий \n день после одобрения',
                 'props': {
                 'small': 'до',
                 'large': '30%'
               },
-                'descr': 'Бонусов за покупку \n у партнеров'
+                'descr': 'Бонусы за покупки \n по спецпредложениям'
               },
               {
-                'icon': 'assets/images/svg/sand-clock-image.svg',
-                'title': 'Выгодно',
-                'subtitle': '12% бонусы за покупки \n по любимым категориям',
-                'props': {
-                'large': '0#ruble'
-              },
-                'descr': 'Страховка для путешественников \n до 50 000 #ruble по всему миру'
-              },
-              {
-                'icon': 'assets/images/svg/card-image.svg',
+                'icon': 'assets/images/svg/list-image.svg',
                 'title': 'Удобно',
-                'subtitle': '1 карта с 3 валютными \n счетами #ruble, #dollar, #euro',
+                'subtitle': 'Оформление онлайн \n без визита в офис',
                 'props': {
-                'large': '1',
-                'small': 'млн #ruble'
+                'large': '1=1'
               },
-                'descr': 'Снятие наличных в месяц без \n комиссии в любых банкоматах'
+                'descr': 'Каждый бонус \n равен 1 рублю'
               }
             ] }) }}
           </section>
