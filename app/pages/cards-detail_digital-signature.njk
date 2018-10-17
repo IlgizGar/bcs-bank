@@ -179,7 +179,7 @@
                     <div class="form__steps">
                       Шаг <span>1</span> из <span>4</span>
                     </div>
-                    {{ Heading.heading({ 'title': 'Общая информация' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
+                    {{ Heading.heading({ 'title': 'Общая информация', 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
                     <form>
                       <fieldset>
                         {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': 'js-fio-masked', 'maxlength': '64', 'name': 'bid_user-name', 'required': 'true' } }) }}
@@ -220,90 +220,75 @@
             <div class="page__container">
               <div class="section__row">
                 <div class="section__content section__content_theme-centered">
-                  {{ Heading.heading({ 'title': '', 'mods': { 'type': 'default', 'margin': 'short', 'theme' : 'default' },
-                    'context': { 'title': '', 'attr': {'id': 'credit-types', 'list-on-right': 'true'}, 'items': [{ 'title': 'Кредитная карта БКС Платинум', 'value': 'bks-platinum', 'attr': { 'title': 'Кредитная карта БКС Платинум' }, 'selected': true },
-                      { 'title': 'Карта с овердрафтом', 'value': 'bks-overdraft', 'attr': { 'title': 'Карта с овердрафтом' } }] } }) }}
                   <div id="bks-platinum">
                     <div class="table table_sortable table_theme-default mb-64">
                       <table class="table__content">
                         <thead class="table__head">
                         <tr>
                           <th><span class="table__column-title">Пакет услуг</span></th>
-                          <th><span class="table__column-title">Премьер Базовый</span></th>
-                          <th><span class="table__column-title">Премьер Расширенный</span></th>
-                          <th><span class="table__column-title">Директ</span></th>
+                          <th><span class="table__column-title">Ультима</span></th>
                         </tr>
                         </thead>
                         <tbody class="table__body">
                         <tr>
                           <td>Категория карты</td>
                           <td>Visa Platinum</td>
-                          <td>Visa Platinum</td>
-                          <td>Visa Classic</td>
                         </tr>
                         <tr>
-                          <td>Условия обслуживания</td>
-                          <td>Бесплатно при поддержании среднемесячного баланса от 500 000 ₽ или 500 ₽ в месяц (от 300
-                            000 ₽ для регионов)
-                          </td>
-                          <td>Бесплатно при поддержании среднемесячного баланса от 3 000 000 ₽ или 1500 ₽ в месяц (от 2
-                            000 000 ₽ для регионов)
-                          </td>
-                          <td>Бесплатно</td>
+                          <td>Ежемесячная комиссия</td>
+                          <td>6000 руб.</td>
                         </tr>
                         <tr>
-                          <td>Размер бонуса</td>
-                          <td>0.5%</td>
-                          <td>1%</td>
-                          <td>-</td>
+                          <td>Бесплатное обслуживание</td>
+                          <td>При среднемесячном балансе от 10 млн. рублей</td>
                         </tr>
                         <tr>
-                          <td>Выпуск и обслуживание основной карты</td>
-                          <td>Бесплатно</td>
-                          <td>Бесплатно</td>
-                          <td>Бесплатно</td>
+                          <td>Доход на минимальный остаток по накопительному счету</td>
+                          <td>до 5.5% годовых</td>
                         </tr>
                         <tr>
-                          <td>Срочный выпуск / перевыпуск карты</td>
-                          <td>950 руб.</td>
-                          <td>950 руб.</td>
-                          <td>950 руб.</td>
+                          <td>Cashback за покупки по карте</td>
+                          <td>до 10%</td>
                         </tr>
                         <tr>
-                          <td>Количество дополнтельных бесплатных карт</td>
-                          <td>Две <br> (Visa Classic, Visa Gold, Visa Platinum, MasterCard Platinum)</td>
-                          <td>Три <br> (Visa Classic, Visa Gold, Visa Platinum, MasterCard Platinum)</td>
-                          <td>-</td>
+                          <td>Карта Priority Pass</td>
+                          <td>При среднемесячном балансе клиента до 30 млн руб. — все проходы клиента и 1 гость бесплатно. При среднемесячном балансе клиента от 30 млн руб. — все проходы клиента и все гости бесплатно.</td>
                         </tr>
                         <tr>
-                          <td>Интернет-банк и мобильный банк</td>
-                          <td>Бесплатно</td>
-                          <td>Бесплатно</td>
+                          <td>Консьерж-служба</td>
+                          <td>Prime</td>
+                        </tr>
+                        <tr>
+                          <td>Страхование в путешествиях</td>
                           <td>Бесплатно</td>
                         </tr>
                         <tr>
-                          <td>Смс-информирование</td>
-                          <td>Бесплатно</td>
-                          <td>Бесплатно</td>
-                          <td>59 ₽</td>
+                          <td>есплатные дополнительные карты</td>
+                          <td>До 6 карт Visa Infinite, Platinum</td>
                         </tr>
                         <tr>
                           <td>Снятие наличных в банкоматах сторонних банков</td>
-                          <td>До 150 000 ₽ / мес - бесплатно, далее - 1% мин. 100 ₽ / 3 $ / 3 EUR</td>
-                          <td>До 300 000 ₽ / мес - бесплатно, далее - 1% мин. 100 ₽ / 3 $ / 3 EUR</td>
-                          <td>1% мин. 100 ₽ / 3 $ / 3 EUR</td>
+                          <td>До 3 000 000 рублей в месяц — бесплатно</td>
                         </tr>
                         <tr>
-                          <td>Перевод в рублях в другие банки через БКС Онлайн</td>
-                          <td>1% мин. 35 USD, макс. 200 USD, 1% мин. 35 EUR, макс. 200 EUR</td>
-                          <td>0.5% мин. 35 USD, макс. 200 USD, 0.5% мин. 35 EUR, макс. 200 EUR</td>
-                          <td>35 USD / 35 EUR</td>
+                          <td>Перевод в рублях в другой банк через БКС Онлайн</td>
+                          <td>Бесплатно</td>
                         </tr>
                         <tr>
-                          <td>Перевод в рублях на счет другого банка в отделениях БКС</td>
-                          <td>0.5% мин. 50 ₽, макс. 2500 ₽</td>
-                          <td>0.5% мин. 50 ₽, макс. 2500 ₽</td>
-                          <td>1.5% мин. 100 ₽, макс. 2500 ₽</td>
+                          <td>Перевод в иностранной валюте в другой банк через БКС Онлайн</td>
+                          <td>Бесплатно, 15 швейцарских франков</td>
+                        </tr>
+                        <tr>
+                          <td>Платежи в БКС Онлайн (интернет, телефон, коммунальные услуги и др.)</td>
+                          <td>Бесплатно</td>
+                        </tr>
+                        <tr>
+                          <td>СМС - инфо</td>
+                          <td>Бесплатно</td>
+                        </tr>
+                        <tr>
+                          <td>Конвертация по выгодному курсу</td>
+                          <td>Да</td>
                         </tr>
                         </tbody>
                       </table>
