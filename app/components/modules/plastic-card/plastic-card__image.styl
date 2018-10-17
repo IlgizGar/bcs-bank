@@ -1,10 +1,18 @@
 .plastic-card .plastic-card__image
-  
-  @media (min-width: 768px)
-    margin-left: auto
-    position: relative
 
-    width: 1px
+  margin-left: auto
+  position: relative
+
+  width: 1px
+
+  @media (max-width: 991px)
+    order: -1
+
+    margin-left: unset
+    width: auto
+    height: 170px
+
+    text-align: center
 
   .image
     position: absolute
@@ -12,7 +20,16 @@
     right: 0
 
     width: auto
-    max-width: 476px
+
+    @media (min-width: 1280px)
+      max-width: 476px
+
+    @media (min-width: 992px) and (max-width: 1279px)
+      top: 52px
+      max-width: 320px
 
     @media (max-width: 991px)
-      display: none
+      position: relative
+
+      height: 100%
+
