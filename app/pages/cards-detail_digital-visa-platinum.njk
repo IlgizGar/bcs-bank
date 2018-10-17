@@ -20,12 +20,13 @@
 
     {% include "../components/modules/header/header.njk" %}
 
+
     <main role="main" class="products-detail">
       <section class="section page__section">
         <div class="section__header section__header_theme-blue">
           <div class="page__container">
             {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Дебетовые карты', 'link': '#' } }) }}
-            {{ Heading.heading({ 'tag': 'h1', 'title': 'Цифровой \n  Visa Platinum', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
+            {{ Heading.heading({ 'tag': 'h1', 'title': 'Цифровой \n Visa Platinum', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
             <div class="features">
               {{ Feature.feature({ 'title': '7%', 'text': 'от покупок в \n любимых категориях', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
               {{ Feature.feature({ 'title': '0#ruble', 'text': 'комиссия за онлайн \n платежи и переводы', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
@@ -89,7 +90,7 @@
           <section class="section section_theme-white-smoke section_padding-default page__section mobile-mb-0">
             <div class="calculator">
               <div class="page__container">
-                {{ Heading.heading({ 'title': 'Расчитайте свой бонус', 'mods': { 'type': 'default', 'margin': 'medium' } }) }}
+                {{ Heading.heading({ 'title': 'Рассчитайте свой бонус', 'mods': { 'type': 'default', 'margin': 'medium' } }) }}
                 <div class="section__row calculator__row">
                   <div class="form form_layout-narrow calculator__form">
                     <form>
@@ -399,6 +400,7 @@
         </div>
       </div>
     </main>
+
 
     {% include "../components/modules/footer/footer.njk" %}
   </div>
