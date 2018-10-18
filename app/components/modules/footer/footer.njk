@@ -98,7 +98,7 @@
 {# TODO: Вынести в шаблон #}
 <div id="question-modal-form" class="modal js-form" data-form="question-modal">
   <form id="question-form" action="/" class="form question-form">
-    {{ Heading.heading({ 'title': 'У вас есть вопрос?' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'none', 'theme': 'default', 'class': 'form__title'}) }}
+    {{ Heading.heading({ 'title': 'У Вас есть вопрос?', 'mods': {'type': 'default', 'margin': 'normal'}, 'class': 'header__contacts-heading' }) }}
     {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': {'class': 'js-fio-masked', 'name': 'queston_name', 'required': 'required'} }) }}
     <div class="form__line-group">
       {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': { 'class': 'js-phone-masked', 'name': 'question_phone', 'required': 'required' } }) }}
