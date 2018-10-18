@@ -28,7 +28,7 @@
     <span class='button__wrap'>
 
       {% if options.title %}
-        <span class='button__title js-button-title'>{{ options.title }}</span>
+        <span class='button__title js-button-title'>{{ options.title | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | replace("#euro", Icon.icon({ 'name': 'euro' })) | replace("#pound", Icon.icon({ 'name': 'pound' })) | replace("#dollar", Icon.icon({ 'name': 'baks' })) | safe }}</span>
       {% endif %}
 
       {% if options.path %}
