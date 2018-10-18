@@ -28,7 +28,7 @@
               {{ Feature.feature({ 'title': 'От 0#ruble', 'text': 'стоимость \n обслуживания', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
             </div>
             <div class="brand-figure products-detail__figure" data-illustration=""><img
-                src="assets/images/more-signature.png" alt="Отпуск легче с кредитом БКС"></div>
+                  src="assets/images/more-signature.png" alt="Отпуск легче с кредитом БКС"></div>
           </div>
           <div class="section__nav-wrapper">
             <div class="section__nav products-detail__nav">
@@ -46,12 +46,13 @@
       </section>
       <div class="tabs js-tabs">
         <div id="about-card" class="tabs__item js-tab state_invisible">
-          <section class="section page__section"> {{ BrandFeatures.brandFeatures({ 'items': [ { 'icon': 'assets/images/svg/card-image.svg', 'title': 'Удобно', 'subtitle': 'Все самое необходимое \n для комфортных \n путешествий в одной карте', 'props': { 'large': '500', 'small': 'тыс. #ruble' }, 'descr': 'Снятие наличных в месяц \n без комиссии по всему миру' }, { 'icon': 'assets/images/svg/sand-clock-image.svg', 'title': 'Безопасно', 'subtitle': 'Консьерж-сервис 24/7, трансферы \n в аэропорты, доступ в бизнес \n залы Lounge Key бесплатно', 'props': { 'small': 'до', 'large': '30%' }, 'descr': 'Бонусов за покупки \n у партнеров' }, { 'icon': 'assets/images/svg/card-image.svg', 'title': 'Выгодно', 'subtitle': '1 карта \n с 3 валютными \n счетами #ruble, #dollar, #euro', 'props': { 'large': '0#ruble' }, 'descr': 'Консультации врачей, страховка \n путешествий до 100 000 #euro + спорт' } ] }) }}
+          <section
+              class="section page__section"> {{ BrandFeatures.brandFeatures({ 'items': [ { 'icon': 'assets/images/svg/card-image.svg', 'title': 'Удобно', 'subtitle': 'Все самое необходимое \n для комфортных \n путешествий в одной карте', 'props': { 'large': '500', 'small': 'тыс. #ruble' }, 'descr': 'Снятие наличных в месяц \n без комиссии по всему миру' }, { 'icon': 'assets/images/svg/sand-clock-image.svg', 'title': 'Безопасно', 'subtitle': 'Консьерж-сервис 24/7, трансферы \n в аэропорты, доступ в бизнес \n залы Lounge Key бесплатно', 'props': { 'small': 'до', 'large': '30%' }, 'descr': 'Бонусов за покупки \n у партнеров' }, { 'icon': 'assets/images/svg/card-image.svg', 'title': 'Выгодно', 'subtitle': '1 карта \n с 3 валютными \n счетами #ruble, #dollar, #euro', 'props': { 'large': '0#ruble' }, 'descr': 'Консультации врачей, страховка \n путешествий до 100 000 #euro + спорт' } ] }) }}
           </section>
           <section class="section section_theme-white-smoke section_padding-default page__section mobile-mb-0">
             <div class="calculator">
               <div
-                class="page__container"> {{ Heading.heading({ 'title': 'Рассчитайте свой кэшбэк', 'mods': { 'type': 'default', 'margin': 'medium' } }) }}
+                  class="page__container"> {{ Heading.heading({ 'title': 'Рассчитайте свой кэшбэк', 'mods': { 'type': 'default', 'margin': 'medium' } }) }}
                 <div class="section__row calculator__row">
                   <div class="form form_layout-narrow calculator__form">
                     <form>
@@ -90,14 +91,14 @@
                     <p>Обмен валюты по курсу близкому к биржевому</p>
                     <p>Чат с оператором</p></div>
                   <div
-                    class="mobile__vendors"> {{ Button.button({ 'href': 'https://play.google.com/store/apps/details?id=cz.bsc.bcs', 'name': 'android', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }} {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }} </div>
+                      class="mobile__vendors"> {{ Button.button({ 'href': 'https://play.google.com/store/apps/details?id=cz.bsc.bcs', 'name': 'android', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }} {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }} </div>
                 </div>
                 <img class="mobile__figure" src="assets/images/bks-platinum.png" alt="Легкий мобильный банк"></div>
             </div>
           </section>
           <section class="section page__section">
             <div
-              class="page__container">
+                class="page__container">
               {{ Heading.heading({ 'title': 'Оформите заявку - получите \n карту на следующий день' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered' }) }}
             </div>
             {{ BrandFeatures.brandFeatures({ 'items': [ { 'icon': 'assets/images/svg/list-image.svg', 'title': 'Оставьте заявку', 'subtitle': 'Заполнение заявки \n займет 5 минут', 'mods': { 'theme': 'lined' } }, { 'icon': 'assets/images/svg/sand-clock-image.svg', 'title': 'Получите карту', 'subtitle': 'Наш специалист доставит Вам \n документы и карту бесплатно', 'mods': { 'theme': 'lined' } }, { 'icon': 'assets/images/svg/card-image.svg', 'title': 'Пользуйтесь картой', 'subtitle': 'Получайте бонусы с каждой \n покупки и меняйте их на рубли' } ] }) }}
@@ -105,7 +106,7 @@
           <section class="section section_theme-white-smoke section_padding-default page__section">
             <div class="dcard-request">
               <div
-                class="page__container">
+                  class="page__container">
                 {{ Heading.heading({ 'title': 'Заявка на карту' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
                 <div class="text mb-56">Банковскя карта MORE Visa Platinum с повышенным статусом <br> и набором
                   привилегий. Открывается в
@@ -124,15 +125,18 @@
                         {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Выберите город', 'name': 'bid_select-city', 'items': [{'title': 'Краснодар', 'value': '12345'}, {'title': 'Москва', 'value': '13456'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'bid-city-list'}, 'field': 'js-city-select' }) }}
                       </fieldset>
                       <div class="form__agreements">
-                        <label class="checkbox checkbox_theme-dark js-checkbox js-personal-checkbox">                        <input type="checkbox" class="checkbox__control" name="question__personal" checked>
+                        <label class="checkbox checkbox_theme-dark js-checkbox js-personal-checkbox"> <input
+                              type="checkbox" class="checkbox__control" name="question__personal" checked>
                           <span class="checkbox__state"></span>
-                          <span class="checkbox__label"> Даю согласие на обработку <br> {{ Button.button({ 'href': '#', 'title': 'персональных данных', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }} </span>
+                          <span
+                              class="checkbox__label"> Даю согласие на обработку <br> {{ Button.button({ 'href': '#', 'title': 'персональных данных', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }} </span>
                         </label> {{ Button.button({ 'title': 'Отправить', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
                       </div>
                     </form>
                   </div>
                   <div class="calculation">
-                    <img src="assets/images/card more signature.png" class="calculation__image hidden-mobile" alt="БКС Банк">
+                    <img src="assets/images/card more signature.png" class="calculation__image hidden-mobile"
+                         alt="БКС Банк">
                     <div class="text calculation__text hidden-mobile">2 дополнительные карты Visa Platinum бесплатно
                     </div>
                     {{ Button.button({ 'href': '#', 'title': 'Оформите через госуслуги', 'path': 'assets/images/uslugi.svg', 'mods': {'theme': 'white', 'type': 'icon-left'}, 'class': 'button_theme-uslugi' }) }}
@@ -147,54 +151,54 @@
             <div class="page__container">
               <div class="section__row">
                 <div
-                  class="section__content section__content_theme-centered">
+                    class="section__content section__content_theme-centered">
                   {{ Heading.heading({ 'title': '', 'mods': { 'type': 'default', 'margin': 'short', 'theme' : 'default' } }) }}
-                  <div id="bks-platinum">
-                    <div class="table table_sortable table_theme-default mb-64">
-                      <table class="table__content">
-                        <thead class="table__head">
-                        <tr>
-                          <th><span class="table__column-title">Пакет услуг</span></th>
-                          <th><span class="table__column-title">Брокер</span></th>
-                        </tr>
-                        </thead>
-                        <tbody class="table__body">
-                        <tr>
-                          <td>Условия обслуживания</td>
-                          <td>Бесплатно</td>
-                        </tr>
-                        <tr>
-                          <td> Переводы в рублях в БКС Онлайн и мобильном банке</td>
-                          <td> Без комиссии</td>
-                        </tr>
-                        <tr>
-                          <td> Количество счетов</td>
-                          <td> Три текущих и три накопительных счета в валютах: рубли, доллары, евро</td>
-                        </tr>
-                        <tr>
-                          <td> Смс-информирование</td>
-                          <td> 59 руб. в месяц</td>
-                        </tr>
-                        <tr>
-                          <td> Бонусная программа</td>
-                          <td> Возврат 3% в категории на выбор (АЗС, рестораны, путешествия, одежда и обувь) и 1% от
-                            всех остальных покупок по карте. При поддержании среднемесячных активов в ООО «Компания
-                            БКС»: от 50 000 до 300 000 руб. — 3% в категории АЗС; от 300 000 до 1 000 000 руб. — 3% в
-                            одной из категорий: АЗС или путешествия; от 1 000 000 до 10 000 000 руб. — 3% в одной из
-                            категорий на выбор: АЗС, путешествия или рестораны; от 10 000 000 руб. и более — 3% в двух
-                            категориях на выбор: АЗС, путешествия, рестораны или одежда и обувь. Ограничение по
-                            максимальной сумме выплаты бонусных баллов в месяц — 4000 баллов, баллы конвертируются в
-                            рубли, 1 балл = 1 рубль. Управление бонусным счетом через БКС Онлайн и Мобильный Банк.
-                          </td>
-                        </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    {{ Docs.docs({ 'theme': 'filled', 'href': '#', 'title': 'Условия, правила и оговорки' | striptags(true) | escape | nl2br, 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-64' }) }}
+
+                  <div class="table table_sortable table_theme-default mb-64">
+                    <table class="table__content">
+                      <thead class="table__head">
+                      <tr>
+                        <th><span class="table__column-title">Пакет услуг</span></th>
+                        <th><span class="table__column-title">Брокер</span></th>
+                      </tr>
+                      </thead>
+                      <tbody class="table__body">
+                      <tr>
+                        <td>Условия обслуживания</td>
+                        <td>Бесплатно</td>
+                      </tr>
+                      <tr>
+                        <td> Переводы в рублях в БКС Онлайн и мобильном банке</td>
+                        <td> Без комиссии</td>
+                      </tr>
+                      <tr>
+                        <td> Количество счетов</td>
+                        <td> Три текущих и три накопительных счета в валютах: рубли, доллары, евро</td>
+                      </tr>
+                      <tr>
+                        <td> Смс-информирование</td>
+                        <td> 59 руб. в месяц</td>
+                      </tr>
+                      <tr>
+                        <td> Бонусная программа</td>
+                        <td> Возврат 3% в категории на выбор (АЗС, рестораны, путешествия, одежда и обувь) и 1% от
+                          всех остальных покупок по карте. При поддержании среднемесячных активов в ООО «Компания
+                          БКС»: от 50 000 до 300 000 руб. — 3% в категории АЗС; от 300 000 до 1 000 000 руб. — 3% в
+                          одной из категорий: АЗС или путешествия; от 1 000 000 до 10 000 000 руб. — 3% в одной из
+                          категорий на выбор: АЗС, путешествия или рестораны; от 10 000 000 руб. и более — 3% в двух
+                          категориях на выбор: АЗС, путешествия, рестораны или одежда и обувь. Ограничение по
+                          максимальной сумме выплаты бонусных баллов в месяц — 4000 баллов, баллы конвертируются в
+                          рубли, 1 балл = 1 рубль. Управление бонусным счетом через БКС Онлайн и Мобильный Банк.
+                        </td>
+                      </tr>
+                      </tbody>
+                    </table>
                   </div>
+                  {{ Docs.docs({ 'theme': 'filled', 'href': '#', 'title': 'Условия, правила и оговорки' | striptags(true) | escape | nl2br, 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-64' }) }}
                 </div>
               </div>
             </div>
+
             <div class="collapse collapse_theme-grey">
               <div class="collapse__item">
                 <div class="collapse__control">
@@ -218,7 +222,7 @@
             <div class="page__container">
               <div class="section__row">
                 <div
-                  class="section__content section__content_theme-centered"> {{ Heading.heading({ 'title': 'Частые вопросы' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'short' } }) }} </div>
+                    class="section__content section__content_theme-centered"> {{ Heading.heading({ 'title': 'Частые вопросы' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'short' } }) }} </div>
               </div>
             </div>
             <div class="collapse collapse_theme-grey">
