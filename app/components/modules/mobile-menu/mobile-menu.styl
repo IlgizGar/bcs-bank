@@ -42,6 +42,10 @@
       flex-direction: column
       align-items: flex-start
 
+      .menu__item
+        margin-left: 0
+        margin-right: 0
+
     .context
       display: none
 
@@ -49,6 +53,9 @@
   .nav
     overflow: auto
     max-width: 100%
+
+    @media (max-width: 991px)
+      height: 48px
 
     .nav__wrapper
       padding-left: 16px
