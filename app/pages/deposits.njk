@@ -46,21 +46,22 @@
       {#TODO Плдправить компонент feature где используется согласно новым правкам в компоненте#}
       <section class="section page__section page__section_theme-last">
         <div class="page__container">
-          {{ PlasticCard.plasticCard({ 'title': 'Цифровой Visa Infinite',
-            'category': {'travel': 'Путешествия'},
-            'image': 'assets/images/card-infinite.png',
+          {{ PlasticCard.plasticCard({ 'title': 'Накопительный',
+            'category': {'currency': 'Все валюты'},
+            'image': 'assets/illustrations/profit-pound.png',
             'theme': 'blue',
+            'button': 'Оформите вклад',
             'features': [
-              { 'title': '3%',
-                'text': 'от всех покупок возвращаем на карту',
+              { 'title': 'До 6,5%',
+                'text': 'годовая \n ставка',
                 'mods': {'type': 'normal', 'theme': 'light'},
                 'class': 'plastic-card__feature'},
-              { 'title': '0#ruble',
-                'text': 'страхование путешествующих',
+              { 'title': '5 000 #ruble',
+                'text': 'минимальная \n сумма вклада',
                 'mods': {'type': 'normal', 'theme': 'light'},
                 'class': 'plastic-card__feature'},
-              { 'title': 'От 0#ruble',
-                'text': 'стоимость обслуживания',
+              { 'title': '365 дней',
+                'text': 'максимальный \n срок вклада',
                 'mods': {'type': 'normal', 'theme': 'light'},
                 'class': 'plastic-card__feature'}
             ] }) }}
