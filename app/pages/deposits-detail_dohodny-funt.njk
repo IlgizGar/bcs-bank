@@ -13,7 +13,7 @@
 {% import "../components/icon/icon.njk" as Icon %}
 
 {% set root = "." %}
-{% set title = "Накопительный" %}
+{% set title = "Доходный фунт" %}
 {% set header = 'blue' %}
 
 {% block body %}
@@ -26,14 +26,14 @@
         <div class="section__header section__header_theme-blue">
           <div class="page__container">
             {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Вклады', 'link': '#' } }) }}
-            {{ Heading.heading({ 'tag': 'h1', 'title': 'Накопительный', 'mods': { 'type': 'large', 'margin': 'default' } }) }}
+            {{ Heading.heading({ 'tag': 'h1', 'title': 'Доходный фунт', 'mods': { 'type': 'large', 'margin': 'default' } }) }}
             <div class="features">
-              {{ Feature.feature({ 'title': 'До 6,5%', 'text': 'годовая \n ставка', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-              {{ Feature.feature({ 'title': '5 000 #ruble', 'text': 'минимальная \n сумма вклада', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+              {{ Feature.feature({ 'title': 'До 1,2%', 'text': 'высокая \n процентная ставка', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+              {{ Feature.feature({ 'title': '500 #pound', 'text': 'минимальная \n сумма вклада', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
               {{ Feature.feature({ 'title': '1 год', 'text': 'максимальный \n срок вклада', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
             </div>
             <div class="brand-figure products-detail__figure" data-illustration="">
-              <img src="" alt="Вклад Накопительный">
+              <img src="assets/illustrations/profit-pound.png" alt="Вклад Доходный фунт">
             </div>
           </div>
           <div class="section__nav-wrapper">
@@ -60,29 +60,29 @@
                 'title': 'Надежно',
                 'subtitle': 'Вклад до 1 400 000 #ruble \n застрахован ACB',
                 'props': {
-                'small': 'от',
-                'large': '1#ruble'
+                'large': '100',
+                'small': 'тыс.'
               },
-                'descr': 'Сумма \n пополнения вклада'
+                'descr': 'Максимальная \n сумма вклада'
               },
               {
                 'icon': 'assets/images/svg/sand-clock-image.svg',
                 'title': 'Быстро',
-                'subtitle': 'Ежемесячная \n выплата процентов',
+                'subtitle': 'Автоматическое продление \n вклада на аналогичный срок',
                 'props': {
                 'small': 'до',
                 'large': '365'
               },
-                'descr': 'Срок вклада \n на выбор'
+                'descr': 'Срок вклада на выбор \n 181/365 дней'
               },
               {
                 'icon': 'assets/images/svg/gift-image.svg',
                 'title': 'Удобно',
-                'subtitle': 'Возможно пополнение вклада \n и частичное снятие средств',
+                'subtitle': 'Выплата процентов \n в конце срока или ежемесячно',
                 'props': {
-                'large': '#ruble/#euro'
+                'large': '#pound'
               },
-                'descr': 'Открывается \n в двух валютах'
+                'descr': 'Фиксированная сумма \n вклада на весь срок'
               }
             ] }) }}
           </section>
@@ -94,28 +94,22 @@
                   <div class="form form_layout-narrow">
                     <form>
                       <fieldset>
-                        {{ Heading.heading({ 'tag': 'h3', 'title': 'Валюта вклада', 'mods': { 'type': 'small', 'margin': 'small' } }) }}
-                        <div class="form__field-group form__field-group_radio">
-                          {{ Radio.radio({'class': 'js-check-radio mr-56', 'label': '#ruble', 'name': 'accum_deposit_currency', 'id': 'accum_deposit_rub', 'state': 'checked', 'attr': {'check': 'vu'} }) }}
-                          {{ Radio.radio({'class': 'js-check-radio', 'label': '#euro', 'name': 'accum_deposit_currency', 'id': 'accum_deposit_eur', 'attr': {'data': 'post'} }) }}
-                        </div>
                         {{ Heading.heading({ 'tag': 'h3', 'title': 'Срок вклада в днях', 'mods': { 'type': 'small', 'margin': 'small' } }) }}
                         <div class="form__field-group form__field-group_radio">
                           {{ Radio.radio({'class': 'js-check-radio mr-56', 'label': '181', 'name': 'accim_deposit_period', 'id': 'accim_deposit_half', 'state': 'checked', 'attr': {'check': 'vu'} }) }}
                           {{ Radio.radio({'class': 'js-check-radio', 'label': '365', 'name': 'accim_deposit_period', 'id': 'accim_deposit_full', 'attr': {'data': 'post'} }) }}
                         </div>
-                        {{ Input.input({ 'label': 'Сумма вклада', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'accum_deposit_amount', 'class': 'js-numeric-input' }, 'title': '#ruble', 'slider': { 'min': 5000, 'max': 9999999, 'from': 15000, 'step': 1000 } }) }}
-                        {{ Input.input({ 'label': 'Операции по карте в месяц', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'accum_deposit_costs', 'class': 'js-numeric-input' }, 'title': '#ruble', 'slider': { 'min': 0, 'max': 100000, 'from': 30000, 'step': 1000 } }) }}
+                        {{ Input.input({ 'label': 'Сумма вклада', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'accum_deposit_amount', 'class': 'js-numeric-input' }, 'title': '#pound', 'slider': { 'min': 500, 'max': 100000, 'from': 15000, 'step': 1000 } }) }}
                       </fieldset>
                     </form>
                   </div>
                   <div class="calculation">
                     <div class="calculation__thumbnail">
                       <div class="text">Сумма к концу срока</div>
-                      <div class="calculation__result"><span>10 340</span> {{ Icon.icon({ 'name': 'ruble'}) }}</div>
+                      <div class="calculation__result"><span>10 340</span> {{ Icon.icon({ 'name': 'pound'}) }}</div>
                       <div class="calculation__conclusion text">
                         <p>Ожидаемый доход</p>
-                        <p><span>22 340</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
+                        <p><span>22 340</span> {{ Icon.icon({ 'name': 'pound'}) }}</p>
                       </div>
                       <div class="calculation__conclusion text">
                         <p>Процентная ставка</p>
@@ -145,7 +139,7 @@
                     {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
                   </div>
                 </div>
-                <img class="mobile__figure" src="assets/illustrations/bks platinum.png"
+                <img class="mobile__figure" src="assets/illustrations/mobile_bank.svg"
                      alt="Удобный мобильный банк">
               </div>
             </div>
@@ -215,10 +209,10 @@
                   <div class="calculation calculation_theme-uslugi">
                     <div class="calculation__thumbnail">
                       <div class="text">Сумма к концу срока</div>
-                      <div class="calculation__result">10 340 {{ Icon.icon({ 'name': 'ruble'}) }}</div>
+                      <div class="calculation__result">10 340 {{ Icon.icon({ 'name': 'pound'}) }}</div>
                       <div class="calculation__conclusion text">
                         <p>Ожидаемый доход</p>
-                        <p><span>22 340</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
+                        <p><span>22 340</span> {{ Icon.icon({ 'name': 'pound'}) }}</p>
                       </div>
                       <div class="calculation__conclusion text">
                         <p>Процентная ставка</p>
@@ -244,34 +238,17 @@
                       <thead class="table__head">
                       <tr>
                         <th><span class="table__column-title">Срок вклада (дни)</span></th>
-                        <th><span class="table__column-title">Процентная ставка (от 5 000 ₽)</span></th>
-                        <th><span class="table__column-title">Процентная ставка (от 100 €)</span></th>
+                        <th><span class="table__column-title">Процентная ставка (от 500 £ до 100 000 £)</span></th>
                       </tr>
                       </thead>
                       <tbody class="table__body">
                       <tr>
                         <td>181</td>
-                        <td>4,0%</td>
-                        <td>-</td>
-                      </tr>
-                      <tr>
-                        <td>181</td>
-                        <td><span class="table__subtitle">При оплвте покупок по карте</span>
-                          <p>6,0%</p></td>
-                        <td><span class="table__subtitle">При оплвте покупок по карте</span>
-                          <p>-</p></td>
+                        <td>0,8%</td>
                       </tr>
                       <tr>
                         <td>365</td>
-                        <td>4,0%</td>
-                        <td>0,1%</td>
-                      </tr>
-                      <tr>
-                        <td>365</td>
-                        <td><span class="table__subtitle">При оплвте покупок по карте</span>
-                          <p>6,5%</p></td>
-                        <td><span class="table__subtitle">При оплвте покупок по карте</span>
-                          <p>0,8%</p></td>
+                        <td>1,2%</td>
                       </tr>
                       </tbody>
                     </table>
