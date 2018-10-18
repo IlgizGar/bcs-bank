@@ -1,7 +1,13 @@
 .form.form_layout-narrow
   col()
-  size(6)
-  @media(max-width 767px)
+
+  @media (min-width: 1280px)
+    size(6)
+
+  @media(min-width: 992px) and (max-width 1279px)
+    size(8)
+
+  @media(max-width 991px)
     size(12)
     fieldset
       min-width: auto

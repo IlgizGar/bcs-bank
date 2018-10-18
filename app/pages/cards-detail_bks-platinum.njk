@@ -194,20 +194,15 @@
                           <input type="checkbox" class="checkbox__control"
                                  name="question__personal" checked>
                           <span class="checkbox__state"></span>
-                          <span class="checkbox__label">
-                                                            Даю согласие на обработку <br>
-                            {{ Button.button({ 'href': '#', 'title': 'персональных данных', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
-                                                        </span>
+                          <span class="checkbox__label">Даю согласие на обработку <br> {{ Button.button({ 'href': '#', 'title': 'персональных данных', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}</span>
                         </label>
                         {{ Button.button({ 'title': 'Отправить', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
                       </div>
                     </form>
                   </div>
                   <div class="calculation">
-                    <img src="assets/images/card bks platinum.png" class="calculation__image hidden-mobile"
-                         alt="БКС Банк">
-                    <div class="text calculation__text hidden-mobile">2 дополнительные карты Visa Platinum бесплатно
-                    </div>
+                    <img src="assets/images/card bks platinum.png" class="calculation__image" alt="БКС Банк">
+                    <div class="text calculation__text">2 дополнительные карты Visa Platinum бесплатно</div>
                     {{ Button.button({ 'href': '#', 'title': 'Оформите через госуслуги', 'path': 'assets/images/uslugi.svg', 'mods': {'theme': 'white', 'type': 'icon-left'}, 'class': 'button_theme-uslugi' }) }}
                   </div>
                 </div>
@@ -228,78 +223,260 @@
                       <table class="table__content">
                         <thead class="table__head">
                         <tr>
-                          <th><span class="table__column-title">Пакет услуг</span></th>
-                          <th><span class="table__column-title">Ультима</span></th>
+                          <th><span class="table__column-title">Тарифный план</span></th>
+                          <th><span class="table__column-title">Стандарт</span></th>
+                          <th><span class="table__column-title"></span></th>
                         </tr>
                         </thead>
                         <tbody class="table__body">
                         <tr>
-                          <td>Категория карты</td>
-                          <td>Visa Platinum</td>
+                          <td>Тип карты</td>
+                          <td>Visa Platinum / MasterCard Platinum</td>
+                          <td>Visa Platinum / MasterCard Platinum</td>
                         </tr>
                         <tr>
-                          <td>Ежемесячная комиссия</td>
-                          <td>6000 руб.</td>
+                          <td>Минимальная сумма кредитного лимита</td>
+                          <td>55 000 ₽</td>
+                          <td>20 000 ₽</td>
                         </tr>
                         <tr>
-                          <td>Бесплатное обслуживание</td>
-                          <td>При среднемесячном балансе от 10 млн. рублей</td>
+                          <td>Максимальная сумма кредитного лимита</td>
+                          <td>1 000 000 ₽</td>
+                          <td>1 000 000 ₽</td>
                         </tr>
                         <tr>
-                          <td>Доход на минимальный остаток по накопительному счету</td>
-                          <td>до 5.5% годовых</td>
+                          <td>Процентная ставка годовых за пользование кредитом</td>
+                          <td>24,5%</td>
+                          <td>19,9%</td>
                         </tr>
                         <tr>
-                          <td>Cashback за покупки по карте</td>
-                          <td>до 10%</td>
+                          <td>Ставка бонуса в рамках бонусной программы «БКС Бонус»</td>
+                          <td>2%</td>
+                          <td>1%</td>
                         </tr>
                         <tr>
-                          <td>Карта Priority Pass</td>
-                          <td>При среднемесячном балансе клиента до 30 млн руб. — все проходы клиента и 1 гость
-                            бесплатно. При среднемесячном балансе клиента от 30 млн руб. — все проходы клиента и все
-                            гости бесплатно.
-                          </td>
+                          <td>Повышенный бонус в группе категорий — «АЗС», «Рестораны», «Фастфуд»</td>
+                          <td>-</td>
+                          <td>5% При сумме покупок по карте от 30 000 ₽/мес</td>
                         </tr>
                         <tr>
-                          <td>Консьерж-служба</td>
-                          <td>Prime</td>
+                          <td>Повышенный бонус в категориях — «Такси», «Кинотеатры» в рамках акции до 30.09.2018</td>
+                          <td>-</td>
+                          <td>10% При сумме покупок по карте от 30 000 ₽/мес</td>
                         </tr>
                         <tr>
-                          <td>Страхование в путешествиях</td>
+                          <td>Дополнительный ежегодный бонус</td>
+                          <td>-</td>
+                          <td>990 бонусов / ₽ При сумме покупок по карте от 350 000 ₽/год</td>
+                        </tr>
+                        <tr>
+                          <td>Минимальный платеж</td>
+                          <td colspan="2">5% от задолженности, но не менее 100 ₽ + проценты за пользование кредитом</td>
+                        </tr>
+                        <tr>
+                          <td>Комиссия за первый год обслуживания основной карты</td>
+                          <td>1790 ₽</td>
+                          <td>0 ₽</td>
+                        </tr>
+                        <tr>
+                          <td>Комиссия за второй и последующие годы обслуживания основной карты</td>
+                          <td>1790 ₽</td>
+                          <td>990 ₽</td>
+                        </tr>
+                        <tr>
+                          <td>Выдача наличными кредитных денежных средств в банкоматах БКС Банка</td>
+                          <td>4,9% мин. 500 ₽</td>
+                          <td>Не взимается</td>
+                        </tr>
+                        <tr>
+                          <td>Выдача наличными кредитных денежных средств в отделениях БКС Банка</td>
+                          <td>4,9% мин. 500 ₽</td>
+                          <td>4,9% мин. 500 ₽</td>
+                        </tr>
+                        <tr>
+                          <td>Выдача наличными кредитных денежных средств в банкоматах и ПВН сторонних банков</td>
+                          <td>4,9% мин. 500 ₽</td>
+                          <td>1% мин. 100 ₽</td>
+                        </tr>
+                        <tr>
+                          <td>Интернет-банк БКС Онлайн и Мобильный банк</td>
+                          <td colspan="2">Бесплатно</td>
+                        </tr>
+                        <tr>
+                          <td>СМС-инфо</td>
+                          <td colspan="2">Не взимается</td>
+                        </tr>
+                        <tr>
+                          <td>Выпуск дополнительной карты</td>
+                          <td colspan="2">В соответствии с тарифами по пакетам услуг</td>
+                        </tr>
+                        <tr>
+                          <td>Срочный выпуск / перевыпуск карты по заявлению клиента</td>
+                          <td colspan="2">В течение 3-х дней, не считая дня подачи заявления — 990 ₽</td>
+                        </tr>
+                        <tr>
+                          <td>Дополнительный ежегодный бонус</td>
+                          <td>-</td>
+                          <td>990 бонусов / ₽ При сумме покупок по карте от 350 000 ₽/год</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                      {{ Heading.heading({ 'title': 'Тарифный план Вкладчик', 'mods': { 'type': 'normal', 'margin': 'small' }, 'class': 'mt-64' }) }}
+                      <table class="table__content">
+                        <thead class="table__head">
+                        <tr>
+                          <th><span class="table__column-title">Тарифный план</span></th>
+                          <th><span class="table__column-title">Вкладчик</span></th>
+                        </tr>
+                        </thead>
+                        <tbody class="table__body">
+                        <tr>
+                          <td>Тип карты</td>
+                          <td>Visa Rewards</td>
+                        </tr>
+                        <tr>
+                          <td>Минимальная сумма кредитного лимита</td>
+                          <td>20 000 ₽</td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Максимальная сумма кредитного лимита</span><p>Для клиентов банка и/или компании-партнера (сумма активов более 5 ₽)</p></td>
+                          <td><p class="table__cell-title">1 000 000 ₽</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Максимальная сумма кредитного лимита</span><p>Для клиентов банка и/или компании-партнера (сумма активов от 300 тыс до 5 млн ₽) и руководителей аккредитованных компаний</p></td>
+                          <td><p class="table__cell-title">800 000 ₽</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Максимальная сумма кредитного лимита</span><p>Для других категорий заемщиков</p></td>
+                          <td><p class="table__cell-title">500 000 ₽</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Процентная ставка при сумме кредитного лимита 100 000 ₽ и более</span><p>Для клиентов банка и/или компании-партнера (сумма активов более 5 млн ₽)</p></td>
+                          <td><p class="table__cell-title">21%</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Процентная ставка при сумме кредитного лимита 100 000 ₽ и более</span><p>Для клиентов банка и/или компании-партнера (сумма активов от 300 тыс до 5 млн ₽)</p></td>
+                          <td><p class="table__cell-title">22%</p></td>
+                        </tr>
+                        <tr>
+                          <td>Для других категорий заемщиков</td>
+                          <td>26%</td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Процентная ставка при сумме кредитного лимита менее 100 000 ₽</span><p>Для других категорий заемщиков, по картам без бонусной программы</p></td>
+                          <td><p class="table__cell-title">26%</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Процентная ставка при сумме кредитного лимита менее 100 000 ₽</span><p>Для сотрудников и руководителей аккредитованных компаний по картам с бонусной программой</p></td>
+                          <td><p class="table__cell-title">26%</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Процентная ставка при сумме кредитного лимита менее 100 000 ₽</span><p>Для других категорий заемщиков, по картам с бонусной программой</p></td>
+                          <td><p class="table__cell-title">26%</p></td>
+                        </tr>
+                        <tr>
+                          <td>Ставка бонуса в рамках бонусной программы «БКС Бонус»</td>
+                          <td>1.2%</td>
+                        </tr>
+                        <tr>
+                          <td>Беспроцентный период</td>
+                          <td>до 55 дней на покупки по карте</td>
+                        </tr>
+                        <tr>
+                          <td>Минимальный платеж</td>
+                          <td>5% от задолженности, но не менее 100 ₽ + проценты за пользование кредитом</td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания карты при отсутствии бонусной программы</span><p>Для руководителей аккредитованных компаний</p></td>
+                          <td><p class="table__cell-title">Не взимается</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания карты при отсутствии бонусной программы</span><p>Для других категорий заемщиков</p></td>
+                          <td><p class="table__cell-title">Не взимается</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита 100 000 ₽ и более</span><p>Для сотрудников аккредитованных компаний</p></td>
+                          <td><p class="table__cell-title">Не взимается</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита 100 000 ₽ и более</span><p>Для руководителей аккредитованных компаний</p></td>
+                          <td><p class="table__cell-title">Не взимается</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита 100 000 ₽ и более</span><p>Для клиентов банка и/или компании-партнера (сумма активов более 300 тыс до 5 млн ₽)</p></td>
+                          <td><p class="table__cell-title">Не взимается</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита 100 000 ₽ и более</span><p>Для клиентов банка и/или компании-партнера (сумма активов более 5 млн ₽)</p></td>
+                          <td><p class="table__cell-title">Не взимается</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита 100 000 ₽ и более</span><p>Для других категорий заемщиков</p></td>
+                          <td><p class="table__cell-title">Не взимается</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита менее 100 000 ₽</span><p>Для руководителей аккредитованных компаний</p></td>
+                          <td><p class="table__cell-title">Не взимается</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита менее 100 000 ₽</span><p>Для других категорий заемщиков</p></td>
+                          <td><p class="table__cell-title">Не взимается</p></td>
+                        </tr>
+                        <tr>
+                          <td>Погашение задолженности по карте в любом из банкоматов БКС Банка или через кассу БКС Банка</td>
                           <td>Бесплатно</td>
                         </tr>
                         <tr>
-                          <td>есплатные дополнительные карты</td>
-                          <td>До 6 карт Visa Infinite, Platinum</td>
-                        </tr>
-                        <tr>
-                          <td>Снятие наличных в банкоматах сторонних банков</td>
-                          <td>До 3 000 000 рублей в месяц — бесплатно</td>
-                        </tr>
-                        <tr>
-                          <td>Перевод в рублях в другой банк через БКС Онлайн</td>
+                          <td>Выдача наличными собственных денежных средств (в рублях)</td>
                           <td>Бесплатно</td>
                         </tr>
                         <tr>
-                          <td>Перевод в иностранной валюте в другой банк через БКС Онлайн</td>
-                          <td>Бесплатно, 15 швейцарских франков</td>
+                          <td>Выдача наличными кредитных денежных средств</td>
+                          <td>4,9% мин. 500 ₽</td>
                         </tr>
                         <tr>
-                          <td>Платежи в БКС Онлайн (интернет, телефон, коммунальные услуги и др.)</td>
+                          <td>Интернет-банк БКС Онлайн и Мобильный банк</td>
                           <td>Бесплатно</td>
                         </tr>
                         <tr>
-                          <td>СМС - инфо</td>
+                          <td>СМС-инфо</td>
                           <td>Бесплатно</td>
                         </tr>
                         <tr>
-                          <td>Конвертация по выгодному курсу</td>
-                          <td>Да</td>
+                          <td>Выпуск основной карты</td>
+                          <td>Не взимается</td>
+                        </tr>
+                        <tr>
+                          <td>Выпуск дополнительной карты</td>
+                          <td>1-я карта не взимается, далее — 950 ₽</td>
+                        </tr>
+                        <tr>
+                          <td>Срочный выпуск / перевыпуск карты по заявлению клиента</td>
+                          <td>В течение 3-х дней, не считая дня подачи заявления — 950 ₽</td>
                         </tr>
                         </tbody>
                       </table>
                     </div>
-                    {{ Docs.docs({ 'theme': 'filled', 'href': '#', 'title': 'Условия, правила и оговорки' | striptags(true) | escape | nl2br, 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-64' }) }}
+                    <div class="collapse collapse_theme-grey">
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">Полное описание тарифов</div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content"></div>
+                      </div>
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">Документы</div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content"></div>
+                      </div>
+                    </div>
                   </div>
                   <div id="bks-overdraft" class="state_invisible">
                     <div class="table table_sortable table_theme-default mb-64">
@@ -312,79 +489,52 @@
                         </thead>
                         <tbody class="table__body">
                         <tr>
-                          <td>Категория карты</td>
-                          <td>Visa Platinum</td>
-                          <td>Visa Platinum</td>
-                          <td>Visa Classic</td>
+                          <td>Пакет услуг</td>
+                          <td>Все пакеты услуг, кроме «Ультима Базовый», «Ультима Расширенный»</td>
                         </tr>
                         <tr>
-                          <td>Условия обслуживания</td>
-                          <td>Бесплатно при поддержании среднемесячного баланса от 500 000 ₽ или 500 ₽ в месяц (от 300
-                            000 ₽ для регионов)
-                          </td>
-                          <td>Бесплатно при поддержании среднемесячного баланса от 3 000 000 ₽ или 1500 ₽ в месяц (от 2
-                            000 000 ₽ для регионов)
-                          </td>
+                          <td>Тип карты</td>
+                          <td>В соответствии с пакетом услуг</td>
+                        </tr>
+                        <tr>
+                          <td>Стоимость годового обслуживания</td>
+                          <td>В соответствии с пакетом услуг</td>
+                        </tr>
+                        <tr>
+                          <td>Лимит кредитования</td>
+                          <td>30 000 ₽</td>
+                        </tr>
+                        <tr>
+                          <td>Процентная ставка</td>
+                          <td>920%</td>
+                        </tr>
+                        <tr>
+                          <td>Минимальный платеж</td>
+                          <td>5% от задолженности, но не менее 100 ₽ + проценты за пользование кредитом</td>
+                        </tr>
+                        <tr>
+                          <td>Погашение задолженности по карте в любом из банкоматов БКС Банка или через кассу БКС Банка</td>
                           <td>Бесплатно</td>
                         </tr>
                         <tr>
-                          <td>Размер бонуса</td>
-                          <td>0.5%</td>
-                          <td>1%</td>
-                          <td>-</td>
+                          <td>Выдача наличными собственных денежных средств</td>
+                          <td>В соответствии с пакетом услуг</td>
                         </tr>
                         <tr>
-                          <td>Выпуск и обслуживание основной карты</td>
-                          <td>Бесплатно</td>
-                          <td>Бесплатно</td>
-                          <td>Бесплатно</td>
+                          <td>Выдача наличными кредитных денежных средств</td>
+                          <td>4,9%</td>
                         </tr>
                         <tr>
-                          <td>Срочный выпуск / перевыпуск карты</td>
-                          <td>950 руб.</td>
-                          <td>950 руб.</td>
-                          <td>950 руб.</td>
-                        </tr>
-                        <tr>
-                          <td>Количество дополнтельных бесплатных карт</td>
-                          <td>Две <br> (Visa Classic, Visa Gold, Visa Platinum, MasterCard Platinum)</td>
-                          <td>Три <br> (Visa Classic, Visa Gold, Visa Platinum, MasterCard Platinum)</td>
-                          <td>-</td>
-                        </tr>
-                        <tr>
-                          <td>Интернет-банк и мобильный банк</td>
-                          <td>Бесплатно</td>
-                          <td>Бесплатно</td>
+                          <td>Интернет-банк БКС Онлайн и Мобильный банк</td>
                           <td>Бесплатно</td>
                         </tr>
                         <tr>
-                          <td>Смс-информирование</td>
-                          <td>Бесплатно</td>
-                          <td>Бесплатно</td>
-                          <td>59 ₽</td>
-                        </tr>
-                        <tr>
-                          <td>Снятие наличных в банкоматах сторонних банков</td>
-                          <td>До 150 000 ₽ / мес - бесплатно, далее - 1% мин. 100 ₽ / 3 $ / 3 EUR</td>
-                          <td>До 300 000 ₽ / мес - бесплатно, далее - 1% мин. 100 ₽ / 3 $ / 3 EUR</td>
-                          <td>1% мин. 100 ₽ / 3 $ / 3 EUR</td>
-                        </tr>
-                        <tr>
-                          <td>Перевод в рублях в другие банки через БКС Онлайн</td>
-                          <td>1% мин. 35 USD, макс. 200 USD, 1% мин. 35 EUR, макс. 200 EUR</td>
-                          <td>0.5% мин. 35 USD, макс. 200 USD, 0.5% мин. 35 EUR, макс. 200 EUR</td>
-                          <td>35 USD / 35 EUR</td>
-                        </tr>
-                        <tr>
-                          <td>Перевод в рублях на счет другого банка в отделениях БКС</td>
-                          <td>0.5% мин. 50 ₽, макс. 2500 ₽</td>
-                          <td>0.5% мин. 50 ₽, макс. 2500 ₽</td>
-                          <td>1.5% мин. 100 ₽, макс. 2500 ₽</td>
+                          <td>СМС-инфо</td>
+                          <td>В соответствии с пакетом услуг</td>
                         </tr>
                         </tbody>
                       </table>
                     </div>
-                    {{ Docs.docs({ 'theme': 'filled', 'href': '#', 'title': 'Условия, правила и оговорки»' | striptags(true) | escape | nl2br, 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-64' }) }}
                     <div class="collapse collapse_theme-grey">
                       <div class="collapse__item">
                         <div class="collapse__control">
@@ -407,26 +557,6 @@
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="collapse collapse_theme-grey">
-              <div class="collapse__item">
-                <div class="collapse__control">
-                  <div class="collapse__control-title">Полное описание тарифов</div>
-                  <div class="collapse__control-icon">
-                    {{ Icon.icon({ 'name': 'dropdown' }) }}
-                  </div>
-                </div>
-                <div class="collapse__content"></div>
-              </div>
-              <div class="collapse__item">
-                <div class="collapse__control">
-                  <div class="collapse__control-title">Документы</div>
-                  <div class="collapse__control-icon">
-                    {{ Icon.icon({ 'name': 'dropdown' }) }}
-                  </div>
-                </div>
-                <div class="collapse__content"></div>
               </div>
             </div>
           </section>
