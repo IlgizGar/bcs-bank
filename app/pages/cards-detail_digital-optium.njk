@@ -12,7 +12,7 @@
 {% import "../components/icon/icon.njk" as Icon %}
 
 {% set root = "." %}
-{% set title = "Брокер" %}
+{% set title = "Цифровой Оптимум" %}
 {% set header = 'blue' %}
 
 {% block body %}
@@ -26,11 +26,11 @@
         <div class="section__header section__header_theme-blue">
           <div class="page__container">
             {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Пакет услуг', 'link': '#' } }) }}
-            {{ Heading.heading({ 'tag': 'h1', 'title': 'Брокер', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
+            {{ Heading.heading({ 'tag': 'h1', 'title': 'Цифровой Оптимум', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
             <div class="features">
-              {{ Feature.feature({ 'title': '0#ruble', 'text': 'обслуживание \n пакета', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-              {{ Feature.feature({ 'title': 'до 10%', 'text': 'возвращаем бонус \n от покупок', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-              {{ Feature.feature({ 'title': '0#ruble', 'text': 'переводы в БКС \n Онлайн и Мобильном Банке', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+              {{ Feature.feature({ 'title': '0#ruble', 'text': 'стоимость \n обслуживания', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+              {{ Feature.feature({ 'title': '0#ruble', 'text': 'комиссия за онлайн \n платежи и переводы', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+              {{ Feature.feature({ 'title': '7%', 'text': 'от покупок \n в любимых категориях', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
             </div>
           </div>
           <div class="section__nav-wrapper">
@@ -55,17 +55,31 @@
               {
                 'icon': 'assets/images/svg/shield-image.svg',
                 'title': 'Безопасно',
-                'subtitle': 'Современные онлайн-сервисы \n для управления финансами'
+                'subtitle': 'Современные онлайн-сервисы \n для управления финансами',
+                'props': {
+                'large': '0#ruble'
+              },
+                'descr': 'Доступ в бизнес-залы аэропортов \n с картой Priority Pass'
               },
               {
-                'icon': 'assets/images/svg/gift-image.svg',
-                'title': 'Удобно',
-                'subtitle': 'Бесплатное снятие наличных \n в любом банкомате мира'
+                'icon': 'assets/images/svg/kopeiki-image.svg',
+                'title': 'Выгодно',
+                'subtitle': 'Обслуживание 0₽ при покупках \n по картам от 35 тыс. #ruble/мес',
+                'props': {
+                'small': 'до',
+                'large': '30%'
+              },
+                'descr': 'За покупки \n у партнеров'
               },
               {
                 'icon': 'assets/images/svg/card-image.svg',
                 'title': 'Премиально',
-                'subtitle': 'Текущие и накопительные \n счета в 3х валютах'
+                'subtitle': 'До 3-х мультивалютных карт \n VISA Platinum бесплатно',
+                'props': {
+                'large': '200',
+                'small': 'тыс. #ruble'
+              },
+                'descr': 'Снятие наличных в месяц \n без комиссии по всему миру'
               }
             ] }) }}
           </section>
@@ -95,7 +109,7 @@
 
           <section class="section page__section">
             <div class="page__container">
-              {{ Heading.heading({ 'title': 'Как открыть пакет \n «Брокер» и пользоваться' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered' }) }}
+              {{ Heading.heading({ 'title': 'Как открыть пакет «Цифровой \n Оптимум» и пользоваться' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered' }) }}
             </div>
             {{ BrandFeatures.brandFeatures({ 'items': [
               {
@@ -124,8 +138,8 @@
           <section class="section section_theme-white-smoke section_padding-default page__section">
             <div class="dcard-request">
               <div class="page__container">
-                {{ Heading.heading({ 'title': 'Заявка на пакет «Брокер»' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
-                <div class="text mb-56">Заполнение заявки займет всего 7 минут.
+                {{ Heading.heading({ 'title': 'Заявка на пакет \n «Цифровой Оптимум»' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+                <div class="text mb-56">К данному пакету услуг прилагается банковская карта «Visa Platinum»
                 </div>
                 <div class="section__row">
                   <div class="form form_layout-narrow js-form">
@@ -159,7 +173,7 @@
                   <div class="calculation">
                     <img src="assets/images/card bks platinum.png" class="calculation__image hidden-mobile"
                          alt="БКС Банк">
-                    <div class="text calculation__text hidden-mobile">Вы можете оформить до 2-х карт бесплатно
+                    <div class="text calculation__text hidden-mobile">Вы можете оформить до 3-х карт бесплатно
                     </div>
                     {{ Button.button({ 'href': '#', 'title': 'Оформите через госуслуги', 'path': 'assets/images/uslugi.svg', 'mods': {'theme': 'white', 'type': 'icon-left'}, 'class': 'button_theme-uslugi' }) }}
                   </div>
@@ -180,29 +194,69 @@
                       <thead class="table__head">
                       <tr>
                         <th><span class="table__column-title">Пакет услуг</span></th>
-                        <th><span class="table__column-title">Брокер</span></th>
+                        <th><span class="table__column-title">Ультима</span></th>
                       </tr>
                       </thead>
                       <tbody class="table__body">
                       <tr>
-                        <td>Условия обслуживания</td>
+                        <td>Категория карты</td>
+                        <td>Visa Platinum</td>
+                      </tr>
+                      <tr>
+                        <td>Ежемесячная комиссия</td>
+                        <td>6000 руб.</td>
+                      </tr>
+                      <tr>
+                        <td>Бесплатное обслуживание</td>
+                        <td>При среднемесячном балансе от 10 млн. рублей</td>
+                      </tr>
+                      <tr>
+                        <td>Доход на минимальный остаток по накопительному счету</td>
+                        <td>до 5,5% годовых</td>
+                      </tr>
+                      <tr>
+                        <td>Cashback за покупки по карте</td>
+                        <td>до 10%</td>
+                      </tr>
+                      <tr>
+                        <td>Карта Priority Pass</td>
+                        <td>При среднемесячном балансе клиента до 30 млн руб. — все проходы клиента и 1 гость бесплатно. При среднемесячном балансе клиента от 30 млн руб. — все проходы клиента и все гости бесплатно.</td>
+                      </tr>
+                      <tr>
+                        <td>Консьерж-служба</td>
+                        <td>Prime</td>
+                      </tr>
+                      <tr>
+                        <td>Страхование в путешествиях</td>
                         <td>Бесплатно</td>
                       </tr>
                       <tr>
-                        <td>Переводы в рублях в БКС Онлайн и мобильном банке</td>
-                        <td>Без комиссии</td>
+                        <td>Бесплатные дополнительные карты</td>
+                        <td>До 6 карт Visa Infinite, Platinum</td>
                       </tr>
                       <tr>
-                        <td>Количество счетов</td>
-                        <td>Три текущих и три накопительных счета в валютах: рубли, доллары, евро</td>
+                        <td>Снятие наличных в банкоматах сторонних банков</td>
+                        <td>До 3 000 000 рублей в месяц — бесплатно</td>
                       </tr>
                       <tr>
-                        <td>Смс-информирование</td>
-                        <td>59 руб. в месяц</td>
+                        <td>Перевод в рублях в другой банк через БКС Онлайн</td>
+                        <td>Бесплатно</td>
                       </tr>
                       <tr>
-                        <td>Бонусная программа</td>
-                        <td>Возврат 3% в категории на выбор (АЗС, рестораны, путешествия, одежда и обувь) и 1% от всех остальных покупок по карте. При поддержании среднемесячных активов в ООО «Компания БКС»: от 50 000 до 300 000 руб. — 3% в категории АЗС; от 300 000 до 1 000 000 руб. — 3% в одной из категорий: АЗС или путешествия; от 1 000 000 до 10 000 000 руб. — 3% в одной из категорий на выбор: АЗС, путешествия или рестораны; от 10 000 000 руб. и более — 3% в двух категориях на выбор: АЗС, путешествия, рестораны или одежда и обувь. Ограничение по максимальной сумме выплаты бонусных баллов в месяц — 4000 баллов, баллы конвертируются в рубли, 1 балл = 1 рубль. Управление бонусным счетом через БКС Онлайн и Мобильный Банк.</td>
+                        <td>Перевод в иностранной валюте в другой банк через БКС Онлайн</td>
+                        <td>Бесплатно, 15 швейцарских франков</td>
+                      </tr>
+                      <tr>
+                        <td>Платежи в БКС Онлайн (интернет, телефон, коммунальные услуги и др.)</td>
+                        <td>Бесплатно</td>
+                      </tr>
+                      <tr>
+                        <td>СМС - инфо</td>
+                        <td>Бесплатно</td>
+                      </tr>
+                      <tr>
+                        <td>Конвертация по выгодному курсу</td>
+                        <td>Да</td>
                       </tr>
                       </tbody>
                     </table>
