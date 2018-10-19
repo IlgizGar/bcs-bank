@@ -70,8 +70,7 @@ module.exports = (elem) => {
     }
 
     events() {
-
-      this.context.on('click', (e) => {
+      $(document).on('click', `.js-context[data-id="${this.id}"]`, (e) => {
         e.preventDefault();
         if (this.context.hasClass('state_explored')) {
           this.hideList();

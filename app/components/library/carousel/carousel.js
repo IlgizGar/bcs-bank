@@ -60,6 +60,7 @@ module.exports = (elem) => {
         if (typeof this.carousel.data('breakpoint') !== 'undefined') {
           if (parseInt(this.carousel.data('breakpoint'), 0) - 1 >= window.innerWidth) {
             this.initMobileSlick(parseInt(this.carousel.data('breakpoint'), 0) - 1);
+
           }
         }
       });
@@ -78,9 +79,10 @@ module.exports = (elem) => {
           },
         ],
       });
-      this.carousel.find('.js-context').each((i, el) => {
-        global.contexts[$(el).data('id')] = Context(el);
-      });
+      // this.carousel.find('.js-context').each((i, el) => {
+      //   global.contexts[$(el).attr('data-id')] = Context(el);
+      // });
+      console.log(global.contexts);
     }
   }
 

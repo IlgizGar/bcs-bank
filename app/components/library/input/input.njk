@@ -43,7 +43,7 @@
         {% endif %}
 
         {% if options.title %}
-            <span class="input__title js-title">{{ options.title | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | safe }}</span>
+            <span class="input__title js-title">{{ options.title | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | replace("#euro", Icon.icon({ 'name': 'euro' })) | replace("#pound", Icon.icon({ 'name': 'pound' })) | replace("#dollar", Icon.icon({ 'name': 'baks' })) | safe }}</span>
         {% endif %}
 
         {% if options.slider %}

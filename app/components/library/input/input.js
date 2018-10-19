@@ -17,6 +17,8 @@ module.exports = (elem) => {
       if (this.slider.length) {
         this.slider.ionRangeSlider({
           type: 'single',
+          hide_min_max: false,
+          hide_from_to: true,
           min: this.slider.data('min'),
           max: this.slider.data('max'),
           from: this.slider.data('from'),

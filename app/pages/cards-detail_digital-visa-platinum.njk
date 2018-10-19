@@ -12,7 +12,7 @@
 {% import "../components/icon/icon.njk" as Icon %}
 
 {% set root = "." %}
-{% set title = "Карта дебетовая" %}
+{% set title = "Цифровой Visa Platinum" %}
 {% set header = 'blue' %}
 
 {% block body %}
@@ -20,19 +20,20 @@
 
     {% include "../components/modules/header/header.njk" %}
 
+
     <main role="main" class="products-detail">
       <section class="section page__section">
         <div class="section__header section__header_theme-blue">
           <div class="page__container">
             {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Дебетовые карты', 'link': '#' } }) }}
-            {{ Heading.heading({ 'tag': 'h1', 'title': 'MORE \n Visa platinum' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'default' } }) }}
+            {{ Heading.heading({ 'tag': 'h1', 'title': 'Цифровой \n Visa Platinum', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
             <div class="features">
-              {{ Feature.feature({ 'title': '3%', 'text': 'от всех покупок возвращаем на карту', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-              {{ Feature.feature({ 'title': '0#ruble', 'text': 'страхование путешествующих', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-              {{ Feature.feature({ 'title': 'От 0#ruble', 'text': 'стоимость обслуживания', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+              {{ Feature.feature({ 'title': '7%', 'text': 'от покупок в \n любимых категориях', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+              {{ Feature.feature({ 'title': '0#ruble', 'text': 'комиссия за онлайн \n платежи и переводы', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+              {{ Feature.feature({ 'title': 'От 0#ruble', 'text': 'стоимость \n обслуживания', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
             </div>
             <div class="brand-figure products-detail__figure" data-illustration="">
-              <img src="assets/images/detail-card_banner.png" alt="Отпуск легче с кредитом БКС">
+              <img src="assets/images/digital-visa-platinum.png" alt="Отпуск легче с кредитом БКС">
             </div>
           </div>
           <div class="section__nav-wrapper">
@@ -56,39 +57,40 @@
             {{ BrandFeatures.brandFeatures({ 'items': [
               {
                 'icon': 'assets/images/svg/shield-image.svg',
-                'title': 'Удобно',
-                'subtitle': 'Все самое необходимое для путешествий в одной карте',
+                'title': 'Безопасно',
+                'subtitle': 'Оплата интернет покупок \n с технологией 3D Secure',
                 'props': {
-                'large': '150',
-                'small': 'тыс. #ruble'
+                'large': '1%',
+                'small': ''
               },
-                'descr': 'Снятие наличных в месяц без комиссии по всему миру'
+                'descr': 'Бонусы \n за любые покупки'
               },
               {
-                'icon': 'assets/images/svg/shield-image.svg',
-                'title': 'Безопасно',
-                'subtitle': 'Страховка для путешествий по всему миру до 500 #ruble',
+                'icon': 'assets/images/svg/gift-image.svg',
+                'title': 'Выгодно',
+                'subtitle': 'До 7% бонусы за покупки \n по любимым категориям',
                 'props': {
                 'small': 'до',
                 'large': '30%'
               },
-                'descr': 'Бонусами за покупки по спецпредложениям'
+                'descr': 'Бонусы \n за покупки у партнеров'
               },
               {
-                'icon': 'assets/images/svg/shield-image.svg',
-                'title': 'Выгодно',
-                'subtitle': '1 карта с 3 валютными счетами #ruble, #ruble, #ruble',
+                'icon': 'assets/images/svg/card-image.svg',
+                'title': 'Удобно',
+                'subtitle': '1 карта с 3 валютными \n счетами #ruble, #dollar, #euro',
                 'props': {
-                'large': '0#ruble'
+                'large': '200',
+                'small': 'тыс. #ruble'
               },
-                'descr': 'Онлайн консультация Доктор рядом из любой точки мира'
+                'descr': 'Снятие наличных в месяц \n без комиссии в любом банкомате'
               }
             ] }) }}
           </section>
           <section class="section section_theme-white-smoke section_padding-default page__section mobile-mb-0">
             <div class="calculator">
               <div class="page__container">
-                {{ Heading.heading({ 'title': 'Расчитайте свой бонус' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'default' } }) }}
+                {{ Heading.heading({ 'title': 'Рассчитайте свой бонус', 'mods': { 'type': 'default', 'margin': 'medium' } }) }}
                 <div class="section__row calculator__row">
                   <div class="form form_layout-narrow calculator__form">
                     <form>
@@ -120,7 +122,7 @@
             <div class="page__container">
               <div class="section__wrap">
                 <div class="mobile__content">
-                  {{ Heading.heading({ 'title': 'Легкий мобильный банк' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small', 'theme': 'light' } }) }}
+                  {{ Heading.heading({ 'title': 'Удобный мобильный банк' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small', 'theme': 'light' } }) }}
                   <div class="section__text section__text_theme-normal section__text_theme-light">
                     <p>Управление банковскими и инвестиционными продуктами</p>
                     <p>Оплата услуг без комиссии</p>
@@ -133,7 +135,7 @@
                     {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
                   </div>
                 </div>
-                <img class="mobile__figure" src="assets/images/mobi-man.png"
+                <img class="mobile__figure" src="assets/illustrations/mobile_bank.svg"
                      alt="Легкий мобильный банк">
               </div>
             </div>
@@ -144,25 +146,25 @@
             </div>
             {{ BrandFeatures.brandFeatures({ 'items': [
               {
-                'icon': 'assets/images/svg/shield-image.svg',
+                'icon': 'assets/images/svg/list-image.svg',
                 'title': 'Оставьте заявку',
-                'subtitle': 'Заполнение заявки займет 5 минут',
+                'subtitle': 'Заполнение заявки \n займет 5 минут',
                 'mods': {
                 'theme': 'lined'
               }
               },
               {
-                'icon': 'assets/images/svg/shield-image.svg',
+                'icon': 'assets/images/svg/sand-clock-image.svg',
                 'title': 'Получите карту',
-                'subtitle': 'Наш специалист доставит Вам документы и карту бесплатно',
+                'subtitle': 'Наш специалист доставит Вам \n документы и карту бесплатно',
                 'mods': {
                 'theme': 'lined'
               }
               },
               {
-                'icon': 'assets/images/svg/shield-image.svg',
+                'icon': 'assets/images/svg/card-image.svg',
                 'title': 'Пользуйтесь картой',
-                'subtitle': 'Получайте бонусы с каждой покупки и меняйте их на рубли'
+                'subtitle': 'Получайте бонусы с каждой \n покупки и меняйте их на рубли'
               }
             ] }) }}
           </section>
@@ -172,7 +174,7 @@
                 {{ Heading.heading({ 'title': 'Заявка на карту' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
                 <div class="text mb-56">Банковскя карта MORE Visa Platinum с повышенным статусом <br> и набором
                   привилегий. Открывается в
-                  рамках {{ Button.button({ 'href': '#', 'title': 'пакета услуг "MORE".', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
+                  рамках {{ Button.button({ 'href': '#', 'title': 'пакета услуг "MORE".', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' }, 'class': 'products-detail__request-link' }) }}
                 </div>
                 <div class="section__row">
                   <div class="form form_layout-narrow js-form">
@@ -204,9 +206,9 @@
                     </form>
                   </div>
                   <div class="calculation">
-                    <img src="assets/images/credit-card.png" class="calculation__image hidden-mobile"
+                    <img src="assets/images/card-digital-visa-platinum.png" class="calculation__image"
                          alt="БКС Банк">
-                    <div class="text calculation__text hidden-mobile">2 дополнительные карты Visa Platinum бесплатно
+                    <div class="text calculation__text">2 дополнительные карты Visa Platinum бесплатно
                     </div>
                     {{ Button.button({ 'href': '#', 'title': 'Оформите через госуслуги', 'path': 'assets/images/uslugi.svg', 'mods': {'theme': 'white', 'type': 'icon-left'}, 'class': 'button_theme-uslugi' }) }}
                   </div>
@@ -220,201 +222,94 @@
             <div class="page__container">
               <div class="section__row">
                 <div class="section__content section__content_theme-centered">
-                  {{ Heading.heading({ 'title': '', 'mods': { 'type': 'default', 'margin': 'short', 'theme' : 'default' },
-                    'context': { 'title': '', 'attr': {'id': 'credit-types', 'list-on-right': 'true'}, 'items': [{ 'title': 'Кредитная карта БКС Платинум', 'value': 'bks-platinum', 'attr': { 'title': 'Кредитная карта БКС Платинум' }, 'selected': true },
-                      { 'title': 'Карта с овердрафтом', 'value': 'bks-overdraft', 'attr': { 'title': 'Карта с овердрафтом' } }] } }) }}
-                  <div id="bks-platinum">
-                    <div class="table table_sortable table_theme-default mb-64">
-                      <table class="table__content">
-                        <thead class="table__head">
-                        <tr>
-                          <th><span class="table__column-title">Пакет услуг</span></th>
-                          <th><span class="table__column-title">Премьер Базовый</span></th>
-                          <th><span class="table__column-title">Премьер Расширенный</span></th>
-                          <th><span class="table__column-title">Директ</span></th>
-                        </tr>
-                        </thead>
-                        <tbody class="table__body">
-                        <tr>
-                          <td>Категория карты</td>
-                          <td>Visa Platinum</td>
-                          <td>Visa Platinum</td>
-                          <td>Visa Classic</td>
-                        </tr>
-                        <tr>
-                          <td>Условия обслуживания</td>
-                          <td>Бесплатно при поддержании среднемесячного баланса от 500 000 ₽ или 500 ₽ в месяц (от 300
-                            000 ₽ для регионов)
-                          </td>
-                          <td>Бесплатно при поддержании среднемесячного баланса от 3 000 000 ₽ или 1500 ₽ в месяц (от 2
-                            000 000 ₽ для регионов)
-                          </td>
-                          <td>Бесплатно</td>
-                        </tr>
-                        <tr>
-                          <td>Размер бонуса</td>
-                          <td>0.5%</td>
-                          <td>1%</td>
-                          <td>-</td>
-                        </tr>
-                        <tr>
-                          <td>Выпуск и обслуживание основной карты</td>
-                          <td>Бесплатно</td>
-                          <td>Бесплатно</td>
-                          <td>Бесплатно</td>
-                        </tr>
-                        <tr>
-                          <td>Срочный выпуск / перевыпуск карты</td>
-                          <td>950 руб.</td>
-                          <td>950 руб.</td>
-                          <td>950 руб.</td>
-                        </tr>
-                        <tr>
-                          <td>Количество дополнтельных бесплатных карт</td>
-                          <td>Две <br> (Visa Classic, Visa Gold, Visa Platinum, MasterCard Platinum)</td>
-                          <td>Три <br> (Visa Classic, Visa Gold, Visa Platinum, MasterCard Platinum)</td>
-                          <td>-</td>
-                        </tr>
-                        <tr>
-                          <td>Интернет-банк и мобильный банк</td>
-                          <td>Бесплатно</td>
-                          <td>Бесплатно</td>
-                          <td>Бесплатно</td>
-                        </tr>
-                        <tr>
-                          <td>Смс-информирование</td>
-                          <td>Бесплатно</td>
-                          <td>Бесплатно</td>
-                          <td>59 ₽</td>
-                        </tr>
-                        <tr>
-                          <td>Снятие наличных в банкоматах сторонних банков</td>
-                          <td>До 150 000 ₽ / мес - бесплатно, далее - 1% мин. 100 ₽ / 3 $ / 3 EUR</td>
-                          <td>До 300 000 ₽ / мес - бесплатно, далее - 1% мин. 100 ₽ / 3 $ / 3 EUR</td>
-                          <td>1% мин. 100 ₽ / 3 $ / 3 EUR</td>
-                        </tr>
-                        <tr>
-                          <td>Перевод в рублях в другие банки через БКС Онлайн</td>
-                          <td>1% мин. 35 USD, макс. 200 USD, 1% мин. 35 EUR, макс. 200 EUR</td>
-                          <td>0.5% мин. 35 USD, макс. 200 USD, 0.5% мин. 35 EUR, макс. 200 EUR</td>
-                          <td>35 USD / 35 EUR</td>
-                        </tr>
-                        <tr>
-                          <td>Перевод в рублях на счет другого банка в отделениях БКС</td>
-                          <td>0.5% мин. 50 ₽, макс. 2500 ₽</td>
-                          <td>0.5% мин. 50 ₽, макс. 2500 ₽</td>
-                          <td>1.5% мин. 100 ₽, макс. 2500 ₽</td>
-                        </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    {{ Docs.docs({ 'theme': 'filled', 'href': '#', 'title': 'Условия, правила и оговорки' | striptags(true) | escape | nl2br, 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-64' }) }}
+                  {{ Heading.heading({ 'title': '', 'mods': { 'type': 'default', 'margin': 'short', 'theme' : 'default' }
+                  }) }}
+
+                  <div class="table table_sortable table_theme-default mb-64">
+                    <table class="table__content">
+                      <thead class="table__head">
+                      <tr>
+                        <th><span class="table__column-title">Пакет услуг</span></th>
+                        <th><span class="table__column-title">Премьер Базовый</span></th>
+                        <th><span class="table__column-title">Премьер Расширенный</span></th>
+                        <th><span class="table__column-title">Директ</span></th>
+                      </tr>
+                      </thead>
+                      <tbody class="table__body">
+                      <tr>
+                        <td>Категория карты</td>
+                        <td>Visa Platinum</td>
+                        <td>Visa Platinum</td>
+                        <td>Visa Classic</td>
+                      </tr>
+                      <tr>
+                        <td>Условия обслуживания</td>
+                        <td>Бесплатно при поддержании среднемесячного баланса от 500 000 ₽ или 500 ₽ в месяц (от 300
+                          000 ₽ для регионов)
+                        </td>
+                        <td>Бесплатно при поддержании среднемесячного баланса от 3 000 000 ₽ или 1500 ₽ в месяц (от 2
+                          000 000 ₽ для регионов)
+                        </td>
+                        <td>Бесплатно</td>
+                      </tr>
+                      <tr>
+                        <td>Размер бонуса</td>
+                        <td>0.5%</td>
+                        <td>1%</td>
+                        <td>-</td>
+                      </tr>
+                      <tr>
+                        <td>Выпуск и обслуживание основной карты</td>
+                        <td>Бесплатно</td>
+                        <td>Бесплатно</td>
+                        <td>Бесплатно</td>
+                      </tr>
+                      <tr>
+                        <td>Срочный выпуск / перевыпуск карты</td>
+                        <td>950 руб.</td>
+                        <td>950 руб.</td>
+                        <td>950 руб.</td>
+                      </tr>
+                      <tr>
+                        <td>Количество дополнтельных бесплатных карт</td>
+                        <td>Две <br> (Visa Classic, Visa Gold, Visa Platinum, MasterCard Platinum)</td>
+                        <td>Три <br> (Visa Classic, Visa Gold, Visa Platinum, MasterCard Platinum)</td>
+                        <td>-</td>
+                      </tr>
+                      <tr>
+                        <td>Интернет-банк и мобильный банк</td>
+                        <td>Бесплатно</td>
+                        <td>Бесплатно</td>
+                        <td>Бесплатно</td>
+                      </tr>
+                      <tr>
+                        <td>Смс-информирование</td>
+                        <td>Бесплатно</td>
+                        <td>Бесплатно</td>
+                        <td>59 ₽</td>
+                      </tr>
+                      <tr>
+                        <td>Снятие наличных в банкоматах сторонних банков</td>
+                        <td>До 150 000 ₽ / мес - бесплатно, далее - 1% мин. 100 ₽ / 3 #dollar / 3 EUR</td>
+                        <td>До 300 000 ₽ / мес - бесплатно, далее - 1% мин. 100 ₽ / 3 #dollar / 3 EUR</td>
+                        <td>1% мин. 100 ₽ / 3 #dollar / 3 EUR</td>
+                      </tr>
+                      <tr>
+                        <td>Перевод в рублях в другие банки через БКС Онлайн</td>
+                        <td>1% мин. 35 USD, макс. 200 USD, 1% мин. 35 EUR, макс. 200 EUR</td>
+                        <td>0.5% мин. 35 USD, макс. 200 USD, 0.5% мин. 35 EUR, макс. 200 EUR</td>
+                        <td>35 USD / 35 EUR</td>
+                      </tr>
+                      <tr>
+                        <td>Перевод в рублях на счет другого банка в отделениях БКС</td>
+                        <td>0.5% мин. 50 ₽, макс. 2500 ₽</td>
+                        <td>0.5% мин. 50 ₽, макс. 2500 ₽</td>
+                        <td>1.5% мин. 100 ₽, макс. 2500 ₽</td>
+                      </tr>
+                      </tbody>
+                    </table>
                   </div>
-                  <div id="bks-overdraft" class="state_invisible">
-                    <div class="table table_sortable table_theme-default mb-64">
-                      <table class="table__content">
-                        <thead class="table__head">
-                        <tr>
-                          <th><span class="table__column-title">Тарифный план</span></th>
-                          <th><span class="table__column-title">Финансисит</span></th>
-                        </tr>
-                        </thead>
-                        <tbody class="table__body">
-                        <tr>
-                          <td>Категория карты</td>
-                          <td>Visa Platinum</td>
-                          <td>Visa Platinum</td>
-                          <td>Visa Classic</td>
-                        </tr>
-                        <tr>
-                          <td>Условия обслуживания</td>
-                          <td>Бесплатно при поддержании среднемесячного баланса от 500 000 ₽ или 500 ₽ в месяц (от 300
-                            000 ₽ для регионов)
-                          </td>
-                          <td>Бесплатно при поддержании среднемесячного баланса от 3 000 000 ₽ или 1500 ₽ в месяц (от 2
-                            000 000 ₽ для регионов)
-                          </td>
-                          <td>Бесплатно</td>
-                        </tr>
-                        <tr>
-                          <td>Размер бонуса</td>
-                          <td>0.5%</td>
-                          <td>1%</td>
-                          <td>-</td>
-                        </tr>
-                        <tr>
-                          <td>Выпуск и обслуживание основной карты</td>
-                          <td>Бесплатно</td>
-                          <td>Бесплатно</td>
-                          <td>Бесплатно</td>
-                        </tr>
-                        <tr>
-                          <td>Срочный выпуск / перевыпуск карты</td>
-                          <td>950 руб.</td>
-                          <td>950 руб.</td>
-                          <td>950 руб.</td>
-                        </tr>
-                        <tr>
-                          <td>Количество дополнтельных бесплатных карт</td>
-                          <td>Две <br> (Visa Classic, Visa Gold, Visa Platinum, MasterCard Platinum)</td>
-                          <td>Три <br> (Visa Classic, Visa Gold, Visa Platinum, MasterCard Platinum)</td>
-                          <td>-</td>
-                        </tr>
-                        <tr>
-                          <td>Интернет-банк и мобильный банк</td>
-                          <td>Бесплатно</td>
-                          <td>Бесплатно</td>
-                          <td>Бесплатно</td>
-                        </tr>
-                        <tr>
-                          <td>Смс-информирование</td>
-                          <td>Бесплатно</td>
-                          <td>Бесплатно</td>
-                          <td>59 ₽</td>
-                        </tr>
-                        <tr>
-                          <td>Снятие наличных в банкоматах сторонних банков</td>
-                          <td>До 150 000 ₽ / мес - бесплатно, далее - 1% мин. 100 ₽ / 3 $ / 3 EUR</td>
-                          <td>До 300 000 ₽ / мес - бесплатно, далее - 1% мин. 100 ₽ / 3 $ / 3 EUR</td>
-                          <td>1% мин. 100 ₽ / 3 $ / 3 EUR</td>
-                        </tr>
-                        <tr>
-                          <td>Перевод в рублях в другие банки через БКС Онлайн</td>
-                          <td>1% мин. 35 USD, макс. 200 USD, 1% мин. 35 EUR, макс. 200 EUR</td>
-                          <td>0.5% мин. 35 USD, макс. 200 USD, 0.5% мин. 35 EUR, макс. 200 EUR</td>
-                          <td>35 USD / 35 EUR</td>
-                        </tr>
-                        <tr>
-                          <td>Перевод в рублях на счет другого банка в отделениях БКС</td>
-                          <td>0.5% мин. 50 ₽, макс. 2500 ₽</td>
-                          <td>0.5% мин. 50 ₽, макс. 2500 ₽</td>
-                          <td>1.5% мин. 100 ₽, макс. 2500 ₽</td>
-                        </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    {{ Docs.docs({ 'theme': 'filled', 'href': '#', 'title': 'Условия, правила и оговорки»' | striptags(true) | escape | nl2br, 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-64' }) }}
-                    <div class="collapse collapse_theme-grey">
-                      <div class="collapse__item">
-                        <div class="collapse__control">
-                          <div class="collapse__control-title">Полное описание тарифов</div>
-                          <div class="collapse__control-icon">
-                            {{ Icon.icon({ 'name': 'dropdown' }) }}
-                          </div>
-                        </div>
-                        <div class="collapse__content"></div>
-                      </div>
-                      <div class="collapse__item">
-                        <div class="collapse__control">
-                          <div class="collapse__control-title">Документы</div>
-                          <div class="collapse__control-icon">
-                            {{ Icon.icon({ 'name': 'dropdown' }) }}
-                          </div>
-                        </div>
-                        <div class="collapse__content"></div>
-                      </div>
-                    </div>
-                  </div>
+                  {{ Docs.docs({ 'theme': 'filled', 'href': '#', 'title': 'Условия, правила и оговорки' | striptags(true) | escape | nl2br, 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-64' }) }}
                 </div>
               </div>
             </div>
@@ -504,6 +399,7 @@
         </div>
       </div>
     </main>
+
 
     {% include "../components/modules/footer/footer.njk" %}
   </div>

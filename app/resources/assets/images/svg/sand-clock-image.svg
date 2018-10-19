@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="94px" height="99px" viewBox="0 0 94 99" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>графика / иконка / большая / документ</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="8.05150067%" y1="90.0095889%" x2="94.8419426%" y2="16.8162884%" id="linearGradient-1">
+            <stop stop-color="#3E6CD5" offset="0%"></stop>
+            <stop stop-color="#578AFF" offset="100%"></stop>
+        </linearGradient>
+        <path d="M28.4583069,28.8183291 L35.7811155,21.7915848 C39.4118682,18.3076249 44.2763874,16.4062073 49.3073592,16.504518 L53.496456,16.5863776 L53.496456,54.4134574 L49.2989125,54.495482 C44.2729396,54.593695 39.4128727,52.696145 35.7830851,49.2184028 L28.4555658,42.1978203 C26.5216795,40.3449411 23.4712324,40.3449411 21.5373462,42.1978203 L14.2098269,49.2184028 C10.5800393,52.696145 5.71997233,54.593695 0.693999495,54.495482 L-3.50354401,54.4134574 L-3.50354401,16.5863776 L0.685552798,16.504518 C5.71652459,16.4062073 10.5810437,18.3076249 14.2117965,21.7915848 L21.534605,28.8183291 C23.4692054,30.6747127 26.5237066,30.6747127 28.4583069,28.8183291 Z" id="path-2"></path>
+        <filter x="-14.9%" y="-17.1%" width="129.8%" height="144.7%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0.116224869   0 0 0 0 0.481584821  0 0 0 0.0923629982 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="графика-/-иконка-/-большая-/-часы" transform="translate(0.000000, -1.000000)">
+            <g id="Group">
+                <g transform="translate(0.000000, 1.000000)">
+                    <circle id="Oval-Copy" fill="url(#linearGradient-1)" cx="47" cy="47" r="47"></circle>
+                    <g id="time" transform="translate(47.000000, 64.000000) rotate(-360.000000) translate(-47.000000, -64.000000) translate(22.000000, 29.000000)">
+                        <g id="Polygon-2" transform="translate(24.996456, 35.500000) rotate(90.000000) translate(-24.996456, -35.500000) ">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                        </g>
+                        <path d="M19.9325012,26 C19.1350673,26 18.7069449,26.7967595 19.2290069,27.3091059 L21.7931364,29.8259892 C23.0977651,31.1065755 23.8158635,32.7439365 23.8158635,34.4380011 L23.8158635,38.9562508 C23.8158635,39.4606564 24.2334605,39.9140623 24.8203855,39.9885488 C25.5504566,40.0813773 26.1840882,39.597215 26.1840882,38.9934941 L26.1840882,34.4424748 C26.1840882,32.7455022 26.9035023,31.1053452 28.2103676,29.8226339 L30.7710764,27.3091059 C31.2930069,26.7967595 30.8648844,26 30.0675821,26 L19.9325012,26 Z" id="Fill-1" fill="#FE7F5F"></path>
+                        <circle id="Oval" fill="#FE7F5F" fill-rule="nonzero" cx="24.95" cy="43.15" r="1.15"></circle>
+                        <path d="M25.9264773,60.5882875 L32.6985246,52.9746308 C33.3859195,52.2018602 32.8219616,51 31.7719598,51 L18.2280402,51 C17.1780384,51 16.6140805,52.2018602 17.3014754,52.9746308 L24.0735227,60.5882875 C24.5621929,61.1379042 25.437632,61.1379042 25.9264773,60.5882875" id="Fill-1" fill="#FE7F5F" transform="translate(25.000000, 56.000250) rotate(180.000000) translate(-25.000000, -56.000250) "></path>
+                        <rect id="Rectangle" fill="#EDF3FA" fill-rule="nonzero" x="0" y="2.48689958e-14" width="50" height="8" rx="4"></rect>
+                        <rect id="Rectangle" fill="#EDF3FA" fill-rule="nonzero" x="0" y="62" width="50" height="8" rx="4"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

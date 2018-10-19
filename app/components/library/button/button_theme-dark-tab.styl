@@ -1,0 +1,27 @@
+.button.button_theme-dark-tab
+  .button__wrap
+    color: $color_elem
+  &:after
+    background-color: $color_default
+
+  &:not(.state_active):hover
+    .button__wrap
+      color: $color_default
+
+  &.state_active
+    .button__wrap
+      color: $color_elem
+
+.context.context_theme-dark-tab
+  .context__button
+    color: $color_elem
+  &:after
+    background-color: $color_default
+
+  &:hover
+    .context__button
+      color: $color_default
+
+  &.state_explored
+    .context__button
+      color: $color_default

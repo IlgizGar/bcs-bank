@@ -1,0 +1,343 @@
+{% extends "layout/layout.njk" %}
+
+{% import "../components/library/breadcrumbs/breadcrumbs.njk" as Breadcrumbs %}
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/library/button/button.njk" as Button %}
+{% import "../components/modules/tabbar/tabbar.njk" as Tabbar %}
+{% import "../components/library/feature/feature.njk" as Feature %}
+{% import "../components/modules/brand-features/brand-features.njk" as BrandFeatures %}
+{% import "../components/library/input/input.njk" as Input %}
+{% import "../components/library/dropdown/dropdown.njk" as Dropdown %}
+{% import "../components/library/docs/docs.njk" as Docs %}
+{% import "../components/icon/icon.njk" as Icon %}
+
+{% set root = "." %}
+{% set title = "MORE Prime" %}
+{% set header = 'blue' %}
+
+{% block body %}
+  <div class="page js-page">
+
+    {% include "../components/modules/header/header.njk" %}
+
+
+    <main role="main" class="products-detail">
+      <section class="section page__section">
+        <div class="section__header section__header_theme-blue">
+          <div class="page__container">
+            {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Пакет услуг', 'link': '#' } }) }}
+            {{ Heading.heading({ 'tag': 'h1', 'title': 'MORE Prime', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
+            <div class="features">
+              {{ Feature.feature({ 'title': 'От 0#ruble', 'text': 'стоимость \n обслуживания', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+              {{ Feature.feature({ 'title': '0#ruble', 'text': 'посещение Lounge Key \n залов по всему миру', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+              {{ Feature.feature({ 'title': '5%', 'text': 'от всех покупок \n возвращаем на карту', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+            </div>
+          </div>
+          <div class="section__nav-wrapper">
+            <div class="section__nav products-detail__nav">
+              <div class="page__container">
+                <div class="section__wrap">
+                  <div class="tabbar__scroll-wrapper js-tab-scroll">
+                    {{ Tabbar.tabbar({ 'anchor': { 'theme': 'light-tab', 'view': 'upperscore' }, 'tabs': [{'title': 'О карте', 'id': 'about-card' }, {'title': 'Тарифы и документы', 'id': 'card-docs'}, {'title': 'Частые вопросы', 'id': 'card-faq'}] }) }}
+                  </div>
+                  {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'white' }, 'class': 'products-detail__nav-button' }) }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="tabs js-tabs">
+        <div id="about-card" class="tabs__item js-tab state_invisible">
+          <section class="section page__section">
+            {{ BrandFeatures.brandFeatures({ 'items': [
+              {
+                'icon': 'assets/images/svg/portfolio-image.svg',
+                'title': 'Удобно',
+                'subtitle': 'Все самое необходимое для \n путешествий в одной карте',
+                'props': {
+                'large': '500',
+                'small': 'тыс. #ruble'
+              },
+                'descr': 'Снятие наличных в месяц \n без комиссии по всему миру'
+              },
+              {
+                'icon': 'assets/images/svg/gift-image.svg',
+                'title': 'Комфортно',
+                'subtitle': 'Консьерж-сервис 24/7, доступ \n в Lounge Key залы бесплатно',
+                'props': {
+                'small': 'до',
+                'large': '30%'
+              },
+                'descr': 'За покупки \n у партнеров'
+              },
+              {
+                'icon': 'assets/images/svg/card-image.svg',
+                'title': 'Выгодно',
+                'subtitle': 'Обслуживание 0#ruble при покупках \n по картам от 75 тыс. #ruble/мес',
+                'props': {
+                'large': '0#ruble'
+              },
+                'descr': 'Консультации врачей, страховка \n путешествий до 100 000 € + спорт'
+              }
+            ] }) }}
+          </section>
+
+          <section class="mobile mobile_theme-grey section page__section page__section_theme-large">
+            <div class="page__container">
+              <div class="section__wrap">
+                <div class="mobile__content">
+                  {{ Heading.heading({ 'title': 'Удобный мобильный банк' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+                  <div class="section__text section__text_theme-normal">
+                    <p>Управление банковскими и инвестиционными продуктами</p>
+                    <p>Оплата услуг без комиссии</p>
+                    <p>Переводы по всему миру</p>
+                    <p>Обмен валюты по курсу близкому к биржевому</p>
+                    <p>Чат с оператором</p>
+                  </div>
+                  <div class="mobile__vendors">
+                    {{ Button.button({ 'href': 'https://play.google.com/store/apps/details?id=cz.bsc.bcs', 'name': 'android', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                    {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                  </div>
+                </div>
+                <img class="mobile__figure" src="assets/images/mobile-bank.png"
+                     alt="Легкий мобильный банк">
+              </div>
+            </div>
+          </section>
+
+          <section class="section page__section">
+            <div class="page__container">
+              {{ Heading.heading({ 'title': 'Как открыть пакет «MORE Premium» \n и пользоваться' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered' }) }}
+            </div>
+            {{ BrandFeatures.brandFeatures({ 'items': [
+              {
+                'icon': 'assets/images/svg/list-image.svg',
+                'title': 'Оставьте заявку',
+                'subtitle': 'Заполнение заявки \n займет 5 минут',
+                'mods': {
+                'theme': 'lined'
+              }
+              },
+              {
+                'icon': 'assets/images/svg/sand-clock-image.svg',
+                'title': 'Получите карту',
+                'subtitle': 'Наш специалист доставит Вам \n документы и карту бесплатно',
+                'mods': {
+                'theme': 'lined'
+              }
+              },
+              {
+                'icon': 'assets/images/svg/card-image.svg',
+                'title': 'Пользуйтесь картой',
+                'subtitle': 'Получайте бонусы с каждой \n покупки и меняйте их на рубли'
+              }
+            ] }) }}
+          </section>
+          <section class="section section_theme-white-smoke section_padding-default page__section">
+            <div class="dcard-request">
+              <div class="page__container">
+                {{ Heading.heading({ 'title': 'Заявка на карту' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+                <div class="text mb-56">К данному пакету услуг прилагается банковская карта «Signature»
+                </div>
+                <div class="section__row">
+                  <div class="form form_layout-narrow js-form">
+                    <div class="form__steps">
+                      Шаг <span>1</span> из <span>4</span>
+                    </div>
+                    {{ Heading.heading({ 'title': 'Общая информация' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
+                    <form>
+                      <fieldset>
+                        {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': 'js-fio-masked', 'maxlength': '64', 'name': 'bid_user-name', 'required': 'true' } }) }}
+                        <div class="form__line-group">
+                          {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': {'class': 'js-phone-masked', 'name': 'question_phone', 'required': 'true' } }) }}
+                          {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': {'class': 'js-mail-masked', 'name': 'question_mail', 'required': 'true' } }) }}
+                        </div>
+                        {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Выберите город', 'name': 'bid_select-city', 'items': [{'title': 'Краснодар', 'value': '12345'}, {'title': 'Москва', 'value': '13456'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'bid-city-list'}, 'field': 'js-city-select' }) }}
+                      </fieldset>
+                      <div class="form__agreements">
+                        <label class="checkbox checkbox_theme-dark js-checkbox js-personal-checkbox">
+                          <input type="checkbox" class="checkbox__control"
+                                 name="question__personal" checked>
+                          <span class="checkbox__state"></span>
+                          <span class="checkbox__label">
+                                                            Даю согласие на обработку <br>
+                            {{ Button.button({ 'href': '#', 'title': 'персональных данных', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
+                                                        </span>
+                        </label>
+                        {{ Button.button({ 'title': 'Отправить', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
+                      </div>
+                    </form>
+                  </div>
+                  <div class="calculation">
+                    <img src="assets/images/card_bks_platinum.png" class="calculation__image"
+                         alt="БКС Банк">
+                    <div class="text calculation__text">Вы можете оформить до 2-х карт бесплатно
+                    </div>
+                    {{ Button.button({ 'href': '#', 'title': 'Оформите через госуслуги', 'path': 'assets/images/uslugi.svg', 'mods': {'theme': 'white', 'type': 'icon-left'}, 'class': 'button_theme-uslugi' }) }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div id="card-docs" class="tabs__item js-tab state_invisible">
+          <section class="section page__section page__section_theme-last">
+            <div class="page__container">
+              <div class="section__row">
+                <div class="section__content section__content_theme-centered">
+                  {{ Heading.heading({ 'title': '', 'mods': { 'type': 'default', 'margin': 'short', 'theme' : 'default' }
+                  }) }}
+                  <div class="table table_sortable table_theme-default mb-64">
+                    <table class="table__content">
+                      <thead class="table__head">
+                      <tr>
+                        <th><span class="table__column-title">Пакет услуг</span></th>
+                        <th><span class="table__column-title">Премьер Базовый</span></th>
+                      </tr>
+                      </thead>
+                      <tbody class="table__body">
+                      <tr>
+                        <td>Категория карты</td>
+                        <td>Visa Platinum</td>
+                      </tr>
+                      <tr>
+                        <td>Условия обслуживания</td>
+                        <td>Бесплатно при поддержании среднемесячного баланса от 3 000 000 #ruble или 1500 #ruble в месяц (от 2 000 000 #ruble для регионов)
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Размер бонуса</td>
+                        <td>1%</td>
+                      </tr>
+                      <tr>
+                        <td>Выпуск и обслуживание основной карты</td>
+                        <td>Бесплатно</td>
+                      </tr>
+                      <tr>
+                        <td>Срочный выпуск / перевыпуск карты</td>
+                        <td>950 руб.</td>
+                      </tr>
+                      <tr>
+                        <td>Количество дополнтельных бесплатных карт</td>
+                        <td>Две <br> (Visa Classic, Visa Gold, Visa Platinum, MasterCard Platinum)</td>
+                      </tr>
+                      <tr>
+                        <td>Интернет-банк и мобильный банк</td>
+                        <td>Бесплатно</td>
+                      </tr>
+                      <tr>
+                        <td>Смс-информирование</td>
+                        <td>Бесплатно</td>
+                      </tr>
+                      <tr>
+                        <td>Снятие наличных в банкоматах сторонних банков</td>
+                        <td>До 300 000 #ruble / мес — бесплатно, далее — 1% мин. 100 #ruble / 3 #dollar / 3 EUR</td>
+                      </tr>
+                      <tr>
+                        <td>Перевод в рублях в другие банки через БКС Онлайн</td>
+                        <td>0,5% мин. 35 USD., макс. 200 USD, 0,5% мин. 35 EUR., макс. 200 EUR</td>
+                      </tr>
+                      <tr>
+                        <td>Перевод в рублях на счет другого банка в отделениях БКС</td>
+                        <td>0,5% мин. 50 #ruble, макс. 2500 #ruble</td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  {{ Docs.docs({ 'theme': 'filled', 'href': '#', 'title': 'Условия, правила и оговорки' | striptags(true) | escape | nl2br, 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-64' }) }}
+                </div>
+              </div>
+            </div>
+            <div class="collapse collapse_theme-grey">
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Полное описание тарифов</div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content"></div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Документы</div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content"></div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div id="card-faq" class="tabs__item js-tab state_invisible">
+          <section class="section page__section page__section_theme-last">
+            <div class="page__container">
+              <div class="section__row">
+                <div class="section__content section__content_theme-centered">
+                  {{ Heading.heading({ 'title': 'Частые вопросы' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'short' } }) }}
+
+                </div>
+              </div>
+            </div>
+            <div class="collapse collapse_theme-grey">
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Как узнать сумму ежемесячного платежа</div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content"></div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Может ли кто-то другой внести за меня ежемесячный платеж?
+                  </div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content"></div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Я внес сумму, превыщающую ежемесячный платеж, что
+                    произойдет?
+                  </div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content"></div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Что такое частичное досрочное погашение кредита?</div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content"></div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Могу ли я сразу внести несколько платежей?</div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content"></div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+
+    {% include "../components/modules/footer/footer.njk" %}
+  </div>
+{% endblock %}

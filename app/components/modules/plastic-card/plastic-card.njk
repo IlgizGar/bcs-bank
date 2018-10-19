@@ -20,15 +20,12 @@
 
     <div class="plastic-card plastic-card_theme-blue {{ mods | safe }}">
       <div class="plastic-card__wrapper">
-        <div class="plastic-card__image">
-          {{ Icon.inlineSvg({ 'path': [options.image] }) }}
-        </div>
         <div class="plastic-card__content">
           <div class="plastic-card__header">
             {{ Heading.heading({ 'title': options.title }) }}
             <div class="plastic-card__category">
               {% for key, value in options.category %}
-                {{ Button.button({ 'title': value, 'mods': { 'theme': 'gray', 'view': 'outlined', 'size': 'mini' }, 'attr': { 'category': key } }) }}
+                {{ Button.button({ 'title': value, 'mods': { 'view': 'outlined', 'size': 'mini' }, 'attr': { 'category': key } }) }}
               {% endfor %}
             </div>
           </div>
@@ -38,10 +35,15 @@
             {% endfor %}
           </div>
           <div class="plastic-card__controls">
-            {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'white' } }) }}
-            {{ Button.button({ 'href': '#', 'title': 'Подробнее', 'mods': { 'view': 'text', 'theme': 'white' } }) }}
+            {{ Button.button({ 'title': options.button, 'mods': { 'theme': 'white' } }) }}
+            {{ Button.button({ 'href': options.href, 'title': 'Подробнее', 'mods': { 'view': 'text', 'theme': 'white' } }) }}
           </div>
         </div>
+        {% if options.image %}
+          <div class="plastic-card__image">
+            {{ Icon.inlineSvg({ 'path': [options.image] }) }}
+          </div>
+        {% endif %}
       </div>
     </div>
 
@@ -49,9 +51,6 @@
 
     <div class="plastic-card {{ mods | safe }}">
       <div class="plastic-card__wrapper">
-        <div class="plastic-card__image">
-          {{ Icon.inlineSvg({ 'path': [options.image] }) }}
-        </div>
         <div class="plastic-card__content">
           <div class="plastic-card__header">
             {{ Heading.heading({ 'title': options.title }) }}
@@ -67,10 +66,15 @@
             {% endfor %}
           </div>
           <div class="plastic-card__controls">
-            {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'default' } }) }}
-            {{ Button.button({ 'href': '#', 'title': 'Подробнее', 'mods': { 'view': 'text', 'theme': 'default' } }) }}
+            {{ Button.button({ 'title': options.button, 'mods': { 'theme': 'default' } }) }}
+            {{ Button.button({ 'href': options.href, 'title': 'Подробнее', 'mods': { 'view': 'text', 'theme': 'default' } }) }}
           </div>
         </div>
+        {% if options.image %}
+          <div class="plastic-card__image">
+            {{ Icon.inlineSvg({ 'path': [options.image] }) }}
+          </div>
+        {% endif %}
       </div>
     </div>
 

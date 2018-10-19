@@ -19,7 +19,7 @@
       </div>
     {% endif %}
     <div class="docs__wrapper">
-      <p class="docs__title">{{ options.title }}</p>
+      <p class="docs__title">{{ options.title | striptags(true) | escape | nl2br }}</p>
       <div class="docs__content">
         {% if options.type %}
           <div class="docs__link">
@@ -28,8 +28,8 @@
           </div>
         {% endif %}
         <div class="docs__note {% if options.prenote %}state_dotted{% endif %}">
-          <span>{{ options.prenote }}</span>
-          <span>{{ options.note }}</span>
+          <span>{{ options.prenote | striptags(true) | escape | nl2br }}</span>
+          <span>{{ options.note | striptags(true) | escape | nl2br }}</span>
         </div>
       </div>
     </div>

@@ -1,23 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="94" height="109" viewBox="0 0 94 109">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="94px" height="109px" viewBox="0 0 94 109" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 16 Copy 3</title>
+    <desc>Created with Sketch.</desc>
     <defs>
-        <linearGradient id="a" x1="8.052%" x2="94.842%" y1="90.01%" y2="16.816%">
-            <stop offset="0%" stop-color="#3E6CD5"/>
-            <stop offset="100%" stop-color="#578AFF"/>
+        <linearGradient x1="8.05150067%" y1="90.0095889%" x2="94.8419426%" y2="16.8162884%" id="linearGradient-1">
+            <stop stop-color="#3E6CD5" offset="0%"></stop>
+            <stop stop-color="#578AFF" offset="100%"></stop>
         </linearGradient>
-        <path id="c" d="M0 6.283a70.835 70.835 0 0 1 58.312 0v32.43c0 18.034-11.865 33.918-29.156 39.036C11.864 72.63 0 56.747 0 38.714V6.283z"/>
-        <filter id="b" width="129.2%" height="121.9%" x="-14.6%" y="-8.4%" filterUnits="objectBoundingBox">
-            <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
-            <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2.5"/>
-            <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0 0 0 0 0 0.116224869 0 0 0 0 0.481584821 0 0 0 0.0923629982 0"/>
+        <path d="M-6.73188796e-13,6.28304462 L-6.99884595e-13,6.28304462 C18.5358042,-2.08837306 39.7757292,-2.08837306 58.3115335,6.28304462 L58.3115335,38.7139476 C58.3115335,56.7470394 46.447451,72.6310894 29.1557667,77.7487113 L29.1557667,77.7487113 C11.8640825,72.6310894 -1.13050661e-11,56.7470394 -7.50333129e-12,38.7139476 L-6.73188796e-13,6.28304462 Z" id="path-2"></path>
+        <filter x="-14.6%" y="-8.4%" width="129.2%" height="121.9%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0.116224869   0 0 0 0 0.481584821  0 0 0 0.0923629982 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
         </filter>
     </defs>
-    <g fill="none" fill-rule="evenodd">
-        <circle cx="47" cy="47" r="47" fill="url(#a)"/>
-        <g transform="translate(18.03 25)">
-            <use fill="#000" filter="url(#b)" xlink:href="#c"/>
-            <use fill="#FFF" xlink:href="#c"/>
-            <path fill="#EDF3FA" d="M30.544 37.486h23.602c-1.861 19.16-9.729 31.656-23.602 37.486V37.486zM26.379 4.165c-8.64.412-16.045 2.245-22.214 5.5v25.044H26.38V4.165z"/>
-            <ellipse cx="28.462" cy="36.098" fill="#FE7F5F" rx="6.248" ry="6.942"/>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="графика-/-иконка-/-большая-/-щит">
+            <g id="Group-16-Copy-3">
+                <circle id="Oval-Copy" fill="url(#linearGradient-1)" cx="47" cy="47" r="47"></circle>
+                <g id="Group-46-Copy" transform="translate(47.530767, 64.000000) rotate(-360.000000) translate(-47.530767, -64.000000) translate(18.030767, 25.000000)">
+                    <g id="Rectangle-21">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    </g>
+                    <path d="M30.5441366,37.4859858 L54.1464239,37.4859858 C52.2846764,56.6464554 44.4172473,69.141784 30.5441366,74.9719716 L30.5441366,37.4859858 Z" id="Path-5" fill="#EDF3FA"></path>
+                    <path d="M26.3790271,4.16510953 C17.7388867,4.57670262 10.3342475,6.40979101 4.16510953,9.66437471 L4.16510953,34.7092461 L26.3790271,34.7092461 L26.3790271,4.16510953 Z" id="Path-2" fill="#EDF3FA"></path>
+                    <ellipse id="Oval-6" fill="#FE7F5F" cx="28.4615818" cy="36.097616" rx="6.2476643" ry="6.94184922"></ellipse>
+                </g>
+            </g>
         </g>
     </g>
 </svg>

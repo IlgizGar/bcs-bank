@@ -1,0 +1,631 @@
+{% extends "layout/layout.njk" %}
+
+{% import "../components/library/breadcrumbs/breadcrumbs.njk" as Breadcrumbs %}
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/library/button/button.njk" as Button %}
+{% import "../components/modules/tabbar/tabbar.njk" as Tabbar %}
+{% import "../components/library/feature/feature.njk" as Feature %}
+{% import "../components/modules/brand-features/brand-features.njk" as BrandFeatures %}
+{% import "../components/library/input/input.njk" as Input %}
+{% import "../components/library/dropdown/dropdown.njk" as Dropdown %}
+{% import "../components/library/docs/docs.njk" as Docs %}
+{% import "../components/icon/icon.njk" as Icon %}
+
+{% set root = "." %}
+{% set title = "БКС Платинум" %}
+{% set header = 'blue' %}
+
+{% block body %}
+  <div class="page js-page">
+
+    {% include "../components/modules/header/header.njk" %}
+
+    <main role="main" class="products-detail">
+      <section class="section page__section">
+        <div class="section__header section__header_theme-blue">
+          <div class="page__container">
+            {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Кредитные карты', 'link': '#' } }) }}
+            {{ Heading.heading({ 'tag': 'h1', 'title': 'БКС Платинум', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
+            <div class="features">
+              {{ Feature.feature({ 'title': 'До 55 дней', 'text': 'беспроцентный \n период', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+              {{ Feature.feature({ 'title': 'До 1 млн #ruble', 'text': 'кредитный \n лимит', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+              {{ Feature.feature({ 'title': 'До 30%', 'text': 'от покупок \n возвращается на карту', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+            </div>
+            <div class="brand-figure products-detail__figure" data-illustration="">
+              <img src="assets/illustrations/bks_platinum.svg" alt="Цифровой Signature">
+            </div>
+          </div>
+          <div class="section__nav-wrapper">
+            <div class="section__nav products-detail__nav">
+              <div class="page__container">
+                <div class="section__wrap">
+                  <div class="tabbar__scroll-wrapper js-tab-scroll">
+                    {{ Tabbar.tabbar({ 'anchor': { 'theme': 'light-tab', 'view': 'upperscore' }, 'tabs': [{'title': 'О карте', 'id': 'about-card' }, {'title': 'Тарифы и документы', 'id': 'card-docs'}, {'title': 'Частые вопросы', 'id': 'card-faq'}] }) }}
+                  </div>
+                  {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'white' }, 'class': 'products-detail__nav-button' }) }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="tabs js-tabs">
+        <div id="about-card" class="tabs__item js-tab state_invisible">
+          <section class="section page__section">
+            {{ BrandFeatures.brandFeatures({ 'items': [
+              {
+                'icon': 'assets/images/svg/kopeiki-image.svg',
+                'title': 'Выгодно',
+                'subtitle': 'Без процентов \n по кредиту до 55 дней',
+                'props': {
+                'large': '2%'
+              },
+                'descr': 'Бонусы за любые \n покупки с карты'
+              },
+              {
+                'icon': 'assets/images/svg/sand-clock-image.svg',
+                'title': 'Быстро',
+                'subtitle': 'Получаете карту на следующий \n день после одобрения',
+                'props': {
+                'small': 'до',
+                'large': '30%'
+              },
+                'descr': 'Бонусы за покупки \n по спецпредложениям'
+              },
+              {
+                'icon': 'assets/images/svg/list-image.svg',
+                'title': 'Удобно',
+                'subtitle': 'Оформление онлайн \n без визита в офис',
+                'props': {
+                'large': '1=1'
+              },
+                'descr': 'Каждый бонус \n равен 1 рублю'
+              }
+            ] }) }}
+          </section>
+          <section class="section section_theme-white-smoke section_padding-default page__section mobile-mb-0">
+            <div class="calculator">
+              <div class="page__container">
+                {{ Heading.heading({ 'title': 'Рассчитайте свои бонусы', 'mods': { 'type': 'default', 'margin': 'medium' } }) }}
+                <div class="section__row calculator__row">
+                  <div class="form form_layout-narrow calculator__form">
+                    <form>
+                      <fieldset>
+                        {{ Input.input({ 'label': 'Расходы на АЗС', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_fuel_costs', 'class': 'js-numeric-input' }, 'title': '#rubleмес.', 'slider': { 'min': 0, 'max': 100000, 'from': 30000, 'step': 1000 } }) }}
+                        {{ Input.input({ 'label': 'Расходы на рестораны', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_cafe_costs', 'class': 'js-numeric-input' }, 'title': '#rubleмес.', 'slider': { 'min': 0, 'max': 300000, 'from': 50000, 'step': 1000 } }) }}
+                        {{ Input.input({ 'label': 'Расходы на театр и кино', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_film_costs', 'class': 'js-numeric-input' }, 'title': '#rubleмес.', 'slider': { 'min': 0, 'max': 100000, 'from': 10000, 'step': 1000 } }) }}
+                        {{ Input.input({ 'label': 'Расходы на спорт и красоту', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_sport_costs', 'class': 'js-numeric-input' }, 'title': '#rubleмес.', 'slider': { 'min': 0, 'max': 300000, 'from': 100000, 'step': 1000 } }) }}
+                        {{ Input.input({ 'label': 'Расходы на продукты', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_meal_costs', 'class': 'js-numeric-input' }, 'title': '#rubleмес.', 'slider': { 'min': 0, 'max': 100000, 'from': 5000, 'step': 1000 } }) }}
+                        {{ Input.input({ 'label': 'Расходы на прочие покупки', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_others_costs', 'class': 'js-numeric-input' }, 'title': '#rubleмес.', 'slider': { 'min': 0, 'max': 300000, 'from': 20000, 'step': 1000 } }) }}
+                      </fieldset>
+                    </form>
+                  </div>
+                  <div class="calculation">
+                    <div class="calculation__thumbnail">
+                      <div class="text">Вы заработаете за год</div>
+                      <div class="calculation__result">10 500</div>
+                      <div class="calculation__conclusion text">Этих бонусов будет достаточно
+                        для покупки авиабилета в Милан.
+                      </div>
+                      {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'default' }, 'type': 'submit', 'class': 'mt-40' }) }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="mobile mobile_theme-blue section page__section page__section_theme-large">
+            <div class="page__container">
+              <div class="section__wrap">
+                <div class="mobile__content">
+                  {{ Heading.heading({ 'title': 'Удобный мобильный банк', 'mods': { 'type': 'default', 'margin': 'small', 'theme': 'light' } }) }}
+                  <div class="section__text section__text_theme-normal section__text_theme-light">
+                    <p>Управление банковскими и инвестиционными продуктами</p>
+                    <p>Оплата услуг без комиссии</p>
+                    <p>Переводы по всему миру</p>
+                    <p>Обмен валюты по курсу близкому к биржевому</p>
+                    <p>Чат с оператором</p>
+                  </div>
+                  <div class="mobile__vendors">
+                    {{ Button.button({ 'href': 'https://play.google.com/store/apps/details?id=cz.bsc.bcs', 'name': 'android', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                    {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                  </div>
+                </div>
+                <img class="mobile__figure" src="assets/illustrations/mobile_bank.svg"
+                     alt="Удобный мобильный банк">
+              </div>
+            </div>
+          </section>
+          <section class="section page__section">
+            <div class="page__container">
+              {{ Heading.heading({ 'title': 'Оформите заявку - получите \n карту не выходя из дома', 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered' }) }}
+            </div>
+            {{ BrandFeatures.brandFeatures({ 'items': [
+              {
+                'icon': 'assets/images/svg/list-image.svg',
+                'title': 'Оставьте заявку',
+                'subtitle': 'Это займет \n всего 7 минут',
+                'mods': {
+                'theme': 'lined'
+              }
+              },
+              {
+                'icon': 'assets/images/svg/sand-clock-image.svg',
+                'title': 'Одобрение банка',
+                'subtitle': 'Банк примет итоговое решение \n в течении 2-х рабочих дней',
+                'mods': {
+                'theme': 'lined'
+              }
+              },
+              {
+                'icon': 'assets/images/svg/card-image.svg',
+                'title': 'Получите карту',
+                'subtitle': 'Наш специалист доставит Вам \n кредитную карту бесплатно'
+              }
+            ] }) }}
+          </section>
+          <section class="section section_theme-white-smoke section_padding-default page__section">
+            <div class="dcard-request">
+              <div class="page__container">
+                {{ Heading.heading({ 'title': 'Заявка на карту', 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+                <div class="text mb-56">Открывается в рамках любого пакета услуг</div>
+                <div class="section__row">
+                  <div class="form form_layout-narrow js-form">
+                    <div class="form__steps">
+                      Шаг <span>1</span> из <span>4</span>
+                    </div>
+                    {{ Heading.heading({ 'title': 'Общая информация' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
+                    <form>
+                      <fieldset>
+                        {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': 'js-fio-masked', 'maxlength': '64', 'name': 'bid_user-name', 'required': 'true' } }) }}
+                        <div class="form__line-group">
+                          {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': {'class': 'js-phone-masked', 'name': 'question_phone', 'required': 'true' } }) }}
+                          {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': {'class': 'js-mail-masked', 'name': 'question_mail', 'required': 'true' } }) }}
+                        </div>
+                        {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Выберите город', 'name': 'bid_select-city', 'items': [{'title': 'Краснодар', 'value': '12345'}, {'title': 'Москва', 'value': '13456'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'bid-city-list'}, 'field': 'js-city-select' }) }}
+                        <div class="form__line-group">
+                          {{ Input.input({ 'label': 'Сумма кредита', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'credit_amount', 'class': 'js-numeric-input' }, 'title': '#ruble', 'slider': { 'min': 50000, 'max': 1000000, 'from': 800000, 'step': 1000 } }) }}
+                          {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Цель кредита', 'name': 'credit-aims', 'items': [{'title': 'На развлечения', 'value': '13456'}, {'title': 'Отправить малого в школу', 'value': '136'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'credit-aims'}, 'field': 'js-aims-select' }) }}
+                        </div>
+                      </fieldset>
+                      <div class="form__agreements">
+                        <label class="checkbox checkbox_theme-dark js-checkbox js-personal-checkbox">
+                          <input type="checkbox" class="checkbox__control"
+                                 name="question__personal" checked>
+                          <span class="checkbox__state"></span>
+                          <span class="checkbox__label">Даю согласие на обработку <br> {{ Button.button({ 'href': '#', 'title': 'персональных данных', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}</span>
+                        </label>
+                        {{ Button.button({ 'title': 'Отправить', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
+                      </div>
+                    </form>
+                  </div>
+                  <div class="calculation">
+                    <img src="assets/images/card_bks_platinum.png" class="calculation__image" alt="БКС Банк">
+                    <div class="text calculation__text">2 дополнительные карты Visa Platinum бесплатно</div>
+                    {{ Button.button({ 'href': '#', 'title': 'Оформите через госуслуги', 'path': 'assets/images/uslugi.svg', 'mods': {'theme': 'white', 'type': 'icon-left'}, 'class': 'button_theme-uslugi' }) }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div id="card-docs" class="tabs__item js-tab state_invisible">
+          <section class="section page__section page__section_theme-last">
+            <div class="page__container">
+              <div class="section__row">
+                <div class="section__content section__content_theme-centered">
+                  {{ Heading.heading({ 'title': '', 'mods': { 'type': 'default', 'margin': 'short', 'theme' : 'default' },
+                    'context': { 'title': '', 'attr': {'id': 'credit-types', 'list-on-right': 'true'}, 'items': [{ 'title': 'Кредитная карта БКС Платинум', 'value': 'bks-platinum', 'attr': { 'title': 'Кредитная карта БКС Платинум' }, 'selected': true },
+                      { 'title': 'Карта с овердрафтом', 'value': 'bks-overdraft', 'attr': { 'title': 'Карта с овердрафтом' } }] } }) }}
+                  <div id="bks-platinum">
+                    <div class="table table_sortable table_theme-default mb-64">
+                      <table class="table__content">
+                        <thead class="table__head">
+                        <tr>
+                          <th><span class="table__column-title">Тарифный план</span></th>
+                          <th><span class="table__column-title">Стандарт</span></th>
+                          <th><span class="table__column-title"></span></th>
+                        </tr>
+                        </thead>
+                        <tbody class="table__body">
+                        <tr>
+                          <td>Тип карты</td>
+                          <td>Visa Platinum / MasterCard Platinum</td>
+                          <td>Visa Platinum / MasterCard Platinum</td>
+                        </tr>
+                        <tr>
+                          <td>Минимальная сумма кредитного лимита</td>
+                          <td>55 000 ₽</td>
+                          <td>20 000 ₽</td>
+                        </tr>
+                        <tr>
+                          <td>Максимальная сумма кредитного лимита</td>
+                          <td>1 000 000 ₽</td>
+                          <td>1 000 000 ₽</td>
+                        </tr>
+                        <tr>
+                          <td>Процентная ставка годовых за пользование кредитом</td>
+                          <td>24,5%</td>
+                          <td>19,9%</td>
+                        </tr>
+                        <tr>
+                          <td>Ставка бонуса в рамках бонусной программы «БКС Бонус»</td>
+                          <td>2%</td>
+                          <td>1%</td>
+                        </tr>
+                        <tr>
+                          <td>Повышенный бонус в группе категорий — «АЗС», «Рестораны», «Фастфуд»</td>
+                          <td>-</td>
+                          <td>5% При сумме покупок по карте от 30 000 ₽/мес</td>
+                        </tr>
+                        <tr>
+                          <td>Повышенный бонус в категориях — «Такси», «Кинотеатры» в рамках акции до 30.09.2018</td>
+                          <td>-</td>
+                          <td>10% При сумме покупок по карте от 30 000 ₽/мес</td>
+                        </tr>
+                        <tr>
+                          <td>Дополнительный ежегодный бонус</td>
+                          <td>-</td>
+                          <td>990 бонусов / ₽ При сумме покупок по карте от 350 000 ₽/год</td>
+                        </tr>
+                        <tr>
+                          <td>Минимальный платеж</td>
+                          <td colspan="2">5% от задолженности, но не менее 100 ₽ + проценты за пользование кредитом</td>
+                        </tr>
+                        <tr>
+                          <td>Комиссия за первый год обслуживания основной карты</td>
+                          <td>1790 ₽</td>
+                          <td>0 ₽</td>
+                        </tr>
+                        <tr>
+                          <td>Комиссия за второй и последующие годы обслуживания основной карты</td>
+                          <td>1790 ₽</td>
+                          <td>990 ₽</td>
+                        </tr>
+                        <tr>
+                          <td>Выдача наличными кредитных денежных средств в банкоматах БКС Банка</td>
+                          <td>4,9% мин. 500 ₽</td>
+                          <td>Не взимается</td>
+                        </tr>
+                        <tr>
+                          <td>Выдача наличными кредитных денежных средств в отделениях БКС Банка</td>
+                          <td>4,9% мин. 500 ₽</td>
+                          <td>4,9% мин. 500 ₽</td>
+                        </tr>
+                        <tr>
+                          <td>Выдача наличными кредитных денежных средств в банкоматах и ПВН сторонних банков</td>
+                          <td>4,9% мин. 500 ₽</td>
+                          <td>1% мин. 100 ₽</td>
+                        </tr>
+                        <tr>
+                          <td>Интернет-банк БКС Онлайн и Мобильный банк</td>
+                          <td colspan="2">Бесплатно</td>
+                        </tr>
+                        <tr>
+                          <td>СМС-инфо</td>
+                          <td colspan="2">Не взимается</td>
+                        </tr>
+                        <tr>
+                          <td>Выпуск дополнительной карты</td>
+                          <td colspan="2">В соответствии с тарифами по пакетам услуг</td>
+                        </tr>
+                        <tr>
+                          <td>Срочный выпуск / перевыпуск карты по заявлению клиента</td>
+                          <td colspan="2">В течение 3-х дней, не считая дня подачи заявления — 990 ₽</td>
+                        </tr>
+                        <tr>
+                          <td>Дополнительный ежегодный бонус</td>
+                          <td>-</td>
+                          <td>990 бонусов / ₽ При сумме покупок по карте от 350 000 ₽/год</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                      {{ Heading.heading({ 'title': 'Тарифный план Вкладчик', 'mods': { 'type': 'normal', 'margin': 'small' }, 'class': 'mt-64' }) }}
+                      <table class="table__content">
+                        <thead class="table__head">
+                        <tr>
+                          <th><span class="table__column-title">Тарифный план</span></th>
+                          <th><span class="table__column-title">Вкладчик</span></th>
+                        </tr>
+                        </thead>
+                        <tbody class="table__body">
+                        <tr>
+                          <td>Тип карты</td>
+                          <td>Visa Rewards</td>
+                        </tr>
+                        <tr>
+                          <td>Минимальная сумма кредитного лимита</td>
+                          <td>20 000 ₽</td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Максимальная сумма кредитного лимита</span><p>Для клиентов банка и/или компании-партнера (сумма активов более 5 ₽)</p></td>
+                          <td><p class="table__cell-title">1 000 000 ₽</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Максимальная сумма кредитного лимита</span><p>Для клиентов банка и/или компании-партнера (сумма активов от 300 тыс до 5 млн ₽) и руководителей аккредитованных компаний</p></td>
+                          <td><p class="table__cell-title">800 000 ₽</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Максимальная сумма кредитного лимита</span><p>Для других категорий заемщиков</p></td>
+                          <td><p class="table__cell-title">500 000 ₽</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Процентная ставка при сумме кредитного лимита 100 000 ₽ и более</span><p>Для клиентов банка и/или компании-партнера (сумма активов более 5 млн ₽)</p></td>
+                          <td><p class="table__cell-title">21%</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Процентная ставка при сумме кредитного лимита 100 000 ₽ и более</span><p>Для клиентов банка и/или компании-партнера (сумма активов от 300 тыс до 5 млн ₽)</p></td>
+                          <td><p class="table__cell-title">22%</p></td>
+                        </tr>
+                        <tr>
+                          <td>Для других категорий заемщиков</td>
+                          <td>26%</td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Процентная ставка при сумме кредитного лимита менее 100 000 ₽</span><p>Для других категорий заемщиков, по картам без бонусной программы</p></td>
+                          <td><p class="table__cell-title">26%</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Процентная ставка при сумме кредитного лимита менее 100 000 ₽</span><p>Для сотрудников и руководителей аккредитованных компаний по картам с бонусной программой</p></td>
+                          <td><p class="table__cell-title">26%</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Процентная ставка при сумме кредитного лимита менее 100 000 ₽</span><p>Для других категорий заемщиков, по картам с бонусной программой</p></td>
+                          <td><p class="table__cell-title">26%</p></td>
+                        </tr>
+                        <tr>
+                          <td>Ставка бонуса в рамках бонусной программы «БКС Бонус»</td>
+                          <td>1.2%</td>
+                        </tr>
+                        <tr>
+                          <td>Беспроцентный период</td>
+                          <td>до 55 дней на покупки по карте</td>
+                        </tr>
+                        <tr>
+                          <td>Минимальный платеж</td>
+                          <td>5% от задолженности, но не менее 100 ₽ + проценты за пользование кредитом</td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания карты при отсутствии бонусной программы</span><p>Для руководителей аккредитованных компаний</p></td>
+                          <td><p class="table__cell-title">Не взимается</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания карты при отсутствии бонусной программы</span><p>Для других категорий заемщиков</p></td>
+                          <td><p class="table__cell-title">Не взимается</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита 100 000 ₽ и более</span><p>Для сотрудников аккредитованных компаний</p></td>
+                          <td><p class="table__cell-title">Не взимается</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита 100 000 ₽ и более</span><p>Для руководителей аккредитованных компаний</p></td>
+                          <td><p class="table__cell-title">Не взимается</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита 100 000 ₽ и более</span><p>Для клиентов банка и/или компании-партнера (сумма активов более 300 тыс до 5 млн ₽)</p></td>
+                          <td><p class="table__cell-title">Не взимается</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита 100 000 ₽ и более</span><p>Для клиентов банка и/или компании-партнера (сумма активов более 5 млн ₽)</p></td>
+                          <td><p class="table__cell-title">Не взимается</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита 100 000 ₽ и более</span><p>Для других категорий заемщиков</p></td>
+                          <td><p class="table__cell-title">Не взимается</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита менее 100 000 ₽</span><p>Для руководителей аккредитованных компаний</p></td>
+                          <td><p class="table__cell-title">Не взимается</p></td>
+                        </tr>
+                        <tr>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита менее 100 000 ₽</span><p>Для других категорий заемщиков</p></td>
+                          <td><p class="table__cell-title">Не взимается</p></td>
+                        </tr>
+                        <tr>
+                          <td>Погашение задолженности по карте в любом из банкоматов БКС Банка или через кассу БКС Банка</td>
+                          <td>Бесплатно</td>
+                        </tr>
+                        <tr>
+                          <td>Выдача наличными собственных денежных средств (в рублях)</td>
+                          <td>Бесплатно</td>
+                        </tr>
+                        <tr>
+                          <td>Выдача наличными кредитных денежных средств</td>
+                          <td>4,9% мин. 500 ₽</td>
+                        </tr>
+                        <tr>
+                          <td>Интернет-банк БКС Онлайн и Мобильный банк</td>
+                          <td>Бесплатно</td>
+                        </tr>
+                        <tr>
+                          <td>СМС-инфо</td>
+                          <td>Бесплатно</td>
+                        </tr>
+                        <tr>
+                          <td>Выпуск основной карты</td>
+                          <td>Не взимается</td>
+                        </tr>
+                        <tr>
+                          <td>Выпуск дополнительной карты</td>
+                          <td>1-я карта не взимается, далее — 950 ₽</td>
+                        </tr>
+                        <tr>
+                          <td>Срочный выпуск / перевыпуск карты по заявлению клиента</td>
+                          <td>В течение 3-х дней, не считая дня подачи заявления — 950 ₽</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="collapse collapse_theme-grey">
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">Полное описание тарифов</div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content"></div>
+                      </div>
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">Документы</div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="bks-overdraft" class="state_invisible">
+                    <div class="table table_sortable table_theme-default mb-64">
+                      <table class="table__content">
+                        <thead class="table__head">
+                        <tr>
+                          <th><span class="table__column-title">Тарифный план</span></th>
+                          <th><span class="table__column-title">Финансисит</span></th>
+                        </tr>
+                        </thead>
+                        <tbody class="table__body">
+                        <tr>
+                          <td>Пакет услуг</td>
+                          <td>Все пакеты услуг, кроме «Ультима Базовый», «Ультима Расширенный»</td>
+                        </tr>
+                        <tr>
+                          <td>Тип карты</td>
+                          <td>В соответствии с пакетом услуг</td>
+                        </tr>
+                        <tr>
+                          <td>Стоимость годового обслуживания</td>
+                          <td>В соответствии с пакетом услуг</td>
+                        </tr>
+                        <tr>
+                          <td>Лимит кредитования</td>
+                          <td>30 000 ₽</td>
+                        </tr>
+                        <tr>
+                          <td>Процентная ставка</td>
+                          <td>920%</td>
+                        </tr>
+                        <tr>
+                          <td>Минимальный платеж</td>
+                          <td>5% от задолженности, но не менее 100 ₽ + проценты за пользование кредитом</td>
+                        </tr>
+                        <tr>
+                          <td>Погашение задолженности по карте в любом из банкоматов БКС Банка или через кассу БКС Банка</td>
+                          <td>Бесплатно</td>
+                        </tr>
+                        <tr>
+                          <td>Выдача наличными собственных денежных средств</td>
+                          <td>В соответствии с пакетом услуг</td>
+                        </tr>
+                        <tr>
+                          <td>Выдача наличными кредитных денежных средств</td>
+                          <td>4,9%</td>
+                        </tr>
+                        <tr>
+                          <td>Интернет-банк БКС Онлайн и Мобильный банк</td>
+                          <td>Бесплатно</td>
+                        </tr>
+                        <tr>
+                          <td>СМС-инфо</td>
+                          <td>В соответствии с пакетом услуг</td>
+                        </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="collapse collapse_theme-grey">
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">Полное описание тарифов</div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content"></div>
+                      </div>
+                      <div class="collapse__item">
+                        <div class="collapse__control">
+                          <div class="collapse__control-title">Документы</div>
+                          <div class="collapse__control-icon">
+                            {{ Icon.icon({ 'name': 'dropdown' }) }}
+                          </div>
+                        </div>
+                        <div class="collapse__content"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div id="card-faq" class="tabs__item js-tab state_invisible">
+          <section class="section page__section page__section_theme-last">
+            <div class="page__container">
+              <div class="section__row">
+                <div class="section__content section__content_theme-centered">
+                  {{ Heading.heading({ 'title': 'Частые вопросы' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'short' } }) }}
+
+                </div>
+              </div>
+            </div>
+            <div class="collapse collapse_theme-grey">
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Как узнать сумму ежемесячного платежа</div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content"></div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Может ли кто-то другой внести за меня ежемесячный платеж?
+                  </div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content"></div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Я внес сумму, превыщающую ежемесячный платеж, что
+                    произойдет?
+                  </div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content"></div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Что такое частичное досрочное погашение кредита?</div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content"></div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Могу ли я сразу внести несколько платежей?</div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content"></div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    {% include "../components/modules/footer/footer.njk" %}
+  </div>
+{% endblock %}

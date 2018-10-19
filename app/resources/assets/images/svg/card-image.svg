@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="94px" height="108px" viewBox="0 0 94 108" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 16 Copy 5</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="8.05150067%" y1="90.0095889%" x2="94.8419426%" y2="16.8162884%" id="linearGradient-1">
+            <stop stop-color="#3E6CD5" offset="0%"></stop>
+            <stop stop-color="#578AFF" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="46" height="71" rx="3"></rect>
+        <filter x="-18.5%" y="-9.2%" width="137.0%" height="123.9%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0.116224869   0 0 0 0 0.481584821  0 0 0 0.0923629982 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="графика-/-иконка-/-большая-/-карта">
+            <g id="Group-16-Copy-5">
+                <circle id="Oval-Copy" fill="url(#linearGradient-1)" cx="47" cy="47" r="47"></circle>
+                <g id="Group-26-Copy-11" transform="translate(24.000000, 30.000000)">
+                    <g id="Group-25">
+                        <g id="Rectangle-23">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                        </g>
+                        <ellipse id="Oval-7-Copy" fill="#E6ECF2" cx="32.2" cy="23.0519481" rx="5.52" ry="5.53246753"></ellipse>
+                        <rect id="Rectangle" fill="#FE7F5F" x="8.28" y="11.0649351" width="2.76" height="9.22077922" rx="1"></rect>
+                        <rect id="Rectangle-Copy" fill="#FE7F5F" x="8.28" y="24.8961039" width="2.76" height="9.22077922" rx="1"></rect>
+                        <rect id="Rectangle-Copy-3" fill="#FE7F5F" x="8.28" y="38.7272727" width="2.76" height="9.22077922" rx="1"></rect>
+                        <rect id="Rectangle-Copy-2" fill="#FE7F5F" x="8.28" y="52.5584416" width="2.76" height="9.22077922" rx="1"></rect>
+                        <ellipse id="Oval-7" fill="#FE7F5F" cx="32.2" cy="15.6753247" rx="5.52" ry="5.53246753"></ellipse>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

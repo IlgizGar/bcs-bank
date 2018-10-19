@@ -1,0 +1,502 @@
+{% extends "layout/layout.njk" %}
+
+{% import "../components/library/breadcrumbs/breadcrumbs.njk" as Breadcrumbs %}
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/library/button/button.njk" as Button %}
+{% import "../components/modules/tabbar/tabbar.njk" as Tabbar %}
+{% import "../components/library/feature/feature.njk" as Feature %}
+{% import "../components/modules/brand-features/brand-features.njk" as BrandFeatures %}
+{% import "../components/library/input/input.njk" as Input %}
+{% import "../components/library/radio/radio.njk" as Radio %}
+{% import "../components/library/dropdown/dropdown.njk" as Dropdown %}
+{% import "../components/library/docs/docs.njk" as Docs %}
+{% import "../components/icon/icon.njk" as Icon %}
+
+{% set root = "." %}
+{% set title = "Накопительный" %}
+{% set header = 'blue' %}
+
+{% block body %}
+  <div class="page js-page">
+
+    {% include "../components/modules/header/header.njk" %}
+
+    <main role="main" class="products-detail">
+      <section class="section page__section">
+        <div class="section__header section__header_theme-blue">
+          <div class="page__container">
+            {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Вклады', 'link': '#' } }) }}
+            {{ Heading.heading({ 'tag': 'h1', 'title': 'Накопительный', 'mods': { 'type': 'large', 'margin': 'default' } }) }}
+            <div class="features">
+              {{ Feature.feature({ 'title': 'До 6,5%', 'text': 'годовая \n ставка', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+              {{ Feature.feature({ 'title': '5 000 #ruble', 'text': 'минимальная \n сумма вклада', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+              {{ Feature.feature({ 'title': '1 год', 'text': 'максимальный \n срок вклада', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+            </div>
+            <div class="brand-figure products-detail__figure" data-illustration="">
+              <img src="assets/illustrations/nakopitelny.svg" alt="Вклад Накопительный">
+            </div>
+          </div>
+          <div class="section__nav-wrapper">
+            <div class="section__nav products-detail__nav">
+              <div class="page__container">
+                <div class="section__wrap">
+                  <div class="tabbar__scroll-wrapper js-tab-scroll">
+                    {{ Tabbar.tabbar({ 'anchor': { 'theme': 'light-tab', 'view': 'upperscore' }, 'tabs': [{'title': 'О вкладе', 'id': 'about-deposit' }, {'title': 'Тарифы и документы', 'id': 'deposit-docs'}, {'title': 'Частые вопросы', 'id': 'deposit-faq'}] }) }}
+                  </div>
+                  {{ Button.button({ 'title': 'Оформите вклад', 'mods': { 'theme': 'white' }, 'class': 'products-detail__nav-button' }) }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="tabs js-tabs">
+        <div id="about-deposit" class="tabs__item js-tab state_invisible">
+          <section class="section page__section">
+            {{ BrandFeatures.brandFeatures({ 'items': [
+              {
+                'icon': 'assets/images/svg/shield-image.svg',
+                'title': 'Надежно',
+                'subtitle': 'Вклад до 1 400 000 #ruble \n застрахован ACB',
+                'props': {
+                'small': 'от',
+                'large': '1#ruble'
+              },
+                'descr': 'Сумма \n пополнения вклада'
+              },
+              {
+                'icon': 'assets/images/svg/sand-clock-image.svg',
+                'title': 'Быстро',
+                'subtitle': 'Ежемесячная \n выплата процентов',
+                'props': {
+                'small': 'до',
+                'large': '365'
+              },
+                'descr': 'Срок вклада \n на выбор'
+              },
+              {
+                'icon': 'assets/images/svg/gift-image.svg',
+                'title': 'Удобно',
+                'subtitle': 'Возможно пополнение вклада \n и частичное снятие средств',
+                'props': {
+                'large': '#ruble/#euro'
+              },
+                'descr': 'Открывается \n в двух валютах'
+              }
+            ] }) }}
+          </section>
+          <section class="section section_theme-white-smoke section_padding-default page__section">
+            <div class="calculator">
+              <div class="page__container">
+                {{ Heading.heading({ 'title': 'Рассчитайте свой доход', 'mods': { 'type': 'default', 'margin': 'default' } }) }}
+                <div class="section__row">
+                  <div class="form form_layout-narrow">
+                    <form>
+                      <fieldset>
+                        {{ Heading.heading({ 'tag': 'h3', 'title': 'Валюта вклада', 'mods': { 'type': 'small', 'margin': 'small' } }) }}
+                        <div class="form__field-group form__field-group_radio">
+                          {{ Radio.radio({'class': 'js-check-radio mr-56', 'label': '#ruble', 'name': 'accum_deposit_currency', 'id': 'accum_deposit_rub', 'state': 'checked', 'attr': {'check': 'vu'} }) }}
+                          {{ Radio.radio({'class': 'js-check-radio', 'label': '#euro', 'name': 'accum_deposit_currency', 'id': 'accum_deposit_eur', 'attr': {'data': 'post'} }) }}
+                        </div>
+                        {{ Heading.heading({ 'tag': 'h3', 'title': 'Срок вклада в днях', 'mods': { 'type': 'small', 'margin': 'small' } }) }}
+                        <div class="form__field-group form__field-group_radio">
+                          {{ Radio.radio({'class': 'js-check-radio mr-56', 'label': '181', 'name': 'accim_deposit_period', 'id': 'accim_deposit_half', 'state': 'checked', 'attr': {'check': 'vu'} }) }}
+                          {{ Radio.radio({'class': 'js-check-radio', 'label': '365', 'name': 'accim_deposit_period', 'id': 'accim_deposit_full', 'attr': {'data': 'post'} }) }}
+                        </div>
+                        {{ Input.input({ 'label': 'Сумма вклада', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'accum_deposit_amount', 'class': 'js-numeric-input' }, 'title': '#ruble', 'slider': { 'min': 5000, 'max': 9999999, 'from': 15000, 'step': 1000 } }) }}
+                        {{ Input.input({ 'label': 'Операции по карте в месяц', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'accum_deposit_costs', 'class': 'js-numeric-input' }, 'title': '#ruble', 'slider': { 'min': 0, 'max': 100000, 'from': 30000, 'step': 1000 } }) }}
+                      </fieldset>
+                    </form>
+                  </div>
+                  <div class="calculation">
+                    <div class="calculation__thumbnail">
+                      <div class="text">Сумма к концу срока</div>
+                      <div class="calculation__result"><span>10 340</span> {{ Icon.icon({ 'name': 'ruble'}) }}</div>
+                      <div class="calculation__conclusion text">
+                        <p>Ожидаемый доход</p>
+                        <p><span>22 340</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
+                      </div>
+                      <div class="calculation__conclusion text">
+                        <p>Процентная ставка</p>
+                        <p>4%</p>
+                      </div>
+                      {{ Button.button({ 'title': 'Оформите вклад', 'mods': { 'theme': 'default' }, 'type': 'submit', 'class': 'mt-40' }) }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="mobile mobile_theme-blue section page__section page__section_theme-large">
+            <div class="page__container">
+              <div class="section__wrap">
+                <div class="mobile__content">
+                  {{ Heading.heading({ 'title': 'Удобный мобильный банк', 'mods': { 'type': 'default', 'margin': 'small', 'theme': 'light' } }) }}
+                  <div class="section__text section__text_theme-normal section__text_theme-light">
+                    <p>Управление банковскими и инвестиционными продуктами</p>
+                    <p>Оплата услуг без комиссии</p>
+                    <p>Переводы по всему миру</p>
+                    <p>Обмен валюты по курсу близкому к биржевому</p>
+                    <p>Чат с оператором</p>
+                  </div>
+                  <div class="mobile__vendors">
+                    {{ Button.button({ 'href': 'https://play.google.com/store/apps/details?id=cz.bsc.bcs', 'name': 'android', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                    {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                  </div>
+                </div>
+                <img class="mobile__figure" src="assets/illustrations/bks_platinum.svg"
+                     alt="Удобный мобильный банк">
+              </div>
+            </div>
+          </section>
+          <section class="section page__section">
+            <div class="page__container">
+              {{ Heading.heading({ 'title': 'Оформите заявку на вклад', 'mods': { 'type': 'default', 'margin': 'normal' } }) }}
+            </div>
+            {{ BrandFeatures.brandFeatures({ 'items': [
+              {
+                'icon': 'assets/images/svg/list-image.svg',
+                'title': 'Оставьте заявку',
+                'subtitle': 'Заполнение заявки \n займет 5 минут',
+                'mods': {
+                'theme': 'lined'
+              }
+              },
+              {
+                'icon': 'assets/images/svg/sand-clock-image.svg',
+                'title': 'Получите карту',
+                'subtitle': 'Наш специалист доставит Вам \n документы и карту бесплатно',
+                'mods': {
+                'theme': 'lined'
+              }
+              },
+              {
+                'icon': 'assets/images/svg/card-image.svg',
+                'title': 'Откройте вклад',
+                'subtitle': 'Откройте вклад \n через БКС Банк онлайн'
+              }
+            ] }) }}
+          </section>
+          <section class="section section_theme-white-smoke section_padding-default page__section">
+            <div class="deposit-request">
+              <div class="page__container">
+                {{ Heading.heading({ 'title': 'Заявка на открытие вклада' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+                <div class="text mb-56">При открытии вклада предоставляется бесплатная карта Visa Classic</div>
+                <div class="section__row">
+                  <div class="form form_layout-narrow js-form">
+                    <div class="form__steps">
+                      Шаг <span>1</span> из <span>4</span>
+                    </div>
+                    {{ Heading.heading({ 'title': 'Общая информация', 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
+                    <form>
+                      <fieldset>
+                        {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': 'js-fio-masked', 'maxlength': '64', 'name': 'bid_user-name', 'required': 'true' } }) }}
+                        <div class="form__line-group">
+                          {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': {'class': 'js-phone-masked', 'name': 'question_phone', 'required': 'true' } }) }}
+                          {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': {'class': 'js-mail-masked', 'name': 'question_mail', 'required': 'true' } }) }}
+                        </div>
+                        {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Выберите город', 'name': 'bid_select-city', 'items': [{'title': 'Краснодар', 'value': '12345'}, {'title': 'Москва', 'value': '13456'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'bid-city-list'}, 'field': 'js-city-select' }) }}
+                      </fieldset>
+                      <div class="form__agreements">
+                        <label class="checkbox checkbox_theme-dark js-checkbox js-personal-checkbox">
+                          <input type="checkbox" class="checkbox__control"
+                                 name="question__personal" checked>
+                          <span class="checkbox__state"></span>
+                          <span class="checkbox__label">
+                                                            Даю согласие на обработку <br>
+                            {{ Button.button({ 'href': '#', 'title': 'персональных данных', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
+                                                        </span>
+                        </label>
+                        {{ Button.button({ 'title': 'Отправить', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
+                      </div>
+                    </form>
+                  </div>
+                  <div class="calculation calculation_theme-uslugi">
+                    <div class="calculation__thumbnail">
+                      <div class="text">Сумма к концу срока</div>
+                      <div class="calculation__result">10 340 {{ Icon.icon({ 'name': 'ruble'}) }}</div>
+                      <div class="calculation__conclusion text">
+                        <p>Ожидаемый доход</p>
+                        <p><span>22 340</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
+                      </div>
+                      <div class="calculation__conclusion text">
+                        <p>Процентная ставка</p>
+                        <p>4%</p>
+                      </div>
+                      {{ Button.button({ 'title': 'Оформите вклад', 'mods': { 'theme': 'default' }, 'type': 'submit', 'class': 'mt-40' }) }}
+                    </div>
+                    {{ Button.button({ 'href': '#', 'title': 'Оформите через госуслуги', 'path': 'assets/images/uslugi.svg', 'mods': {'theme': 'white', 'type': 'icon-left'}, 'class': 'button_theme-uslugi' }) }}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div id="deposit-docs" class="tabs__item js-tab state_invisible">
+          <section class="section page__section page__section_theme-last">
+            <div class="page__container">
+              <div class="section__row">
+                <div class="section__content section__content_medium section__content_theme-centered">
+                  {{ Heading.heading({ 'title': 'Условия по вкладу', 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
+                  <div class="table table_sortable table_theme-default mb-64">
+                    <table class="table__content">
+                      <thead class="table__head">
+                      <tr>
+                        <th><span class="table__column-title">Срок вклада (дни)</span></th>
+                        <th><span class="table__column-title">Процентная ставка (от 5 000 ₽)</span></th>
+                        <th><span class="table__column-title">Процентная ставка (от 100 €)</span></th>
+                      </tr>
+                      </thead>
+                      <tbody class="table__body">
+                      <tr>
+                        <td>181</td>
+                        <td>4,0%</td>
+                        <td>-</td>
+                      </tr>
+                      <tr>
+                        <td>181</td>
+                        <td><span class="table__subtitle">При оплвте покупок по карте</span>
+                          <p>6,0%</p></td>
+                        <td><span class="table__subtitle">При оплвте покупок по карте</span>
+                          <p>-</p></td>
+                      </tr>
+                      <tr>
+                        <td>365</td>
+                        <td>4,0%</td>
+                        <td>0,1%</td>
+                      </tr>
+                      <tr>
+                        <td>365</td>
+                        <td><span class="table__subtitle">При оплвте покупок по карте</span>
+                          <p>6,5%</p></td>
+                        <td><span class="table__subtitle">При оплвте покупок по карте</span>
+                          <p>0,8%</p></td>
+                      </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  {{ Docs.docs({ 'href': '#', 'title': 'Условия по депозитам (действуют с 20.07.2018)' , 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-32' }) }}
+                  {{ Docs.docs({ 'href': '#', 'title': 'МСС-коды операций, по которым не производится начисление повышенной ставки по депозиту «Накопительный»', 'type': 'PDF', 'size': '213 КБ' }) }}
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div id="deposit-faq" class="tabs__item js-tab state_invisible">
+          <section class="section page__section page__section_theme-last">
+            <div class="page__container">
+              <div class="section__row">
+                <div class="section__content section__content_theme-centered">
+                  {{ Heading.heading({ 'title': 'Частые вопросы' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'short' } }) }}
+                </div>
+              </div>
+            </div>
+            <div class="collapse collapse_theme-grey">
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Как открыть депозит?</div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content">
+                  <p class="text">Вклады «Доходный», «Доходный фунт», «Универсальный выбор» и «Накопительный»   возможно открыть посредством  интернет портала «БКС Банк Онлайн». Ставка при открытии рублевого депозита на портале будет увеличена на 0,3%.  </p>
+                </div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Как происходит пополнение депозита?</div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content">
+                  <p class="text">При открытии вклада через систему «БКС Банк Онлайн» деньги автоматически списываются со счета клиента, и депозит считается открытым.</p>
+                  <p class="text">Пополнять существующий депозит или изымать денежные средства с существующего депозита клиент может через систему «БКС Банк Онлайн».</p>
+                </div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Как закрыть депозит?
+                  </div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content">
+                  <p class="text">Любой депозит линейки подлежит закрытию через интернет портал «БКС Банк онлайн» посредством заявления вкладчика.</p>
+                </div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Какие условия по страхованию вкладов?</div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content">
+                  <p class="text">Страхование вкладов осуществляется в силу Федерального закона №177-ФЗ «О страховании вкладов физических лиц в банках Российской Федерации» и в соответствии с ч.1 ст.3 гл.1 данного закона не требует заключения договора страхования. Возмещение по вкладам в банке, в отношении которого наступил страховой случай, выплачивается вкладчику в размере 100 процентов суммы вкладов в банке, но не более 1 400 000 руб.</p>
+                  <p class="text">Если вкладчик имеет несколько вкладов в одном банке и суммарный размер обязательств банка перед ним превышает сумму страховых выплат, возмещение выплачивается по каждому из вкладов пропорционально их размерам.</p>
+                  <p class="text">В случае если вклад размещен в иностранной валюте, сумма возмещения по вкладам рассчитывается в рублях по курсу, установленному Банком России на день наступления страхового случая. </p>
+                  <p class="text">Выплата возмещения по вкладам производится в рублях.</p>
+                  <p class="text">Страховым случаем является одно из следующих обстоятельств:</p>
+                  <ol class="brand-list brand-list_type-numeric">
+                    <li>отзыв (аннулирование) у банка лицензии Банка России на осуществление банковских операций; </li>
+                    <li>введение Банком России моратория на удовлетворение требований кредиторов банка.</li>
+                  </ol>
+                </div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Каково налогообложение доходов по вкладам?</div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content">
+                  <p class="text">депозиты подлежат налогообложению, если процентная ставка по вкладу превышала:</p>
+                  <ul class="brand-list brand-list_type-disc">
+                    <li>ставку рефинансирования Центрального банка Российской Федерации, увеличенную на пять процентных пунктов, по вкладам в валюте Российской Федерации;</li>
+                    <li>9% годовых по вкладам в иностранной валюте.</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">В каких валютах возможно открыть этот вклад?</div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content">
+                  <p class="text">в российских рублях и евро.
+                  </p>
+                  <p class="text">
+                    <b>Депозит в евро может быть открыт только клиентам, у которых с момента открытия ДКБО прошло 90 дней.</b>
+                  </p>
+                </div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">На какой срок можно разместить?</div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content">
+                  <p class="text">Рубли: 181 день и 365 дней. Евро: 365 дней.</p>
+                </div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Какова Минимальная сумма депозита?</div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content">
+                  <p class="text">5 000 (пять тысяч) рублей, 100 евро. </p>
+                </div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Что такое неснижаемый остаток и какой существует неснижаемый остаток по этому виду вклада?</div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content">
+                  <p class="text">Неснижаемый остаток – минимальная сумма, которая должна постоянно находится на счете вклада. Размер неснижаемого остатка устанавливается Банком. По депозиту Накопительный неснижаемый остаток составляет 5 000 руб./100 евро</p>
+                </div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Какова максимальная сумма по депозиту?</div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content">
+                  <p class="text">не предусмотрена</p>
+                </div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Как выплачиваются проценты?</div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content">
+                  <p class="text">Проценты на сумму депозита выплачиваются ежемесячно на Текущий/Накопительный счет Клиента в соответствующей валюте.</p>
+                </div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Предусмотрены ли расходные операции по вкладу?</div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content">
+                  <p class="text">По депозиту в рублях полнение без ограничений, кроме депозита в евро (максимальная сумма депозита 100 000 EUR).</p>
+                  <p class="text">Снятие любой суммы до достижения порога неснижаемого остатка.</p>
+                </div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Механизм продления данного депозита?</div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content">
+                  <p class="text">Продление депозита предусмотрено, количество продлений не ограничено. Продление осуществляется на тот же срок и под процентную ставку, установленную для аналогичного срока.</p>
+                </div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Механизм начисления повышенной ставки по депозиту?</div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content">
+                  <p class="text">повышенная ставка начисляется при условии совершения Клиентом операций в ТСП по картам Банка на общую сумму 30 000 руб. и более в течение календарного месяца.</p>
+                </div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">Как рассчитывается оборот в первый и последний месяц действия депозита?</div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content">
+                  <p class="text">в первый и последний месяц действия депозита сумма покупок для получения повышенной ставки пропорциональна количеству календарных дней фактического существования депозита в данном месяце.</p>
+                  <p class="text">Например, если депозит оформлен 20 июня – необходимый оборот для начисления повышенной ставки в июне – 10 000 рублей (депозит будет работать 10 дней в июне, соответственно оборот за полный месяц – 30 000 делим на 30 дней и умножаем на 10).</p>
+                </div>
+              </div>
+              <div class="collapse__item">
+                <div class="collapse__control">
+                  <div class="collapse__control-title">На каких условиях пролонгируется депозит?</div>
+                  <div class="collapse__control-icon">
+                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                  </div>
+                </div>
+                <div class="collapse__content">
+                  <p class="text">Продление депозита предусмотрено, количество продлений не ограничено. Продление осуществляется на тот же срок и под процентную ставку, действующую на момент продления.</p>
+                  <p class="text">Клиенты в любой момент смогут расторгнуть депозит без потери процентов, и открыть депозит «Накопительный» на новых условиях.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    {% include "../components/modules/footer/footer.njk" %}
+
+  </div>
+{% endblock %}

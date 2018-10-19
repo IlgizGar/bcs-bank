@@ -2,17 +2,53 @@
   .plastic-card__content
     .plastic-card__header
       .plastic-card__category
+        pointer-events none
         margin-left: 40px
         @media (max-width: 767px)
-          margin-left: 0
-          white-space nowrap
+          //margin-left: 16px
+          display: none
+
         .button
+          margin-right: 16px
+          margin-bottom: 4px
+
           color: $slate_grey
+          white-space nowrap
+
           box-shadow 0 0 0 1px $gainsboro
+          &:hover
+            background-color transparent
+            .button__wrap
+              color: $slate_grey
+
+          .button__title
+            .icon
+              width: 12px
+              height: 12px
+
+              transform: translateY(1px)
   &.plastic-card_theme-blue
     .plastic-card__content
       .plastic-card__header
         .plastic-card__category
+          pointer-events none
+          @media (max-width: 767px)
+            //margin-left: 16px
+            display: none
+
           .button
+            margin-right: 16px
+
             color: $perano
             box-shadow 0 0 0 1px $perano
+            &:hover
+              background-color transparent
+              .button__wrap
+                color: $perano
+
+            .button__title
+              .icon
+                width: 12px
+                height: 12px
+
+                transform: translateY(1px)
