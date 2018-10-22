@@ -24,9 +24,6 @@ module.exports = (elem) => {
       this.id = this.context.data('id');
       this.list = $(`.js-context-list#${this.id}`);
 
-      console.log('ID', this.id);
-
-
       if (!this.list.length) {
         this.list = $(`<div id="${this.id}" class="dropdown__list state_invisible scroll-pane js-context-list mt-16"><ul></ul></div>`);
         $('.js-page').append(this.list);

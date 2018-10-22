@@ -24,15 +24,19 @@
       <section class="section page__section">
         <div class="section__header section__header_theme-blue">
           <div class="page__container">
-            {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Кредитные карты', 'link': '#' } }) }}
-            {{ Heading.heading({ 'tag': 'h1', 'title': 'БКС Платинум', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
-            <div class="features">
-              {{ Feature.feature({ 'title': 'До 55 дней', 'text': 'беспроцентный \n период', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-              {{ Feature.feature({ 'title': 'До 1 млн #ruble', 'text': 'кредитный \n лимит', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-              {{ Feature.feature({ 'title': 'До 30%', 'text': 'от покупок \n возвращается на карту', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-            </div>
-            <div class="brand-figure products-detail__figure" data-illustration="">
-              <img src="assets/illustrations/bks_platinum.svg" alt="Цифровой Signature">
+            <div class="section__row">
+              <div class="products-detail__content">
+                {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Кредитные карты', 'link': '#' } }) }}
+                {{ Heading.heading({ 'tag': 'h1', 'title': 'БКС Платинум', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
+                <div class="features">
+                  {{ Feature.feature({ 'title': 'До 55 дней', 'text': 'беспроцентный \n период', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                  {{ Feature.feature({ 'title': 'До 1 млн #ruble', 'text': 'кредитный \n лимит', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                  {{ Feature.feature({ 'title': 'До 30%', 'text': 'от покупок \n возвращается на карту', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                </div>
+              </div>
+              <div class="products-detail__figure" data-illustration="">
+                <img class="illustration" src="assets/illustrations/bks_platinum.svg" alt="Цифровой Signature">
+              </div>
             </div>
           </div>
           <div class="section__nav-wrapper">
@@ -115,9 +119,9 @@
               </div>
             </div>
           </section>
-          <section class="mobile mobile_theme-blue section page__section page__section_theme-large">
+          <section class="mobile section section_theme-blue page__section page__section_theme-large">
             <div class="page__container">
-              <div class="section__wrap">
+              <div class="section__row">
                 <div class="mobile__content">
                   {{ Heading.heading({ 'title': 'Удобный мобильный банк', 'mods': { 'type': 'default', 'margin': 'small', 'theme': 'light' } }) }}
                   <div class="section__text section__text_theme-normal section__text_theme-light">
@@ -132,14 +136,16 @@
                     {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
                   </div>
                 </div>
-                <img class="mobile__figure" src="assets/illustrations/mobile_bank.svg"
-                     alt="Удобный мобильный банк">
+                <div class="mobile__figure">
+                  <img class="illustration" src="assets/illustrations/mobile_bank.svg" alt="Удобный мобильный банк">
+                </div>
               </div>
             </div>
           </section>
           <section class="section page__section">
             <div class="page__container">
-              {{ Heading.heading({ 'title': 'Оформите заявку - получите \n карту не выходя из дома', 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered' }) }}
+              {{ Heading.heading({ 'title': 'Оформите заявку - получите \n карту не выходя из дома', 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered hidden-mobile' }) }}
+              {{ Heading.heading({ 'title': 'Как оформить заявку?', 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered hidden-desktop' }) }}
             </div>
             {{ BrandFeatures.brandFeatures({ 'items': [
               {
@@ -194,7 +200,8 @@
                           <input type="checkbox" class="checkbox__control"
                                  name="question__personal" checked>
                           <span class="checkbox__state"></span>
-                          <span class="checkbox__label">Даю согласие на обработку <br> {{ Button.button({ 'href': '#', 'title': 'персональных данных', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}</span>
+                          <span
+                              class="checkbox__label">Даю согласие на обработку <br> {{ Button.button({ 'href': '#', 'title': 'персональных данных', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}</span>
                         </label>
                         {{ Button.button({ 'title': 'Отправить', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
                       </div>
@@ -339,23 +346,29 @@
                           <td>20 000 ₽</td>
                         </tr>
                         <tr>
-                          <td><span class="table__subtitle">Максимальная сумма кредитного лимита</span><p>Для клиентов банка и/или компании-партнера (сумма активов более 5 ₽)</p></td>
+                          <td><span class="table__subtitle">Максимальная сумма кредитного лимита</span>
+                            <p>Для клиентов банка и/или компании-партнера (сумма активов более 5 ₽)</p></td>
                           <td><p class="table__cell-title">1 000 000 ₽</p></td>
                         </tr>
                         <tr>
-                          <td><span class="table__subtitle">Максимальная сумма кредитного лимита</span><p>Для клиентов банка и/или компании-партнера (сумма активов от 300 тыс до 5 млн ₽) и руководителей аккредитованных компаний</p></td>
+                          <td><span class="table__subtitle">Максимальная сумма кредитного лимита</span>
+                            <p>Для клиентов банка и/или компании-партнера (сумма активов от 300 тыс до 5 млн ₽) и
+                              руководителей аккредитованных компаний</p></td>
                           <td><p class="table__cell-title">800 000 ₽</p></td>
                         </tr>
                         <tr>
-                          <td><span class="table__subtitle">Максимальная сумма кредитного лимита</span><p>Для других категорий заемщиков</p></td>
+                          <td><span class="table__subtitle">Максимальная сумма кредитного лимита</span>
+                            <p>Для других категорий заемщиков</p></td>
                           <td><p class="table__cell-title">500 000 ₽</p></td>
                         </tr>
                         <tr>
-                          <td><span class="table__subtitle">Процентная ставка при сумме кредитного лимита 100 000 ₽ и более</span><p>Для клиентов банка и/или компании-партнера (сумма активов более 5 млн ₽)</p></td>
+                          <td><span class="table__subtitle">Процентная ставка при сумме кредитного лимита 100 000 ₽ и более</span>
+                            <p>Для клиентов банка и/или компании-партнера (сумма активов более 5 млн ₽)</p></td>
                           <td><p class="table__cell-title">21%</p></td>
                         </tr>
                         <tr>
-                          <td><span class="table__subtitle">Процентная ставка при сумме кредитного лимита 100 000 ₽ и более</span><p>Для клиентов банка и/или компании-партнера (сумма активов от 300 тыс до 5 млн ₽)</p></td>
+                          <td><span class="table__subtitle">Процентная ставка при сумме кредитного лимита 100 000 ₽ и более</span>
+                            <p>Для клиентов банка и/или компании-партнера (сумма активов от 300 тыс до 5 млн ₽)</p></td>
                           <td><p class="table__cell-title">22%</p></td>
                         </tr>
                         <tr>
@@ -363,15 +376,19 @@
                           <td>26%</td>
                         </tr>
                         <tr>
-                          <td><span class="table__subtitle">Процентная ставка при сумме кредитного лимита менее 100 000 ₽</span><p>Для других категорий заемщиков, по картам без бонусной программы</p></td>
+                          <td><span class="table__subtitle">Процентная ставка при сумме кредитного лимита менее 100 000 ₽</span>
+                            <p>Для других категорий заемщиков, по картам без бонусной программы</p></td>
                           <td><p class="table__cell-title">26%</p></td>
                         </tr>
                         <tr>
-                          <td><span class="table__subtitle">Процентная ставка при сумме кредитного лимита менее 100 000 ₽</span><p>Для сотрудников и руководителей аккредитованных компаний по картам с бонусной программой</p></td>
+                          <td><span class="table__subtitle">Процентная ставка при сумме кредитного лимита менее 100 000 ₽</span>
+                            <p>Для сотрудников и руководителей аккредитованных компаний по картам с бонусной
+                              программой</p></td>
                           <td><p class="table__cell-title">26%</p></td>
                         </tr>
                         <tr>
-                          <td><span class="table__subtitle">Процентная ставка при сумме кредитного лимита менее 100 000 ₽</span><p>Для других категорий заемщиков, по картам с бонусной программой</p></td>
+                          <td><span class="table__subtitle">Процентная ставка при сумме кредитного лимита менее 100 000 ₽</span>
+                            <p>Для других категорий заемщиков, по картам с бонусной программой</p></td>
                           <td><p class="table__cell-title">26%</p></td>
                         </tr>
                         <tr>
@@ -387,43 +404,55 @@
                           <td>5% от задолженности, но не менее 100 ₽ + проценты за пользование кредитом</td>
                         </tr>
                         <tr>
-                          <td><span class="table__subtitle">Стоимость годового обслуживания карты при отсутствии бонусной программы</span><p>Для руководителей аккредитованных компаний</p></td>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания карты при отсутствии бонусной программы</span>
+                            <p>Для руководителей аккредитованных компаний</p></td>
                           <td><p class="table__cell-title">Не взимается</p></td>
                         </tr>
                         <tr>
-                          <td><span class="table__subtitle">Стоимость годового обслуживания карты при отсутствии бонусной программы</span><p>Для других категорий заемщиков</p></td>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания карты при отсутствии бонусной программы</span>
+                            <p>Для других категорий заемщиков</p></td>
                           <td><p class="table__cell-title">Не взимается</p></td>
                         </tr>
                         <tr>
-                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита 100 000 ₽ и более</span><p>Для сотрудников аккредитованных компаний</p></td>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита 100 000 ₽ и более</span>
+                            <p>Для сотрудников аккредитованных компаний</p></td>
                           <td><p class="table__cell-title">Не взимается</p></td>
                         </tr>
                         <tr>
-                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита 100 000 ₽ и более</span><p>Для руководителей аккредитованных компаний</p></td>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита 100 000 ₽ и более</span>
+                            <p>Для руководителей аккредитованных компаний</p></td>
                           <td><p class="table__cell-title">Не взимается</p></td>
                         </tr>
                         <tr>
-                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита 100 000 ₽ и более</span><p>Для клиентов банка и/или компании-партнера (сумма активов более 300 тыс до 5 млн ₽)</p></td>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита 100 000 ₽ и более</span>
+                            <p>Для клиентов банка и/или компании-партнера (сумма активов более 300 тыс до 5 млн ₽)</p>
+                          </td>
                           <td><p class="table__cell-title">Не взимается</p></td>
                         </tr>
                         <tr>
-                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита 100 000 ₽ и более</span><p>Для клиентов банка и/или компании-партнера (сумма активов более 5 млн ₽)</p></td>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита 100 000 ₽ и более</span>
+                            <p>Для клиентов банка и/или компании-партнера (сумма активов более 5 млн ₽)</p></td>
                           <td><p class="table__cell-title">Не взимается</p></td>
                         </tr>
                         <tr>
-                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита 100 000 ₽ и более</span><p>Для других категорий заемщиков</p></td>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита 100 000 ₽ и более</span>
+                            <p>Для других категорий заемщиков</p></td>
                           <td><p class="table__cell-title">Не взимается</p></td>
                         </tr>
                         <tr>
-                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита менее 100 000 ₽</span><p>Для руководителей аккредитованных компаний</p></td>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита менее 100 000 ₽</span>
+                            <p>Для руководителей аккредитованных компаний</p></td>
                           <td><p class="table__cell-title">Не взимается</p></td>
                         </tr>
                         <tr>
-                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита менее 100 000 ₽</span><p>Для других категорий заемщиков</p></td>
+                          <td><span class="table__subtitle">Стоимость годового обслуживания при наличии бонусной программы и сумме кредитного лимита менее 100 000 ₽</span>
+                            <p>Для других категорий заемщиков</p></td>
                           <td><p class="table__cell-title">Не взимается</p></td>
                         </tr>
                         <tr>
-                          <td>Погашение задолженности по карте в любом из банкоматов БКС Банка или через кассу БКС Банка</td>
+                          <td>Погашение задолженности по карте в любом из банкоматов БКС Банка или через кассу БКС
+                            Банка
+                          </td>
                           <td>Бесплатно</td>
                         </tr>
                         <tr>
@@ -513,7 +542,9 @@
                           <td>5% от задолженности, но не менее 100 ₽ + проценты за пользование кредитом</td>
                         </tr>
                         <tr>
-                          <td>Погашение задолженности по карте в любом из банкоматов БКС Банка или через кассу БКС Банка</td>
+                          <td>Погашение задолженности по карте в любом из банкоматов БКС Банка или через кассу БКС
+                            Банка
+                          </td>
                           <td>Бесплатно</td>
                         </tr>
                         <tr>

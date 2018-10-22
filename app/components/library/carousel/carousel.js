@@ -82,7 +82,6 @@ module.exports = (elem) => {
       // this.carousel.find('.js-context').each((i, el) => {
       //   global.contexts[$(el).attr('data-id')] = Context(el);
       // });
-      console.log(global.contexts);
     }
   }
 

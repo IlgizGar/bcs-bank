@@ -1,15 +1,23 @@
 .index-carousel
   overflow: hidden;
-  margin: -125px 0;
+
+
+  //margin: -145px 0;
+  @media (min-width: 1440px)
+    margin: -80px 0 -160px
+    padding: 80px 0 160px
 
   @media (min-width: 1280px)
-    padding: 90px 0;
+    margin: -80px 0 -160px
+    padding: 80px 0 160px
 
   @media (min-width: 992px) and (max-width: 1279px)
-    padding: 60px 0 10px;
+    margin: 0 0 -90px
+    padding: 0 0 90px
 
   @media (min-width: 768px) and (max-width: 991px)
-    padding: 30px 0 10px;
+    margin: 0 0 -90px
+    padding: 0 0 90px
 
   .slick-list
     overflow: visible

@@ -1,43 +1,62 @@
 .index-carousel .index-carousel__image
   position: relative
 
-  width: 1px
-  height: 100%
+  //width: 1px
+
+  col()
+  @media (min-width: 1440px)
+    size(7)
+    shift-right(-1)
+    shift-left(-1)
+
+  @media (min-width: 1280px) and (max-width: 1439px)
+    size(5)
+
+  @media (min-width: 992px) and (max-width: 1279px)
+    size(4)
+
+  @media (min-width: 768px) and (max-width: 991px)
+    size(6)
 
   @media (max-width: 767px)
-    width: auto
-    height: auto
+    size(12)
+    margin-bottom: 16px
 
-  svg
+  .illustration
     position: absolute
-    right: 0
+    right: 20px
 
     width: auto !important
 
-  img
-    position absolute
-    right: 0
-
     @media (min-width: 1280px)
-      top: -135px;
+      top: -160px
 
-      height: calc(100% + 220px);
+      height: 683px
+      max-width: 683px
 
-    @media (min-width: 992px) and (max-width: 1279px)
-      top: -85px
+    @media (min-width: 768px) and (max-width: 1279px)
+      top: -80px
 
-      height: calc(100% + 25px)
-
-    @media (min-width: 768px) and (max-width: 991px)
-      top: -45px
-
-      height: 70%
+      height: 438px
+      max-width: 438px
 
     @media (max-width: 767px)
-      order: 0
-
       position: relative
-      margin: 0 auto 16px
+      margin: 0 auto
 
-      width: auto
-      max-width: 200px
+      height: 154px
+
+
+    //@media (min-width: 768px) and (max-width: 991px)
+    //  top: -45px
+    //
+    //  height: 70%
+    //
+    //@media (max-width: 767px)
+    //  order: 0
+    //
+    //  position: relative
+    //  margin: 0 auto 16px
+    //
+    //  width: auto
+    //  max-width: 200px

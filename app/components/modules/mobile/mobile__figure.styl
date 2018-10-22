@@ -1,19 +1,32 @@
 .mobile .mobile__figure
-  position: absolute
-  right: 50px
-  //bottom: -40px;
-  max-height: calc(100% + 80px)
-  max-width: 50%
 
-  @media (min-width: 768px) and (max-width: 991px)
-    right: 45px
-    //bottom: 0
-    //max-width: 275px
+  col()
 
-  @media (min-width: 576px) and (max-width: 767px)
-    right: 20px
-    bottom: 20px
-    max-width: 200px
+  @media (min-width: 1280px)
+    size(7)
+    shift-left(-1)
 
-  @media (max-width: 575px)
-    display: none
+  @media (min-width: 992px) and (max-width: 1279px)
+    size(5)
+    shift-left(-1)
+
+  .illustration
+
+    position: absolute
+    top: 50%
+    transform: translateY(-50%)
+
+    @media (min-width: 1280px)
+      right: 0
+
+      height: 683px
+      max-width: 683px
+
+    @media (min-width: 992px) and (max-width: 1279px)
+      right: 20px
+
+      height: 500px
+      max-width: 500px
+
+    @media (max-width: 991px)
+      display: none

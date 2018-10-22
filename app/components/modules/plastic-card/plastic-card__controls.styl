@@ -7,8 +7,14 @@
       margin-top: 40px
 
     .button
+
+      @media (min-width: 768px)
+
+        &:first-child
+          margin-right: 40px
+
       @media (max-width: 767px)
         width: 100%
 
         &:last-child
-          margin-top: 6px
+          margin: 22px 0

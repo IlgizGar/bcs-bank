@@ -25,9 +25,6 @@ export default class Collapse {
   }
 
   closeContent() {
-
-    console.log('COLLAPSE_ITEM', this.$itemsBlock.find('.collapse__item_state-open'));
-
     this.$itemsBlock.find('.collapse__item_state-open')
       .removeClass('collapse__item_state-open')
       .find('.collapse__content')
