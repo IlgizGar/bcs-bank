@@ -32,14 +32,16 @@
               <div class="index-carousel__slide">
                 <div class="page__container">
                   <div class="index-carousel__wrap">
-                    <div class="index-carousel__content">
-                      {{ Heading.heading({ 'tag': 'h1', 'title': 'Зарабатывайте \n без усилий', 'mods': { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}
-                      <div class="index-carousel__features">
-                        {{ Feature.feature({ 'title': '1 бонус = 1 #ruble', 'text': 'Получайте бонусы с каждой покупки карой БКС \n и обменивайте их на деньги', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                    <div class="section__row">
+                      <div class="index-carousel__content">
+                        {{ Heading.heading({ 'tag': 'h1', 'title': 'Зарабатывайте \n без усилий', 'mods': { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}
+                        <div class="index-carousel__features">
+                          {{ Feature.feature({ 'title': '1 бонус = 1 #ruble', 'text': 'Получайте бонусы с каждой покупки карой БКС \n и обменивайте их на деньги', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                        </div>
                       </div>
-                    </div>
-                    <div class="index-carousel__image index-carousel__image_type-bonus" data-illustration="">
-                      <img src="assets/images/bonus-banner.png" alt="Зарабатывайте без усилий">
+                      <div class="index-carousel__image" data-illustration="">
+                        <img class="illustration" src="assets/images/bonus-banner.png" alt="Зарабатывайте без усилий">
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -47,14 +49,16 @@
               <div class="index-carousel__slide">
                 <div class="page__container">
                   <div class="index-carousel__wrap">
-                    <div class="index-carousel__content">
-                      {{ Heading.heading({ 'tag': 'h1', 'title': 'Зарабатывайте \n без усилий', 'mods': { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}
-                      <div class="index-carousel__features">
-                        {{ Feature.feature({ 'title': '1 бонус = 1 #ruble', 'text': 'Получайте бонусы с каждой покупки карой БКС \n и обменивайте их на деньги', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                    <div class="section__row">
+                      <div class="index-carousel__content">
+                        {{ Heading.heading({ 'tag': 'h1', 'title': 'Зарабатывайте \n без усилий', 'mods': { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}
+                        <div class="index-carousel__features">
+                          {{ Feature.feature({ 'title': '1 бонус = 1 #ruble', 'text': 'Получайте бонусы с каждой покупки карой БКС \n и обменивайте их на деньги', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                        </div>
                       </div>
-                    </div>
-                    <div class="index-carousel__image">
-                      <img src="assets/images/bonus-banner.png" alt="Зарабатывайте без усилий">
+                      <div class="index-carousel__image">
+                        <img class="illustration" src="assets/images/bonus-banner.png" alt="Зарабатывайте без усилий">
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -62,14 +66,16 @@
               <div class="index-carousel__slide">
                 <div class="page__container">
                   <div class="index-carousel__wrap">
-                    <div class="index-carousel__content">
-                      {{ Heading.heading({ 'tag': 'h1', 'title': 'Зарабатывайте \n без усилий', 'mods': { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}
-                      <div class="index-carousel__features">
-                        {{ Feature.feature({ 'title': '1 бонус = 1 #ruble', 'text': 'Получайте бонусы с каждой покупки карой БКС \n и обменивайте их на деньги', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                    <div class="section__row">
+                      <div class="index-carousel__content">
+                        {{ Heading.heading({ 'tag': 'h1', 'title': 'Зарабатывайте \n без усилий', 'mods': { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}
+                        <div class="index-carousel__features">
+                          {{ Feature.feature({ 'title': '1 бонус = 1 #ruble', 'text': 'Получайте бонусы с каждой покупки карой БКС \n и обменивайте их на деньги', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                        </div>
                       </div>
-                    </div>
-                    <div class="index-carousel__image">
-                      <img src="assets/images/bonus-banner.png" alt="Зарабатывайте без усилий">
+                      <div class="index-carousel__image">
+                        <img class="illustration" src="assets/images/bonus-banner.png" alt="Зарабатывайте без усилий">
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -114,7 +120,8 @@
           }
         ] }) }}
       </section>
-      <section class="bonus section section_theme-white-smoke section_padding-default page__section page__section_theme-last">
+      <section
+          class="bonus section section_theme-white-smoke section_padding-default page__section page__section_theme-last">
         <div class="page__container">
           {{ Heading.heading({ 'title': 'Получайте больше выгоды', 'mods': { 'type': 'default', 'margin': 'small' } }) }}
           <div class="text mb-56">Покупки картой БКС по спецпредложениям от наших партнеров</div>
@@ -426,15 +433,15 @@
               </a>
 
               {#<div class="bonus__item">#}
-                {#<div class="bonus__icon">#}
-                  {#{{ Svg.inlineSvg({ 'path': ['assets/images/bks.png'] }) }}#}
-                {#</div>#}
-                {#<a href="#" class="bonus__link">#}
-                  {#<div class="bonus__name mr-a">#}
-                    {#<p class="bonus__title">Обмен валюты</p>#}
-                    {#<p class="text">Самый выгодный курс</p>#}
-                  {#</div>#}
-                {#</a>#}
+              {#<div class="bonus__icon">#}
+              {#{{ Svg.inlineSvg({ 'path': ['assets/images/bks.png'] }) }}#}
+              {#</div>#}
+              {#<a href="#" class="bonus__link">#}
+              {#<div class="bonus__name mr-a">#}
+              {#<p class="bonus__title">Обмен валюты</p>#}
+              {#<p class="text">Самый выгодный курс</p>#}
+              {#</div>#}
+              {#</a>#}
               {#</div>#}
             </div>
             <div class="bonus__filter">

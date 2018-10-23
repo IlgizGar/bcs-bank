@@ -18,7 +18,7 @@
       <section class="section page__section page__section_theme-large"> {# Чтобы установить картинку на фон, необходимо добавить style="backgraun-image: url(путь до картинки)" #}
         <div class="section__header section__header_theme-blue">
           <div class="page__container page__container_type-header">
-            {{ Heading.heading({ 'tag': 'h1', 'title': 'О БКС Банке' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
+            {{ Heading.heading({ 'tag': 'h1', 'title': 'О БКС Банке', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
             <div class="page__features">
               {{ Feature.feature({ 'title': 'ruBBB+', 'text': 'Pейтинг высокой кредитоспособности' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': ''}) }} {{ Feature.feature({ 'title': '29 лет', 'text': 'На рынке с 1989 года' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': ''}) }}
             </div>

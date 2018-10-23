@@ -35,7 +35,9 @@
                 </div>
               </div>
               <div class="products-detail__figure" data-illustration="">
-                <img class="illustration" src="assets/illustrations/bks_platinum.svg" alt="Цифровой Signature">
+                <div class="illustration">
+                  <img class="illustration-image" src="assets/illustrations/bks_platinum.svg" alt="БКС Platinum">
+                </div>
               </div>
             </div>
           </div>
@@ -119,29 +121,33 @@
               </div>
             </div>
           </section>
-          <section class="mobile section section_theme-blue page__section page__section_theme-large">
+
+          <section class="mobile section mobile_theme-blue page__section page__section_theme-large">
             <div class="page__container">
-              <div class="section__row">
-                <div class="mobile__content">
-                  {{ Heading.heading({ 'title': 'Удобный мобильный банк', 'mods': { 'type': 'default', 'margin': 'small', 'theme': 'light' } }) }}
-                  <div class="section__text section__text_theme-normal section__text_theme-light">
-                    <p>Управление банковскими и инвестиционными продуктами</p>
-                    <p>Оплата услуг без комиссии</p>
-                    <p>Переводы по всему миру</p>
-                    <p>Обмен валюты по курсу близкому к биржевому</p>
-                    <p>Чат с оператором</p>
+              <div class="mobile__wrapper">
+                <div class="section__row">
+                  <div class="mobile__content">
+                    {{ Heading.heading({ 'title': 'Легкий мобильный банк', 'mods': { 'type': 'default', 'margin': 'small', 'theme': 'light' } }) }}
+                    <div class="section__text section__text_theme-normal section__text_theme-light">
+                      <p>Управление банковскими и инвестиционными продуктами</p>
+                      <p>Оплата услуг без комиссии</p>
+                      <p>Переводы по всему миру</p>
+                      <p>Обмен валюты по курсу близкому к биржевому</p>
+                      <p>Чат с оператором</p>
+                    </div>
+                    <div class="mobile__vendors">
+                      {{ Button.button({ 'href': 'https://play.google.com/store/apps/details?id=cz.bsc.bcs', 'name': 'android', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                      {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                    </div>
                   </div>
-                  <div class="mobile__vendors">
-                    {{ Button.button({ 'href': 'https://play.google.com/store/apps/details?id=cz.bsc.bcs', 'name': 'android', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
-                    {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                  <div class="mobile__figure">
+                    <img class="illustration" src="assets/illustrations/mobile_bank.svg" alt="Легкий мобильный банк">
                   </div>
-                </div>
-                <div class="mobile__figure">
-                  <img class="illustration" src="assets/illustrations/mobile_bank.svg" alt="Удобный мобильный банк">
                 </div>
               </div>
             </div>
           </section>
+
           <section class="section page__section">
             <div class="page__container">
               {{ Heading.heading({ 'title': 'Оформите заявку - получите \n карту не выходя из дома', 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered hidden-mobile' }) }}

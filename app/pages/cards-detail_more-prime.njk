@@ -25,12 +25,16 @@
       <section class="section page__section">
         <div class="section__header section__header_theme-blue">
           <div class="page__container">
-            {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Пакет услуг', 'link': '#' } }) }}
-            {{ Heading.heading({ 'tag': 'h1', 'title': 'MORE Prime', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
-            <div class="features">
-              {{ Feature.feature({ 'title': 'От 0#ruble', 'text': 'стоимость \n обслуживания', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-              {{ Feature.feature({ 'title': '0#ruble', 'text': 'посещение Lounge Key \n залов по всему миру', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-              {{ Feature.feature({ 'title': '5%', 'text': 'от всех покупок \n возвращаем на карту', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+            <div class="section__row">
+              <div class="products-detail__content products-detail__content_theme-simple">
+                {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Пакет услуг', 'link': '#' } }) }}
+                {{ Heading.heading({ 'tag': 'h1', 'title': 'MORE Prime', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
+                <div class="features">
+                  {{ Feature.feature({ 'title': 'От 0#ruble', 'text': 'стоимость \n обслуживания', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                  {{ Feature.feature({ 'title': '0#ruble', 'text': 'посещение Lounge Key \n залов по всему миру', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                  {{ Feature.feature({ 'title': '5%', 'text': 'от всех покупок \n возвращаем на карту', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                </div>
+              </div>
             </div>
           </div>
           <div class="section__nav-wrapper">
@@ -86,23 +90,26 @@
 
           <section class="mobile mobile_theme-grey section page__section page__section_theme-large">
             <div class="page__container">
-              <div class="section__wrap">
-                <div class="mobile__content">
-                  {{ Heading.heading({ 'title': 'Удобный мобильный банк' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
-                  <div class="section__text section__text_theme-normal">
-                    <p>Управление банковскими и инвестиционными продуктами</p>
-                    <p>Оплата услуг без комиссии</p>
-                    <p>Переводы по всему миру</p>
-                    <p>Обмен валюты по курсу близкому к биржевому</p>
-                    <p>Чат с оператором</p>
+              <div class="mobile__wrapper">
+                <div class="section__row">
+                  <div class="mobile__content">
+                    {{ Heading.heading({ 'title': 'Легкий мобильный банк' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+                    <div class="section__text section__text_theme-normal">
+                      <p>Управление банковскими и инвестиционными продуктами</p>
+                      <p>Оплата услуг без комиссии</p>
+                      <p>Переводы по всему миру</p>
+                      <p>Обмен валюты по курсу близкому к биржевому</p>
+                      <p>Чат с оператором</p>
+                    </div>
+                    <div class="mobile__vendors">
+                      {{ Button.button({ 'href': 'https://play.google.com/store/apps/details?id=cz.bsc.bcs', 'name': 'android', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                      {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                    </div>
                   </div>
-                  <div class="mobile__vendors">
-                    {{ Button.button({ 'href': 'https://play.google.com/store/apps/details?id=cz.bsc.bcs', 'name': 'android', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
-                    {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                  <div class="mobile__figure">
+                    <img class="illustration" src="assets/illustrations/mobile_bank.svg" alt="Легкий мобильный банк">
                   </div>
                 </div>
-                <img class="mobile__figure" src="assets/images/mobile-bank.png"
-                     alt="Легкий мобильный банк">
               </div>
             </div>
           </section>
@@ -204,7 +211,8 @@
                       </tr>
                       <tr>
                         <td>Условия обслуживания</td>
-                        <td>Бесплатно при поддержании среднемесячного баланса от 3 000 000 #ruble или 1500 #ruble в месяц (от 2 000 000 #ruble для регионов)
+                        <td>Бесплатно при поддержании среднемесячного баланса от 3 000 000 #ruble или 1500 #ruble в
+                          месяц (от 2 000 000 #ruble для регионов)
                         </td>
                       </tr>
                       <tr>

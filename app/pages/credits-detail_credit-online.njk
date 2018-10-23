@@ -25,15 +25,19 @@
       <section class="section page__section">
         <div class="section__header section__header_theme-blue">
           <div class="page__container">
-            {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Кредиты', 'link': '#' } }) }}
-            {{ Heading.heading({ 'tag': 'h1', 'title': 'Кредит Онлайн', 'mods': { 'type': 'large', 'margin': 'default' } }) }}
-            <div class="features">
-              {{ Feature.feature({ 'title': 'От 12,9%', 'text': 'ставка \n по кредиту', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-              {{ Feature.feature({ 'title': 'До 1,5 млн.  #ruble', 'text': 'сумма \n кредита', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-              {{ Feature.feature({ 'title': 'До 5 лет', 'text': 'срок \n кредитования', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-            </div>
-            <div class="brand-figure products-detail__figure" data-illustration="">
-              <img src="assets/illustrations/credit_online.svg" alt="Отпуск легче с кредитом БКС">
+            <div class="section__row">
+              <div class="products-detail__content">
+                {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Кредиты', 'link': '#' } }) }}
+                {{ Heading.heading({ 'tag': 'h1', 'title': 'Кредит Онлайн', 'mods': { 'type': 'large', 'margin': 'default' } }) }}
+                <div class="features">
+                  {{ Feature.feature({ 'title': 'От 12,9%', 'text': 'ставка \n по кредиту', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                  {{ Feature.feature({ 'title': 'До 1,5 млн.  #ruble', 'text': 'сумма \n кредита', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                  {{ Feature.feature({ 'title': 'До 5 лет', 'text': 'срок \n кредитования', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                </div>
+              </div>
+              <div class="products-detail__figure" data-illustration="">
+                <img class="illustration" src="assets/illustrations/credit_online.svg" alt="Кредит Онлайн">
+              </div>
             </div>
           </div>
           <div class="section__nav-wrapper">
@@ -123,28 +127,33 @@
               </div>
             </div>
           </section>
-          <section class="mobile mobile_theme-blue section page__section page__section_theme-large">
+
+          <section class="mobile section mobile_theme-blue page__section page__section_theme-large">
             <div class="page__container">
-              <div class="section__wrap">
-                <div class="mobile__content">
-                  {{ Heading.heading({ 'title': 'Легкий мобильный банк', 'mods': { 'type': 'default', 'margin': 'small', 'theme': 'light' } }) }}
-                  <div class="section__text section__text_theme-normal section__text_theme-light">
-                    <p>Управление банковскими и инвестиционными продуктами</p>
-                    <p>Оплата услуг без комиссии</p>
-                    <p>Переводы по всему миру</p>
-                    <p>Обмен валюты по курсу близкому к биржевому</p>
-                    <p>Чат с оператором</p>
+              <div class="mobile__wrapper">
+                <div class="section__row">
+                  <div class="mobile__content">
+                    {{ Heading.heading({ 'title': 'Легкий мобильный банк', 'mods': { 'type': 'default', 'margin': 'small', 'theme': 'light' } }) }}
+                    <div class="section__text section__text_theme-normal section__text_theme-light">
+                      <p>Управление банковскими и инвестиционными продуктами</p>
+                      <p>Оплата услуг без комиссии</p>
+                      <p>Переводы по всему миру</p>
+                      <p>Обмен валюты по курсу близкому к биржевому</p>
+                      <p>Чат с оператором</p>
+                    </div>
+                    <div class="mobile__vendors">
+                      {{ Button.button({ 'href': 'https://play.google.com/store/apps/details?id=cz.bsc.bcs', 'name': 'android', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                      {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                    </div>
                   </div>
-                  <div class="mobile__vendors">
-                    {{ Button.button({ 'href': 'https://play.google.com/store/apps/details?id=cz.bsc.bcs', 'name': 'android', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
-                    {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                  <div class="mobile__figure">
+                    <img class="illustration" src="assets/illustrations/mobile_bank.svg" alt="Легкий мобильный банк">
                   </div>
                 </div>
-                <img class="mobile__figure" src="assets/images/mobi-man.png"
-                     alt="Легкий мобильный банк">
               </div>
             </div>
           </section>
+
           <section class="section page__section">
             <div class="page__container">
               {{ Heading.heading({ 'title': 'Оформите заявку - получите \n кредит на любые цели', 'mods': { 'type': 'default', 'margin': 'normal' } }) }}
@@ -241,7 +250,7 @@
               <div class="section__row">
                 <div class="section__content section__content_theme-centered">
 
-                    {{ Docs.docs({ 'theme': 'filled', 'href': '#', 'title': 'Тарифы АО «БКС Банк» для физических лиц в рамках Кредитного продукта «Кредит Онлайн»' | striptags(true) | escape | nl2br, 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-64' }) }}
+                  {{ Docs.docs({ 'theme': 'filled', 'href': '#', 'title': 'Тарифы АО «БКС Банк» для физических лиц в рамках Кредитного продукта «Кредит Онлайн»' | striptags(true) | escape | nl2br, 'type': 'PDF', 'size': '213 КБ', 'class': 'mb-64' }) }}
                 </div>
               </div>
             </div>
@@ -298,7 +307,7 @@
                     срок кредита от 13 до 60 месяцев.
                   </p></div>
 
-                </div>
+              </div>
               <div class="collapse__item">
                 <div class="collapse__control">
                   <div class="collapse__control-title">По каким ставкам предоставляется кредит?</div>
@@ -321,13 +330,16 @@
                 <div class="collapse__content">
                   <p class="text">
 
-                    Любое физическое лицо, имеющее постоянное место работы и удовлетворяющее требованиям к Заемщику, подав заявку на сайте Банка.
+                    Любое физическое лицо, имеющее постоянное место работы и удовлетворяющее требованиям к Заемщику,
+                    подав заявку на сайте Банка.
                   </p>
                 </div>
               </div>
               <div class="collapse__item">
                 <div class="collapse__control">
-                  <div class="collapse__control-title">Какие документы, потребуются для подачи заявки на кредит от заемщика? </div>
+                  <div class="collapse__control-title">Какие документы, потребуются для подачи заявки на кредит от
+                    заемщика?
+                  </div>
                   <div class="collapse__control-icon">
                     {{ Icon.icon({ 'name': 'dropdown' }) }}
                   </div>
@@ -353,13 +365,18 @@
                       <ul class="brand-list brand-list_type-numeric">
                         <li>заверенная копия трудовой книжки (все заполненные страницы);</li>
                         <li>трудовой договор (при работе по совместительству или отсутствии трудовой книжки);</li>
-                        <li>при наличии дохода на постоянной договорной основе документального подтверждения занятости по совместительству не требуется.</li>
+                        <li>при наличии дохода на постоянной договорной основе документального подтверждения занятости
+                          по совместительству не требуется.
+                        </li>
                       </ul>
                     </li>
                     <li>Один из документов, подтверждающих доход:
                       <ul class="brand-list brand-list_type-numeric">
-                        <li>справка 2-НДФЛ (не менее чем  за 6  месяцев);</li>
-                        <li>	заверенная банковская выписка по расчетному счету о ежемесячных поступлениях заработной платы, пенсий и других поступлений (с указанием в назначении платежа обоснования выплат) в течение 6 месяцев;</li>
+                        <li>справка 2-НДФЛ (не менее чем за 6 месяцев);</li>
+                        <li> заверенная банковская выписка по расчетному счету о ежемесячных поступлениях заработной
+                          платы, пенсий и других поступлений (с указанием в назначении платежа обоснования выплат) в
+                          течение 6 месяцев;
+                        </li>
                         <li>справка по форме банка (для суммы кредита не более 500 000 рублей);</li>
                         <li>
                           иные документы, официально подтверждающие получение дохода.
@@ -371,7 +388,9 @@
               </div>
               <div class="collapse__item">
                 <div class="collapse__control">
-                  <div class="collapse__control-title">За какой период должны быть предоставлены документы, подтверждающие доход? </div>
+                  <div class="collapse__control-title">За какой период должны быть предоставлены документы,
+                    подтверждающие доход?
+                  </div>
                   <div class="collapse__control-icon">
                     {{ Icon.icon({ 'name': 'dropdown' }) }}
                   </div>
@@ -385,7 +404,9 @@
               </div>
               <div class="collapse__item">
                 <div class="collapse__control">
-                  <div class="collapse__control-title">В течение какого срока после подачи документов Банком принимается решение? </div>
+                  <div class="collapse__control-title">В течение какого срока после подачи документов Банком принимается
+                    решение?
+                  </div>
                   <div class="collapse__control-icon">
                     {{ Icon.icon({ 'name': 'dropdown' }) }}
                   </div>
@@ -399,7 +420,8 @@
               </div>
               <div class="collapse__item">
                 <div class="collapse__control">
-                  <div class="collapse__control-title">Что я должен делать после принятия решения о выдаче кредита? </div>
+                  <div class="collapse__control-title">Что я должен делать после принятия решения о выдаче кредита?
+                  </div>
                   <div class="collapse__control-icon">
                     {{ Icon.icon({ 'name': 'dropdown' }) }}
                   </div>
@@ -413,7 +435,8 @@
               </div>
               <div class="collapse__item">
                 <div class="collapse__control">
-                  <div class="collapse__control-title">Есть ли какие-то ограничения по использованию денежных средств? </div>
+                  <div class="collapse__control-title">Есть ли какие-то ограничения по использованию денежных средств?
+                  </div>
                   <div class="collapse__control-icon">
                     {{ Icon.icon({ 'name': 'dropdown' }) }}
                   </div>
@@ -427,7 +450,7 @@
               </div>
               <div class="collapse__item">
                 <div class="collapse__control">
-                  <div class="collapse__control-title">Что нужно иметь при себе на сделке? </div>
+                  <div class="collapse__control-title">Что нужно иметь при себе на сделке?</div>
                   <div class="collapse__control-icon">
                     {{ Icon.icon({ 'name': 'dropdown' }) }}
                   </div>
@@ -441,7 +464,7 @@
               </div>
               <div class="collapse__item">
                 <div class="collapse__control">
-                  <div class="collapse__control-title">Какой график погашения кредита указан в кредитном договоре? </div>
+                  <div class="collapse__control-title">Какой график погашения кредита указан в кредитном договоре?</div>
                   <div class="collapse__control-icon">
                     {{ Icon.icon({ 'name': 'dropdown' }) }}
                   </div>
@@ -449,13 +472,16 @@
                 <div class="collapse__content">
                   <p class="text">
 
-                    В кредитном договоре предусмотрено ежемесячное погашение кредита, равными платежами. По умолчанию дата платежа будет совпадать с числом месяца, выпавшим на дату сделки.
+                    В кредитном договоре предусмотрено ежемесячное погашение кредита, равными платежами. По умолчанию
+                    дата платежа будет совпадать с числом месяца, выпавшим на дату сделки.
                   </p>
                 </div>
               </div>
               <div class="collapse__item">
                 <div class="collapse__control">
-                  <div class="collapse__control-title">Можно ли поменять дату платежа на удобную (ближе к заработной плате)? </div>
+                  <div class="collapse__control-title">Можно ли поменять дату платежа на удобную (ближе к заработной
+                    плате)?
+                  </div>
                   <div class="collapse__control-icon">
                     {{ Icon.icon({ 'name': 'dropdown' }) }}
                   </div>
@@ -469,7 +495,9 @@
               </div>
               <div class="collapse__item">
                 <div class="collapse__control">
-                  <div class="collapse__control-title">Когда после подписания кредитного договора я смогу воспользоваться деньгами? </div>
+                  <div class="collapse__control-title">Когда после подписания кредитного договора я смогу
+                    воспользоваться деньгами?
+                  </div>
                   <div class="collapse__control-icon">
                     {{ Icon.icon({ 'name': 'dropdown' }) }}
                   </div>
@@ -483,7 +511,7 @@
               </div>
               <div class="collapse__item">
                 <div class="collapse__control">
-                  <div class="collapse__control-title">Как происходит выдача кредита? </div>
+                  <div class="collapse__control-title">Как происходит выдача кредита?</div>
                   <div class="collapse__control-icon">
                     {{ Icon.icon({ 'name': 'dropdown' }) }}
                   </div>
@@ -497,7 +525,7 @@
               </div>
               <div class="collapse__item">
                 <div class="collapse__control">
-                  <div class="collapse__control-title">Как можно получить денежные кредитные средства? </div>
+                  <div class="collapse__control-title">Как можно получить денежные кредитные средства?</div>
                   <div class="collapse__control-icon">
                     {{ Icon.icon({ 'name': 'dropdown' }) }}
                   </div>
@@ -505,13 +533,14 @@
                 <div class="collapse__content">
                   <p class="text">
 
-                    снять наличными в кассе, осуществить безналичный перевод, тратить по карте, выпущенной к текущему счету, на который выдан кредит.
+                    снять наличными в кассе, осуществить безналичный перевод, тратить по карте, выпущенной к текущему
+                    счету, на который выдан кредит.
                   </p>
                 </div>
               </div>
               <div class="collapse__item">
                 <div class="collapse__control">
-                  <div class="collapse__control-title">Как начисляются проценты по кредиту? </div>
+                  <div class="collapse__control-title">Как начисляются проценты по кредиту?</div>
                   <div class="collapse__control-icon">
                     {{ Icon.icon({ 'name': 'dropdown' }) }}
                   </div>
@@ -519,13 +548,16 @@
                 <div class="collapse__content">
                   <p class="text">
 
-                    проценты начисляются на сумму задолженности по кредиту за фактический срок использования кредитных средств в соответствии с установленной процентной ставкой. Начисление процентов начинается с даты поступления кредитных средств на текущий счет, проценты начисляются на остаток ссудной задолженности по кредиту. На момент выдачи кредита остаток ссудной задолженности равен сумме выданного кредита.
+                    проценты начисляются на сумму задолженности по кредиту за фактический срок использования кредитных
+                    средств в соответствии с установленной процентной ставкой. Начисление процентов начинается с даты
+                    поступления кредитных средств на текущий счет, проценты начисляются на остаток ссудной задолженности
+                    по кредиту. На момент выдачи кредита остаток ссудной задолженности равен сумме выданного кредита.
                   </p>
                 </div>
               </div>
               <div class="collapse__item">
                 <div class="collapse__control">
-                  <div class="collapse__control-title">Как осуществлять погашение кредита? </div>
+                  <div class="collapse__control-title">Как осуществлять погашение кредита?</div>
                   <div class="collapse__control-icon">
                     {{ Icon.icon({ 'name': 'dropdown' }) }}
                   </div>
@@ -533,13 +565,17 @@
                 <div class="collapse__content">
                   <p class="text">
 
-                    В кредитном договоре у Вас будет указана дата погашения и размер ежемесячного платежа. Вам нужно будет ежемесячно, начиная с месяца, следующего за месяцем выдачи кредита, вносить на свой карточный счет в Банке сумму ежемесячного платежа, чтобы в течение дня, являющегося датой погашения, эта сумма находилась на текущем счете. Банк в течение дня списывает сумму ежемесячного платежа в счет погашения кредита.
+                    В кредитном договоре у Вас будет указана дата погашения и размер ежемесячного платежа. Вам нужно
+                    будет ежемесячно, начиная с месяца, следующего за месяцем выдачи кредита, вносить на свой карточный
+                    счет в Банке сумму ежемесячного платежа, чтобы в течение дня, являющегося датой погашения, эта сумма
+                    находилась на текущем счете. Банк в течение дня списывает сумму ежемесячного платежа в счет
+                    погашения кредита.
                   </p>
                 </div>
               </div>
               <div class="collapse__item">
                 <div class="collapse__control">
-                  <div class="collapse__control-title">Могу ли я досрочно погасить кредит? И как это сделать? </div>
+                  <div class="collapse__control-title">Могу ли я досрочно погасить кредит? И как это сделать?</div>
                   <div class="collapse__control-icon">
                     {{ Icon.icon({ 'name': 'dropdown' }) }}
                   </div>
@@ -547,13 +583,18 @@
                 <div class="collapse__content">
                   <p class="text">
 
-                    Вы можете досрочно частично или полностью погасить кредит. Частичное погашение осуществляется строго в дату платежа, полное погашение осуществляется в любую дату. При частичном погашении ограничений на сумму нет. Для досрочного погашения кредита не менее чем за 3 рабочих дня до планируемой даты досрочного погашения Вам необходимо обратиться к сотруднику операционного подразделения Банка, заполнить заявление на досрочное погашение кредита и внести сумму досрочного погашения на текущий счет.
+                    Вы можете досрочно частично или полностью погасить кредит. Частичное погашение осуществляется строго
+                    в дату платежа, полное погашение осуществляется в любую дату. При частичном погашении ограничений на
+                    сумму нет. Для досрочного погашения кредита не менее чем за 3 рабочих дня до планируемой даты
+                    досрочного погашения Вам необходимо обратиться к сотруднику операционного подразделения Банка,
+                    заполнить заявление на досрочное погашение кредита и внести сумму досрочного погашения на текущий
+                    счет.
                   </p>
                 </div>
               </div>
               <div class="collapse__item">
                 <div class="collapse__control">
-                  <div class="collapse__control-title">Что меня ожидает в случае просрочки платежа? </div>
+                  <div class="collapse__control-title">Что меня ожидает в случае просрочки платежа?</div>
                   <div class="collapse__control-icon">
                     {{ Icon.icon({ 'name': 'dropdown' }) }}
                   </div>
@@ -561,7 +602,8 @@
                 <div class="collapse__content">
                   <p class="text">
 
-                    В случае возникновения просроченной задолженности по оплате кредита на сумму просроченной задолженности начисляется штраф за каждый календарный день просрочки платежа из расчета 20% годовых
+                    В случае возникновения просроченной задолженности по оплате кредита на сумму просроченной
+                    задолженности начисляется штраф за каждый календарный день просрочки платежа из расчета 20% годовых
                   </p>
                 </div>
               </div>
