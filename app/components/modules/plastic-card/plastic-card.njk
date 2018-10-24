@@ -11,7 +11,7 @@
     {% set mods = '' %}
     {% set mods %}
       {% for key, value in options.mods -%}
-        {{ class_sep() }} feature_{{ key }}-{{ value }}
+        {{ class_sep() }} plastic-card_{{ key }}-{{ value }}
       {%- endfor %}
     {% endset %}
   {% endif %}
@@ -19,70 +19,66 @@
   {% if options.theme === 'blue' %}
 
     <div class="plastic-card plastic-card_theme-blue {{ mods | safe }}">
-      <div class="plastic-card__wrapper">
-        <div class="section__row">
-          <div class="plastic-card__content">
-            <div class="plastic-card__header">
-              {{ Heading.heading({ 'title': options.title }) }}
-              <div class="plastic-card__category">
-                {% for key, value in options.category %}
-                  {{ Button.button({ 'title': value, 'mods': { 'view': 'outlined', 'size': 'mini' }, 'attr': { 'category': key } }) }}
-                {% endfor %}
-              </div>
-            </div>
-            <div class="plastic-card__features">
-              {% for feature in options.features %}
-                {{ Feature.feature({ 'title': feature.title | striptags(true) | escape | nl2br, 'text': feature.text | striptags(true) | escape | nl2br, 'mods': feature.mods, 'class': feature.class }) }}
+      <div class="section__row">
+        <div class="plastic-card__content">
+          <div class="plastic-card__header">
+            {{ Heading.heading({ 'title': options.title }) }}
+            <div class="plastic-card__category">
+              {% for key, value in options.category %}
+                {{ Button.button({ 'title': value, 'mods': { 'view': 'outlined', 'size': 'mini' }, 'attr': { 'category': key } }) }}
               {% endfor %}
             </div>
-            <div class="plastic-card__controls">
-              {{ Button.button({ 'title': options.button, 'mods': { 'theme': 'white' } }) }}
-              {{ Button.button({ 'href': options.href, 'title': 'Подробнее', 'mods': { 'view': 'text', 'theme': 'white' } }) }}
+          </div>
+          <div class="plastic-card__features">
+            {% for feature in options.features %}
+              {{ Feature.feature({ 'title': feature.title | striptags(true) | escape | nl2br, 'text': feature.text | striptags(true) | escape | nl2br, 'mods': feature.mods, 'class': feature.class }) }}
+            {% endfor %}
+          </div>
+          <div class="plastic-card__controls">
+            {{ Button.button({ 'title': options.button, 'mods': { 'theme': 'white' } }) }}
+            {{ Button.button({ 'href': options.href, 'title': 'Подробнее', 'mods': { 'view': 'text', 'theme': 'white' } }) }}
+          </div>
+        </div>
+        {% if options.image %}
+          <div class="plastic-card__image">
+            <div class="illustration">
+              {{ Icon.inlineSvg({ 'path': [options.image], 'class': 'illustration-image' }) }}
             </div>
           </div>
-          {% if options.image %}
-            <div class="plastic-card__image">
-              <div class="illustration">
-                {{ Icon.inlineSvg({ 'path': [options.image], 'class': 'illustration-image' }) }}
-              </div>
-            </div>
-          {% endif %}
-        </div>
+        {% endif %}
       </div>
     </div>
 
   {% else %}
 
     <div class="plastic-card {{ mods | safe }}">
-      <div class="plastic-card__wrapper">
-        <div class="section__row">
-          <div class="plastic-card__content">
-            <div class="plastic-card__header">
-              {{ Heading.heading({ 'title': options.title }) }}
-              <div class="plastic-card__category">
-                {% for key, value in options.category %}
-                  {{ Button.button({ 'title': value, 'mods': { 'theme': 'gray', 'view': 'outlined', 'size': 'mini' }, 'attr': { 'category': key } }) }}
-                {% endfor %}
-              </div>
-            </div>
-            <div class="plastic-card__features">
-              {% for feature in options.features %}
-                {{ Feature.feature({ 'title': feature.title | striptags(true) | escape | nl2br, 'text': feature.text | striptags(true) | escape | nl2br, 'mods': feature.mods, 'class': feature.class }) }}
+      <div class="section__row">
+        <div class="plastic-card__content">
+          <div class="plastic-card__header">
+            {{ Heading.heading({ 'title': options.title }) }}
+            <div class="plastic-card__category">
+              {% for key, value in options.category %}
+                {{ Button.button({ 'title': value, 'mods': { 'theme': 'gray', 'view': 'outlined', 'size': 'mini' }, 'attr': { 'category': key } }) }}
               {% endfor %}
             </div>
-            <div class="plastic-card__controls">
-              {{ Button.button({ 'title': options.button, 'mods': { 'theme': 'default' } }) }}
-              {{ Button.button({ 'href': options.href, 'title': 'Подробнее', 'mods': { 'view': 'text', 'theme': 'default' } }) }}
+          </div>
+          <div class="plastic-card__features">
+            {% for feature in options.features %}
+              {{ Feature.feature({ 'title': feature.title | striptags(true) | escape | nl2br, 'text': feature.text | striptags(true) | escape | nl2br, 'mods': feature.mods, 'class': feature.class }) }}
+            {% endfor %}
+          </div>
+          <div class="plastic-card__controls">
+            {{ Button.button({ 'title': options.button, 'mods': { 'theme': 'default' } }) }}
+            {{ Button.button({ 'href': options.href, 'title': 'Подробнее', 'mods': { 'view': 'text', 'theme': 'default' } }) }}
+          </div>
+        </div>
+        {% if options.image %}
+          <div class="plastic-card__image">
+            <div class="illustration">
+              {{ Icon.inlineSvg({ 'path': [options.image], 'class': 'illustration-image' }) }}
             </div>
           </div>
-          {% if options.image %}
-            <div class="plastic-card__image">
-              <div class="illustration">
-                {{ Icon.inlineSvg({ 'path': [options.image], 'class': 'illustration-image' }) }}
-              </div>
-            </div>
-          {% endif %}
-        </div>
+        {% endif %}
       </div>
     </div>
 

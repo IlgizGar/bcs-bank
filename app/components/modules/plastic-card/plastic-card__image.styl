@@ -1,14 +1,61 @@
 .plastic-card .plastic-card__image
 
+  position: relative
+
   col()
   @media (min-width: 1280px)
     size(6)
-    shift-left(-6)
+    shift-left(-5)
+
+  @media (min-width: 992px) and (max-width: 1279px)
+    size(6)
+    shift-left(-4)
+    shift-right(-2)
+
+  @media (min-width: 768px) and (max-width: 991px)
+    size(3)
+    //shift-left(-1)
+    shift-right(-2)
+
+  @media (max-width: 767px)
+    size(12)
+    display: flex
+    justify-content: center
+
+    margin: 16px auto
 
   .illustration
     z-index: 1
     position: absolute
     right: 20px
+
+    @media (min-width: 1280px)
+      top: -106px
+
+      height: 580px
+      width: 580px
+
+    @media (min-width: 992px) and (max-width: 1279px)
+      top: -106px
+
+      height: 490px
+      width: 490px
+
+    @media (min-width: 768px) and (max-width: 991px)
+      top: -46px
+
+      height: 380px
+      width: 380px
+
+
+    @media (max-width: 767px)
+      order: 0
+      position: relative
+      right: unset
+
+      width: 154px
+      height: 154px
+
 
     .illustration-image
       position: absolute

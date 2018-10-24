@@ -73,7 +73,7 @@
                 ] }) }}
               {{ PlasticCard.plasticCard({ 'title': 'Цифровой Signature',
                 'category': {'lifestyle': 'Стиль жизни', 'vip': 'VIP'},
-                'image': 'assets/illustrations/digital_signature.svg',
+                'image': 'assets/illustrations/digital_signature2.png',
                 'button': 'Оформите карту',
                 'features': [
                   { 'title': '12%',
@@ -153,89 +153,103 @@
           </div>
           <div id="packets" class="tabs__item js-tab state_invisible">
             <div class="page__container">
-              <div class="section__row">
-                {{ PlasticCard.plasticCard({ 'title': 'MORE',
-                  'theme': 'blue',
-                  'button': 'Оформите пакет',
-                  'features': [
-                    { 'title': 'От 0#ruble',
-                      'text': 'стоимость \n за обслуживание',
-                      'mods': {'type': 'normal', 'theme': 'light'},
-                      'class': 'plastic-card__feature'},
-                    { 'title': '0#ruble',
-                      'text': 'страхование \n путешествующих',
-                      'mods': {'type': 'normal', 'theme': 'light'},
-                      'class': 'plastic-card__feature'},
-                    { 'title': '3%',
-                      'text': 'кэшбек \n за покупки',
-                      'mods': {'type': 'normal', 'theme': 'light'},
-                      'class': 'plastic-card__feature'}
-                  ] }) }}
-                {{ PlasticCard.plasticCard({ 'title': 'MORE Prime',
-                  'button': 'Оформите пакет',
-                  'features': [
-                    { 'title': 'От 0#ruble',
-                      'text': 'стоимость \n за обслуживание',
-                      'mods': {'type': 'normal'},
-                      'class': 'plastic-card__feature'},
-                    { 'title': '0#ruble',
-                      'text': 'посещение Lounge Key \n залов по всему миру',
-                      'mods': {'type': 'normal'},
-                      'class': 'plastic-card__feature'},
-                    { 'title': '5%',
-                      'text': 'кэшбек \n за покупки',
-                      'mods': {'type': 'normal'},
-                      'class': 'plastic-card__feature'}
-                  ] }) }}
-                {{ PlasticCard.plasticCard({ 'title': 'Брокер',
-                  'button': 'Оформите пакет',
-                  'features': [
-                    { 'title': 'От 0#ruble',
-                      'text': 'стоимость \n за обслуживание',
-                      'mods': {'type': 'normal'},
-                      'class': 'plastic-card__feature'},
-                    { 'title': 'До 10%',
-                      'text': 'возвращаем бонус \n от покупок',
-                      'mods': {'type': 'normal'},
-                      'class': 'plastic-card__feature'},
-                    { 'title': '0#ruble',
-                      'text': 'переводы в БКС \n Онлайн и Мобильном',
-                      'mods': {'type': 'normal'},
-                      'class': 'plastic-card__feature'}
-                  ] }) }}
-                {{ PlasticCard.plasticCard({ 'title': 'Цифровой Прайм',
-                  'button': 'Оформите пакет',
-                  'features': [
-                    { 'title': 'От 0#ruble',
-                      'text': 'стоимость \n обслуживания',
-                      'mods': {'type': 'normal'},
-                      'class': 'plastic-card__feature'},
-                    { 'title': '0#ruble',
-                      'text': 'доступ в Priority Pass \n залы по всему миру',
-                      'mods': {'type': 'normal'},
-                      'class': 'plastic-card__feature'},
-                    { 'title': '12%',
-                      'text': 'от покупок \n в любимых категориях',
-                      'mods': {'type': 'normal'},
-                      'class': 'plastic-card__feature'}
-                  ] }) }}
-                {{ PlasticCard.plasticCard({ 'title': 'Цифровой Оптимум',
-                  'button': 'Оформите пакет',
-                  'features': [
-                    { 'title': 'От 0#ruble',
-                      'text': 'стоимость \n обслуживания',
-                      'mods': {'type': 'normal'},
-                      'class': 'plastic-card__feature'},
-                    { 'title': '0#ruble',
-                      'text': 'комиссия за онлайн \n платежи и переводы',
-                      'mods': {'type': 'normal'},
-                      'class': 'plastic-card__feature'},
-                    { 'title': '7%',
-                      'text': 'от покупок \n в любимых категориях',
-                      'mods': {'type': 'normal'},
-                      'class': 'plastic-card__feature'}
-                  ] }) }}
-              </div>
+              {{ PlasticCard.plasticCard({
+                'title': 'MORE',
+                'theme': 'blue',
+                'button': 'Оформите пакет',
+                'mods': {
+                  'theme': 'simple'
+                },
+                'features': [
+                  { 'title': 'От 0#ruble',
+                    'text': 'стоимость \n за обслуживание',
+                    'mods': {'type': 'normal', 'theme': 'light'},
+                    'class': 'plastic-card__feature'},
+                  { 'title': '0#ruble',
+                    'text': 'страхование \n путешествующих',
+                    'mods': {'type': 'normal', 'theme': 'light'},
+                    'class': 'plastic-card__feature'},
+                  { 'title': '3%',
+                    'text': 'кэшбек \n за покупки',
+                    'mods': {'type': 'normal', 'theme': 'light'},
+                    'class': 'plastic-card__feature'}
+                ] }) }}
+              {{ PlasticCard.plasticCard({ 'title': 'MORE Prime',
+                'button': 'Оформите пакет',
+                'mods': {
+                  'theme': 'simple'
+                },
+                'features': [
+                  { 'title': 'От 0#ruble',
+                    'text': 'стоимость \n за обслуживание',
+                    'mods': {'type': 'normal'},
+                    'class': 'plastic-card__feature'},
+                  { 'title': '0#ruble',
+                    'text': 'посещение Lounge Key \n залов по всему миру',
+                    'mods': {'type': 'normal'},
+                    'class': 'plastic-card__feature'},
+                  { 'title': '5%',
+                    'text': 'кэшбек \n за покупки',
+                    'mods': {'type': 'normal'},
+                    'class': 'plastic-card__feature'}
+                ] }) }}
+              {{ PlasticCard.plasticCard({ 'title': 'Брокер',
+                'button': 'Оформите пакет',
+                'mods': {
+                  'theme': 'simple'
+                },
+                'features': [
+                  { 'title': 'От 0#ruble',
+                    'text': 'стоимость \n за обслуживание',
+                    'mods': {'type': 'normal'},
+                    'class': 'plastic-card__feature'},
+                  { 'title': 'До 10%',
+                    'text': 'возвращаем бонус \n от покупок',
+                    'mods': {'type': 'normal'},
+                    'class': 'plastic-card__feature'},
+                  { 'title': '0#ruble',
+                    'text': 'переводы в БКС \n Онлайн и Мобильном',
+                    'mods': {'type': 'normal'},
+                    'class': 'plastic-card__feature'}
+                ] }) }}
+              {{ PlasticCard.plasticCard({ 'title': 'Цифровой Прайм',
+                'button': 'Оформите пакет',
+                'mods': {
+                  'theme': 'simple'
+                },
+                'features': [
+                  { 'title': 'От 0#ruble',
+                    'text': 'стоимость \n обслуживания',
+                    'mods': {'type': 'normal'},
+                    'class': 'plastic-card__feature'},
+                  { 'title': '0#ruble',
+                    'text': 'доступ в Priority Pass \n залы по всему миру',
+                    'mods': {'type': 'normal'},
+                    'class': 'plastic-card__feature'},
+                  { 'title': '12%',
+                    'text': 'от покупок \n в любимых категориях',
+                    'mods': {'type': 'normal'},
+                    'class': 'plastic-card__feature'}
+                ] }) }}
+              {{ PlasticCard.plasticCard({ 'title': 'Цифровой Оптимум',
+                'button': 'Оформите пакет',
+                'mods': {
+                  'theme': 'simple'
+                },
+                'features': [
+                  { 'title': 'От 0#ruble',
+                    'text': 'стоимость \n обслуживания',
+                    'mods': {'type': 'normal'},
+                    'class': 'plastic-card__feature'},
+                  { 'title': '0#ruble',
+                    'text': 'комиссия за онлайн \n платежи и переводы',
+                    'mods': {'type': 'normal'},
+                    'class': 'plastic-card__feature'},
+                  { 'title': '7%',
+                    'text': 'от покупок \n в любимых категориях',
+                    'mods': {'type': 'normal'},
+                    'class': 'plastic-card__feature'}
+                ] }) }}sal
             </div>
           </div>
         </div>
