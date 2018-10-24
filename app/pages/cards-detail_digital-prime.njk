@@ -116,7 +116,8 @@
 
           <section class="section page__section">
             <div class="page__container">
-              {{ Heading.heading({ 'title': 'Как открыть пакет «Цифровой Прайм» \n и пользоваться' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered' }) }}
+              {{ Heading.heading({ 'title': 'Как открыть пакет «Цифровой Прайм» \n и пользоваться' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered hidden-mobile' }) }}
+              {{ Heading.heading({ 'title': 'Как оформить заявку?', 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered hidden-desktop' }) }}
             </div>
             {{ BrandFeatures.brandFeatures({ 'items': [
               {
@@ -143,10 +144,10 @@
             ] }) }}
           </section>
           <section class="section section_theme-white-smoke section_padding-default page__section">
-            <div class="dcard-request">
+            <div class="products-detail__request">
               <div class="page__container">
                 {{ Heading.heading({ 'title': 'Заявка на пакет «Цифровой Прайм»' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
-                <div class="text mb-56">К данному пакету услуг прилагается банковская карта «Visa Infinite»
+                <div class="text text_theme-gray mb-56">К данному пакету услуг прилагается банковская карта «Visa Infinite»
                 </div>
                 <div class="section__row">
                   <div class="form form_layout-narrow js-form">

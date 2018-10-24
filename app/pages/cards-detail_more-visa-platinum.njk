@@ -152,7 +152,8 @@
 
           <section class="section page__section">
             <div class="page__container">
-              {{ Heading.heading({ 'title': 'Оформите заявку - получите \n карту на следующий день' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered' }) }}
+              {{ Heading.heading({ 'title': 'Оформите заявку - получите \n карту на следующий день', 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered hidden-mobile' }) }}
+              {{ Heading.heading({ 'title': 'Как оформить заявку?', 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered hidden-desktop' }) }}
             </div>
             {{ BrandFeatures.brandFeatures({ 'items': [
               {
@@ -179,10 +180,10 @@
             ] }) }}
           </section>
           <section class="section section_theme-white-smoke section_padding-default page__section">
-            <div class="dcard-request">
+            <div class="products-detail__request">
               <div class="page__container">
-                {{ Heading.heading({ 'title': 'Заявка на карту' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
-                <div class="text mb-56">Банковскя карта MORE Visa Platinum с повышенным статусом <br> и набором
+                {{ Heading.heading({ 'title': 'Заявка на карту', 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+                <div class="text text_theme-gray mb-56">Банковскя карта MORE Visa Platinum с повышенным статусом <br> и набором
                   привилегий. Открывается в
                   рамках {{ Button.button({ 'href': '/cards-detail_more.html', 'title': 'пакета услуг "MORE".', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' }, 'class': 'products-detail__request-link' }) }}
                 </div>

@@ -2,14 +2,22 @@
   flex-direction: column
 
   color: $color_elem
-  @media(min-width 768px)
+
+  @media(min-width 992px)
     col()
     size(4)
+
+  @media (max-width: 991px)
+    margin-left: 0
+    margin-right: 0
+
   & > .text
 
     padding-right: 25%
+
     @media(max-width 991px)
       padding-right: 0
+
     .icon
       width: 8px
       height: 12px
