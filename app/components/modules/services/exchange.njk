@@ -8,7 +8,7 @@
       {#{ 'title': 'Отделения банка', 'value': 'bank', 'attr': { 'prefix': 'в', 'title': 'Отделениях банка' } }] }) }}#}
   <p class="card__subtitle mt-0">До 13 апреля 2018</p>
 </div>
-<div class="services__block services__block_theme-exchange">
+<div class="services__block services__block_theme-exchange" id="exchange-service">
   <table class="services__table">
     <thead>
     <tr>
@@ -18,26 +18,26 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-      <td class="services__table-currency">USD</td>
-      <td>{{ Currency.currency({ 'value': '45.6', 'state': 'rise' }) }}</td>
-      <td>{{ Currency.currency({ 'value': '54.2', 'state': 'fall'}) }}</td>
-    </tr>
-    <tr>
-      <td class="services__table-currency">EUR</td>
-      <td>{{ Currency.currency({ 'value': '5.9', 'state': 'rise' }) }}</td>
-      <td>{{ Currency.currency({ 'value': '6', 'state': 'rise' }) }}</td>
-    </tr>
-    <tr>
-      <td class="services__table-currency">GBR</td>
-      <td>{{ Currency.currency({ 'value': '5.9', 'state': 'rise' }) }}</td>
-      <td>{{ Currency.currency({ 'value': '6', 'state': 'rise' }) }}</td>
-    </tr>
-    <tr>
-      <td class="services__table-currency">CHF</td>
-      <td>{{ Currency.currency({ 'value': '5.9', 'state': 'rise' }) }}</td>
-      <td>{{ Currency.currency({ 'value': '6', 'state': 'rise' }) }}</td>
-    </tr>
+      <tr>
+        <td class="services__table-currency">USD</td>
+        <td>{{ Currency.currency({ 'value': '45.6', 'state': 'rise' }) }}</td>
+        <td>{{ Currency.currency({ 'value': '54.2', 'state': 'fall'}) }}</td>
+      </tr>
+      <tr>
+        <td class="services__table-currency">EUR</td>
+        <td>{{ Currency.currency({ 'value': '5.9', 'state': 'rise' }) }}</td>
+        <td>{{ Currency.currency({ 'value': '6', 'state': 'rise' }) }}</td>
+      </tr>
+      <tr>
+        <td class="services__table-currency">GBR</td>
+        <td>{{ Currency.currency({ 'value': '5.9', 'state': 'rise' }) }}</td>
+        <td>{{ Currency.currency({ 'value': '6', 'state': 'rise' }) }}</td>
+      </tr>
+      <tr>
+        <td class="services__table-currency">CHF</td>
+        <td>{{ Currency.currency({ 'value': '5.9', 'state': 'rise' }) }}</td>
+        <td>{{ Currency.currency({ 'value': '6', 'state': 'rise' }) }}</td>
+      </tr>
     </tbody>
   </table>
 </div>
