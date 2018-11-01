@@ -57,8 +57,6 @@ export class FixService {
       this.updateTableData(response);
       setTimeout(() => {
         this.getFixCources();
-        console.log('USD', getPriceValue(response.usd.buy), getPriceValue(response.usd.sell ));
-        console.log('EUR', getPriceValue(response.eur.buy), getPriceValue(response.eur.sell ));
       }, this.updateTime);
 
     })
@@ -108,7 +106,7 @@ export class FixService {
 
 // Вспомогательные методы
 const getPriceValue = (value) => {
-  const valueParts = value.toString().split('.');
+  const valueParts = value.toFixed(2).toString().split('.');
   const firstPart = `<span>${valueParts[0]}</span>`;
   const secondPart = valueParts[1] ? `<span>,${valueParts[1]}</span>` : '';
   return firstPart + secondPart
