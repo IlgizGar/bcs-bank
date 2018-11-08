@@ -7,8 +7,9 @@ module.exports = (elem) => {
     constructor(selector) {
       this.form = $(selector);
       this.validator = Validator(this.form);
-      this.msgSucess = this.form.closest('.js-form').find('.js-form-success');
-      this.msgError = this.form.closest('.js-form').find('.js-form-error');
+      this.msgSuccess = $('.js-products-success');
+      this.msgError = $('.js-products-error');
+      this.formType = this.form.closest('.js-form').data('form');
 
       this.validateForm();
       this.blockEvents(); // Обработчик событий не свзяанных непосредственно с работой формы
@@ -31,17 +32,42 @@ module.exports = (elem) => {
     }
 
     validateForm() {
-      const submitHandler = (form) => {
-        // const data = this.form.serializeArray();
-        // this.msgError.removeClass('state_hidden');
-        // this.form.addClass('state_hidden');
-        if (form.getAttribute('data-fix-course') !== undefined) {
-          const redirectUrl = `${form.getAttribute('action')}?partner=bcs-bank&operation=${form.querySelector('.radio__field:checked').id.match(/buy|sell/g)}&amount=${form.querySelector('.js-course-input').value.replace(' ', '')}&currency=${form.querySelector('.js-course-field .js-title').innerText}`;
-          document.location.href = redirectUrl;
-        }
-      };
+      let submitHandler = null;
 
-      this.validator.validateForm(submitHandler);
+      if (this.formType !== undefined) {
+        if (this.formType === 'fix-course') {
+          submitHandler = (form) => {
+            const redirectUrl = `${form.getAttribute('action')}?partner=bcs-bank&operation=${form.querySelector('.radio__field:checked').id.match(/buy|sell/g)}&amount=${form.querySelector('.js-course-input').value.replace(' ', '')}&currency=${form.querySelector('.js-course-field .js-title').innerText}`;
+            document.location.href = redirectUrl;
+          }
+        }
+
+        if (this.formType === 'cards') {
+          submitHandler = (form) => {
+            $.ajax({
+              method: 'post',
+              url: form.getAttribute('action'),
+              dataType: 'json',
+              data: form.serializeArray(),
+              success: function (data) {
+                form.reset();
+                if (data.success === 1) {
+                  this.msgSuccess.modal();
+                } else {
+                  this.msgError.modal();
+                }
+              },
+              error: function () {
+                this.msgError.modal();
+              }
+            });
+            
+            return false;
+          }
+        }
+
+        this.validator.validateForm(submitHandler);
+      }
     }
 
     blockEvents() {
