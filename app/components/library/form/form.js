@@ -48,17 +48,17 @@ module.exports = (elem) => {
               method: 'post',
               url: form.getAttribute('action'),
               dataType: 'json',
-              data: form.serializeArray(),
+              data: $(form).serializeArray(),
               success: function (data) {
                 form.reset();
                 if (data.success === 1) {
-                  this.msgSuccess.modal();
+                  $('.js-products-success').modal();
                 } else {
-                  this.msgError.modal();
+                  $('.js-products-error').modal();
                 }
               },
               error: function () {
-                this.msgError.modal();
+                $('.js-products-error').modal();
               }
             });
             
