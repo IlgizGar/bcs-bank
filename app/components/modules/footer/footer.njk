@@ -159,6 +159,9 @@
   {{ Heading.heading({ 'title': 'Присоединяйтесь к нам в социальных сетях', 'class': 'mt-56' }) }}
   {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'class': 'mt-32'}) }}
 </div>
+<div id="limits" class="modal services-limits">
+  {% include "../services/limits.njk" %}
+</div>
 
 {% include "../select-city/select-city.njk" %}
 {% include "../products/select-filter/select-filter.njk" %}

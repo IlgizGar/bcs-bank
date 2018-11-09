@@ -6,16 +6,13 @@
 <div class="services__transfer js-transfer">
   <div class="services__transfer-bkg"></div>
   <div class="services__transfer-heading">
-    {{ Heading.heading({ 'title': 'Мгновенный перевод \n с карты на карту' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'none', 'theme': 'light' } }) }}
-    {{ Button.button({ 'href': '#', 'title': 'Лимиты и тарифы', 'mods': { 'type': 'link', 'theme': 'white', 'view': 'text' }, 'class': 'services__transfer-link' }) }}
+    {{ Heading.heading({ 'title': 'Мгновенный перевод \n с карты на карту', 'mods': { 'type': 'default', 'margin': 'none', 'theme': 'light' } }) }}
+    {{ Button.button({ 'href': '#limits', 'title': 'Лимиты и тарифы', 'mods': { 'type': 'link', 'theme': 'white', 'view': 'text' }, 'class': 'services__transfer-link js-open-modal' }) }}
   </div>
   <div class="js-form">
     <form>
       <div class="services__transfer-cards section__row">
         <div class="services__credit-card services__credit-card_type-sender">
-          <button type="button" class="services__transfer-rotate-btn">
-            {{ Icon.icon({ 'name': 'rotate', 'elementClass': 'services__transfer-rotate-icon' }) }}
-          </button>
           {{ Heading.heading({ 'title': 'Данные отправителя', 'mods': { 'type': 'small', 'margin': 'none', 'theme': 'default' } }) }}
           {{ Input.input({ 'label': 'Номер карты', 'class': 'services__card-sender', 'field': {'class': 'js-card-masked', 'name': 'card_sender', 'required': 'required'} }) }}
           {{ Input.input({ 'label': 'CVV/CVV2', 'class': 'services__card-code mt-16', 'field': {'class': 'js-cvv-masked', 'name': 'card_cvv', 'required': 'required', 'maxlength': '3'} }) }}
