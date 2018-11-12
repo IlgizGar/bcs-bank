@@ -1,7 +1,18 @@
 .plastic-card .plastic-card__content
 
-  @media (min-width: 992px)
-    padding-top: 54px
+  col()
+  @media (min-width: 991px)
+    size(11)
 
-  @media (max-width: 991px)
-    padding-top: 16px
+  @media (min-width: 768px) and (max-width: 991px)
+    size(10)
+
+  @media (max-width: 767px)
+    order: 1
+    size(12)
+
+  //@media (min-width: 992px)
+  //  padding-top: 54px
+  //
+  //@media (max-width: 991px)
+  //  padding-top: 16px

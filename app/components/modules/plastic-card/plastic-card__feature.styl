@@ -1,24 +1,27 @@
 .plastic-card .plastic-card__content
   .plastic-card__features
     .plastic-card__feature
-      @media (min-width: 768px)
+
+
+      @media (min-width: 992px)
         margin-right: 32px
         width: 185px
+
+      @media (min-width: 768px) and (max-width: 991px)
+        margin-right: 24px
+        &:nth-child(3)
+          display: none
+
       @media (max-width: 767px)
-        display: none
-        margin-right: 0
-        width: 50%
+        margin-right: 24px
 
-        &:first-child
-          margin-right: 10px
+        .feature__title
+          margin-bottom: 0
+          line-height: 1.5
+        .feature__text
+          line-height: 1.67
 
-        &:first-child,
-        &:nth-child(2)
-          display: block
-          .feature__title
-            margin-bottom: 0
-            line-height: 1.5
-          .feature__text
-            line-height: 1.67
-
+      @media (max-width: 479px)
+        &:nth-child(3)
+          display: none
 

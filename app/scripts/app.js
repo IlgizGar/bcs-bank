@@ -11,6 +11,7 @@ import Contact from '../components/library/contact/contact';
 import Dropdown from '../components/library/dropdown/dropdown';
 import Context from '../components/library/context/context';
 import Carousel from '../components/library/carousel/carousel';
+import {FixService, ExchangeService} from '../components/modules/services/services';
 import MediaSlider from '../components/library/media-slider/media-slider';
 import TableSort from '../components/library/table/table';
 import Collapse from '../components/library/collapse/collapse';
@@ -176,4 +177,13 @@ $(() => {
       }
     });
   }
+
+  global.services = {};
+  if ($('#exchange-service').length) {
+    global.services.exchange = new ExchangeService();
+  }
+  if ($('#fix-service').length) {
+    global.services.exchange = new FixService();
+  }
+
 });

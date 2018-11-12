@@ -18,9 +18,10 @@
       <section class="section page__section page__section_theme-large"> {# Чтобы установить картинку на фон, необходимо добавить style="backgraun-image: url(путь до картинки)" #}
         <div class="section__header section__header_theme-blue">
           <div class="page__container page__container_type-header">
-            {{ Heading.heading({ 'tag': 'h1', 'title': 'О БКС Банке' | striptags(true) | escape | nl2br, 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
-            <div class="page__features">
-              {{ Feature.feature({ 'title': 'ruBBB+', 'text': 'Pейтинг высокой кредитоспособности' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': ''}) }} {{ Feature.feature({ 'title': '29 лет', 'text': 'На рынке с 1989 года' | striptags(true) | escape | nl2br, 'mods': {'type': 'normal'}, 'class': ''}) }}
+            {{ Heading.heading({ 'tag': 'h1', 'title': 'О БКС Банке', 'mods': { 'type': 'large' } }) }}
+            <div class="features features_role-simple">
+              {{ Feature.feature({ 'title': 'ruBBB+', 'text': 'Pейтинг высокой \n кредитоспособности', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+              {{ Feature.feature({ 'title': '29 лет', 'text': 'На рынке \n с 1989 года', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
             </div>
           </div>
         </div>
@@ -42,9 +43,9 @@
             <div class="section__content section__content_theme-centered">
               <div class="about-bank__carousel carousel carousel_type-mobile">
                 <div class="js-carousel" data-id="about-bank" data-breakpoint="992">
-                  {{ Feature.feature({ 'title': 'Внимательное обслуживание', 'text': 'Высокий уровень обслуживания клиентов и оказания услуг. \n Мы делаем сложный банковский мир доступным каждому клиенту.' | striptags(true) | escape | nl2br, 'mods': {'type': 'iconed'}, 'iconPath': 'assets/images/svg/shield-image.svg', 'class': 'feature_mobile-centered mb-56 mobile-mb-0'}) }}
-                  {{ Feature.feature({ 'title': 'Широкий спектр услуг', 'text': 'Продукты и услуги для частных и корпоративных клиентов: \n вклады, кредитование, денежные переводы и операции с ценными бумагами.' | striptags(true) | escape | nl2br, 'mods': {'type': 'iconed'}, 'iconPath': 'assets/images/svg/shield-image.svg', 'class': 'feature_mobile-centered mb-56 mobile-mb-0'}) }}
-                  {{ Feature.feature({ 'title': 'Индивидуальный подход', 'text': 'Мы учитываем потребности каждого клиента, и готовы разрабатывать нестандартные решения с использованием любых финансовых инструментов.' | striptags(true) | escape | nl2br, 'mods': {'type': 'iconed'}, 'iconPath': 'assets/images/svg/shield-image.svg', 'class': 'feature_mobile-centered mobile-mb-0'}) }}
+                  {{ Feature.feature({ 'title': 'Внимательное обслуживание', 'text': 'Высокий уровень обслуживания клиентов и оказания услуг. \n Мы делаем сложный банковский мир доступным каждому клиенту.' | striptags(true) | escape | nl2br, 'mods': {'type': 'iconed'}, 'iconPath': 'assets/images/svg/crown-image.svg', 'class': 'feature_mobile-centered mb-56 mobile-mb-0'}) }}
+                  {{ Feature.feature({ 'title': 'Широкий спектр услуг', 'text': 'Продукты и услуги для частных и корпоративных клиентов: \n вклады, кредитование, денежные переводы и операции с ценными бумагами.' | striptags(true) | escape | nl2br, 'mods': {'type': 'iconed'}, 'iconPath': 'assets/images/svg/bag-image.svg', 'class': 'feature_mobile-centered mb-56 mobile-mb-0'}) }}
+                  {{ Feature.feature({ 'title': 'Индивидуальный подход', 'text': 'Мы учитываем потребности каждого клиента, и готовы разрабатывать нестандартные решения с использованием любых финансовых инструментов.' | striptags(true) | escape | nl2br, 'mods': {'type': 'iconed'}, 'iconPath': 'assets/images/svg/present-image.svg', 'class': 'feature_mobile-centered mobile-mb-0'}) }}
                 </div>
                 <div class="carousel-controls carousel-controls_theme-dark js-carousel-controls">
                   <div class="carousel-controls__pagination js-carousel-pagination" data-carousel="about-bank">

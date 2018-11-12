@@ -25,12 +25,16 @@
       <section class="section page__section">
         <div class="section__header section__header_theme-blue">
           <div class="page__container">
-            {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Пакет услуг', 'link': '#' } }) }}
-            {{ Heading.heading({ 'tag': 'h1', 'title': 'Брокер', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
-            <div class="features">
-              {{ Feature.feature({ 'title': '0#ruble', 'text': 'обслуживание \n пакета', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-              {{ Feature.feature({ 'title': 'до 10%', 'text': 'возвращаем бонус \n от покупок', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-              {{ Feature.feature({ 'title': '0#ruble', 'text': 'переводы в БКС \n Онлайн и Мобильном Банке', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+            <div class="section__row">
+              <div class="products-detail__content products-detail__content_theme-simple">
+                {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Пакет услуг', 'link': '#' } }) }}
+                {{ Heading.heading({ 'tag': 'h1', 'title': 'Брокер', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
+                <div class="features">
+                  {{ Feature.feature({ 'title': '0#ruble', 'text': 'обслуживание \n пакета', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                  {{ Feature.feature({ 'title': 'до 10%', 'text': 'возвращаем бонус \n от покупок', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                  {{ Feature.feature({ 'title': '0#ruble', 'text': 'переводы в БКС \n Онлайн и Мобильном Банке', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                </div>
+              </div>
             </div>
           </div>
           <div class="section__nav-wrapper">
@@ -40,7 +44,7 @@
                   <div class="tabbar__scroll-wrapper js-tab-scroll">
                     {{ Tabbar.tabbar({ 'anchor': { 'theme': 'light-tab', 'view': 'upperscore' }, 'tabs': [{'title': 'О карте', 'id': 'about-card' }, {'title': 'Тарифы и документы', 'id': 'card-docs'}, {'title': 'Частые вопросы', 'id': 'card-faq'}] }) }}
                   </div>
-                  {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'white' }, 'class': 'products-detail__nav-button' }) }}
+                  {{ Button.button({ 'title': 'Оформите заявку', 'mods': { 'theme': 'white' }, 'class': 'products-detail__nav-button' }) }}
                 </div>
               </div>
             </div>
@@ -72,30 +76,34 @@
 
           <section class="mobile mobile_theme-grey section page__section page__section_theme-large">
             <div class="page__container">
-              <div class="section__wrap">
-                <div class="mobile__content">
-                  {{ Heading.heading({ 'title': 'Удобный мобильный банк' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
-                  <div class="section__text section__text_theme-normal">
-                    <p>Управление банковскими и инвестиционными продуктами</p>
-                    <p>Оплата услуг без комиссии</p>
-                    <p>Переводы по всему миру</p>
-                    <p>Обмен валюты по курсу близкому к биржевому</p>
-                    <p>Чат с оператором</p>
+              <div class="mobile__wrapper">
+                <div class="section__row">
+                  <div class="mobile__content">
+                    {{ Heading.heading({ 'title': 'Легкий мобильный банк' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+                    <div class="section__text section__text_theme-normal">
+                      <p>Управление банковскими и инвестиционными продуктами</p>
+                      <p>Оплата услуг без комиссии</p>
+                      <p>Переводы по всему миру</p>
+                      <p>Обмен валюты по курсу близкому к биржевому</p>
+                      <p>Чат с оператором</p>
+                    </div>
+                    <div class="mobile__vendors">
+                      {{ Button.button({ 'href': 'https://play.google.com/store/apps/details?id=cz.bsc.bcs', 'name': 'android', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                      {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                    </div>
                   </div>
-                  <div class="mobile__vendors">
-                    {{ Button.button({ 'href': 'https://play.google.com/store/apps/details?id=cz.bsc.bcs', 'name': 'android', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
-                    {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                  <div class="mobile__figure">
+                    <img class="illustration" src="assets/illustrations/mobile_bank.svg" alt="Легкий мобильный банк">
                   </div>
                 </div>
-                <img class="mobile__figure" src="assets/images/mobile-bank.png"
-                     alt="Легкий мобильный банк">
               </div>
             </div>
           </section>
 
           <section class="section page__section">
             <div class="page__container">
-              {{ Heading.heading({ 'title': 'Как открыть пакет \n «Брокер» и пользоваться' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered' }) }}
+              {{ Heading.heading({ 'title': 'Как открыть пакет \n «Брокер» и пользоваться', 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered hidden-mobile' }) }}
+              {{ Heading.heading({ 'title': 'Как оформить заявку?', 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered hidden-desktop' }) }}
             </div>
             {{ BrandFeatures.brandFeatures({ 'items': [
               {
@@ -122,10 +130,10 @@
             ] }) }}
           </section>
           <section class="section section_theme-white-smoke section_padding-default page__section">
-            <div class="dcard-request">
+            <div class="products-detail__request">
               <div class="page__container">
                 {{ Heading.heading({ 'title': 'Заявка на пакет «Брокер»' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
-                <div class="text mb-56">Заполнение заявки займет всего 7 минут.
+                <div class="text text_theme-gray mb-56">Заполнение заявки займет всего 7 минут.
                 </div>
                 <div class="section__row">
                   <div class="form form_layout-narrow js-form">
@@ -202,7 +210,15 @@
                       </tr>
                       <tr>
                         <td>Бонусная программа</td>
-                        <td>Возврат 3% в категории на выбор (АЗС, рестораны, путешествия, одежда и обувь) и 1% от всех остальных покупок по карте. При поддержании среднемесячных активов в ООО «Компания БКС»: от 50 000 до 300 000 руб. — 3% в категории АЗС; от 300 000 до 1 000 000 руб. — 3% в одной из категорий: АЗС или путешествия; от 1 000 000 до 10 000 000 руб. — 3% в одной из категорий на выбор: АЗС, путешествия или рестораны; от 10 000 000 руб. и более — 3% в двух категориях на выбор: АЗС, путешествия, рестораны или одежда и обувь. Ограничение по максимальной сумме выплаты бонусных баллов в месяц — 4000 баллов, баллы конвертируются в рубли, 1 балл = 1 рубль. Управление бонусным счетом через БКС Онлайн и Мобильный Банк.</td>
+                        <td>Возврат 3% в категории на выбор (АЗС, рестораны, путешествия, одежда и обувь) и 1% от всех
+                          остальных покупок по карте. При поддержании среднемесячных активов в ООО «Компания БКС»: от 50
+                          000 до 300 000 руб. — 3% в категории АЗС; от 300 000 до 1 000 000 руб. — 3% в одной из
+                          категорий: АЗС или путешествия; от 1 000 000 до 10 000 000 руб. — 3% в одной из категорий на
+                          выбор: АЗС, путешествия или рестораны; от 10 000 000 руб. и более — 3% в двух категориях на
+                          выбор: АЗС, путешествия, рестораны или одежда и обувь. Ограничение по максимальной сумме
+                          выплаты бонусных баллов в месяц — 4000 баллов, баллы конвертируются в рубли, 1 балл = 1 рубль.
+                          Управление бонусным счетом через БКС Онлайн и Мобильный Банк.
+                        </td>
                       </tr>
                       </tbody>
                     </table>

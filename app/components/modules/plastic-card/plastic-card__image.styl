@@ -1,35 +1,103 @@
 .plastic-card .plastic-card__image
 
-  margin-left: auto
   position: relative
 
-  width: 1px
+  col()
+  @media (min-width: 1280px)
+    size(6)
+    shift-left(-5)
 
-  @media (max-width: 991px)
-    order: -1
+  @media (min-width: 992px) and (max-width: 1279px)
+    size(6)
+    shift-left(-4)
+    shift-right(-2)
 
-    margin-left: unset
-    width: auto
-    height: 170px
+  @media (min-width: 768px) and (max-width: 991px)
+    size(3)
+    //shift-left(-1)
+    shift-right(-2)
 
-    text-align: center
+  @media (max-width: 767px)
+    size(12)
+    display: flex
+    justify-content: center
 
-  .image
+    margin: 16px auto
+
+  .illustration
+    z-index: 1
     position: absolute
-    top: 0
-    right: 0
-
-    width: auto
+    right: 20px
 
     @media (min-width: 1280px)
-      max-width: 476px
+      top: -106px
+
+      height: 580px
+      width: 580px
 
     @media (min-width: 992px) and (max-width: 1279px)
-      top: 52px
-      max-width: 320px
+      top: -106px
 
-    @media (max-width: 991px)
+      height: 490px
+      width: 490px
+
+    @media (min-width: 768px) and (max-width: 991px)
+      top: -46px
+
+      height: 380px
+      width: 380px
+
+
+    @media (max-width: 767px)
+      order: 0
       position: relative
+      right: unset
 
-      height: 100%
+      width: 154px
+      height: 154px
+
+
+    .illustration-image
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+
+      width: auto
+      height: auto
+      max-width: 100%
+      max-height: 100%
+
+  //margin-left: auto
+  //position: relative
+  //
+  //width: 1px
+  //
+  //@media (max-width: 991px)
+  //  order: -1
+  //
+  //  margin-left: unset
+  //  width: auto
+  //  height: 170px
+  //
+  //  text-align: center
+  //
+  //.image
+  //  position: absolute
+  //  right: 0
+  //
+  //  width: auto
+  //
+  //  @media (min-width: 1280px)
+  //    height: 580px
+  //    max-width: 580px
+  //
+  //  @media (min-width: 992px) and (max-width: 1279px)
+  //    top: 52px
+  //    max-width: 320px
+  //
+  //  @media (max-width: 991px)
+  //    position: relative
+  //
+  //    height: 100%
 

@@ -3,7 +3,7 @@
 
   &:not(.state_explored)
     width: 100%
-    max-width: 36px
+    max-width: 48px
 
     transition: max-width $interval
     animation: clearBackground $interval forwards
@@ -16,6 +16,7 @@
     transition: max-width $interval
 
     @media (min-width: 1280px)
+      height: 48px;
       max-width: 500px
 
     @media (max-width: 767px)

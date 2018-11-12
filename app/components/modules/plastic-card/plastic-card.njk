@@ -11,7 +11,7 @@
     {% set mods = '' %}
     {% set mods %}
       {% for key, value in options.mods -%}
-        {{ class_sep() }} feature_{{ key }}-{{ value }}
+        {{ class_sep() }} plastic-card_{{ key }}-{{ value }}
       {%- endfor %}
     {% endset %}
   {% endif %}
@@ -19,7 +19,7 @@
   {% if options.theme === 'blue' %}
 
     <div class="plastic-card plastic-card_theme-blue {{ mods | safe }}">
-      <div class="plastic-card__wrapper">
+      <div class="section__row">
         <div class="plastic-card__content">
           <div class="plastic-card__header">
             {{ Heading.heading({ 'title': options.title }) }}
@@ -41,7 +41,9 @@
         </div>
         {% if options.image %}
           <div class="plastic-card__image">
-            {{ Icon.inlineSvg({ 'path': [options.image] }) }}
+            <div class="illustration">
+              {{ Icon.inlineSvg({ 'path': [options.image], 'class': 'illustration-image' }) }}
+            </div>
           </div>
         {% endif %}
       </div>
@@ -50,7 +52,7 @@
   {% else %}
 
     <div class="plastic-card {{ mods | safe }}">
-      <div class="plastic-card__wrapper">
+      <div class="section__row">
         <div class="plastic-card__content">
           <div class="plastic-card__header">
             {{ Heading.heading({ 'title': options.title }) }}
@@ -72,7 +74,9 @@
         </div>
         {% if options.image %}
           <div class="plastic-card__image">
-            {{ Icon.inlineSvg({ 'path': [options.image] }) }}
+            <div class="illustration">
+              {{ Icon.inlineSvg({ 'path': [options.image], 'class': 'illustration-image' }) }}
+            </div>
           </div>
         {% endif %}
       </div>

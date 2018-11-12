@@ -1,0 +1,72 @@
+<div class="limits__content">
+  {{ Heading.heading({ 'tag': 'h2', 'title': 'Лимиты', 'mods': { 'type': 'normal', 'margin': 'short' } }) }}
+  <div class="table table_sortable table_theme-default">
+    <table class="table__content">
+      <thead class="table__head">
+      <tr>
+        {# data-sort="date" for sort by date #}
+        {# data-sort="money" for sort by money #}
+        <th>
+          <span class="table__column-title">Срок</span>
+        </th>
+        <th>
+          <span class="table__column-title">Сумма</span>
+        </th>
+      </tr>
+      </thead>
+      <tbody class="table__body">
+      <tr>
+        <td>За одну операцию</td>
+        <td>Не более 75 000 ₽ (включительно)</td>
+      </tr>
+      <tr>
+        <td>За один календарный день</td>
+        <td>Не более 150 000 ₽ (включительно)</td>
+      </tr>
+      <tr>
+        <td>За один календарный месяц</td>
+        <td>59 ₽ в месяц</td>
+      </tr>
+      <tr>
+        <td>Перевод в рублях в другие банки <br> через БКС Онлайн</td>
+        <td>0,8% (мин. 50 ₽, макс. 750 ₽)</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  {{ Heading.heading({ 'tag': 'h2', 'title': 'Тарифы', 'mods': { 'type': 'normal', 'margin': 'short' }, 'class': 'mt-64' }) }}
+  <div class="table table_sortable table_theme-default">
+    <table class="table__content">
+      <thead class="table__head">
+      <tr>
+        {# data-sort="date" for sort by date #}
+        {# data-sort="money" for sort by money #}
+        <th>
+          <span class="table__column-title">Карты</span>
+        </th>
+        <th>
+          <span class="table__column-title">Сумма</span>
+        </th>
+      </tr>
+      </thead>
+      <tbody class="table__body">
+      <tr>
+        <td>С карты другого банка на карту БКС Банка</td>
+        <td>До 20 000 ₽ — комиссия 1,2% от суммы перевода, минимум 50 ₽; свыше 20 000 ₽. — 0%</td>
+      </tr>
+      <tr>
+        <td>С карты БКС Банка на карту другого банка</td>
+        <td>Комиссия 1,5% от суммы перевода, минимум 50 ₽</td>
+      </tr>
+      <tr>
+        <td>С карты БКС Банка на карту БКС Банка</td>
+        <td>Комиссия 1,5% от суммы перевода, минимум 50 ₽</td>
+      </tr>
+      <tr>
+        <td>С карты другого банка на карту другого банка</td>
+        <td>Комиссия 1,5% от суммы перевода, минимум 50 ₽</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

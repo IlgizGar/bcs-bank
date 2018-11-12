@@ -25,12 +25,16 @@
       <section class="section page__section">
         <div class="section__header section__header_theme-blue">
           <div class="page__container">
-            {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Пакет услуг', 'link': '#' } }) }}
-            {{ Heading.heading({ 'tag': 'h1', 'title': 'Цифровой Оптимум', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
-            <div class="features">
-              {{ Feature.feature({ 'title': '0#ruble', 'text': 'стоимость \n обслуживания', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-              {{ Feature.feature({ 'title': '0#ruble', 'text': 'комиссия за онлайн \n платежи и переводы', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
-              {{ Feature.feature({ 'title': '7%', 'text': 'от покупок \n в любимых категориях', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+            <div class="section__row">
+              <div class="products-detail__content products-detail__content_theme-simple">
+                {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Пакет услуг', 'link': '#' } }) }}
+                {{ Heading.heading({ 'tag': 'h1', 'title': 'Цифровой Оптимум', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
+                <div class="features">
+                  {{ Feature.feature({ 'title': '0#ruble', 'text': 'стоимость \n обслуживания', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                  {{ Feature.feature({ 'title': '0#ruble', 'text': 'комиссия за онлайн \n платежи и переводы', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                  {{ Feature.feature({ 'title': '7%', 'text': 'от покупок \n в любимых категориях', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                </div>
+              </div>
             </div>
           </div>
           <div class="section__nav-wrapper">
@@ -40,7 +44,7 @@
                   <div class="tabbar__scroll-wrapper js-tab-scroll">
                     {{ Tabbar.tabbar({ 'anchor': { 'theme': 'light-tab', 'view': 'upperscore' }, 'tabs': [{'title': 'О карте', 'id': 'about-card' }, {'title': 'Тарифы и документы', 'id': 'card-docs'}, {'title': 'Частые вопросы', 'id': 'card-faq'}] }) }}
                   </div>
-                  {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'white' }, 'class': 'products-detail__nav-button' }) }}
+                  {{ Button.button({ 'title': 'Оформите заявку', 'mods': { 'theme': 'white' }, 'class': 'products-detail__nav-button' }) }}
                 </div>
               </div>
             </div>
@@ -86,30 +90,34 @@
 
           <section class="mobile mobile_theme-grey section page__section page__section_theme-large">
             <div class="page__container">
-              <div class="section__wrap">
-                <div class="mobile__content">
-                  {{ Heading.heading({ 'title': 'Удобный мобильный банк' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
-                  <div class="section__text section__text_theme-normal">
-                    <p>Управление банковскими и инвестиционными продуктами</p>
-                    <p>Оплата услуг без комиссии</p>
-                    <p>Переводы по всему миру</p>
-                    <p>Обмен валюты по курсу близкому к биржевому</p>
-                    <p>Чат с оператором</p>
+              <div class="mobile__wrapper">
+                <div class="section__row">
+                  <div class="mobile__content">
+                    {{ Heading.heading({ 'title': 'Легкий мобильный банк' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+                    <div class="section__text section__text_theme-normal">
+                      <p>Управление банковскими и инвестиционными продуктами</p>
+                      <p>Оплата услуг без комиссии</p>
+                      <p>Переводы по всему миру</p>
+                      <p>Обмен валюты по курсу близкому к биржевому</p>
+                      <p>Чат с оператором</p>
+                    </div>
+                    <div class="mobile__vendors">
+                      {{ Button.button({ 'href': 'https://play.google.com/store/apps/details?id=cz.bsc.bcs', 'name': 'android', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                      {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                    </div>
                   </div>
-                  <div class="mobile__vendors">
-                    {{ Button.button({ 'href': 'https://play.google.com/store/apps/details?id=cz.bsc.bcs', 'name': 'android', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
-                    {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                  <div class="mobile__figure">
+                    <img class="illustration" src="assets/illustrations/mobile_bank.svg" alt="Легкий мобильный банк">
                   </div>
                 </div>
-                <img class="mobile__figure" src="assets/images/mobile-bank.png"
-                     alt="Легкий мобильный банк">
               </div>
             </div>
           </section>
 
           <section class="section page__section">
             <div class="page__container">
-              {{ Heading.heading({ 'title': 'Как открыть пакет «Цифровой \n Оптимум» и пользоваться' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered' }) }}
+              {{ Heading.heading({ 'title': 'Как открыть пакет «Цифровой \n Оптимум» и пользоваться' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered hidden-mobile' }) }}
+              {{ Heading.heading({ 'title': 'Как оформить заявку?', 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered hidden-desktop' }) }}
             </div>
             {{ BrandFeatures.brandFeatures({ 'items': [
               {
@@ -136,10 +144,10 @@
             ] }) }}
           </section>
           <section class="section section_theme-white-smoke section_padding-default page__section">
-            <div class="dcard-request">
+            <div class="products-detail__request">
               <div class="page__container">
                 {{ Heading.heading({ 'title': 'Заявка на пакет \n «Цифровой Оптимум»' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
-                <div class="text mb-56">К данному пакету услуг прилагается банковская карта «Visa Platinum»
+                <div class="text text_theme-gray mb-56">К данному пакету услуг прилагается банковская карта «Visa Platinum»
                 </div>
                 <div class="section__row">
                   <div class="form form_layout-narrow js-form">
@@ -220,7 +228,9 @@
                       </tr>
                       <tr>
                         <td>Карта Priority Pass</td>
-                        <td>При среднемесячном балансе клиента до 30 млн руб. — все проходы клиента и 1 гость бесплатно. При среднемесячном балансе клиента от 30 млн руб. — все проходы клиента и все гости бесплатно.</td>
+                        <td>При среднемесячном балансе клиента до 30 млн руб. — все проходы клиента и 1 гость бесплатно.
+                          При среднемесячном балансе клиента от 30 млн руб. — все проходы клиента и все гости бесплатно.
+                        </td>
                       </tr>
                       <tr>
                         <td>Консьерж-служба</td>
