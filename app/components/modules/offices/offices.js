@@ -199,7 +199,7 @@ export default class Offices {
           Offices.reInitScroll(this.pane);
         },
         (err) => {
-          console.log('Обшибка', err);
+
         },
       );
     });
