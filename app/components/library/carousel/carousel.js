@@ -29,13 +29,13 @@ module.exports = (elem) => {
 
       this.next = '<button class="carousel-controls__button carousel-controls__button_type-next">' +
         ' <svg role="presentation" class="icon icon-tr-arrow">\n' +
-        '    <use xlink:href="assets/images/icons.svg#icon_tr-arrow"></use>\n' +
+        `    <use xlink:href="/assets/images/icons.svg#icon_tr-arrow"></use>\n` +
         '  </svg>' +
         '</button>';
 
       this.prev = '<button class="carousel-controls__button carousel-controls__button_type-prev">' +
         ' <svg role="presentation" class="icon icon-tr-arrow">\n' +
-        '    <use xlink:href="assets/images/icons.svg#icon_tr-arrow"></use>\n' +
+        `    <use xlink:href="/assets/images/icons.svg#icon_tr-arrow"></use>\n` +
         '  </svg>' +
         '</button>';
 
