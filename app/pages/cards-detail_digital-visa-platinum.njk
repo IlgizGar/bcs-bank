@@ -190,12 +190,12 @@
                   рамках {{ Button.button({ 'href': '#', 'title': 'пакета услуг "MORE".', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' }, 'class': 'products-detail__request-link' }) }}
                 </div>
                 <div class="section__row">
-                  <div class="form form_layout-narrow js-form">
+                  <div class="form form_layout-narrow js-form" data-form="cards">
                     <div class="form__steps">
                       Шаг <span>1</span> из <span>4</span>
                     </div>
                     {{ Heading.heading({ 'title': 'Общая информация' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
-                    <form>
+                    <form action="/rplpost">
                       <fieldset>
                         {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': 'js-fio-masked', 'maxlength': '64', 'name': 'bid_user-name', 'required': 'true' } }) }}
                         <div class="form__line-group">
