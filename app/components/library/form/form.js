@@ -7,8 +7,8 @@ module.exports = (elem) => {
     constructor(selector) {
       this.form = $(selector);
       this.validator = Validator(this.form);
-      this.msgSuccess = $('.js-products-success');
-      this.msgError = $('.js-products-error');
+      this.msgSucess = this.form.closest('.js-form').find('.js-form-success');
+      this.msgError = this.form.closest('.js-form').find('.js-form-error');
       this.formType = this.form.closest('.js-form').data('form');
 
       this.validateForm();
@@ -61,7 +61,7 @@ module.exports = (elem) => {
                 $('.js-products-error').modal();
               }
             });
-            
+
             return false;
           }
         }

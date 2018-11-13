@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="94px" height="108px" viewBox="0 0 94 108" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>08E0FFED-5A7A-4912-B782-EFD3F0B627D8</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <linearGradient x1="8.05150067%" y1="90.0095889%" x2="94.8419426%" y2="16.8162884%" id="linearGradient-1">
+            <stop stop-color="#3E6CD5" offset="0%"></stop>
+            <stop stop-color="#578AFF" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="5" y="20" width="50" height="52" rx="3"></rect>
+        <filter x="-17.0%" y="-12.5%" width="134.0%" height="132.7%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0.116224869   0 0 0 0 0.481584821  0 0 0 0.0923629982 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="графика-/-иконка-/-большая-/-портфель">
+            <g id="Group-26-Copy-11">
+                <circle id="Oval-Copy" fill="url(#linearGradient-1)" cx="47" cy="47" r="47"></circle>
+                <g id="Group-25" transform="translate(17.000000, 29.000000)">
+                    <g id="Rectangle-23">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    </g>
+                    <rect id="Rectangle-23" fill="#EDF3FA" x="5" y="43" width="50" height="5"></rect>
+                    <path d="M16,12 L16,6 C16,2.6862915 18.6862915,6.66133815e-16 22,0 L38,0 C41.3137085,2.44249065e-15 44,2.6862915 44,6 L44,12 L56.7913302,12 C58.4385753,12 59.7777073,13.328184 59.7912292,14.9753736 L59.9964557,39.9753736 C60.0100564,41.6321721 58.6779815,42.9862982 57.0211831,42.9998989 C57.0129745,42.9999663 57.0047656,43 56.9965567,43 L3.00344156,43 C1.34658731,43 0.0034415567,41.6568542 0.0034415567,40 C0.0034415567,39.9917911 0.00347524962,39.9835823 0.0035426346,39.9753736 L0.208769143,14.9753736 C0.222291021,13.328184 1.56142296,12 3.20866806,12 L16,12 Z M20,12 L40,12 L40,6 C40,4.8954305 39.1045695,4 38,4 L22,4 C20.8954305,4 20,4.8954305 20,6 L20,12 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+                    <rect id="Rectangle" fill="#FE7F5F" x="12" y="37" width="8" height="11" rx="2"></rect>
+                    <rect id="Rectangle" fill="#FE7F5F" x="40" y="37" width="8" height="11" rx="2"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

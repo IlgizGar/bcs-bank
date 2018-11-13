@@ -81,7 +81,7 @@ module.exports = (elem) => {
 
         if ($item.length) {
           if ($item.hasClass('js-checkbox')) {
-            console.log('SELECT_INPUT');
+
           } else {
             Cookie.set(this.id, $item.attr('data-value'));
             if ($item.length) {

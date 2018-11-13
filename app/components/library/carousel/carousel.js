@@ -6,7 +6,6 @@ module.exports = (elem) => {
   class Carousel {
     constructor(selector) {
       this.carousel = $(selector);
-      this.paging = $('.js-carousel-pagination');
       this.progressbar = $('.js-carousel-progressbar');
       this.id = this.carousel.data('id');
 
@@ -16,6 +15,7 @@ module.exports = (elem) => {
 
     init() {
       const self = this;
+      this.paging = $(`.js-carousel-pagination[data-carousel="${this.id}"]`);
 
       this.carousel.on('init reInit afterChange', (event, slick, currentSlide) => {
         const i = (!currentSlide ? 0 : currentSlide) + 1;
@@ -29,13 +29,13 @@ module.exports = (elem) => {
 
       this.next = '<button class="carousel-controls__button carousel-controls__button_type-next">' +
         ' <svg role="presentation" class="icon icon-tr-arrow">\n' +
-        '    <use xlink:href="assets/images/icons.svg#icon_tr-arrow"></use>\n' +
+        `    <use xlink:href="/assets/images/icons.svg#icon_tr-arrow"></use>\n` +
         '  </svg>' +
         '</button>';
 
       this.prev = '<button class="carousel-controls__button carousel-controls__button_type-prev">' +
         ' <svg role="presentation" class="icon icon-tr-arrow">\n' +
-        '    <use xlink:href="assets/images/icons.svg#icon_tr-arrow"></use>\n' +
+        `    <use xlink:href="/assets/images/icons.svg#icon_tr-arrow"></use>\n` +
         '  </svg>' +
         '</button>';
 
@@ -79,9 +79,6 @@ module.exports = (elem) => {
           },
         ],
       });
-      // this.carousel.find('.js-context').each((i, el) => {
-      //   global.contexts[$(el).attr('data-id')] = Context(el);
-      // });
     }
   }
 

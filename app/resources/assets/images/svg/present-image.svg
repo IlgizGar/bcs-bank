@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="94px" height="108px" viewBox="0 0 94 108" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>1C563E34-BFAE-4F1F-ABD2-7ED12045D218</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <linearGradient x1="8.05150067%" y1="90.0095889%" x2="94.8419426%" y2="16.8162884%" id="linearGradient-1">
+            <stop stop-color="#3E6CD5" offset="0%"></stop>
+            <stop stop-color="#578AFF" offset="100%"></stop>
+        </linearGradient>
+        <circle id="path-2" cx="26" cy="12" r="12"></circle>
+        <filter x="-35.4%" y="-27.1%" width="170.8%" height="170.8%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0.116224869   0 0 0 0 0.481584821  0 0 0 0.0923629982 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M49.4692559,69.1205777 C42.1798033,72.3737839 34.355967,74.000258 25.9977473,74 C17.6406109,73.999742 9.81823556,72.3732867 2.53062128,69.120634 L2.53062167,69.1206331 C0.990362836,68.4331754 0.0468538497,66.8534064 0.171925543,65.1713384 C1.96496076,41.0571128 10.5743189,29 26,29 C41.425659,29 50.0350146,41.0570783 51.8280668,65.1712349 L51.8280598,65.1712355 C51.9531363,66.8533468 51.0095756,68.4331492 49.4692559,69.1205777 Z" id="path-4"></path>
+        <filter x="-16.3%" y="-14.4%" width="132.7%" height="137.8%" filterUnits="objectBoundingBox" id="filter-5">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0.116224869   0 0 0 0 0.481584821  0 0 0 0.0923629982 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="графика-/-иконка-/-большая-/-личность">
+            <g id="present">
+                <circle id="Oval-Copy" fill="url(#linearGradient-1)" cx="47" cy="47" r="47"></circle>
+                <g id="Group" transform="translate(21.000000, 27.000000)">
+                    <g id="Oval">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    </g>
+                    <g id="Shape">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-4"></use>
+                        <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-4"></use>
+                    </g>
+                    <path d="M27,38 L28.9400106,57.4001056 C28.9793493,57.5939388 29,57.7945578 29,58 C29,59.6568542 27.6568542,61 26,61 C24.3431458,61 23,59.6568542 23,58 C23,57.7945578 23.0206507,57.5939388 23.0599894,57.4001056 L25,38 C25,37.4477153 25.4477153,37 26,37 C26.5522847,37 27,37.4477153 27,38 Z" id="Combined-Shape" fill="#FE7F5F" fill-rule="nonzero"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

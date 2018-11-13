@@ -51,6 +51,7 @@ module.exports = (elem) => {
         } else {
           if (this.ionSlider !== null) {
             if (parseFloat(this.field.val().replace(/ /g, '')) > this.slider.data('max')) {
+
               this.field.val(this.slider.data('max'));
             } else if (parseFloat(this.field.val().replace(/ /g, '')) < this.slider.data('min')) {
               this.field.val(this.slider.data('min'));

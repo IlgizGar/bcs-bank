@@ -100,7 +100,7 @@
               {{ Button.button({ 'href': '#', 'title': 'Узнать больше', 'mods': { 'theme': 'white', 'view': 'text' }, 'class': 'section__header-button_type-more' }) }}
 
               <div class="carousel-controls js-index-carousel-controls">
-                <div class="carousel-controls__pagination js-carousel-pagination">
+                <div class="carousel-controls__pagination js-carousel-pagination" data-carousel="index-header">
                   <span>01</span><span></span><span></span>
                 </div>
               </div>
@@ -160,7 +160,7 @@
                 {#{{ Card.card({ 'block': 'modules/services/check-exist', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Проверить наличие', 'class': 'section__element services__card' }) }}#}
               </div>
               <div class="carousel-controls carousel-controls_theme-dark js-carousel-controls">
-                <div class="carousel-controls__pagination js-carousel-pagination">
+                <div class="carousel-controls__pagination js-carousel-pagination" data-carousel="index-services">
                   <span>01</span><span></span><span></span>
                 </div>
               </div>
@@ -195,7 +195,7 @@
                 {{ Card.card({ 'href': '#', 'icon': 'assets/images/svg/ultima.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Персональный банк самых амбициозных', 'subtitle': 'Уникальные привилегии \n и безграничные возможности' | striptags(true) | escape | nl2br, 'link': 'БКС Ультима', 'class': 'section__element company__card' }) }}
               </div>
               <div class="carousel-controls js-carousel-controls">
-                <div class="carousel-controls__pagination js-carousel-pagination">
+                <div class="carousel-controls__pagination js-carousel-pagination" data-carousel="index-company">
                   <span>01</span><span></span><span></span>
                 </div>
               </div>
