@@ -41,6 +41,20 @@ module.exports = (elem) => {
 
       switch (this.id) {
         case 'index-header':
+          this.carousel.on('beforeChange', (event, slick, prevSlide, currentSlide) => {
+            const url = $(slick.$slides[currentSlide]).find('[data-href]').data('href');
+            const el = $(slick.$slides[currentSlide]).find('[data-scroll-id]').data('scroll-id');
+            const $redirectScroll = $('.js-redirect-scroll');
+            const $redirectUrl = $('.js-redirect-url');
+
+            if (url !== undefined) {
+              $redirectUrl.attr('href', url);
+            }
+            if (url !== undefined && el !== undefined) {
+              $redirectScroll.attr('href', `${url}?${el}`);
+            }
+          });
+
           this.carousel.not('.slick-initialized').slick({
             autoplay: true,
             autoplaySpeed: 12000,

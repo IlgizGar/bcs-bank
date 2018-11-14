@@ -28,7 +28,7 @@
               <div class="carousel__progressbar-bar js-carousel-progressbar"></div>
             </div>
             <div class="index-carousel js-carousel" data-id="index-header">
-              <div class="index-carousel__slide">
+              <div class="index-carousel__slide" data-href="/bks/cards-detail_bks-platinum.html" data-scroll-id="#section-request">
                 <div class="page__container">
                   <div class="index-carousel__wrap">
                     <div class="section__row">
@@ -49,7 +49,7 @@
                   </div>
                 </div>
               </div>
-              <div class="index-carousel__slide">
+              <div class="index-carousel__slide" data-href="/bks/cards-detail_broker.html" data-scroll-id="#section-request">
                 <div class="page__container">
                   <div class="index-carousel__wrap">
                     <div class="section__row">
@@ -70,7 +70,7 @@
                   </div>
                 </div>
               </div>
-              <div class="index-carousel__slide">
+              <div class="index-carousel__slide" data-href="/bks/cards-detail_more-visa-platinum.html" data-scroll-id="#section-request">
                 <div class="page__container">
                   <div class="index-carousel__wrap">
                     <div class="section__row">
@@ -96,8 +96,8 @@
           <div class="page__container">
             <div class="section__header-controls">
 
-              {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'white' }, 'class': 'section__header-button' }) }}
-              {{ Button.button({ 'href': '#', 'title': 'Узнать больше', 'mods': { 'theme': 'white', 'view': 'text' }, 'class': 'section__header-button_type-more' }) }}
+              {{ Button.button({ 'href': '/bks/cards-detail_bks-platinum.html?#section-request', 'title': 'Оформить', 'mods': { 'theme': 'white' }, 'class': 'section__header-button js-redirect-scroll' }) }}
+              {{ Button.button({ 'href': '/bks/cards-detail_bks-platinum.html', 'title': 'Узнать больше', 'mods': { 'theme': 'white', 'view': 'text' }, 'class': 'section__header-button_type-more js-redirect-url' }) }}
 
               <div class="carousel-controls js-index-carousel-controls">
                 <div class="carousel-controls__pagination js-carousel-pagination" data-carousel="index-header">

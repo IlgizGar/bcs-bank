@@ -50,7 +50,7 @@
                   <div class="tabbar__scroll-wrapper js-tab-scroll">
                     {{ Tabbar.tabbar({ 'anchor': { 'theme': 'light-tab', 'view': 'upperscore' }, 'tabs': [{'title': 'О карте', 'id': 'about-card' }, {'title': 'Тарифы и документы', 'id': 'card-docs'}, {'title': 'Частые вопросы', 'id': 'card-faq'}] }) }}
                   </div>
-                  {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'white' }, 'class': 'products-detail__nav-button' }) }}
+                  {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'white' }, 'class': 'products-detail__nav-button', attr: {'scroll': '#section-request'} }) }}
                 </div>
               </div>
             </div>
@@ -118,7 +118,7 @@
                       <div class="calculation__conclusion text">Этих бонусов будет достаточно
                         для покупки авиабилета в Милан.
                       </div>
-                      {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'default' }, 'type': 'submit', 'class': 'mt-40' }) }}
+                      {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'default' }, 'type': 'submit', 'class': 'mt-40', attr: {'scroll': '#section-request'} }) }}
                     </div>
                   </div>
                 </div>
@@ -181,7 +181,7 @@
               }
             ] }) }}
           </section>
-          <section class="section section_theme-white-smoke section_padding-default page__section">
+          <section id="section-request" class="section section_theme-white-smoke section_padding-default page__section">
             <div class="products-detail__request">
               <div class="page__container">
                 {{ Heading.heading({ 'title': 'Заявка на карту' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
