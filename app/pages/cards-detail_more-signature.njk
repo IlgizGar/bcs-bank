@@ -46,7 +46,7 @@
                   <div class="tabbar__scroll-wrapper js-tab-scroll">
                     {{ Tabbar.tabbar({ 'anchor': { 'theme': 'light-tab', 'view': 'upperscore' }, 'tabs': [{'title': 'О карте', 'id': 'about-card' }, {'title': 'Тарифы и документы', 'id': 'card-docs'}, {'title': 'Частые вопросы', 'id': 'card-faq'}] }) }}
                   </div>
-                  {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'white' }, 'class': 'products-detail__nav-button' }) }}
+                  {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'white' }, 'class': 'products-detail__nav-button', attr: {'scroll': '#section-request'} }) }}
                 </div>
               </div>
             </div>
@@ -81,7 +81,7 @@
                       <div class="calculation__result">10 500</div>
                       <div class="calculation__conclusion text">Этих бонусов будет достаточно для покупки авиабилета в
                         Милан.
-                      </div> {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'default' }, 'type': 'submit', 'class': 'mt-40' }) }}
+                      </div> {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'default' }, 'type': 'submit', 'class': 'mt-40', attr: {'scroll': '#section-request'} }) }}
                     </div>
                   </div>
                 </div>
@@ -122,7 +122,7 @@
             </div>
             {{ BrandFeatures.brandFeatures({ 'items': [ { 'icon': 'assets/images/svg/list-image.svg', 'title': 'Оставьте заявку', 'subtitle': 'Заполнение заявки \n займет 5 минут', 'mods': { 'theme': 'lined' } }, { 'icon': 'assets/images/svg/sand-clock-image.svg', 'title': 'Получите карту', 'subtitle': 'Наш специалист доставит Вам \n документы и карту бесплатно', 'mods': { 'theme': 'lined' } }, { 'icon': 'assets/images/svg/card-image.svg', 'title': 'Пользуйтесь картой', 'subtitle': 'Получайте бонусы с каждой \n покупки и меняйте их на рубли' } ] }) }}
           </section>
-          <section class="section section_theme-white-smoke section_padding-default page__section">
+          <section id="section-request" class="section section_theme-white-smoke section_padding-default page__section">
             <div class="products-detail__request">
               <div class="page__container">
                 {{ Heading.heading({ 'title': 'Заявка на карту' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
