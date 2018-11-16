@@ -17,6 +17,9 @@
   transition: transform 300ms
   transform: translateY(-100%)
 
+  &:not(.state_explored) .mobile-menu__online-bank
+    opacity: 0
+
   &.state_explored
     //@media (max-width: 1279px)
     transform: translateY(56px)
