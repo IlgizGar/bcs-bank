@@ -67,6 +67,10 @@ module.exports = (elem) => {
     }
 
     events() {
+      // добавим кастомное событие
+      const customEvent = document.createEvent('Event');
+      customEvent.initEvent('contextchange', true, true);
+      //
       $(document).on('click', `.js-context[data-id="${this.id}"]`, (e) => {
         e.preventDefault();
         if (this.context.hasClass('state_explored')) {
@@ -91,6 +95,9 @@ module.exports = (elem) => {
               }
             }
           }
+          // вызываем кастомное событие
+          this.context[0].contextValue = $item.attr('data-val');
+          this.context[0].dispatchEvent(customEvent);
         }
       });
 
