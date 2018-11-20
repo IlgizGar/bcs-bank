@@ -153,9 +153,9 @@
           <div class="section__row">
             <div class="services__carousel carousel carousel_type-mobile">
               <div class="js-carousel carousel__content" data-id="index-services" data-breakpoint="992">
-                {{ Card.card({ 'block': 'modules/services/fix-course', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Зафиксировать курс', 'class': 'section__element services__card', 'action': 'https://valuta.bcs-bank.com/', 'attr': {'form': 'fix-course'} }) }}
-                {{ Card.card({ 'block': 'modules/services/exchange', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Обменять валюту', 'class': 'section__element services__card' }) }}
-                {{ Card.card({ 'block': 'modules/services/exchange-map', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Найти на карте', 'linkhref': 'offices.html', 'class': 'section__element services__card' }) }}
+                {{ Card.card({ 'block': 'modules/services/fix-course', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Зафиксировать курс', 'class': 'section__element services__card', 'action': 'https://valuta.bcs-bank.com/', 'attr': {'form': 'fix-course', 'api-url': 'https://api.bcs.ru/currency'} }) }}
+                {{ Card.card({ 'block': 'modules/services/exchange', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Обменять валюту', 'class': 'section__element services__card', 'attr': {'api-url': 'https://api.bcs.ru/currency'}  }) }}
+                {{ Card.card({ 'block': 'modules/services/exchange-map', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Найти на карте', 'linkhref': 'offices.html', 'class': 'section__element services__card', 'attr': {'api-url': 'https://api.bcs.ru/currency'} }) }}
                 {# Поиск штрафов #}
                 {#{{ Card.card({ 'block': 'modules/services/check-exist', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Проверить наличие', 'class': 'section__element services__card' }) }}#}
               </div>

@@ -1,17 +1,39 @@
-import $ from 'jquery'
-const bankApi = 'https://api.bcs.ru/currency';
+import $ from 'jquery';
+
+// Вспомогательные методы
+const getPriceValue = (value) => {
+  const valueParts = value.toFixed(2).toString().split('.');
+  const firstPart = `<span>${valueParts[0]}</span>`;
+  const secondPart = valueParts[1] ? `<span>,${valueParts[1]}</span>` : '';
+  return firstPart + secondPart;
+};
+const getPriceState = (current, old) => {
+  let className = 'state_hidden_arrow';
+  if (old) {
+    const delta = current - old;
+    if (delta > 0) {
+      className = 'state_rise';
+    }
+    if (delta < 0) {
+      className = 'state_fall';
+    }
+  }
+  return className;
+};
+
 
 // Обмен валюты
-export class ExchangeService{
+export class ExchangeService {
   constructor() {
     this.exchangeBlock = $('#exchange-service');
     this.updateTime = 30000;
+    this.apiUrl = this.exchangeBlock.closest('.js-card').attr('data-api-url');
     this.getExchangeCources();
   }
 
   // Exchange table
   getExchangeCources() {
-    $.get(bankApi + '/onlinecources/v1', (response) => {
+    $.get(this.apiUrl + '/onlinecources/v1', (response) => {
       this.exchangeBlock.find('tbody').replaceWith(this.generateExchangeTable(response));
       setTimeout(() => {
         this.getExchangeCources();
@@ -47,13 +69,14 @@ export class ExchangeService{
 export class FixService {
   constructor() {
     this.fixBlock = $('#fix-service');
+    this.apiUrl = this.fixBlock.closest('.js-card').attr('data-api-url');
     this.updateTime = 10000;
     this.getFixCources();
   }
 
   // Exchange table
   getFixCources() {
-    $.get(bankApi + '/seltcources/v1', (response) => {
+    $.get(this.apiUrl + '/seltcources/v1', (response) => {
       this.updateTableData(response);
       setTimeout(() => {
         this.getFixCources();
@@ -96,27 +119,96 @@ export class FixService {
   updateTableCellState(el, current, old) {
     const newClassName = getPriceState(current, old);
     if (newClassName.length < 2) return;
-    el.removeClass('state_rise state_fall').addClass(newClassName);
+    el.removeClass('state_rise')
+      .removeClass('state_fall')
+      .removeClass('state_hidden_arrow')
+      .addClass(newClassName);
     el.find('span').each((i, el) => {
       $(el).remove();
     });
+    el.find('svg').each((i, el) => {
+      $(el).remove();
+    });
     el.prepend(getPriceValue(current));
+    el.append(' <svg role="presentation" class="icon icon-fall_arrow "><use xlink:href="assets/images/icons.svg#icon_fall_arrow"></use></svg>');
   }
 }
 
-// Вспомогательные методы
-const getPriceValue = (value) => {
-  const valueParts = value.toFixed(2).toString().split('.');
-  const firstPart = `<span>${valueParts[0]}</span>`;
-  const secondPart = valueParts[1] ? `<span>,${valueParts[1]}</span>` : '';
-  return firstPart + secondPart
-};
-const getPriceState = (current, old) => {
-  const delta = current - old;
-  let className = ' ';
-  if (delta > 0)
-    className = 'state_rise';
-  if (delta < 0)
-    className = 'state_fall';
-  return className
-};
+// Обмен валюты в отделениях банка
+
+export class ExchangeBanksService extends ExchangeService {
+  constructor() {
+    super();
+    this.exchangeBlock = $('#exchange-service-bank');
+    this.apiUrl = this.exchangeBlock.closest('.js-card').attr('data-api-url');
+    this.previosCourse = {};
+    this.cityId = this.exchangeBlock.closest('.js-card')
+      .find('.js-context option[selected]')
+      .attr('value');
+    this.initPrevCourceValue();
+    this.initCityChange();
+    this.timer = null;
+  }
+  initPrevCourceValue() {
+    this.previosCourse.usd = {
+      sell_previous: null,
+      buy_previous: null,
+    };
+    this.previosCourse.eur = {
+      sell_previous: null,
+      buy_previous: null,
+    };
+  }
+
+  getExchangeCources() {
+    const url = `${this.apiUrl}/clearingcources/v1`;
+    $.get(url, (response) => {
+      this.exchangeBlock.find('tbody')
+        .replaceWith(this.generateExchangeTable(this.getCityData(response)));
+      this.timer = setTimeout(() => {
+        this.getExchangeCources();
+      }, this.updateTime);
+    });
+  }
+  initCityChange() {
+    this.exchangeBlock.closest('.js-card')
+      .find('.js-context')[0].addEventListener('contextchange', (e) => { // подпиываемся на кастомное событие компонента контекст
+        this.cityId = e.target.contextValue;
+        clearTimeout(this.timer);
+        this.initPrevCourceValue();
+        this.getExchangeCources();
+      }, false);
+  }
+  getCityData(data) {
+    return this.dataAdapter(data[this.cityId]);
+  }
+  dataAdapter(cityData) {
+    this.previosCourse.usd = {
+      sell_previous: cityData.usd_sell,
+      buy_previous: cityData.usd_buy,
+    };
+    this.previosCourse.eur = {
+      sell_previous: cityData.eur_sell,
+      buy_previous: cityData.eur_buy,
+    };
+    return {
+      USD:
+        {
+          sell: cityData.usd_sell,
+          sell_previous: this.previosCourse.usd.sell_previous,
+          buy: cityData.usd_buy,
+          buy_previous: this.previosCourse.usd.buy_previous,
+          pub_date: cityData.pub_date,
+        },
+      EUR: {
+        sell: cityData.eur_sell,
+        sell_previous: this.previosCourse.eur.sell_previous,
+        buy: cityData.eur_buy,
+        buy_previous: this.previosCourse.eur.buy_previous,
+        pub_date: cityData.pub_date,
+      },
+    };
+  }
+}
+
+
