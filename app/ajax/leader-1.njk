@@ -1,0 +1,30 @@
+{% import "../components/library/heading/heading.njk" as Heading %}
+
+<div id="leader-1" class="modal">
+  <div class="leaders__detail">
+    <div class="leaders__person leaders__person_theme-medium">
+      <div class="leaders__photo">
+        <img src="assets/images/mihasenko.jpg" alt="Председатель Совета директоров">
+      </div>
+      <p class="leaders__name">Михасенко <br> Олег Владимирович</p>
+      <p class="leaders__post">Председатель Совета директоров</p>
+    </div>
+    {{ Heading.heading({ 'title': 'Дата и место рождения', 'class': 'mt-40' }) }}
+    <div class="text">
+      <div class="text__row">25 января 1962 г., Читинской область.</div>
+    </div>
+    {{ Heading.heading({ 'title': 'Образование', 'class': 'mt-24' }) }}
+    <div class="text">
+      <div class="text__row">Иркутский политехнический институт.</div>
+      <div class="text__row">Специальность «Горный инженер».</div>
+    </div>
+    {{ Heading.heading({ 'title': 'Трудовая деятельность', 'class': 'mt-24' }) }}
+    <div class="text">
+      <div class="text__row">Запускал товарные биржы в Кемерове и Новосибирске.</div>
+      <div class="text__row">1991 г. Соучредитель ТОО Брокеркредитсервис (БКС)</div>
+      <div class="text__row">1995 г. Генеральный директор ТОО Брокеркредитсервис (БКС)</div>
+      <div class="text__row">2005-2006 г. Входил в совет директоров ОАО РТС.</div>
+      <div class="text__row">Сейчас. Как президент-председатель правления ФГ БКС управляет финансовой группой и всеми подразделениями.</div>
+    </div>
+  </div>
+</div>

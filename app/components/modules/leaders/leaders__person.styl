@@ -1,0 +1,15 @@
+.leaders__person
+  col()
+
+  padding: 56px 90px
+
+  border-radius: 4px
+  background-color: $white_smoke
+
+  transition: background-color $interval
+
+  &:not(.leaders__person_theme-medium, .leaders__person_theme-medium):hover
+    background-color: $color_card
+
+  @media (min-width: 992px)
+    size(6)

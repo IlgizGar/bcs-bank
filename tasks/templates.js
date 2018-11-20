@@ -37,7 +37,14 @@ gulp.task('templates', () => {
     .src('app/resources/assets/images/**/*.svg')
     .pipe(svgmin(svgminOpts));
 
-  const cssStream = gulp.src('dist/assets/styles/**/*.css');
+  const cssStream = gulp.src('dist/assets/styles/**/*.css')
+
+  const ajaxStream = gulp
+    .src('app/ajax/**/*.njk')
+    .pipe(nunjucks({ path: ['app/components'] }))
+    .pipe(cached('njk'))
+    .pipe(beautify())
+    .pipe(gulp.dest('dist/ajax'));
 
   return gulp
     .src('app/pages/**/*.njk')
@@ -47,5 +54,6 @@ gulp.task('templates', () => {
     .pipe(beautify())
     .pipe(inject(svgStream, injectSvgOpts))
     .pipe(inject(cssStream, injectCssOpts))
+    .pipe(inject(ajaxStream))
     .pipe(gulp.dest('dist'));
 });

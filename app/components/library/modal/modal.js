@@ -6,7 +6,6 @@ import Checkbox from '../checkbox/checkbox';
 export default class Modal {
   constructor($openLink) {
     this.$link = $openLink;
-    this.windowId = this.$link.attr('href');
     this.init();
   }
 
@@ -26,15 +25,47 @@ export default class Modal {
       fadeDuration: null, // Number of milliseconds the fade transition takes (null means no transition)
       fadeDelay: 1.0, // Point during the overlay's fade-in that the modal begins to fade in (.5 = 50%, 1.5 = 150%, etc.)
     };
-    this.$link.on('click', () => {
-      this.openWindow();
+    this.$link.on('click', (e) => {
+      e.preventDefault();
+      let ajax = false;
+      this.windowId = this.$link.attr('href');
+
+      if ($(e.currentTarget).data('type') !== undefined) {
+        if ($(e.currentTarget).data('type') === 'modal-ajax') {
+          ajax = true;
+          $.get(`${this.windowId}`, (html) => {
+            this.html = html;
+            this.openWindow(ajax);
+            console.log('HTML', html);
+          })
+        }
+      }
+
+      if (!ajax) this.openWindow(ajax);
     });
   }
 
-  openWindow() {
-    $(this.windowId).modal();
-    global.forms.push(new Form($(this.windowId).find('form')));
-    global.checkboxes.push(new Checkbox($(this.windowId).find('.js-checkbox')));
+  openWindow(ajax) {
+
+    let $el = null;
+
+    if (ajax) {
+      const id = $(this.html).attr('id');
+      $el = $(`#${id}`);
+
+      if($el.length) {
+        $el.modal();
+      } else {
+        $(this.html).appendTo($('.js-page')).modal();
+        $el = $(this.html);
+      }
+    } else {
+      $el = $(this.windowId);
+      $el.modal();
+    }
+
+    global.forms.push(new Form($el.find('form')));
+    global.checkboxes.push(new Checkbox($el.find('.js-checkbox')));
   }
 
   static closeWindow() {

@@ -54,6 +54,8 @@ export class FixService {
   // Exchange table
   getFixCources() {
     $.get(bankApi + '/seltcources/v1', (response) => {
+      console.log('RESPONSE', response);
+
       this.updateTableData(response);
       setTimeout(() => {
         this.getFixCources();
