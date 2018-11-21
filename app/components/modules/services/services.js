@@ -2,10 +2,13 @@ import $ from 'jquery';
 
 // Вспомогательные методы
 const getPriceValue = (value) => {
-  const valueParts = value.toFixed(2).toString().split('.');
-  const firstPart = `<span>${valueParts[0]}</span>`;
-  const secondPart = valueParts[1] ? `<span>,${valueParts[1]}</span>` : '';
-  return firstPart + secondPart;
+  if(value){
+    const valueParts = value.toFixed(2).toString().split('.');
+    const firstPart = `<span>${valueParts[0]}</span>`;
+    const secondPart = valueParts[1] ? `<span>,${valueParts[1]}</span>` : '';
+    return firstPart + secondPart;
+  }
+  return 'load-error';
 };
 const getPriceState = (current, old) => {
   let className = 'state_hidden_arrow';
@@ -24,14 +27,18 @@ const getPriceState = (current, old) => {
 
 // Обмен валюты
 export class ExchangeService {
-  constructor() {
+  constructor(id) {
     this.timer = null;
-    this.exchangeBlock = $('#exchange-service');
+    this.exchangeBlock = $(id);
+    console.log(this.exchangeBlock);
     this.updateTime = 30000;
-    this.apiUrl = this.exchangeBlock.closest('.js-card').attr('data-api-url');
+    this.apiUrl = '';
+    this.getApiUrl();
     this.getExchangeCources();
   }
-
+  getApiUrl() {
+    this.apiUrl = this.exchangeBlock.closest('.js-card').attr('data-api-url');
+  }
   // Exchange table
   getExchangeCources() {
     $.get(this.apiUrl, (response) => {
@@ -142,19 +149,23 @@ export class FixService {
 // Обмен валюты в отделениях банка
 
 export class ExchangeBanksService extends ExchangeService {
-  constructor() {
-    super();
-    this.exchangeBlock = $('#exchange-service-bank');
-    this.apiUrl = this.exchangeBlock.closest('.js-card').attr('data-api-url');
+  constructor(id) {
+    super(id);
+    this.initCityChange();
+  }
+  getApiUrl() {
     this.cityId = this.exchangeBlock.closest('.js-card')
       .find('.js-context option[selected]')
       .attr('value');
-    this.initCityChange();
+    this.apiUrl = this.exchangeBlock.closest('.js-card').attr('data-api-url');
+    this.apiUrl = `${this.apiUrl}/${this.cityId}`;
   }
   initCityChange() {
     this.exchangeBlock.closest('.js-card')
       .find('.js-context')[0].addEventListener('contextchange', (e) => { // подпиываемся на кастомное событие компонента контекст
         this.cityId = e.target.contextValue;
+        this.apiUrl = this.exchangeBlock.closest('.js-card').attr('data-api-url');
+        this.apiUrl = `${this.apiUrl}/${this.cityId}`;
         clearTimeout(this.timer);
         this.getExchangeCources();
       }, false);

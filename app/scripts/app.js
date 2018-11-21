@@ -180,10 +180,10 @@ $(() => {
 
   global.services = {};
   if ($('#exchange-service').length) {
-    global.services.exchange = new ExchangeService();
+    global.services.exchange = new ExchangeService('#exchange-service');
   }
   if ($('#exchange-service-bank').length) {
-    global.services.exchange = new ExchangeBanksService();
+    global.services.exchange = new ExchangeBanksService('#exchange-service-bank');
   }
   if ($('#fix-service').length) {
     global.services.exchange = new FixService();
