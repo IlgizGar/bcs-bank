@@ -30,7 +30,6 @@ export class ExchangeService {
   constructor(id) {
     this.timer = null;
     this.exchangeBlock = $(id);
-    console.log(this.exchangeBlock);
     this.updateTime = 30000;
     this.apiUrl = '';
     this.getApiUrl();
