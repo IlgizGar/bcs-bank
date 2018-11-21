@@ -6,13 +6,27 @@
   padding: 0
 
   background: none
-
+  @media (max-width 1140px)
+    margin-bottom 40px
+    margin-right auto
+    text-align left
+    min-width 230px
+  @media (max-width 768px)
+    margin-bottom 40px
+  @media (max-width 425px)
+    margin 0 auto
+    text-align center
   &:last-child
     margin: 0
+    @media (max-width 425px)
+      margin 0 auto
 
   .leaders__photo
     width: 94px
     height: 94px
+    margin-left 0
+    @media (max-width 425px)
+      margin 0 auto
 
   .leaders__name
     margin-top: 24px
