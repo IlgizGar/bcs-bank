@@ -25,6 +25,7 @@ const getPriceState = (current, old) => {
 // Обмен валюты
 export class ExchangeService {
   constructor() {
+    this.timer = null;
     this.exchangeBlock = $('#exchange-service');
     this.updateTime = 30000;
     this.apiUrl = this.exchangeBlock.closest('.js-card').attr('data-api-url');
@@ -33,27 +34,32 @@ export class ExchangeService {
 
   // Exchange table
   getExchangeCources() {
-    $.get(this.apiUrl + '/onlinecources/v1', (response) => {
-      this.exchangeBlock.find('tbody').replaceWith(this.generateExchangeTable(response));
-      setTimeout(() => {
+    $.get(this.apiUrl, (response) => {
+      this.exchangeBlock.find('tbody')
+        .replaceWith(ExchangeService.generateExchangeTable(this.getAdaptedData(response)));
+      this.timer = setTimeout(() => {
         this.getExchangeCources();
-      }, this.updateTime)
-    })
+      }, this.updateTime);
+    });
   }
-  generateExchangeTable(data) {
-    let tableContent = $('<tbody></tbody>');
+
+  getAdaptedData(data) { // метод для адаптации данных для построения таблицы
+    return data.online_courses;
+  }
+  static generateExchangeTable(data) {
+    const tableContent = $('<tbody></tbody>');
     for (const currency in data) {
       tableContent.append(`
         <tr>
           <td class="services__table-currency">${currency}</td>
           <td>
-            <div class="currency ${getPriceState(data[currency].buy, data[currency].buy_previous)} ">
+            <div class="currency ${getPriceState(data[currency].buy, data[currency].prevBuy)} ">
                 ${getPriceValue(data[currency].buy)}
                 <svg role="presentation" class="icon icon-fall_arrow "><use xlink:href="assets/images/icons.svg#icon_fall_arrow"></use></svg>
             </div>
           </td>
           <td>
-            <div class="currency ${getPriceState(data[currency].sell, data[currency].sell_previous)} ">
+            <div class="currency ${getPriceState(data[currency].sell, data[currency].prevSell)} ">
                 ${getPriceValue(data[currency].sell)}
                 <svg role="presentation" class="icon icon-fall_arrow "><use xlink:href="assets/images/icons.svg#icon_fall_arrow"></use></svg>
             </div>
@@ -61,7 +67,7 @@ export class ExchangeService {
         </tr>
       `);
     }
-    return tableContent
+    return tableContent;
   }
 }
 
@@ -76,34 +82,33 @@ export class FixService {
 
   // Exchange table
   getFixCources() {
-    $.get(this.apiUrl + '/seltcources/v1', (response) => {
+    $.get(this.apiUrl, (response) => {
       this.updateTableData(response);
       setTimeout(() => {
         this.getFixCources();
       }, this.updateTime);
-
-    })
+    });
   }
 
   updateTableData(data) {
     const USDControls = this.fixBlock.find('.js-course-radio[data-currency="USD"]');
     const EURControls = this.fixBlock.find('.js-course-radio[data-currency="EUR"]');
-
+    //
     USDControls.each((i, el) => {
       if ($(el).children('.radio__field').attr('id') === 'course-buy_usd') {
-        this.updateTableCellValue(el, data.usd.buy)
+        this.updateTableCellValue(el, parseFloat(data.usdBuy.replace(',', '.')));
       }
       if ($(el).children('.radio__field').attr('id') === 'course-sell_usd') {
-        this.updateTableCellValue(el, data.usd.sell)
+        this.updateTableCellValue(el, parseFloat(data.usdSell.replace(',', '.')));
       }
     });
 
     EURControls.each((i, el) => {
       if ($(el).children('.radio__field').attr('id') === 'course-buy_eur') {
-        this.updateTableCellValue(el, data.eur.buy)
+        this.updateTableCellValue(el, parseFloat(data.eurBuy.replace(',', '.')));
       }
       if ($(el).children('.radio__field').attr('id') === 'course-sell_eur') {
-        this.updateTableCellValue(el, data.eur.sell)
+        this.updateTableCellValue(el, parseFloat(data.eurSell.replace(',', '.')));
       }
     });
 
@@ -141,74 +146,21 @@ export class ExchangeBanksService extends ExchangeService {
     super();
     this.exchangeBlock = $('#exchange-service-bank');
     this.apiUrl = this.exchangeBlock.closest('.js-card').attr('data-api-url');
-    this.previosCourse = {};
     this.cityId = this.exchangeBlock.closest('.js-card')
       .find('.js-context option[selected]')
       .attr('value');
-    this.initPrevCourceValue();
     this.initCityChange();
-    this.timer = null;
-  }
-  initPrevCourceValue() {
-    this.previosCourse.usd = {
-      sell_previous: null,
-      buy_previous: null,
-    };
-    this.previosCourse.eur = {
-      sell_previous: null,
-      buy_previous: null,
-    };
-  }
-
-  getExchangeCources() {
-    const url = `${this.apiUrl}/clearingcources/v1`;
-    $.get(url, (response) => {
-      this.exchangeBlock.find('tbody')
-        .replaceWith(this.generateExchangeTable(this.getCityData(response)));
-      this.timer = setTimeout(() => {
-        this.getExchangeCources();
-      }, this.updateTime);
-    });
   }
   initCityChange() {
     this.exchangeBlock.closest('.js-card')
       .find('.js-context')[0].addEventListener('contextchange', (e) => { // подпиываемся на кастомное событие компонента контекст
         this.cityId = e.target.contextValue;
         clearTimeout(this.timer);
-        this.initPrevCourceValue();
         this.getExchangeCources();
       }, false);
   }
-  getCityData(data) {
-    return this.dataAdapter(data[this.cityId]);
-  }
-  dataAdapter(cityData) {
-    this.previosCourse.usd = {
-      sell_previous: cityData.usd_sell,
-      buy_previous: cityData.usd_buy,
-    };
-    this.previosCourse.eur = {
-      sell_previous: cityData.eur_sell,
-      buy_previous: cityData.eur_buy,
-    };
-    return {
-      USD:
-        {
-          sell: cityData.usd_sell,
-          sell_previous: this.previosCourse.usd.sell_previous,
-          buy: cityData.usd_buy,
-          buy_previous: this.previosCourse.usd.buy_previous,
-          pub_date: cityData.pub_date,
-        },
-      EUR: {
-        sell: cityData.eur_sell,
-        sell_previous: this.previosCourse.eur.sell_previous,
-        buy: cityData.eur_buy,
-        buy_previous: this.previosCourse.eur.buy_previous,
-        pub_date: cityData.pub_date,
-      },
-    };
+  getAdaptedData(data) {
+    return data.bank_courses;
   }
 }
-
 
