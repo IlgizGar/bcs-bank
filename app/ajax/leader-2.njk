@@ -1,0 +1,31 @@
+{% import "../components/library/heading/heading.njk" as Heading %}
+
+<div id="leader-2" class="modal">
+  <div class="leaders__detail">
+    <div class="leaders__person leaders__person_theme-medium">
+      <div class="leaders__photo">
+        <img src="assets/images/peshnev.jpg" alt="Председатель Совета директоров">
+      </div>
+      <p class="leaders__name">Пешнев-Подольский <br> Дмитрий Игоревич</p>
+      <p class="leaders__post">Заместитель Председателя Совета директоров</p>
+    </div>
+    {{ Heading.heading({ 'title': 'Дата рождения', 'class': 'mt-40' }) }}
+    <div class="text">
+      <div class="text__row">31 января 1978 г.</div>
+    </div>
+    {{ Heading.heading({ 'title': 'Образование', 'class': 'mt-24' }) }}
+    <div class="text">
+      <div class="text__row">В 2000-м окончил Финансовую академию при Правительстве РФ, также отучился в Stanford Graduate School of Business.</div>
+      <div class="text__row">В 2018-м завершает обучение по программе Executive MBA бизнес-школ NYU Stern, LSE и HEC Paris.</div>
+    </div>
+    {{ Heading.heading({ 'title': 'Трудовая деятельность', 'class': 'mt-24' }) }}
+    <div class="text">
+      <div class="text__row">ФК Уралсиб и Альфа-Банк.</div>
+      <div class="text__row">2008 г. Главный операционный директор ФГ БКС</div>
+      <div class="text__row">2011 г. Первый заместитель президента - председателя правления БКС.</div>
+      <div class="text__row">2013 г. Возглавил направление Private Banking Газпромбанка и занял пост первого вице-президента банка (по 31 октября 2017 года).</div>
+      <div class="text__row">2017 г. - по наст. время. Советник компании Брокеркредитсервис (БКС)</div>
+      <div class="text__row">2018 г. Председатель правления БКС Банка.</div>
+    </div>
+  </div>
+</div>

@@ -51,7 +51,7 @@ module.exports = (elem) => {
               data: $(form).serializeArray(),
               success: function (data) {
                 form.reset();
-                if (data.success === 1) {
+                if (data.success === true) {
                   $('.js-products-success').modal();
                 } else {
                   $('.js-products-error').modal();

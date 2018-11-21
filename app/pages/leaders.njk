@@ -1,0 +1,125 @@
+{% extends "layout/layout.njk" %}
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/library/docs/docs.njk" as Docs %}
+
+{% set root = "." %}
+{% set title = "Руководство" %}
+{% set header = 'blue' %}
+
+{% block body %}
+  <div class="page js-page">
+    {% include "../components/modules/header/header.njk" %}
+    <main role="main" class="leaders">
+      <section
+          class="section page__section"> {# Чтобы установить картинку на фон, необходимо добавить style="backgraun-image: url(путь до картинки)" #}
+        <div class="section__header section__header_theme-blue">
+          <div class="page__container page__container_type-header">
+            {{ Heading.heading({ 'tag': 'h1', 'title': 'Руководство', 'mods': { 'type': 'large' } }) }}
+          </div>
+        </div>
+      </section>
+      <section class="section page__section page__section_theme-normal">
+        <div class="page__container">
+          <div class="section__row">
+            <div class="section__content section__content_theme-centered">
+              <div class="text">
+                <div class="text__quote text__quote_theme-last">
+                  <div class="text__quote-content">
+                    Финансовая группа БКС – лидер рынка инвестиций. Я убежден, что выбранный вектор развития
+                    БКС Банка позволит нам добиться лидерских позиций и в банковском бизнесе. Наша главная
+                    цель стать по-настоящему высокотехнологичным банком с инновационными продуктами и
+                    сервисами, ориентированным на клиента.
+                  </div>
+                  <div class="text__quote-author">
+                    Олег Михасенко
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section page__section">
+        <div class="page__container">
+          <div class="section__content">
+            <div class="section__row">
+              <a class="leaders__person js-open-modal" href="ajax/leader-1.html" data-type="modal-ajax">
+                <div class="leaders__photo">
+                  <img src="assets/images/mihasenko.jpg" alt="Председатель Совета директоров">
+                </div>
+                <p class="leaders__name">Михасенко <br> Олег Владимирович</p>
+                <p class="leaders__post">Председатель Совета директоров</p>
+              </a>
+              <a class="leaders__person js-open-modal" href="ajax/leader-2.html" data-type="modal-ajax">
+                <div class="leaders__photo">
+                  <img src="assets/images/peshnev.jpg" alt="Председатель Совета директоров">
+                </div>
+                <p class="leaders__name">Пешнев-Подольский <br> Дмитрий Игоревич</p>
+                <p class="leaders__post">Заместитель Председателя Совета директоров</p>
+              </a>
+              <div class="text mt-40">
+                <div class="leaders__quote text__quote text__quote_theme-gray text__quote_theme-last">
+                  <div class="text__quote-content">
+                    Мы тщательно подходим к выбору направлений развития, выбираем только те, где можем добиться успеха.
+                    Для этого сформирована новая команда профессионалов - фанатов своего дела, готовых молниеносно
+                    реагировать
+                    на вызовы постоянно меняющегося мира. Верю, что вместе мы можем достичь главной цели – стать лучшим
+                    банком в розничном, малом и корпоративных бизнесах.
+                  </div>
+                  <div class="text__quote-author">
+                    Пешнев-Подольский Дмитрий Игоревич
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section page__section page__section_theme-last">
+        <div class="page__container">
+          <div class="section__row">
+            <div class="section__content section__content_theme-centered">
+              {{ Heading.heading({ 'title': 'Совет директоров', 'mods': {'type': 'normal', 'margin': 'min'} }) }}
+              <div class="text">
+                <div class="text__row">Степакина Елена Владимировна</div>
+                <div class="text__row">Хлызов Константин Борисович</div>
+                <div class="text__row">Новиков Станислав Михайлович</div>
+              </div>
+              {{ Heading.heading({ 'title': 'Правление банка', 'mods': {'type': 'normal', 'margin': 'min', 'margin-top': 'normal'} }) }}
+              <div class="leaders__person-group">
+                <div class="leaders__person leaders__person_theme-simple">
+                  <div class="leaders__photo">
+                    <img src="assets/images/peshnev.jpg" alt="Председатель Правления">
+                  </div>
+                  <p class="leaders__name">Пешнев-Подольский <br> Дмитрий Игоревич</p>
+                  <p class="leaders__post">Председатель <br> Правления</p>
+                </div>
+                <div class="leaders__person leaders__person_theme-simple">
+                  <div class="leaders__photo">
+                    <img src="assets/images/rodionova.jpg" alt="Заместитель Председателя Правления">
+                  </div>
+                  <p class="leaders__name">Родионова <br> Марина Геннадьевна</p>
+                  <p class="leaders__post">Заместитель Председателя <br> Правления</p>
+                </div>
+                <div class="leaders__person leaders__person_theme-simple">
+                  <div class="leaders__photo">
+                    <img src="assets/images/ivanischenko.jpg" alt="Заместитель Председателя Правления">
+                  </div>
+                  <p class="leaders__name">Иванищенко <br> Денис Геннадьевич</p>
+                  <p class="leaders__post">Заместитель Председателя <br> Правления</p>
+                </div>
+              </div>
+              {{ Heading.heading({ 'title': 'Правление', 'mods': {'margin': 'min'} }) }}
+              <div class="text mb-82">
+                <div class="text__row">Сусин Дмитрий Дмитриевич</div>
+              </div>
+              {{ Docs.docs({ 'title': 'Раскрытие информации об органах управления банка', 'href': '#', 'type': 'PDF', 'size': '213 КБ' }) }}
+              <div class="text mt-40">
+                <div class="text__row">Дата раскрытия информации: 20.05.2016 г.</div>
+                <div class="text__row">Период актуальности: с 19.02.2015 - по настоящее время</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main> {% include "../components/modules/footer/footer.njk" %} </div> {% endblock %}
