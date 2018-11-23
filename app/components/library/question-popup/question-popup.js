@@ -42,6 +42,16 @@ export default class QuestionPopup {
   }
 
   onQuestionResolve(e) {
+    function CustomEvent(event, params) {
+      const par = params || { bubbles: false, cancelable: false, detail: undefined };
+      const evt = document.createEvent('CustomEvent');
+      evt.initCustomEvent(event, par.bubbles, par.cancelable, par.detail);
+      return evt;
+    }
+    if (typeof window.CustomEvent !== 'function') {
+      CustomEvent.prototype = window.Event.prototype;
+      window.CustomEvent = CustomEvent;
+    }
     const event = new CustomEvent('questionresolve', { detail: e.response });
     this.popup.dispatchEvent(event);
   }

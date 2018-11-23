@@ -41,7 +41,7 @@ export default class Offices {
     this.getCurrentTab();
     Helpers.getGeolocation((location) => {
       ymaps.ready(() => {
-        const userCity = Cookie.get('select-city') !== undefined ? Cookie.get('select-city') : this.checkUserCity(location.GeocoderMetaData.InternalToponymInfo.geoid);
+        const userCity = Cookie.get('select-city') !== undefined ? Cookie.get('select-city') : Offices.checkUserCity(location.GeocoderMetaData.InternalToponymInfo.geoid);
         this.initMap();
         this.questionHandler();
         this.initObjectCollection();
@@ -73,11 +73,9 @@ export default class Offices {
         if (this.appBlock.hasClass('state_explored')) {
           this.removeExploredDetail();
         }
-      } else {
-        if (this.switcher.data('state') === 'list') {
-          if (!this.appBlock.hasClass('state_listed')) {
-            this.appBlock.addClass('state_listed');
-          }
+      } else if (this.switcher.data('state') === 'list') {
+        if (!this.appBlock.hasClass('state_listed')) {
+          this.appBlock.addClass('state_listed');
         }
       }
     });
@@ -96,20 +94,16 @@ export default class Offices {
           $('#map-container').css('height', '440px');
           this.map.container.fitToViewport();
         }
-      } else {
-        if (this.map.container.getSize()[1] !== 330) {
-          $('#map-container').css('height', '330px');
-          this.map.container.fitToViewport();
-        }
+      } else if (this.map.container.getSize()[1] !== 330) {
+        $('#map-container').css('height', '330px');
+        this.map.container.fitToViewport();
       }
+    } else if (window.innerWidth < 992 && window.innerWidth > 575) {
+      $('#map-container').css('height', '300px');
+      this.map.container.fitToViewport();
     } else {
-      if (window.innerWidth < 992 && window.innerWidth > 575) {
-        $('#map-container').css('height', '300px');
-        this.map.container.fitToViewport();
-      } else {
-        $('#map-container').css('height', '200px');
-        this.map.container.fitToViewport();
-      }
+      $('#map-container').css('height', '200px');
+      this.map.container.fitToViewport();
     }
   }
 
@@ -170,13 +164,14 @@ export default class Offices {
     questionPopup.generatePopup();
   }
 
-  checkUserCity(id) {
+  static checkUserCity(id) {
     let cityId = null;
     global.contexts['select-city'].getListData().forEach((el) => {
       if (el.id.toString() === id.toString()) {
         cityId = id;
         return id;
       }
+      return cityId;
     });
     return cityId;
   }
@@ -199,7 +194,7 @@ export default class Offices {
           Offices.reInitScroll(this.pane);
         },
         (err) => {
-
+          console.error(err);
         },
       );
     });
@@ -277,18 +272,18 @@ export default class Offices {
 
       zoomIn() {
         const map = this.getData().control.getMap();
-        map.setZoom(map.getZoom() + 1, {checkZoomRange: true});
+        map.setZoom(map.getZoom() + 1, { checkZoomRange: true });
       },
 
       zoomOut() {
         const map = this.getData().control.getMap();
-        map.setZoom(map.getZoom() - 1, {checkZoomRange: true});
+        map.setZoom(map.getZoom() - 1, { checkZoomRange: true });
       },
     });
     const zoomControl = new ymaps.control.ZoomControl({
       options: {
         layout: ZoomLayout,
-        position: {bottom: 80},
+        position: { bottom: 80 },
       },
     });
     this.map.controls.add(zoomControl);
@@ -368,7 +363,7 @@ export default class Offices {
     this.handleMapSize();
     this.goToPoints();
 
-    $('html, body').addClass('state_unscroll').animate({scrollTop: this.appBlock.offset().top}, () => {
+    $('html, body').addClass('state_unscroll').animate({ scrollTop: this.appBlock.offset().top }, () => {
       const $collapse = $.extend(true, {}, target.parent().clone());
       this.switcher.addClass('state_hidden');
       if (this.detailBlock.hasClass('state_hidden')) {
@@ -448,7 +443,7 @@ export default class Offices {
 
   scrollToCollapse(el) {
     if (window.innerWidth > 991) {
-      this.pane.bind('jsp-initialised', (event, isScrollable) => {
+      this.pane.bind('jsp-initialised', () => {
         this.pane.data('jsp').scrollToElement(el.closest('.collapse__item'), 75);
         this.pane.unbind('jsp-initialised');
       });

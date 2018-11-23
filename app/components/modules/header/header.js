@@ -39,12 +39,12 @@ module.exports = (elem) => {
           this.contacts.removeClass('state_explored');
           $('main').find('.js-cover').remove();
           $('body').removeClass('state_unscroll');
-            if (this.btnOfficesState) {
-              this.btnOffices.addClass('state_active');
-              this.btnOfficesState = false;
-            } else {
-                $('.js-navbar').addClass('state_init');
-            }
+          if (this.btnOfficesState) {
+            this.btnOffices.addClass('state_active');
+            this.btnOfficesState = false;
+          } else {
+            $('.js-navbar').addClass('state_init');
+          }
         }
       });
 

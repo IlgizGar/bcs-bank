@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import 'slick-carousel';
-import Context from "../context/context";
+// import Context from '../context/context';
 
 module.exports = (elem) => {
   class Carousel {
@@ -29,13 +29,13 @@ module.exports = (elem) => {
 
       this.next = '<button class="carousel-controls__button carousel-controls__button_type-next">' +
         ' <svg role="presentation" class="icon icon-tr-arrow">\n' +
-        `    <use xlink:href="/assets/images/icons.svg#icon_tr-arrow"></use>\n` +
+        '    <use xlink:href="/assets/images/icons.svg#icon_tr-arrow"></use>\n' +
         '  </svg>' +
         '</button>';
 
       this.prev = '<button class="carousel-controls__button carousel-controls__button_type-prev">' +
         ' <svg role="presentation" class="icon icon-tr-arrow">\n' +
-        `    <use xlink:href="/assets/images/icons.svg#icon_tr-arrow"></use>\n` +
+        '    <use xlink:href="/assets/images/icons.svg#icon_tr-arrow"></use>\n' +
         '  </svg>' +
         '</button>';
 
@@ -74,7 +74,6 @@ module.exports = (elem) => {
         if (typeof this.carousel.data('breakpoint') !== 'undefined') {
           if (parseInt(this.carousel.data('breakpoint'), 0) - 1 >= window.innerWidth) {
             this.initMobileSlick(parseInt(this.carousel.data('breakpoint'), 0) - 1);
-
           }
         }
       });

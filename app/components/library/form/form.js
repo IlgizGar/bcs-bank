@@ -39,7 +39,7 @@ module.exports = (elem) => {
           submitHandler = (form) => {
             const redirectUrl = `${form.getAttribute('action')}?partner=bcs-bank&operation=${form.querySelector('.radio__field:checked').id.match(/buy|sell/g)}&amount=${form.querySelector('.js-course-input').value.replace(' ', '')}&currency=${form.querySelector('.js-course-field .js-title').innerText}`;
             document.location.href = redirectUrl;
-          }
+          };
         }
 
         if (this.formType === 'cards') {
@@ -49,7 +49,7 @@ module.exports = (elem) => {
               url: form.getAttribute('action'),
               dataType: 'json',
               data: $(form).serializeArray(),
-              success: function (data) {
+              success: (data) => {
                 form.reset();
                 if (data.success === true) {
                   $('.js-products-success').modal();
@@ -57,13 +57,13 @@ module.exports = (elem) => {
                   $('.js-products-error').modal();
                 }
               },
-              error: function () {
+              error: () => {
                 $('.js-products-error').modal();
-              }
+              },
             });
 
             return false;
-          }
+          };
         }
 
         this.validator.validateForm(submitHandler);

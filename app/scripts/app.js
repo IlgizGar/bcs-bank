@@ -4,6 +4,7 @@ import 'core-js/es6/symbol';
 import $ from 'jquery';
 
 import svg4everybody from 'svg4everybody';
+import Lottie from 'lottie-web';
 import Header from '../components/modules/header/header';
 import Footer from '../components/modules/footer/footer';
 import Menubar from '../components/modules/menubar/menubar';
@@ -11,7 +12,7 @@ import Contact from '../components/library/contact/contact';
 import Dropdown from '../components/library/dropdown/dropdown';
 import Context from '../components/library/context/context';
 import Carousel from '../components/library/carousel/carousel';
-import {FixService, ExchangeService, ExchangeBanksService } from '../components/modules/services/services';
+import { FixService, ExchangeService, ExchangeBanksService } from '../components/modules/services/services';
 import MediaSlider from '../components/library/media-slider/media-slider';
 import TableSort from '../components/library/table/table';
 import Collapse from '../components/library/collapse/collapse';
@@ -29,7 +30,7 @@ import DocumentsFilter from '../components/modules/documents/documents';
 import IndexSearch from '../components/modules/index-search/index-search';
 import News from '../components/modules/news/news';
 import Search from '../components/modules/search/search';
-import Lottie from 'lottie-web';
+
 
 require('babel-polyfill');
 
@@ -172,8 +173,8 @@ $(() => {
           renderer: 'svg',
           loop: true,
           autoplay: true,
-          path: `assets/illustrations/${$(el).data('illustration')}.json`
-        })
+          path: `assets/illustrations/${$(el).data('illustration')}.json`,
+        });
       }
     });
   }
@@ -192,9 +193,8 @@ $(() => {
   $('[data-scroll]').on('click', (e) => {
     const el = $(e.currentTarget).data('scroll');
     if ($(el).length) {
-      $('html, body').animate({scrollTop: $(el).offset().top}, 500);
+      $('html, body').animate({ scrollTop: $(el).offset().top }, 500);
     }
     return false;
   });
-
 });

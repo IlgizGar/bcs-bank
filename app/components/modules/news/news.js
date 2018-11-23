@@ -57,7 +57,7 @@ export default class News {
           this.moreButton.hide();
         }
         e.items.forEach((el) => {
-          this.contentBlock.append(this.itemTemplate(el));
+          this.contentBlock.append(News.itemTemplate(el));
         });
       },
     });
@@ -70,7 +70,7 @@ export default class News {
     });
   }
 
-  itemTemplate(data) {
+  static itemTemplate(data) {
     return `<div class="card js-card  card_type-default card_hover-type-card card_view-uppercase  " data-href="${data.link}">
               <div class="card__wrap">
                 <button class="card__action">

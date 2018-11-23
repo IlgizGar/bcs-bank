@@ -74,7 +74,7 @@ module.exports = (elem) => {
 
     activateTabOnLoad() {
       const urlHash = document.location.hash;
-      if (!!urlHash) {
+      if (urlHash) {
         const selector = `.js-anchor[href="${urlHash}"]`;
         const element = {
           currentTarget: $(selector)[0],

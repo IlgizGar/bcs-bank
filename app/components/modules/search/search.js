@@ -22,10 +22,10 @@ export default class Search {
       method: 'GET',
       dataType: 'json',
       success: (e) => {
-          this.moreButton.remove();
-          e.items.forEach((el) => {
-            this.contentBlock.append(this.itemTemplate(el));
-          });
+        this.moreButton.remove();
+        e.items.forEach((el) => {
+          this.contentBlock.append(Search.itemTemplate(el));
+        });
       },
     });
   }
@@ -36,7 +36,7 @@ export default class Search {
     });
   }
 
-  itemTemplate(data) {
+  static itemTemplate(data) {
     return `<div class="search-card" href="${data.link}">
               <div class="search-card__title">${data.title}</div>
               <div class="search-card__content">${data.content}</div>

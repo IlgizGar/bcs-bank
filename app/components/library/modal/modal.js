@@ -37,7 +37,7 @@ export default class Modal {
             this.html = html;
             this.openWindow(ajax);
             console.log('HTML', html);
-          })
+          });
         }
       }
 
@@ -46,14 +46,13 @@ export default class Modal {
   }
 
   openWindow(ajax) {
-
     let $el = null;
 
     if (ajax) {
       const id = $(this.html).attr('id');
       $el = $(`#${id}`);
 
-      if($el.length) {
+      if ($el.length) {
         $el.modal();
       } else {
         $(this.html).appendTo($('.js-page')).modal();

@@ -2,7 +2,7 @@ import $ from 'jquery';
 
 // Вспомогательные методы
 const getPriceValue = (value) => {
-  if(value){
+  if (value) {
     const valueParts = value.toFixed(2).toString().split('.');
     const firstPart = `<span>${valueParts[0]}</span>`;
     const secondPart = valueParts[1] ? `<span>,${valueParts[1]}</span>` : '';
@@ -32,6 +32,7 @@ export class ExchangeService {
     this.exchangeBlock = $(id);
     this.updateTime = 30000;
     this.apiUrl = '';
+    this.loadedData = null;
     this.getApiUrl();
     this.getExchangeCources();
   }
@@ -50,11 +51,12 @@ export class ExchangeService {
   }
 
   getAdaptedData(data) { // метод для адаптации данных для построения таблицы
+    this.loadedData = data;
     return data.online_courses;
   }
   static generateExchangeTable(data) {
     const tableContent = $('<tbody></tbody>');
-    for (const currency in data) {
+    Object.keys(data).forEach((currency) => {
       tableContent.append(`
         <tr>
           <td class="services__table-currency">${currency}</td>
@@ -72,7 +74,7 @@ export class ExchangeService {
           </td>
         </tr>
       `);
-    }
+    });
     return tableContent;
   }
 }
@@ -102,43 +104,43 @@ export class FixService {
     //
     USDControls.each((i, el) => {
       if ($(el).children('.radio__field').attr('id') === 'course-buy_usd') {
-        this.updateTableCellValue(el, parseFloat(data.usdBuy.replace(',', '.')));
+        FixService.updateTableCellValue(el, parseFloat(data.usdBuy.replace(',', '.')));
       }
       if ($(el).children('.radio__field').attr('id') === 'course-sell_usd') {
-        this.updateTableCellValue(el, parseFloat(data.usdSell.replace(',', '.')));
+        FixService.updateTableCellValue(el, parseFloat(data.usdSell.replace(',', '.')));
       }
     });
 
     EURControls.each((i, el) => {
       if ($(el).children('.radio__field').attr('id') === 'course-buy_eur') {
-        this.updateTableCellValue(el, parseFloat(data.eurBuy.replace(',', '.')));
+        FixService.updateTableCellValue(el, parseFloat(data.eurBuy.replace(',', '.')));
       }
       if ($(el).children('.radio__field').attr('id') === 'course-sell_eur') {
-        this.updateTableCellValue(el, parseFloat(data.eurSell.replace(',', '.')));
+        FixService.updateTableCellValue(el, parseFloat(data.eurSell.replace(',', '.')));
       }
     });
 
     this.fixBlock.find('.radio__field:checked').closest('.js-course-radio').trigger('click');
   }
 
-  updateTableCellValue(el, price) {
+  static updateTableCellValue(el, price) {
     const input = $(el).children('.radio__field');
-    this.updateTableCellState($(el).find('.currency'), price, input.val());
+    FixService.updateTableCellState($(el).find('.currency'), price, input.val());
     input.val(price);
   }
 
-  updateTableCellState(el, current, old) {
+  static updateTableCellState(el, current, old) {
     const newClassName = getPriceState(current, old);
     if (newClassName.length < 2) return;
     el.removeClass('state_rise')
       .removeClass('state_fall')
       .removeClass('state_hidden_arrow')
       .addClass(newClassName);
-    el.find('span').each((i, el) => {
-      $(el).remove();
+    el.find('span').each((i, element) => {
+      $(element).remove();
     });
-    el.find('svg').each((i, el) => {
-      $(el).remove();
+    el.find('svg').each((i, element) => {
+      $(element).remove();
     });
     el.prepend(getPriceValue(current));
     el.append(' <svg role="presentation" class="icon icon-fall_arrow "><use xlink:href="assets/images/icons.svg#icon_fall_arrow"></use></svg>');
@@ -170,6 +172,7 @@ export class ExchangeBanksService extends ExchangeService {
       }, false);
   }
   getAdaptedData(data) {
+    this.loadedData = data;
     return data.bank_courses;
   }
 }

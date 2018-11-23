@@ -23,12 +23,12 @@ export default class Menubar {
     });
 
     $(window).on('resize', () => {
-      if(window.innerWidth >= 1280) {
-        if(this.menuControl.hasClass('state_open')) {
+      if (window.innerWidth >= 1280) {
+        if (this.menuControl.hasClass('state_open')) {
           this.controlHandler();
         }
       }
-    })
+    });
   }
 
   checkWidth() {

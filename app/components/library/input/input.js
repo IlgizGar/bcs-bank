@@ -27,7 +27,7 @@ module.exports = (elem) => {
           prettify_enabled: true,
           onChange: (data) => {
             this.field.val(data.from);
-          }
+          },
         });
         this.field.val(this.slider.data('from'));
         this.input.removeClass('state_init');
@@ -48,27 +48,21 @@ module.exports = (elem) => {
       this.field.on('blur', () => {
         if (!this.input.hasClass('state_filled')) {
           this.input.addClass('state_init');
-        } else {
-          if (this.ionSlider !== null) {
-            if (parseFloat(this.field.val().replace(/ /g, '')) > this.slider.data('max')) {
-
-              this.field.val(this.slider.data('max'));
-            } else if (parseFloat(this.field.val().replace(/ /g, '')) < this.slider.data('min')) {
-              this.field.val(this.slider.data('min'));
-            } else {
-              if (this.field.val().length < 1) {
-                this.field.val(this.slider.attr('data-from'));
-              }
-            }
-            this.ionSlider.update({
-              from: parseFloat(this.field.val().replace(/ /g, ''))
-            });
+        } else if (this.ionSlider !== null) {
+          if (parseFloat(this.field.val().replace(/ /g, '')) > this.slider.data('max')) {
+            this.field.val(this.slider.data('max'));
+          } else if (parseFloat(this.field.val().replace(/ /g, '')) < this.slider.data('min')) {
+            this.field.val(this.slider.data('min'));
+          } else if (this.field.val().length < 1) {
+            this.field.val(this.slider.attr('data-from'));
           }
+          this.ionSlider.update({
+            from: parseFloat(this.field.val().replace(/ /g, '')),
+          });
         }
       });
 
       this.field.on('keyup', () => {
-
         if (this.field.val().length < 1) {
           if (this.ionSlider === null) {
             this.input.removeClass('state_filled');
@@ -80,7 +74,7 @@ module.exports = (elem) => {
 
           if (this.ionSlider !== null) {
             this.ionSlider.update({
-              from: parseFloat(this.field.val().replace(/ /g, ''))
+              from: parseFloat(this.field.val().replace(/ /g, '')),
             });
           }
         }

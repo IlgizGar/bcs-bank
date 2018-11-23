@@ -3,6 +3,7 @@ import $ from 'jquery';
 export default class Collapse {
   constructor($el) {
     this.$itemsBlock = $el;
+    this.event = false;
     this.init();
   }
 
@@ -15,7 +16,7 @@ export default class Collapse {
   }
 
   openContent(el) {
-    const self = this;
+    this.event = true;
     $(el).next('.collapse__content').slideToggle(225).closest('.collapse__item')
       .toggleClass('collapse__item_state-open')
       .siblings()
