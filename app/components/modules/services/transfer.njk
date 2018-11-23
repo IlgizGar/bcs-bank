@@ -10,6 +10,42 @@
     {{ Button.button({ 'href': '#limits', 'title': 'Лимиты и тарифы', 'mods': { 'type': 'link', 'theme': 'white', 'view': 'text' }, 'class': 'services__transfer-link js-open-modal' }) }}
   </div>
   <div class="js-form">
-    <iframe class="transfer-iframe" src="https://test.best2pay.net/webapi/P2PTransfer?sector=1524&code=643"></iframe>
+
+    {#<form>#}
+      {#<div class="services__transfer-cards section__row">#}
+        {#<div class="services__credit-card services__credit-card_type-sender">#}
+            {#{{ Heading.heading({ 'title': 'Данные отправителя', 'mods': { 'type': 'small', 'margin': 'none', 'theme': 'default' } }) }}#}
+            {#{{ Input.input({ 'label': 'Номер карты', 'class': 'services__card-sender', 'field': {'class': 'js-card-masked', 'name': 'card_sender', 'required': 'required'} }) }}#}
+            {#{{ Input.input({ 'label': 'CVV/CVV2', 'class': 'services__card-code mt-16', 'field': {'class': 'js-cvv-masked', 'name': 'card_cvv', 'required': 'required', 'maxlength': '3'} }) }}#}
+            {#{{ Input.input({ 'label': 'Срок действия', 'class': 'services__card-period mt-16', 'field': {'class': 'js-period-masked', 'name': 'card_period', 'required': 'required', 'maxlength' :'5'} }) }}#}
+        {#</div>#}
+        {#<div class="services__credit-card services__credit-card_type-receiver">#}
+          {#<button type="button" class="services__transfer-rotate-btn">#}
+              {#{{ Icon.icon({ 'name': 'rotate', 'elementClass': 'services__transfer-rotate-icon' }) }}#}
+          {#</button>#}
+            {#{{ Heading.heading({ 'title': 'Данные получателя', 'mods': { 'type': 'small', 'margin': 'none', 'theme': 'default' } }) }}#}
+            {#{{ Input.input({ 'label': 'Номер карты', 'class': 'services__card-sender', 'field': {'class': 'js-card-masked', 'name': 'card_reciever', 'required': 'required'} }) }}#}
+        {#</div>#}
+        {#<div class="services__transfer-controls">#}
+          {#<div class="services__transfer-amount">#}
+              {#{{ Input.input({ 'label': 'Сумма перевода', 'icon': 'ruble', 'class': 'services__card-summ', 'field': {'class': 'js-numeric-input js-transfer-input', 'name': 'transfer_amount', 'maxlength' : '6', 'required': 'required'}, 'attr': {'max': '75000', 'commission': '0.02'} }) }}#}
+            {#<input class="js-commission-amount" value="0" hidden>#}
+            {#<div class="services__card-commission">#}
+              {#<p class="js-commission-info">Комиссия за перевод будет <br> расчитана автоматически</p>#}
+              {#<div class="services__card-commission-res js-commission-res state_hidden">#}
+                {#<p>Сумма перевода с комиссией</p>#}
+                {#<p><span class="js-commission-user-amount">0</span> {{ Icon.icon({ 'name': 'rub' }) }}</p>#}
+              {#</div>#}
+            {#</div>#}
+          {#</div>#}
+          {#<div class="services__transfer-submit">#}
+              {#{{ Button.button({ 'title': 'Перевести деньги', 'type': 'submit', 'mods': { 'theme': 'default' } }) }}#}
+            {#<div class="services__card-legal">#}
+              {#<span>Нажимая «Перевести деньги», <br>я принимаю </span>{{ Button.button({ 'href': '#', 'title': 'условия сервиса', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}#}
+            {#</div>#}
+          {#</div>#}
+        {#</div>#}
+      {#</div>#}
+    {#</form>#}
   </div>
 </div>
