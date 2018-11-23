@@ -10,6 +10,7 @@ module.exports = (elem) => {
 
       this.init();
       this.events();
+      this.activateTabOnLoad();
     }
 
     init() {
@@ -26,24 +27,23 @@ module.exports = (elem) => {
     events() {
       this.anchors.on('click', (e) => {
         e.preventDefault();
-
-        const $anchor = $(e.currentTarget);
-
-        if (!$anchor.hasClass('state_active')) {
-          this.active.removeClass('state_active');
-          this.$tab.addClass('state_invisible');
-
-          this.active = $anchor;
-          this.active.addClass('state_active');
-          this.setAnchorPosition();
-          this.$tab = $(this.active.attr('href'));
-          this.$tab.removeClass('state_invisible');
-        }
-
-        if($anchor.closest('.js-products-tabbar').length) {
-          this.handleProductsFilter($anchor);
-        }
+        this.triggerAnchor(e);
       });
+    }
+    triggerAnchor(e) {
+      const $anchor = $(e.currentTarget);
+      if (!$anchor.hasClass('state_active')) {
+        this.active.removeClass('state_active');
+        this.$tab.addClass('state_invisible');
+        this.active = $anchor;
+        this.active.addClass('state_active');
+        this.setAnchorPosition();
+        this.$tab = $(this.active.attr('href'));
+        this.$tab.removeClass('state_invisible');
+      }
+      if ($anchor.closest('.js-products-tabbar').length) {
+        Tabs.handleProductsFilter($anchor);
+      }
     }
 
     setAnchorPosition() {
@@ -61,17 +61,27 @@ module.exports = (elem) => {
       }
     }
 
-    handleProductsFilter($el) {
+    static handleProductsFilter($el) {
       const id = $el.attr('href').slice(1);
       const $filter = $('.js-products-filter');
 
-      if(id !== 'debet') {
+      if (id !== 'debet') {
         $filter.addClass('state_hidden');
       } else {
         $filter.removeClass('state_hidden');
       }
     }
-  }
 
+    activateTabOnLoad() {
+      const urlHash = document.location.hash;
+      if (!!urlHash) {
+        const selector = `.js-anchor[href="${urlHash}"]`;
+        const element = {
+          currentTarget: $(selector)[0],
+        };
+        this.triggerAnchor(element);
+      }
+    }
+  }
   return new Tabs(elem);
 };
