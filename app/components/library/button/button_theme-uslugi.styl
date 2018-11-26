@@ -17,9 +17,18 @@
 
   .button__title
     color: $color_text
+    transition color 0.3s
 
   .button__icon
     margin-right: 16px
-
     width: 40px
     height: 40px
+    background: url("../images/uslugi_white.svg") no-repeat center
+    background-size contain
+    transition opacity 0.3s
+  &:hover
+    .button__icon
+      img
+        opacity 0
+    .button__title
+      color: $white
