@@ -30,6 +30,7 @@ import DocumentsFilter from '../components/modules/documents/documents';
 import IndexSearch from '../components/modules/index-search/index-search';
 import News from '../components/modules/news/news';
 import Search from '../components/modules/search/search';
+import Calculation from '../components/modules/calculation/calculation';
 
 
 require('babel-polyfill');
@@ -197,4 +198,12 @@ $(() => {
     }
     return false;
   });
+
+
+  if ($('.js-calc-result').length) {
+    global.calculators = [];
+    $('.js-calc-result').find('[data-calc]').each(function () {
+      global.calculators.push(new Calculation($(this)));
+    });
+  }
 });

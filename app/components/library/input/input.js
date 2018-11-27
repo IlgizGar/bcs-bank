@@ -28,6 +28,9 @@ module.exports = (elem) => {
           onChange: (data) => {
             this.field.val(data.from);
           },
+          onFinish: () => {
+            this.field.trigger('change');
+          },
         });
         this.field.val(this.slider.data('from'));
         this.input.removeClass('state_init');
