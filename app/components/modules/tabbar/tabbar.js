@@ -76,10 +76,14 @@ module.exports = (elem) => {
       const urlHash = document.location.hash;
       if (urlHash) {
         const selector = `.js-anchor[href="${urlHash}"]`;
-        const element = {
-          currentTarget: $(selector)[0],
-        };
-        this.triggerAnchor(element);
+        if ($(selector).length) {
+          const element = {
+            currentTarget: $(selector)[0],
+          };
+          this.triggerAnchor(element);
+        } else {
+          $('html, body').animate({ scrollTop: $(urlHash).offset().top }, 500);
+        }
       }
     }
   }
