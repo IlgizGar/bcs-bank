@@ -27,14 +27,14 @@
         {%- endfor %}
     {% endset %}
 
-    <div class="input js-input state_init {{ mods | safe }} {{ options.class | safe }}" {{ attr | safe }}>
+    <div class="input js-input   {% if options.value %}state_filled{% else %}state_init{% endif %} {{ mods | safe }} {{ options.class | safe }}" {{ attr | safe }}>
 
         <label class="input__group">
             <span class="input__label js-label">{{ options.label }}</span>
             {% if options.tag === "textarea" %}
                 <textarea class="input__field js-input-field {{ options.field.class | safe }}" {{ field | safe }}></textarea>
             {% else %}
-                <input class="input__field js-input-field {{ options.field.class | safe }}" {{ field | safe }}>
+                <input class="input__field js-input-field {{ options.field.class | safe }}" {{ field | safe }} {% if options.value %}value="{{ options.value }}"{% endif %}>
             {% endif %}
         </label>
 
@@ -48,8 +48,8 @@
 
         {% if options.slider %}
             <div class="input__slider">
-                <input class="js-input-slider" data-min="{{ options.slider.min }}" data-max="{{ options.slider.max }}"
-                       data-from="{{ options.slider.from }}" data-step="{{ options.slider.step }}" data-postfix="{{ options.slider.postfix }}">
+                <input class="js-input-slider"  data-min="{{ options.slider.min }}" data-max="{{ options.slider.max }}"
+                       data-from="{{ options.slider.from }}" data-step="{{ options.slider.step }}" data-postfix="{{ options.slider.postfix }}" {% if options.value %}value="{{ options.value }}"{% endif %}>
             </div>
         {% endif %}
 

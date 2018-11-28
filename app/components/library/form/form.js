@@ -1,16 +1,30 @@
 import $ from 'jquery';
 import 'jquery-validation';
 import Validator from './validator';
+import StepForm from '../../library/step-form/step-form';
+import SmsForm from '../../modules/sms-code-form/sms-code';
 
 module.exports = (elem) => {
   class Form {
     constructor(selector) {
       this.form = $(selector);
-      this.validator = Validator(this.form);
+      this.steps = null;
+      this.smsCodeForm = null;
+      this.stepClass = 'js-step';
       this.msgSucess = this.form.closest('.js-form').find('.js-form-success');
       this.msgError = this.form.closest('.js-form').find('.js-form-error');
       this.formType = this.form.closest('.js-form').data('form');
-
+      if (this.form.find(`.${this.stepClass}`).length) {
+        this.steps = new StepForm({
+          selector: this.stepClass,
+          activeClass: 'state_active',
+        });
+        this.form.closest('.js-form').find('.js-step-informer-all').text(this.steps.getCount());
+      }
+      if (this.form.find('.js-sms-code-form').length) {
+        this.smsCodeForm = SmsForm('.js-sms-code-form');
+      }
+      this.validator = Validator(this.form);
       this.validateForm();
       this.blockEvents(); // Обработчик событий не свзяанных непосредственно с работой формы
       this.events();
@@ -29,45 +43,65 @@ module.exports = (elem) => {
           // }
         });
       }
+      if (this.steps) {
+        this.form.find('.js-prev-step').on('click', (e) => {
+          e.preventDefault();
+          this.steps.prevStep();
+        });
+      }
     }
 
     validateForm() {
       let submitHandler = null;
+      if (!this.steps) {
+        if (this.formType !== undefined) {
+          if (this.formType === 'fix-course') {
+            submitHandler = (form) => {
+              const redirectUrl = `${form.getAttribute('action')}?partner=bcs-bank&operation=${form.querySelector('.radio__field:checked').id.match(/buy|sell/g)}&amount=${form.querySelector('.js-course-input').value.replace(' ', '')}&currency=${form.querySelector('.js-course-field .js-title').innerText}`;
+              document.location.href = redirectUrl;
+            };
+          }
 
-      if (this.formType !== undefined) {
-        if (this.formType === 'fix-course') {
-          submitHandler = (form) => {
-            const redirectUrl = `${form.getAttribute('action')}?partner=bcs-bank&operation=${form.querySelector('.radio__field:checked').id.match(/buy|sell/g)}&amount=${form.querySelector('.js-course-input').value.replace(' ', '')}&currency=${form.querySelector('.js-course-field .js-title').innerText}`;
-            document.location.href = redirectUrl;
-          };
+          if (this.formType === 'cards') {
+            submitHandler = (form) => {
+              Form.formSubmit(form);
+              return false;
+            };
+          }
         }
-
-        if (this.formType === 'cards') {
-          submitHandler = (form) => {
-            $.ajax({
-              method: 'post',
-              url: form.getAttribute('action'),
-              dataType: 'json',
-              data: $(form).serializeArray(),
-              success: (data) => {
-                form.reset();
-                if (data.success === true) {
-                  $('.js-products-success').modal();
-                } else {
-                  $('.js-products-error').modal();
-                }
-              },
-              error: () => {
-                $('.js-products-error').modal();
-              },
-            });
-
-            return false;
-          };
-        }
-
-        this.validator.validateForm(submitHandler);
+      } else {
+        submitHandler = (form) => {
+          if (this.steps.isLast()) {
+            Form.formSubmit(form);
+          } else {
+            this.form.closest('.js-form').find('.js-step-informer').text(this.steps.nextStep() + 1);
+            console.log(this.steps.getCurrent());
+            if ($(this.steps.getCurrent()).hasClass('js-sms-step')) {
+              this.smsCodeForm.sendPhone('question_phone', () => {}, () => { this.steps.prevStep(); });
+            }
+          }
+        };
       }
+      this.validator.validateForm(submitHandler);
+    }
+    static formSubmit(form) {
+      $.ajax({
+        method: 'post',
+        url: form.getAttribute('action'),
+        dataType: 'json',
+        data: $(form).serializeArray(),
+        success: (data) => {
+          form.reset();
+          if (data.success === true) {
+            $('.js-products-success').modal();
+          } else {
+            $('.js-products-error').modal();
+          }
+        },
+        error: () => {
+          $('.js-products-error').modal();
+        },
+      });
     }
 
     blockEvents() {
