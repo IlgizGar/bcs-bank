@@ -18,7 +18,6 @@ export default class Calculation {
       functionArgs.push(params[param][0]);
       this.inputs.push($(`[name="${params[param][1]}"]`));
     });
-    console.log(this.inputs);
     this.calc = new BankCalculator(functionArgs, el.data('calc'));
     this.dataBind();
   }

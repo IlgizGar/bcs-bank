@@ -109,7 +109,7 @@
                   <div class="calculation js-calc-result">
                     <div class="calculation__thumbnail">
                       <div class="text">Ежемесячный платеж</div>
-                      <div class="calculation__result"><span data-calc="((summ/100)*12.9)/12+(summ/time)" data-params="summ|credit_amount,time|credit_period">10 500</span> {{ Icon.icon({ 'name': 'ruble'}) }}</div>
+                      <div class="calculation__result"><span data-calc="12.9/1200 * Math.pow((12.9/1200 + 1),time) / (Math.pow((12.9/1200 + 1),time)-1) * summ" data-params="summ|credit_amount,time|credit_period">10 500</span> {{ Icon.icon({ 'name': 'ruble'}) }}</div>
                       <div class="calculation__conclusion text">
                         <p>Ставка</p>
                         <p>12,9%</p>
