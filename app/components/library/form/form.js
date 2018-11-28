@@ -2,12 +2,14 @@ import $ from 'jquery';
 import 'jquery-validation';
 import Validator from './validator';
 import StepForm from '../../library/step-form/step-form';
+import SmsForm from '../../modules/sms-code-form/sms-code';
 
 module.exports = (elem) => {
   class Form {
     constructor(selector) {
       this.form = $(selector);
       this.steps = null;
+      this.smsCodeForm = null;
       this.stepClass = 'js-step';
       this.msgSucess = this.form.closest('.js-form').find('.js-form-success');
       this.msgError = this.form.closest('.js-form').find('.js-form-error');
@@ -18,6 +20,9 @@ module.exports = (elem) => {
           activeClass: 'state_active',
         });
         this.form.closest('.js-form').find('.js-step-informer-all').text(this.steps.getCount());
+      }
+      if (this.form.find('.js-sms-code-form').length) {
+        this.smsCodeForm = SmsForm('.js-sms-code-form');
       }
       this.validator = Validator(this.form);
       this.validateForm();
@@ -70,6 +75,10 @@ module.exports = (elem) => {
             Form.formSubmit(form);
           } else {
             this.form.closest('.js-form').find('.js-step-informer').text(this.steps.nextStep() + 1);
+            console.log(this.steps.getCurrent());
+            if ($(this.steps.getCurrent()).hasClass('js-sms-step')) {
+              this.smsCodeForm.sendPhone('question_phone', () => {}, () => { this.steps.prevStep(); });
+            }
           }
         };
       }

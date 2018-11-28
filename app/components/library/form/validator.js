@@ -46,6 +46,9 @@ module.exports = (form) => {
           required: 'Укажите номер телефона',
           minPhoneLength: '',
         },
+        'js-sms-code-input': {
+          required: 'Укажите код из sms',
+        },
         'js-fio-masked': {
           required: 'Укажите Ф.И.О.',
           minlength: '',

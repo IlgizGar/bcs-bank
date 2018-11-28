@@ -223,18 +223,8 @@
                             {{ Button.button({ 'title': 'Отправить', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
                         </div>
                       </div>
-                      <div class="step-form__item js-step">
-                          {{ Heading.heading({ 'title': 'Подтверждение смс' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
-                          <div class="text mb-56">Код выслан на номер
-                            <span>+7 926 384 0589</span>
-                            <a class="button  button_theme-default button_view-text button_type-link  js-prev-step" href="#">
-                              <span class="button__wrap">
-                                <span class="button__title js-button-title">Изменить номер</span>
-                              </span>
-                            </a>
-                          </div>
-                          {{ Input.input({ 'label': 'Код подтверждения из СМС', 'class': 'form__field-group', 'field': {'class': '', 'name': 'sms_code', 'required': 'true' } }) }}
-                          {{ Button.button({ 'title': 'Отправить', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
+                      <div class="step-form__item js-step js-sms-step">
+                          {% include "../components/modules/sms-code-form/sms-code-form.njk" %}
                       </div>
 
                     </form>
