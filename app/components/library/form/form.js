@@ -17,6 +17,7 @@ module.exports = (elem) => {
           selector: this.stepClass,
           activeClass: 'state_active',
         });
+        this.form.closest('.js-form').find('.js-step-informer-all').text(this.steps.getCount());
       }
       this.validator = Validator(this.form);
       this.validateForm();
@@ -35,6 +36,12 @@ module.exports = (elem) => {
           //   this.msgError.addClass('state_hidden');
           //   this.msgSucess.addClass('state_hidden');
           // }
+        });
+      }
+      if (this.steps) {
+        this.form.find('.js-prev-step').on('click', (e) => {
+          e.preventDefault();
+          this.steps.prevStep();
         });
       }
     }

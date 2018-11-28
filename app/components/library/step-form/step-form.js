@@ -9,6 +9,7 @@
  * @method {prevStep} step backwards method
  * @method {getCurrent} return element that contains current step
  * @method {isLast} check is step last if last return true
+ * @method {getCount} return count of steps
  */
 
 export default class StepForm {
@@ -96,5 +97,8 @@ export default class StepForm {
   }
   isLast() {
     return (this.currentStep + 1 >= this.stepsNum);
+  }
+  getCount() {
+    return this.stepsNum;
   }
 }
