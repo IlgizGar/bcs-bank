@@ -158,6 +158,16 @@ module.exports = (form) => {
         rightAlign: false,
       });
 
+      $('.js-digit-input').inputmask('numeric', {
+        placeholder: ' ',
+        groupSeparator: ' ',
+        radixPoint: ',',
+        autoGroup: false,
+        clearMaskOnLostFocus: true,
+        removeMaskOnSubmit: true,
+        rightAlign: false,
+      });
+
       $('.js-license-masked').inputmask({
         mask: '99 99 999999',
         placeholder: '',
@@ -278,6 +288,9 @@ module.exports = (form) => {
           if ($(element).closest('.js-dropdown').length) {
             error.appendTo($(element).closest('.js-dropdown'));
           }
+          if ($('.js-sms-code-form-counter').length) {
+            $('.js-sms-code-form-counter').addClass('state_form_error');
+          }
         },
         highlight(element) {
           if ($(element).closest('.js-input').length) {
@@ -286,6 +299,9 @@ module.exports = (form) => {
           if ($(element).closest('.js-dropdown').length) {
             $(element).closest('.js-dropdown').addClass('state_error');
           }
+          if ($('.js-sms-code-form-counter').length) {
+            $('.js-sms-code-form-counter').addClass('state_form_error');
+          }
         },
         unhighlight(element) {
           if ($(element).closest('.js-input').length) {
@@ -293,6 +309,9 @@ module.exports = (form) => {
           }
           if ($(element).closest('.js-dropdown').length) {
             $(element).closest('.js-dropdown').removeClass('state_error');
+          }
+          if ($('.js-sms-code-form-counter').length) {
+            $('.js-sms-code-form-counter').removeClass('state_form_error');
           }
         },
         submitHandler: handler,

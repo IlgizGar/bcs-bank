@@ -1,4 +1,5 @@
 {% import "../../../components/icon/icon.njk" as Icon %}
+{% import "../../../components/library/button/button.njk" as Button %}
 
 {% macro input( options ) %}
 
@@ -51,6 +52,12 @@
                 <input class="js-input-slider"  data-min="{{ options.slider.min }}" data-max="{{ options.slider.max }}"
                        data-from="{{ options.slider.from }}" data-step="{{ options.slider.step }}" data-postfix="{{ options.slider.postfix }}" {% if options.value %}value="{{ options.value }}"{% endif %}>
             </div>
+        {% endif %}
+
+        {% if options.button %}
+
+            {{ Button.button({ 'data': options.button }) }}
+
         {% endif %}
 
     </div>
