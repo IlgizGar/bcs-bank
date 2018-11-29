@@ -10,7 +10,10 @@
  * @method {getCurrent} return element that contains current step
  * @method {isLast} check is step last if last return true
  * @method {getCount} return count of steps
+ * @method {tofFirstStep} set steps to first
  */
+
+import $ from 'jquery';
 
 export default class StepForm {
   constructor(settings) {
@@ -75,6 +78,7 @@ export default class StepForm {
       }
     }
     this.activeElement = activeElement;
+    $('html, body').animate({ scrollTop: $(this.stepsWrapper).closest('form').offset().top }, 500);
     return activeElement;
   }
   _wrapContent(wrapper) {
@@ -100,5 +104,10 @@ export default class StepForm {
   }
   getCount() {
     return this.stepsNum;
+  }
+  tofFirstStep() {
+    this._setActive(0);
+    this.currentStep = 0;
+    return this.currentStep;
   }
 }

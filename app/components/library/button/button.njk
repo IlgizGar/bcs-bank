@@ -2,6 +2,11 @@
 {% import "../../../components/inline-svg/inline-svg.njk" as Svg %}
 
 {% macro button( options ) %}
+
+    {% if options.data %}
+        {% set options = options.data %}
+    {% endif %}
+
   {% set tag = 'button' %}
   {% if options.href %}
     {% set tag = 'a' %}
