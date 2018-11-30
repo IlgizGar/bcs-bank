@@ -205,5 +205,7 @@ $(() => {
     $('.js-calc-result').find('[data-calc]').each((index, el) => {
       global.calculators.push(new Calculation($(el)));
     });
+    setTimeout(() => $('input').trigger('change'), 100); // инициализация первоначального расчета в калькуляторах
+
   }
 });
