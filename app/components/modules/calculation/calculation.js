@@ -5,6 +5,7 @@
  * data-bind имя input-а в который будут отправляться результаты расчета
  * data-ordered очередность выполнения формул расчета 0 - выполнится первой 2, 3, 4 выполнятся следующими в порядке нумерации
  * data-round до скольки знаков после запятой округлять результат
+ * data-bind-inputs значения каких пар инпутов нужно связать указвается 1 раз у первого по порядку расчета
  */
 
 import $ from 'jquery';
@@ -18,6 +19,7 @@ export default class Calculation {
     this.wait = 0;
     this.resultBlock = $el;
     this.bindInput = null;
+    this.bindedInputs = [];
     this.initCalculator(this.resultBlock);
   }
   initCalculator(el) {
@@ -33,6 +35,16 @@ export default class Calculation {
       functionArgs.push(params[param][0]);
       this.inputs.push($(`[name="${params[param][1]}"]`));
     });
+    const bindedInputsStr = el.data('bind-inputs');
+    if (bindedInputsStr) {
+      const bindedInputs = bindedInputsStr
+        .split(',')
+        .map(param => param.split('|'));
+      Object.keys(bindedInputs).forEach((bindedInput) => {
+        this.bindedInputs.push([$(`[name="${bindedInputs[bindedInput][0]}"]`), $(`[name="${bindedInputs[bindedInput][1]}"]`)]);
+      });
+      this.inputsBind();
+    }
     this.calc = new BankCalculator(functionArgs, el.data('calc'));
     const bind = el.data('bind');
     if (bind) {
@@ -55,6 +67,20 @@ export default class Calculation {
           }
           this.resultBlock.text(String(result.replace('.', ',')).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 '));
         }, this.wait);
+      });
+    });
+  }
+  inputsBind() {
+    Object.keys(this.bindedInputs).forEach((i) => {
+      const input = this.bindedInputs[i];
+      input[0].on('change', () => {
+        input[1].val(input[0].val());
+        input[1].trigger('blur');
+      });
+      input[1].on('change', () => {
+        input[0].val(input[1].val());
+        input[0].trigger('blur');
+        input[0].trigger('change');
       });
     });
   }
