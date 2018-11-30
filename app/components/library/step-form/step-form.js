@@ -85,7 +85,7 @@ export default class StepForm {
     this.stepElements[0].parentElement.insertBefore(wrapper, this.stepElements[0]);
     for (let i = 0; i < this.stepElements.length; i += 1) {
       const element = this.stepElements[i];
-      wrapper.append(element);
+      $(wrapper).append($(element));
     }
   }
   _wrapper(html) {
