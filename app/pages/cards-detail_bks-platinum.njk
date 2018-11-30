@@ -90,7 +90,7 @@
               }
             ] }) }}
           </section>
-          <section class="section section_theme-white-smoke section_padding-default page__section mobile-mb-0">
+          <section class="section section_theme-white-smoke section_padding-default page__section mobile-mb-0 js-calc-result">
             <div class="calculator">
               <div class="page__container">
                 {{ Heading.heading({ 'title': 'Рассчитайте свои бонусы', 'mods': { 'type': 'default', 'margin': 'medium' } }) }}
@@ -99,6 +99,15 @@
                     <form>
                       <fieldset>
                         {{ Input.input({ 'label': 'Расходы на АЗС', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_fuel_costs', 'class': 'js-numeric-input' }, 'title': '#rubleмес.', 'slider': { 'min': 0, 'max': 100000, 'from': 30000, 'step': 1000 } }) }}
+                          <div class="calculator-hidden-out">
+                            <span
+                                    data-calc="KHN1bW0vMTAwKSsoKHN1bW0vMTAwKSoyMCkrKChzdW1tLzEwMCkqNSk="
+                                    data-params="summ|calc_fuel_costs"
+                                    data-bind="azs-bonus"
+                                    data-ordered="0"
+                            ></span>
+                            <input type="hidden" value="0" name="azs-bonus">
+                          </div>
                         {{ Input.input({ 'label': 'Расходы на рестораны', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_cafe_costs', 'class': 'js-numeric-input' }, 'title': '#rubleмес.', 'slider': { 'min': 0, 'max': 300000, 'from': 50000, 'step': 1000 } }) }}
                         {{ Input.input({ 'label': 'Расходы на театр и кино', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_film_costs', 'class': 'js-numeric-input' }, 'title': '#rubleмес.', 'slider': { 'min': 0, 'max': 100000, 'from': 10000, 'step': 1000 } }) }}
                         {{ Input.input({ 'label': 'Расходы на спорт и красоту', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_sport_costs', 'class': 'js-numeric-input' }, 'title': '#rubleмес.', 'slider': { 'min': 0, 'max': 300000, 'from': 100000, 'step': 1000 } }) }}
