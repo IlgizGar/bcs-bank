@@ -202,8 +202,8 @@ $(() => {
 
   if ($('.js-calc-result').length) {
     global.calculators = [];
-    $('.js-calc-result').find('[data-calc]').each(function () {
-      global.calculators.push(new Calculation($(this)));
+    $('.js-calc-result').find('[data-calc]').each((index, el) => {
+      global.calculators.push(new Calculation($(el)));
     });
   }
 });

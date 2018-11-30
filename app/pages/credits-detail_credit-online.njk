@@ -104,23 +104,25 @@
                         {{ Input.input({ 'label': 'Сумма кредита', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'credit_amount', 'class': 'js-numeric-input' }, 'title': '#ruble', 'slider': { 'min': 50000, 'max': 1500000, 'from': 800000, 'step': 1000 } }) }}
                         {{ Input.input({ 'label': 'Срок кредита', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '2', 'name': 'credit_period', 'class': 'js-numeric-input' }, 'slider': { 'min': 13, 'max': 60, 'from': 16, 'step': 1, 'postfix': ' мес.' } }) }}
                       </fieldset>
+                      <input type="hidden" value="800000" name="monthly_pay" >
                     </form>
                   </div>
                   <div class="calculation js-calc-result">
                     <div class="calculation__thumbnail">
                       <div class="text">Ежемесячный платеж</div>
-                      <div class="calculation__result"><span data-calc="12.9/1200 * Math.pow((12.9/1200 + 1),time) / (Math.pow((12.9/1200 + 1),time)-1) * summ" data-params="summ|credit_amount,time|credit_period">10 500</span> {{ Icon.icon({ 'name': 'ruble'}) }}</div>
+                      <div class="calculation__result"><span data-calc="cGVyY2VudC8xMjAwICogTWF0aC5wb3coKHBlcmNlbnQvMTIwMCArIDEpLHRpbWUpIC8gKE1hdGgucG93KChwZXJjZW50LzEyMDAgKyAxKSx0aW1lKS0xKSAqIHN1bW0=" data-params="summ|credit_amount,time|credit_period,percent|credit_percent" data-bind="monthly_pay" data-ordered="1">10 500</span> {{ Icon.icon({ 'name': 'ruble'}) }}</div>
                       <div class="calculation__conclusion text">
                         <p>Ставка</p>
-                        <p>12,9%</p>
+                        <p><span data-calc="KHRpbWUgPD0gMjQpPyAxMi45IDogKHRpbWUgPiAyNCAmJiB0aW1lIDw9IDM2KT8gMTMuNCA6IDEzLjkK"  data-params="time|credit_period" data-round="1" data-bind="credit_percent" data-ordered="0">12,9</span>%</p>
+                        <input type="hidden" name="credit_percent" value="12.9">
                       </div>
                       <div class="calculation__conclusion text">
                         <p>Необходимый доход</p>
-                        <p><span>567 000</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
+                        <p><span data-calc="MTAwKnN1bW0vMzA=" data-params="summ|monthly_pay" data-ordered="2">567 000</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
                       </div>
                       <div class="calculation__conclusion text">
                         <p>Сумма выплат с %</p>
-                        <p><span>6 768</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
+                        <p><span data-calc="c3VtbSp0aW1l" data-params="summ|monthly_pay,time|credit_period" data-ordered="3">6 768</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
                       </div>
                       {{ Button.button({ 'title': 'Оформите кредит', 'mods': { 'theme': 'default' }, 'type': 'submit', 'class': 'mt-40', attr: {'scroll': '#section-request'} }) }}
                     </div>
@@ -222,21 +224,23 @@
                       </div>
                     </form>
                   </div>
-                  <div class="calculation calculation_theme-uslugi">
+                  <div class="calculation js-calc-result calculation_theme-uslugi">
                     <div class="calculation__thumbnail">
                       <div class="text">Ежемесячный платеж</div>
-                      <div class="calculation__result"><span>10 500</span> {{ Icon.icon({ 'name': 'ruble'}) }}</div>
+                      <div class="calculation__result"><span  data-calc="cGVyY2VudC8xMjAwICogTWF0aC5wb3coKHBlcmNlbnQvMTIwMCArIDEpLHRpbWUpIC8gKE1hdGgucG93KChwZXJjZW50LzEyMDAgKyAxKSx0aW1lKS0xKSAqIHN1bW0=" data-params="summ|credit_amount,time|credit_period,percent|credit_percent2" data-bind="monthly_pay2" data-ordered="1">10 500</span> {{ Icon.icon({ 'name': 'ruble'}) }}</div>
                       <div class="calculation__conclusion text">
                         <p>Ставка</p>
-                        <p>12,9%</p>
+                        <p><span data-calc="KHRpbWUgPD0gMjQpPyAxMi45IDogKHRpbWUgPiAyNCAmJiB0aW1lIDw9IDM2KT8gMTMuNCA6IDEzLjkK"  data-params="time|credit_period" data-round="1" data-bind="credit_percent2" data-ordered="0">12,9</span>%</p>
+                        <input type="hidden" name="credit_percent2" value="12.9">
                       </div>
                       <div class="calculation__conclusion text">
                         <p>Необходимый доход</p>
-                        <p><span>567 000</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
+                        <p><span data-calc="MTAwKnN1bW0vMzA=" data-params="summ|monthly_pay2" data-ordered="2">567 000</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
                       </div>
                       <div class="calculation__conclusion text">
                         <p>Сумма выплат с %</p>
-                        <p><span>6 768</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
+                        <input type="hidden" value="800000" name="monthly_pay2" >
+                        <p><span data-calc="c3VtbSp0aW1l" data-params="summ|monthly_pay2,time|credit_period" data-ordered="3">6 768</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
                       </div>
                       {{ Button.button({ 'title': 'Оформите кредит', 'mods': { 'theme': 'default' }, 'type': 'submit', 'class': 'mt-40' }) }}
                     </div>
