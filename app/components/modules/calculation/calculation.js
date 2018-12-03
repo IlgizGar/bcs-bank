@@ -60,7 +60,6 @@ export default class Calculation {
           values.push(parseFloat(String(((this.inputs[j].attr('type') !== 'radio') && (this.inputs[j].attr('type') !== 'checkbox')) ? this.inputs[j].val() : this.inputs[j].filter(':checked').val()).replace(/ /g, '')));
         });
         setTimeout(() => {
-          console.log(values);
           const result = (this.calc.calc(...values)).toFixed(this.round);
           if (this.bindInput) {
             this.bindInput.val(result);
