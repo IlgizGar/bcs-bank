@@ -57,7 +57,7 @@ export default class Calculation {
       this.inputs[i].on('change', () => {
         const values = [];
         Object.keys(this.inputs).forEach((j) => {
-          values.push(parseInt(String(this.inputs[j].val()).replace(/ /g, ''), 10));
+          values.push(parseInt(String(((this.inputs[j].attr('type') !== 'radio') && (this.inputs[j].attr('type') !== 'checkbox')) ? this.inputs[j].val() : this.inputs[j].filter(':checked').val()).replace(/ /g, ''), 10));
         });
         setTimeout(() => {
           const result = (this.calc.calc(...values)).toFixed(this.round);
