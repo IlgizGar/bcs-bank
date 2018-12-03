@@ -1,0 +1,23 @@
+{% import "../../library/heading/heading.njk" as Heading %}
+{% import "../../library/button/button.njk" as Button %}
+{% import "../../library/input/input.njk" as Input %}
+{% import "../../library/radio/radio.njk" as Radio %}
+{% import "../../library/dropdown/dropdown.njk" as Dropdown %}
+{% import "../../icon/icon.njk" as Icon %}
+
+
+<div class="sms-code-form js-sms-code-form" data-action="http://localhost/rplpost/index2.php">
+    {{ Heading.heading({ 'title': 'Подтверждение смс' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
+  <div class="text mb-56">Код выслан на номер
+    <span class="js-sms-code-phone">+7 926 384 0589</span>
+    <a class="button  button_theme-default button_view-text button_type-link  js-prev-step" href="#">
+      <span class="button__wrap">
+        <span class="button__title js-button-title">Изменить номер</span>
+      </span>
+    </a>
+  </div>
+  <div class="form__line-group">
+      {{ Input.input({ 'label': 'Код подтверждения из СМС', 'class': 'form__field-group', 'button':{'name': 'arrow', 'type': 'submit' , 'path':'/assets/images/svg/arrow_rigth_icon.svg' , 'mods': { 'type': 'icon', 'theme': 'default' , 'mods': 'input' } } , 'field': { 'type': 'text', 'class': 'js-sms-code-input js-digit-input', 'name': 'sms_code', 'required': 'true' } }) }}
+  </div>
+  <div class="sms-code-form-counter js-sms-code-form-counter">{{ Button.button({ 'title': 'Отправить повторно', 'type': 'button', 'mods': {'theme': 'default'}, 'class': 'js-sms-code-button sms-code-button' }) }}  <span class="js-sms-code-text"> Отправить СМС повторно через</span> <span class="js-sms-code-timer">01:53</span></div>
+</div>
