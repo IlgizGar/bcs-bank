@@ -32,6 +32,7 @@ module.exports = (elem) => {
             this.field.trigger('change');
           },
         });
+        this.slider[0].ioSlider = this.slider.data('ionRangeSlider');
         this.field.val(this.slider.data('from'));
         this.input.removeClass('state_init');
         this.input.addClass('state_filled');
