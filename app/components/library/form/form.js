@@ -112,7 +112,6 @@ module.exports = (elem) => {
         data: $(form)
           .serializeArray(),
         success: (data) => {
-          form.reset();
           if (data.success === true) {
             $('.js-products-success')
               .on($.modal.AFTER_CLOSE, () => {
