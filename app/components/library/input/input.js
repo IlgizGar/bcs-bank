@@ -31,6 +31,11 @@ module.exports = (elem) => {
           onFinish: () => {
             this.field.trigger('change');
           },
+          onUpdate: (data) => {
+            if (this.field.val()  < data.min) {
+              this.field.val(data.min);
+            }
+          },
         });
         this.slider[0].ioSlider = this.slider.data('ionRangeSlider');
         this.field.val(this.slider.data('from'));
