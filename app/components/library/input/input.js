@@ -32,7 +32,7 @@ module.exports = (elem) => {
             this.field.trigger('change');
           },
           onUpdate: (data) => {
-            if (this.field.val()  < data.min) {
+            if (this.field.val() < data.min) {
               this.field.val(data.min);
             }
           },
