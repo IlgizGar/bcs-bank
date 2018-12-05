@@ -59,7 +59,7 @@
               class="section page__section"> {{ BrandFeatures.brandFeatures({ 'items': [ { 'icon': 'assets/images/svg/card-image.svg', 'title': 'Удобно', 'subtitle': 'Все самое необходимое \n для комфортных \n путешествий в одной карте', 'props': { 'large': '500', 'small': 'тыс. #ruble' }, 'descr': 'Снятие наличных в месяц \n без комиссии по всему миру' }, { 'icon': 'assets/images/svg/sand-clock-image.svg', 'title': 'Комфортно', 'subtitle': 'Консьерж-сервис 24/7, трансферы \n в аэропорты, доступ в бизнес \n залы Lounge Key бесплатно', 'props': { 'small': 'до', 'large': '30%' }, 'descr': 'Бонусов за покупки \n у партнеров' }, { 'icon': 'assets/images/svg/kopeiki-image.svg', 'title': 'Выгодно', 'subtitle': '1 карта \n с 3 валютными \n счетами #ruble, #dollar, #euro', 'props': { 'large': '0#ruble' }, 'descr': 'Консультации врачей, страховка \n путешествий до 100 000 #euro + спорт' } ] }) }}
           </section>
           <section class="section section_theme-white-smoke section_padding-default page__section mobile-mb-0">
-            <div class="calculator">
+            <div class="calculator js-calc-result">
               <div
                   class="page__container"> {{ Heading.heading({ 'title': 'Рассчитайте свой кэшбэк', 'mods': { 'type': 'default', 'margin': 'medium' } }) }}
                 <div class="section__row calculator__row">
@@ -78,13 +78,30 @@
                   <div class="calculation">
                     <div class="calculation__thumbnail">
                       <div class="text">Вы заработаете за год</div>
-                      <div class="calculation__result">10 500</div>
+                      <!--#2-->
+                      <div class="calculation__result"><span
+                                data-calc="c3VtbSo1LjUvMTAw"
+                                data-params="summ|allcost"
+                                data-ordered="1"
+                        >10 500</span></div>
+                      <!--/#2-->
                       <div class="calculation__conclusion text">Этих бонусов будет достаточно для покупки авиабилета в
                         Милан.
                       </div> {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'default' }, 'type': 'submit', 'class': 'mt-40', attr: {'scroll': '#section-request'} }) }}
                     </div>
                   </div>
                 </div>
+              </div>
+              <div class="calculator-hidden-out">
+                <!--#1-->
+                <span
+                        data-calc="YXpzK2NhZmUrZmlsbStzcG9ydCttZWFsK290aGVy"
+                        data-params="azs|calc_fuel_costs,cafe|calc_cafe_costs,film|calc_film_costs,sport|calc_sport_costs,meal|calc_meal_costs,other|calc_others_costs"
+                        data-bind="allcost"
+                        data-ordered="0"
+                ></span>
+                <input type="hidden" value="0" name="allcost">
+                <!--/#1-->
               </div>
             </div>
           </section>
