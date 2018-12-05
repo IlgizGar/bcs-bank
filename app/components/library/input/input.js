@@ -28,7 +28,16 @@ module.exports = (elem) => {
           onChange: (data) => {
             this.field.val(data.from);
           },
+          onFinish: () => {
+            this.field.trigger('change');
+          },
+          onUpdate: (data) => {
+            if (this.field.val() < data.min) {
+              this.field.val(data.min);
+            }
+          },
         });
+        this.slider[0].ioSlider = this.slider.data('ionRangeSlider');
         this.field.val(this.slider.data('from'));
         this.input.removeClass('state_init');
         this.input.addClass('state_filled');

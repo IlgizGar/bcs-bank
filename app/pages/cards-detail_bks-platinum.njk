@@ -27,7 +27,7 @@
             <div class="section__row">
               <div class="products-detail__content">
                 {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Кредитные карты', 'link': '#' } }) }}
-                {{ Heading.heading({ 'tag': 'h1', 'title': 'БКС Платинум', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
+                  {{ Heading.heading({ 'tag': 'h1', 'title': 'БКС Платинум', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
                 <div class="features">
                   {{ Feature.feature({ 'title': 'До 55 дней', 'text': 'беспроцентный \n период', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
                   {{ Feature.feature({ 'title': 'До 1 млн #ruble', 'text': 'кредитный \n лимит', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
@@ -91,7 +91,7 @@
             ] }) }}
           </section>
           <section class="section section_theme-white-smoke section_padding-default page__section mobile-mb-0">
-            <div class="calculator">
+            <div class="calculator  js-calc-result">
               <div class="page__container">
                 {{ Heading.heading({ 'title': 'Рассчитайте свои бонусы', 'mods': { 'type': 'default', 'margin': 'medium' } }) }}
                 <div class="section__row calculator__row">
@@ -110,7 +110,14 @@
                   <div class="calculation">
                     <div class="calculation__thumbnail">
                       <div class="text">Вы заработаете за год</div>
-                      <div class="calculation__result">10 500</div>
+                      <!--#2-->
+                      <div class="calculation__result"><span
+                                data-calc="c3VtbSoyLzEwMA=="
+                                data-params="summ|allcost"
+                                data-ordered="1"
+                                data-round="2"
+                        >10 500</span></div>
+                      <!--/#2-->
                       <div class="calculation__conclusion text">Этих бонусов будет достаточно
                         для покупки авиабилета в Милан.
                       </div>
@@ -118,6 +125,18 @@
                     </div>
                   </div>
                 </div>
+              </div>
+              <div class="calculator-hidden-out">
+                <!--#1-->
+                <span
+                        data-calc="YXpzK2NhZmUrZmlsbStzcG9ydCttZWFsK290aGVy"
+                        data-params="azs|calc_fuel_costs,cafe|calc_cafe_costs,film|calc_film_costs,sport|calc_sport_costs,meal|calc_meal_costs,other|calc_others_costs"
+                        data-bind="allcost"
+                        data-ordered="0"
+                        data-round="2"
+                ></span>
+                <input type="hidden" value="0" name="allcost">
+                <!--/#1-->
               </div>
             </div>
           </section>

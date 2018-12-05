@@ -92,7 +92,7 @@
               }
             ] }) }}
           </section>
-          <section class="section section_theme-white-smoke section_padding-default page__section">
+          <section class="section section_theme-white-smoke js-calc-result section_padding-default page__section">
             <div class="calculator">
               <div class="page__container">
                 {{ Heading.heading({ 'title': 'Рассчитайте свой доход', 'mods': { 'type': 'default', 'margin': 'default' } }) }}
@@ -102,26 +102,61 @@
                       <fieldset>
                         {{ Heading.heading({ 'tag': 'h3', 'title': 'Валюта вклада', 'mods': { 'type': 'small', 'margin': 'small' } }) }}
                         <div class="form__field-group form__field-group_radio">
-                          {{ Radio.radio({'class': 'js-check-radio mr-56', 'label': '#ruble', 'name': 'accum_deposit_currency', 'id': 'accum_deposit_rub', 'state': 'checked', 'attr': {'check': 'vu'} }) }}
-                          {{ Radio.radio({'class': 'js-check-radio mr-56', 'label': '#dollar', 'name': 'accum_deposit_currency', 'id': 'accum_deposit_doll', 'attr': {'data': 'post'} }) }}
-                          {{ Radio.radio({'class': 'js-check-radio', 'label': '#euro', 'name': 'accum_deposit_currency', 'id': 'accum_deposit_eur', 'attr': {'data': 'post'} }) }}
+                            {{ Radio.radio({'class': 'js-check-radio mr-56', 'label': '#ruble', 'value': '1', 'name': 'accum_deposit_currency', 'id': 'accum_deposit_rub', 'state': 'checked', 'attr': {'check': 'vu'} }) }}
+                            {{ Radio.radio({'class': 'js-check-radio mr-56', 'label': '#dollar', 'value': '2', 'name': 'accum_deposit_currency', 'id': 'accum_deposit_baks', 'attr': {'data': 'post'} }) }}
+                            {{ Radio.radio({'class': 'js-check-radio mr-56', 'label': '#euro', 'value': '3', 'name': 'accum_deposit_currency', 'id': 'accum_deposit_ruro', 'attr': {'check': 'vu'} }) }}
+                            {{ Radio.radio({'class': 'js-check-radio', 'label': '#pound', 'value': '4', 'name': 'accum_deposit_currency', 'id': 'accum_deposit_pound',  'attr': {'check': 'vu'} }) }}
+                          <!--#1-->
+                          <div class="calculator-hidden-out">
+                            <span
+                                    data-calc="KGZ1bmN0aW9uIChjdXJyZW5jeSkgewogICAgdmFyIGlucHV0ID0gJCgnW25hbWU9ImFjY3VtX2RlcG9zaXRfYW1vdW50Il0nKS5jbG9zZXN0KCcuanMtaW5wdXQnKTsKICAgIHZhciBzbGlkZXIgPSBpbnB1dC5maW5kKCcuanMtaW5wdXQtc2xpZGVyJylbMF07CiAgICB2YXIgY3VycmVuY3lCbG9jayA9IGlucHV0LmZpbmQoJy5qcy10aXRsZSB1c2UnKTsKICAgIHZhciBjdXJyZW5jeVJlc3VsdCA9ICQoJy5jYWxjLXJlc3VsdC1hbGwnKS5maW5kKCcuaWNvbiB1c2UnKTsKICAgIGlmKGN1cnJlbmN5ID09IDEpey8vcnViCiAgICAgICAgc2xpZGVyLmlvU2xpZGVyLnVwZGF0ZSh7bWluOjEwMDAwLG1heDo1MDAwMDAwMH0pOy8v0LzQuNC90LjQvNCw0LvRjNC90LDRjyDRgdGD0LzQvNCwCiAgICAgICAgY3VycmVuY3lCbG9jay5hdHRyKCd4bGluazpocmVmJywnYXNzZXRzL2ltYWdlcy9pY29ucy5zdmcjaWNvbl9ydWJsZScpOy8v0LjQutC+0L3QutCwINCy0LDQu9GO0YLRiwogICAgICAgIGN1cnJlbmN5UmVzdWx0LmF0dHIoJ3hsaW5rOmhyZWYnLCdhc3NldHMvaW1hZ2VzL2ljb25zLnN2ZyNpY29uX3J1YmxlJyk7Ly/QuNC60L7QvdC60LAg0LLQsNC70Y7RgtGLCiAgICB9CiAgICBpZihjdXJyZW5jeSA9PSAyKXsvL2RvbGxhcgogICAgICAgIHNsaWRlci5pb1NsaWRlci51cGRhdGUoe21pbjoxMDAsbWF4OjgwMDAwMH0pOy8v0LzQuNC90LjQvNCw0LvRjNC90LDRjyDRgdGD0LzQvNCwCiAgICAgICAgY3VycmVuY3lCbG9jay5hdHRyKCd4bGluazpocmVmJywnYXNzZXRzL2ltYWdlcy9pY29ucy5zdmcjaWNvbl9iYWtzJyk7Ly/QuNC60L7QvdC60LAg0LLQsNC70Y7RgtGLCiAgICAgICAgY3VycmVuY3lSZXN1bHQuYXR0cigneGxpbms6aHJlZicsJ2Fzc2V0cy9pbWFnZXMvaWNvbnMuc3ZnI2ljb25fYmFrcycpOy8v0LjQutC+0L3QutCwINCy0LDQu9GO0YLRiwogICAgfQoJaWYoY3VycmVuY3kgPT0gMyl7Ly9ldXJvCiAgICAgICAgc2xpZGVyLmlvU2xpZGVyLnVwZGF0ZSh7bWluOjEwMCxtYXg6MjAwMDAwfSk7Ly/QvNC40L3QuNC80LDQu9GM0L3QsNGPINGB0YPQvNC80LAKICAgICAgICBjdXJyZW5jeUJsb2NrLmF0dHIoJ3hsaW5rOmhyZWYnLCdhc3NldHMvaW1hZ2VzL2ljb25zLnN2ZyNpY29uX2V1cm8nKTsvL9C40LrQvtC90LrQsCDQstCw0LvRjtGC0YsKICAgICAgICBjdXJyZW5jeVJlc3VsdC5hdHRyKCd4bGluazpocmVmJywnYXNzZXRzL2ltYWdlcy9pY29ucy5zdmcjaWNvbl9ldXJvJyk7Ly/QuNC60L7QvdC60LAg0LLQsNC70Y7RgtGLCiAgICB9CiAgICBpZihjdXJyZW5jeSA9PSA0KXsvL3BvdW5kCiAgICAgICAgc2xpZGVyLmlvU2xpZGVyLnVwZGF0ZSh7bWluOjEwMCxtYXg6ODAwMDAwfSk7Ly/QvNC40L3QuNC80LDQu9GM0L3QsNGPINGB0YPQvNC80LAKICAgICAgICBjdXJyZW5jeUJsb2NrLmF0dHIoJ3hsaW5rOmhyZWYnLCdhc3NldHMvaW1hZ2VzL2ljb25zLnN2ZyNpY29uX3BvdW5kJyk7Ly/QuNC60L7QvdC60LAg0LLQsNC70Y7RgtGLCiAgICAgICAgY3VycmVuY3lSZXN1bHQuYXR0cigneGxpbms6aHJlZicsJ2Fzc2V0cy9pbWFnZXMvaWNvbnMuc3ZnI2ljb25fcG91bmQnKTsvL9C40LrQvtC90LrQsCDQstCw0LvRjtGC0YsKICAgIH0KICAKICAgIHJldHVybiAxMDsKfSkoY3VycmVuY3kpOw=="
+                                    data-params="currency|accum_deposit_currency"
+                                    data-ordered="0"
+                            ></span>
+                          </div>
+                          <!--/#1-->
                         </div>
-                        {{ Input.input({ 'label': 'Срок вклада', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '5', 'name': 'accum_deposit_period', 'class': 'js-numeric-input' }, 'title': 'дней', 'slider': { 'min': 31, 'max': 730, 'from': 600, 'step': 1 } }) }}
-                        {{ Input.input({ 'label': 'Сумма вклада', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'accum_deposit_amount', 'class': 'js-numeric-input' }, 'title': '#ruble', 'slider': { 'min': 50000, 'max': 300000, 'from': 98600, 'step': 1000 } }) }}
+                          {{ Input.input({ 'label': 'Срок вклада', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'accum_deposit_time', 'class': 'js-numeric-input' }, 'title': 'Дней', 'slider': { 'min': 31, 'max': 730, 'from': 600, 'step': 1 } }) }}
+                          {{ Input.input({ 'label': 'Сумма вклада', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'accum_deposit_amount', 'class': 'js-numeric-input' }, 'title': '#ruble', 'slider': { 'min': 10000, 'max': 9999999, 'from': 15000, 'step': 1000 } }) }}
                       </fieldset>
                     </form>
                   </div>
                   <div class="calculation">
                     <div class="calculation__thumbnail">
                       <div class="text">Сумма к концу срока</div>
-                      <div class="calculation__result"><span>10 340</span> {{ Icon.icon({ 'name': 'ruble'}) }}</div>
-                      <div class="calculation__conclusion text">
+                      <!--#4-->
+                      <div class="calculation__result calc-result-all"><span
+                                data-calc="c3VtbStzdW1tMg=="
+                                data-params="summ|accum_deposit_amount,summ2|summ2"
+                                data-ordered="4"
+                                data-round="2"
+                        >10 340</span> {{ Icon.icon({ 'name': 'ruble'}) }}</div>
+                      <!--/#4-->
+                      <div class="calculation__conclusion text calc-result-all">
                         <p>Ожидаемый доход</p>
-                        <p><span>22 340</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
+                        <!--#3-->
+                        <p><span
+                                  data-calc="KHRpbWUgKnN1bW0qcGVyY2VudCkvKDM2NSoxMDAp"
+                                  data-params="summ|accum_deposit_amount,time|accum_deposit_time,percent|percent"
+                                  data-ordered="3"
+                                  data-round="2"
+                                  data-bind="summ2"
+                          >22 340</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
+                        <input type="hidden" name="summ2" value="4">
+                        <!--/#3-->
                       </div>
                       <div class="calculation__conclusion text">
                         <p>Процентная ставка</p>
-                        <p>4%</p>
+                        <!--#2-->
+                        <p><span
+                                  data-calc="KGZ1bmN0aW9uIChjdXJyZW5jeSx0aW1lKSB7CiAgICB2YXIgcGVyY2VudCA9IDE7CiAgICBpZihjdXJyZW5jeSA9PSAxKXsKICAgICAgIGlmKHRpbWU8PTkwKXsvL3J1YgoJCSAgIHBlcmNlbnQgPSA1LjY7CgkgICB9IGVsc2UgaWYodGltZTw9MTgwKSB7CgkJICAgcGVyY2VudCA9IDUuOTU7CgkgICB9IGVsc2UgaWYodGltZTw9MjcwKSB7CgkJICAgcGVyY2VudCA9IDYuMjA7CgkgICB9ZWxzZSBpZih0aW1lPD0zNjUpIHsKCQkgICBwZXJjZW50ID0gNi4yMDsKCSAgIH0gZWxzZSBpZih0aW1lPjM2NSkgewoJCSAgIHBlcmNlbnQgPSA2LjMwOwoJICAgfQogICAgfQogICAgaWYoY3VycmVuY3kgPT0gMil7Ly9kb2xsYXIKICAgICAgICBpZih0aW1lPD05MCl7CgkJICAgcGVyY2VudCA9IDEuMjA7CgkgICB9IGVsc2UgaWYodGltZTw9MTgwKSB7CgkJICAgcGVyY2VudCA9IDEuNDA7CgkgICB9IGVsc2UgaWYodGltZTw9MjcwKSB7CgkJICAgcGVyY2VudCA9IDIuMjA7CgkgICB9ZWxzZSBpZih0aW1lPD0zNjUpIHsKCQkgICBwZXJjZW50ID0gMi4zMDsKCSAgIH0gZWxzZSBpZih0aW1lPjM2NSkgewoJCSAgIHBlcmNlbnQgPSAzLjQwOwoJICAgfQogICAgfQoJaWYoY3VycmVuY3kgPT0gMyl7Ly9ldXJvCiAgICAgICAgaWYodGltZTw9OTApewoJCSAgIHBlcmNlbnQgPSAwLjEwOwoJICAgfSBlbHNlIGlmKHRpbWU8PTE4MCkgewoJCSAgIHBlcmNlbnQgPSAwLjEwOwoJICAgfSBlbHNlIGlmKHRpbWU8PTI3MCkgewoJCSAgIHBlcmNlbnQgPSAwLjIwOwoJICAgfWVsc2UgaWYodGltZTw9MzY1KSB7CgkJICAgcGVyY2VudCA9IDAuNTA7CgkgICB9IGVsc2UgaWYodGltZT4zNjUpIHsKCQkgICBwZXJjZW50ID0gMC42MDsKCSAgIH0KICAgIH0KCWlmKGN1cnJlbmN5ID09IDQpey8vcG91bmQKICAgICAgICBpZih0aW1lPD05MCl7CgkJICAgcGVyY2VudCA9IDAuMTA7CgkgICB9IGVsc2UgaWYodGltZTw9MTgwKSB7CgkJICAgcGVyY2VudCA9IDAuMzA7CgkgICB9IGVsc2UgaWYodGltZTw9MjcwKSB7CgkJICAgcGVyY2VudCA9IDAuNTA7CgkgICB9ZWxzZSBpZih0aW1lPD0zNjUpIHsKCQkgICBwZXJjZW50ID0gMC44MDsKCSAgIH0gZWxzZSBpZih0aW1lPjM2NSkgewoJCSAgIHBlcmNlbnQgPSAwLjkwOwoJICAgfQogICAgfQogICAgcmV0dXJuIHBlcmNlbnQKfSkoY3VycmVuY3ksdGltZSk7"
+                                  data-params="currency|accum_deposit_currency,time|accum_deposit_time"
+                                  data-ordered="1"
+                                  data-round="2"
+                                  data-bind="percent"
+                          >4</span>%</p>
+                        <!--/#2-->
+                        <input type="hidden" name="percent" value="4">
                       </div>
                       {{ Button.button({ 'title': 'Оформите вклад', 'mods': { 'theme': 'default' }, 'type': 'submit', 'class': 'mt-40', attr: {'scroll': '#section-request'} }) }}
                     </div>
@@ -219,17 +254,40 @@
                       </div>
                     </form>
                   </div>
-                  <div class="calculation calculation_theme-uslugi">
+                  <div class="calculation js-calc-result calculation_theme-uslugi">
                     <div class="calculation__thumbnail">
                       <div class="text">Сумма к концу срока</div>
-                      <div class="calculation__result">10 340 {{ Icon.icon({ 'name': 'ruble'}) }}</div>
-                      <div class="calculation__conclusion text">
+                      <!--#4-->
+                      <div class="calculation__result calc-result-all"><span
+                                data-calc="c3VtbStzdW1tMg=="
+                                data-params="summ|accum_deposit_amount,summ2|summ2"
+                                data-ordered="7"
+                                data-round="2"
+                        >10 340</span> {{ Icon.icon({ 'name': 'ruble'}) }}</div>
+                      <!--/#4-->
+                      <div class="calculation__conclusion text calc-result-all">
                         <p>Ожидаемый доход</p>
-                        <p><span>22 340</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
+                        <!--#3-->
+                        <p><span
+                                  data-calc="KHRpbWUgKnN1bW0qcGVyY2VudCkvKDM2NSoxMDAp"
+                                  data-params="summ|accum_deposit_amount,time|accum_deposit_time,percent|percent"
+                                  data-ordered="6"
+                                  data-round="2"
+                                  data-bind="summ2"
+                          >22 340</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
+                        <!--/#3-->
                       </div>
                       <div class="calculation__conclusion text">
                         <p>Процентная ставка</p>
-                        <p>4%</p>
+                        <!--#2-->
+                        <p><span
+                                  data-calc="KGZ1bmN0aW9uIChjdXJyZW5jeSx0aW1lKSB7CiAgICB2YXIgcGVyY2VudCA9IDE7CiAgICBpZihjdXJyZW5jeSA9PSAxKXsKICAgICAgIGlmKHRpbWU8PTkwKXsvL3J1YgoJCSAgIHBlcmNlbnQgPSA1LjY7CgkgICB9IGVsc2UgaWYodGltZTw9MTgwKSB7CgkJICAgcGVyY2VudCA9IDUuOTU7CgkgICB9IGVsc2UgaWYodGltZTw9MjcwKSB7CgkJICAgcGVyY2VudCA9IDYuMjA7CgkgICB9ZWxzZSBpZih0aW1lPD0zNjUpIHsKCQkgICBwZXJjZW50ID0gNi4yMDsKCSAgIH0gZWxzZSBpZih0aW1lPjM2NSkgewoJCSAgIHBlcmNlbnQgPSA2LjMwOwoJICAgfQogICAgfQogICAgaWYoY3VycmVuY3kgPT0gMil7Ly9kb2xsYXIKICAgICAgICBpZih0aW1lPD05MCl7CgkJICAgcGVyY2VudCA9IDEuMjA7CgkgICB9IGVsc2UgaWYodGltZTw9MTgwKSB7CgkJICAgcGVyY2VudCA9IDEuNDA7CgkgICB9IGVsc2UgaWYodGltZTw9MjcwKSB7CgkJICAgcGVyY2VudCA9IDIuMjA7CgkgICB9ZWxzZSBpZih0aW1lPD0zNjUpIHsKCQkgICBwZXJjZW50ID0gMi4zMDsKCSAgIH0gZWxzZSBpZih0aW1lPjM2NSkgewoJCSAgIHBlcmNlbnQgPSAzLjQwOwoJICAgfQogICAgfQoJaWYoY3VycmVuY3kgPT0gMyl7Ly9ldXJvCiAgICAgICAgaWYodGltZTw9OTApewoJCSAgIHBlcmNlbnQgPSAwLjEwOwoJICAgfSBlbHNlIGlmKHRpbWU8PTE4MCkgewoJCSAgIHBlcmNlbnQgPSAwLjEwOwoJICAgfSBlbHNlIGlmKHRpbWU8PTI3MCkgewoJCSAgIHBlcmNlbnQgPSAwLjIwOwoJICAgfWVsc2UgaWYodGltZTw9MzY1KSB7CgkJICAgcGVyY2VudCA9IDAuNTA7CgkgICB9IGVsc2UgaWYodGltZT4zNjUpIHsKCQkgICBwZXJjZW50ID0gMC42MDsKCSAgIH0KICAgIH0KCWlmKGN1cnJlbmN5ID09IDQpey8vcG91bmQKICAgICAgICBpZih0aW1lPD05MCl7CgkJICAgcGVyY2VudCA9IDAuMTA7CgkgICB9IGVsc2UgaWYodGltZTw9MTgwKSB7CgkJICAgcGVyY2VudCA9IDAuMzA7CgkgICB9IGVsc2UgaWYodGltZTw9MjcwKSB7CgkJICAgcGVyY2VudCA9IDAuNTA7CgkgICB9ZWxzZSBpZih0aW1lPD0zNjUpIHsKCQkgICBwZXJjZW50ID0gMC44MDsKCSAgIH0gZWxzZSBpZih0aW1lPjM2NSkgewoJCSAgIHBlcmNlbnQgPSAwLjkwOwoJICAgfQogICAgfQogICAgcmV0dXJuIHBlcmNlbnQKfSkoY3VycmVuY3ksdGltZSk7"
+                                  data-params="currency|accum_deposit_currency,time|accum_deposit_time"
+                                  data-ordered="5"
+                                  data-round="2"
+                                  data-bind="percent"
+                          >4</span>%</p>
+                        <!--/#2-->
                       </div>
                     </div>
                     {{ Button.button({ 'href': '#', 'title': 'Оформите через госуслуги', 'path': 'assets/images/uslugi.svg', 'mods': {'theme': 'white', 'type': 'icon-left'}, 'class': 'button_theme-uslugi' }) }}
