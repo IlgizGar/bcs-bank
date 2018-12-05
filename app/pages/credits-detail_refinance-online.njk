@@ -111,6 +111,7 @@
                   <div class="calculation js-calc-result">
                     <div class="calculation__thumbnail">
                       <div class="text">Ежемесячный платеж</div>
+                      <!--#2-->
                       <div class="calculation__result"><span
                                 data-calc="cGVyY2VudC8xMjAwICogTWF0aC5wb3coKHBlcmNlbnQvMTIwMCArIDEpLHRpbWUpIC8gKE1hdGgucG93KChwZXJjZW50LzEyMDAgKyAxKSx0aW1lKS0xKSAqIHN1bW0="
                                 data-params="summ|credit_calc_amount,time|credit_calc_period,percent|credit_percent"
@@ -118,8 +119,10 @@
                                 data-ordered="1"
                                 data-bind-inputs="credit_calc_period|credit_period,credit_calc_amount|credit_amount"
                         >10 500</span> {{ Icon.icon({ 'name': 'ruble'}) }}</div>
+                      <!--/#2-->
                       <div class="calculation__conclusion text">
                         <p>Ставка</p>
+                        <!--#1-->
                         <p><span
                                   data-calc="KHRpbWUgPD0gMjQpPyAxMi45IDogKHRpbWUgPiAyNCAmJiB0aW1lIDw9IDM2KT8gMTIuOSA6IDEzLjk="
                                   data-params="time|credit_calc_period"
@@ -128,22 +131,27 @@
                                   data-ordered="0"
                           >12,9</span>%</p>
                         <input type="hidden" name="credit_percent" value="12.9">
+                        <!--/#1-->
                       </div>
                       <div class="calculation__conclusion text">
                         <p>Необходимый доход</p>
+                        <!--#3-->
                         <p><span
                                   data-calc="c3VtbSoy"
                                   data-params="summ|monthly_pay"
                                   data-ordered="2"
                           >567 000</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
+                        <!--/#3-->
                       </div>
                       <div class="calculation__conclusion text">
+                        <!--#4-->
                         <p>Сумма выплат с %</p>
                         <p><span
                                   data-calc="c3VtbSp0aW1l"
                                   data-params="summ|monthly_pay,time|credit_calc_period"
                                   data-ordered="3"
                           >6 768</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
+                        <!--/#4-->
                       </div>
                       {{ Button.button({ 'title': 'Оформите заявку', 'mods': { 'theme': 'default' }, 'type': 'submit', 'class': 'mt-40', attr: {'scroll': '#section-request'} }) }}
                     </div>
