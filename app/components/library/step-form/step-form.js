@@ -16,7 +16,7 @@
 import $ from 'jquery';
 
 export default class StepForm {
-  constructor(settings) {
+  constructor(settings, el) {
     this.stepsNum = 0;
     this.currentStep = 0;
     this.activeElement = null;
@@ -26,7 +26,7 @@ export default class StepForm {
       wraper: settings.wrapper ? this._wrapper(settings.wrapper) : this._wrapper(),
       activeClass: settings.activeClass ? settings.activeClass : 'active',
     };
-    this.stepElements = document.getElementsByClassName(this.settings.selector);
+    this.stepElements = el.getElementsByClassName(this.settings.selector);
     this._init(this.settings.wraper);
   }
   _init(wrapper) {
