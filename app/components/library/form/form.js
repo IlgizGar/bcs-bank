@@ -21,7 +21,7 @@ module.exports = (elem) => {
         this.steps = new StepForm({
           selector: this.stepClass,
           activeClass: 'state_active',
-        });
+        }, this.form[0]);
         this.form.closest('.js-form')
           .find('.js-step-informer-all')
           .text(this.steps.getCount());
