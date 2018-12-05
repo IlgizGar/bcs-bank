@@ -214,6 +214,7 @@ module.exports = (elem) => {
             courseAmount = 0;
           }
         });
+        courseInputField.trigger('keyup');
       }
 
       const checkRadio = $('.js-check-radio');
