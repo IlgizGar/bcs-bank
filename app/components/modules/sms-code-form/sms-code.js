@@ -16,14 +16,17 @@ module.exports = (elem) => {
       this.timerText = this.smsCodeButton.html();
       this.events();
     }
-    sendPhone(inputName, callback, err) {
+    sendPhone(inputsName, phoneInputName, callback, err) {
       this.initTimer();
-      this.inputName = inputName;
       this.callback = callback;
       this.err = err;
       const formData = {};
-      const phoneInput = $(`[name="${inputName}"]`);
-      formData[inputName] = phoneInput.val();
+      const phoneInput = $(`[name="${phoneInputName}"]`);
+      for (let i = 0; i < inputsName.length; i += 1) {
+        const input = $(`[name="${inputsName[i]}"]`);
+        formData[inputsName[i]] = input.val();
+      }
+      console.log(formData);
       this.smsCodeBlock.text(phoneInput.val());
       $.ajax({
         method: 'post',

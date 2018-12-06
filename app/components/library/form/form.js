@@ -90,7 +90,7 @@ module.exports = (elem) => {
               .text(this.steps.nextStep() + 1);
             if ($(this.steps.getCurrent())
               .hasClass('js-sms-step')) {
-              this.smsCodeForm.sendPhone('question_phone', () => {
+              this.smsCodeForm.sendPhone(['question_phone', 'form_id'], 'question_phone', () => {
               }, () => {
                 this.form.closest('.js-form')
                   .find('.js-step-informer')
