@@ -96,6 +96,7 @@
             <div class="calculator js-calc-result">
               <div class="page__container">
                 {{ Heading.heading({ 'title': 'Рассчитайте свой бонус', 'mods': { 'type': 'default', 'margin': 'medium' } }) }}
+                  <div class="text text_theme-gray mb-56">Расчет носит информационный характер и не является <br> публичной офертой.</div>
                 <div class="section__row calculator__row">
                   <div class="form form_layout-narrow calculator__form">
                     <form>
@@ -114,15 +115,15 @@
                       <div class="text">Вы заработаете за год</div>
                       <!--#2-->
                       <div class="calculation__result"><span
-                                data-calc="c3VtbSozLjUvMTAw"
+                                data-calc="KHN1bW0qMy4zLzEwMCkqMTI="
                                 data-params="summ|allcost"
                                 data-ordered="1"
                                 data-round="2"
                         >10 500</span></div>
                       <!--/#2-->
-                      <div class="calculation__conclusion text">Этих бонусов будет достаточно
-                        для покупки авиабилета в Милан.
-                      </div>
+                        <div class="calculation__conclusion text">
+                            * При совершении покупок в соответствии с выбранным ПУ.
+                        </div>
                       {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'default' }, 'type': 'submit', 'class': 'mt-40', attr: {'scroll': '#section-request'} }) }}
                     </div>
                   </div>
