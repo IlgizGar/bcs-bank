@@ -26,7 +26,6 @@ module.exports = (elem) => {
         const input = $(`[name="${inputsName[i]}"]`);
         formData[inputsName[i]] = input.val();
       }
-      console.log(formData);
       this.smsCodeBlock.text(phoneInput.val());
       $.ajax({
         method: 'post',
