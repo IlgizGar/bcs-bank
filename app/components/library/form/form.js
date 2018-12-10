@@ -105,12 +105,18 @@ module.exports = (elem) => {
     }
 
     formSubmit(form) {
+      const formData = $(form).serializeArray();
+      Object.keys(formData).forEach((item) => {
+        const dataItem = formData[item];
+        if ($(`[name=${dataItem.name}]`).hasClass('js-numeric-input')) {
+          dataItem.value = dataItem.value.replace(' ', '');
+        }
+      });
       $.ajax({
         method: 'post',
         url: form.getAttribute('action'),
         dataType: 'json',
-        data: $(form)
-          .serializeArray(),
+        data: formData,
         success: (data) => {
           if (data.success === true) {
             $('.js-products-success')
