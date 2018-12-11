@@ -1,6 +1,11 @@
 .card_theme-selections
   color: $white
   position relative
+  max-width: 370px
+  @media(max-width 1024px)
+    max-width: 285px
+  .card__subtitle
+    margin-top: 25px
   .card__title
     color: $white
   .card__subtitle
@@ -22,6 +27,8 @@
   &:before
     width: calc(100% - 32px)
     top: -12px
+    box-shadow: 0 2px 44px 0 rgba(0, 10, 49, 0.06);
+    z-index: 1
   &:after
     width: calc(100% - 60px)
     top: -24px
@@ -30,6 +37,8 @@
     position: relative
     z-index: 10
     min-height: 440px
+    background-position: center
+    background-size: cover
     &:before
       content: ''
       position: absolute

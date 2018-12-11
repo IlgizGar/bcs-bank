@@ -28,7 +28,7 @@
               <div class="carousel__progressbar-bar  js-carousel-progressbar"></div>
             </div>
             <div class="index-carousel index-carousel_filled-bg js-carousel" data-id="index-header">
-              <div class="index-carousel__slide" data-href="/bks/cards-detail_bks-platinum.html" data-scroll-id="#section-request">
+              <div class="index-carousel__slide_advice" data-href="/bks/cards-detail_bks-platinum.html" data-scroll-id="#section-request">
                 <div class="page__container">
                   <div class="index-carousel__wrap">
                     <div class="section__row">
@@ -70,27 +70,30 @@
         <div class="page__container">
           <div class="section__row">
             {{ Advice.advice({ 'href': '#', 'title': 'Как экономить на путешествиях до 25%' | striptags(true) | escape | nl2br, 'subtitle': '21 марта 2018', 'img': 'assets/images/advice_page-1.png', 'class': 'section__element advice_size-big' }) }}
-            {{ Advice.advice({ 'href': '#', 'title': 'Как поужинать в любимом ресторане за счет банка' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice_page-2.png', 'class': 'section__element' }) }}
-            {{ Advice.advice({ 'href': '#', 'title': 'Где срочно взять деньги' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice_page-3.png', 'class': 'section__element' }) }}
-            {{ Advice.advice({ 'href': '#', 'title': 'Как экономить на путешествиях до 25%' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice_page-4.png', 'class': 'section__element' }) }}
-            {{ Advice.advice({ 'href': '#', 'title': 'Как экономить на путешествиях до 25%' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice_page-5.png', 'class': 'section__element' }) }}
+            {{ Advice.advice({ 'href': '#', 'title': 'Как поужинать в любимом ресторане за счет банка' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice_page-2.png', 'class': 'section__element advice_size-small' }) }}
+            {{ Advice.advice({ 'href': '#', 'title': 'Где срочно взять деньги' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice_page-3.png', 'class': 'section__element advice_size-small' }) }}
+            {{ Advice.advice({ 'href': '#', 'title': 'Как экономить на путешествиях до 25%' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice_page-4.png', 'class': 'section__element advice_size-small' }) }}
+            {{ Advice.advice({ 'href': '#', 'title': 'Как экономить на путешествиях до 25%' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice_page-5.png', 'class': 'section__element advice_size-small' }) }}
           </div>
         </div>
       </section>
-      <section class="section section_theme-blue page__section">
+      <section class="section section_theme-blue page__section page__section_view-advice">
         <div class="page__container">
             {{ Heading.heading({ 'title': 'Подборки', 'mods': { 'type': 'default', 'margin': 'normal', 'theme': 'light' }, 'class': 'hidden-mobile' }) }}
           <div class="section__row">
-            <div class="company__carousel carousel carousel_type-mobile">
-              <div class="carousel-controls js-carousel-controls">
+            <div class="company__carousel advice-page__carousel carousel carousel_type-mobile">
+              <div class="js-carousel carousel__content" data-id="advice-filtered" data-breakpoint="768">
+                  {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'selections', 'bgImg': 'assets/images/advice_page-select-1.png', 'title': 'Пять историй о скидках и торговле', 'subtitle': '5 советов' | striptags(true) | escape | nl2br, 'link': 'Читать', 'class': 'section__element company__card' }) }}
+                  {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'selections', 'bgImg': 'assets/images/advice_page-select-2.png', 'title': 'Как организовать путешестиве по японии' | striptags(true) | escape | nl2br, 'subtitle': '8 советов' | striptags(true) | escape | nl2br, 'link': 'Читать', 'class': 'section__element company__card' }) }}
+                  {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'selections', 'bgImg': 'assets/images/advice_page-select-3.png', 'title': 'Что делать если вы не умеете копить', 'subtitle': '8 советов' | striptags(true) | escape | nl2br, 'link': 'Читать', 'class': 'section__element company__card' }) }}
+                  {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'selections', 'bgImg': 'assets/images/advice_page-select-4.png', 'title': 'Что делать если вы не умеете копить', 'subtitle': '8 советов' | striptags(true) | escape | nl2br, 'link': 'Читать', 'class': 'section__element company__card' }) }}
+                  {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'selections', 'bgImg': 'assets/images/advice_page-select-1.png', 'title': 'Пять историй о скидках и торговле', 'subtitle': '5 советов' | striptags(true) | escape | nl2br, 'link': 'Читать', 'class': 'section__element company__card' }) }}
+                  {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'selections', 'bgImg': 'assets/images/advice_page-select-2.png', 'title': 'Как организовать путешестиве по японии' | striptags(true) | escape | nl2br, 'subtitle': '8 советов' | striptags(true) | escape | nl2br, 'link': 'Читать', 'class': 'section__element company__card' }) }}
+              </div>
+              <div class="carousel-controls carousel-controls_theme-advice js-carousel-controls">
                 <div class="carousel-controls__pagination js-carousel-pagination" data-carousel="advice-filtered">
                   <span>01</span><span></span><span></span>
                 </div>
-              </div>
-              <div class="js-carousel carousel__content" data-id="advice-filtered" data-breakpoint="768">
-                  {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'selections', 'hoverType': 'button', 'title': 'Пять историй о скидках и торговле', 'subtitle': '5 советов' | striptags(true) | escape | nl2br, 'link': 'Читать', 'class': 'section__element company__card' }) }}
-                  {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'selections', 'hoverType': 'button', 'title': 'Как организовать путешестиве по японии' | striptags(true) | escape | nl2br, 'subtitle': '8 советов' | striptags(true) | escape | nl2br, 'link': 'Читать', 'class': 'section__element company__card' }) }}
-                  {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'selections', 'hoverType': 'button', 'title': 'Что делать если вы не умеете копить', 'subtitle': '8 советов' | striptags(true) | escape | nl2br, 'link': 'Читать', 'class': 'section__element company__card' }) }}
               </div>
             </div>
           </div>
@@ -99,20 +102,29 @@
       <section class="advices advices_view-group section page__section page__section_theme-large">
         <div class="page__container">
           <div class="section__row">
-              {{ Advice.advice({ 'href': '#', 'title': 'Как поужинать в любимом ресторане за счет банка' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice_page-6.png', 'class': 'section__element' }) }}
+              {{ Advice.advice({ 'href': '#', 'title': 'Как поужинать в любимом ресторане за счет банка' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice_page-6.png', 'class': 'section__element advice_size-small' }) }}
               {{ Advice.advice({ 'href': '#', 'title': 'Как экономить на путешествиях до 25%' | striptags(true) | escape | nl2br, 'subtitle': '21 марта 2018', 'img': 'assets/images/advice_page-7.png', 'class': 'section__element advice_size-big' }) }}
-              {{ Advice.advice({ 'href': '#', 'title': 'Где срочно взять деньги' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice_page-8.png', 'class': 'section__element' }) }}
-              {{ Advice.advice({ 'href': '#', 'title': 'Как экономить на путешествиях до 25%' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice_page-9.png', 'class': 'section__element' }) }}
-              {{ Advice.advice({ 'href': '#', 'title': 'Как экономить на путешествиях до 25%' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice_page-10.png', 'class': 'section__element' }) }}
+              {{ Advice.advice({ 'href': '#', 'title': 'Где срочно взять деньги' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice_page-8.png', 'class': 'section__element advice_size-small' }) }}
+              {{ Advice.advice({ 'href': '#', 'title': 'Как экономить на путешествиях до 25%' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice_page-9.png', 'class': 'section__element advice_size-small' }) }}
+              {{ Advice.advice({ 'href': '#', 'title': 'Как экономить на путешествиях до 25%' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice_page-10.png', 'class': 'section__element advice_size-small' }) }}
               {{ Button.button({ 'title': 'Показать еще', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'wide'}, 'attr': {'see-more': ''} }) }}
           </div>
         </div>
       </section>
-      <section class="section section_theme-blue page__section">
+      <section class="section section_theme-blue page__section page__section_view-advice">
         <div class="page__container">
-            {{ Heading.heading({ 'title': 'Подписка на советы от БКС', 'mods': { 'type': 'default', 'margin': 'normal', 'theme': 'light' }, 'class': 'hidden-mobile' }) }}
+            {{ Heading.heading({ 'title': 'Подписка на советы от БКС', 'mods': { 'type': 'default', 'align':'centered', 'margin': 'normal', 'theme': 'light' }, 'class': 'hidden-mobile' }) }}
           <div class="section__row">
-
+            <div class="section__text section__text_align-center section__text_theme-normal section__text_theme-light">
+                <p>Оставьте Ваш e-mail чтобы получать <br> наши новости</p>
+              <div class="form js-form" data-form="cards">
+                <form action="/">
+                  <div class="form__line-group form__line-group_theme-white">
+                      {{ Input.input({ 'label': 'Ваш-email', 'class': 'form__field-group', 'button':{'name': 'arrow', 'type': 'submit' , 'path':'/assets/images/svg/arrow_rigth_icon.svg' , 'mods': { 'type': 'icon', 'view': 'icon-white', 'theme': 'white' , 'mods': 'input' } }, 'field': {'class': 'js-mail-masked', 'name': 'question_mail', 'required': 'true' } }) }}
+                  </div>
+                </form>
+              </div>
+            </div>
           </div>
         </div>
       </section>

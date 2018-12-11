@@ -63,6 +63,38 @@ module.exports = (elem) => {
             prevArrow: this.prev,
           });
           break;
+        case 'advice-filtered':
+          this.carousel.not('.slick-initialized').slick({
+            appendArrows: this.carousel.next('.js-carousel-controls'),
+            nextArrow: this.next,
+            prevArrow: this.prev,
+            mobileFirst: false,
+            infinite: false,
+            responsive: [
+              {
+                breakpoint: 9999,
+                settings: {
+                  slidesToShow: 3,
+                  slidesToScroll: 3,
+                },
+              },
+              {
+                breakpoint: 769,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 2,
+                },
+              },
+              {
+                breakpoint: 426,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                },
+              },
+            ],
+          });
+          break;
         default:
           this.initMobileSlick(this.carousel.data('breakpoint') - 1);
           break;

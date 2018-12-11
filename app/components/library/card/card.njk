@@ -32,7 +32,7 @@
       card - заливка фона при ховере на карточку
   #}
   <div class="card js-card {% if type === 'form' %}js-form{% endif %} {{ "card_type-" + options.type }} {% if options.hoverType %}{{ "card_hover-type-" + options.hoverType }}{% endif %} {% if options.view %}{{ "card_view-" + options.view }}{% endif %} {% if options.theme %} {{ "card_theme-"+options.theme }}{% endif %} {{ options.class }}" {% if options.href %}data-href={{ options.href }}{% endif %} {{ attr | safe }} >
-    <{{ type }} class="card__wrap" {% if options.action %} action={{ options.action }} method="get"{% endif %}>
+    <{{ type }} class="card__wrap" {% if options.action %} action={{ options.action }} method="get"{% endif %} {% if options.bgImg %} style="background-image: url('{{ options.bgImg}}');"{% endif %} >
       {% if options.link %}
         {% if options.linkhref %}
           <a class="card__action" href="{{ options.linkhref }}">
