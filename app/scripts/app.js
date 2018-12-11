@@ -206,6 +206,14 @@ $(() => {
       global.calculators.push(new Calculation($(el)));
     });
     setTimeout(() => $('input').trigger('change'), 100); // инициализация первоначального расчета в калькуляторах
-
+  }
+  const confidencyShowLink = $('.js-confidence-policy-link');
+  if (confidencyShowLink.length) {
+    confidencyShowLink.on('click', (e) => {
+      e.preventDefault();
+      $('.js-confidence-policy').modal({
+        closeExisting: false,
+      });
+    });
   }
 });
