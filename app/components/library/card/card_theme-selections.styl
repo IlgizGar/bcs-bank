@@ -1,0 +1,45 @@
+.card_theme-selections
+  color: $white
+  position relative
+  .card__title
+    color: $white
+  .card__subtitle
+    color: $white
+  .card__button
+    color: $white
+  .card__action
+    border-color: transparentify($white,0.5)!important
+  &:before,&:after
+    content: ''
+    display: block
+    background: $white
+    border-radius: 4px
+    position: absolute
+    left: 50%
+    height: 50%
+    z-index: 0
+    transform: translateX(-50%)
+  &:before
+    width: calc(100% - 32px)
+    top: -12px
+  &:after
+    width: calc(100% - 60px)
+    top: -24px
+  .card__wrap
+    background: $royal_blue
+    position: relative
+    z-index: 10
+    min-height: 440px
+    &:before
+      content: ''
+      position: absolute
+      display: block
+      width: 55px
+      height: 55px
+      border-radius: 50%
+      background: $white
+      top: -27px;
+      left: calc(50% - 27px)
+    .card__content
+      padding-top: 64px
+
