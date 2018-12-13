@@ -44,40 +44,23 @@
 ] %}
 
 <footer class="footer js-footer">
-  <div class="page__container">
-    <div class="footer__wrap">
-      <div class="footer__info">
-        <div class="footer__contacts">
-          <p class="footer__contacts-phone">8 800 500 7065</p>
-          <p class="footer__contacts-inform">Бесплатный звонок по России</p>
-          {{ Button.button({ 'title': 'Задать вопрос', 'href': '#question-modal-form', 'mods': {'theme': 'default'}, 'class': 'footer__contacts-button js-open-modal'  }) }}
-        </div>
-        <div class="footer__socials footer__socials_state-desktop">
-          {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'title': 'Присоединяйтесь' }) }}
-          {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'title': 'Доступно для устройств', 'device': 'true' }) }}
-        </div>
-      </div>
-      <div class="footer__menu">
-        {% for item in menu %}
-          <div class="footer__menu-group js-footer-menu">
-            <div class="footer__menu-title">
-              {{ item.title }}
-              {{ Icon.icon({ 'name': 'dropdown' }) }}
-            </div>
-            <div class="footer__menu-content js-footer-menu-content">
-              {% for el in item.items %}
-                {{ Button.button({ 'href': el.href, 'title': el.name, 'mods': {'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'footer__menu-link' }) }}
-              {% endfor %}
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-    </div>
-  </div>
+
   <div class="footer__about">
     <div class="page__container">
       <div class="footer__about-wrap">
-        <div class="footer__credentials">
+        <div class="footer__info footer__info-msb">
+          <div class="footer__contacts">
+            <p class="footer__contacts-phone">8 800 500 7065</p>
+            <p class="footer__contacts-inform">Бесплатный звонок по России</p>
+            {{ Button.button({ 'title': 'Задать вопрос', 'href': '#question-modal-form', 'mods': {'theme': 'default'}, 'class': 'footer__contacts-button js-open-modal'  }) }}
+          </div>
+        </div>
+        <div class="footer__info footer__info-msb">
+          <div class="footer__socials footer__socials_state-desktop">
+            {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'title': 'Скоро на устройствах', 'device': 'true' }) }}
+          </div>
+        </div>
+        <div class="footer__credentials footer__info footer__info-msb">
           {{ Button.button({ 'href': '#', 'title': 'Информация о максимальных процентных ставках по вкладам физических лиц', 'mods': {'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'footer__credentials-link' }) }}
           <p>© 1989–2018, АО «БКС Банк», официальный сайт,</p>
           <p>генеральная лицензия на осуществление банковских операций №101 от 15.12.2014.</p>
@@ -86,9 +69,11 @@
           {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'} }) }}
           {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'device': 'true' }) }}
         </div>
-        <div class="footer__developer">
-          <p>Сделано в </p>
-          {{ Icon.icon({ 'name': 'aic' }) }}
+        <div class="footer__info footer__info-msb">
+          <div class="footer__developer">
+            <p>Сделано в </p>
+            {{ Icon.icon({ 'name': 'aic' }) }}
+          </div>
         </div>
       </div>
     </div>

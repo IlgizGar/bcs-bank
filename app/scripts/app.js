@@ -216,4 +216,14 @@ $(() => {
       });
     });
   }
+  const bonusLink = $('.js-bonus-item');
+  if (bonusLink.length) {
+    bonusLink.on('click', (e) => {
+      if ($(e.target.closest('.js-bonus-item')).hasClass('js-bonus-item-show-popup')) {
+        e.preventDefault();
+        $('.js-bonus-modal').find('.js-bonus-modal-button').attr('href', $(e.target).closest('.js-bonus-item').attr('href'));
+        $('.js-bonus-modal').modal();
+      }
+    });
+  }
 });
