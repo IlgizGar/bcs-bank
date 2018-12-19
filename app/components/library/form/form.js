@@ -82,14 +82,17 @@ module.exports = (elem) => {
         }
       } else {
         submitHandler = (form) => {
+          const step = $(this.steps.getCurrent());
           if (this.steps.isLast()) {
             this.formSubmit(form);
           } else {
+            if (step.hasClass('js-send-form')) {
+              this.formSubmit(form, step.data('send-url'));
+            }
             this.form.closest('.js-form')
               .find('.js-step-informer')
               .text(this.steps.nextStep() + 1);
-            if ($(this.steps.getCurrent())
-              .hasClass('js-sms-step')) {
+            if (step.hasClass('js-sms-step')) {
               this.smsCodeForm.sendPhone(['question_phone', 'form_id', 'bid_user_name'], 'question_phone', () => {
               }, () => {
                 this.form.closest('.js-form')
@@ -104,8 +107,9 @@ module.exports = (elem) => {
       this.formValidator = this.validator.validateForm(submitHandler);
     }
 
-    formSubmit(form) {
+    formSubmit(form, url) {
       const formData = $(form).serializeArray();
+      const sendUrl = url;
       Object.keys(formData).forEach((item) => {
         const dataItem = formData[item];
         if ($(`[name=${dataItem.name}]`).hasClass('js-numeric-input')) {
@@ -114,31 +118,35 @@ module.exports = (elem) => {
       });
       $.ajax({
         method: 'post',
-        url: form.getAttribute('action'),
+        url: url ? sendUrl : form.getAttribute('action'),
         dataType: 'json',
         data: formData,
         success: (data) => {
-          if (data.success === true) {
-            $('.js-products-success')
-              .on($.modal.AFTER_CLOSE, () => {
-                form.reset();
-                this.form.closest('.js-form')
-                  .find('.js-step-informer')
-                  .text(this.steps.tofFirstStep() + 1);
-              })
-              .modal();
-          } else if (data.success === 'incorrect-code') {
-            this.formValidator.showErrors({
-              sms_code: data.error,
-            });
-          } else {
-            $('.js-products-error')
-              .modal();
+          if (!url) {
+            if (data.success === true) {
+              $('.js-products-success')
+                .on($.modal.AFTER_CLOSE, () => {
+                  form.reset();
+                  this.form.closest('.js-form')
+                    .find('.js-step-informer')
+                    .text(this.steps.tofFirstStep() + 1);
+                })
+                .modal();
+            } else if (data.success === 'incorrect-code') {
+              this.formValidator.showErrors({
+                sms_code: data.error,
+              });
+            } else {
+              $('.js-products-error')
+                .modal();
+            }
           }
         },
         error: () => {
-          $('.js-products-error')
-            .modal();
+          if (!url) {
+            $('.js-products-error')
+              .modal();
+          }
         },
       });
     }
