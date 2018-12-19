@@ -138,15 +138,10 @@ module.exports = (form) => {
         showMaskOnHover: false,
       });
 
-      $('.js-fio-masked').inputmask({
-        mask: '*{4,40}',
-        placeholder: '',
-        definitions: {
-          '*': {
-            validator: '[А-я ]',
-          },
-        },
-      });
+      // $('.js-fio-masked').inputmask({
+      //   mask: '*{4,40}',
+      //   placeholder: '',
+      // });
 
       $('.js-numeric-input').inputmask('numeric', {
         placeholder: ' ',
@@ -228,6 +223,33 @@ module.exports = (form) => {
       Validator.addValidateCardNumber();
       Validator.addValidateTransferAmount();
       Validator.addValidatePhoneLength();
+      Validator.addValidateFio();
+    }
+
+    static addValidateFio() {
+      $('.js-fio-masked').on('keyup', (e) => {
+        const input = $(e.currentTarget);
+        input.val(Validator.autoLayoutKeyboard(input.val()));
+      });
+      $.validator.addMethod(
+        'checkFio',
+        (value, element) => {
+          const regExp = new RegExp('^[А-ЯЁ][а-яё]{2,}([-][А-ЯЁ][а-яё]{2,})?\\s[А-ЯЁ][а-яё]{2,}\\s[А-ЯЁ][а-яё]{2,}$/');
+          return regExp.test(value);
+        },
+      );
+    }
+
+    static autoLayoutKeyboard(str) {
+      const replacerString = `{
+        "q":"й", "w" : "ц", "e":"у", "r":"к", "t":"е", "y":"н", "u":"г",
+        "i":"ш", "o":"щ", "p":"з", "[":"х", "]":"ъ", "a":"ф", "s":"ы",
+        "d":"в", "f":"а", "g":"п", "h":"р", "j":"о", "k":"л", "l":"д",
+        ";":"ж", "'":"э", "z":"я", "x":"ч", "c":"с", "v":"м", "b":"и",
+        "n":"т", "m":"ь", ",":"б", ".":"ю", "/":"."
+      }`;
+      const replacer = JSON.parse(replacerString);
+      return str.replace(/[A-z/,.;'\][]/g, x => (x === x.toLowerCase() ? replacer[x] : replacer[x.toLowerCase()].toUpperCase()));
     }
 
     static addValidateCourseAmount() {
