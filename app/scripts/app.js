@@ -226,4 +226,19 @@ $(() => {
       }
     });
   }
+
+  global.setCurrency = (currency, input) => {
+    const icons = String('₽,$,€,£').split(',');
+    const currencyBlock = input.find('.js-title');
+    const currencyResult = $('.calc-result-all').find('.icon');
+    currencyResult.hide();
+    const currencySpan = $('.js-currency-span');
+    if (currencySpan.length) {
+      currencySpan.text(icons[currency - 1]);
+    } else {
+      const currencyBlockText = `<span class="js-currency-span currency-span">${icons[currency - 1]}</span>`;
+      $(currencyBlockText).insertBefore(currencyResult);
+      currencyBlock.html(currencyBlockText);
+    }
+  };
 });
