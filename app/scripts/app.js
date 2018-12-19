@@ -193,9 +193,11 @@ $(() => {
 
   $('[data-scroll]').on('click', (e) => {
     const el = $(e.currentTarget).data('scroll');
-    if ($(el).length) {
-      $('html, body').animate({ scrollTop: $(el).offset().top }, 500);
-    }
+    setTimeout(() => {
+      if ($(el).length) {
+        $('html, body').animate({ scrollTop: $(el).offset().top }, 500);
+      }
+    }, 200);
     return false;
   });
 
