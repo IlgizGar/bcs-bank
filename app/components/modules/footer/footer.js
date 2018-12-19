@@ -15,5 +15,10 @@ export default class Footer {
         $(e.currentTarget).toggleClass('state_explored');
       }
     });
+    this.menu.find('.js-button').on('click', (e) => {
+      const link = $(e.currentTarget);
+      document.location.href = link.href;
+      document.location.reload();
+    });
   }
 }

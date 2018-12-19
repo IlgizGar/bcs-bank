@@ -28,6 +28,10 @@ module.exports = (elem) => {
       this.anchors.on('click', (e) => {
         e.preventDefault();
         this.triggerAnchor(e);
+        window.history.pushState({}, '', this.active.attr('href'));
+      });
+      $('[data-scroll]').on('click', () => {
+        $(this.anchors[0]).trigger('click');
       });
     }
     triggerAnchor(e) {
