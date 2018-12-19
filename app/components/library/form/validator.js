@@ -3,6 +3,7 @@ import 'jquery-validation/dist/additional-methods';
 import 'jquery-validation';
 import 'inputmask';
 import 'jquery.inputmask';
+import 'suggestions-jquery';
 
 module.exports = (form) => {
   class Validator {
@@ -227,14 +228,21 @@ module.exports = (form) => {
     }
 
     static addValidateFio() {
+      $('.js-fio-auto-complete').suggestions({
+        serviceUrl: 'https://api.bcs.ru/suggestion/v1',
+        token: '574fec4e42aa48a2ac22841a3f6def1d',
+        type: 'NAME',
+        count: 5,
+        mobileWidth: 0,
+      });
       $('.js-fio-masked').on('keyup', (e) => {
         const input = $(e.currentTarget);
         input.val(Validator.autoLayoutKeyboard(input.val()));
       });
       $.validator.addMethod(
         'checkFio',
-        (value, element) => {
-          const regExp = new RegExp('^[А-ЯЁ][а-яё]{2,}([-][А-ЯЁ][а-яё]{2,})?\\s[А-ЯЁ][а-яё]{2,}\\s[А-ЯЁ][а-яё]{2,}$/');
+        (value) => {
+          const regExp = new RegExp('([А-ЯЁ][а-яё]+[\\-\\s]?){3,}');
           return regExp.test(value);
         },
       );
