@@ -44,11 +44,15 @@ module.exports = (elem) => {
           this.showList(e.target);
         }
       });
+      let listEl;
+      this.list.on('mousedown', (e) => {
+        listEl = e.target;
+      });
 
       this.list.on('click', (e) => {
         if ($(e.target).closest('ul').length) {
           this.dropdown.addClass('state_filled');
-          this.input.val($(e.target).html());
+          this.input.val($(listEl).html());
           if (this.input.closest('form').length) {
             this.input.valid();
           }

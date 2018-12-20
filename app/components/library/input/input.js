@@ -44,6 +44,23 @@ module.exports = (elem) => {
         this.ionSlider = this.slider.data('ionRangeSlider');
       }
     }
+    stateChange() {
+      if (String(this.field.val()).length < 1) {
+        if (this.ionSlider === null) {
+          this.input.removeClass('state_filled');
+        }
+      } else {
+        if (!this.input.hasClass('state_filled')) {
+          this.input.addClass('state_filled');
+          this.input.removeClass('state_init');
+        }
+        if (this.ionSlider !== null) {
+          this.ionSlider.update({
+            from: parseFloat(this.field.val().replace(/ /g, '')),
+          });
+        }
+      }
+    }
 
     events() {
       this.input.on('click', () => {
@@ -71,22 +88,24 @@ module.exports = (elem) => {
       });
 
       this.field.on('keyup', () => {
-        if (this.field.val().length < 1) {
-          if (this.ionSlider === null) {
-            this.input.removeClass('state_filled');
-          }
-        } else {
-          if (!this.input.hasClass('state_filled')) {
-            this.input.addClass('state_filled');
-          }
-
-          if (this.ionSlider !== null) {
-            this.ionSlider.update({
-              from: parseFloat(this.field.val().replace(/ /g, '')),
-            });
-          }
-        }
+        this.stateChange();
+        // if (this.field.val().length < 1) {
+        //   if (this.ionSlider === null) {
+        //     this.input.removeClass('state_filled');
+        //   }
+        // } else {
+        //   if (!this.input.hasClass('state_filled')) {
+        //     this.input.addClass('state_filled');
+        //   }
+        //
+        //   if (this.ionSlider !== null) {
+        //     this.ionSlider.update({
+        //       from: parseFloat(this.field.val().replace(/ /g, '')),
+        //     });
+        //   }
+        // }
       });
+      this.stateChange();
     }
   }
 

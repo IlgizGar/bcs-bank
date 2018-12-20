@@ -65,7 +65,13 @@ export default class Calculation {
             this.bindInput.val(result);
             this.bindInput.trigger('change');
           }
-          this.resultBlock.text(String(result.replace('.', ',')).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 '));
+          const resultString = String(result.replace('.', ',')).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+          if (resultString.length > 12) {
+            this.resultBlock.parent().addClass('font_down');
+          } else {
+            this.resultBlock.parent().removeClass('font_down');
+          }
+          this.resultBlock.text(resultString);
         }, this.wait);
       });
     });
