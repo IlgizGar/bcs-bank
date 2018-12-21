@@ -82,7 +82,7 @@ module.exports = (elem) => {
         }
       } else {
         submitHandler = (form) => {
-          const step = $(this.steps.getCurrent());
+          let step = $(this.steps.getCurrent());
           if (this.steps.isLast()) {
             this.formSubmit(form);
           } else {
@@ -92,6 +92,7 @@ module.exports = (elem) => {
             this.form.closest('.js-form')
               .find('.js-step-informer')
               .text(this.steps.nextStep() + 1);
+            step = $(this.steps.getCurrent());
             if (step.hasClass('js-sms-step')) {
               this.smsCodeForm.sendPhone(['question_phone', 'form_id', 'bid_user_name'], 'question_phone', () => {
               }, () => {
@@ -117,7 +118,7 @@ module.exports = (elem) => {
         }
       });
       $.ajax({
-        method: 'post',
+        method: 'POST',
         url: url ? sendUrl : form.getAttribute('action'),
         dataType: 'json',
         data: formData,
