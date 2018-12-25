@@ -17,7 +17,7 @@ export default class Footer {
     });
     this.menu.find('.js-button').on('click', (e) => {
       const link = $(e.currentTarget);
-      document.location.href = link.href;
+      document.location.href = link.attr('href');
       document.location.reload();
     });
   }
