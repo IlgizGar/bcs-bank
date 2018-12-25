@@ -247,7 +247,6 @@ module.exports = (form) => {
         'checkFio',
         (value) => {
           const regExp = new RegExp('([А-ЯЁ][а-яё]+[\\-\\s]?){3,}');
-          console.log(String(value).match(regExp));
           return String(value).match(regExp);
         },
         'Ведите Фамилию Имя Отчество',
@@ -281,7 +280,6 @@ module.exports = (form) => {
         'checkEmail',
         (value) => {
           const regExp = new RegExp('^[A-Za-zА-я0-9][A-Za-zА-я0-9\\.-_]*[A-Za-z0-9]*@([A-Za-zА-я0-9]+([A-Za-zА-я0-9-]*[A-Za-zА-я0-9]+)*\\.)+[A-ZА-яa-z]*$');
-          console.log(String(value).match(regExp));
           return String(value).match(regExp);
         },
         'Неверный email',
