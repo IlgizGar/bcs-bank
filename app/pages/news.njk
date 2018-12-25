@@ -35,7 +35,7 @@
           <div class="section__row">
             <div class="section__content section__content_theme-default">
               {{ Heading.heading({ 'tag': 'h1', 'title': 'Новости за', 'context': {'title': 'июнь 2018', 'name': 'news', 'attr': {'id': 'news-period', 'list-on-right': ''} }, 'mods': { 'type': 'default', 'margin': 'short', 'margin-top': 'normal', 'theme': 'default' } }) }}
-              <div class="js-news-cards">
+              <div class="js-news-cards news-cards">
                 {# Для первой страницы сразу вывести новости #}
                 {% for card in card %}
                   {{ Card.card({ 'href': card.href, 'type': 'default', 'view': 'uppercase', 'hoverType': 'card', 'title': card.title | striptags(true) | escape | nl2br, 'subtitle': card.subtitle, 'link': 'Читать' }) }}

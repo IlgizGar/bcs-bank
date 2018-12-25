@@ -28,7 +28,7 @@
         {%- endfor %}
     {% endset %}
 
-    <div class="input js-input   {% if options.value %}state_filled{% else %}state_init{% endif %} {{ mods | safe }} {{ options.class | safe }}" {{ attr | safe }}>
+    <div class="input js-input state_init {{ mods | safe }} {{ options.class | safe }}" {{ attr | safe }}>
 
         <label class="input__group">
             <span class="input__label js-label">{{ options.label }}</span>

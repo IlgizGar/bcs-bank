@@ -13,6 +13,7 @@ module.exports = (form) => {
       this.validateRules = {
         'js-fio-masked': {
           minlength: 3,
+          checkFio: true,
         },
         'js-course-input': {
           checkCourseAmount: true,
@@ -35,7 +36,9 @@ module.exports = (form) => {
         'js-phone-masked': {
           minPhoneLength: true,
         },
-        'js-mail-masked': {},
+        'js-mail-masked': {
+          checkEmail: true,
+        },
         'js-question-textarea': {},
         'js-question-topic': {},
         'js-city-select': {},
@@ -119,19 +122,19 @@ module.exports = (form) => {
     }
 
     static setFieldMask() {
-      $('.js-mail-masked').inputmask({
-        mask: '*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]',
-        showMaskOnHover: false,
-        greedy: false,
-        placeholder: '',
-        onBeforePaste: pastedValue => pastedValue.toLowerCase(),
-        definitions: {
-          '*': {
-            validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~]",
-            casing: 'lower',
-          },
-        },
-      });
+      // $('.js-mail-masked').inputmask({
+      //   mask: '*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[.*{2,6}][.*{1,2}]',
+      //   showMaskOnHover: false,
+      //   greedy: false,
+      //   placeholder: '',
+      //   onBeforePaste: pastedValue => pastedValue.toLowerCase(),
+      //   definitions: {
+      //     '*': {
+      //       validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~]",
+      //       casing: 'lower',
+      //     },
+      //   },
+      // });
 
       $('.js-phone-masked').inputmask({
         mask: '+7(999) 999-99-99',
@@ -225,6 +228,7 @@ module.exports = (form) => {
       Validator.addValidateTransferAmount();
       Validator.addValidatePhoneLength();
       Validator.addValidateFio();
+      Validator.addValidateEmail();
     }
 
     static addValidateFio() {
@@ -243,8 +247,10 @@ module.exports = (form) => {
         'checkFio',
         (value) => {
           const regExp = new RegExp('([А-ЯЁ][а-яё]+[\\-\\s]?){3,}');
-          return regExp.test(value);
+          console.log(String(value).match(regExp));
+          return String(value).match(regExp);
         },
+        'Ведите Фамилию Имя Отчество',
       );
     }
 
@@ -270,7 +276,17 @@ module.exports = (form) => {
         },
       );
     }
-
+    static addValidateEmail() {
+      $.validator.addMethod(
+        'checkEmail',
+        (value) => {
+          const regExp = new RegExp('^[A-Za-zА-я0-9][A-Za-zА-я0-9\\.-_]*[A-Za-z0-9]*@([A-Za-zА-я0-9]+([A-Za-zА-я0-9-]*[A-Za-zА-я0-9]+)*\\.)+[A-ZА-яa-z]*$');
+          console.log(String(value).match(regExp));
+          return String(value).match(regExp);
+        },
+        'Неверный email',
+      );
+    }
     static addValidateCardNumber() {
       $.validator.addMethod(
         'checkCardNumber',
