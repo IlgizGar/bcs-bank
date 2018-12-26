@@ -79,6 +79,10 @@ module.exports = (elem) => {
               return false;
             };
           }
+          submitHandler = (form) => {
+            this.formSubmit(form);
+            return false;
+          };
         }
       } else {
         submitHandler = (form) => {

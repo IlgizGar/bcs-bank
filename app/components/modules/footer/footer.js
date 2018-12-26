@@ -17,8 +17,11 @@ export default class Footer {
     });
     this.menu.find('.js-button').on('click', (e) => {
       const link = $(e.currentTarget);
-      document.location.href = link.attr('href');
-      document.location.reload();
+      const url = String(link[0].href).split('#')[0];
+      const currentUrl = String(window.location.href).split('#')[0];
+      if (currentUrl === url) {
+        window.location.reload();
+      }
     });
   }
 }
