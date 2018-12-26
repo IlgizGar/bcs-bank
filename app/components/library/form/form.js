@@ -116,6 +116,10 @@ module.exports = (elem) => {
                   .find('.js-step-informer')
                   .text(this.steps.nextStep() + 1);
               });
+            } else {
+              this.form.closest('.js-form')
+                .find('.js-step-informer')
+                .text(this.steps.nextStep() + 1);
             }
           }
         };

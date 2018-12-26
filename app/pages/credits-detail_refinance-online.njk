@@ -274,6 +274,16 @@
                         </div>
                       </div>
 
+
+                      <div class="step-form__item js-step">
+                        {{ Heading.heading({ 'title': 'Работа' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
+                        {% include "../components/modules/form-job/form-job.njk" %}
+                        <div class="form__agreements">
+                          {{ Button.button({ 'title': 'Назад', 'type': 'button', 'mods': {'theme': 'default', 'view': 'text', 'type': 'before-arrow'}, 'class': 'form__submit-button js-step-backward' }) }}
+                          {{ Button.button({ 'title': 'Далее', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
+                        </div>
+                      </div>
+
                     </form>
                   </div>
                   <div class="calculation js-calc-result calculation_theme-uslugi">

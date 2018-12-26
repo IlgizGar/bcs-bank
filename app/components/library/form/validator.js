@@ -51,6 +51,8 @@ module.exports = (form) => {
         },
       };
 
+      $.validator.messages.required = 'Поле не может быть пустым';
+
       this.validateMessages = {
         'js-phone-masked': {
           required: 'Укажите номер телефона',
