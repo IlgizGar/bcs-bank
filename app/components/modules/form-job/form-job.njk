@@ -1,0 +1,20 @@
+{% import "../../library/heading/heading.njk" as Heading %}
+{% import "../../library/button/button.njk" as Button %}
+{% import "../../library/input/input.njk" as Input %}
+{% import "../../library/radio/radio.njk" as Radio %}
+{% import "../../library/dropdown/dropdown.njk" as Dropdown %}
+{% import "../../icon/icon.njk" as Icon %}
+
+
+<div class="form-job">
+    <fieldset>
+            {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Вид занятости', 'name': 'bid_select_job_timed', 'items': [{'title': 'полная', 'value': '12345'}, {'title': 'Частичная', 'value': '13456'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'job-timed-select-list'}, 'field': 'js-job-timed-select' }) }}
+            {{ Input.input({ 'label': 'Общий трудовой стаж', 'class': 'form__field-group', 'field': {'class': 'js-numeric-input', 'name': 'job_years_count', 'required': 'true' } }) }}
+            {{ Input.input({ 'label': 'Дата трудоустройства', 'class': 'form__field-group', 'field': {'class': 'js-date js-default-date', 'name': 'job_start_date', 'required': 'true' } }) }}
+            {{ Input.input({ 'label': 'Ежемесячный доход на текущем месте', 'title': '#ruble', 'class': 'form__field-group', 'field': {'class': 'js-numeric-input', 'name': 'payed_monthly', 'maxlength': '5', 'required': 'required'} }) }}
+            {{ Input.input({ 'label': 'Совокупный ежемесячный доход', 'title': '#ruble', 'class': 'form__field-group', 'field': {'class': 'js-numeric-input', 'name': 'payed_monthly_all', 'maxlength': '5', 'required': 'required'} }) }}
+            {{ Input.input({ 'label': 'Ежемесячные обязательные платежи', 'title': '#ruble', 'class': 'form__field-group', 'field': {'class': 'js-numeric-input', 'name': 'payed_monthly_required', 'maxlength': '5', 'required': 'required'} }) }}
+            {{ Input.input({ 'label': 'Расходы на ареду жилья', 'title': '#ruble', 'class': 'form__field-group', 'field': {'class': 'js-numeric-input', 'name': 'payed_home', 'maxlength': '5', 'required': 'required'} }) }}
+            {{ Input.input({ 'label': 'Действующая задолженность', 'title': '#ruble', 'class': 'form__field-group', 'field': {'class': 'js-numeric-input', 'name': 'payed_credit_all', 'maxlength': '5', 'required': 'required'} }) }}
+    </fieldset>
+</div>

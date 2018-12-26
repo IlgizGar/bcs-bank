@@ -1,0 +1,17 @@
+{% import "../../library/heading/heading.njk" as Heading %}
+{% import "../../library/button/button.njk" as Button %}
+{% import "../../library/input/input.njk" as Input %}
+{% import "../../library/radio/radio.njk" as Radio %}
+{% import "../../library/dropdown/dropdown.njk" as Dropdown %}
+{% import "../../icon/icon.njk" as Icon %}
+
+
+<div class="form-family">
+    <div class="form__title-short">Семейное положение</div>
+    <fieldset>
+        <div class="form__line-group">
+            {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Семейное положение', 'name': 'bid_select-family', 'items': [{'title': 'холост/не замужем', 'value': '12345'}, {'title': 'Женат/ За Мужем', 'value': '13456'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'family-select-list'}, 'field': 'js-family-select' }) }}
+            {{ Input.input({ 'label': 'Количество иждивенцев', 'class': 'form__field-group', 'field': {'class': '', 'name': 'ish', 'required': 'true' } }) }}
+        </div>
+    </fieldset>
+</div>
