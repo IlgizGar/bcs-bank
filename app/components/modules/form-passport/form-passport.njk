@@ -1,0 +1,31 @@
+{% import "../../library/heading/heading.njk" as Heading %}
+{% import "../../library/button/button.njk" as Button %}
+{% import "../../library/input/input.njk" as Input %}
+{% import "../../library/radio/radio.njk" as Radio %}
+{% import "../../library/dropdown/dropdown.njk" as Dropdown %}
+{% import "../../icon/icon.njk" as Icon %}
+
+
+<div class="form-passport">
+    <div class="form__title-short">Паспорт гражданина РФ</div>
+    <fieldset>
+        <div class="form__line-group">
+            {{ Input.input({ 'label': 'Серия', 'class': 'form__field-group', 'field': {'class': 'js-pass-serial', 'name': 'pass_serial', 'required': 'true' } }) }}
+            {{ Input.input({ 'label': 'Номер', 'class': 'form__field-group', 'field': {'class': 'js-pass-num', 'name': 'pass_number', 'required': 'true' } }) }}
+        </div>
+        <div class="form__line-group">
+            {{ Input.input({ 'label': 'Дата выдачи', 'class': 'form__field-group', 'field': {'class': 'js-date js-date-type__pass-prodused', 'name': 'pass_date', 'required': 'true' } }) }}
+            {{ Input.input({ 'label': 'Код подразделения', 'class': 'form__field-group', 'field': {'class': 'js-provider-code', 'name': 'pass_code', 'required': 'true' } }) }}
+        </div>
+            {{ Input.input({ 'label': 'Кем выдан', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': '', 'name': 'pass_provider', 'required': 'true' } }) }}
+            {{ Input.input({ 'label': 'Кодовое слово', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': '', 'name': 'pass_code_word', 'required': 'true' } }) }}
+        <div class="form__line-group">
+            {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Пол', 'name': 'bid_select-sex', 'items': [{'title': 'Мужской', 'value': '12345'}, {'title': 'Женский', 'value': '13456'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'sex-select-list'}, 'field': 'js-sex-select' }) }}
+            {{ Input.input({ 'label': 'Дата рождения', 'class': 'form__field-group', 'field': {'class': 'js-date js-date-type__birth', 'name': 'birth_date', 'required': 'true' } }) }}
+        </div>
+        <div class="form__line-group">
+            {{ Input.input({ 'label': 'Место рождения', 'class': 'form__field-group', 'field': {'class': '', 'name': 'birth_place', 'required': 'true' } }) }}
+            {{ Input.input({ 'label': 'СНИЛС', 'class': 'form__field-group', 'field': {'class': 'js-snils', 'name': 'snils', 'required': 'true' } }) }}
+        </div>
+    </fieldset>
+</div>

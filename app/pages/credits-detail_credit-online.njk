@@ -227,6 +227,7 @@
                     </div>
 
                     <form action="http://localhost/rplpost">
+
                       <div class="step-form__item js-step js-send-form" data-send-url="http://localhost/rplpost"> <!-- класс js-send-form  указывает скрипту что на этом шаге нужно отправить форму на адресс указанный в data-send-url  -->
                           {{ Heading.heading({ 'title': 'Общая информация' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
                         <fieldset>
@@ -253,11 +254,24 @@
                             {{ Button.button({ 'title': 'Отправить', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
                         </div>
                       </div>
-                      <div class="step-form__item js-step js-sms-step">
+
+                      <div class="step-form__item js-step js-sms-step js-send-form" data-send-url="http://localhost/rplpost">
                           {% include "../components/modules/sms-code-form/sms-code-form.njk" %}
                       </div>
 
+                      <div class="step-form__item js-step">
+                          {{ Heading.heading({ 'title': 'Личная информация' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
+                          {% include "../components/modules/form-passport/form-passport.njk" %}
+                          {% include "../components/modules/form-place/form-place.njk" %}
+                          {% include "../components/modules/form-family/form-family.njk" %}
+                          <div class="form__agreements">
+                            {{ Button.button({ 'title': 'Назад', 'type': 'button', 'mods': {'theme': 'default', 'view': 'text', 'type': 'before-arrow'}, 'class': 'form__submit-button js-step-backward' }) }}
+                            {{ Button.button({ 'title': 'Далее', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
+                          </div>
+                      </div>
+
                     </form>
+
                   </div>
                   <div class="calculation js-calc-result calculation_theme-uslugi">
                     <div class="calculation__thumbnail">

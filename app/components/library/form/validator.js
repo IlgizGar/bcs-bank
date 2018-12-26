@@ -43,6 +43,12 @@ module.exports = (form) => {
         'js-question-topic': {},
         'js-city-select': {},
         'js-aims-select': {},
+        'js-date': {
+          checkDate: true,
+        },
+        'js-snils': {
+          checkSnils: true,
+        },
       };
 
       this.validateMessages = {
@@ -50,12 +56,24 @@ module.exports = (form) => {
           required: 'Укажите номер телефона',
           minPhoneLength: '',
         },
+        'js-snils': {
+          required: 'Укажите СНИЛС',
+        },
+        'js-date': {
+          required: 'Укажите дату',
+        },
         'js-sms-code-input': {
           required: 'Укажите код из sms',
         },
         'js-fio-masked': {
           required: 'Укажите Ф.И.О.',
           minlength: '',
+        },
+        'js-pass-serial': {
+          required: 'Укажите серию',
+        },
+        'js-pass-num': {
+          required: 'Укажите номер',
         },
         'js-course-input': {
           required: '',
@@ -141,7 +159,29 @@ module.exports = (form) => {
         placeholder: ' ',
         showMaskOnHover: false,
       });
+      $('.js-pass-serial').inputmask({
+        mask: '99 99',
+        placeholder: ' ',
+        showMaskOnHover: false,
+      });
 
+      $('.js-pass-num').inputmask({
+        mask: '999999',
+        placeholder: ' ',
+        showMaskOnHover: false,
+      });
+
+      $('.js-date').inputmask({
+        mask: '99.99.9999',
+        placeholder: ' ',
+        showMaskOnHover: false,
+      });
+
+      $('.js-provider-code').inputmask({
+        mask: '999-999',
+        placeholder: ' ',
+        showMaskOnHover: false,
+      });
       // $('.js-fio-masked').inputmask({
       //   mask: '*{4,40}',
       //   placeholder: '',
@@ -229,8 +269,9 @@ module.exports = (form) => {
       Validator.addValidatePhoneLength();
       Validator.addValidateFio();
       Validator.addValidateEmail();
+      Validator.addValidateDate();
+      Validator.addValidateSnils();
     }
-
     static addValidateFio() {
       $('.js-fio-auto-complete').suggestions({
         serviceUrl: 'https://api.bcs.ru/suggestion/v1',
@@ -252,7 +293,6 @@ module.exports = (form) => {
         'Ведите Фамилию Имя Отчество',
       );
     }
-
     static autoLayoutKeyboard(str) {
       const replacerString = `{
         "q":"й", "w" : "ц", "e":"у", "r":"к", "t":"е", "y":"н", "u":"г",
@@ -264,7 +304,6 @@ module.exports = (form) => {
       const replacer = JSON.parse(replacerString);
       return str.replace(/[A-z/,.;'\][]/g, x => (x === x.toLowerCase() ? replacer[x] : replacer[x.toLowerCase()].toUpperCase()));
     }
-
     static addValidateCourseAmount() {
       $.validator.addMethod(
         'checkCourseAmount',
@@ -294,7 +333,6 @@ module.exports = (form) => {
         },
       );
     }
-
     static addValidateTransferAmount() {
       $.validator.addMethod(
         'checkTransferAmount',
@@ -307,7 +345,6 @@ module.exports = (form) => {
         },
       );
     }
-
     static addValidatePhoneLength() {
       $.validator.addMethod(
         'minPhoneLength',
@@ -316,6 +353,134 @@ module.exports = (form) => {
           return len === 16;
         },
       );
+    }
+    static checkPassportDate(passportDate, dudeDate) {
+      function yearsDiff(dt) {
+        if (dt > new Date()) { return 0; }
+        const crntDate = new Date();
+        let yearDiff = parseInt(crntDate.getFullYear() - dt.getFullYear(), 10);
+        const dat4check = new Date(dt);
+        dat4check.setFullYear(crntDate.getFullYear());
+        if (dat4check > crntDate) { yearDiff -= 1; }
+        if (yearDiff <= 0) { return 0; }
+        if (yearDiff === 1) {
+          const monthDiff = parseInt(crntDate.getMonth() - dt.getMonth(), 10);
+          if (monthDiff >= 0) {
+            if (monthDiff === 0) {
+              const dayDiff = parseInt(crntDate.getDate() - dt.getDate(), 10);
+              if (dayDiff > 0) return yearDiff;
+              return 0;
+            }
+            return crntDate.getFullYear() - dt.getFullYear();
+          } return 0;
+        } return yearDiff;
+      }
+      const dob = new Date(dudeDate.replace(/(\d{2}).(\d{2}).(\d{4})/, '$3-$2-$1'));
+      const pssprtDate = new Date(passportDate.replace(/(\d{2}).(\d{2}).(\d{4})/, '$3-$2-$1'));
+      const pDate20 = new Date(dob);
+      pDate20.setFullYear(pDate20.getFullYear() + 20);
+      const pDate45 = new Date(dob);
+      pDate45.setFullYear(pDate45.getFullYear() + 45);
+      const ageDude = parseInt(yearsDiff(new Date(dudeDate.replace(/(\d{2}).(\d{2}).(\d{4})/, '$3-$2-$1'))), 10);
+      // первая смена паспорта
+      if (ageDude >= 20 && ageDude < 45) {
+        if (pssprtDate < pDate20) { return false; }
+      }
+      // вторая смена паспорта
+      if (ageDude >= 45) {
+        if (pssprtDate < pDate45) { return false; }
+      }
+      return true;
+    }
+    static validateSnils(sn, err) {
+      let snils = sn;
+      const error = err;
+      let result = false;
+      if (typeof snils === 'number') {
+        snils = snils.toString();
+      } else if (typeof snils !== 'string') {
+        snils = '';
+      }
+      if (!snils.length) {
+        error.code = 1;
+        error.message = 'СНИЛС пуст';
+      } else if (/[^0-9]/.test(snils)) {
+        error.code = 2;
+        error.message = 'СНИЛС может состоять только из цифр';
+      } else if (snils.length !== 11) {
+        error.code = 3;
+        error.message = 'СНИЛС может состоять только из 11 цифр';
+      } else {
+        let sum = 0;
+        for (let i = 0; i < 9; i += 1) {
+          sum += parseInt(snils[i], 10) * (9 - i);
+        }
+        let checkDigit = 0;
+        if (sum < 100) {
+          checkDigit = sum;
+        } else if (sum > 101) {
+          checkDigit = parseInt(sum % 101, 10);
+          if (checkDigit === 100) {
+            checkDigit = 0;
+          }
+        }
+        if (checkDigit === parseInt(snils.slice(-2), 10)) {
+          result = true;
+        } else {
+          error.code = 4;
+          error.message = 'Неправильное контрольное число';
+        }
+      }
+      return result;
+    }
+    static addValidateDate() {
+      $.validator.addMethod('checkDate', (value, element) => {
+        function getCurrentAge(date) {
+          return ((new Date().getTime() - date) / (24 * 3600 * 365.25 * 1000)) || 0;
+        }
+        const currentDate = new Date();
+        const parsedValue = String(value).split('.');
+        const date = new Date(parseInt(parsedValue[2], 10), parseInt((parsedValue[1] - 1), 10), parseInt(parsedValue[0], 10));
+        if (!$(element).hasClass('js-default-date')) {
+          let valid = true;
+          const regExp = new RegExp('^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$');
+          valid = !!String(value).match(regExp);
+          if ($(element).hasClass('js-date-type__pass-prodused')) {
+            if ($('.js-date-type__birth').val()) {
+              valid = Validator.checkPassportDate(String(value), $('.js-date-type__birth').val());
+              if (!valid) {
+                $.validator.messages.checkDate = 'Паспорт просрочен';
+              }
+            }
+          }
+          if ($(element).hasClass('js-date-type__birth')) {
+            const age = getCurrentAge(date);
+            if (age < 18) {
+              valid = false;
+              $.validator.messages.checkDate = 'Неверный возраст';
+            }
+            if (age > 130) {
+              valid = false;
+              $.validator.messages.checkDate = 'Неверный возраст';
+            }
+          }
+          if (valid) {
+            return !(Number(currentDate) < Number(date));
+          }
+          return false;
+        }
+        return !(Number(currentDate) <= Number(date));
+      }, 'Введите верную дату');
+    }
+    static addValidateSnils() {
+      const errors = {
+        message: 'Неверный СНИЛС',
+      };
+      $.validator.addMethod('checkSnils', (value) => {
+        const valid = Validator.validateSnils(value, errors);
+        $.validator.messages.checkSnils = errors.message;
+        return valid;
+      }, errors.message);
     }
 
     validateForm(handler) {

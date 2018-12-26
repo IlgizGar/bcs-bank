@@ -3,6 +3,7 @@ import 'jquery-validation';
 import Validator from './validator';
 import StepForm from '../../library/step-form/step-form';
 import SmsForm from '../../modules/sms-code-form/sms-code';
+import PlaceForm from '../../modules/form-place/form-place';
 
 module.exports = (elem) => {
   class Form {
@@ -22,6 +23,13 @@ module.exports = (elem) => {
           selector: this.stepClass,
           activeClass: 'state_active',
         }, this.form[0]);
+        this.form.find('.js-step-backward').on('click', () => {
+          this.steps.prevStep(() => {
+            if ($(this.steps.getCurrent()).hasClass('js-sms-step')) {
+              this.steps.prevStep();
+            }
+          });
+        });
         this.form.closest('.js-form')
           .find('.js-step-informer-all')
           .text(this.steps.getCount());
@@ -33,6 +41,9 @@ module.exports = (elem) => {
       this.validateForm();
       this.blockEvents(); // Обработчик событий не свзяанных непосредственно с работой формы
       this.events();
+      if (this.form.find('.js-place-to-live').length) {
+        this.placeToLive = new PlaceForm('.js-place-to-live');
+      }
     }
 
     events() {
@@ -90,12 +101,6 @@ module.exports = (elem) => {
           if (this.steps.isLast()) {
             this.formSubmit(form);
           } else {
-            if (step.hasClass('js-send-form')) {
-              this.formSubmit(form, step.data('send-url'));
-            }
-            this.form.closest('.js-form')
-              .find('.js-step-informer')
-              .text(this.steps.nextStep() + 1);
             step = $(this.steps.getCurrent());
             if (step.hasClass('js-sms-step')) {
               this.smsCodeForm.sendPhone(['question_phone', 'form_id', 'bid_user_name'], 'question_phone', () => {
@@ -105,6 +110,13 @@ module.exports = (elem) => {
                   .text(this.steps.prevStep() + 1);
               });
             }
+            if (step.hasClass('js-send-form')) {
+              this.formSubmit(form, step.data('send-url'), () => {
+                this.form.closest('.js-form')
+                  .find('.js-step-informer')
+                  .text(this.steps.nextStep() + 1);
+              });
+            }
           }
         };
       }
@@ -112,7 +124,7 @@ module.exports = (elem) => {
       this.formValidator = this.validator.validateForm(submitHandler);
     }
 
-    formSubmit(form, url) {
+    formSubmit(form, url, callback) {
       const formData = $(form).serializeArray();
       const sendUrl = url;
       Object.keys(formData).forEach((item) => {
@@ -145,6 +157,12 @@ module.exports = (elem) => {
               $('.js-products-error')
                 .modal();
             }
+          } else if (data.success === 'incorrect-code') {
+            this.formValidator.showErrors({
+              sms_code: data.error,
+            });
+          } else {
+            callback();
           }
         },
         error: () => {
