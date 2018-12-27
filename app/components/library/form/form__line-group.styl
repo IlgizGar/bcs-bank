@@ -3,6 +3,8 @@
   .dropdown
     flex-shrink unset
     width 100%
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active)
+      width 50%
   @media (max-width 767px)
     flex-direction column
     .input:not(:last-child)
