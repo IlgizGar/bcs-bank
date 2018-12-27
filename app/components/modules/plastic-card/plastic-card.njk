@@ -46,6 +46,11 @@
             </div>
           </div>
         {% endif %}
+        {% if options.animate %}
+          <div class="plastic-card__image">
+            <div class="illustration" data-illustration="{{ options.animate }}"></div>
+          </div>
+        {% endif %}
       </div>
     </div>
 
@@ -77,6 +82,11 @@
             <div class="illustration">
               {{ Icon.inlineSvg({ 'path': [options.image], 'class': 'illustration-image' }) }}
             </div>
+          </div>
+        {% endif %}
+        {% if options.animate %}
+          <div class="plastic-card__image">
+            <div class="illustration" data-illustration="{{ options.animate }}"></div>
           </div>
         {% endif %}
       </div>
