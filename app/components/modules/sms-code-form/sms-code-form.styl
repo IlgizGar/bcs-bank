@@ -1,4 +1,7 @@
 .sms-code-form
+  .input .input__group
+      @media (max-width: 767px)
+        width 80%
   .sms-code-form-counter
     min-width: 100%;
     white-space: nowrap;
@@ -9,8 +12,12 @@
     color: #78818f;
     width: 150%;
     margin-top: -30px
+    @media (max-width: 767px)
+      margin-top -15px
     &.state_form_error
       margin-top -10px
+      @media (max-width: 767px)
+        margin-top -5px
   .sms-code-button
     display none
     margin-top 32px

@@ -31,6 +31,7 @@ import IndexSearch from '../components/modules/index-search/index-search';
 import News from '../components/modules/news/news';
 import Search from '../components/modules/search/search';
 import Calculation from '../components/modules/calculation/calculation';
+import InfoShow from '../components/library/info-show/infoShow';
 
 
 require('babel-polyfill');
@@ -42,6 +43,12 @@ $(() => {
   $('.js-dropdown').each((i, el) => {
     global.dropdowns[$(el).data('id')] = Dropdown(el);
     // global.dropdowns.push(Dropdown(el));
+  });
+
+  global.infoShows = [];
+
+  $('.js-info-show').each((i, el) => {
+    global.infoShows.push(InfoShow(el));
   });
 
   global.contexts = {};
