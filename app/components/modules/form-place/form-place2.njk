@@ -1,0 +1,34 @@
+{% import "../../library/heading/heading.njk" as Heading %}
+{% import "../../library/button/button.njk" as Button %}
+{% import "../../library/input/input.njk" as Input %}
+{% import "../../library/radio/radio.njk" as Radio %}
+{% import "../../library/dropdown/dropdown.njk" as Dropdown %}
+{% import "../../icon/icon.njk" as Icon %}
+
+
+<div class="form-place">
+    <fieldset>
+        <div class="form__title-short">Адрес постоянной регистрации</div>
+        <div class="form__line-group">
+            {{ Input.input({ 'label': 'Адрес', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': '', 'name': 'address', 'required': 'true' } }) }}
+            {{ Input.input({ 'label': 'Квартира', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': '', 'name': 'address_flat', 'required': 'true' } }) }}
+        </div>
+
+    </fieldset>
+    <fieldset>
+        <div class="form__title-short">Адрес фактического места жительства</div>
+        <div class="mb-32">
+            <label class="checkbox checkbox_theme-dark js-checkbox">
+                <input type="checkbox" class="checkbox__control js-reg-addr" name="register_address">
+                <span class="checkbox__state"></span>
+                <span class="checkbox__label">Совпадает с адресом регистрации</span>
+            </label>
+        </div>
+        <div class="js-place-to-live">
+            <div class="form__line-group">
+            {{ Input.input({ 'label': 'Адрес', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': '', 'name': 'address_fact', 'required': 'true' } }) }}
+            {{ Input.input({ 'label': 'Квартира', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': '', 'name': 'address_flat_fact', 'required': 'true' } }) }}
+            </div>
+        </div>
+    </fieldset>
+</div>
