@@ -8,6 +8,7 @@ module.exports = (elem) => {
         x: 0,
         y: 0,
       };
+      this.scroll = 0;
       this.link = $(selector);
       this.createInfoBlock();
       this.initEvents();
@@ -15,6 +16,7 @@ module.exports = (elem) => {
     createInfoBlock() {
       const block = document.createElement('div');
       block.classList.add('info-tooltip');
+      block.classList.add('js-info-tooltip');
       document.body.appendChild(block);
       this.infoBlock = $(block);
     }
@@ -28,7 +30,7 @@ module.exports = (elem) => {
     }
     initEvents() {
       let w = window.innerWidth;
-      document.body.addEventListener('mousemove', (e) => {
+      this.link[0].addEventListener('mousemove', (e) => {
         this.position.x = e.clientX;
         this.position.y = e.clientY;
         if (this.position.x + 200 > w) {
@@ -40,9 +42,18 @@ module.exports = (elem) => {
         w = window.innerWidth;
       });
       this.link.on('mouseenter', (e) => {
+        $('.js-info-tooltip').removeClass('state_show');
         this.show($(e.currentTarget).find('.js-text').html());
       });
       this.link.on('mouseleave', () => {
+        this.timer = setTimeout(() => {
+          this.hide();
+        }, 1000);
+      });
+      this.infoBlock.on('mouseenter', () => {
+        clearTimeout(this.timer);
+      });
+      this.infoBlock.on('mouseleave', () => {
         this.hide();
       });
     }
