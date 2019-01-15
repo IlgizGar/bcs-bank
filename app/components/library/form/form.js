@@ -82,18 +82,17 @@ module.exports = (elem) => {
                 .replace(' ', '')}&currency=${form.querySelector('.js-course-field .js-title').innerText}`;
               document.location.href = redirectUrl;
             };
-          }
-
-          if (this.formType === 'cards') {
+          } else if (this.formType === 'cards') {
+            submitHandler = (form) => {
+              this.formSubmit(form);
+              return false;
+            };
+          } else {
             submitHandler = (form) => {
               this.formSubmit(form);
               return false;
             };
           }
-          submitHandler = (form) => {
-            this.formSubmit(form);
-            return false;
-          };
         }
       } else {
         submitHandler = (form) => {
