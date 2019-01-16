@@ -260,10 +260,8 @@ module.exports = (elem) => {
       checkCredits.on('click', (e) => {
         const value = $(e.currentTarget).find('input').val();
         if (value === 'true') {
-          console.log(value);
           this.form.find('.js-button[type="submit"]').attr('disabled', '');
         } else {
-          console.log(value);
           this.form.find('.js-button[type="submit"]').removeAttr('disabled');
         }
       });
