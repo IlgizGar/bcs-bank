@@ -256,6 +256,17 @@ module.exports = (elem) => {
         courseInputField.trigger('keyup');
       }
 
+      const checkCredits = $('.js-check-credit');
+      checkCredits.on('click', (e) => {
+        const value = $(e.currentTarget).find('input').val();
+        if (value === 'true') {
+          console.log(value);
+          this.form.find('.js-button[type="submit"]').attr('disabled', '');
+        } else {
+          console.log(value);
+          this.form.find('.js-button[type="submit"]').removeAttr('disabled');
+        }
+      });
       const checkRadio = $('.js-check-radio');
       if (checkRadio.length) {
         checkRadio.on('click', (e) => {
