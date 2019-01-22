@@ -29,8 +29,8 @@
             <div class="filter products__filter js-filter">
               <div class="filter__wrapper">
                 <div class="filter__select hidden-mobile">
-                  {{ Input.input({ 'label': 'Сумма вклада', 'class': 'filter__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'deposit_amount', 'class': 'js-numeric-input' }, 'title': '#rubleмес.', 'slider': { 'min': 500, 'max': 100000, 'from': 100000, 'step': 1000 } , "attr": {"filter":"value", "filter-param":"summ-min"} }) }}
-                  {{ Input.input({ 'label': 'Срок вклада', 'class': 'filter__field-slider', 'field': { 'type': 'text', 'maxlength': '5', 'name': 'deposit_period', 'class': 'js-numeric-input' }, 'title': 'дней', 'slider': { 'min': 500, 'max': 1095, 'from': 1095, 'step': 1 } , "attr": {"filter":"value", "filter-param":"time"} }) }}
+                  {{ Input.input({ 'label': 'Сумма вклада', 'class': 'filter__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'deposit_amount', 'class': 'js-numeric-input' }, 'title': '#rubleмес.', 'slider': { 'min': 500, 'max': 100000, 'from': 100000, 'step': 1000 } , "attr": {"filter":"value", "filter-direction":"<", "filter-param":"summ-min"} }) }}
+                  {{ Input.input({ 'label': 'Срок вклада', 'class': 'filter__field-slider', 'field': { 'type': 'text', 'maxlength': '5', 'name': 'deposit_period', 'class': 'js-numeric-input' }, 'title': 'дней', 'slider': { 'min': 100, 'max': 1095, 'from': 1095, 'step': 1 } , "attr": {"filter":"value", "filter-direction":">", "filter-param":"time"} }) }}
                   {{ Button.button({ 'name': 'ruble', 'mods': { 'type': 'icon', 'view': 'outlined', 'theme': 'gray', 'size': 'low', 'color': 'dark' }, "attr": {"filter":"boolean", "filter-param":"currency" , 'value': 'ruble'} , 'class': 'mr-16' }) }}
                   {{ Button.button({ 'name': 'baks', 'mods': { 'type': 'icon', 'view': 'outlined', 'theme': 'gray', 'size': 'low', 'color': 'dark' }, "attr": {"filter":"boolean", "filter-param":"currency" , 'value': 'dollar'} , 'class': 'mr-16' }) }}
                   {{ Button.button({ 'name': 'euro', 'mods': { 'type': 'icon', 'view': 'outlined', 'theme': 'gray', 'size': 'low', 'color': 'dark' }, "attr": {"filter":"boolean", "filter-param":"currency" , 'value': 'euro'} , 'class': 'mr-16' }) }}
@@ -50,12 +50,8 @@
             'category': {'pound': '#pound','euro': '#euro', 'dollar': '#dollar', 'ruble': '#ruble'},
             'animate': 'data_il4',
             'theme': 'blue',
-            'summMin': '50000',
-            'time': '365',
-            'add': 'true',
-            'remove': 'true',
-            'monthly': 'true',
             'button': 'Оформите вклад',
+            'filterAttributes': 'summ-min:5000|time:365|currency:#pound,#euro,#dollar,#ruble,|add:true|remove:true|monthly:true',
             'features': [
               { 'title': 'До 6,5%',
                 'text': 'годовая \n ставка',
@@ -73,12 +69,8 @@
           {{ PlasticCard.plasticCard({ 'title': 'Доходный фунт',
             'category': {'pound': '#pound'},
             'image': '',
-            'summMin': '50000',
-            'time': '365',
-            'add': 'true',
-            'remove': 'true',
-            'monthly': 'true',
             'button': 'Оформите вклад',
+            'filterAttributes': 'summ-min:50000|time:365|currency:#pound,|add:true|remove:true|monthly:true',
             'features': [
               { 'title': 'До 1,2%',
                 'text': 'высокая \n процентная ставка',
@@ -98,11 +90,7 @@
             'category': {'euro': '#euro', 'dollar': '#dollar', 'ruble': '#ruble'},
             'image': 'assets/illustrations/universal.svg',
             'button': 'Оформите вклад',
-            'summMin': '50000',
-            'time': '365',
-            'add': 'true',
-            'remove': 'true',
-            'monthly': 'true',
+            'filterAttributes': 'summ-min:50000|time:730|currency:#euro,#dollar,#ruble,|add:true|remove:true|monthly:true',
             'features': [
               { 'title': 'До 6%',
                 'text': 'максимальная \n процентная ставка',
@@ -122,11 +110,7 @@
             'category': {'euro': '#euro', 'dollar': '#dollar', 'ruble': '#ruble'},
             'image': 'assets/illustrations/dohodny.svg',
             'button': 'Оформите вклад',
-            'summMin': '50000',
-            'time': '365',
-            'add': 'true',
-            'remove': 'true',
-            'monthly': 'true',
+            'filterAttributes': 'summ-min:50000|time:1095|currency:#euro,#dollar,#ruble,|add:true|remove:true|monthly:true',
             'features': [
               { 'title': 'До 6,9%',
                 'text': 'максимальная \n процентная ставка',

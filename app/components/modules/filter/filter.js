@@ -31,11 +31,8 @@ module.exports = (elem) => {
           let arr = null;
           let isArray = false;
           if (String(itemArr[1]).indexOf(',') + 1) {
-            arr = String(itemArr[1]).split(',').map((c) => {
-              return String(c).replace('#', '');
-            });
-            const arrLength = arr.length - 1;
-            arr.length = arrLength;
+            arr = String(itemArr[1]).split(',').map(c => String(c).replace('#', ''));
+            arr.length -= 1;
             isArray = true;
           }
           Object.assign(dataObject, { [itemArr[0]]: isArray ? arr : itemArr[1] });
@@ -43,7 +40,6 @@ module.exports = (elem) => {
         dataObject.element = element;
         this.items.push(dataObject);
       });
-      console.log(this.items);
     }
     bindEvents() {
       Object.keys(this.inputs).forEach((item) => {
@@ -55,13 +51,26 @@ module.exports = (elem) => {
           $(dataItem.element).find('input').on('change', (e) => {
             global.filterData[key] = [];
             Filter.addToFilter(key, String($(e.currentTarget).val()).replace(new RegExp(' ', 'g'), ''));
-            console.log(global.filterData);
-            this.applyFilter(dataItem.type);
+            Filter.removeFromFilter(`${key}-direction`, $(dataItem.element).attr('data-filter-direction'));
+            Filter.addToFilter(`${key}-direction`, $(dataItem.element).attr('data-filter-direction'));
+            Filter.removeFromFilter(`${key}-type`, 'value');
+            Filter.addToFilter(`${key}-type`, 'value');
+            this.applyFilter();
           });
         } else if (dataItem.type === 'boolean') {
-          $(dataItem.element).on('click', (e) => {
+          let defaultEvent = 'click';
+          let element = $(dataItem.element);
+
+          if (element.hasClass('js-checkbox')) {
+            element = $(dataItem.element).find('[type="checkbox"]');
+            defaultEvent = 'change';
+          }
+
+          element.on(defaultEvent, (e) => {
             const key = dataItem.param;
             const isValued = !!$(e.currentTarget).attr('data-value');
+            Filter.removeFromFilter(`${key}-type`, 'boolean');
+            Filter.addToFilter(`${key}-type`, 'boolean');
             if ($(e.currentTarget).hasClass('state_active')) {
               $(e.currentTarget).removeClass('state_active');
               if (global.filterData[key]) {
@@ -71,8 +80,7 @@ module.exports = (elem) => {
               $(e.currentTarget).addClass('state_active');
               Filter.addToFilter(key, isValued ? $(e.currentTarget).attr('data-value') : 'true');
             }
-            console.log(global.filterData);
-            this.applyFilter(dataItem.type);
+            this.applyFilter();
           });
         }
       });
@@ -86,16 +94,69 @@ module.exports = (elem) => {
       }
     }
     static removeFromFilter(key, value) {
-      Object.keys(global.filterData[key]).forEach((item) => {
-        const dataItem = global.filterData[key][item];
-        if (dataItem === value) {
-          global.filterData[key].splice(item, 1);
+      if (global.filterData[key]) {
+        Object.keys(global.filterData[key]).forEach((item) => {
+          const dataItem = global.filterData[key][item];
+          if (dataItem === value) {
+            global.filterData[key].splice(item, 1);
+          }
+        });
+      }
+    }
+    static hasValue(arr, value) {
+      let find = false;
+      if (Array.isArray(arr)) {
+        Object.keys(arr).forEach((item) => {
+          const dataItem = arr[item];
+          if (String(dataItem) === String(value)) {
+            find = true;
+          }
+        });
+      } else if (String(arr) === String(value)) {
+        find = true;
+      }
+      return find;
+    }
+    static checkValue(search, key, type, valueDirection) {
+      let valid = true;
+      if (type) {
+        if (Object.prototype.hasOwnProperty.call(global.filterData, key)) {
+          Object.keys(global.filterData[key]).forEach((item) => {
+            const dataItem = global.filterData[key][item];
+            if (type[0] === 'boolean') {
+              valid = valid && Filter.hasValue(search, dataItem);
+            }
+            if (valueDirection) {
+              if (valueDirection[0] === '>') {
+                valid = (parseFloat(search) >= parseFloat(dataItem));
+              } else if (valueDirection[0] === '<') {
+                valid = (parseFloat(search) <= parseFloat(dataItem));
+              }
+            }
+          });
+          return valid;
+        }
+      }
+      return 'no-property-set';
+    }
+    applyFilter() {
+      Object.keys(this.items).forEach((item) => {
+        let valid = true;
+        Object.keys(global.filterData).forEach((key) => {
+          $(this.items[item].element).removeClass('state_hidden');
+          if ((key !== `${key}-direction`) || (key !== `${key}-type`)) {
+            const type = global.filterData[`${key}-type`];
+            const direction = global.filterData[`${key}-direction`];
+            const filterData = Filter.checkValue(this.items[item][key], key, type, direction);
+            if (filterData !== 'no-property-set') {
+              valid = (valid && filterData);
+            }
+          }
+        });
+        if (!valid) {
+          $(this.items[item].element).addClass('state_hidden');
         }
       });
-    }
-    static checkValue(search, target, type) {
-    }
-    applyFilter(type) {
     }
   }
   return new Filter(elem);
