@@ -32,6 +32,7 @@ import News from '../components/modules/news/news';
 import Search from '../components/modules/search/search';
 import Calculation from '../components/modules/calculation/calculation';
 import InfoShow from '../components/library/info-show/infoShow';
+import Filter from '../components/modules/filter/filter';
 
 
 require('babel-polyfill');
@@ -236,6 +237,13 @@ $(() => {
     });
   }
 
+  global.filters = [];
+  if ($('.js-filter').length) {
+    $('.js-filter')
+      .each((i, el) => {
+        global.filters.push(Filter(el));
+      });
+  }
   global.setCurrency = (currency, input) => {
     const icons = String('₽,$,€,£').split(',');
     const currencyBlock = input.find('.js-title');
