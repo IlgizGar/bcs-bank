@@ -110,9 +110,9 @@ module.exports = (elem) => {
               });
             }
             if (step.hasClass('js-send-validate-form')) {
-              this.formSubmit(form, step.data('send-validate-url'), (data) => {
+              this.formSubmit(form, step.data('send-validate-url'), () => {
                 if (step.hasClass('js-send-form')) {
-                  this.formSubmit(form, step.data('send-url'), (data) => {
+                  this.formSubmit(form, step.data('send-url'), () => {
                     this.form.closest('.js-form')
                       .find('.js-step-informer')
                       .text(this.steps.nextStep() + 1);
@@ -196,7 +196,8 @@ module.exports = (elem) => {
             Object.keys(data.errors).forEach((item) => {
               const dataItem = data.errors[item];
               const errorObj = {};
-              Object.assign(errorObj, { [item]: dataItem });
+              const itemValue = Array.isArray(dataItem) ? String(dataItem.join(',')).replace(new RegExp(',', 'g'), ', ') : dataItem;
+              Object.assign(errorObj, { [item]: itemValue });
               this.formValidator.showErrors(errorObj);
             });
           } else {
