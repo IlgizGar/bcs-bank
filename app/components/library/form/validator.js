@@ -13,7 +13,6 @@ module.exports = (form) => {
       this.validateRules = {
         'js-fio-masked': {
           minlength: 3,
-          checkFio: true,
         },
         'js-course-input': {
           checkCourseAmount: true,
@@ -271,8 +270,8 @@ module.exports = (form) => {
       Validator.addValidatePhoneLength();
       Validator.addValidateFio();
       Validator.addValidateEmail();
-      Validator.addValidateDate();
-      Validator.addValidateSnils();
+      // Validator.addValidateDate();
+      // Validator.addValidateSnils();
     }
     static addValidateFio() {
       $('.js-fio-auto-complete').suggestions({
@@ -286,14 +285,14 @@ module.exports = (form) => {
         const input = $(e.currentTarget);
         input.val(Validator.autoLayoutKeyboard(input.val()));
       });
-      $.validator.addMethod(
-        'checkFio',
-        (value) => {
-          const regExp = new RegExp('([А-ЯЁ][а-яё]+[\\-\\s]?){3,}');
-          return String(value).match(regExp);
-        },
-        'Ведите Фамилию Имя Отчество',
-      );
+      // $.validator.addMethod(
+      //   'checkFio',
+      //   (value) => {
+      //     const regExp = new RegExp('([А-ЯЁ][а-яё]+[\\-\\s]?){3,}');
+      //     return String(value).match(regExp);
+      //   },
+      //   'Ведите Фамилию Имя Отчество',
+      // );
     }
     static autoLayoutKeyboard(str) {
       const replacerString = `{

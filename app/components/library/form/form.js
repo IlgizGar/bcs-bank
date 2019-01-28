@@ -109,16 +109,20 @@ module.exports = (elem) => {
                   .text(this.steps.prevStep() + 1);
               });
             }
-            if (step.hasClass('js-send-form')) {
-              this.formSubmit(form, step.data('send-url'), () => {
-                this.form.closest('.js-form')
-                  .find('.js-step-informer')
-                  .text(this.steps.nextStep() + 1);
-              });
-            } else {
-              this.form.closest('.js-form')
-                .find('.js-step-informer')
-                .text(this.steps.nextStep() + 1);
+            if (step.hasClass('js-send-validate-form')) {
+              this.formSubmit(form, step.data('send-validate-url'), () => {
+                if (step.hasClass('js-send-form')) {
+                  this.formSubmit(form, step.data('send-url'), () => {
+                    this.form.closest('.js-form')
+                      .find('.js-step-informer')
+                      .text(this.steps.nextStep() + 1);
+                  });
+                } else {
+                  this.form.closest('.js-form')
+                    .find('.js-step-informer')
+                    .text(this.steps.nextStep() + 1);
+                }
+              }, true);
             }
           }
         };
@@ -127,8 +131,32 @@ module.exports = (elem) => {
       this.formValidator = this.validator.validateForm(submitHandler);
     }
 
-    formSubmit(form, url, callback) {
-      const formData = $(form).serializeArray();
+    formSubmit(form, url, callback, sendStep) {
+      let formData;
+      if (sendStep) {
+        formData = [];
+        const step = $(this.steps.getCurrent());
+        const inputs = step.find('input[name]');
+        const textareas = step.find('textarea[name]');
+        const selects = step.find('select[name]');
+        inputs.each((index, el) => {
+          if (($(el).attr('type') === 'checkbox') || ($(el).attr('type') === 'radio')) {
+            if ($(el).prop('checked')) {
+              formData[$(el).attr('name')] = $(el).val();
+            }
+          } else {
+            formData[$(el).attr('name')] = $(el).val();
+          }
+        });
+        textareas.each((index, el) => {
+          formData[$(el).attr('name')] = $(el).val();
+        });
+        selects.each((index, el) => {
+          formData[$(el).attr('name')] = $(el).val();
+        });
+      } else {
+        formData = $(form).serializeArray();
+      }
       const sendUrl = url;
       Object.keys(formData).forEach((item) => {
         const dataItem = formData[item];
@@ -164,8 +192,16 @@ module.exports = (elem) => {
             this.formValidator.showErrors({
               sms_code: data.error,
             });
+          } else if (data.errors) {
+            Object.keys(data.errors).forEach((item) => {
+              const dataItem = data.errors[item];
+              const errorObj = {};
+              const itemValue = Array.isArray(dataItem) ? String(dataItem.join(',')).replace(new RegExp(',', 'g'), ', ') : dataItem;
+              Object.assign(errorObj, { [item]: itemValue });
+              this.formValidator.showErrors(errorObj);
+            });
           } else {
-            callback();
+            callback(data);
           }
         },
         error: () => {
