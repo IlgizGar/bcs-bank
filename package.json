@@ -27,6 +27,7 @@
     "filepond-plugin-file-validate-size": "^1.0.3",
     "filepond-plugin-file-validate-type": "^1.1.0",
     "inputmask": "^4.0.0",
+    "intersection-observer": "^0.5.1",
     "ion-rangeslider": "^2.2.0",
     "jquery": "^3.3.1",
     "jquery-modal": "^0.9.1",

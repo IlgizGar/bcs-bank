@@ -1,10 +1,10 @@
+
 import 'core-js/fn/symbol/iterator';
 import 'core-js/es6/symbol';
 
 import $ from 'jquery';
 
 import svg4everybody from 'svg4everybody';
-import Lottie from 'lottie-web';
 import Header from '../components/modules/header/header';
 import Footer from '../components/modules/footer/footer';
 import Menubar from '../components/modules/menubar/menubar';
@@ -33,7 +33,9 @@ import Search from '../components/modules/search/search';
 import Calculation from '../components/modules/calculation/calculation';
 import InfoShow from '../components/library/info-show/infoShow';
 import Filter from '../components/modules/filter/filter';
+import Animations from '../components/modules/animations/animations';
 
+require('intersection-observer');
 
 require('babel-polyfill');
 
@@ -174,19 +176,21 @@ $(() => {
   global.header = Header('.js-header');
   global.footer = new Footer();
 
-  if ($('[data-illustration]').length) {
-    $('[data-illustration]').each((i, el) => {
-      if ($(el).data('illustration').length) {
-        Lottie.loadAnimation({
-          container: el,
-          renderer: 'svg',
-          loop: true,
-          autoplay: true,
-          path: `assets/illustrations/${$(el).data('illustration')}.json`,
-        });
-      }
-    });
-  }
+  global.animations = new Animations($('[data-illustration]'));
+
+  // if ($('[data-illustration]').length) {
+  //   $('[data-illustration]').each((i, el) => {
+  //     if ($(el).data('illustration').length) {
+  //       Lottie.loadAnimation({
+  //         container: el,
+  //         renderer: 'svg',
+  //         loop: true,
+  //         autoplay: true,
+  //         path: `assets/illustrations/${$(el).data('illustration')}.json`,
+  //       });
+  //     }
+  //   });
+  // }
 
   global.services = {};
   if ($('#exchange-service').length) {
