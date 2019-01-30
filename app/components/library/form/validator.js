@@ -42,12 +42,8 @@ module.exports = (form) => {
         'js-question-topic': {},
         'js-city-select': {},
         'js-aims-select': {},
-        'js-date': {
-          checkDate: true,
-        },
-        'js-snils': {
-          checkSnils: true,
-        },
+        'js-date': {},
+        'js-snils': {},
       };
 
       $.validator.messages.required = 'Поле не может быть пустым';
@@ -272,6 +268,12 @@ module.exports = (form) => {
       Validator.addValidateEmail();
       // Validator.addValidateDate();
       // Validator.addValidateSnils();
+
+
+      $('.js-en-letters').on('keyup', (e) => {
+        const input = $(e.currentTarget);
+        input.val(Validator.autoLayoutLatinKeyboard(input.val()));
+      });
     }
     static addValidateFio() {
       $('.js-fio-auto-complete').suggestions({
@@ -304,6 +306,17 @@ module.exports = (form) => {
       }`;
       const replacer = JSON.parse(replacerString);
       return str.replace(/[A-z/,.;'\][]/g, x => (x === x.toLowerCase() ? replacer[x] : replacer[x.toLowerCase()].toUpperCase()));
+    }
+    static autoLayoutLatinKeyboard(str) {
+      const replacerString = `{
+        "й":"yyy", "ц" : "ts", "у":"u", "к":"k", "е":"e", "н":"n", "г":"g",
+        "ш":"sh", "щ":"shch", "з":"z", "х":"kh", "ъ":"", "ф":"f", "ы":"yyy",
+        "в":"v", "а":"a", "п":"p", "р":"r", "о":"o", "л":"l", "д":"d",
+        "ж":"zh", "э":"e", "я":"ya", "ч":"ch", "с":"s", "м":"m", "и":"i",
+        "т":"t", "ь":"", "б":"b", "ю":"yu"
+      }`;
+      const replacer = JSON.parse(replacerString);
+      return str.replace(/[А-я\][]/g, x => (x === x.toLowerCase() ? replacer[x] : replacer[x.toLowerCase()].toUpperCase()));
     }
     static addValidateCourseAmount() {
       $.validator.addMethod(

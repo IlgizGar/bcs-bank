@@ -232,7 +232,7 @@
                     </div>
                     {{ Heading.heading({ 'title': 'Общая информация', 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
                     <form action="/rplpost">
-                      <div class="step-form__item js-step js-send-form" data-send-url="http://localhost/rplpost">
+                      <div class="step-form__item js-step js-send-form js-send-validate-form" data-send-validate-url="http://localhost/rplpost/index3.php" data-send-url="http://localhost/rplpost">
                         <fieldset>
                           {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': 'js-fio-masked', 'maxlength': '64', 'name': 'bid_user-name', 'required': 'true' } }) }}
                           <div class="form__line-group">
@@ -255,11 +255,11 @@
                         </div>
                       </div>
 
-                      <div class="step-form__item js-step js-sms-step js-send-form" data-send-url="http://localhost/rplpost">
+                      <div class="step-form__item js-step js-sms-step js-send-form js-send-validate-form" data-send-validate-url="http://localhost/rplpost/index3.php" data-send-url="http://localhost/rplpost">
                         {% include "../components/modules/sms-code-form/sms-code-form.njk" %}
                       </div>
 
-                      <div class="step-form__item js-step">
+                      <div class="step-form__item js-step js-send-validate-form" data-send-validate-url="http://localhost/rplpost/index3.php">
                         {{ Heading.heading({ 'title': 'Личная информация' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
                         {% include "../components/modules/form-personal-info/form-personal-info.njk" %}
                         {% include "../components/modules/form-passport/form-passport2.njk" %}
@@ -270,7 +270,7 @@
                         </div>
                       </div>
 
-                      <div class="step-form__item js-step">
+                      <div class="step-form__item js-step js-send-validate-form" data-send-validate-url="http://localhost/rplpost/index3.php">
                         {{ Heading.heading({ 'title': 'Занятость' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
                         {% include "../components/modules/form-job/form-job.njk" %}
                         <div class="form__agreements">

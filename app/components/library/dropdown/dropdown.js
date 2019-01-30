@@ -21,12 +21,13 @@ module.exports = (elem) => {
 
     init() {
       this.id = this.dropdown.data('id');
-      this.list = $(`<div id="${this.id}" class="dropdown__list state_invisible scroll-pane js-dropdown-list mt-10"><ul></ul></div>`);
+      this.dropdown.find('input').attr('autocomplete', 'off');
+      this.list = $(`<div id="${this.id}" class="dropdown__list state_invisible scroll-pane js-dropdown-list mt-10"><ul tabindex="1"></ul></div>`);
       $('.js-page').append(this.list);
 
       this.options.each((i, el) => {
         this.list.find('ul').append(`
-          <li data-val="${$(el).val()}">${$(el).html()}</li>
+          <li tabindex="${i + 1}" data-val="${$(el).val()}">${$(el).html()}</li>
         `);
         if ($(el).attr('selected')) {
           this.dropdown.addClass('state_filled');
@@ -44,9 +45,59 @@ module.exports = (elem) => {
           this.showList(e.target);
         }
       });
+      this.dropdown.find('input').on('focus', (e) => {
+        e.preventDefault();
+        this.showList(e.target);
+      });
+
+      let focusedElement;
+
+      this.dropdown.find('input').on('keydown', (e) => {
+        console.log(e.keyCode);
+        focusedElement = null;
+        if (e.keyCode === 40) {
+          e.stopPropagation();
+          e.preventDefault();
+          this.list.find('ul').focus();
+        }
+      });
       let listEl;
       this.list.on('mousedown', (e) => {
         listEl = e.target;
+      });
+
+
+      this.list.find('ul').on('keydown', (e) => {
+        if (e.keyCode === 40) {
+          e.stopPropagation();
+          e.preventDefault();
+          if (!focusedElement) {
+            focusedElement = this.list.find('li:first-child');
+          } else {
+            focusedElement = focusedElement.next();
+          }
+          focusedElement.focus();
+        }
+        if (e.keyCode === 38) {
+          e.stopPropagation();
+          e.preventDefault();
+          if (!focusedElement) {
+            focusedElement = this.list.find('li:first-child');
+          } else {
+            focusedElement = focusedElement.prev();
+          }
+          focusedElement.focus();
+        }
+      });
+
+      this.list.find('li').on('keydown', (e) => {
+        if (e.keyCode === 13) {
+          console.log(e);
+          listEl = $(e.currentTarget);
+          this.list.trigger('click');
+          $(e.currentTarget).trigger('click');
+          this.dropdown.focus();
+        }
       });
 
       this.list.on('click', (e) => {

@@ -1,1 +1,18 @@
 //.form
+form
+  position relative
+  &.state_loading
+    &:after
+      content 'Загрузка'
+      display flex
+      flex-basis 100%
+      justify-content center
+      align-items center
+      position absolute
+      margin -15px
+      width calc(100% + 30px)
+      height calc(100% + 30px)
+      top: 0
+      left 0
+      background-color rgba(0, 0, 0, 0.01);
+      z-index 200

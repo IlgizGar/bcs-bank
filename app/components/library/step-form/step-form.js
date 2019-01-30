@@ -78,7 +78,7 @@ export default class StepForm {
       }
     }
     this.activeElement = activeElement;
-    $('html, body').animate({ scrollTop: $(this.stepsWrapper).closest('form').offset().top }, 500);
+    $('html, body').animate({ scrollTop: $(this.stepsWrapper).closest('form').offset().top - 100 }, 500);
     return activeElement;
   }
   _wrapContent(wrapper) {

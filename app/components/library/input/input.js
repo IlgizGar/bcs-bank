@@ -63,6 +63,13 @@ module.exports = (elem) => {
     }
 
     events() {
+      this.input.find('input').on('focus', () => {
+        if (this.input.hasClass('state_init')) {
+          this.input.removeClass('state_init');
+          this.field.focus();
+        }
+      });
+
       this.input.on('click', () => {
         if (this.input.hasClass('state_init')) {
           this.input.removeClass('state_init');

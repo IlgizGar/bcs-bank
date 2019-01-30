@@ -24,11 +24,15 @@ module.exports = (elem) => {
           activeClass: 'state_active',
         }, this.form[0]);
         this.form.find('.js-step-backward').on('click', () => {
-          this.steps.prevStep(() => {
-            if ($(this.steps.getCurrent()).hasClass('js-sms-step')) {
-              this.steps.prevStep();
-            }
-          });
+          this.form.closest('.js-form')
+            .find('.js-step-informer')
+            .text(this.steps.prevStep(() => {
+              if ($(this.steps.getCurrent()).hasClass('js-sms-step')) {
+                this.form.closest('.js-form')
+                  .find('.js-step-informer')
+                  .text(this.steps.prevStep() + 1);
+              }
+            }) + 1);
         });
         this.form.closest('.js-form')
           .find('.js-step-informer-all')
@@ -132,6 +136,7 @@ module.exports = (elem) => {
     }
 
     formSubmit(form, url, callback, sendStep) {
+      $(form).addClass('state_loading');
       let formData;
       if (sendStep) {
         formData = [];
@@ -180,32 +185,49 @@ module.exports = (elem) => {
                     .text(this.steps.tofFirstStep() + 1);
                 })
                 .modal();
+              $(form).removeClass('state_loading');
             } else if (data.success === 'incorrect-code') {
+              $(form).removeClass('state_loading');
               this.formValidator.showErrors({
                 sms_code: data.error,
               });
             } else {
+              $(form).removeClass('state_loading');
               $('.js-products-error')
                 .modal();
             }
           } else if (data.success === 'incorrect-code') {
+            $(form).removeClass('state_loading');
             this.formValidator.showErrors({
               sms_code: data.error,
             });
-          } else if (data.errors) {
-            Object.keys(data.errors).forEach((item) => {
-              const dataItem = data.errors[item];
-              const errorObj = {};
-              const itemValue = Array.isArray(dataItem) ? String(dataItem.join(',')).replace(new RegExp(',', 'g'), ', ') : dataItem;
-              Object.assign(errorObj, { [item]: itemValue });
-              this.formValidator.showErrors(errorObj);
-            });
+          } else if (data.success === false) {
+            $(form).removeClass('state_loading');
+            if (data.errors) {
+              const top = document.body.clientHeight;
+              let scrollTo = top;
+              Object.keys(data.errors).forEach((item) => {
+                const selector = `[name="${item}"]`;
+                const inputPos = $(selector).offset();
+                if (scrollTo > inputPos.top) {
+                  scrollTo = inputPos.top;
+                }
+                const dataItem = data.errors[item];
+                const errorObj = {};
+                const itemValue = Array.isArray(dataItem) ? String(dataItem.join(',')).replace(new RegExp(',', 'g'), ', ') : dataItem;
+                Object.assign(errorObj, { [item]: itemValue });
+                this.formValidator.showErrors(errorObj);
+              });
+              $('html, body').animate({ scrollTop: scrollTo - 200 }, 500);
+            }
           } else {
+            $(form).removeClass('state_loading');
             callback(data);
           }
         },
         error: () => {
           if (!url) {
+            $(form).removeClass('state_loading');
             $('.js-products-error')
               .modal();
           }
