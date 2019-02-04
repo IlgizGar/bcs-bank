@@ -137,7 +137,7 @@ module.exports = (elem) => {
 
     formSubmit(form, url, callback, sendStep) {
       $(form).addClass('state_loading');
-      let formData;
+      let formData = [];
       if (sendStep) {
         formData = [];
         const step = $(this.steps.getCurrent());
@@ -147,17 +147,17 @@ module.exports = (elem) => {
         inputs.each((index, el) => {
           if (($(el).attr('type') === 'checkbox') || ($(el).attr('type') === 'radio')) {
             if ($(el).prop('checked')) {
-              formData[$(el).attr('name')] = $(el).val();
+              formData.push({ name: $(el).attr('name'), value: $(el).val() });
             }
           } else {
-            formData[$(el).attr('name')] = $(el).val();
+            formData.push({ name: $(el).attr('name'), value: $(el).val() });
           }
         });
         textareas.each((index, el) => {
-          formData[$(el).attr('name')] = $(el).val();
+          formData.push({ name: $(el).attr('name'), value: $(el).val() });
         });
         selects.each((index, el) => {
-          formData[$(el).attr('name')] = $(el).val();
+          formData.push({ name: $(el).attr('name'), value: $(el).val() });
         });
       } else {
         formData = $(form).serializeArray();
@@ -169,6 +169,8 @@ module.exports = (elem) => {
           dataItem.value = dataItem.value.replace(' ', '');
         }
       });
+
+      console.log(formData);
       $.ajax({
         method: 'POST',
         url: url ? sendUrl : form.getAttribute('action'),
