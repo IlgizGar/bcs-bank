@@ -74,10 +74,25 @@ module.exports = (elem) => {
     }
 
     validateForm() {
+      function send(step, form, self) {
+        if (step.hasClass('js-send-form')) {
+          self.formSubmit(form, step.data('send-url'), () => {
+            self.form.closest('.js-form')
+              .find('.js-step-informer')
+              .text(self.steps.nextStep() + 1);
+          }, true);
+        } else {
+          self.form.closest('.js-form')
+            .find('.js-step-informer')
+            .text(self.steps.nextStep() + 1);
+        }
+      }
+
       let submitHandler = null;
       if (!this.steps) {
         if (this.formType !== undefined) {
           if (this.formType === 'fix-course') {
+            console.log('get');
             submitHandler = (form) => {
               const redirectUrl = `${form.getAttribute('action')}?partner=bcs-bank&operation=${form.querySelector('.radio__field:checked')
                 .id
@@ -115,18 +130,10 @@ module.exports = (elem) => {
             }
             if (step.hasClass('js-send-validate-form')) {
               this.formSubmit(form, step.data('send-validate-url'), () => {
-                if (step.hasClass('js-send-form')) {
-                  this.formSubmit(form, step.data('send-url'), () => {
-                    this.form.closest('.js-form')
-                      .find('.js-step-informer')
-                      .text(this.steps.nextStep() + 1);
-                  });
-                } else {
-                  this.form.closest('.js-form')
-                    .find('.js-step-informer')
-                    .text(this.steps.nextStep() + 1);
-                }
+                send(step, form, this);
               }, true);
+            } else {
+              send(step, form, this);
             }
           }
         };
@@ -137,7 +144,7 @@ module.exports = (elem) => {
 
     formSubmit(form, url, callback, sendStep) {
       $(form).addClass('state_loading');
-      let formData = [];
+      let formData = $(form).serializeArray();
       if (sendStep) {
         formData = [];
         const step = $(this.steps.getCurrent());
@@ -159,8 +166,6 @@ module.exports = (elem) => {
         selects.each((index, el) => {
           formData.push({ name: $(el).attr('name'), value: $(el).val() });
         });
-      } else {
-        formData = $(form).serializeArray();
       }
       const sendUrl = url;
       Object.keys(formData).forEach((item) => {
@@ -173,6 +178,7 @@ module.exports = (elem) => {
       console.log(formData);
       $.ajax({
         method: 'POST',
+        type: 'POST',
         url: url ? sendUrl : form.getAttribute('action'),
         dataType: 'json',
         data: formData,

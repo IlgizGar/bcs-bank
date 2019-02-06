@@ -226,9 +226,9 @@
                       Шаг <span class="js-step-informer">1</span> из <span class="js-step-informer-all">4</span>
                     </div>
 
-                    <form action="http://localhost/rplpost">
+                    <form action="http://localhost/rplpost/">
 
-                      <div class="step-form__item js-step js-send-form js-send-validate-form" data-send-validate-url="http://localhost/rplpost/index3.php" data-send-url="http://localhost/rplpost"> <!-- класс js-send-form  указывает скрипту что на этом шаге нужно отправить форму на адресс указанный в data-send-url  -->
+                      <div class="step-form__item js-step js-sms-step js-send-form js-send-validate-form" data-send-validate-url="http://localhost/rplpost/index3.php" data-send-url="http://localhost/rplpost/"> <!-- класс js-send-form  указывает скрипту что на этом шаге нужно отправить форму на адресс указанный в data-send-url  -->
                           {{ Heading.heading({ 'title': 'Общая информация' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
                         <fieldset>
                             {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': 'js-fio-masked js-fio-auto-complete', 'maxlength': '64', 'name': 'bid_user-name', 'required': 'true' } }) }}
@@ -255,7 +255,7 @@
                         </div>
                       </div>
 
-                      <div class="step-form__item js-step js-sms-step js-send-form" data-send-url="http://localhost/rplpost">
+                      <div class="step-form__item js-step js-send-form" data-send-url="http://localhost/rplpost">
                           {% include "../components/modules/sms-code-form/sms-code-form.njk" %}
                       </div>
 
