@@ -92,7 +92,6 @@ module.exports = (elem) => {
       if (!this.steps) {
         if (this.formType !== undefined) {
           if (this.formType === 'fix-course') {
-            console.log('get');
             submitHandler = (form) => {
               const redirectUrl = `${form.getAttribute('action')}?partner=bcs-bank&operation=${form.querySelector('.radio__field:checked')
                 .id
@@ -175,7 +174,6 @@ module.exports = (elem) => {
         }
       });
 
-      console.log(formData);
       $.ajax({
         method: 'POST',
         type: 'POST',
