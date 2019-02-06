@@ -135,6 +135,7 @@ module.exports = (elem) => {
     }
 
     showList(el) {
+      this.dropdown.addClass('state_filled');
       if (!$(el).closest('.js-dropdown-clear').length) {
         this.dropdown.addClass('state_explored');
         if (!this.scrollBarInited) {
