@@ -74,13 +74,13 @@ module.exports = (elem) => {
     }
 
     validateForm() {
-      function send(step, form, self) {
+      function send(step, form, self, full) {
         if (step.hasClass('js-send-form')) {
           self.formSubmit(form, step.data('send-url'), () => {
             self.form.closest('.js-form')
               .find('.js-step-informer')
               .text(self.steps.nextStep() + 1);
-          }, true);
+          }, !full);
         } else {
           self.form.closest('.js-form')
             .find('.js-step-informer')
@@ -132,7 +132,7 @@ module.exports = (elem) => {
                 send(step, form, this);
               }, true);
             } else {
-              send(step, form, this);
+              send(step, form, this, true);
             }
           }
         };
