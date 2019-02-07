@@ -2,9 +2,9 @@
   display inline-block
   width 269px
   position relative
-  opacity 0.3
-  transition opacity 0.3s ease-in-out
   &__image
+    opacity 0.3
+    transition opacity 0.3s ease-in-out
     width 100%
     height auto
     &_no-active
@@ -13,6 +13,10 @@
       width 100%
       border-radius 8px
       background-color $very_light_gray
+      background-image url("../../assets/images/svg/full-logo-dark.svg")
+      background-repeat no-repeat
+      background-position 14px 19px
+      background-size 81px 21px
 
 .bonus-card-list
   display flex
@@ -27,5 +31,9 @@
 
 .state_active
   .bonus-card
-    opacity 1
+    &__image
+      opacity 1
 
+
+.bonus-card-image
+  max-width 373px!important

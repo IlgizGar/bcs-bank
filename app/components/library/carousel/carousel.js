@@ -104,9 +104,6 @@ module.exports = (elem) => {
           } else {
             this.carousel.prev('.js-carousel-controls').show();
           }
-          $('.js-tabbar').each((i, el) => {
-            global.tabs.push(Tabs(el));
-          });
           this.carousel.not('.slick-initialized').slick({
             appendArrows: this.carousel.prev('.js-carousel-controls'),
             nextArrow: this.next,
@@ -145,6 +142,14 @@ module.exports = (elem) => {
     }
 
     events() {
+      const global = {};
+      global.tabs = [];
+
+      this.carousel.on('destroy', () => {
+        this.carousel.each((i, el) => {
+          global.tabs.push(Tabs(el));
+        });
+      });
       $(window).on('resize', () => {
         if (typeof this.carousel.data('breakpoint') !== 'undefined') {
           if (parseInt(this.carousel.data('breakpoint'), 0) - 1 >= window.innerWidth) {
