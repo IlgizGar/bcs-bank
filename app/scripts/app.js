@@ -64,14 +64,14 @@ $(() => {
     global.contacts.push(Contact(el));
   });
 
-  global.tabs = [];
-  $('.js-tabbar').each((i, el) => {
-    global.tabs.push(Tabs(el));
-  });
-
   global.carousels = [];
   $('.js-carousel').each((i, el) => {
     global.carousels.push(Carousel(el));
+  });
+
+  global.tabs = [];
+  $('.js-tabbar').each((i, el) => {
+    global.tabs.push(Tabs(el));
   });
 
   global.inputs = [];

@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import 'slick-carousel';
+import Tabs from '../../modules/tabbar/tabbar';
 // import Context from '../context/context';
 
 module.exports = (elem) => {
@@ -38,7 +39,9 @@ module.exports = (elem) => {
         '    <use xlink:href="/assets/images/icons.svg#icon_tr-arrow"></use>\n' +
         '  </svg>' +
         '</button>';
-
+      const count = this.carousel.find('>*').length;
+      const global = {};
+      global.tabs = [];
       switch (this.id) {
         case 'index-header':
           this.carousel.on('beforeChange', (event, slick, prevSlide, currentSlide) => {
@@ -83,6 +86,46 @@ module.exports = (elem) => {
                 settings: {
                   slidesToShow: 2,
                   slidesToScroll: 2,
+                },
+              },
+              {
+                breakpoint: 768,
+                settings: {
+                  slidesToShow: 1,
+                  slidesToScroll: 1,
+                },
+              },
+            ],
+          });
+          break;
+        case 'bonus-card':
+          if (count <= 3) {
+            this.carousel.prev('.js-carousel-controls').hide();
+          } else {
+            this.carousel.prev('.js-carousel-controls').show();
+          }
+          $('.js-tabbar').each((i, el) => {
+            global.tabs.push(Tabs(el));
+          });
+          this.carousel.not('.slick-initialized').slick({
+            appendArrows: this.carousel.prev('.js-carousel-controls'),
+            nextArrow: this.next,
+            prevArrow: this.prev,
+            mobileFirst: false,
+            infinite: false,
+            responsive: [
+              {
+                breakpoint: 9999,
+                settings: (count > 3) ? {
+                  slidesToShow: 3,
+                  slidesToScroll: 1,
+                } : 'unslick',
+              },
+              {
+                breakpoint: 992,
+                settings: {
+                  slidesToShow: 2,
+                  slidesToScroll: 1,
                 },
               },
               {

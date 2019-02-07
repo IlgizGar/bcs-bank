@@ -36,17 +36,20 @@ module.exports = (elem) => {
     }
     triggerAnchor(e) {
       const $anchor = $(e.currentTarget);
-      if (!$anchor.hasClass('state_active')) {
-        this.active.removeClass('state_active');
-        this.$tab.addClass('state_invisible');
-        this.active = $anchor;
-        this.active.addClass('state_active');
-        this.setAnchorPosition();
-        this.$tab = $(this.active.attr('href'));
-        this.$tab.removeClass('state_invisible');
-      }
-      if ($anchor.closest('.js-products-tabbar').length) {
-        Tabs.handleProductsFilter($anchor);
+      const id = $anchor.attr('href');
+      if (id !== '#') {
+        if (!$anchor.hasClass('state_active')) {
+          this.active.removeClass('state_active');
+          this.$tab.addClass('state_invisible');
+          this.active = $anchor;
+          this.active.addClass('state_active');
+          this.setAnchorPosition();
+          this.$tab = $(this.active.attr('href'));
+          this.$tab.removeClass('state_invisible');
+        }
+        if ($anchor.closest('.js-products-tabbar').length) {
+          Tabs.handleProductsFilter($anchor);
+        }
       }
     }
 
@@ -84,7 +87,16 @@ module.exports = (elem) => {
           const element = {
             currentTarget: $(selector)[0],
           };
-          this.triggerAnchor(element);
+          if ($(urlHash).hasClass('js-tab')) {
+            if ($(urlHash).parent().hasClass('js-tab')) {
+              const outerElement = {
+                currentTarget: $(`.js-anchor[href="#${$(urlHash).parent('.js-tab').attr('id')}"]`)[0],
+              };
+              this.triggerAnchor(outerElement);
+            } else {
+              this.triggerAnchor(element);
+            }
+          }
         } else {
           $('html, body').animate({ scrollTop: $(urlHash).offset().top }, 500);
         }
