@@ -27,7 +27,7 @@ module.exports = (elem) => {
           this.form.closest('.js-form')
             .find('.js-step-informer')
             .text(this.steps.prevStep(() => {
-              if ($(this.steps.getCurrent()).hasClass('js-sms-step')) {
+              if ($(this.steps.getCurrent()).find('.js-sms-code-form').length) {
                 this.form.closest('.js-form')
                   .find('.js-step-informer')
                   .text(this.steps.prevStep() + 1);
