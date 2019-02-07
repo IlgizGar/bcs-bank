@@ -15,6 +15,8 @@ module.exports = (elem) => {
       this.handle = null;
       this.id = '';
 
+      this.input.attr('readonly', true);
+
       this.init();
       this.events();
     }
