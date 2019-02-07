@@ -8,5 +8,34 @@
   &__item
     background $color_card
     padding 40px
-    width 343px
+    width 373px
     max-width 100%
+    &-title
+      font-size 24px
+      font-weight bold
+      font-style normal
+      font-stretch normal
+      line-height 1.33
+      letter-spacing: normal
+      margin-bottom 28px
+    &-list
+      li
+          font-size 16px
+          font-weight normal
+          font-style normal
+          font-stretch normal
+          line-height 1.5
+          letter-spacing normal
+          position relative
+          padding-left 20px
+          margin-bottom 15px
+          &:before
+              content: ''
+              display: block
+              width: 6px
+              height: 6px
+              border-radius: 50%
+              position: absolute
+              left: 0
+              top: calc(50% - 3px)
+              background: $black
