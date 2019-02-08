@@ -2,16 +2,16 @@
 {% import "../../../../components/library/checkbox/checkbox.njk" as Checkbox %}
 {% import "../../../../components/library/heading/heading.njk" as Heading %}
 
-<div id="bonus-filter" class="bonus-filter context__list js-context-list state_invisible" data-type="modal-view">
+<div id="bonus-filter" class="bonus-filter context__list  js-filter js-context-list state_invisible" data-type="modal-view">
   <div class="bonus-filter__wrapper">
     <a href="#" class="bonus-filter__close-icon"></a>
     {{ Heading.heading({ 'title': 'Подобрать партнера', 'mods': { 'margin': 'small', 'type': 'normal' }, 'class': 'bonus-filter__heading' }) }}
     <a href="#" class="select-filter__close-icon"></a>
-    {{ Checkbox.checkbox({ 'label': 'Все', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox mb-32', 'state': 'checked' }) }}
-    {{ Checkbox.checkbox({ 'label': 'Путешествия', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox mb-32' }) }}
-    {{ Checkbox.checkbox({ 'label': 'Покупки', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox mb-32' }) }}
-    {{ Checkbox.checkbox({ 'label': 'Услуги', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox mb-32' }) }}
-    {{ Checkbox.checkbox({ 'label': 'Танспорт', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox' }) }}
+    {{ Checkbox.checkbox({ 'label': 'Все', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox mb-32', "attr": {"filter":"boolean", "filter-param":"all"} ,  'state': 'checked' }) }}
+    {{ Checkbox.checkbox({ 'label': 'Путешествия', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox mb-32', "attr": {"filter":"boolean", "filter-param":"travel" } }) }}
+    {{ Checkbox.checkbox({ 'label': 'Покупки', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox mb-32', "attr": {"filter":"boolean", "filter-param":"bying" } }) }}
+    {{ Checkbox.checkbox({ 'label': 'Услуги', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox mb-32', "attr": {"filter":"boolean", "filter-param":"uslugi" , 'value': 'tree'} }) }}
+    {{ Checkbox.checkbox({ 'label': 'Танспорт', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'bonus__checkbox', "attr": {"filter":"boolean", "filter-param":"transport" , 'value': 'for'} }) }}
     <div class="bonus-filter__controls">
       {{ Button.button({ 'title': 'Применить', 'mods': { 'theme': 'default' } }) }}
       {{ Button.button({ 'title': 'Сбросить все', 'mods': { 'view': 'text', 'theme': 'default' } }) }}

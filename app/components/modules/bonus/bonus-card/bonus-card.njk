@@ -1,0 +1,24 @@
+{% macro bonuscard( options ) %}
+
+    {% if options.data %}
+        {% set options = options.data %}
+    {% endif %}
+
+
+    {% if options.active %}
+        <span class="bonus-card">
+            <img src="{{ options.img }}" class="bonus-card__image" alt="БКС Банк">
+            <span class="text bonus-card__text">{{ options.text }}</span>
+        </span>
+    {% else %}
+        <span class="bonus-card">
+            <span class="bonus-card__image bonus-card__image_no-active"></span>
+            <span class="text bonus-card__text">{{ options.text }}</span>
+        </span>
+
+    {% endif %}
+
+
+
+
+{% endmacro %}
