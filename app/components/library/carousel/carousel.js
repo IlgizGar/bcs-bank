@@ -150,6 +150,11 @@ module.exports = (elem) => {
           global.tabs.push(Tabs(el));
         });
       });
+      this.carousel.on('breakpoint', () => {
+        this.carousel.each((i, el) => {
+          global.tabs.push(Tabs(el));
+        });
+      });
       $(window).on('resize', () => {
         if (typeof this.carousel.data('breakpoint') !== 'undefined') {
           if (parseInt(this.carousel.data('breakpoint'), 0) - 1 >= window.innerWidth) {
