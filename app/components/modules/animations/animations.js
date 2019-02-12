@@ -37,7 +37,6 @@ export default class Animations {
       const dataItem = this.animations[key];
       function callback(entries) {
         const check = entries[0];
-        console.log(check.isIntersecting);
         if (check.isIntersecting) {
           dataItem.animation.play();
         } else {

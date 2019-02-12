@@ -9,8 +9,12 @@ module.exports = (form) => {
   class Validator {
     constructor(selector) {
       this.scrollTimout = null;
-      this.errorElementPos = $(selector).offset().top + $(selector).height();
+
       this.form = $(selector);
+
+      const formOffset = this.form.offset() ? this.form.offset() : document.body.clientHeight;
+
+      this.errorElementPos = formOffset.top + $(selector).height();
 
       this.validateRules = {
         'js-fio-masked': {
