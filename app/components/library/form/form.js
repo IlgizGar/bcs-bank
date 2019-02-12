@@ -116,7 +116,13 @@ module.exports = (elem) => {
         submitHandler = (form) => {
           let step = $(this.steps.getCurrent());
           if (this.steps.isLast()) {
-            this.formSubmit(form);
+            if (step.hasClass('js-send-validate-form')) {
+              this.formSubmit(form, step.data('send-validate-url'), () => {
+                this.formSubmit(form);
+              }, true);
+            } else {
+              this.formSubmit(form);
+            }
           } else {
             step = $(this.steps.getCurrent());
             if (step.hasClass('js-sms-step')) {
