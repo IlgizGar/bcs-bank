@@ -8,6 +8,8 @@ import 'suggestions-jquery';
 module.exports = (form) => {
   class Validator {
     constructor(selector) {
+      this.scrollTimout = null;
+      this.errorElementPos = $(selector).offset().top + $(selector).height();
       this.form = $(selector);
 
       this.validateRules = {
@@ -497,7 +499,21 @@ module.exports = (form) => {
       }, errors.message);
     }
 
+    scrollToError(el) {
+      const scrollTo = $(el).offset().top;
+      if (scrollTo < this.errorElementPos) {
+        this.errorElementPos = scrollTo;
+      }
+      clearTimeout(this.scrollTimout);
+      this.scrollTimout = setTimeout(() => {
+        $('html, body').animate({ scrollTop: this.errorElementPos - 200 }, 500, '', () => {
+          this.errorElementPos = $(el).offset().top;
+        });
+      }, 100);
+    }
+
     validateForm(handler) {
+      const self = this;
       $.validator.addClassRules(this.validateRules);
       return this.form.validate({
         focusInvalid: false,
@@ -525,6 +541,7 @@ module.exports = (form) => {
           if ($('.js-sms-code-form-counter').length) {
             $('.js-sms-code-form-counter').addClass('state_form_error');
           }
+          self.scrollToError(element);
         },
         unhighlight(element) {
           if ($(element).closest('.js-input').length) {
