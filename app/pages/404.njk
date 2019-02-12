@@ -1,0 +1,41 @@
+{% extends "layout/layout.njk" %}
+{#{% extends "library/card/card.njk" %}#}
+
+{% set root = "." %}
+{% set title = "404" %}
+{% set header = 'default' %}
+
+{% import "../components/modules/menubar/menubar.njk" as Menubar %}
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/library/feature/feature.njk" as Feature %}
+{% import "../components/library/button/button.njk" as Button %}
+{% import "../components/library/card/card.njk" as Card with context %}
+{% import "../components/modules/advice/advice.njk" as Advice %}
+{% import "../components/library/input/input.njk" as Input %}
+{% import "../components/icon/icon.njk" as Icon %}
+
+{% block body %}
+  <div class="page js-page">
+
+    {% include "../components/modules/header/header.njk" %}
+
+    <main role="main">
+      <section class="section page__section ">
+        <div class="page__container">
+          <div class="not-found-block mb-112 mt-82">
+            <div class="not-found-block__item not-found-block__item_text">
+              {{ Heading.heading({ 'title': 'Страница не найдена', 'mods': { 'type': 'default', 'margin': 'short' }, 'class': '' }) }}
+              <div class="text text_theme-gray mb-56">Вы можете перейти на главную страницу либо воспользоваться картой сайта внизу.</div>
+              {{ Button.button({ 'title': 'На главную', 'href': '/', 'mods': {'theme': 'default'}, 'class': '' }) }}
+            </div>
+            <div class="not-found-block__item not-found-block__item_img">
+                <img src="assets/images/404.svg">
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    {% include "../components/modules/footer/footer.njk" %}
+  </div>
+{% endblock %}

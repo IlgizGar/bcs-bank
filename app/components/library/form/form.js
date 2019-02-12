@@ -216,21 +216,16 @@ module.exports = (elem) => {
           } else if (data.success === false) {
             $(form).removeClass('state_loading');
             if (data.errors) {
-              const top = document.body.clientHeight;
-              let scrollTo = top;
               Object.keys(data.errors).forEach((item) => {
-                const selector = `[name="${item}"]`;
-                const inputPos = $(selector).offset();
-                if (scrollTo > inputPos.top) {
-                  scrollTo = inputPos.top;
-                }
                 const dataItem = data.errors[item];
                 const errorObj = {};
                 const itemValue = Array.isArray(dataItem) ? String(dataItem.join(',')).replace(new RegExp(',', 'g'), ', ') : dataItem;
                 Object.assign(errorObj, { [item]: itemValue });
                 this.formValidator.showErrors(errorObj);
               });
-              $('html, body').animate({ scrollTop: scrollTo - 200 }, 500);
+            } else {
+              $('.js-products-error')
+                .modal();
             }
           } else {
             $(form).removeClass('state_loading');
