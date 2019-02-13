@@ -1,9 +1,11 @@
 import $ from 'jquery';
 import 'jquery-validation';
+import 'suggestions-jquery';
 import Validator from './validator';
 import StepForm from '../../library/step-form/step-form';
 import SmsForm from '../../modules/sms-code-form/sms-code';
 import PlaceForm from '../../modules/form-place/form-place';
+
 
 module.exports = (elem) => {
   class Form {
@@ -23,17 +25,19 @@ module.exports = (elem) => {
           selector: this.stepClass,
           activeClass: 'state_active',
         }, this.form[0]);
-        this.form.find('.js-step-backward').on('click', () => {
-          this.form.closest('.js-form')
-            .find('.js-step-informer')
-            .text(this.steps.prevStep(() => {
-              if ($(this.steps.getCurrent()).find('.js-sms-code-form').length) {
-                this.form.closest('.js-form')
-                  .find('.js-step-informer')
-                  .text(this.steps.prevStep() + 1);
-              }
-            }) + 1);
-        });
+        this.form.find('.js-step-backward')
+          .on('click', () => {
+            this.form.closest('.js-form')
+              .find('.js-step-informer')
+              .text(this.steps.prevStep(() => {
+                if ($(this.steps.getCurrent())
+                  .find('.js-sms-code-form').length) {
+                  this.form.closest('.js-form')
+                    .find('.js-step-informer')
+                    .text(this.steps.prevStep() + 1);
+                }
+              }) + 1);
+          });
         this.form.closest('.js-form')
           .find('.js-step-informer-all')
           .text(this.steps.getCount());
@@ -148,8 +152,10 @@ module.exports = (elem) => {
     }
 
     formSubmit(form, url, callback, sendStep) {
-      $(form).addClass('state_loading');
-      let formData = $(form).serializeArray();
+      $(form)
+        .addClass('state_loading');
+      let formData = $(form)
+        .serializeArray();
       if (sendStep) {
         formData = [];
         const step = $(this.steps.getCurrent());
@@ -157,28 +163,53 @@ module.exports = (elem) => {
         const textareas = step.find('textarea[name]');
         const selects = step.find('select[name]');
         inputs.each((index, el) => {
-          if (($(el).attr('type') === 'checkbox') || ($(el).attr('type') === 'radio')) {
-            if ($(el).prop('checked')) {
-              formData.push({ name: $(el).attr('name'), value: $(el).val() });
+          if (($(el)
+            .attr('type') === 'checkbox') || ($(el)
+            .attr('type') === 'radio')) {
+            if ($(el)
+              .prop('checked')) {
+              formData.push({
+                name: $(el)
+                  .attr('name'),
+                value: $(el)
+                  .val(),
+              });
             }
           } else {
-            formData.push({ name: $(el).attr('name'), value: $(el).val() });
+            formData.push({
+              name: $(el)
+                .attr('name'),
+              value: $(el)
+                .val(),
+            });
           }
         });
         textareas.each((index, el) => {
-          formData.push({ name: $(el).attr('name'), value: $(el).val() });
+          formData.push({
+            name: $(el)
+              .attr('name'),
+            value: $(el)
+              .val(),
+          });
         });
         selects.each((index, el) => {
-          formData.push({ name: $(el).attr('name'), value: $(el).val() });
+          formData.push({
+            name: $(el)
+              .attr('name'),
+            value: $(el)
+              .val(),
+          });
         });
       }
       const sendUrl = url;
-      Object.keys(formData).forEach((item) => {
-        const dataItem = formData[item];
-        if ($(`[name=${dataItem.name}]`).hasClass('js-numeric-input')) {
-          dataItem.value = dataItem.value.replace(' ', '');
-        }
-      });
+      Object.keys(formData)
+        .forEach((item) => {
+          const dataItem = formData[item];
+          if ($(`[name=${dataItem.name}]`)
+            .hasClass('js-numeric-input')) {
+            dataItem.value = dataItem.value.replace(' ', '');
+          }
+        });
 
       $.ajax({
         method: 'POST',
@@ -197,44 +228,47 @@ module.exports = (elem) => {
                     .text(this.steps.tofFirstStep() + 1);
                 })
                 .modal();
-              $(form).removeClass('state_loading');
+              $(form)
+                .removeClass('state_loading');
             } else if (data.success === 'incorrect-code') {
-              $(form).removeClass('state_loading');
-              this.formValidator.showErrors({
-                sms_code: data.error,
-              });
+              $(form)
+                .removeClass('state_loading');
+              this.showInputError('sms_code', data.error);
             } else {
-              $(form).removeClass('state_loading');
+              $(form)
+                .removeClass('state_loading');
               $('.js-products-error')
                 .modal();
             }
           } else if (data.success === 'incorrect-code') {
-            $(form).removeClass('state_loading');
-            this.formValidator.showErrors({
-              sms_code: data.error,
-            });
+            $(form)
+              .removeClass('state_loading');
+            this.showInputError('sms_code', data.error);
           } else if (data.success === false) {
-            $(form).removeClass('state_loading');
+            $(form)
+              .removeClass('state_loading');
             if (data.errors) {
-              Object.keys(data.errors).forEach((item) => {
-                const dataItem = data.errors[item];
-                const errorObj = {};
-                const itemValue = Array.isArray(dataItem) ? String(dataItem.join(',')).replace(new RegExp(',', 'g'), ', ') : dataItem;
-                Object.assign(errorObj, { [item]: itemValue });
-                this.formValidator.showErrors(errorObj);
-              });
+              Object.keys(data.errors)
+                .forEach((item) => {
+                  const dataItem = data.errors[item];
+                  const itemValue = Array.isArray(dataItem) ? String(dataItem.join(','))
+                    .replace(new RegExp(',', 'g'), ', ') : dataItem;
+                  this.showInputError(item, itemValue);
+                });
             } else {
               $('.js-products-error')
                 .modal();
             }
           } else {
-            $(form).removeClass('state_loading');
+            $(form)
+              .removeClass('state_loading');
             callback(data);
           }
         },
         error: () => {
           if (!url) {
-            $(form).removeClass('state_loading');
+            $(form)
+              .removeClass('state_loading');
             $('.js-products-error')
               .modal();
           }
@@ -323,11 +357,15 @@ module.exports = (elem) => {
 
       const checkCredits = $('.js-check-credit');
       checkCredits.on('click', (e) => {
-        const value = $(e.currentTarget).find('input').val();
+        const value = $(e.currentTarget)
+          .find('input')
+          .val();
         if (value === 'true') {
-          this.form.find('.js-button[type="submit"]').attr('disabled', '');
+          this.form.find('.js-button[type="submit"]')
+            .attr('disabled', '');
         } else {
-          this.form.find('.js-button[type="submit"]').removeAttr('disabled');
+          this.form.find('.js-button[type="submit"]')
+            .removeAttr('disabled');
         }
       });
       const checkRadio = $('.js-check-radio');
@@ -347,6 +385,13 @@ module.exports = (elem) => {
           }
         });
       }
+    }
+
+    showInputError(name, errorMessage) {
+      const errorObject = {};
+      Object.assign(errorObject, { [name]: errorMessage });
+      console.log(errorObject);
+      this.formValidator.showErrors(errorObject);
     }
   }
 
