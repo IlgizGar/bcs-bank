@@ -30,8 +30,11 @@ module.exports = (elem) => {
         this.triggerAnchor(e);
         window.history.pushState({}, '', this.active.attr('href'));
       });
-      $('[data-scroll]').on('click', () => {
+      $('[data-scroll]').on('click', (e) => {
         $(this.anchors[0]).trigger('click');
+        setTimeout(() => {
+          document.location.hash = String($(e.currentTarget).attr('data-scroll')).replace('#', '');
+        }, 600);
       });
     }
     triggerAnchor(e) {
@@ -83,6 +86,7 @@ module.exports = (elem) => {
       const urlHash = document.location.hash;
       if (urlHash) {
         const selector = `.js-anchor[href="${urlHash}"]`;
+        console.log($(selector).length);
         if ($(selector).length) {
           const element = {
             currentTarget: $(selector)[0],
