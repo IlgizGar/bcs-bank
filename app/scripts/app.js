@@ -199,6 +199,11 @@ $(() => {
   if ($('#exchange-service-bank').length) {
     global.services.exchange = new ExchangeBanksService('#exchange-service-bank');
   }
+
+  if ($('#exchange-service-bank-corporate').length) {
+    global.services.exchange = new ExchangeService('#exchange-service-bank-corporate');
+  }
+
   if ($('#fix-service').length) {
     global.services.exchange = new FixService();
   }
