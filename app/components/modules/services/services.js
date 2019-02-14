@@ -177,3 +177,11 @@ export class ExchangeBanksService extends ExchangeService {
   }
 }
 
+
+export class ExchangeBanksServiceCorp extends ExchangeService {
+  getAdaptedData(data) {
+    this.loadedData = data;
+    return data.bank_courses;
+  }
+}
+
