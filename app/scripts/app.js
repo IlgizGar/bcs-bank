@@ -34,6 +34,7 @@ import Calculation from '../components/modules/calculation/calculation';
 import InfoShow from '../components/library/info-show/infoShow';
 import Filter from '../components/modules/filter/filter';
 import Animations from '../components/modules/animations/animations';
+import PartnerModalForm from '../components/modules/partners-modal/partners-modal';
 
 require('intersection-observer');
 
@@ -267,4 +268,12 @@ $(() => {
       currencyBlock.html(currencyBlockText);
     }
   };
+
+  global.partnersButtons = [];
+  if ($('.js-show-partners-modal-button').length) {
+    $('.js-show-partners-modal-button')
+      .each((i, el) => {
+        global.filters.push(PartnerModalForm(el));
+      });
+  }
 });

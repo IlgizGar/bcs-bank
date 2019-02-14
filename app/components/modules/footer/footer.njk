@@ -225,6 +225,41 @@
 </div>
 
 
+<div class="modal partners-modal js-partners-modal js-form" data-form="question-modal">
+  {{ Heading.heading({ 'title': 'Переход на БКС Премьер', "class": "js-partners-modal-title", 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+  <p class="text text_theme-gray mb-40 js-partners-modal-text">
+    Инвестиции, доступные каждому.<br>
+    Для профессионалов и новичков.
+  </p>
+  {{ Button.button({ 'href': '#', 'title': 'Перейти', 'class': 'js-partners-modal-button', 'mods': { 'type': 'button', 'theme': 'default' } }) }}
+  <div class="partners-modal__line mt-64"></div>
+  <form  action="/" class="form partners-modal__form mt-64">
+    <input type="hidden" name="theme" class="js-partners-modal-theme" value="">
+    {{ Heading.heading({ 'title': 'Есть вопросы?', 'mods': {'type': 'default', 'margin': 'normal'}, 'class': 'header__contacts-heading' }) }}
+    {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': {'class': 'js-fio-masked', 'name': 'queston_p_name', 'required': 'required'} }) }}
+    <div class="form__line-group">
+      {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': { 'class': 'js-phone-masked', 'name': 'question_p_phone', 'required': 'required' } }) }}
+      {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': { 'class': 'js-mail-masked', 'name': 'question_p_mail', 'required': 'required' } }) }}
+    </div>
+   <div class="form__action">
+      <div class="form__agreements">
+        {# TODO: вынести в шаблон #}
+        <label class="checkbox checkbox_theme-dark js-checkbox js-personal-checkbox">
+          <input type="checkbox" class="checkbox__control" name="question__personal" checked>
+          <span class="checkbox__state"></span>
+          <span class="checkbox__label">
+            Даю согласие на обработку <br>
+            {{ Button.button({ 'href': '#', 'title': 'персональных данных', 'class': 'js-confidence-policy-link', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
+          </span>
+        </label>
+      </div>
+      {{ Button.button({ 'title': 'Отправить', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
+    </div>
+  </form>
+
+</div>
+
+
 <div id="limits" class="modal services-limits">
   {% include "../services/limits.njk" %}
 </div>
