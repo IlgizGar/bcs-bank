@@ -10,8 +10,34 @@
     @media (min-width: 992px) and (max-width: 1279px)
       min-height 680px
     @media (min-width: 768px) and (max-width: 991px)
-      min-height 680px
+      min-height 100vh
     @media (max-width: 767px)
-      min-height 680px
+      min-height 100vh
+      .products-detail__content_description
+        text-align center
+        font-size: 4.5vw
     .heading
       font-size 76px
+      @media (max-width 1279px)
+        font-size: 32px
+        line-height: 40px
+      @media (max-width: 767px)
+        font-size: 8.5vw
+        line-height: normal
+        text-align center
+    .products-detail__figure
+      @media (max-width: 1024px)
+        width: calc(100% - 40px)
+        display: flex
+        justify-content center
+        margin: 16px auto
+      .illustration
+        top: auto
+        .illustration-image
+          min-width 1024px
+
+.illustration-image_landing-gift
+  min-width 104%
+
+.illustration_landing-gift
+  top: auto!important
