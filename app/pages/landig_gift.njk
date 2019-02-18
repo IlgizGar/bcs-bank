@@ -1,0 +1,192 @@
+{% extends "layout/layout.njk" %}
+{#{% extends "library/card/card.njk" %}#}
+
+{% set root = "." %}
+{% set title = "Главная" %}
+{% set header = 'blue' %}
+
+{% import "../components/modules/menubar/menubar.njk" as Menubar %}
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/library/feature/feature.njk" as Feature %}
+{% import "../components/library/button/button.njk" as Button %}
+{% import "../components/library/card/card.njk" as Card with context %}
+{% import "../components/modules/advice/advice.njk" as Advice %}
+{% import "../components/library/input/input.njk" as Input %}
+{% import "../components/icon/icon.njk" as Icon %}
+{% import "../components/modules/brand-features/brand-features.njk" as BrandFeatures %}
+{% import "../components/library/input/input.njk" as Input %}
+{% import "../components/library/dropdown/dropdown.njk" as Dropdown %}
+{% import "../components/library/docs/docs.njk" as Docs %}
+{% import "../components/icon/icon.njk" as Icon %}
+
+{% block body %}
+    <div class="page js-page">
+
+
+        <main role="main" class="products-detail">
+
+
+            <section class="section page__section mb-82">
+                <div class="section__header section__header_theme-blue">
+                    <div class="page__container page__container_landing">
+                        <div class="section__row">
+                            <div class="products-detail__content products-detail__content-landing">
+                                {{ Heading.heading({ 'tag': 'h1', 'title': '#Порадарить', 'mods': { 'type': 'large' } }) }}
+                                <div class="products-detail__content_description">
+                                    23 дня по 8%
+                                </div>
+                            </div>
+                            <div class="products-detail__figure" data-illustration="">
+                                <div class="illustration">
+                                    <img class="illustration-image" src="assets/illustrations/bks_platinum.svg"
+                                         alt="БКС Platinum">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="section page__section page__section_landing">
+                <div class="page__container page__container_landing">
+                    {{ Heading.heading({ 'title': '#Порадарить подарки с максимальной выгодой!', 'mods': { 'type': 'default' }, 'class': 'heading_mobile-centered' }) }}
+                    <div class="text text_large">
+                        Участвуйте в праздничной акции #порадарить. Покупайте подарки родным и близким к 23 февраля и 8
+                        марта,<br> вам мы подарим дополнительные бонусы.
+                    </div>
+                </div>
+                {{ BrandFeatures.brandFeatures({ 'items': [
+                    {
+                        'icon': 'assets/images/svg/card-image.svg',
+                        'title': '8%',
+                        'subtitle': 'за покупку техники, электроники, ювелирных украшений, часов, цветов',
+                        'mods': {
+                    }
+                    },
+                    {
+                        'icon': 'assets/images/svg/sand-clock-image.svg',
+                        'title': '23 дня',
+                        'subtitle': 'с 16 февраля по 10 марта 2019 г.',
+                        'mods': {
+                    }
+                    },
+                    {
+                        'icon': 'assets/images/svg/card-image.svg',
+                        'title': 'от 30 000 рублейт',
+                        'subtitle': 'сумма всех покупок по карте за период акции'
+                    }
+                ], "landing": "true" }) }}
+
+            </section>
+
+
+            <section class="mobile section page__section page__section_theme-large">
+                <div class="page__container page__container_landing">
+                    <div class="hr"></div>
+                </div>
+                <div class="page__container page__container_landing">
+                    <div class="section__row">
+                        <div class="mobile__content">
+
+
+                            <h2 class="heading   heading_theme-dark heading_type-default">
+                                <span>Как участвовать?</span>
+                            </h2>
+
+                            <div class="section__text section__text_large section__text_theme-normal section__text_theme-dark">
+                                <p>1. Совершайте любые покупки по карте БКС Банка на общую сумму <strong>от 30 000 рублей</strong> в период <strong>с 16 февраля по 10 марта 2019 г</strong>.</p>
+                                <p>2. Получите дополнительные <strong>8% бонусами от стоимости</strong> покупок в праздничных категориях.</p>
+                                <p>3. Еще нет карты БКС Банка? Если вы уже клиент – закажите карту в интернет-банке <a href="#">БКС Онлайн</a> или мобильном приложении. Хотите стать клиентом БКС Банка – оформите карту на сайте Банка.</p>
+                            </div>
+                            <div class="mobile__vendors">
+
+
+                                <a class="button  button_theme-default section__header-button js-button" data-scroll="#section-request" href="/business/ibank#section-request">
+                                    <span class="button__wrap">
+                                        <span class="button__title js-button-title">Оформить карту</span>
+                                    </span>
+                                </a>
+
+                            </div>
+                        </div>
+                        <div class="mobile__figure">
+                            <img class="illustration" src="/assets/illustrations/bks_platinum.svg" alt="Легкий интернет банк">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="section-request" class="section section_theme-white-smoke section_padding-default page__section">
+                <div class="products-detail__request">
+                    <div class="page__container page__container_landing">
+                        {{ Heading.heading({ 'title': 'Заявка на карту', 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+                        <div class="text text_theme-gray mb-56">Премиальная карта Visa Platinum открывается в рамках <a href="#">пакета услуг «Цифровой Платиновый»</a> .</div>
+                        <div class="section__row">
+                            <div class="form form_layout-narrow js-form" data-form="cards">
+                                <div class="form__steps">
+                                    Шаг <span class="js-step-informer">1</span> из <span class="js-step-informer-all">4</span>
+                                </div>
+                                {{ Heading.heading({ 'title': 'Общая информация', 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
+                                <form action="/rplpost">
+                                    <div class="step-form__item js-step js-send-form" data-send-url="http://localhost/rplpost">
+                                        <fieldset>
+                                            {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': 'js-fio-masked', 'maxlength': '64', 'name': 'bid_user-name', 'required': 'true' } }) }}
+                                            <div class="form__line-group">
+                                                {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': {'class': 'js-phone-masked', 'name': 'question_phone', 'required': 'true' } }) }}
+                                                {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': {'class': 'js-mail-masked', 'name': 'question_mail', 'required': 'true' } }) }}
+                                            </div>
+                                            {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Выберите город', 'name': 'bid_select-city', 'items': [{'title': 'Краснодар', 'value': '12345'}, {'title': 'Москва', 'value': '13456'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'bid-city-list'}, 'field': 'js-city-select' }) }}
+                                        </fieldset>
+                                        <div class="form__agreements">
+                                            <label class="checkbox checkbox_theme-dark js-checkbox js-personal-checkbox">
+                                                <input type="checkbox" class="checkbox__control"
+                                                       name="question__personal" checked>
+                                                <span class="checkbox__state"></span>
+                                                <span
+                                                        class="checkbox__label">Даю согласие на обработку <br> {{ Button.button({ 'href': '#', 'title': 'персональных данных', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}</span>
+                                            </label>
+                                            {{ Button.button({ 'title': 'Отправить', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="step-form__item js-step js-sms-step js-send-form" data-send-url="http://localhost/rplpost">
+                                        {% include "../components/modules/sms-code-form/sms-code-form.njk" %}
+                                    </div>
+
+                                    <div class="step-form__item js-step">
+                                        {{ Heading.heading({ 'title': 'Личная информация' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
+                                        {% include "../components/modules/form-personal-info/form-personal-info2.njk" %}
+                                        {% include "../components/modules/form-passport/form-passport2.njk" %}
+                                        {% include "../components/modules/form-place/form-place.njk" %}
+                                        <div class="form__agreements">
+                                            {{ Button.button({ 'title': 'Назад', 'type': 'button', 'mods': {'theme': 'default', 'view': 'text', 'type': 'before-arrow'}, 'class': 'form__submit-button js-step-backward' }) }}
+                                            {{ Button.button({ 'title': 'Далее', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
+                                        </div>
+                                    </div>
+
+
+                                </form>
+                            </div>
+                            <div class="calculation">
+                                <img src="assets/images/card_bks_platinum.png" class="calculation__image" alt="БКС Банк">
+                                <div class="text calculation__text">2 дополнительные карты Visa Platinum бесплатно</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="section page__section">
+                <div class="page__container page__container_landing">
+                    <div class="text text_theme-gray mt-82 mb-82">
+                        Ознакомиться с подробной информации об акции, ее правилах, сроках и участниках можно на сайте bcs-bank.com
+                    </div>
+                </div>
+            </footer>
+
+
+        </main>
+
+    </div>
+{% endblock %}
