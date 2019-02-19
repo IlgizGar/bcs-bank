@@ -36,6 +36,9 @@
                                 {{ Heading.heading({ 'tag': 'h1', 'title': '#Порадарить', 'mods': { 'type': 'large' } }) }}
                                 <div class="products-detail__content_description">
                                     23 дня по 8%
+                                    <span>
+                                        Получайте дополнительные бонусы за покупки в праздничных категориях
+                                    </span>
                                 </div>
                             </div>
                             <div class="products-detail__figure" data-illustration="">
@@ -50,7 +53,7 @@
                         <div class="section__nav products-detail__nav">
                             <div class="page__container page__container_landing">
                                 <div class="section__wrap">
-                                    {{ Button.button({ 'title': 'Узнать больше', 'mods': { 'theme': 'white' }, 'class': '', attr: {'scroll': '#section-request'} }) }}
+                                    {{ Button.button({ 'title': 'Узнать больше', 'mods': { 'theme': 'white' }, 'class': 'landing-gift__button', attr: {'scroll': '#section-request'} }) }}
                                 </div>
                             </div>
                         </div>
@@ -61,7 +64,7 @@
 
             <section class="section page__section page__section_landing">
                 <div class="page__container page__container_landing">
-                    {{ Heading.heading({ 'title': '#Порадарить подарки с максимальной выгодой!', 'mods': { 'type': 'default' }, 'class': 'heading_mobile-centered' }) }}
+                    {{ Heading.heading({ 'title': 'Подарки с максимальной выгодой!', 'mods': { 'type': 'default' }, 'class': 'heading_mobile-centered' }) }}
                     <div class="text text_large">
                         Участвуйте в праздничной акции #порадарить. Покупайте подарки родным и близким к 23 февраля и 8
                         марта,<br> вам мы подарим дополнительные бонусы.
@@ -96,36 +99,68 @@
                 <div class="page__container page__container_landing">
                     <div class="hr"></div>
                 </div>
-                <div class="page__container page__container_landing">
-                    <div class="section__row">
-                        <div class="mobile__content">
+                <div class="landing-gift__info-lg">
+                    <div class="page__container page__container_landing">
+                        <div class="section__row">
+                            <div class="mobile__content">
 
 
-                            <h2 class="heading   heading_theme-dark heading_type-default">
-                                <span>Как участвовать?</span>
-                            </h2>
+                                <h2 class="heading   heading_theme-dark heading_type-default">
+                                    <span>Как участвовать?</span>
+                                </h2>
 
-                            <div class="section__text section__text_large section__text_theme-normal section__text_theme-dark">
-                                <p>1. Совершайте любые покупки по карте БКС Банка на общую сумму <strong>от 30 000 рублей</strong> в период <strong>с 16 февраля по 10 марта 2019 г</strong>.</p>
-                                <p>2. Получите дополнительные <strong>8% бонусами от стоимости</strong> покупок в праздничных категориях.</p>
-                                <p>3. Еще нет карты БКС Банка? Если вы уже клиент – закажите карту в интернет-банке <a href="#">БКС Онлайн</a> или мобильном приложении. Хотите стать клиентом БКС Банка – оформите карту на сайте Банка.</p>
-                            </div>
-                            <div class="mobile__vendors">
+                                <div class="section__text section__text_large section__text_theme-normal section__text_theme-dark">
+                                    <p>1. Совершайте любые покупки по карте БКС Банка на общую сумму <strong>от 30 000 рублей</strong> в период <strong>с 16 февраля по 10 марта 2019 г</strong>.</p>
+                                    <p>2. Получите дополнительные <strong>8% бонусами от стоимости</strong> покупок в праздничных категориях.</p>
+                                    <p>3. Еще нет карты БКС Банка? Если вы уже клиент – закажите карту в интернет-банке <a href="#">БКС Онлайн</a> или мобильном приложении. Хотите стать клиентом БКС Банка – оформите карту на сайте Банка.</p>
+                                </div>
+                                <div class="mobile__vendors">
 
 
-                                <a class="button  button_theme-default section__header-button js-button" data-scroll="#section-request" href="/business/ibank#section-request">
+                                    <a class="button  button_theme-default section__header-button js-button" data-scroll="#section-request" href="/business/ibank#section-request">
                                     <span class="button__wrap">
                                         <span class="button__title js-button-title">Оформить карту</span>
                                     </span>
-                                </a>
+                                    </a>
 
+                                </div>
                             </div>
-                        </div>
-                        <div class="mobile__figure">
-                            <img class="illustration" src="/assets/illustrations/LandingGiftBanner.svg" alt="Легкий интернет банк">
+                            <div class="mobile__figure">
+                                <img class="illustration" src="/assets/illustrations/LandingGiftBanner.svg" alt="Легкий интернет банк">
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="landing-gift__info-xs">
+
+                    <div class="page__container page__container_landing">
+                        {{ Heading.heading({ 'title': 'Как участвовать?', 'mods': { 'type': 'default' }, 'class': 'heading_mobile-centered' }) }}
+                    </div>
+                    {{ BrandFeatures.brandFeatures({ 'items': [
+                        {
+                            'icon': 'assets/images/svg/card-image.svg',
+                            'title': 'Пользуйтесь картой',
+                            'subtitle': 'Совершайте любые покупки по карте БКС Банка на общую сумму от 30 000 рублей в период с 16 февраля по 10 марта 2019 г.',
+                            'mods': {
+                        }
+                        },
+                        {
+                            'icon': 'assets/images/svg/gift-image.svg',
+                            'title': 'Получайте больше бонусов',
+                            'subtitle': 'Начислим дополнительные 8% бонусами от стоимости покупок в праздничных категориях.',
+                            'mods': {
+                        }
+                        },
+                        {
+                            'icon': 'assets/images/svg/list-image.svg',
+                            'title': 'Оформите карту',
+                            'subtitle': 'Если вы уже клиент – закажите карту в интернет-банке БКС Онлайн или мобильном приложении. Хотите стать клиентом БКС Банка – заполните заявку на сайте.'
+                        }
+                    ], "landing": "true" }) }}
+
+
+                </div>
+
             </section>
 
             <section id="section-request" class="section section_theme-white-smoke section_padding-default page__section">

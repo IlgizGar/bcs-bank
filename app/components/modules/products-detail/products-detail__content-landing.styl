@@ -5,26 +5,34 @@
     display flex
     flex-direction column
     justify-content center
+    .products-detail__content_description
+      span
+        display none
+        font-size 12px
+        line-height 20px
+        font-weight normal
     @media (min-width: 1280px)
       min-height 600px
     @media (min-width: 992px) and (max-width: 1279px)
       min-height 600px
     @media (min-width: 768px) and (max-width: 991px)
-      min-height 100vh
+      min-height 600px
     @media (max-width: 767px)
-      min-height 100vh
+      min-height auto
       .products-detail__content_description
-        text-align center
-        font-size: 4.5vw
+        font-size: 16px
+        font-weight: 700
+        margin-top 13px
+        span
+          display inline-block
     .heading
       font-size 76px
       @media (max-width 1279px)
         font-size: 32px
         line-height: 40px
       @media (max-width: 767px)
-        font-size: 8.5vw
+        ffont-size: 32px
         line-height: normal
-        text-align center
     .products-detail__figure
       @media (max-width: 1024px)
         width: calc(100% - 40px)
@@ -35,9 +43,17 @@
         top: auto
         .illustration-image
           min-width 1024px
+  .landing-gift__button
+      @media (max-width: 767px)
+        width calc(100% - 32px)
+        margin 40px auto
+        margin-top 34px
 
 .illustration-image_landing-gift
   min-width 104%
 
+
 .illustration_landing-gift
   top: auto!important
+  @media (max-width: 767px)
+    height 133px!important
