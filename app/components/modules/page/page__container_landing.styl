@@ -5,14 +5,20 @@
       background $gainsboro
       height 1px
       margin-bottom 77px
+      @media (max-width: 767px)
+        margin-bottom 35px
     .heading
       &.heading_type-default
-        font-size 38px
+        font-size 32px
         margin-bottom 26px
     .text.text_large
       font-size 23px
       line-height 32px
       margin-bottom 94px
+      @media (max-width: 767px)
+        font-size 16px
+        line-height 24px
+        margin-bottom 45px
 
     .brand-features
 
@@ -22,6 +28,10 @@
           font-size 23px
           line-height 32px
           margin-bottom 94px
+          @media (max-width: 767px)
+            font-size 16px
+            line-height 24px
+            margin-bottom 0
       &__icon > .image
           width 107px
           height 107px
@@ -29,10 +39,30 @@
           margin-top 40px
           font-size 32px
           margin-bottom 29px
+          @media (max-width: 767px)
+            font-size 16px
+            margin-bottom 14px
+            margin-top: 29px
     .section__text.section__text_large
       margin-top 35px
       p
         font-size 20px
         margin-bottom 28px
+        @media (max-width: 767px)
+          font-size 16px
+          line-height 24px
         strong
           font-weight bold
+
+    .carousel-controls
+      @media (max-width: 767px)
+        margin-top 18px
+
+
+.landing-gift__info-lg
+  @media (max-width: 767px)
+    display none
+.landing-gift__info-xs
+  display none
+  @media (max-width: 767px)
+    display block
