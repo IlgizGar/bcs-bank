@@ -18,6 +18,8 @@
 {% import "../components/library/dropdown/dropdown.njk" as Dropdown %}
 {% import "../components/library/docs/docs.njk" as Docs %}
 {% import "../components/icon/icon.njk" as Icon %}
+{% import "../components/library/contact/contact.njk" as Contact %}
+{% import "../components/library/socials/socials.njk" as Socials %}
 
 {% block body %}
     <div class="page js-page">
@@ -137,7 +139,7 @@
                                     Шаг <span class="js-step-informer">1</span> из <span class="js-step-informer-all">4</span>
                                 </div>
                                 {{ Heading.heading({ 'title': 'Общая информация', 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
-                                <form action="/rplpost">
+                                <form action="http://localhost/rplpost/index.php">
                                     <div class="step-form__item js-step js-send-form" data-send-url="http://localhost/rplpost">
                                         <fieldset>
                                             {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': 'js-fio-masked', 'maxlength': '64', 'name': 'bid_user-name', 'required': 'true' } }) }}
@@ -198,4 +200,24 @@
         </main>
 
     </div>
+
+    <div class="modal products-submit-success js-products-success">
+        {{ Heading.heading({ 'title': 'Заявка отправлена', 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+        <p class="text mt-16">Вам ответят в ближайшее время</p>
+        {{ Contact.contact({ 'title': 'По срочным вопросам можно позвонить',
+            'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500 70 65', 'href': '+78005007065' }, { 'name': 'Если вы звоните из-за рубежа', 'value': '+7 (495) 967 11 11', 'href': '+74959671111' }],
+            'class': 'js-contact mt-40' }) }}
+        {{ Heading.heading({ 'title': 'Присоединяйтесь к нам в социальных сетях', 'class': 'mt-56' }) }}
+        {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'class': 'mt-32'}) }}
+    </div>
+    <div class="modal products-submit-error js-products-error">
+        {{ Heading.heading({ 'title': 'Сообщение не отправлено', 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+        <p class="text mt-16">К сожалению, что-то пошло не так. Попробуйте повторить запрос позже.</p>
+        {{ Contact.contact({ 'title': 'По срочным вопросам можно позвонить',
+            'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500 70 65', 'href': '+78005007065' }, { 'name': 'Если вы звоните из-за рубежа', 'value': '+7 (495) 967 11 11', 'href': '+74959671111' }],
+            'class': 'js-contact mt-40' }) }}
+        {{ Heading.heading({ 'title': 'Присоединяйтесь к нам в социальных сетях', 'class': 'mt-56' }) }}
+        {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'class': 'mt-32'}) }}
+    </div>
+
 {% endblock %}
