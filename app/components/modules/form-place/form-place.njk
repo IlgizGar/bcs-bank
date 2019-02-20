@@ -14,6 +14,7 @@
             {{ Input.input({ 'label': 'Дата регистрации', 'class': 'form__field-group', 'field': {'class': 'js-date js-default-date', 'name': 'registr_date', 'required': 'true' } }) }}
         </div>
         {{ Input.input({ 'label': 'Адрес', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': 'js-kladr-inline-input', 'name': 'address', 'required': 'true' } }) }}
+        <input type="hidden" data-adress-input="address" name="flatNum" value="">
     </fieldset>
     <fieldset>
         <div class="form__title-short">Адрес фактического места жительства</div>
@@ -25,6 +26,7 @@
             </label>
         </div>
         <div class="js-place-to-live">
+            <input type="hidden" data-adress-input="address2" name="flatNum" value="">
             {{ Input.input({ 'label': 'Адрес', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': 'js-kladr-inline-input', 'name': 'address2', 'required': 'true' } }) }}
             {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Основание для проживания', 'name': 'bid_select-registr-osn', 'items': [{'title': 'тип1', 'value': '12345'}, {'title': 'тип2', 'value': '13456'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'reg-os-select-list'}, 'field': 'js-reg-os-select' }) }}
         </div>

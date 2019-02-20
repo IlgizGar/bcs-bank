@@ -11,7 +11,7 @@
         <div class="form__title-short">Адрес постоянной регистрации</div>
         <div class="form__line-group">
             {{ Input.input({ 'label': 'Адрес', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': 'js-kladr-inline-input', 'name': 'address', 'required': 'true' } }) }}
-            {{ Input.input({ 'label': 'Квартира', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': '', 'name': 'address_flat'} }) }}
+            {{ Input.input({ 'label': 'Квартира', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': '', 'name': 'address_flat'}, "attr": {"adress-input":"address"}  }) }}
         </div>
 
     </fieldset>
@@ -27,7 +27,7 @@
         <div class="js-place-to-live">
             <div class="form__line-group">
             {{ Input.input({ 'label': 'Адрес', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': 'js-kladr-inline-input', 'name': 'address_fact', 'required': 'true' } }) }}
-            {{ Input.input({ 'label': 'Квартира', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': '', 'name': 'address_flat_fact' } }) }}
+            {{ Input.input({ 'label': 'Квартира', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': '', 'name': 'address_flat_fact' } , "attr": {"adress-input":"address_fact"} }) }}
             </div>
         </div>
     </fieldset>
