@@ -310,31 +310,43 @@ module.exports = (form) => {
       let errorMessage = '';
       let valid = true;
 
-      $('.js-kladr-inline-input')
-        .suggestions({
-          serviceUrl: 'https://api.bcs.ru/kladr/v3',
-          token: '574fec4e42aa48a2ac22841a3f6def1d',
-          type: 'ADDRESS',
-          autoSelectFirst: true,
-          hint: false,
-          mobileWidth: 420,
-          geoLocation: true,
-          onSelect: (suggestion) => {
-            valid = true;
-            if (!suggestion.data.city && !suggestion.data.settlement) {
-              errorMessage = 'Введите название населенного пункта';
-              valid = false;
-            } else if (!suggestion.data.settlement && !suggestion.data.street) {
-              errorMessage = 'Необходимо указать улицу';
-              valid = false;
-            } else if (!suggestion.data.house) {
-              errorMessage = 'Нужно указать номер дома';
-              valid = false;
-            } else {
-              errorMessage = '';
-            }
-          },
-        });
+      $('.js-kladr-inline-input').each((index, element) => {
+        let flatInput = $(`[data-adress-input="${$(element).attr('name')}"]`);
+        if (flatInput.find('.js-input-field').length) {
+          flatInput = flatInput.find('.js-input-field');
+        }
+        console.log(flatInput);
+        $(element)
+          .suggestions({
+            serviceUrl: 'https://api.bcs.ru/kladr/v3',
+            token: '574fec4e42aa48a2ac22841a3f6def1d',
+            type: 'ADDRESS',
+            autoSelectFirst: true,
+            hint: false,
+            mobileWidth: 420,
+            geoLocation: true,
+            onSelect: (suggestion) => {
+              valid = true;
+              if (!suggestion.data.city && !suggestion.data.settlement) {
+                errorMessage = 'Введите название населенного пункта';
+                valid = false;
+              } else if (!suggestion.data.settlement && !suggestion.data.street) {
+                errorMessage = 'Необходимо указать улицу';
+                valid = false;
+              } else if (!suggestion.data.house) {
+                errorMessage = 'Нужно указать номер дома';
+                valid = false;
+              } else {
+                errorMessage = '';
+              }
+              if (suggestion.data.flat) {
+                flatInput.val(suggestion.data.flat);
+                flatInput.trigger('keyup');
+              }
+            },
+          });
+      });
+
 
       $.validator.addMethod('checkAddress', () => {
         $.validator.messages.checkAddress = errorMessage;
