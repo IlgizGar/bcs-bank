@@ -11,7 +11,53 @@
   <link href="{{ root }}/assets/styles/app.min.css" rel="stylesheet">
 </head>
 <body>
+<script type="text/javascript">
+  document.body.classList.add('state_load-start');
+</script>
   {% block body %}{% endblock %}
   <script src="{{ root }}/assets/scripts/app.min.js"></script>
+<script type="text/javascript">
+  function whichTransitionEvent(){
+    var t, el = document.createElement("div");
+    var transitions = [
+      {
+        name: 'transition',
+        event: 'transitionend'
+      },
+      {
+        name: 'OTransition',
+        event: 'oTransitionEnd'
+      },
+      {
+        name: 'MozTransition',
+        event: 'transitionend'
+      },
+      {
+        name: 'WebkitTransition',
+        event: 'webkitTransitionEnd'
+      },
+    ];
+    for (var i=0 ; i<transitions.length; i++){
+      t = transitions[i];
+      console.log(t);
+      if (el.style[t.name] !== undefined){
+        return t.event
+      }
+    }
+  }
+  var transitionEvent = whichTransitionEvent();
+
+  window.addEventListener('load',function () {
+    document.body.classList.remove('state_load-start');
+    document.body.classList.add('state_load-end');
+    document.body.querySelector('.js-page').addEventListener(transitionEvent , function (e) {
+      if(e.target === document.body.querySelector('.js-page')){
+        console.log(transitionEvent);
+        document.body.classList.remove('state_load-end');
+        document.body.classList.add('state_animations-start');
+      }
+    },false);
+  },false);
+</script>
 </body>
 </html>

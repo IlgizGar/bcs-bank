@@ -44,11 +44,15 @@ module.exports = (elem) => {
       global.tabs = [];
       switch (this.id) {
         case 'index-header':
-          this.carousel.on('beforeChange', (event, slick, prevSlide, currentSlide) => {
-            const url = $(slick.$slides[currentSlide]).find('[data-href]').data('href');
-            const el = $(slick.$slides[currentSlide]).find('[data-scroll-id]').data('scroll-id');
+          this.carousel.on('beforeChange', (event, slick, currentSlide, nextSlide) => {
+            const url = $(slick.$slides[nextSlide]).find('[data-href]').data('href');
+            const el = $(slick.$slides[nextSlide]).find('[data-scroll-id]').data('scroll-id');
             const $redirectScroll = $('.js-redirect-scroll');
             const $redirectUrl = $('.js-redirect-url');
+            $(slick.$slides[currentSlide]).removeClass('state_animate');
+            $(slick.$slides[nextSlide]).addClass('state_init');
+            $(slick.$slides[nextSlide]).addClass('state_animate');
+
 
             if (url !== undefined) {
               $redirectUrl.attr('href', url);
@@ -58,12 +62,19 @@ module.exports = (elem) => {
             }
           });
 
+          this.carousel.on('init', (event, slick) => {
+            $(slick.$slides[0]).addClass('state_animate');
+          });
+
           this.carousel.not('.slick-initialized').slick({
             autoplay: true,
             autoplaySpeed: 12000,
+            speed: 800,
             appendArrows: $('.js-index-carousel-controls'),
             nextArrow: this.next,
             prevArrow: this.prev,
+            fade: true,
+            cssEase: 'linear',
           });
           break;
         case 'advice-filtered':

@@ -1,0 +1,121 @@
+.state_load-start
+  background $royal_blue
+  .page
+    opacity 0
+    transition none
+.state_load-end
+  background $royal_blue
+  &:before,&:after
+    content ''
+    position fixed
+    background $color_light
+    left 0
+    width 100%
+    z-index 1
+  &:before
+    height 57px
+    top: 0
+    animation upShow 0.8s ease-out
+  &:after
+    height calc(100vh - 670px)
+    bottom: 0
+    animation downShow 0.8s ease-out
+  .page
+    background $color_light
+    transition opacity 0.8s ease-out
+    transition-delay 0.8s
+    position relative
+    z-index 2
+  .section__header-controls,.carousel__progressbar,.index-products,.menubar,.heading,.illustration,.index-carousel__features
+    opacity 0
+
+
+body
+  &.state_animations-start
+    .menubar
+      animation menubarShow 1s ease-out
+      opacity 1
+    .section__header-controls,.carousel__progressbar,.index-products
+      animation headerControlsShow 1s ease-out
+      opacity 1
+    .slick-slide
+        .heading,.illustration
+          opacity 0
+          animation slideHeadingHide 1s ease-out
+        .index-carousel__features
+          opacity 0
+          animation slideFeaturesHide 1s ease-out
+        &.state_animate
+          .heading,.illustration
+              animation slideHeadingShow 1s ease-out forwards
+          .index-carousel__features
+              animation slideFeaturesShow 1s ease-out forwards
+          &.state_init
+            .heading,.illustration
+              animation-delay  1s
+            .index-carousel__features
+              animation-delay  1s
+
+
+
+
+@keyframes upShow
+  from
+    transform translateY(-58px)
+  to
+    transform translateY(0)
+
+@keyframes downShow
+  from
+    transform translateY(calc(100vh - 671px))
+  to
+    transform translateY(0)
+
+@keyframes menubarShow
+  from
+    transform translateY(-28px)
+    opacity 0
+  to
+    transform translateY(0)
+    opacity 1
+
+@keyframes headerControlsShow
+  from
+    transform translateY(28px)
+    opacity 0
+  to
+    transform translateY(0)
+    opacity 1
+
+@keyframes slideHeadingShow
+  from
+    transform translateY(-28px)
+    opacity 0
+  to
+    transform translateY(0)
+    opacity 1
+
+@keyframes slideFeaturesShow
+  from
+    transform translateY(28px)
+    opacity 0
+  to
+    transform translateY(0)
+    opacity 1
+
+@keyframes slideHeadingHide
+  from
+    transform translateY(0)
+    opacity 1
+  to
+    transform translateY(-28px)
+    opacity 0
+
+@keyframes slideFeaturesHide
+  from
+    transform translateY(0)
+    opacity 1
+  to
+    transform translateY(28px)
+    opacity 0
+
