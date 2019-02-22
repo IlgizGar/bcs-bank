@@ -35,6 +35,7 @@ import InfoShow from '../components/library/info-show/infoShow';
 import Filter from '../components/modules/filter/filter';
 import Animations from '../components/modules/animations/animations';
 import PartnerModalForm from '../components/modules/partners-modal/partners-modal';
+import Animator from '../components/modules/page-animations/animator';
 
 require('intersection-observer');
 
@@ -275,5 +276,11 @@ $(() => {
       .each((i, el) => {
         global.filters.push(PartnerModalForm(el));
       });
+  }
+
+  global.pageAnimators = [];
+
+  if ($('.js-scroll-animate').length) {
+    global.pageAnimators.push(new Animator($('.js-scroll-animate')));
   }
 });
