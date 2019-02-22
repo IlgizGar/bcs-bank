@@ -19,7 +19,8 @@
   &:after
     height calc(100vh - 670px)
     bottom: 0
-    animation downShow 0.8s ease-out
+    animation downShow 0.8s ease-out forwards
+    transform translateY(101%)
   .page
     background $color_light
     transition opacity 0.8s ease-out
@@ -32,6 +33,7 @@
 
 body
   &.state_animations-start
+    background $color_light
     .menubar
       animation menubarShow 1s ease-out
       opacity 1
@@ -146,7 +148,7 @@ body
 
 @keyframes downShow
   from
-    transform translateY(calc(100vh - 671px))
+    transform translateY(101%)
   to
     transform translateY(0)
 

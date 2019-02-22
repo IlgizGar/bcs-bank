@@ -43,9 +43,6 @@ export default class Animator {
         dataItem.obserber.observe(dataItem.element);
       };
       observe();
-      setTimeout(() => {
-        $(dataItem.element).removeClass('state_animate-page');
-      }, 200);
     });
   }
 }
