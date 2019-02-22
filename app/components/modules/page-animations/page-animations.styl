@@ -16,11 +16,19 @@
     height 57px
     top: 0
     animation upShow 0.8s ease-out
+    @media (max-width: 1279px)
+      height 114px
+    @media (max-width: 767px)
+      height 104px
   &:after
     height calc(100vh - 670px)
     bottom: 0
     animation downShow 0.8s ease-out forwards
     transform translateY(101%)
+    @media (max-width: 1279px)
+      height calc(100vh - 552px)
+    @media (max-width: 767px)
+      height calc(100vh - 608px)
   .page
     background $color_light
     transition opacity 0.8s ease-out
@@ -142,7 +150,7 @@ body
 
 @keyframes upShow
   from
-    transform translateY(-58px)
+    transform translateY(-101%)
   to
     transform translateY(0)
 
