@@ -39,7 +39,6 @@
     ];
     for (var i=0 ; i<transitions.length; i++){
       t = transitions[i];
-      console.log(t);
       if (el.style[t.name] !== undefined){
         return t.event
       }
@@ -52,7 +51,6 @@
     document.body.classList.add('state_load-end');
     document.body.querySelector('.js-page').addEventListener(transitionEvent , function (e) {
       if(e.target === document.body.querySelector('.js-page')){
-        console.log(transitionEvent);
         document.body.classList.remove('state_load-end');
         document.body.classList.add('state_animations-start');
       }
