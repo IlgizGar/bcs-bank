@@ -43,7 +43,7 @@ export default class Animator {
         dataItem.obserber.observe(dataItem.element);
       };
       observe();
-      if ($(dataItem.element).offset().top + $(dataItem.element).height() > (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight)) {
+      if ($(dataItem.element).offset().top + ($(dataItem.element).height() / 2) > (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight)) {
         setTimeout(() => {
           $(dataItem.element).removeClass('state_animate-page');
         }, 200);
