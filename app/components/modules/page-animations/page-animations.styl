@@ -35,12 +35,17 @@
     transition-delay 0.8s
     position relative
     z-index 2
-  .section__header-controls,.carousel__progressbar,.index-products,.menubar,.heading,.illustration,.index-carousel__features
+  .section__header-controls,.carousel__progressbar,.index-products,.menubar,.heading,.illustration,.index-carousel__features,.features,.breadcrumbs,.brand-features__item
     opacity 0
 
 
 body
   &.state_animations-start
+    .mobile .mobile__figure
+      @media (min-width: 1280px)
+        size(6.9)
+      @media (min-width: 992px) and (max-width: 1279px)
+        size(4.9)
     background $color_light
     .menubar
       animation menubarShow 1s ease-out
@@ -48,17 +53,17 @@ body
     .section__header-controls,.carousel__progressbar,.index-products
       animation headerControlsShow 1s ease-out
       opacity 1
-    .slick-slide
-        .heading,.illustration
+    .slick-slide,.products-detail__content,.products-detail__figure
+        .heading,.illustration,.breadcrumbs
           opacity 0
           animation slideHeadingHide 1s ease-out
-        .index-carousel__features
+        .index-carousel__features,.features
           opacity 0
           animation slideFeaturesHide 1s ease-out
-        &.state_animate
-          .heading,.illustration
+        &.state_animate,&.state_animate-page
+          .heading,.illustration,.breadcrumbs
               animation slideHeadingShow 1s ease-out forwards
-          .index-carousel__features
+          .index-carousel__features,.features
               animation slideFeaturesShow 1s ease-out forwards
           &.state_init
             .heading,.illustration
@@ -98,17 +103,22 @@ body
             transform scale(1,1)
             opacity 0
             transition all 0.3s ease-out
-      .mobile__figure,.company__figure
+      .mobile__figure,.company__figure,&.transfer-iframe,&.brand-features__props,.brand-features__item,.calculation
         transform translateY(28px)
         opacity 0
         transition all 0.8s ease-out
-      .heading,.section__text,.section__heading .button
+      .brand-features__item
+        &:nth-child(2)
+          transition-delay 0.3s
+        &:nth-child(3)
+          transition-delay 0.3s
+      .heading,.section__text,.page__container>.text,.form__steps,.section__heading .button
         transform translateX(-28px)
         opacity 0
         transition all 0.8s ease-out
-      .section__text
+      .section__text,.page__container>.text,.form__steps
         transition-delay 0.3s
-      &.services,&.advices,&.company
+      &:not(.index-products)
         .card,.section__element
           transform translateY(28px)
           opacity 0
@@ -130,13 +140,13 @@ body
       .card__figure
         opacity 1
         transform translateY(0);
-      .mobile__figure,.company__figure
+      .mobile__figure,.company__figure,&.transfer-iframe,&.brand-features__props,.brand-features__item,.calculation
           transform translateY(0)
           opacity 1
-      .heading,.section__text,.section__heading .button
+      .heading,.section__text,.page__container>.text,.form__steps,.section__heading .button
         transform translateX(0)
         opacity 1
-      &.services,&.advices,&.company
+      &:not(.index-products)
         .card,.section__element
           transform translateY(0)
           opacity 1

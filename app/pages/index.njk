@@ -142,14 +142,14 @@
           </div>
         </div>
       </section>
-      <section class="services section page__section page__section_theme-large js-scroll-animate">
+      <section class="services section page__section page__section_theme-large">
         <div class="page__container">
-          <div class="section__heading">
+          <div class="section__heading js-scroll-animate">
             {{ Heading.heading({ 'title': 'Полезные сервисы', 'mods': { 'type': 'default', 'margin': 'none', 'theme': 'default' } }) }}
             {{ Button.button({ 'href': '#', 'title': 'Все сервисы', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
           </div>
           <div class="section__row">
-            <div class="services__carousel carousel carousel_type-mobile">
+            <div class="services__carousel carousel carousel_type-mobile js-scroll-animate">
               <div class="js-carousel carousel__content" data-id="index-services" data-breakpoint="992">
                 {{ Card.card({ 'block': 'modules/services/fix-course', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Зафиксировать курс', 'class': 'section__element services__card', 'action': 'https://valuta.bcs-bank.com/', 'attr': {'form': 'fix-course', 'api-url': 'https://beta.bcs-bank.com/get_xchng_update '} }) }}
                 {{ Card.card({ 'block': 'modules/services/exchange', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Обменять валюту', 'class': 'section__element services__card', 'attr': {'api-url': 'https://beta.bcs-bank.com/get_courses_update'}  }) }}
@@ -167,7 +167,7 @@
           </div>
         </div>
       </section>
-      <iframe class="transfer-iframe" src="https://pay.best2pay.net/webapi/P2PTransfer?sector=1480&code=643"></iframe>
+      <iframe class="transfer-iframe js-scroll-animate" src="https://pay.best2pay.net/webapi/P2PTransfer?sector=1480&code=643"></iframe>
       <section class="advices section page__section page__section_theme-large js-scroll-animate">
         <div class="page__container">
           <div class="section__heading">

@@ -4,6 +4,7 @@ import 'core-js/es6/symbol';
 
 import $ from 'jquery';
 
+import sticky from 'stickyfilljs';
 import svg4everybody from 'svg4everybody';
 import Header from '../components/modules/header/header';
 import Footer from '../components/modules/footer/footer';
@@ -282,5 +283,11 @@ $(() => {
 
   if ($('.js-scroll-animate').length) {
     global.pageAnimators.push(new Animator($('.js-scroll-animate')));
+  }
+
+  if ($('.js-sticky').length) {
+    $('.js-sticky').each((index, el) => {
+      sticky.add(el);
+    });
   }
 });

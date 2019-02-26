@@ -5,7 +5,7 @@
 
     {% set class_sep = joiner(' ') %}
 
-    <div class="brand-features {{ options.class }}">
+    <div class="brand-features {{ options.class }} js-scroll-animate">
         <div class="page__container brand-features__carousel carousel carousel_type-mobile {% if options.landing  %} page__container_landing {% endif %}">
             <div class="section__row js-carousel" data-id="product-cards" data-breakpoint="992">
                 {% for item in options.items %}
@@ -24,7 +24,7 @@
                         <p class="brand-features__title">{{ item.title | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | replace("#euro", Icon.icon({ 'name': 'euro' })) | replace("#pound", Icon.icon({ 'name': 'pound' })) | replace("#dollar", Icon.icon({ 'name': 'baks' })) | safe }}</p>
                         <p class="text">{{ item.subtitle | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | replace("#euro", Icon.icon({ 'name': 'euro' })) | replace("#pound", Icon.icon({ 'name': 'pound' })) | replace("#dollar", Icon.icon({ 'name': 'baks' })) | safe }}</p>
                         {% if item.props %}
-                            <div class="brand-features__props">
+                            <div class="brand-features__props js-scroll-animate">
                                 {% for key, value in item.props %}
                                     <p class="state_{{ key }}">{{ value | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | replace("#euro", Icon.icon({ 'name': 'euro' })) | replace("#pound", Icon.icon({ 'name': 'pound' })) | replace("#dollar", Icon.icon({ 'name': 'baks' })) | safe }}</p>
                                 {% endfor %}
