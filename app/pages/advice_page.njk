@@ -4,6 +4,7 @@
 {% set root = "." %}
 {% set title = "Советы" %}
 {% set header = 'blue' %}
+{% set bodyClass = 'index-page' %}
 
 {% import "../components/modules/menubar/menubar.njk" as Menubar %}
 {% import "../components/library/heading/heading.njk" as Heading %}
@@ -86,7 +87,7 @@
 
         </div>
       </section>
-      <section class="advices advices_view-group section page__section page__section_theme-large">
+      <section class="advices advices_view-group section page__section page__section_theme-large js-scroll-animate">
         <div class="page__container">
           <div class="section__row">
             {{ Advice.advice({ 'href': '#', 'title': 'Как экономить на путешествиях до 25%' | striptags(true) | escape | nl2br, 'subtitle': '21 марта 2018', 'img': 'assets/images/advice_page-1.png', 'class': 'section__element advice_size-big' }) }}
@@ -97,7 +98,7 @@
           </div>
         </div>
       </section>
-      <section class="section section_theme-blue page__section page__section_view-advice">
+      <section class="section section_theme-blue page__section page__section_view-advice js-scroll-animate">
         <div class="page__container">
             {{ Heading.heading({ 'title': 'Подборки', 'mods': { 'type': 'default', 'margin': 'normal', 'theme': 'light' }, 'class': 'hidden-mobile' }) }}
           <div class="section__row">
@@ -119,7 +120,7 @@
           </div>
         </div>
       </section>
-      <section class="advices advices_view-group section page__section page__section_theme-large">
+      <section class="advices advices_view-group section page__section page__section_theme-large js-scroll-animate">
         <div class="page__container">
           <div class="section__row">
               {{ Advice.advice({ 'href': '#', 'title': 'Как поужинать в любимом ресторане за счет банка' | striptags(true) | escape | nl2br, 'subtitle': '24 марта 2018', 'img': 'assets/images/advice_page-6.png', 'class': 'section__element advice_size-small' }) }}
@@ -131,7 +132,7 @@
           </div>
         </div>
       </section>
-      <section class="section section_theme-blue page__section page__section_view-advice">
+      <section class="section section_theme-blue page__section page__section_view-advice js-scroll-animate">
         <div class="page__container">
             {{ Heading.heading({ 'title': 'Подписка на советы от БКС', 'mods': { 'type': 'default', 'align':'centered', 'margin': 'normal', 'theme': 'light' }, 'class': 'hidden-mobile' }) }}
           <div class="section__row">

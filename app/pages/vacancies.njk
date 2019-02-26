@@ -40,7 +40,7 @@
               {{ Heading.heading({ 'tag': 'h1', 'title': 'Вакансии', 'mods': { 'type': 'default', 'margin': 'short', 'margin-top': 'normal', 'theme' : 'default' },
                                    'context': { 'title': 'Москве', 'attr': {'id': 'select-city'} } }) }}
               {% for vacancy in vacancies %}
-                {{ Card.card({ 'type': 'vacancy', 'view': 'lowercase', 'url': vacancy.url, 'title': vacancy.title | striptags(true) | escape | nl2br, 'subtitle': vacancy.subtitle, 'items': vacancy.items, 'attr': { 'city': vacancy.city } }) }}
+                {{ Card.card({ 'type': 'vacancy', "class":"js-scroll-animate" , 'view': 'lowercase', 'url': vacancy.url, 'title': vacancy.title | striptags(true) | escape | nl2br, 'subtitle': vacancy.subtitle, 'items': vacancy.items, 'attr': { 'city': vacancy.city } }) }}
               {% endfor %}
             </div>
 

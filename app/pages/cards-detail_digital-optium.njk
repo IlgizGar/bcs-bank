@@ -26,7 +26,7 @@
         <div class="section__header section__header_theme-blue">
           <div class="page__container">
             <div class="section__row">
-              <div class="products-detail__content products-detail__content_theme-simple">
+              <div class="products-detail__content products-detail__content_theme-simple js-scroll-animate">
                 {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Пакет услуг', 'link': '#' } }) }}
                 {{ Heading.heading({ 'tag': 'h1', 'title': 'Цифровой Оптимум', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
                 <div class="features">
@@ -54,7 +54,7 @@
 
       <div class="tabs js-tabs">
         <div id="about-card" class="tabs__item js-tab state_invisible">
-          <section class="section page__section">
+          <section class="section page__section js-scroll-animate">
             {{ BrandFeatures.brandFeatures({ 'items': [
               {
                 'icon': 'assets/images/svg/shield-image.svg',
@@ -88,7 +88,7 @@
             ] }) }}
           </section>
 
-          <section class="mobile mobile_theme-grey section page__section page__section_theme-large">
+          <section class="mobile mobile_theme-grey section page__section page__section_theme-large js-scroll-animate">
             <div class="page__container">
               <div class="mobile__wrapper">
                 <div class="section__row">
@@ -114,7 +114,7 @@
             </div>
           </section>
 
-          <section class="section page__section">
+          <section class="section page__section js-scroll-animate">
             <div class="page__container">
               {{ Heading.heading({ 'title': 'Как открыть пакет «Цифровой \n Оптимум» и пользоваться' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered hidden-mobile' }) }}
               {{ Heading.heading({ 'title': 'Как оформить заявку?', 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered hidden-desktop' }) }}
@@ -143,7 +143,7 @@
               }
             ] }) }}
           </section>
-          <section id="section-request" class="section section_theme-white-smoke section_padding-default page__section">
+          <section id="section-request" class="section section_theme-white-smoke section_padding-default page__section js-scroll-animate">
             <div class="products-detail__request">
               <div class="page__container">
                 {{ Heading.heading({ 'title': 'Заявка на пакет \n «Цифровой Оптимум»' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
