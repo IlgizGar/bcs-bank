@@ -5,30 +5,31 @@
     transition none
 .state_load-end
   background $royal_blue
-  &:before,&:after
-    content ''
-    position fixed
-    background $color_light
-    left 0
-    width 100%
-    z-index 1
-  &:before
-    height 57px
-    top: 0
-    animation upShow 0.8s ease-out
-    @media (max-width: 1279px)
-      height 114px
-    @media (max-width: 767px)
-      height 104px
-  &:after
-    height calc(100vh - 670px)
-    bottom: 0
-    animation downShow 0.8s ease-out forwards
-    transform translateY(101%)
-    @media (max-width: 1279px)
-      height calc(100vh - 552px)
-    @media (max-width: 767px)
-      height calc(100vh - 608px)
+  &.index-page
+    &:before,&:after
+      content ''
+      position fixed
+      background $color_light
+      left 0
+      width 100%
+      z-index 1
+    &:before
+      height 57px
+      top: 0
+      animation upShow 0.8s ease-out
+      @media (max-width: 1279px)
+        height 114px
+      @media (max-width: 767px)
+        height 104px
+    &:after
+      height calc(100vh - 670px)
+      bottom: 0
+      animation downShow 0.8s ease-out forwards
+      transform translateY(101%)
+      @media (max-width: 1279px)
+        height calc(100vh - 552px)
+      @media (max-width: 767px)
+        height calc(100vh - 608px)
   .page
     background $color_light
     transition opacity 0.8s ease-out
@@ -103,7 +104,7 @@ body
             transform scale(1,1)
             opacity 0
             transition all 0.3s ease-out
-      .mobile__figure,.company__figure,&.transfer-iframe,&.brand-features__props,.brand-features__item,.calculation
+      .mobile__figure,.company__figure,&.transfer-iframe,&.brand-features__props,.brand-features__item,.calculation,&.plastic-card
         transform translateY(28px)
         opacity 0
         transition all 0.8s ease-out
@@ -140,7 +141,7 @@ body
       .card__figure
         opacity 1
         transform translateY(0);
-      .mobile__figure,.company__figure,&.transfer-iframe,&.brand-features__props,.brand-features__item,.calculation
+      .mobile__figure,.company__figure,&.transfer-iframe,&.brand-features__props,.brand-features__item,.calculation,&.plastic-card
           transform translateY(0)
           opacity 1
       .heading,.section__text,.page__container>.text,.form__steps,.section__heading .button

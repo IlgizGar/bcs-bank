@@ -10,7 +10,7 @@
 
   <link href="{{ root }}/assets/styles/app.min.css" rel="stylesheet">
 </head>
-<body>
+<body  class="{{ bodyClass }}">
 <script type="text/javascript">
   document.body.classList.add('state_load-start');
 </script>
@@ -47,11 +47,12 @@
   var transitionEvent = whichTransitionEvent();
 
   window.addEventListener('load',function () {
+
     document.body.style.position = "fixed";
     document.body.style.overflow = "hidden";
     document.body.style.height = "100%";
     document.body.style.width = "100%";
-
+    document.body.style.overflowY = 'scroll';
     document.body.classList.remove('state_load-start');
     document.body.classList.add('state_load-end');
     document.body.querySelector('.js-page').addEventListener(transitionEvent , function (e) {
