@@ -315,7 +315,6 @@ module.exports = (form) => {
         if (flatInput.find('.js-input-field').length) {
           flatInput = flatInput.find('.js-input-field');
         }
-        console.log(flatInput);
         $(element)
           .suggestions({
             serviceUrl: 'https://api.bcs.ru/kladr/v3',
