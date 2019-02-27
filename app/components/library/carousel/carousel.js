@@ -44,22 +44,16 @@ module.exports = (elem) => {
       global.tabs = [];
       switch (this.id) {
         case 'index-header':
+          this.carousel.on('beforeChange', (event, slick, prevSlide, currentSlide) => {
+            Carousel.setButtonsUrls(event, slick, prevSlide, currentSlide);
+          });
           this.carousel.on('beforeChange', (event, slick, currentSlide, nextSlide) => {
-            const url = $(slick.$slides[nextSlide]).find('[data-href]').data('href');
-            const el = $(slick.$slides[nextSlide]).find('[data-scroll-id]').data('scroll-id');
-            const $redirectScroll = $('.js-redirect-scroll');
-            const $redirectUrl = $('.js-redirect-url');
             $(slick.$slides[currentSlide]).removeClass('state_animate');
             $(slick.$slides[nextSlide]).addClass('state_init');
             $(slick.$slides[nextSlide]).addClass('state_animate');
 
-
-            if (url !== undefined) {
-              $redirectUrl.attr('href', url);
-            }
-            if (url !== undefined && el !== undefined) {
-              $redirectScroll.attr('href', `${url}?${el}`);
-            }
+          this.carousel.on('init', (event, slick) => {
+            Carousel.setButtonsUrls(event, slick);
           });
 
           this.carousel.on('init', (event, slick) => {
@@ -149,6 +143,25 @@ module.exports = (elem) => {
         default:
           this.initMobileSlick(this.carousel.data('breakpoint') - 1);
           break;
+      }
+    }
+
+    static setButtonsUrls(event, slick, prevSlide, currentSlide) {
+      const slideNum = (currentSlide !== undefined) ? currentSlide : 0;
+
+      const url = $(slick.$slides[slideNum]).find('[data-href]').data('href');
+      const urlSecond = $(slick.$slides[slideNum]).find('[data-read-more-href]').data('read-more-href');
+      const el = $(slick.$slides[slideNum]).find('[data-scroll-id]').data('scroll-id');
+      const $redirectScroll = $('.js-redirect-scroll');
+      const $redirectUrl = $('.js-redirect-url');
+
+      if (url !== undefined) {
+        $redirectUrl.attr('href', url);
+      }
+      if (urlSecond !== undefined) {
+        $redirectScroll.attr('href', urlSecond);
+      } else if (url !== undefined && el !== undefined) {
+        $redirectScroll.attr('href', `${url}${el ? '?' : ''}${el}`);
       }
     }
 
