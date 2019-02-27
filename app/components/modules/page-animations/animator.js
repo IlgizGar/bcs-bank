@@ -30,6 +30,9 @@ export default class Animator {
         const check = entries[0];
         if (check.isIntersecting) {
           $(check.target).addClass('state_animate-page');
+          if (!$(check.target).hasClass('state_animate-double')) {
+            delete dataItem.obserber;
+          }
         }
         if (scroll > window.pageYOffset) {
           if ($(check.target).hasClass('state_animate-double')) {
