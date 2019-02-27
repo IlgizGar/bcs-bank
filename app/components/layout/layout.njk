@@ -44,10 +44,14 @@
       }
     }
   }
+  function startPageAnimation() {
+    document.body.removeAttribute('style');
+    document.body.classList.remove('state_load-end');
+    document.body.classList.add('state_animations-start');
+  }
   var transitionEvent = whichTransitionEvent();
-
   window.addEventListener('load',function () {
-
+    var timer = null;
     document.body.style.position = "fixed";
     document.body.style.overflow = "hidden";
     document.body.style.height = "100%";
@@ -57,11 +61,13 @@
     document.body.classList.add('state_load-end');
     document.body.querySelector('.js-page').addEventListener(transitionEvent , function (e) {
       if(e.target === document.body.querySelector('.js-page')){
-        document.body.removeAttribute('style');
-        document.body.classList.remove('state_load-end');
-        document.body.classList.add('state_animations-start');
+        startPageAnimation();
+        clearTimeout(timer);
       }
     },false);
+    timer = setTimeout(function () {
+      startPageAnimation();
+    }, 5000)
   },false);
 </script>
 </body>
