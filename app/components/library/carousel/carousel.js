@@ -44,19 +44,15 @@ module.exports = (elem) => {
       global.tabs = [];
       switch (this.id) {
         case 'index-header':
-          this.carousel.on('beforeChange', (event, slick, prevSlide, currentSlide) => {
-            Carousel.setButtonsUrls(event, slick, prevSlide, currentSlide);
-          });
           this.carousel.on('beforeChange', (event, slick, currentSlide, nextSlide) => {
+            Carousel.setButtonsUrls(event, slick, currentSlide, nextSlide);
             $(slick.$slides[currentSlide]).removeClass('state_animate');
             $(slick.$slides[nextSlide]).addClass('state_init');
             $(slick.$slides[nextSlide]).addClass('state_animate');
-
-          this.carousel.on('init', (event, slick) => {
-            Carousel.setButtonsUrls(event, slick);
           });
 
           this.carousel.on('init', (event, slick) => {
+            Carousel.setButtonsUrls(event, slick);
             $(slick.$slides[0]).addClass('state_animate');
           });
 
