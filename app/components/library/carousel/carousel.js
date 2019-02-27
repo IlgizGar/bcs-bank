@@ -45,17 +45,11 @@ module.exports = (elem) => {
       switch (this.id) {
         case 'index-header':
           this.carousel.on('beforeChange', (event, slick, prevSlide, currentSlide) => {
-            const url = $(slick.$slides[currentSlide]).find('[data-href]').data('href');
-            const el = $(slick.$slides[currentSlide]).find('[data-scroll-id]').data('scroll-id');
-            const $redirectScroll = $('.js-redirect-scroll');
-            const $redirectUrl = $('.js-redirect-url');
+            Carousel.setButtonsUrls(event, slick, prevSlide, currentSlide);
+          });
 
-            if (url !== undefined) {
-              $redirectUrl.attr('href', url);
-            }
-            if (url !== undefined && el !== undefined) {
-              $redirectScroll.attr('href', `${url}?${el}`);
-            }
+          this.carousel.on('init', (event, slick) => {
+            Carousel.setButtonsUrls(event, slick);
           });
 
           this.carousel.not('.slick-initialized').slick({
@@ -138,6 +132,25 @@ module.exports = (elem) => {
         default:
           this.initMobileSlick(this.carousel.data('breakpoint') - 1);
           break;
+      }
+    }
+
+    static setButtonsUrls(event, slick, prevSlide, currentSlide) {
+      const slideNum = (currentSlide !== undefined) ? currentSlide : 0;
+
+      const url = $(slick.$slides[slideNum]).find('[data-href]').data('href');
+      const urlSecond = $(slick.$slides[slideNum]).find('[data-read-more-href]').data('read-more-href');
+      const el = $(slick.$slides[slideNum]).find('[data-scroll-id]').data('scroll-id');
+      const $redirectScroll = $('.js-redirect-scroll');
+      const $redirectUrl = $('.js-redirect-url');
+
+      if (url !== undefined) {
+        $redirectUrl.attr('href', url);
+      }
+      if (urlSecond !== undefined) {
+        $redirectScroll.attr('href', urlSecond);
+      } else if (url !== undefined && el !== undefined) {
+        $redirectScroll.attr('href', `${url}${el ? '?' : ''}${el}`);
       }
     }
 
