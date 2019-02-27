@@ -102,7 +102,9 @@ module.exports = (elem) => {
             }
           }
         } else {
-          $('html, body').animate({ scrollTop: $(urlHash).offset().top }, 500);
+          setTimeout(() => {
+            $('html, body').animate({ scrollTop: $(urlHash).offset().top }, 500);
+          }, 3000);
         }
       }
     }
