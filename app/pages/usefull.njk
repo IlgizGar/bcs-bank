@@ -67,7 +67,7 @@
 
         </div>
       </section>
-      <section class="index-products section page__section">
+      <section class="index-products section page__section mb-56">
         <div class="page__container">
           <div class="section__row">
             <div class="index-products__list">
@@ -79,86 +79,135 @@
         </div>
       </section>
 
-      <section class="index-products section page__section">
-        <div class="page__container">
-          {{ Heading.heading({ 'title': 'Оплачивайте покупки в магазинах, \n на сайтах с Google и Apple Pay', 'mods': { 'type': 'default', 'margin': 'normal' } }) }}
-          <div class="section__nav-wrapper">
-            <div class="section__nav products-detail__nav">
-              <div class="page__container">
-                <div class="section__wrap">
-                  <div class="tabbar__scroll-wrapper tabbar__scroll-wrapper_with-more js-tab-scroll">
-                    {{ Tabbar.tabbar({ 'anchor': { 'theme': 'default-tab', 'view': 'upperscore' }, 'tabs': [{'title': 'В магазине', 'id': 'in-shop' }, {'title': 'В интернете', 'id': 'by-internet'}] }) }}
-                  </div>
-                </div>
-              </div>
+      <div class="js-section-tabs hide_mobile">
+        <section class="index-products section page__section mb-52">
+          <div class="page__container mb-10">
+            {{ Heading.heading({ 'title': 'Оплачивайте покупки в магазинах, \n на сайтах с Google и Apple Pay', 'mods': { 'type': 'default' } }) }}
+          </div>
+          <div class="page__container">
+            <div class="section-tabs__nav">
+              <ul class="section-tabs__nav-list">
+                <li data-tab-show="#shop" class="section-tabs__nav-item">
+                  В магазине
+                </li>
+                <li data-tab-show="#internet" class="section-tabs__nav-item">
+                  В интернете
+                </li>
+              </ul>
             </div>
           </div>
-        </div>
-      </section>
-
-
-
-      <div class="tabs js-tabs">
-        <div id="in-shop" class="tabs__item js-tab">
-          <section class="section page__section mb-64">
-            {{ BrandFeatures.brandFeatures({ 'items': [
-              {
-                'icon': 'assets/images/svg/sand-clock-image.svg',
-                'title': 'Разблокируйте ',
-                'subtitle': 'Разблокируйте экран телефона',
-                'mods': {
-                'theme': 'lined'
-              }
-              },
-              {
-                'icon': 'assets/images/svg/kopeiki-image.svg',
-                'title': 'Оплатите',
-                'subtitle': 'Поднесите устройство к терминалу',
-                'mods': {
-                'theme': 'lined'
-              }
-              },
-              {
-                'icon': 'assets/images/svg/crown-image.svg',
-                'title': 'Пользуйтесь',
-                'subtitle': 'Платеж успешно проведен!'
-              }
-            ] }) }}
-          </section>
-        </div>
-        <div id="by-internet" class="tabs__item js-tab state_invisible">
-          <section class="section page__section mb-64">
-            {{ BrandFeatures.brandFeatures({ 'items': [
-              {
-                'icon': 'assets/images/svg/sand-clock-image.svg',
-                'title': 'Разблокируйте ',
-                'subtitle': 'Разблокируйте экран телефона',
-                'mods': {
-                'theme': 'lined'
-              }
-              },
-              {
-                'icon': 'assets/images/svg/kopeiki-image.svg',
-                'title': 'Оплатите',
-                'subtitle': 'Поднесите устройство к терминалу',
-                'mods': {
-                'theme': 'lined'
-              }
-              },
-              {
-                'icon': 'assets/images/svg/crown-image.svg',
-                'title': 'Пользуйтесь',
-                'subtitle': 'Платеж успешно проведен!'
-              }
-            ] }) }}
-          </section>
-        </div>
+        </section>
+        <section id="shop" class="section page__section mb-112 js-section-tab">
+          {{ BrandFeatures.brandFeatures({ 'items': [
+            {
+              'icon': 'assets/images/svg/sand-clock-image.svg',
+              'title': 'Разблокируйте ',
+              'subtitle': 'Разблокируйте экран телефона',
+              'mods': {
+              'theme': 'lined'
+            }
+            },
+            {
+              'icon': 'assets/images/svg/kopeiki-image.svg',
+              'title': 'Оплатите',
+              'subtitle': 'Поднесите устройство к терминалу',
+              'mods': {
+              'theme': 'lined'
+            }
+            },
+            {
+              'icon': 'assets/images/svg/crown-image.svg',
+              'title': 'Пользуйтесь',
+              'subtitle': 'Платеж успешно проведен!'
+            }
+          ] }) }}
+        </section>
+        <section id="internet"  class="section page__section mb-64 js-section-tab">
+          {{ BrandFeatures.brandFeatures({ 'items': [
+            {
+              'icon': 'assets/images/svg/sand-clock-image.svg',
+              'title': 'Разблокируйте ',
+              'subtitle': 'Разблокируйте экран телефона',
+              'mods': {
+              'theme': 'lined'
+            }
+            },
+            {
+              'icon': 'assets/images/svg/kopeiki-image.svg',
+              'title': 'Оплатите',
+              'subtitle': 'Поднесите устройство к терминалу',
+              'mods': {
+              'theme': 'lined'
+            }
+            },
+            {
+              'icon': 'assets/images/svg/crown-image.svg',
+              'title': 'Пользуйтесь',
+              'subtitle': 'Платеж успешно проведен!'
+            }
+          ] }) }}
+        </section>
       </div>
+
+
+      <div class="hide_desktop">
+        <section class="section page__section mb-64">
+          <div class="page__container">
+            {{ Heading.heading({ 'title': 'Оплачивайте покупки в магазинах, \n на сайтах с Google и Apple Pay', 'mods': { 'type': 'default', 'margin': 'normal' } }) }}
+          </div>
+          {{ BrandFeatures.brandFeatures({ 'items': [
+            {
+              'icon': 'assets/images/svg/sand-clock-image.svg',
+              'title': 'Разблокируйте ',
+              'subtitle': 'Разблокируйте экран телефона',
+              'mods': {
+              'theme': 'lined'
+            }
+            },
+            {
+              'icon': 'assets/images/svg/kopeiki-image.svg',
+              'title': 'Оплатите',
+              'subtitle': 'Поднесите устройство к терминалу',
+              'mods': {
+              'theme': 'lined'
+            }
+            },
+            {
+              'icon': 'assets/images/svg/crown-image.svg',
+              'title': 'Пользуйтесь',
+              'subtitle': 'Платеж успешно проведен!'
+            },
+            {
+              'icon': 'assets/images/svg/sand-clock-image.svg',
+              'title': 'Разблокируйте ',
+              'subtitle': 'Разблокируйте экран телефона',
+              'mods': {
+              'theme': 'lined'
+            }
+            },
+            {
+              'icon': 'assets/images/svg/kopeiki-image.svg',
+              'title': 'Оплатите',
+              'subtitle': 'Поднесите устройство к терминалу',
+              'mods': {
+              'theme': 'lined'
+            }
+            },
+            {
+              'icon': 'assets/images/svg/crown-image.svg',
+              'title': 'Пользуйтесь',
+              'subtitle': 'Платеж успешно проведен!'
+            }
+          ] }) }}
+        </section>
+      </div>
+
+
 
       <section class="mobile section mobile_theme-blue page__section page__section_theme-large">
         <div class="page__container">
-          <div class="mobile__wrapper">
-            <div class="section__row">
+          <div class="mobile__wrapper mobile__wrapper_with-image">
+            <div class="section__row ">
               <div class="mobile__content">
                 {{ Heading.heading({ 'title': 'Удобный мобильный банк', 'mods': { 'type': 'default', 'margin': 'small', 'theme': 'light' } }) }}
                 <div class="section__text section__text_theme-normal section__text_theme-light">
@@ -181,64 +230,50 @@
         </div>
       </section>
 
-      <section class="index-products section page__section section_theme-gray">
-        <div class="page__container">
-          {{ Heading.heading({ 'title': 'Полезное',  'mods': { 'type': 'default', 'margin': 'normal' } }) }}
-
-          <div class="section__nav-wrapper">
-            <div class="section__nav products-detail__nav">
-              <div class="page__container">
-                <div class="section__wrap">
-                  <div class="tabbar__scroll-wrapper tabbar__scroll-wrapper_with-more js-tab-scroll">
-                    {{ Tabbar.tabbar({ 'anchor': { 'theme': 'default-tab', 'view': 'upperscore' }, 'tabs': [{'title': 'Сервисы', 'id': 'services' }, {'title': 'Акции', 'id': 'actions'}] }) }}
-                    {{ Button.button({ 'href': '#', 'title': 'Все сервисы', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
-                  </div>
+      <div class="js-section-tabs">
+        <section class="index-products section page__section section_theme-gray">
+          <div class="page__container mb-10">
+            {{ Heading.heading({ 'title': 'Полезное', 'mods': { 'type': 'default' } }) }}
+          </div>
+          <div class="page__container">
+            <div class="section-tabs__nav section-tabs__nav_lined">
+              <ul class="section-tabs__nav-list">
+                <li data-tab-show="#services" class="section-tabs__nav-item">
+                  Сервисы
+                </li>
+                <li data-tab-show="#actions" class="section-tabs__nav-item">
+                  Акции
+                </li>
+              </ul>
+              {{ Button.button({ 'href': '#', 'title': 'Все сервисы', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
+            </div>
+          </div>
+          <div id="services" class="page__container company">
+            <div class="section__row">
+              <div class="company__carousel carousel carousel_type-mobile">
+                <div class="index-products__list" >
+                  {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Реализация залогового имущества', 'subtitle': 'Продажа непрофильных активов' | striptags(true) | escape | nl2br, 'link': 'Подробнее', 'class': 'section__element company__card action-products__card'  }) }}
+                  {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Смс - \n  информирование' | striptags(true) | escape | nl2br, 'subtitle': 'Оповещение о состоянии счетов в реальном времени' | striptags(true) | escape | nl2br, 'link': 'Подробнее', 'class': 'section__element company__card action-products__card'  }) }}
+                  {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Информационный центр', 'subtitle': 'Банковское обслуживание по телефону' | striptags(true) | escape | nl2br, 'link': 'Подробнее', 'class': 'section__element company__card action-products__card' }) }}
                 </div>
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="tabs js-tabs company">
-          <div id="services" class="tabs__item js-tab">
-            <div class="page__container">
-             <div class="section__row">
-                <div class="company__carousel carousel carousel_type-mobile">
-                  <div class="js-carousel carousel__content" data-id="index-company" data-breakpoint="768">
-                    {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Реализация залогового имущества', 'subtitle': 'Продажа непрофильных активов' | striptags(true) | escape | nl2br, 'link': 'Подробнее', 'class': 'section__element company__card '  }) }}
-                    {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Смс - \n  информирование' | striptags(true) | escape | nl2br, 'subtitle': 'Оповещение о состоянии счетов в реальном времени' | striptags(true) | escape | nl2br, 'link': 'Подробнее', 'class': 'section__element company__card '  }) }}
-                    {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Информационный центр', 'subtitle': 'Банковское обслуживание по телефону' | striptags(true) | escape | nl2br, 'link': 'Подробнее', 'class': 'section__element company__card ' }) }}
-                  </div>
-                  <div class="carousel-controls js-carousel-controls">
-                    <div class="carousel-controls__pagination js-carousel-pagination" data-carousel="index-company">
-                      <span>01</span><span></span><span></span>
-                    </div>
-                  </div>
+          <div id="actions" class="page__container company">
+            <div class="section__row">
+              <div class="company__carousel carousel carousel_type-mobile">
+                <div class="index-products__list" >
+                  {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Реализация залогового имущества', 'subtitle': 'Продажа непрофильных активов' | striptags(true) | escape | nl2br, 'link': 'Подробнее', 'class': 'section__element company__card action-products__card'  }) }}
+                  {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Смс - \n  информирование' | striptags(true) | escape | nl2br, 'subtitle': 'Оповещение о состоянии счетов в реальном времени' | striptags(true) | escape | nl2br, 'link': 'Подробнее', 'class': 'section__element company__card action-products__card'  }) }}
+                  {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Информационный центр', 'subtitle': 'Банковское обслуживание по телефону' | striptags(true) | escape | nl2br, 'link': 'Подробнее', 'class': 'section__element company__card action-products__card' }) }}
                 </div>
               </div>
             </div>
           </div>
-          <div id="actions" class="tabs__item js-tab state_invisible">
-            <div class="page__container">
-              <div class="section__row">
-                <div class="company__carousel carousel carousel_type-mobile">
-                  <div class="js-carousel carousel__content" data-id="index-company" data-breakpoint="768">
-                    {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Реализация залогового имущества', 'subtitle': 'Продажа непрофильных активов' | striptags(true) | escape | nl2br, 'link': 'Подробнее', 'class': 'section__element company__card '  }) }}
-                    {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Смс - \n  информирование' | striptags(true) | escape | nl2br, 'subtitle': 'Оповещение о состоянии счетов в реальном времени' | striptags(true) | escape | nl2br, 'link': 'Подробнее', 'class': 'section__element company__card '  }) }}
-                    {{ Card.card({ 'href': '#', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Информационный центр', 'subtitle': 'Банковское обслуживание по телефону' | striptags(true) | escape | nl2br, 'link': 'Подробнее', 'class': 'section__element company__card ' }) }}
-                  </div>
-                  <div class="carousel-controls js-carousel-controls">
-                    <div class="carousel-controls__pagination js-carousel-pagination" data-carousel="index-company">
-                      <span>01</span><span></span><span></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        </section>
+      </div>
 
-      </section>
+
 
 
 
