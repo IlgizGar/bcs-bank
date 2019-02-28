@@ -35,6 +35,7 @@ import InfoShow from '../components/library/info-show/infoShow';
 import Filter from '../components/modules/filter/filter';
 import Animations from '../components/modules/animations/animations';
 import PartnerModalForm from '../components/modules/partners-modal/partners-modal';
+import SectionTabs from '../components/modules/section-tabs/sectionTabs';
 
 require('intersection-observer');
 
@@ -274,6 +275,15 @@ $(() => {
     $('.js-show-partners-modal-button')
       .each((i, el) => {
         global.filters.push(PartnerModalForm(el));
+      });
+  }
+
+
+  global.sectionTabs = [];
+  if ($('.js-section-tabs').length) {
+    $('.js-section-tabs')
+      .each((i, el) => {
+        global.sectionTabs.push(SectionTabs(el));
       });
   }
 });
