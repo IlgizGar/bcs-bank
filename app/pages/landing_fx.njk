@@ -1,0 +1,57 @@
+{% extends "layout/layout.njk" %}
+{#{% extends "library/card/card.njk" %}#}
+
+{% set root = "." %}
+{% set title = "FX_landing" %}
+{% set header = 'blue' %}
+
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/library/button/button.njk" as Button %}
+{% import "../components/library/feature/feature.njk" as Feature %}
+
+{% block body %}
+  <div class="page js-page">
+
+    {% include "../components/modules/header/headerLanding.njk" %}
+
+    <main role="main" class="products-detail">
+      <section class="section page__section">
+        <div class="section__header section__header_theme-blue">
+          <div class="page__container">
+            <div class="section__row">
+              <div class="products-detail__content">
+                <div class="title-head">
+                  Дебетовая карта
+                </div>
+                {{ Heading.heading({ 'tag': 'h1', 'title': 'Лучшая карта для работы с валютой', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
+                <div class="features">
+                  {{ Feature.feature({ 'title': 'от 0 ₽ ', 'text': 'обслуживание', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                  {{ Feature.feature({ 'title': 'до 4%', 'text': 'валютный вклад', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                  {{ Feature.feature({ 'title': 'до 2%', 'text': 'вернем бонусами', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
+                </div>
+              </div>
+              <div class="products-detail__figure" data-illustration="">
+                <div class="illustration">
+                  <img class="illustration-image illustration-image_landing-fx" src="assets/illustrations/land_fx_card_2.png" alt="БКС Platinum">
+                  <img class="illustration-image illustration-image_landing-fx" src="assets/illustrations/land_fx_card_1.png" alt="БКС Platinum">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="section__nav-wrapper">
+            <div class="section__nav section__nav_no-border products-detail__nav">
+              <div class="page__container">
+                <div class="section__wrap">
+                  {{ Button.button({ 'title': 'Оформить карту', 'mods': { 'theme': 'white' }, 'class': 'products-detail__nav-button products-detail__nav-button-left', attr: {'scroll': '#section-request'} }) }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    {% include "../components/modules/footer/footer.njk" %}
+  </div>
+{% endblock %}
