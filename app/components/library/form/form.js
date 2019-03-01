@@ -264,6 +264,13 @@ module.exports = (elem) => {
               .removeClass('state_loading');
             callback(data);
           }
+          if (data.set_hidden_value) {
+            Object.keys(data.set_hidden_value)
+              .forEach((key) => {
+                const value = data.set_hidden_value[key];
+                this.setHiddenValue(key, value);
+              });
+          }
         },
         error: () => {
           if (!url) {
@@ -274,6 +281,19 @@ module.exports = (elem) => {
           }
         },
       });
+    }
+
+    setHiddenValue(name, value) {
+      let el = this.form.find(`[name="${name}"]`);
+      if (el.length) {
+        el.val(value);
+      } else {
+        el = document.createElement('input');
+        el.type = 'hidden';
+        el.name = name;
+        el.value = value;
+        this.form[0].appendChild(el);
+      }
     }
 
     blockEvents() {

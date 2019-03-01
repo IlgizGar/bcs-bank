@@ -226,9 +226,9 @@
                       Шаг <span class="js-step-informer">1</span> из <span class="js-step-informer-all">4</span>
                     </div>
 
-                    <form action="http://localhost/rplpost/">
+                    <form action="http://localhost/rplpost/index.php">
 
-                      <div class="step-form__item js-step js-sms-step js-send-form js-send-validate-form" data-send-validate-url="http://localhost/rplpost/index3.php" data-send-url="http://localhost/rplpost/"> <!-- класс js-send-form  указывает скрипту что на этом шаге нужно отправить форму на адресс указанный в data-send-url  -->
+                      <div class="step-form__item js-step js-sms-step js-send-form js-send-validate-form" data-send-validate-url="http://localhost/rplpost/index3.php" data-send-url="http://localhost/rplpost/index.php"> <!-- класс js-send-form  указывает скрипту что на этом шаге нужно отправить форму на адресс указанный в data-send-url  -->
                           {{ Heading.heading({ 'title': 'Общая информация' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
                         <fieldset>
                             {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': 'js-fio-masked js-fio-auto-complete', 'maxlength': '64', 'name': 'bid_user-name', 'required': 'true' } }) }}
@@ -240,6 +240,7 @@
                             {{ Input.input({ 'label': 'Сумма кредита', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'credit_amount', 'class': 'js-numeric-input' }, 'title': '#ruble', 'slider': { 'min': 50000, 'max': 1500000, 'from': 800000, 'step': 1000 } }) }}
                             {{ Input.input({ 'label': 'Срок кредита', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '2', 'name': 'credit_period', 'class': 'js-numeric-input' }, 'slider': { 'min': 13, 'max': 60, 'from': 16, 'step': 1, 'postfix': ' мес.' } }) }}
                             {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Цель кредита', 'name': 'credit-aims', 'items': [{'title': 'На еду', 'value': '12345'}, {'title': 'На развлечения', 'value': '13456'}, {'title': 'Отправить малого в школу', 'value': '136'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'credit-aims'}, 'field': 'js-aims-select' }) }}
+                            <input type="hidden" name="request_id" value="">
                         </fieldset>
                         <div class="form__agreements">
                           <label class="checkbox checkbox_theme-dark js-checkbox js-personal-checkbox">
