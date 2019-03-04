@@ -8,13 +8,18 @@
 {% import "../components/library/heading/heading.njk" as Heading %}
 {% import "../components/library/button/button.njk" as Button %}
 {% import "../components/library/feature/feature.njk" as Feature %}
+{% import "../components/modules/landing-feature-card/landing-feature-card.njk" as LandingFeature %}
+{% import "../components/library/card/card.njk" as Card with context %}
+{% import "../components/library/input/input.njk" as Input %}
+{% import "../components/modules/brand-features/brand-features.njk" as BrandFeatures %}
+{% import "../components/library/dropdown/dropdown.njk" as Dropdown %}
 
 {% block body %}
   <div class="page js-page">
 
     {% include "../components/modules/header/headerLanding.njk" %}
 
-    <main role="main" class="products-detail">
+    <main role="main" class="products-detail landing-fx">
       <section class="section page__section">
         <div class="section__header section__header_theme-blue">
           <div class="page__container">
@@ -23,7 +28,7 @@
                 <div class="title-head">
                   Дебетовая карта
                 </div>
-                {{ Heading.heading({ 'tag': 'h1', 'title': 'Лучшая карта для работы с валютой', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
+                {{ Heading.heading({ 'tag': 'h2', 'title': 'Лучшая карта для работы с валютой', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
                 <div class="features">
                   {{ Feature.feature({ 'title': 'от 0 ₽ ', 'text': 'обслуживание', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
                   {{ Feature.feature({ 'title': 'до 4%', 'text': 'валютный вклад', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
@@ -50,8 +55,265 @@
         </div>
       </section>
 
+      <section class="section page__section mb-55">
+        <div class="page__container">
+          {{ Heading.heading({ 'tag': 'h2', 'title': 'Преимущества валютной карты', 'mods': { 'type': 'default', 'margin': 'medium' } }) }}
+
+          {{ LandingFeature.landigFeatureCard({ 'title': 'Валютная карта ', 'img': 'assets/illustrations/land_fx_card_1.png', 'features':[
+            { 'title': '0₽ ', 'text': 'бесплатное обслуживание при обороте в 40 000₽ или среднемесячном остатке в 40 000₽ на всех счетах', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
+            { 'title': '1% ', 'text': 'от суммы покупок вернем бонусами', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
+            { 'title': 'до 3,8% ', 'text': 'вклад в USD', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
+            { 'title': '0₽  ', 'text': 'бесплатное открытие и обслуживание счетов в 3-х валютах: Рубли, Доллары США, Евро', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
+            { 'title': 'до 150 000₽ ', 'text': 'бесплатное снятие наличных', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
+            { 'title': '₽, $, € ', 'text': 'льготный курс обмена валют', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }
+          ] }) }}
+
+          {{ LandingFeature.landigFeatureCard({ 'title': 'Валютная карта Premium ', 'img': 'assets/illustrations/land_fx_card_2.png', 'features':[
+            { 'title': '0₽ ', 'text': 'бесплатное обслуживание при среднемесячном остатке 1 000 000₽ на всех счетах', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
+            { 'title': '2% ', 'text': 'от суммы покупок вернем бонусами', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
+            { 'title': 'до 4% ', 'text': 'вклад в USD', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
+            { 'title': '0₽ ', 'text': 'бесплатное открытие и обслуживание счетов в 3-х валютах: Рубли, Доллары США, Евро', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
+            { 'title': 'до 500 000₽ ', 'text': 'бесплатное снятие наличных', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
+            { 'title': '₽, $, €', 'text': 'льготный курс обмена валют', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }
+          ] }) }}
+
+        </div>
+      </section>
+
+
+      <section class="section page__section services mb-56">
+        <div class="page__container">
+          {{ Heading.heading({ 'tag': 'h2', 'title': 'Обмен валюты', 'mods': { 'type': 'default', 'margin': 'default' } }) }}
+          <div class="landing-exchange mt-32">
+            <div class="landing-exchange__header">
+              <h3 class="landing-exchange__header-title">
+                При покупке 2 000 USD <br> вы сэкономите
+              </h3>
+              <div class="landing-exchange__header-items">
+                  <div class="landing-exchange__header-item">
+                    <img class="landing-exchange__header-item-img" src="assets/illustrations/land_fx_card_1.png">
+                    <div class="landing-exchange__header-item-title">
+                      до 2 500₽
+                    </div>
+                    <div class="landing-exchange__header-item-text">
+                      по Валютной карте
+                    </div>
+                  </div>
+
+                  <div class="landing-exchange__header-item">
+                    <img class="landing-exchange__header-item-img" src="assets/illustrations/land_fx_card_2.png">
+                    <div class="landing-exchange__header-item-title">
+                      до 3 000₽
+                    </div>
+                    <div class="landing-exchange__header-item-text">
+                      по Валютной карте Premium
+                    </div>
+                  </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="section__row">
+            <div class="services__carousel carousel carousel_type-mobile">
+              <div class="js-carousel carousel__content" data-id="landing-services" data-breakpoint="992">
+                {{ Card.card({ 'exchange': 'true', 'type':'div', 'title':'в среднем по рынку','subtitle':'на основе информации из открытых источников ', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'class': 'section__element default-exchange-card', 'attr': {'api-url': 'https://bcs-bank.com/get_corp_courses_update'}  }) }}
+                {{ Card.card({ 'exchange': 'true', 'type':'div', 'title':'для Валютных карт','subtitle':'', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'class': 'section__element default-exchange-card', 'attr': {'api-url': 'https://bcs-bank.com/get_corp_courses_update'}  }) }}
+                {{ Card.card({ 'exchange': 'true', 'type':'div', 'title':'для Валютных карт Premium','subtitle':'', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'class': 'section__element default-exchange-card', 'attr': {'api-url': 'https://bcs-bank.com/get_corp_courses_update'}  }) }}
+              </div>
+              <div class="carousel-controls carousel-controls_theme-dark js-carousel-controls">
+                <div class="carousel-controls__pagination js-carousel-pagination" data-carousel="landing-services">
+                  <span>01</span><span></span><span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="section page__section services section_theme-white-smoke section_padding-default ">
+          <div class="calculator  js-calc-result">
+            <div class="page__container">
+              {{ Heading.heading({ 'title': 'Рассчитайте свою выгоду', 'mods': { 'type': 'default', 'margin': 'medium' } }) }}
+              <div class="section__row calculator__row">
+                <div class="form form_layout-narrow calculator__form">
+                  <form>
+                    <fieldset>
+
+                      <div class="js-section-tabs">
+                        <section class="index-products section page__section page__section_over">
+                          <div class="section-tabs__nav section-tabs__nav_lined mb-40">
+                            <ul class="section-tabs__nav-list">
+                              <li data-tab-show="#bonus" class="section-tabs__nav-item">
+                                Бонусы
+                              </li>
+                              <li data-tab-show="#exchange" class="section-tabs__nav-item">
+                                Обмен валюты
+                              </li>
+                              <li data-tab-show="#deposit" class="section-tabs__nav-item">
+                                Вклад
+                              </li>
+                            </ul>
+                           </div>
+                          <div id="bonus">
+                            {{ Input.input({ 'label': 'Сумма покупок по карте в месяц', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_fuel_costs', 'class': 'js-numeric-input' }, 'title': '#ruble/мес.', 'slider': { 'min': 0, 'max': 1000000, 'from': 30000, 'step': 1000 } }) }}
+                          </div>
+                          <div id="exchange">
+                            {{ Input.input({ 'label': 'Сумма покупок по карте в месяц', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_cafe_costs', 'class': 'js-numeric-input' }, 'title': '#ruble/мес.', 'slider': { 'min': 0, 'max': 1000000, 'from': 50000, 'step': 1000 } }) }}
+                          </div>
+                          <div id="deposit">
+                            {{ Input.input({ 'label': 'Сумма покупок по карте в месяц', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_film_costs', 'class': 'js-numeric-input' }, 'title': '#ruble/мес.', 'slider': { 'min': 0, 'max': 1000000, 'from': 10000, 'step': 1000 } }) }}
+                          </div>
+                        </section>
+                      </div>
+                    </fieldset>
+                  </form>
+                </div>
+                <div class="calculation">
+                  <div class="calculation__thumbnail">
+                    <div class="text">Вы заработаете за год</div>
+                    <!--#2-->
+                    <div class="calculation__result"><span
+                              data-calc="KHN1bW0qMi8xMDApKjEy"
+                              data-params="summ|allcost"
+                              data-ordered="1"
+                              data-round="2"
+                      >10 500</span></div>
+                    <!--/#2-->
+
+                    <div class="calculation__conclusion text">
+                      * При совершении покупок в соответствии с выбранным ПУ.
+                    </div>
+                    {{ Button.button({ 'title': 'Оформите карту', 'mods': { 'theme': 'default' }, 'type': 'submit', 'class': 'mt-40', attr: {'scroll': '#section-request'} }) }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="calculator-hidden-out">
+              <!--#1-->
+              <span
+                      data-calc="YXpzK2NhZmUrZmlsbStzcG9ydCttZWFsK290aGVy"
+                      data-params="azs|calc_fuel_costs,cafe|calc_cafe_costs,film|calc_film_costs,sport|calc_sport_costs,meal|calc_meal_costs,other|calc_others_costs"
+                      data-bind="allcost"
+                      data-ordered="0"
+                      data-round="2"
+              ></span>
+              <input type="hidden" value="0" name="allcost">
+              <!--/#1-->
+            </div>
+          </div>
+      </section>
+
+
+      <section class="section page__section">
+        <div class="page__container">
+          {{ Heading.heading({ 'title': 'Оформите заявку и получите \n  карту на следующий день', 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered' }) }}
+          </div>
+        {{ BrandFeatures.brandFeatures({ 'items': [
+          {
+            'icon': 'assets/images/svg/list-image.svg',
+            'title': 'Оставьте заявку',
+            'subtitle': 'Это займет \n всего 7 минут',
+            'mods': {
+            'theme': 'lined'
+          }
+          },
+          {
+            'icon': 'assets/images/svg/sand-clock-image.svg',
+            'title': 'Одобрение банка',
+            'subtitle': 'Банк примет итоговое решение \n в течении 2-х рабочих дней',
+            'mods': {
+            'theme': 'lined'
+          }
+          },
+          {
+            'icon': 'assets/images/svg/card-image.svg',
+            'title': 'Получите карту',
+            'subtitle': 'Наш специалист доставит Вам \n кредитную карту бесплатно'
+          }
+        ] }) }}
+      </section>
+
+
+      <section id="section-request" class="section section_theme-white-smoke section_padding-default page__section">
+        <div class="products-detail__request">
+          <div class="page__container">
+            {{ Heading.heading({ 'title': 'Заявка на карту', 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+            <div class="text text_theme-gray mb-56">Открывается в рамках любого пакета услуг</div>
+            <div class="section__row">
+              <div class="form form_layout-narrow js-form" data-form="cards">
+                <div class="form__steps">
+                  Шаг <span class="js-step-informer">1</span> из <span class="js-step-informer-all">4</span>
+                </div>
+                {{ Heading.heading({ 'title': 'Общая информация', 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
+                <form action="/rplpost">
+
+                  <div class="step-form__item js-step js-send-form" data-send-url="http://localhost/rplpost">
+                    <fieldset>
+                      {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Выберите город', 'name': 'bid_select-city', 'items': [{'title': 'Краснодар', 'value': '12345'}, {'title': 'Москва', 'value': '13456'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'bid-city-list'}, 'field': 'js-city-select' }) }}
+                      {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': 'js-fio-masked', 'maxlength': '64', 'name': 'bid_user-name', 'required': 'true' } }) }}
+                      <div class="form__line-group">
+                        {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': {'class': 'js-phone-masked', 'name': 'question_phone', 'required': 'true' } }) }}
+                        {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': {'class': 'js-mail-masked', 'name': 'question_mail', 'required': 'true' } }) }}
+                      </div>
+                    </fieldset>
+                    <div class="form__agreements">
+                      <label class="checkbox checkbox_theme-dark js-checkbox js-personal-checkbox">
+                        <input type="checkbox" class="checkbox__control"
+                               name="question__personal" checked>
+                        <span class="checkbox__state"></span>
+                        <span
+                                class="checkbox__label">Даю согласие на обработку <br> {{ Button.button({ 'href': '#', 'title': 'персональных данных', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}</span>
+                      </label>
+                      {{ Button.button({ 'title': 'Отправить заявку', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
+                    </div>
+                  </div>
+
+                  <div class="step-form__item js-step js-sms-step js-send-form" data-send-url="http://localhost/rplpost">
+                    {% include "../components/modules/sms-code-form/sms-code-form.njk" %}
+                  </div>
+
+
+                </form>
+              </div>
+              <div class="calculation">
+                <img class="calculation-image calculation-image_landing-fx" src="assets/illustrations/land_fx_card_2.png" alt="БКС Platinum">
+                <img class="calculation-image calculation-image_landing-fx" src="assets/illustrations/land_fx_card_1.png" alt="БКС Platinum">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mobile section mobile_theme-blue page__section page__section_theme-large mb-82">
+        <div class="page__container">
+          <div class="mobile__wrapper">
+            <div class="section__row">
+              <div class="mobile__content">
+                {{ Heading.heading({ 'title': 'Легкий мобильный банк', 'mods': { 'type': 'default', 'margin': 'small', 'theme': 'light' } }) }}
+                <div class="section__text section__text_theme-normal section__text_theme-light">
+                  <p>Управление банковскими и инвестиционными продуктами</p>
+                  <p>Оплата услуг без комиссии</p>
+                  <p>Переводы по всему миру</p>
+                  <p>Обмен валюты по курсу близкому к биржевому</p>
+                  <p>Чат с оператором</p>
+                </div>
+                <div class="mobile__vendors">
+                  {{ Button.button({ 'href': 'https://play.google.com/store/apps/details?id=cz.bsc.bcs', 'name': 'android', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                  {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                </div>
+              </div>
+              <div class="mobile__figure">
+                <img class="illustration illustration_align-bottom" src="assets/illustrations/landing_mobile_bank_banner.png" alt="Легкий мобильный банк">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
     </main>
 
-    {% include "../components/modules/footer/footer.njk" %}
+    {% include "../components/modules/footer/footer-landing.njk" %}
   </div>
 {% endblock %}

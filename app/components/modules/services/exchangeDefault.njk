@@ -1,0 +1,32 @@
+{% import "../../library/currency/currency.njk" as Currency %}
+{% import "../../library/context/context.njk" as Context %}
+
+{% macro exchangeDefault( options ) %}
+
+  <h2 class="card__title">{{ options.title }}</h2>
+  <p class="card__subtitle mt-0">{{ options.text }}</p>
+
+<div class="services__block services__block_theme-exchange js-exchange-service">
+  <table class="services__table">
+    <thead>
+    <tr>
+      <th></th>
+      <th class="services__table-action">Покупаю по</th>
+      <th class="services__table-action">Продаю по</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="services__table-currency">USD</td>
+        <td>{{ Currency.currency({ 'value': '45.6', 'state': 'rise' }) }}</td>
+        <td>{{ Currency.currency({ 'value': '54.2', 'state': 'fall'}) }}</td>
+      </tr>
+      <tr>
+        <td class="services__table-currency">EUR</td>
+        <td>{{ Currency.currency({ 'value': '5.9', 'state': 'rise' }) }}</td>
+        <td>{{ Currency.currency({ 'value': '6', 'state': 'rise' }) }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+{% endmacro %}

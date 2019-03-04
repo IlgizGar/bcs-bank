@@ -185,3 +185,10 @@ export class ExchangeBanksServiceCorp extends ExchangeService {
   }
 }
 
+export class ExchangeBanksServiceDefault extends ExchangeService {
+  getAdaptedData(data) {
+    this.loadedData = data;
+    return data.bank_courses;
+  }
+}
+
