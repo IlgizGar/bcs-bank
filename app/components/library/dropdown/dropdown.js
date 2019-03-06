@@ -117,6 +117,7 @@ module.exports = (elem) => {
             global.documentsFilter.applyFilter($(e.target).html());
           }
         }
+        this.select.trigger('change');
       });
 
       this.clear.on('click', () => {

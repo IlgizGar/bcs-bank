@@ -157,11 +157,12 @@
                            </div>
                           <div id="bonus" class="js-land-calc-input">
                             {{ Input.input({ 'label': 'Сумма покупок по карте в месяц', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'calc_bonus', 'class': 'js-numeric-input' }, 'title': '#ruble/мес.', 'slider': { 'min': 0, 'max': 1000000, 'from': 10000, 'step': 1000 } }) }}
+                            {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Выберите карту', 'name': 'calc_select_card', 'items': [{'title': 'Валютная карта', 'value': '0.12 ','selected':'selected'}, {'title': 'Валютная карта Premium', 'value': '0.24'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required' }) }}
                             <div class="calculator-hidden-out">
                               <!--#1-->
                               <span
-                                      data-calc="c3VtbSsw"
-                                      data-params="summ|calc_bonus"
+                                      data-calc="c3VtbSpwZXJjZW50"
+                                      data-params="summ|calc_bonus,percent|select_calc_select_card"
                                       data-bind="allcost_bonus"
                                       data-ordered="0"
                                       data-round="2"
@@ -289,7 +290,7 @@
                 {{ Heading.heading({ 'title': 'Общая информация', 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
                 <form action="http://localhost/rplpost">
 
-                  <div class="step-form__item js-step js-send-form" data-send-url="http://localhost/rplpost">
+                  <div class="step-form__item js-step  js-sms-step js-send-form" data-send-url="http://localhost/rplpost">
                     <fieldset>
                       {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Выберите город', 'name': 'bid_select-city', 'items': [{'title': 'Краснодар', 'value': '12345'}, {'title': 'Москва', 'value': '13456'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'bid-city-list'}, 'field': 'js-city-select' }) }}
                       {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': 'js-fio-masked', 'maxlength': '64', 'name': 'bid_user-name', 'required': 'true' } }) }}
@@ -310,7 +311,7 @@
                     </div>
                   </div>
 
-                  <div class="step-form__item js-step js-sms-step js-send-form" data-send-url="http://localhost/rplpost">
+                  <div class="step-form__item js-step  js-send-form" data-send-url="http://localhost/rplpost">
                     {% include "../components/modules/sms-code-form/sms-code-form.njk" %}
                   </div>
 
