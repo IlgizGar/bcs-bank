@@ -156,8 +156,8 @@
                             </ul>
                            </div>
                           <div id="bonus" class="js-land-calc-input">
-                            {{ Input.input({ 'label': 'Сумма покупок по карте в месяц', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'calc_bonus', 'class': 'js-numeric-input' }, 'title': '#ruble/мес.', 'slider': { 'min': 0, 'max': 1000000, 'from': 10000, 'step': 1000 } }) }}
                             {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Выберите карту', 'name': 'calc_select_card', 'items': [{'title': 'Валютная карта', 'value': '0.12 ','selected':'selected'}, {'title': 'Валютная карта Premium', 'value': '0.24'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required' }) }}
+                            {{ Input.input({ 'label': 'Сумма покупок по карте в месяц', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'calc_bonus', 'class': 'js-numeric-input' }, 'title': '#ruble/мес.', 'slider': { 'min': 0, 'max': 1000000, 'from': 10000, 'step': 1000 } }) }}
                             <div class="calculator-hidden-out">
                               <!--#1-->
                               <span
@@ -231,7 +231,7 @@
                               data-params="summ|allcost"
                               data-ordered="4"
                               data-round="2"
-                      >10 500</span></div>
+                      >10 500</span> <span class="js-currency-span currency-span">₽</span></div>
                     <!--/#2-->
 
                     <div class="calculation__conclusion text">
