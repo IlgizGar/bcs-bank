@@ -155,18 +155,70 @@
                               </li>
                             </ul>
                            </div>
-                          <div id="bonus">
-                            {{ Input.input({ 'label': 'Сумма покупок по карте в месяц', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_fuel_costs', 'class': 'js-numeric-input' }, 'title': '#ruble/мес.', 'slider': { 'min': 0, 'max': 1000000, 'from': 30000, 'step': 1000 } }) }}
+                          <div id="bonus" class="js-land-calc-input">
+                            {{ Input.input({ 'label': 'Сумма покупок по карте в месяц', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'calc_bonus', 'class': 'js-numeric-input' }, 'title': '#ruble/мес.', 'slider': { 'min': 0, 'max': 1000000, 'from': 10000, 'step': 1000 } }) }}
+                            <div class="calculator-hidden-out">
+                              <!--#1-->
+                              <span
+                                      data-calc="c3VtbSsw"
+                                      data-params="summ|calc_bonus"
+                                      data-bind="allcost_bonus"
+                                      data-ordered="0"
+                                      data-round="2"
+                              ></span>
+                              <input type="hidden" class="js-land-calc-input-hidden" value="0" name="allcost_bonus">
+                              <!--/#1-->
+                            </div>
                           </div>
-                          <div id="exchange">
-                            {{ Input.input({ 'label': 'Сумма покупок по карте в месяц', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_cafe_costs', 'class': 'js-numeric-input' }, 'title': '#ruble/мес.', 'slider': { 'min': 0, 'max': 1000000, 'from': 50000, 'step': 1000 } }) }}
+                          <div id="exchange" class="js-land-calc-input">
+                            {{ Input.input({ 'label': 'Сумма покупок по карте в месяц', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'calc_exchange', 'class': 'js-numeric-input' }, 'title': '#ruble/мес.', 'slider': { 'min': 0, 'max': 1000000, 'from': 50000, 'step': 1000 } }) }}
+                            <div class="calculator-hidden-out">
+                              <!--#2-->
+                              <span
+                                      data-calc="c3VtbSsw"
+                                      data-params="summ|calc_exchange"
+                                      data-bind="allcost_exchange"
+                                      data-ordered="0"
+                                      data-round="2"
+                              ></span>
+                              <input type="hidden" class="js-land-calc-input-hidden" value="0" name="allcost_exchange">
+                              <!--/#2-->
+                            </div>
+
                           </div>
-                          <div id="deposit">
-                            {{ Input.input({ 'label': 'Сумма покупок по карте в месяц', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_film_costs', 'class': 'js-numeric-input' }, 'title': '#ruble/мес.', 'slider': { 'min': 0, 'max': 1000000, 'from': 10000, 'step': 1000 } }) }}
+                          <div id="deposit" class="js-land-calc-input">
+                            {{ Input.input({ 'label': 'Сумма покупок по карте в месяц', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'calc_deposit', 'class': 'js-numeric-input' }, 'title': '#ruble/мес.', 'slider': { 'min': 0, 'max': 1000000, 'from': 10000, 'step': 1000 } }) }}
+                            <div class="calculator-hidden-out">
+                              <!--#3-->
+                              <span
+                                      data-calc="c3VtbSsw"
+                                      data-params="summ|calc_deposit"
+                                      data-bind="allcost_deposit"
+                                      data-ordered="0"
+                                      data-round="2"
+                              ></span>
+                              <input type="hidden" class="js-land-calc-input-hidden" value="0" name="allcost_deposit">
+                              <!--/#3-->
+                            </div>
+
                           </div>
                         </section>
                       </div>
                     </fieldset>
+
+                    <div class="calculator-hidden-out">
+                      <!--#3-->
+                      <span
+                              data-calc="KGZ1bmN0aW9uKHN1bW0xLHN1bW0yLHN1bW0zKXsKICAgIGZ1bmN0aW9uIGdldEFjdGl2ZVZhbHVlKCkgewogICAgICAgIHZhciBibG9ja3MgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCcuanMtbGFuZC1jYWxjLWlucHV0Jyk7CiAgICAgICAgdmFyIGFjdGl2ZSA9IG51bGw7CiAgICAgICAgZm9yKHZhciBpPTA7IGk8YmxvY2tzLmxlbmd0aDsgaSsrKXsKICAgICAgICAgICAgdmFyIGl0ZW0gPSBibG9ja3NbaV07CiAgICAgICAgICAgIGlmKCFpdGVtLmNsYXNzTGlzdC5jb250YWlucygnc3RhdGVfaGlkZGVuJykpewogICAgICAgICAgICAgICAgYWN0aXZlID0gaXRlbTsKICAgICAgICAgICAgfQogICAgICAgIH0KICAgICAgICB2YXIgYWN0aXZlQmxvY2tJZCA9IGFjdGl2ZS5nZXRBdHRyaWJ1dGUoJ2lkJyk7CiAgICAgICAgdmFyIHZhbHVlID0gMDsKICAgICAgICBpZihhY3RpdmVCbG9ja0lkID09PSAnYm9udXMnKXsKICAgICAgICAgICAgdmFsdWUgPSBzdW1tMTsKICAgICAgICB9CiAgICAgICAgaWYoYWN0aXZlQmxvY2tJZCA9PT0gJ2V4Y2hhbmdlJyl7CiAgICAgICAgICAgIHZhbHVlID0gc3VtbTI7CiAgICAgICAgfQogICAgICAgIGlmKGFjdGl2ZUJsb2NrSWQgPT09ICdkZXBvc2l0Jyl7CiAgICAgICAgICAgIHZhbHVlID0gc3VtbTM7CiAgICAgICAgfQogICAgICAgIHJldHVybiB7CiAgICAgICAgICAgIHZhbHVlOiB2YWx1ZSwKICAgICAgICAgICAgaWQ6YWN0aXZlQmxvY2tJZAogICAgICAgIH07CiAgICB9CiAgICB2YXIgdHJpZ2dlckJsb2NrID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCgnW2RhdGEtdGFiLXNob3ddJyk7CiAgICBmb3IodmFyIGk9MDsgaTx0cmlnZ2VyQmxvY2subGVuZ3RoOyBpKyspewogICAgICAgIHZhciBpdGVtID0gdHJpZ2dlckJsb2NrW2ldOwogICAgICAgIGlmKCFpdGVtLmlzUHJvY2Vzc2VkKXsKICAgICAgICAgICAgaXRlbS5hZGRFdmVudExpc3RlbmVyKCdjbGljaycsZnVuY3Rpb24gKCkgewogICAgICAgICAgICAgICAgdmFyIGFjdGl2ZUJsb2NrID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoZ2V0QWN0aXZlVmFsdWUoKS5pZCk7CiAgICAgICAgICAgICAgICB2YXIgaW5wdXQgPSBhY3RpdmVCbG9jay5xdWVyeVNlbGVjdG9yKCcuanMtbGFuZC1jYWxjLWlucHV0LWhpZGRlbicpOwogICAgICAgICAgICAgICAgaW5wdXQuZGlzcGF0Y2hFdmVudChuZXcgRXZlbnQoJ2NoYW5nZScpKTsKICAgICAgICAgICAgfSxmYWxzZSk7CiAgICAgICAgICAgIGl0ZW0uaXNQcm9jZXNzZWQgPSB0cnVlOyAKICAgICAgICB9CiAgICB9CiAgICByZXR1cm4gZ2V0QWN0aXZlVmFsdWUoKS52YWx1ZTsKfSkoc3VtbTEsc3VtbTIsc3VtbTMpOw"
+                              data-params="summ1|allcost_bonus,summ2|allcost_exchange,summ3|allcost_deposit"
+                              data-bind="allcost"
+                              data-ordered="3"
+                              data-round="2"
+                      ></span>
+                      <input type="hidden" value="0" name="allcost">
+                      <!--/#3-->
+                    </div>
+
                   </form>
                 </div>
                 <div class="calculation">
@@ -174,9 +226,9 @@
                     <div class="text">Вы заработаете за год</div>
                     <!--#2-->
                     <div class="calculation__result"><span
-                              data-calc="KHN1bW0qMi8xMDApKjEy"
+                              data-calc="c3VtbQ=="
                               data-params="summ|allcost"
-                              data-ordered="1"
+                              data-ordered="4"
                               data-round="2"
                       >10 500</span></div>
                     <!--/#2-->
@@ -189,18 +241,7 @@
                 </div>
               </div>
             </div>
-            <div class="calculator-hidden-out">
-              <!--#1-->
-              <span
-                      data-calc="YXpzK2NhZmUrZmlsbStzcG9ydCttZWFsK290aGVy"
-                      data-params="azs|calc_fuel_costs,cafe|calc_cafe_costs,film|calc_film_costs,sport|calc_sport_costs,meal|calc_meal_costs,other|calc_others_costs"
-                      data-bind="allcost"
-                      data-ordered="0"
-                      data-round="2"
-              ></span>
-              <input type="hidden" value="0" name="allcost">
-              <!--/#1-->
-            </div>
+
           </div>
       </section>
 
