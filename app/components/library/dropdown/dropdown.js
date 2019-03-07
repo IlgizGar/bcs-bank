@@ -22,7 +22,7 @@ module.exports = (elem) => {
     }
 
     init() {
-      this.id = this.dropdown.data('id');
+      this.id = this.dropdown.data('id') ? this.dropdown.data('id') : `list_for_${this.select.attr('name')}`;
       this.dropdown.find('input').attr('autocomplete', 'off');
       this.list = $(`<div id="${this.id}" class="dropdown__list state_invisible scroll-pane js-dropdown-list mt-10"><ul tabindex="1"></ul></div>`);
       $('.js-page').append(this.list);

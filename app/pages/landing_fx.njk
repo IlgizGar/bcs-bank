@@ -173,14 +173,30 @@
                             </div>
                           </div>
                           <div id="exchange" class="js-land-calc-input">
-                            {{ Input.input({ 'label': 'Сумма покупок по карте в месяц', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'calc_exchange', 'class': 'js-numeric-input' }, 'title': '#ruble/мес.', 'slider': { 'min': 0, 'max': 1000000, 'from': 50000, 'step': 1000 } }) }}
+                            {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Выберите карту', 'name': 'calc_select_card_exchange', 'items': [{'title': 'Валютная карта', 'value': '1 ','selected':'selected'}, {'title': 'Валютная карта Premium', 'value': '2'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required' }) }}
+                            {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Валюта покупки', 'name': 'bye_currency', 'items': [{'title': 'RUR', 'value': '1 '}, {'title': 'USD', 'value': '2','selected':'selected'}, {'title': 'EUR', 'value': '3'}], 'class': 'form__field-group form__field-group_dropdown'}) }}
+                            {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Валюта продажи', 'name': 'sell_currency', 'items': [{'title': 'RUR', 'value': '1 ','selected':'selected'}, {'title': 'USD', 'value': '2'}, {'title': 'EUR', 'value': '3'}], 'class': 'form__field-group form__field-group_dropdown' }) }}
+                            {{ Input.input({ 'label': 'Cумма покупки', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'calc_exchange', 'class': 'js-numeric-input' }, 'title': '#dollar', 'slider': { 'min': 0, 'max': 1000000, 'from': 2000, 'step': 1000 } }) }}
+
+                            <div class="calculator-hidden-out">
+                                 <span
+                                         data-calc="ICAgKGZ1bmN0aW9uICh2YWx1dGVCeWUsdmFsdXRlU2VsbCxjYXJkKSB7CiAgICAgICAgdmFyIGN1cmNlcyA9IG51bGw7CiAgICAgICAgdmFyIGN1cnNlID0gMTsKICAgICAgICB2YXIgY2FyZFYgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKCcuanMtdmFsdXRlLWNhcmQnKS5xdWVyeVNlbGVjdG9yKCcuanMtZXhjaGFuZ2Utc2VydmljZScpOwogICAgICAgIHZhciBjYXJkUCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJy5qcy12YWx1dGUtY2FyZC1wcmVtaXVtJykucXVlcnlTZWxlY3RvcignLmpzLWV4Y2hhbmdlLXNlcnZpY2UnKTsKICAgICAgICB2YXIgc2VsbElucHV0ID0gJCgnW25hbWU9InNlbGVjdF9zZWxsX2N1cnJlbmN5Il0nKS5jbG9zZXN0KCcuanMtZHJvcGRvd24nKTsKCiAgICAgICAgaWYoIXdpbmRvdy5pc0luaXRlVmFsdXRlMkNoYW5nZUxpc3RlbmVyKXsKICAgICAgICAgICAgY2FyZFYuYWRkRXZlbnRMaXN0ZW5lcignY2hhbmdlJyxmdW5jdGlvbiAoKSB7CiAgICAgICAgICAgICAgICBzZXRDdXJyZW5jeSgpOwogICAgICAgICAgICB9LGZhbHNlKTsKCiAgICAgICAgICAgIGNhcmRQLmFkZEV2ZW50TGlzdGVuZXIoJ2NoYW5nZScsZnVuY3Rpb24gKCkgewogICAgICAgICAgICAgICAgc2V0Q3VycmVuY3koKTsKICAgICAgICAgICAgfSxmYWxzZSk7CgogICAgICAgICAgICB3aW5kb3cuaXNJbml0ZVZhbHV0ZTJDaGFuZ2VMaXN0ZW5lciA9IHRydWU7CiAgICAgICAgfQogICAgICAgIAogICAgICAgIGZ1bmN0aW9uIGdldExpc3RJdGVtKHNlbGVjdCx2YWx1ZSl7CiAgICAgICAgICAgIHZhciBpZCA9ICcjbGlzdF9mb3JfJytzZWxlY3QuYXR0cignbmFtZScpOwogICAgICAgICAgICByZXR1cm4gJChpZCkuZmluZCgnbGlbZGF0YS12YWw9IicrdmFsdWUrJyJdJyk7CiAgICAgICAgfQogICAgICAgIAogICAgICAgIGZ1bmN0aW9uIHNldEN1cnJlbmN5KCl7CiAgICAgICAgICAgIGlmKGNhcmQgPT0gMSl7CiAgICAgICAgICAgICAgICBjdXJjZXMgPSBjYXJkVi52YWx1ZTsKICAgICAgICAgICAgfSBlbHNlIHsKICAgICAgICAgICAgICAgIGN1cmNlcyA9IGNhcmRQLnZhbHVlOwogICAgICAgICAgICB9CiAgICAgICAgICAgIHZhciB1c2RDdXJzZSA9IDA7CiAgICAgICAgICAgIHZhciBldXJDdXJzZSA9IDA7CiAgICAgICAgICAgIHRyeSB7CiAgICAgICAgICAgICAgICB1c2RDdXJzZSA9ICBjdXJjZXMuVVNELmJ1eTsKICAgICAgICAgICAgfSBjYXRjaCAoZSkge30KICAgICAgICAgICAgdHJ5IHsKICAgICAgICAgICAgICAgIGV1ckN1cnNlID0gY3VyY2VzLkVVUi5idXk7CiAgICAgICAgICAgIH0gY2F0Y2ggKGUpIHt9CiAgICAgICAgICAgIGlmKHZhbHV0ZUJ5ZSAhPSAxKXsKICAgICAgICAgICAgICAgIGdldExpc3RJdGVtKHNlbGxJbnB1dCwnJykucmVtb3ZlQ2xhc3MoJ3N0YXRlX2hpZGRlbicpOwogICAgICAgICAgICAgICAgZ2V0TGlzdEl0ZW0oc2VsbElucHV0LDIpLmFkZENsYXNzKCdzdGF0ZV9oaWRkZW4nKTsKICAgICAgICAgICAgICAgIGdldExpc3RJdGVtKHNlbGxJbnB1dCwzKS5hZGRDbGFzcygnc3RhdGVfaGlkZGVuJyk7CiAgICAgICAgICAgICAgICBpZih2YWx1dGVCeWUgPT0gMil7CiAgICAgICAgICAgICAgICAgICAgY3Vyc2UgPSB1c2RDdXJzZTsKICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIGlmKHZhbHV0ZUJ5ZSA9PSAzKXsKICAgICAgICAgICAgICAgICAgICBjdXJzZSA9IGV1ckN1cnNlOwogICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgZ2V0TGlzdEl0ZW0oc2VsbElucHV0LDEpLnRyaWdnZXIoJ2NsaWNrJyk7CiAgICAgICAgICAgIH0gZWxzZSB7CiAgICAgICAgICAgICAgICBnZXRMaXN0SXRlbShzZWxsSW5wdXQsJycpLnJlbW92ZUNsYXNzKCdzdGF0ZV9oaWRkZW4nKTsKICAgICAgICAgICAgICAgIGdldExpc3RJdGVtKHNlbGxJbnB1dCwxKS5hZGRDbGFzcygnc3RhdGVfaGlkZGVuJyk7CiAgICAgICAgICAgICAgICBpZih2YWx1dGVTZWxsID09IDIpewogICAgICAgICAgICAgICAgICAgIGN1cnNlID0gdXNkQ3Vyc2U7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBpZih2YWx1dGVTZWxsID09IDMpewogICAgICAgICAgICAgICAgICAgIGN1cnNlID0gZXVyQ3Vyc2U7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICBnZXRMaXN0SXRlbShzZWxsSW5wdXQsMikudHJpZ2dlcignY2xpY2snKTsKICAgICAgICAgICAgfQogICAgICAgICAgICBnbG9iYWwuc2V0Q3VycmVuY3kodmFsdXRlQnllLCAkKCdbbmFtZT0iY2FsY19leGNoYW5nZSJdJykuY2xvc2VzdCgnLmpzLWlucHV0JyksdHJ1ZSk7CiAgICAgICAgICAgIHZhciBpbnB1dCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJ1tuYW1lPSJjYWxjX2V4Y2hhbmdlX2N1cnNlIl0nKTsKICAgICAgICAgICAgaW5wdXQudmFsdWUgPSBjdXJzZTsKICAgICAgICAgICAgaW5wdXQuZGlzcGF0Y2hFdmVudChuZXcgRXZlbnQoJ2NoYW5nZScpKTsKICAgICAgICB9CiAgICAgICAgc2V0Q3VycmVuY3koKTsKICAgICAgICByZXR1cm4gY3Vyc2U7CiAgICB9KSh2YWx1dGVCeWUsdmFsdXRlU2VsbCxjYXJkKTsK"
+                                         data-params="valuteBye|select_bye_currency,valuteSell|select_sell_currency,card|select_calc_select_card_exchange"
+                                         data-bind="calc_exchange_curse"
+                                         data-ordered="0"
+                                         data-round="2"
+                                 ></span>
+                              <input type="hidden"  value="2" name="calc_exchange_curse">
+                            </div>
+
+
                             <div class="calculator-hidden-out">
                               <!--#2-->
                               <span
                                       data-calc="c3VtbSsw"
                                       data-params="summ|calc_exchange"
                                       data-bind="allcost_exchange"
-                                      data-ordered="0"
+                                      data-ordered="1"
                                       data-round="2"
                               ></span>
                               <input type="hidden" class="js-land-calc-input-hidden" value="0" name="allcost_exchange">
