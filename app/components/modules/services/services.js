@@ -188,7 +188,9 @@ export class ExchangeBanksServiceCorp extends ExchangeService {
 export class ExchangeBanksServiceDefault extends ExchangeService {
   getAdaptedData(data) {
     this.loadedData = data;
-    return data.bank_courses;
+    this.exchangeBlock[0].value = data.online_courses;
+    this.exchangeBlock[0].dispatchEvent(new window.Event('change'));
+    return data.online_courses;
   }
 }
 

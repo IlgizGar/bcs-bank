@@ -269,11 +269,10 @@ $(() => {
     const currencySpan = $('.js-currency-span');
     if (currencySpan.length) {
       currencySpan.text(icons[currency - 1]);
-    } else {
-      const currencyBlockText = `<span class="js-currency-span currency-span">${icons[currency - 1]}</span>`;
-      $(currencyBlockText).insertBefore(currencyResult);
-      currencyBlock.html(currencyBlockText);
     }
+    const currencyBlockText = `<span class="js-currency-span currency-span">${icons[currency - 1]}</span>`;
+    $(currencyBlockText).insertBefore(currencyResult);
+    currencyBlock.html(currencyBlockText);
   };
 
   global.partnersButtons = [];
