@@ -227,7 +227,9 @@ module.exports = (elem) => {
                     .find('.js-step-informer')
                     .text(this.steps.tofFirstStep() + 1);
                 })
-                .modal();
+                .modal({
+                  showClose: false,
+                });
               $(form)
                 .removeClass('state_loading');
             } else if (data.success === 'incorrect-code') {
@@ -238,7 +240,9 @@ module.exports = (elem) => {
               $(form)
                 .removeClass('state_loading');
               $('.js-products-error')
-                .modal();
+                .modal({
+                  showClose: false,
+                });
             }
           } else if (data.success === 'incorrect-code') {
             $(form)
@@ -257,7 +261,9 @@ module.exports = (elem) => {
                 });
             } else {
               $('.js-products-error')
-                .modal();
+                .modal({
+                  showClose: false,
+                });
             }
           } else {
             $(form)
@@ -277,7 +283,9 @@ module.exports = (elem) => {
             $(form)
               .removeClass('state_loading');
             $('.js-products-error')
-              .modal();
+              .modal({
+                showClose: false,
+              });
           }
         },
       });
