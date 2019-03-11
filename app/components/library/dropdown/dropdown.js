@@ -27,6 +27,8 @@ module.exports = (elem) => {
       this.list = $(`<div id="${this.id}" class="dropdown__list state_invisible scroll-pane js-dropdown-list mt-10"><ul tabindex="1"></ul></div>`);
       $('.js-page').append(this.list);
 
+      this.list[0].Dropdown = this;
+
       this.options.each((i, el) => {
         this.list.find('ul').append(`
           <li tabindex="${i + 1}" data-val="${$(el).val()}">${$(el).html()}</li>
@@ -63,9 +65,8 @@ module.exports = (elem) => {
           this.list.find('ul').focus();
         }
       });
-      let listEl;
       this.list.on('mousedown', (e) => {
-        listEl = e.target;
+        this.listEl = e.target;
       });
 
 
@@ -95,7 +96,7 @@ module.exports = (elem) => {
       this.list.find('li').on('keydown', (e) => {
         if (e.keyCode === 13) {
           console.log(e);
-          listEl = $(e.currentTarget);
+          this.listEl = $(e.currentTarget);
           this.list.trigger('click');
           $(e.currentTarget).trigger('click');
           this.dropdown.focus();
@@ -104,15 +105,7 @@ module.exports = (elem) => {
 
       this.list.on('click', (e) => {
         if ($(e.target).closest('ul').length) {
-          this.dropdown.addClass('state_filled');
-          this.input.val($(listEl).html());
-          if (this.input.closest('form').length) {
-            this.input.valid();
-          }
-          this.options.attr('selected', false);
-          this.select.find(`[value="${$(e.target).data('val')}"]`).attr('selected', 'selected');
-          this.hideList();
-
+          this.setValue($(e.target).data('val'));
           if (this.id === 'documents-filter') {
             global.documentsFilter.applyFilter($(e.target).html());
           }
@@ -135,6 +128,25 @@ module.exports = (elem) => {
           });
         }
       });
+    }
+
+    setValue(value) {
+      this.dropdown.addClass('state_filled');
+      this.input.val(this.list.find(`[data-val="${value}"]`).html());
+      if (this.input.closest('form').length) {
+        this.input.valid();
+      }
+      this.options.attr('selected', false);
+      this.select.find(`[value="${value}"]`).attr('selected', 'selected');
+      this.hideList();
+    }
+
+    hideValues(valToHide, dropdownVal) {
+      this.setValue(dropdownVal);
+      this.list.find('[data-val]').removeClass('state_hidden');
+      for (let i = 0; i < valToHide.length; i += 1) {
+        this.list.find(`[data-val="${valToHide[i]}"]`).addClass('state_hidden');
+      }
     }
 
     showList(el) {
