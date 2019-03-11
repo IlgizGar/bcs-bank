@@ -3,6 +3,7 @@
 {% import "../../../components/library/button/button.njk" as Button %}
 {% import "../../../components/library/socials/socials.njk" as Socials %}
 {% import "../../library/radio/radio.njk" as Radio %}
+{% import "../../../components/modules/services/exchangeDefault.njk" as ExchangeDefault %}
 
 {% macro card( options ) %}
   {% set tag = 'h2' %}
@@ -13,6 +14,10 @@
   {% set type = 'form' %}
   {% if options.href or options.linkhref %}
     {% set type = 'div' %}
+  {% endif %}
+
+  {% if options.type  %}
+    {% set type = options.type %}
   {% endif %}
 
   {% set class_sep = joiner(' ') %}
@@ -62,19 +67,24 @@
             </button>
         {% endif %}
       {% else %}
-        <div class="card__action">
-          {% if options.type === 'vacancy' %}
-            {{ Button.button({ 'title': 'Откликнуться', 'mods': { 'theme': 'default' }, 'class': 'card__button card__button_type-respond' }) }}
-            {{ Button.button({ 'href': options.url, 'title': 'Узнать больше', 'mods': { 'theme': 'default', 'view': 'text' }, 'class': 'card__button card__button_type-more' }) }}
-            {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'class': 'card__button' }) }}
-          {% endif %}
-        </div>
+        {% if options.exchange %}
+        {% else %}
+          <div class="card__action">
+            {% if options.type === 'vacancy' %}
+              {{ Button.button({ 'title': 'Откликнуться', 'mods': { 'theme': 'default' }, 'class': 'card__button card__button_type-respond' }) }}
+              {{ Button.button({ 'href': options.url, 'title': 'Узнать больше', 'mods': { 'theme': 'default', 'view': 'text' }, 'class': 'card__button card__button_type-more' }) }}
+              {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'class': 'card__button' }) }}
+            {% endif %}
+          </div>
+        {% endif %}
       {% endif %}
 
       <div class="card__content">
 
         {% if options.block %}
           {% include "../../" + options.block + ".njk" %}
+        {% elseif options.exchange %}
+          {{ ExchangeDefault.exchangeDefault({'title':options.title, 'text':options.subtitle}) }}
         {% else %}
 
           <div class="card__heading">

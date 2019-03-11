@@ -8,138 +8,29 @@
 {% import "../../../components/icon/icon.njk" as Icon %}
 
 
-{% set menu = [
-  {'title': 'Услуги',
-    'items': [
-    {'name': 'Кредиты', 'href': '#'},
-    {'name': 'Дебетовые карты', 'href': '#debet'},
-    {'name': 'Кредитные карты', 'href': '#credit'},
-    {'name': 'Пакеты услуг', 'href': 'http://juravlev.rusrobots.ru/bks/vacancies.html'},
-    {'name': 'Вклады', 'href': '#'},
-    {'name': 'БКС-Бонус', 'href': '#'},
-    {'name': 'Интернет-банк', 'href': '#'}]
-  },
-  {'title': 'О банке',
-    'items': [
-    {'name': 'Новости', 'href': 'http://juravlev.rusrobots.ru/bks/news.html'},
-    {'name': 'Общая информация', 'href': '#'},
-    {'name': 'Руководство', 'href': '#'},
-    {'name': 'Вакансии', 'href': 'http://juravlev.rusrobots.ru/bks/vacancies.html'},
-    {'name': 'Офисы и банкоматы', 'href': '#'},
-    {'name': 'Вся группа', 'href': '#'}]
-  },
-  {'title': 'Реквизиты',
-    'items': [
-    {'name': 'Cтрахованиe вкладов', 'href': '#'},
-    {'name': 'Лицензии', 'href': '#'},
-    {'name': 'БКС Онлайн', 'href': '#'},
-    {'name': 'Депозитарий', 'href': '#'}
-  ]},
-  {'title': 'Инсайдерам',
-    'items': [
-    {'name': 'Раскрытие информации', 'href': 'http://juravlev.rusrobots.ru/bks/disclosure.html'},
-    {'name': 'Документы', 'href': 'http://juravlev.rusrobots.ru/bks/documents.html'},
-    {'name': 'Финансовым институтам', 'href': '#'}
-  ]}
-] %}
 
-<footer class="footer js-footer js-scroll-animate state_animate-double">
+
+<footer class="footer footer_landing js-footer">
   <div class="page__container">
     <div class="footer__wrap">
+      <div class="footer__logo-wrap">
+        <img src="assets/images/svg/logo-dark.svg">
+          <p class="footer__contacts-inform">
+            Финансовая Группа БКС<br>
+            © 1989–2018, АО «БКС Банк», официальный сайт, генеральная лицензия на осуществление <br>
+            банковских операций №101 от 15.12.2014.
+          </p>
+      </div>
       <div class="footer__info">
         <div class="footer__contacts">
           <p class="footer__contacts-phone">8 800 500 7065</p>
           <p class="footer__contacts-inform">Бесплатный звонок по России</p>
-          {{ Button.button({ 'title': 'Задать вопрос', 'href': '#question-modal-form', 'mods': {'theme': 'default'}, 'class': 'footer__contacts-button js-open-modal'  }) }}
-        </div>
-        <div class="footer__socials footer__socials_state-desktop">
-          {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'title': 'Присоединяйтесь' }) }}
-          {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'title': 'Доступно для устройств', 'device': 'true' }) }}
-        </div>
-      </div>
-      <div class="footer__menu">
-        {% for item in menu %}
-          <div class="footer__menu-group js-footer-menu">
-            <div class="footer__menu-title">
-              {{ item.title }}
-              {{ Icon.icon({ 'name': 'dropdown' }) }}
-            </div>
-            <div class="footer__menu-content js-footer-menu-content">
-              {% for el in item.items %}
-                {{ Button.button({ 'href': el.href, 'title': el.name, 'mods': {'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'footer__menu-link' }) }}
-              {% endfor %}
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-    </div>
-  </div>
-  <div class="footer__about">
-    <div class="page__container">
-      <div class="footer__about-wrap">
-        <div class="footer__credentials">
-          {{ Button.button({ 'href': '#', 'title': 'Информация о максимальных процентных ставках по вкладам физических лиц', 'mods': {'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'footer__credentials-link' }) }}
-          <p>© 1989–2018, АО «БКС Банк», официальный сайт,</p>
-          <p>генеральная лицензия на осуществление банковских операций №101 от 15.12.2014.</p>
-        </div>
-        <div class="footer__socials footer__socials_state-mobile">
-          {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'} }) }}
-          {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'device': 'true' }) }}
-        </div>
-        <div class="footer__developer">
-          <p>Сделано в </p>
-          {{ Icon.icon({ 'name': 'aic' }) }}
         </div>
       </div>
     </div>
   </div>
 </footer>
 
-{# TODO: Вынести в шаблон #}
-<div id="question-modal-form" class="modal js-form" data-form="question-modal">
-  <form id="question-form" action="/" class="form question-form">
-    {{ Heading.heading({ 'title': 'У Вас есть вопрос?', 'mods': {'type': 'default', 'margin': 'normal'}, 'class': 'header__contacts-heading' }) }}
-    {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': {'class': 'js-fio-masked', 'name': 'queston_name', 'required': 'required'} }) }}
-    <div class="form__line-group">
-      {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': { 'class': 'js-phone-masked', 'name': 'question_phone', 'required': 'required' } }) }}
-      {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': { 'class': 'js-mail-masked', 'name': 'question_mail', 'required': 'required' } }) }}
-    </div>
-    {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Тема', 'name': 'question', 'items': [{'title': 'Предложения по сайту', 'value': '0'},{'title': 'Интернет-банк', 'value': '1'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'question-form-list'}, 'field': 'js-question-topic' }) }}
-    {{ Input.input({ 'label': 'Текст вопроса', 'tag': 'textarea', 'rows': '6', 'class': 'input_textarea form__field-group', 'field': { 'required': 'required', 'name': 'question_text', 'class': 'js-question-textarea' } }) }}
-    <div class="form__action">
-      <div class="form__agreements">
-        {# TODO: вынести в шаблон #}
-        <label class="checkbox checkbox_theme-dark js-checkbox js-personal-checkbox">
-          <input type="checkbox" class="checkbox__control" name="question__personal" checked>
-          <span class="checkbox__state"></span>
-          <span class="checkbox__label">
-            Даю согласие на обработку <br>
-            {{ Button.button({ 'href': '#', 'title': 'персональных данных', 'class': 'js-confidence-policy-link', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
-          </span>
-        </label>
-      </div>
-      {{ Button.button({ 'title': 'Отправить', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
-    </div>
-  </form>
-  <div class="question-form-success js-form-success state_hidden">
-    {{ Heading.heading({ 'title': 'Сообщение отправлено' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'none', 'theme': 'default', 'class': 'form__title'}) }}
-    <p class="text mt-16">Вам ответят в ближайшее время</p>
-    {{ Contact.contact({ 'title': 'По срочным вопросам можно позвонить',
-      'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500 70 65', 'href': '+78005007065' }, { 'name': 'Если вы звоните из-за рубежа', 'value': '+7 (495) 967 11 11', 'href': '+74959671111' }],
-      'class': 'js-contact mt-40' }) }}
-    {{ Heading.heading({ 'title': 'Присоединяйтесь к нам в социальных сетях', 'class': 'mt-56' }) }}
-    {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'class': 'mt-32'}) }}
-  </div>
-  <div class="question-form-success js-form-error state_hidden">
-    {{ Heading.heading({ 'title': 'Сообщение не отправлено' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'none', 'theme': 'default', 'class': 'form__title'}) }}
-    <p class="text mt-16">К сожалению, что-то пошло не так. Попробуйте повторить запрос позже.</p>
-    {{ Contact.contact({ 'title': 'По срочным вопросам можно позвонить',
-      'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500 70 65', 'href': '+78005007065' }, { 'name': 'Если вы звоните из-за рубежа', 'value': '+7 (495) 967 11 11', 'href': '+74959671111' }],
-      'class': 'js-contact mt-40' }) }}
-    {{ Heading.heading({ 'title': 'Присоединяйтесь к нам в социальных сетях', 'class': 'mt-56' }) }}
-    {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'class': 'mt-32'}) }}
-  </div>
-</div>
 
 <div class="modal products-submit-success js-products-success">
   {{ Heading.heading({ 'title': 'Заявка отправлена', 'mods': { 'type': 'default', 'margin': 'small' } }) }}
@@ -149,7 +40,6 @@
     'class': 'js-contact mt-40' }) }}
   {{ Heading.heading({ 'title': 'Присоединяйтесь к нам в социальных сетях', 'class': 'mt-56' }) }}
   {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'class': 'mt-32'}) }}
-  <a href="?success=true#close-modal" rel="modal:close" class="close-modal modal__close"></a>
 </div>
 <div class="modal products-submit-error js-products-error">
   {{ Heading.heading({ 'title': 'Сообщение не отправлено', 'mods': { 'type': 'default', 'margin': 'small' } }) }}
@@ -159,7 +49,6 @@
     'class': 'js-contact mt-40' }) }}
   {{ Heading.heading({ 'title': 'Присоединяйтесь к нам в социальных сетях', 'class': 'mt-56' }) }}
   {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'class': 'mt-32'}) }}
-  <a href="?success=false#close-modal" rel="modal:close" class="close-modal modal__close"></a>
 </div>
 
 <div class="modal confidence-policy js-confidence-policy">
@@ -226,45 +115,6 @@
   {{ Button.button({ 'href': '#', 'title': 'Регистрация', 'class': 'js-bonus-modal-button', 'mods': { 'type': 'button', 'theme': 'default' } }) }}
 </div>
 
-
-<div class="modal partners-modal js-partners-modal js-form" data-form="question-modal">
-  {{ Heading.heading({ 'title': 'Переход на БКС Премьер', "class": "js-partners-modal-title", 'mods': { 'type': 'default', 'margin': 'small' } }) }}
-  <p class="text text_theme-gray mb-40 js-partners-modal-text">
-    Инвестиции, доступные каждому.<br>
-    Для профессионалов и новичков.
-  </p>
-  {{ Button.button({ 'href': '#', 'title': 'Перейти', 'class': 'js-partners-modal-button', 'mods': { 'type': 'button', 'theme': 'default' } }) }}
-  <div class="partners-modal__line mt-64"></div>
-  <form  action="/" class="form partners-modal__form mt-64">
-    <input type="hidden" name="theme" class="js-partners-modal-theme" value="">
-    {{ Heading.heading({ 'title': 'Есть вопросы?', 'mods': {'type': 'default', 'margin': 'normal'}, 'class': 'header__contacts-heading' }) }}
-    {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': {'class': 'js-fio-masked', 'name': 'queston_p_name', 'required': 'required'} }) }}
-    <div class="form__line-group">
-      {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': { 'class': 'js-phone-masked', 'name': 'question_p_phone', 'required': 'required' } }) }}
-      {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': { 'class': 'js-mail-masked', 'name': 'question_p_mail', 'required': 'required' } }) }}
-    </div>
-   <div class="form__action">
-      <div class="form__agreements">
-        {# TODO: вынести в шаблон #}
-        <label class="checkbox checkbox_theme-dark js-checkbox js-personal-checkbox">
-          <input type="checkbox" class="checkbox__control" name="question__personal" checked>
-          <span class="checkbox__state"></span>
-          <span class="checkbox__label">
-            Даю согласие на обработку <br>
-            {{ Button.button({ 'href': '#', 'title': 'персональных данных', 'class': 'js-confidence-policy-link', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
-          </span>
-        </label>
-      </div>
-      {{ Button.button({ 'title': 'Отправить', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
-    </div>
-  </form>
-
-</div>
-
-
-<div id="limits" class="modal services-limits">
-  {% include "../services/limits.njk" %}
-</div>
 
 {% include "../select-city/select-city.njk" %}
 {% include "../products/select-filter/select-filter.njk" %}
