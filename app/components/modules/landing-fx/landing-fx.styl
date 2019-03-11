@@ -2,21 +2,44 @@
   .landing-fx
     .page__container
       max-width 1248px
+    .heading
+      @media (max-width 768px)
+        font-size 32px!important
     &.products-detail
       .products-detail__content
         padding 50px 0
+        @media (max-width 768px)
+          margin-top -96px
+          .title-head
+            margin-bottom 17px
       .heading.heading_type-large
         font-size 49px
         line-height 1.21
         letter-spacing -0.7px
-      .products-detail__figure .illustration
-        top -155px
-        right 51px
-        @media (max-width 769px)
-          top: -10px
-          right 28px
+        @media (max-width 768px)
+          font-size 32px
+      .products-detail__figure
+        @media (max-width: 1279px) and (min-width: 768px)
+          .illustration
+            top 9%!important
+            right 99px!important
+            width 76%
+            height 284px
+            max-width 275px
+        @media (max-width 768px)
+          margin-top: 7px;
+        .illustration
+          top -155px
+          right 51px
+          @media (max-width 768px)
+            top -10px
+            right 45px
+            width 73%
+            height 288px
+            max-width 320px
     .button:not(.button_type-icon) .button__wrap
-      padding 0 43px
+      @media (min-width 768px)
+        padding 0 43px
 
     .section__header_theme-blue
       position relative
@@ -30,6 +53,7 @@
             margin-bottom 16px
           &:last-child
             margin-right 0
+            display inline-block
     .feature__content
       .feature__title
         margin-bottom 18px
@@ -56,7 +80,7 @@
       .mobile__content
         padding-bottom: 79px;
         width: calc(53% - 40px);
-        @media (max-width 769px)
+        @media (max-width 768px)
           width 100%
       &.section_landing-info
         margin-bottom: 96px;
@@ -69,4 +93,108 @@
           margin-bottom 4px
     #section-request
       overflow hidden
+      @media (max-width 768px)
+        margin-bottom 0
+    .services__carousel,.section-calculator,.section_steps
+      max-width calc(100% - 40px)
+      margin 0 auto
+      overflow hidden
+      .slick-list
+        overflow visible
+      .slick-slide
+        padding  0 10px
+        position relative
+      @media (max-width 768px)
+        display none
+    .section_landing_features
+      margin-bottom 55px
+      overflow hidden
+      .heading
+        padding-bottom 64px
+        @media (max-width 768px)
+          padding-bottom 47px
+      @media (max-width 768px)
+        padding-top 49px
+        background-color $color_card
+        padding-bottom 34px
+
+        .landing-feature-card__img
+          display flex
+          flex-direction column
+          margin-bottom 0
+          .landing-feature-card__img-title
+            order 2
+            margin-top 16px
+            margin-bottom 32px
+          .landing-feature-card__img-image
+            order 1
+            max-width 200px
+        .landing-feature-card__content
+          .feature__title
+            margin-bottom 8px
+          .feature
+            margin-bottom 24px
+
+      .carousel__content
+        @media (max-width 425px)
+          max-width 330px
+          .slick-list
+            overflow visible
+          .slick-slide
+            .landing-feature-card__img-title,.landing-feature-card__content
+              opacity 0
+              transition opacity 0.3s ease
+            &.slick-current,&.slick-active
+              .landing-feature-card__img-title,.landing-feature-card__content
+                opacity 1
+          .landing-feature-card
+            padding 0
+    .section_landing_services
+      margin-bottom 56px
+      @media (max-width 768px)
+        margin-bottom 0
+        .heading
+          margin-bottom -20px
+        .landing-exchange__header-item
+          height 51px
+          margin-top 28px
+          padding-left 90px
+          padding-right 0
+    .section__landing-banner
+      margin-bottom 100px
+      .section__header
+        padding-top 80px
+        @media (max-width 768px)
+          padding-top 150px
+        @media (max-width 767px)
+          padding-top 0
+      @media (max-width 768px)
+        margin-bottom 0
+    .landing-exchange__header-title
+      @media (max-width 768px)
+        font-size 16px
+    .section_landing-info
+      @media (max-width 768px)
+        margin-bottom 0!important
+    .calculation-image_landing-fx
+      @media (max-width 1024px)
+        display none
+.footer_landing
+  @media (max-width: 1279px)
+    .footer__logo-wrap,.footer__info
+      width auto!important
+      max-width: 71%;
+  @media (max-width: 650px)
+    .footer__logo-wrap,.footer__info
+      width auto!important
+      max-width 100%
+    .footer__logo-wrap
+      order 2
+    .footer__info
+      order 1
+    .footer__logo-wrap img
+      position absolute
+      top: 75px
+      right -40px
+
 

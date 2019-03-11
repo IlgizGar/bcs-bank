@@ -21,7 +21,7 @@
     {% include "../components/modules/header/headerLanding.njk" %}
 
     <main role="main" class="products-detail landing-fx">
-      <section class="section page__section mb-100">
+      <section class="section page__section section__landing-banner">
         <div class="section__header section__header_theme-blue">
           <div class="page__container">
             <div class="section__row">
@@ -56,33 +56,39 @@
         </div>
       </section>
 
-      <section class="section page__section mb-55">
+      <section class="section section_landing_features page__section">
         <div class="page__container">
-          {{ Heading.heading({ 'tag': 'h2', 'title': 'Преимущества валютной карты', 'mods': { 'type': 'default', 'margin': 'medium' }, 'class':'pb-64' }) }}
+          {{ Heading.heading({ 'tag': 'h2', 'title': 'Преимущества валютной карты', 'mods': { 'type': 'default', 'margin': 'medium' }, 'class':'' }) }}
 
-          {{ LandingFeature.landigFeatureCard({ 'title': 'Валютная карта ', 'img': 'assets/illustrations/land_fx_card_1.png', 'features':[
-            { 'title': '0₽ ', 'text': 'бесплатное обслуживание при обороте в 40 000₽ или среднемесячном остатке в 40 000₽ на всех счетах', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
-            { 'title': '1% ', 'text': 'от суммы покупок вернем бонусами', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
-            { 'title': 'до 3,8% ', 'text': 'вклад в USD', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
-            { 'title': '0₽  ', 'text': 'бесплатное открытие и обслуживание счетов в 3-х валютах: Рубли, Доллары США, Евро', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
-            { 'title': 'до 150 000₽ ', 'text': 'бесплатное снятие наличных', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
-            { 'title': '₽, $, € ', 'text': 'льготный курс обмена валют', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }
-          ] }) }}
+            <div class="js-carousel carousel__content" data-id="landing_features" data-breakpoint="925">
+              {{ LandingFeature.landigFeatureCard({ 'title': 'Валютная карта ', 'img': 'assets/illustrations/land_fx_card_1.png', 'features':[
+                { 'title': '0₽ ', 'text': 'бесплатное обслуживание при обороте в 40 000₽ или среднемесячном остатке в 40 000₽ на всех счетах', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
+                { 'title': '1% ', 'text': 'от суммы покупок вернем бонусами', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
+                { 'title': 'до 3,8% ', 'text': 'вклад в USD', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
+                { 'title': '0₽  ', 'text': 'бесплатное открытие и обслуживание счетов в 3-х валютах: Рубли, Доллары США, Евро', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
+                { 'title': 'до 150 000₽ ', 'text': 'бесплатное снятие наличных', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
+                { 'title': '₽, $, € ', 'text': 'льготный курс обмена валют', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }
+              ] }) }}
 
-          {{ LandingFeature.landigFeatureCard({ 'title': 'Валютная карта Premium ', 'img': 'assets/illustrations/land_fx_card_2.png', 'features':[
-            { 'title': '0₽ ', 'text': 'бесплатное обслуживание при среднемесячном остатке 1 000 000₽ на всех счетах', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
-            { 'title': '2% ', 'text': 'от суммы покупок вернем бонусами', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
-            { 'title': 'до 4% ', 'text': 'вклад в USD', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
-            { 'title': '0₽ ', 'text': 'бесплатное открытие и обслуживание счетов в 3-х валютах: Рубли, Доллары США, Евро', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
-            { 'title': 'до 500 000₽ ', 'text': 'бесплатное снятие наличных', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
-            { 'title': '₽, $, €', 'text': 'льготный курс обмена валют', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }
-          ] }) }}
-
+              {{ LandingFeature.landigFeatureCard({ 'title': 'Валютная карта Premium ', 'img': 'assets/illustrations/land_fx_card_2.png', 'features':[
+                { 'title': '0₽ ', 'text': 'бесплатное обслуживание при среднемесячном остатке 1 000 000₽ на всех счетах', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
+                { 'title': '2% ', 'text': 'от суммы покупок вернем бонусами', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
+                { 'title': 'до 4% ', 'text': 'вклад в USD', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
+                { 'title': '0₽ ', 'text': 'бесплатное открытие и обслуживание счетов в 3-х валютах: Рубли, Доллары США, Евро', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
+                { 'title': 'до 500 000₽ ', 'text': 'бесплатное снятие наличных', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' },
+                { 'title': '₽, $, €', 'text': 'льготный курс обмена валют', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }
+              ] }) }}
+             </div>
+            <div class="carousel-controls carousel-controls_theme-dark js-carousel-controls">
+              <div class="carousel-controls__pagination js-carousel-pagination" data-carousel="landing_features">
+                <span>01</span><span></span><span></span>
+              </div>
+            </div>
         </div>
       </section>
 
 
-      <section class="section page__section services mb-56">
+      <section class="section page__section section_landing_services services">
         <div class="page__container">
           {{ Heading.heading({ 'tag': 'h2', 'title': 'Обмен валюты', 'mods': { 'type': 'default', 'margin': 'default' } }) }}
           <div class="landing-exchange">
@@ -132,7 +138,7 @@
       </section>
 
 
-      <section class="section page__section services section_theme-white-smoke section_padding-default ">
+      <section class="section section-calculator page__section services section_theme-white-smoke section_padding-default ">
           <div class="calculator  js-calc-result">
             <div class="page__container">
               {{ Heading.heading({ 'title': 'Рассчитайте свою выгоду', 'mods': { 'type': 'default', 'margin': 'medium' } }) }}
@@ -357,7 +363,7 @@
       </section>
 
 
-      <section class="section page__section">
+      <section class="section page__section section_steps">
         <div class="page__container">
           {{ Heading.heading({ 'title': 'Оформите заявку и получите \n  карту на следующий день', 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered' }) }}
           </div>
@@ -391,13 +397,9 @@
         <div class="products-detail__request">
           <div class="page__container">
             {{ Heading.heading({ 'title': 'Заявка на карту', 'mods': { 'type': 'default', 'margin': 'small' } }) }}
-            <div class="text text_theme-gray mb-56">Открывается в рамках любого пакета услуг</div>
             <div class="section__row">
               <div class="form form_layout-narrow js-form" data-form="cards">
-                <div class="form__steps">
-                  Шаг <span class="js-step-informer">1</span> из <span class="js-step-informer-all">4</span>
-                </div>
-                {{ Heading.heading({ 'title': 'Общая информация', 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
+
                 <form action="http://localhost/rplpost">
 
                   <div class="step-form__item js-step  js-sms-step js-send-form" data-send-url="http://localhost/rplpost">
