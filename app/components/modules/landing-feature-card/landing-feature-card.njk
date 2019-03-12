@@ -1,0 +1,26 @@
+{% import "../../../components/library/feature/feature.njk" as Feature %}
+
+{% macro landigFeatureCard( options ) %}
+
+
+    <div class="card landing-feature-card" >
+        <div class="landing-feature-card__img">
+            <div class="landing-feature-card__img-title">
+                {{ options.title }}
+            </div>
+            <img class="landing-feature-card__img-image" src="{{ options.img }}">
+        </div>
+        <div class="landing-feature-card__content">
+            <div class="features">
+                {% for i in range(0, options.features.length) %}
+                {% set card = options.features[i] %}
+                {% if i == 3 %}
+            </div>
+            <div class="features">
+                {% endif %}
+                {{ Feature.feature({ 'title': card.title, 'text': card.text, 'mods': {'type': 'normal', 'theme': 'default'}, 'class': 'features__item' }) }}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endmacro %}
