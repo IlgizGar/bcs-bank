@@ -42,7 +42,7 @@ gulp.task('scripts', ['scripts:lint'], () => {
     .pipe(source('app.js'))
     .pipe(buffer())
     .pipe(gulpIf(!isProduction, sourcemaps.init({loadMaps: true})))
-    .pipe(gulpIf(isProduction, uglify()))
+    .pipe(uglify())
     .pipe(rename({extname: '.min.js'}))
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('dist/assets/scripts'));
