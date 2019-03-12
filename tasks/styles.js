@@ -2,7 +2,6 @@ const gulp = require('gulp');
 const stylus = require('gulp-stylus');
 const postcss = require('gulp-postcss');
 const rename = require('gulp-rename');
-const cssMin = require('gulp-clean-css');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -13,12 +12,12 @@ gulp.task('styles', () => {
 
   const plugins = [
     require('autoprefixer'),
-    require('postcss-inline-svg')(inlineOpts),
+    require('postcss-inline-svg')(inlineOpts)
   ];
 
-  // if (isProduction) {
-  //   plugins.push(require('cssnano'));
-  // }
+  if (isProduction) {
+    plugins.push(require('cssnano'));
+  }
 
   return gulp
     .src('app/styles/*.styl')
@@ -26,7 +25,6 @@ gulp.task('styles', () => {
       'include css': true,
     }))
     .pipe(postcss(plugins))
-    .pipe(cssMin())
     .pipe(rename({ suffix: '.min' }))
     .pipe(gulp.dest('dist/assets/styles'));
 });
