@@ -1,0 +1,94 @@
+{% extends "layout/layout.njk" %}
+
+{% import "../components/library/breadcrumbs/breadcrumbs.njk" as Breadcrumbs %}
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/library/button/button.njk" as Button %}
+{% import "../components/modules/tabbar/tabbar.njk" as Tabbar %}
+{% import "../components/library/feature/feature.njk" as Feature %}
+{% import "../components/modules/brand-features/brand-features.njk" as BrandFeatures %}
+{% import "../components/library/input/input.njk" as Input %}
+{% import "../components/library/dropdown/dropdown.njk" as Dropdown %}
+{% import "../components/library/docs/docs.njk" as Docs %}
+{% import "../components/icon/icon.njk" as Icon %}
+
+{% set root = "." %}
+{% set title = "БКС Платинум" %}
+{% set header = 'blue' %}
+
+{% block body %}
+  <div class="page js-page page_theme-grey">
+
+
+    <main role="main" class="products-detail">
+      <section id="section-request" class="section section_theme-white-smoke section_padding-default page__section">
+        <div class="products-detail__request">
+          <div class="page__container">
+            {{ Heading.heading({ 'title': 'Заявка на карту', 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+            <div class="text text_theme-gray mb-56">Открывается в рамках любого пакета услуг</div>
+            <div class="section__row">
+              <div class="form form_layout-narrow js-form" data-form="cards">
+                <div class="form__steps">
+                  Шаг <span class="js-step-informer">1</span> из <span class="js-step-informer-all">4</span>
+                </div>
+                {{ Heading.heading({ 'title': 'Общая информация', 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
+                <form action="/rplpost">
+                  <div class="step-form__item js-step js-send-form" data-send-url="http://localhost/rplpost">
+                    <fieldset>
+                      {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': 'js-fio-masked', 'maxlength': '64', 'name': 'bid_user-name', 'required': 'true' } }) }}
+                      <div class="form__line-group">
+                        {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': {'class': 'js-phone-masked', 'name': 'question_phone', 'required': 'true' } }) }}
+                        {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': {'class': 'js-mail-masked', 'name': 'question_mail', 'required': 'true' } }) }}
+                      </div>
+                      {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Выберите город', 'name': 'bid_select-city', 'items': [{'title': 'Краснодар', 'value': '12345'}, {'title': 'Москва', 'value': '13456'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'bid-city-list'}, 'field': 'js-city-select' }) }}
+                      <div class="form__line-group">
+                        {{ Input.input({ 'label': 'Сумма кредита', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'credit_amount', 'class': 'js-numeric-input' }, 'title': '#ruble', 'slider': { 'min': 50000, 'max': 1000000, 'from': 800000, 'step': 1000 } }) }}
+                        {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Цель кредита', 'name': 'credit-aims', 'items': [{'title': 'На развлечения', 'value': '13456'}, {'title': 'Отправить малого в школу', 'value': '136'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'credit-aims'}, 'field': 'js-aims-select' }) }}
+                      </div>
+                    </fieldset>
+                    <div class="form__agreements">
+                      <label class="checkbox checkbox_theme-dark js-checkbox js-personal-checkbox">
+                        <input type="checkbox" class="checkbox__control"
+                               name="question__personal" checked>
+                        <span class="checkbox__state"></span>
+                        <span
+                                class="checkbox__label">Даю согласие на обработку <br> {{ Button.button({ 'href': '#', 'title': 'персональных данных', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}</span>
+                      </label>
+                      {{ Button.button({ 'title': 'Отправить', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
+                    </div>
+                  </div>
+
+                  <div class="step-form__item js-step js-sms-step js-send-form" data-send-url="http://localhost/rplpost">
+                    {% include "../components/modules/sms-code-form/sms-code-form.njk" %}
+                  </div>
+
+                  <div class="step-form__item js-step">
+                    {{ Heading.heading({ 'title': 'Личная информация' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
+                    {% include "../components/modules/form-personal-info/form-personal-info2.njk" %}
+                    {% include "../components/modules/form-passport/form-passport2.njk" %}
+                    {% include "../components/modules/form-place/form-place.njk" %}
+                    <div class="form__agreements">
+                      {{ Button.button({ 'title': 'Назад', 'type': 'button', 'mods': {'theme': 'default', 'view': 'text', 'type': 'before-arrow'}, 'class': 'form__submit-button js-step-backward' }) }}
+                      {{ Button.button({ 'title': 'Далее', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
+                    </div>
+                  </div>
+
+                  <div class="step-form__item js-step">
+                    {{ Heading.heading({ 'title': 'Занятость' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
+                    {% include "../components/modules/form-job/form-job.njk" %}
+                    <div class="form__agreements">
+                      {{ Button.button({ 'title': 'Назад', 'type': 'button', 'mods': {'theme': 'default', 'view': 'text', 'type': 'before-arrow'}, 'class': 'form__submit-button js-step-backward' }) }}
+                      {{ Button.button({ 'title': 'Далее', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
+                    </div>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    {% include "../components/modules/footer/footer_blank.njk" %}
+  </div>
+{% endblock %}
