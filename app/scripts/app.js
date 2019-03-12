@@ -12,7 +12,7 @@ import Contact from '../components/library/contact/contact';
 import Dropdown from '../components/library/dropdown/dropdown';
 import Context from '../components/library/context/context';
 import Carousel from '../components/library/carousel/carousel';
-import { FixService, ExchangeService, ExchangeBanksService, ExchangeBanksServiceCorp } from '../components/modules/services/services';
+import { FixService, ExchangeService, ExchangeBanksService, ExchangeBanksServiceCorp, ExchangeBanksServiceDefault } from '../components/modules/services/services';
 import MediaSlider from '../components/library/media-slider/media-slider';
 import TableSort from '../components/library/table/table';
 import Collapse from '../components/library/collapse/collapse';
@@ -194,20 +194,26 @@ $(() => {
   //   });
   // }
 
-  global.services = {};
+  global.services = [];
   if ($('#exchange-service').length) {
-    global.services.exchange = new ExchangeService('#exchange-service');
+    global.services.push(new ExchangeService('#exchange-service'));
   }
   if ($('#exchange-service-bank').length) {
-    global.services.exchange = new ExchangeBanksService('#exchange-service-bank');
+    global.services.push(new ExchangeBanksService('#exchange-service-bank'));
   }
 
   if ($('#exchange-service-bank-corporate').length) {
-    global.services.exchange = new ExchangeBanksServiceCorp('#exchange-service-bank-corporate');
+    global.services.push(new ExchangeBanksServiceCorp('#exchange-service-bank-corporate'));
   }
 
   if ($('#fix-service').length) {
-    global.services.exchange = new FixService();
+    global.services.push(new FixService());
+  }
+
+  if ($('.js-exchange-service').length) {
+    $('.js-exchange-service').each((index, el) => {
+      global.services.push(new ExchangeBanksServiceDefault(el));
+    });
   }
 
   $('[data-scroll]').on('click', (e) => {
@@ -255,18 +261,23 @@ $(() => {
         global.filters.push(Filter(el));
       });
   }
-  global.setCurrency = (currency, input) => {
+  global.setCurrency = (currency, input, notChangeResultCurrency) => {
     const icons = String('₽,$,€,£').split(',');
-    const currencyBlock = input.find('.js-title');
     const currencyResult = $('.calc-result-all').find('.icon');
     currencyResult.hide();
     const currencySpan = $('.js-currency-span');
     if (currencySpan.length) {
-      currencySpan.text(icons[currency - 1]);
-    } else {
-      const currencyBlockText = `<span class="js-currency-span currency-span">${icons[currency - 1]}</span>`;
-      $(currencyBlockText).insertBefore(currencyResult);
-      currencyBlock.html(currencyBlockText);
+      if (!notChangeResultCurrency) {
+        currencySpan.text(icons[currency - 1]);
+      }
+    }
+    const currencyBlockText = `<span class="js-currency-span currency-span">${icons[currency - 1]}</span>`;
+    $(currencyBlockText).insertBefore(currencyResult);
+    if (input) {
+      input.each((index, el) => {
+        const currencyBlock = $(el).find('.js-title');
+        currencyBlock.html(currencyBlockText);
+      });
     }
   };
 

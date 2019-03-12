@@ -1,0 +1,23 @@
+.landing-feature-card
+  padding 40px
+  padding-bottom: 26px;
+  overflow hidden
+  @media (max-width 769px)
+    flex-wrap wrap
+  .features
+    width 100%
+    justify-content space-between
+    flex-wrap wrap
+    &:last-child
+      .feature.feature_type-normal
+        margin-bottom 0
+    .feature.feature_type-normal
+      margin-bottom 40px
+      .feature__title
+        formularBold(18px)
+        font-stretch normal
+        line-height 1.44
+        letter-spacing -0.2px
+      .feature__text
+        formular(14px,1.57)
+        opacity 0.7
