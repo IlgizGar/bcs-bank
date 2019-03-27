@@ -20,15 +20,21 @@ module.exports = (elem) => {
       this.submit.on('click', (e) => {
         e.preventDefault();
         if (!this.search.hasClass('state_explored')) {
+          this.input.focus();
           this.search.addClass('state_explored');
           this.submit.attr('type', 'submit');
           this.search.parent().find('.navbar__button').addClass('state_hidden');
         } else {
-          this.form.submit();
+          const queryString = `/search?searchid=160570&text=${encodeURIComponent(this.input.val())}&web=0#`;
+          window.location.href = queryString;
+          // this.form.submit();
         }
       });
 
       this.input.on('click', () => {
+        this.label.addClass('state_hidden');
+      });
+      this.input.on('focus', () => {
         this.label.addClass('state_hidden');
       });
 
