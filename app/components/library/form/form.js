@@ -388,7 +388,7 @@ module.exports = (elem) => {
         const value = $(e.currentTarget)
           .find('input')
           .val();
-        if (value === 'true') {
+        if (value === 'false') {
           this.form.find('.js-button[type="submit"]')
             .attr('disabled', '');
         } else {
