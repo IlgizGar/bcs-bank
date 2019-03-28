@@ -61,14 +61,14 @@ export class ExchangeService {
         <tr>
           <td class="services__table-currency">${currency}</td>
           <td>
-            <div class="currency ${getPriceState(data[currency].buy, data[currency].prevBuy)} ">
-                ${getPriceValue(data[currency].buy)}
+            <div class="currency ${getPriceState(data[currency].sell, data[currency].prevSell)} ">
+                ${getPriceValue(data[currency].sell)}
                 <svg role="presentation" class="icon icon-fall_arrow "><use xlink:href="assets/images/icons.svg#icon_fall_arrow"></use></svg>
             </div>
           </td>
           <td>
-            <div class="currency ${getPriceState(data[currency].sell, data[currency].prevSell)} ">
-                ${getPriceValue(data[currency].sell)}
+            <div class="currency ${getPriceState(data[currency].buy, data[currency].prevBuy)} ">
+                ${getPriceValue(data[currency].buy)}
                 <svg role="presentation" class="icon icon-fall_arrow "><use xlink:href="assets/images/icons.svg#icon_fall_arrow"></use></svg>
             </div>
           </td>
