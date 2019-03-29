@@ -1,0 +1,31 @@
+{% extends "layout/layout.njk" %}
+{#{% extends "library/card/card.njk" %}#}
+
+{% set root = "." %}
+{% set title = "Пополняемый  накопительный вклад" %}
+{% set header = 'blue' %}
+
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/library/button/button.njk" as Button %}
+{% import "../components/library/feature/feature.njk" as Feature %}
+{% import "../components/modules/landing-feature-card/landing-feature-card.njk" as LandingFeature %}
+{% import "../components/library/card/card.njk" as Card with context %}
+{% import "../components/library/input/input.njk" as Input %}
+{% import "../components/modules/brand-features/brand-features.njk" as BrandFeatures %}
+{% import "../components/library/dropdown/dropdown.njk" as Dropdown %}
+{% import "../components/library/radio/radio.njk" as Radio %}
+
+{% block body %}
+  <div class="page js-page page_lading-grey">
+
+    {% include "../components/modules/header/headerLandings.njk" %}
+
+    <main role="main" class="products-detail">
+
+
+    </main>
+
+    {% include "../components/modules/footer/footer-landings.njk" %}
+  </div>
+{% endblock %}
+

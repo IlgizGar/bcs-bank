@@ -1,0 +1,26 @@
+{% import "../../../components/library/button/button.njk" as Button %}
+{% import "../../../components/library/context/context.njk" as Context %}
+
+{% macro menu( options ) %}
+    <div class="landigs-menu js-landigs-menu {{ options.class }}">
+        <ul class="landigs-menu__wrapper">
+            {% for item in options.items %}
+                {% set class = 'landigs-menu__item' %}
+                {% if item.selected %}
+                    {% set class = 'menu__item state_active' %}
+                {% endif %}
+                <li class="landigs-menu__item">
+                    <a class="landigs-menu__item-link" href="{{ item.href }}">{{ item.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    {{ Context.context({ 'title': 'RUS', 'name': 'dropdown', 'mods': { 'type': 'menu', 'theme': 'dark' }, 'attr': {'id': 'menu-explore', 'list-on-right': '' }, 'class': 'menu__item',
+        'items': [
+
+            { 'title': 'ENG', 'value': 'ENG', 'attr': { 'href': '#' } } ,
+            { 'title': 'RUS', 'value': 'RUS', 'attr': { 'href': '#' } } 
+
+        ] }) }}
+{% endmacro %}

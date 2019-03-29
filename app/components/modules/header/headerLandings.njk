@@ -1,0 +1,17 @@
+{% import "../../../components/inline-svg/inline-svg.njk" as Svg %}
+{% import "../../../components/modules/landigs-menu/landingMenu.njk" as Menubar %}
+
+
+<header class="header js-header">
+  <div class="menubar">
+    <div class="page__container page__container_landing-container">
+      <div class="menubar__wrapper">
+        <a href="http://juravlev.rusrobots.ru/bks/index.html" class="menubar__logo  menubar__logo_theme-white">
+          {{ Svg.inlineSvg({'path': ['assets/images/svg/full-logo-dark.svg', 'assets/images/svg/full-logo-dark.svg']}) }}
+        </a>
+        {{ Menubar.menu({'items':[{'href':'#','title': 'Преимущества'},{'href':'#','title': 'Калькулятор'},{'href':'#','title': 'Заявка'},{'href':'#','title': 'Мобильное приложение'}]}) }}
+      </div>
+    </div>
+  </div>
+</header>
+
