@@ -270,14 +270,15 @@ $(() => {
       if (!notChangeResultCurrency) {
         currencySpan.text(icons[currency - 1]);
       }
-    }
-    const currencyBlockText = `<span class="js-currency-span currency-span">${icons[currency - 1]}</span>`;
-    $(currencyBlockText).insertBefore(currencyResult);
-    if (input) {
-      input.each((index, el) => {
-        const currencyBlock = $(el).find('.js-title');
-        currencyBlock.html(currencyBlockText);
-      });
+    } else {
+      const currencyBlockText = `<span class="js-currency-span currency-span">${icons[currency - 1]}</span>`;
+      $(currencyBlockText).insertBefore(currencyResult);
+      if (input) {
+        input.each((index, el) => {
+          const currencyBlock = $(el).find('.js-title');
+          currencyBlock.html(currencyBlockText);
+        });
+      }
     }
   };
 
