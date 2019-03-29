@@ -1,0 +1,7 @@
+{% import "../../../components/inline-svg/inline-svg.njk" as Svg %}
+
+{% macro valutes( options ) %}
+    <div class="landings-valutes-block">
+        {{ Svg.inlineSvg({'path': options.src}) }}
+    </div>
+{% endmacro %}
