@@ -71,7 +71,7 @@ export default class Calculation {
           } else {
             this.resultBlock.parent().removeClass('font_down');
           }
-          this.resultBlock.text(resultString);
+          this.resultBlock.html(`${resultString.replace(',', '<span>,')}</span>`);
         }, this.wait);
       });
     });
