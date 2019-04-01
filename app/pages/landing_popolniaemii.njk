@@ -84,16 +84,19 @@
       <section class="section section_padding-default page__section">
         <div class="calculator js-calc-result">
           <div class="page__container page__container_landing-container-short">
-            <h2 class="heading heading_type-default-landings heading_type-double-colored  mb-16">
-              <span>Рассчитайте свою <span>выгоду</span></span>
-            </h2>
 
-            <div class="text text_theme-gray mb-56">
-              Расчёт носит информационный характер <br>и не является публичной офертой
-            </div>
 
             <div class="section__row">
               <div class="form form_layout-narrow">
+
+                <h2 class="heading heading_type-default-landings heading_type-double-colored  mb-16">
+                  <span>Рассчитайте свою <span>выгоду</span></span>
+                </h2>
+
+                <div class="text text_theme-gray mb-56">
+                  Расчёт носит информационный характер <br>и не является публичной офертой
+                </div>
+
                 <form>
                   <fieldset>
                     <div class="form__field-group form__field-group_radio">
@@ -117,7 +120,7 @@
                   </fieldset>
                 </form>
 
-                <div class="calc-result-inline calc-result-all">
+                <div class="calc-result-inline calc-result-all mb-64">
                   <div class="calc-result-inline__left-block">
                     <span class="calc-result-inline__description-text">
                       Сумма к концу срока
@@ -142,9 +145,9 @@
                               data-ordered="1"
                               data-round="2"
                               data-bind="percent"
-                      >4</span>%
-                      <input type="hidden" name="percent" value="4">
+                      >4</span>&nbsp;<span>%</span>
                     </span>
+                    <input type="hidden" name="percent" value="4">
                     <span class="calc-result-inline__description-text">
                       Ожидаемый доход
                       <span
@@ -153,18 +156,72 @@
                               data-ordered="3"
                               data-round="2"
                               data-bind="summ2"
-                      >22 340</span>
+                      >22 340</span> &nbsp;
                        <span class="js-currency-span currency-span">₽</span>
-                       <input type="hidden" name="summ2" value="4">
+
                     </span>
+                    <input type="hidden" name="summ2" value="4">
 
                   </div>
                 </div>
 
 
+                {{ Button.button({ 'title': 'Оформить вклад', 'mods': { 'theme': 'default' }, 'class': 'products-detail__nav-button products-detail__nav-button-left', attr: {'scroll': '#section-request'} }) }}
+
+
+
+              </div>
+
+              <div class="image-layout">
+                <img class="illustration-image" src="assets/illustrations/credit_online.svg" alt="Пополняемый накопительный вклад">
               </div>
 
             </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <section class="section page__section">
+        <div class="page__container page__container_landing-container-short">
+          <div class="section__row">
+            <h2 class="heading heading_type-default-landings heading_type-double-colored heading_align-centered-landings  mb-16">
+              <span><span>Заявка</span> на вклад</span>
+            </h2>
+            <div class="text text_theme-gray text_type-block text_align-center mb-64">
+              Оформите заявку и получите бесплатную карту Visa Classic
+            </div>
+            <div class="form form_layout-landing form_layout-landing-centered js-form" data-form="cards">
+              <form action="/rplpost">
+                <div class="step-form__item js-step js-send-form js-send-validate-form" data-send-validate-url="http://localhost/rplpost/index3.php" data-send-url="http://localhost/rplpost">
+                  <fieldset>
+                    {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Выберите город', 'name': 'bid_select-city', 'items': [{'title': 'Краснодар', 'value': '12345'}, {'title': 'Москва', 'value': '13456'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'bid-city-list'}, 'field': 'js-city-select' }) }}
+
+                    {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': 'js-fio-masked', 'maxlength': '64', 'name': 'bid_user-name', 'required': 'true' } }) }}
+                    {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': {'class': 'js-phone-masked', 'name': 'question_phone', 'required': 'true' } }) }}
+                    {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': {'class': 'js-mail-masked', 'name': 'question_mail', 'required': 'true' } }) }}
+
+                  </fieldset>
+                  <div class="form__agreements">
+                    <label class="checkbox checkbox_theme-dark js-checkbox js-personal-checkbox">
+                      <input type="checkbox" class="checkbox__control"
+                             name="question__personal" checked>
+                      <span class="checkbox__state"></span>
+                      <span class="checkbox__label">
+                                                            Даю согласие на обработку
+                            {{ Button.button({ 'href': '#', 'title': 'персональных данных', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
+                                                        </span>
+                    </label>
+                  </div>
+                  {{ Button.button({ 'title': 'Отправить', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
+                </div>
+                <div class="step-form__item js-step js-sms-step js-send-form js-send-validate-form" data-send-validate-url="http://localhost/rplpost/index3.php" data-send-url="http://localhost/rplpost">
+                  {% include "../components/modules/sms-code-form/sms-code-form.njk" %}
+                </div>
+              </form>
+            </div>
+
           </div>
         </div>
       </section>
