@@ -80,11 +80,19 @@ export default class Calculation {
     Object.keys(this.bindedInputs).forEach((i) => {
       const input = this.bindedInputs[i];
       input[0].on('change', () => {
-        input[1].val(input[0].val());
+        if ((input[0].attr('type') === 'checkbox') || ($(input[0]).attr('type') === 'radio')) {
+          input[1].filter(`[value="${input[0].filter(':checked').val()}"]`).trigger('click');
+        } else {
+          input[1].val(input[0].val());
+        }
         input[1].trigger('blur');
       });
       input[1].on('change', () => {
-        input[0].val(input[1].val());
+        if ((input[1].attr('type') === 'checkbox') || ($(input[1]).attr('type') === 'radio')) {
+          input[0].filter(`[value="${input[1].filter(':checked').val()}"]`).trigger('click');
+        } else {
+          input[0].val(input[1].val());
+        }
         input[0].trigger('blur');
         input[0].trigger('change');
       });
