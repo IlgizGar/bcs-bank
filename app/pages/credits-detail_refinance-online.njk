@@ -104,7 +104,7 @@
                       <fieldset>
                         {{ Input.input({ 'label': 'Осталось выплатить', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'credit_calc_amount', 'class': 'js-numeric-input' }, 'title': '#ruble', 'slider': { 'min': 30000, 'max': 3000000, 'from': 800000, 'step': 1000 } }) }}
                         {{ Input.input({ 'label': 'Плачу ежемесячно', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'credit_calc_monthly', 'class': 'js-numeric-input' }, 'title': '#ruble', 'slider': { 'min': 0, 'max': 200000, 'from': 20000, 'step': 1000 } }) }}
-                        {{ Input.input({ 'label': 'Срок рефинансирования', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '2', 'name': 'credit_calc_period', 'class': 'js-numeric-input' }, 'slider': { 'min': 1, 'max': 5, 'from': 16, 'step': 1, 'postfix': ' год.' } }) }}
+                        {{ Input.input({ 'label': 'Срок рефинансирования', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '2', 'name': 'credit_calc_period', 'class': 'js-numeric-input' }, 'slider': { 'min': 13, 'max': 60, 'from': 13, 'step': 1, 'postfix': ' мес.' } }) }}
                       </fieldset>
                       <input type="hidden" value="800000" name="monthly_pay" >
                     </form>
@@ -114,7 +114,7 @@
                       <div class="text">Ежемесячный платеж</div>
                       <!--#2-->
                       <div class="calculation__result"><span
-                                data-calc="cGVyY2VudC8xMjAwICogTWF0aC5wb3coKHBlcmNlbnQvMTIwMCArIDEpLHRpbWUqMTIpIC8gKE1hdGgucG93KChwZXJjZW50LzEyMDAgKyAxKSx0aW1lKjEyKS0xKSAqIHN1bW0="
+                                data-calc="cGVyY2VudC8xMjAwICogTWF0aC5wb3coKHBlcmNlbnQvMTIwMCArIDEpLHRpbWUpIC8gKE1hdGgucG93KChwZXJjZW50LzEyMDAgKyAxKSx0aW1lKS0xKSAqIHN1bW0="
                                 data-params="summ|credit_calc_amount,time|credit_calc_period,percent|credit_percent"
                                 data-bind="monthly_pay"
                                 data-ordered="1"
@@ -136,7 +136,7 @@
                         <!--#4-->
                         <p>Сумма кредита</p>
                         <p><span
-                                  data-calc="c3VtbSp0aW1lKjEy"
+                                  data-calc="c3VtbSp0aW1l"
                                   data-params="summ|monthly_pay,time|credit_calc_period"
                                   data-ordered="3"
                           >6 768</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
@@ -147,7 +147,7 @@
                         <p>Ставка</p>
                         <!--#1-->
                         <p><span
-                                  data-calc="KHRpbWUqMTIgPD0gMjQpPyAxMi45IDogKHRpbWUqMTIgPiAyNCAmJiB0aW1lKjEyIDw9IDM2KT8gMTIuOSA6IDEzLjk="
+                                  data-calc="KHRpbWUgPD0gMjQpPyAxMi45IDogKHRpbWUgPiAyNCAmJiB0aW1lIDw9IDM2KT8gMTIuOSA6IDEzLjk="
                                   data-params="time|credit_calc_period"
                                   data-round="1"
                                   data-bind="credit_percent"
@@ -241,7 +241,7 @@
                           {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Выберите город', 'name': 'bid_select-city', 'items': [{'title': 'Краснодар', 'value': '12345'}, {'title': 'Москва', 'value': '13456'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'bid-city-list'}, 'field': 'js-city-select' }) }}
                           {{ Input.input({ 'label': 'Осталось выплатить', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'credit_amount', 'class': 'js-numeric-input' }, 'title': '#ruble', 'slider': { 'min': 30000, 'max': 3000000, 'from': 800000, 'step': 1000 } }) }}
                           {{ Input.input({ 'label': 'Плачу ежемесячно', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'credit_amount_monthly', 'class': 'js-numeric-input' }, 'title': '#ruble', 'slider': { 'min': 0, 'max': 200000, 'from': 20000, 'step': 1000 } }) }}
-                          {{ Input.input({ 'label': 'Срок рефинансирования', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '2', 'name': 'credit_period', 'class': 'js-numeric-input' }, 'slider': { 'min': 1, 'max': 5, 'from': 3, 'step': 1, 'postfix': ' год.' } }) }}
+                          {{ Input.input({ 'label': 'Срок рефинансирования', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '2', 'name': 'credit_period', 'class': 'js-numeric-input' }, 'slider': { 'min': 13, 'max': 60, 'from': 13, 'step': 1, 'postfix': ' мес.' } }) }}
                           {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Цель кредита', 'name': 'credit-aims', 'items': [{'title': 'На еду', 'value': '12345'}, {'title': 'На развлечения', 'value': '13456'}, {'title': 'Отправить малого в школу', 'value': '136'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'credit-aims'}, 'field': 'js-aims-select' }) }}
                         </fieldset>
                         <input type="hidden" value="800000" name="monthly_pay2" >
@@ -291,7 +291,7 @@
                       <div class="text">Ежемесячный платеж</div>
                       <!--#2-->
                       <div class="calculation__result"><span
-                                data-calc="cGVyY2VudC8xMjAwICogTWF0aC5wb3coKHBlcmNlbnQvMTIwMCArIDEpLHRpbWUqMTIpIC8gKE1hdGgucG93KChwZXJjZW50LzEyMDAgKyAxKSx0aW1lKjEyKS0xKSAqIHN1bW0="
+                                data-calc="cGVyY2VudC8xMjAwICogTWF0aC5wb3coKHBlcmNlbnQvMTIwMCArIDEpLHRpbWUpIC8gKE1hdGgucG93KChwZXJjZW50LzEyMDAgKyAxKSx0aW1lKS0xKSAqIHN1bW0="
                                 data-params="summ|credit_calc_amount,time|credit_calc_period,percent|credit_percent"
                                 data-ordered="5"
                         >10 500</span> {{ Icon.icon({ 'name': 'ruble'}) }}</div>
@@ -311,7 +311,7 @@
                         <!--#4-->
                         <p>Сумма кредита</p>
                         <p><span
-                                  data-calc="c3VtbSp0aW1lKjEy"
+                                  data-calc="c3VtbSp0aW1l"
                                   data-params="summ|monthly_pay,time|credit_calc_period"
                                   data-ordered="7"
                           >6 768</span> {{ Icon.icon({ 'name': 'ruble'}) }}</p>
@@ -322,7 +322,7 @@
                         <p>Ставка</p>
                         <!--#1-->
                         <p><span
-                                  data-calc="KHRpbWUqMTIgPD0gMjQpPyAxMi45IDogKHRpbWUqMTIgPiAyNCAmJiB0aW1lKjEyIDw9IDM2KT8gMTIuOSA6IDEzLjk="
+                                  data-calc="KHRpbWUgPD0gMjQpPyAxMi45IDogKHRpbWUgPiAyNCAmJiB0aW1lIDw9IDM2KT8gMTIuOSA6IDEzLjk="
                                   data-params="time|credit_calc_period"
                                   data-round="1"
                                   data-ordered="4"
