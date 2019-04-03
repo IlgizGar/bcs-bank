@@ -1,8 +1,9 @@
 {% import "../../../components/library/button/button.njk" as Button %}
 {% import "../../../components/library/context/context.njk" as Context %}
+{% import "../../../components/modules/menubar/menubar.njk" as Menubar %}
 
 {% macro menu( options ) %}
-    <div class="landigs-menu js-landigs-menu {{ options.class }}">
+    <div class="landigs-menu js-landigs-menu js-menu {{ options.class }}">
         <ul class="landigs-menu__wrapper">
             {% for item in options.items %}
                 {% set class = 'landigs-menu__item' %}

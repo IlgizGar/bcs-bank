@@ -3,13 +3,25 @@
 
 
 <header class="header js-header">
-  <div class="menubar">
+  <div class="menubar js-menubar">
     <div class="page__container page__container_landing-container">
       <div class="menubar__wrapper">
         <a href="http://juravlev.rusrobots.ru/bks/index.html" class="menubar__logo  menubar__logo_theme-white">
           {{ Svg.inlineSvg({'path': ['assets/images/svg/full-logo-dark.svg', 'assets/images/svg/full-logo-dark.svg']}) }}
         </a>
+
+        <div class="mobile-menu js-mobile-menu"></div>
+
         {{ Menubar.menu({'items':[{'href':'#','title': 'Преимущества'},{'href':'#','title': 'Калькулятор'},{'href':'#','title': 'Заявка'},{'href':'#','title': 'Мобильное приложение'}]}) }}
+
+        <button class="menubar__burger js-menubar-burger">
+          <span class="menubar__burger-title">Меню</span>
+          <span class="menubar__burger-control">
+            <span class="menubar__burger-line menubar__burger-line_first"></span>
+            <span class="menubar__burger-line menubar__burger-line_second"></span>
+            <span class="menubar__burger-line menubar__burger-line_third"></span>
+          </span>
+        </button>
       </div>
     </div>
   </div>

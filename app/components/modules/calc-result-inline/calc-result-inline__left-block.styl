@@ -2,3 +2,12 @@
   min-width 183px
   border-right 1px solid $color_borders
   padding-right 40px
+  @media (max-width: 768px)
+    border-right none
+    &:after
+      content ''
+      display block
+      width 60px
+      margin 15px 0
+      height 0
+      border-bottom 1px solid $color_borders
