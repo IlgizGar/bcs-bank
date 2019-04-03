@@ -10,8 +10,8 @@
                 {% if item.selected %}
                     {% set class = 'menu__item state_active' %}
                 {% endif %}
-                <li class="landigs-menu__item">
-                    <a class="landigs-menu__item-link" href="{{ item.href }}">{{ item.title }}</a>
+                <li class="landigs-menu__item js-landings-menu__item">
+                    <a class="landigs-menu__item-link" data-scroll="{{ item.href }}" href="{{ item.href }}">{{ item.title }}</a>
                 </li>
             {% endfor %}
         </ul>
