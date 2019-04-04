@@ -2,7 +2,7 @@
 {#{% extends "library/card/card.njk" %}#}
 
 {% set root = "." %}
-{% set title = "Пополняемый накопительный вклад" %}
+{% set title = "Бонусная карта для сотрудников" %}
 {% set header = 'blue' %}
 
 {% import "../components/library/heading/heading.njk" as Heading %}
@@ -29,24 +29,19 @@
             <div class="section__header_landings">
               <div class="section__header_landings-title">
                 <h2 class="heading heading_type-default heading_type-double-colored  heading_margin-medium">
-                  <span>Пополняемый <br> <span>накопительный вклад</span></span>
+                  <span>Бонусная карта <br> <span> для сотрудников</span></span>
                 </h2>
                 <div class="section__header_landings-info">
-                  {{ ValutesBlock.valutes({'src':[
-                    'assets/illustrations/valutes/yen-icon.svg',
-                    'assets/illustrations/valutes/euro-icon.svg',
-                    'assets/illustrations/valutes/rubl-icon.svg',
-                    'assets/illustrations/valutes/pound-icon.svg'
-                  ]}) }}
+                  <img src="assets/illustrations/landingBonusCardImg.svg">
                   <div class="text text_theme-gray">
-                    Открывается сразу <br>в <b>4 валютах</b>
+                    <b>Сотрудникам</b> БКС Банка <br> и компаниям-партнерам
                   </div>
                 </div>
 
-                {{ Button.button({ 'title': 'Оформить вклад', 'mods': { 'theme': 'default' }, 'class': 'products-detail__nav-button products-detail__nav-button-left', attr: {'scroll': '#request'} }) }}
+                {{ Button.button({ 'title': 'Оформить карту', 'mods': { 'theme': 'default' }, 'class': 'products-detail__nav-button products-detail__nav-button-left', attr: {'scroll': '#request'} }) }}
               </div>
               <div class="section__header_landings-image">
-                <img class="illustration-image" src="assets/illustrations/group-166.svg" alt="Пополняемый накопительный вклад">
+                <img class="illustration-image" src="assets/illustrations/boonusCardLandBanner.svg" alt="Пополняемый накопительный вклад">
               </div>
             </div>
           </div>
@@ -57,22 +52,22 @@
         <div class="page__container page__container_landing-container-short">
           <div class="section__row">
             <h2 class="heading heading_type-default-landings heading_type-double-colored heading_align-centered-landings  mb-16">
-              <span><span>Преимущества</span> накопительного вклада</span>
+              <span><span>Преимущества</span> бонусной карты</span>
             </h2>
             <div class="text text_theme-gray text_type-block text_align-center">
               Коротко, доступно, честно!
             </div>
             <div class="landing-white-block">
 
-              <div class="features features_theme-right-border">
-                {{ Feature.feature({ 'title': 'до 7,5% ', 'text': 'годовая ставка', 'mods': {'type': 'normal','theme':'title-bold'}, 'class': 'features__item' }) }}
-                {{ Feature.feature({ 'title': 'от 5 000 ₽', 'text': 'открытие вклада', 'mods': {'type': 'normal','theme':'title-bold'}, 'class': 'features__item' }) }}
-                {{ Feature.feature({ 'title': 'до 365 дней', 'text': 'срок вклада', 'mods': {'type': 'normal','theme':'title-bold'}, 'class': 'features__item' }) }}
+              <div class="features features_type-full">
+                {{ Feature.feature({ 'title': 'до 55 дней', 'text': 'беспроцентный период', 'mods': {'type': 'normal','theme':'title-bold'}, 'class': 'features__item' }) }}
+                {{ Feature.feature({ 'title': '2%', 'text': 'от суммы покупок вернем бонусами', 'mods': {'type': 'normal','theme':'title-bold'}, 'class': 'features__item' }) }}
+                {{ Feature.feature({ 'title': 'до 30%', 'text': 'бонусами за покупки по спецпредложениям', 'mods': {'type': 'normal','theme':'title-bold'}, 'class': 'features__item' }) }}
+                {{ Feature.feature({ 'title': '1 = 1', 'text': 'каждый бонус равен 1 рублю', 'mods': {'type': 'normal','theme':'title-bold'}, 'class': 'features__item' }) }}
               </div>
 
-              <div class="text text_theme-gray text_type-inline text-type_formated landing-white-block__right">
-                <b>Вклад до 1 400 000 ₽</b><br>
-                <b><a href="#">застрахован ACB</a></b>
+              <div class="text text_theme-gray text_type-inline text-type_formated section__text_align-center mt-32">
+                <b>Карта будет готова <span>на следующий день</span> после одобрения</b>
               </div>
 
             </div>
