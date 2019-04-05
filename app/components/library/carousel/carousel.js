@@ -8,8 +8,9 @@ module.exports = (elem) => {
     constructor(selector) {
       this.carousel = $(selector);
       this.progressbar = $('.js-carousel-progressbar');
+      this.ProgressBarSpeed = 0;
       this.id = this.carousel.data('id');
-
+      this.progressBarTimer = null;
       this.init();
       this.events();
     }
@@ -22,12 +23,15 @@ module.exports = (elem) => {
         const i = (!currentSlide ? 0 : currentSlide) + 1;
         self.paging.find('span:first-child').html(i < 10 ? `0${i}` : i);
         self.paging.find('span:last-child').html(slick.slideCount < 10 ? `0${slick.slideCount}` : slick.slideCount);
-        self.progressbar.addClass('state_busy');
+        self.progressBarPlay();
       });
-      this.carousel.on('beforeChange', () => {
-        self.progressbar.removeClass('state_busy');
+      self.progressbar.removeClass('state_busy');
+      this.carousel.on('mouseenter', () => {
+        self.progressBarPause();
       });
-
+      this.carousel.on('mouseleave', () => {
+        self.progressBarPlay();
+      });
       this.next = '<button class="carousel-controls__button carousel-controls__button_type-next">' +
         ' <svg role="presentation" class="icon icon-tr-arrow">\n' +
         '    <use xlink:href="/assets/images/icons.svg#icon_tr-arrow"></use>\n' +
@@ -133,8 +137,25 @@ module.exports = (elem) => {
           this.initMobileSlick(this.carousel.data('breakpoint') - 1);
           break;
       }
+      this.ProgressBarSpeed = this.carousel.slick('slickGetOption', 'autoplaySpeed');
+      self.progressBarPlay();
     }
-
+    progressBarPlay() {
+      clearInterval(this.progressBarTimer);
+      let scale = 0;
+      const progressBar = this.progressbar;
+      const speed = 1 / (this.ProgressBarSpeed * 0.1);
+      this.progressBarTimer = setInterval(() => {
+        scale += speed;
+        progressBar.css({ transform: `translate3d(${scale}% 0 0)` });
+        if (scale >= 1) {
+          clearInterval(this.progressBarTimer);
+        }
+      }, 60);
+    }
+    progressBarPause() {
+      clearInterval(this.progressBarTimer);
+    }
     static setButtonsUrls(event, slick, prevSlide, currentSlide) {
       const slideNum = (currentSlide !== undefined) ? currentSlide : 0;
 
