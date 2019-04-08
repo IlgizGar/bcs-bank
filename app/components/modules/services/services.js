@@ -213,10 +213,13 @@ export class ExchangeBanksServiceCorp extends ExchangeService {
 
 export class ExchangeBanksServiceDefault extends ExchangeService {
   getAdaptedData(data) {
+    if (!this.dataKey) {
+      this.dataKey = this.exchangeBlock.closest('.js-card').attr('data-key');
+    }
     this.loadedData = data;
-    this.exchangeBlock[0].value = data.online_courses;
+    this.exchangeBlock[0].value = data[(this.dataKey) ? this.dataKey : 'online_courses'];
     this.exchangeBlock[0].dispatchEvent(new window.Event('change'));
-    return data.online_courses;
+    return data[(this.dataKey) ? this.dataKey : 'online_courses'];
   }
 }
 
