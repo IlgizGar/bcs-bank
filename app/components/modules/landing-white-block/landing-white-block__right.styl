@@ -2,6 +2,21 @@
   min-width 212px
   font-size 13px
   line-height 1.6
+  &_theme-rowed
+    display flex
+    flex-direction row
+    align-items center
+    max-width 260px
+    @media (max-width: 991px)
+      max-width 100%
+      flex-wrap wrap
+      justify-content center
+    >*
+      &:first-child
+        margin-right 30px
+        @media (max-width: 991px)
+          margin-right 0
+          margin-bottom 15px
   @media (max-width: 991px)
     text-align center
     font-size 14px
