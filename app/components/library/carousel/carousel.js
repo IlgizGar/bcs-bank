@@ -8,8 +8,10 @@ module.exports = (elem) => {
     constructor(selector) {
       this.carousel = $(selector);
       this.progressbar = $('.js-carousel-progressbar');
+      this.ProgressBarSpeed = 0;
+      this.progressBarstoped = false;
       this.id = this.carousel.data('id');
-
+      this.progressBarTimer = null;
       this.init();
       this.events();
     }
@@ -22,12 +24,23 @@ module.exports = (elem) => {
         const i = (!currentSlide ? 0 : currentSlide) + 1;
         self.paging.find('span:first-child').html(i < 10 ? `0${i}` : i);
         self.paging.find('span:last-child').html(slick.slideCount < 10 ? `0${slick.slideCount}` : slick.slideCount);
-        self.progressbar.addClass('state_busy');
       });
-      this.carousel.on('beforeChange', () => {
-        self.progressbar.removeClass('state_busy');
+      this.carousel.on('afterChange', (event, slick, currentSlide) => {
+        const i = (!currentSlide ? 0 : currentSlide) + 1;
+        self.paging.find('span:first-child').html(i < 10 ? `0${i}` : i);
+        self.paging.find('span:last-child').html(slick.slideCount < 10 ? `0${slick.slideCount}` : slick.slideCount);
+        this.ProgressBarSpeed = 12000;
+        self.progressBarPause();
+        self.progressBarPlay();
       });
-
+      this.carousel.on('mouseenter', () => {
+        console.log('pause');
+        self.progressBarPause();
+      });
+      this.carousel.on('mouseleave', () => {
+        self.progressBarPlay();
+      });
+      self.progressbar.removeClass('state_busy');
       this.next = '<button class="carousel-controls__button carousel-controls__button_type-next">' +
         ' <svg role="presentation" class="icon icon-tr-arrow">\n' +
         '    <use xlink:href="/assets/images/icons.svg#icon_tr-arrow"></use>\n' +
@@ -59,6 +72,9 @@ module.exports = (elem) => {
             nextArrow: this.next,
             prevArrow: this.prev,
           });
+          this.ProgressBarSpeed = 12000;
+          this.progressBarPause();
+          this.progressBarPlay();
           break;
         case 'advice-filtered':
           this.carousel.not('.slick-initialized').slick({
@@ -134,7 +150,27 @@ module.exports = (elem) => {
           break;
       }
     }
-
+    progressBarPlay() {
+      this.progressBarstoped = false;
+      const self = this;
+      let scale = -100;
+      const progressBar = this.progressbar;
+      const speed = 100 / (this.ProgressBarSpeed / 16);
+      function tick() {
+        scale += speed;
+        if (scale >= 0) {
+          scale = -100;
+        }
+        progressBar.css({ transform: `translate3d(${scale}%, 0, 0)` });
+        if (!self.progressBarstoped) {
+          window.requestAnimationFrame(tick);
+        }
+      }
+      tick();
+    }
+    progressBarPause() {
+      this.progressBarstoped = true;
+    }
     static setButtonsUrls(event, slick, prevSlide, currentSlide) {
       const slideNum = (currentSlide !== undefined) ? currentSlide : 0;
 
