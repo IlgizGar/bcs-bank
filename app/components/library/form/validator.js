@@ -619,19 +619,10 @@ module.exports = (form) => {
     }
 
     scrollToError(el) {
-      const scrollTo = $(el)
-        .offset().top;
-      if (scrollTo < this.errorElementPos) {
-        this.errorElementPos = scrollTo;
+      if (!this.scrollTimout) {
+        $(el).focus();
+        this.scrollTimout = true;
       }
-      clearTimeout(this.scrollTimout);
-      this.scrollTimout = setTimeout(() => {
-        $('html, body')
-          .animate({ scrollTop: this.errorElementPos - 200 }, 500, '', () => {
-            this.errorElementPos = $(el)
-              .offset().top;
-          });
-      }, 100);
     }
 
     validateForm(handler) {
@@ -680,6 +671,7 @@ module.exports = (form) => {
           }
         },
         unhighlight(element) {
+          self.scrollTimout = false;
           if ($(element)
             .closest('.js-input').length) {
             $(element)
