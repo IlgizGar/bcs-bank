@@ -130,7 +130,7 @@ export class FixService {
       }
     });
 
-    this.fixBlock.find('.radio__field:checked').closest('.js-course-radio').trigger('click');
+    this.fixBlock.find('.radio__field:checked').closest('.js-course-radio').trigger('change');
   }
 
   static updateTableCellValue(el, price) {
