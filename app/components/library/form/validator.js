@@ -216,7 +216,15 @@ module.exports = (form) => {
           clearMaskOnLostFocus: true,
           removeMaskOnSubmit: true,
           rightAlign: false,
+          allowPlus: false,
+          allowMinus: false,
         });
+
+      $('.js-numeric-input').on('keydown', (e) => {
+        if ($(e.currentTarget).val() === '-') {
+          $(e.currentTarget).val('');
+        }
+      });
 
       $('.js-digit-input')
         .inputmask('numeric', {
