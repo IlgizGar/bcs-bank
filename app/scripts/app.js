@@ -266,19 +266,19 @@ $(() => {
     const currencyResult = $('.calc-result-all').find('.icon');
     currencyResult.hide();
     const currencySpan = $('.js-currency-span');
+    const currencyBlockText = `<span class="js-currency-span currency-span">${icons[currency - 1]}</span>`;
     if (currencySpan.length) {
       if (!notChangeResultCurrency) {
         currencySpan.text(icons[currency - 1]);
       }
     } else {
-      const currencyBlockText = `<span class="js-currency-span currency-span">${icons[currency - 1]}</span>`;
       $(currencyBlockText).insertBefore(currencyResult);
-      if (input) {
-        input.each((index, el) => {
-          const currencyBlock = $(el).find('.js-title');
-          currencyBlock.html(currencyBlockText);
-        });
-      }
+    }
+    if (input) {
+      input.each((index, el) => {
+        const currencyBlock = $(el).find('.js-title');
+        currencyBlock.html(currencyBlockText);
+      });
     }
   };
 
