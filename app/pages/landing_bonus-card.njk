@@ -1,0 +1,230 @@
+{% extends "layout/layout.njk" %}
+{#{% extends "library/card/card.njk" %}#}
+
+{% set root = "." %}
+{% set title = "Бонусная карта для сотрудников" %}
+{% set header = 'blue' %}
+
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/library/button/button.njk" as Button %}
+{% import "../components/library/feature/feature.njk" as Feature %}
+{% import "../components/modules/landing-feature-card/landing-feature-card.njk" as LandingFeature %}
+{% import "../components/library/card/card.njk" as Card with context %}
+{% import "../components/library/input/input.njk" as Input %}
+{% import "../components/modules/brand-features/brand-features.njk" as BrandFeatures %}
+{% import "../components/library/dropdown/dropdown.njk" as Dropdown %}
+{% import "../components/library/radio/radio.njk" as Radio %}
+{% import "../components/modules/landings-valutes-block/valutes.njk" as ValutesBlock %}
+{% import "../components/icon/icon.njk" as Icon %}
+
+{% block body %}
+  <div class="page js-page page_lading-grey">
+
+    {% include "../components/modules/header/headerLandings.njk" %}
+
+    <main role="main" class="products-detail">
+      <section class="section page__section mb-26">
+        <div class="section__header ">
+          <div class="page__container page__container_landing-container">
+            <div class="section__header_landings">
+              <div class="section__header_landings-title">
+                <h2 class="heading heading_type-default heading_type-double-colored  heading_margin-medium">
+                  <span>Бонусная карта <br> <span> для сотрудников</span></span>
+                </h2>
+                <div class="section__header_landings-info">
+                  <img src="assets/illustrations/landingBonusCardImg.svg">
+                  <div class="text text_theme-gray">
+                    <b>Сотрудникам</b> БКС Банка <br> и компаниям-партнерам
+                  </div>
+                </div>
+
+                {{ Button.button({ 'title': 'Оформить карту', 'mods': { 'theme': 'default' }, 'class': 'products-detail__nav-button products-detail__nav-button-left', attr: {'scroll': '#request'} }) }}
+              </div>
+              <div class="section__header_landings-image">
+                <img class="illustration-image" src="assets/illustrations/boonusCardLandBanner.svg" alt="Пополняемый накопительный вклад">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section page__section mb-64" id="advantages">
+        <div class="page__container page__container_landing-container-short">
+          <div class="section__row">
+            <h2 class="heading heading_type-default-landings heading_type-double-colored heading_align-centered-landings  mb-16">
+              <span><span>Преимущества</span> бонусной карты</span>
+            </h2>
+            <div class="text text_theme-gray text_type-block text_align-center">
+              Коротко, доступно, честно!
+            </div>
+            <div class="landing-white-block">
+
+              <div class="features features_type-full">
+                {{ Feature.feature({ 'title': 'до 55 дней', 'text': 'беспроцентный период', 'mods': {'type': 'normal','theme':'title-bold'}, 'class': 'features__item' }) }}
+                {{ Feature.feature({ 'title': '2%', 'text': 'от суммы покупок вернем бонусами', 'mods': {'type': 'normal','theme':'title-bold'}, 'class': 'features__item' }) }}
+                {{ Feature.feature({ 'title': 'до 30%', 'text': 'бонусами за покупки по спецпредложениям', 'mods': {'type': 'normal','theme':'title-bold'}, 'class': 'features__item' }) }}
+                {{ Feature.feature({ 'title': '1 = 1', 'text': 'каждый бонус равен 1 рублю', 'mods': {'type': 'normal','theme':'title-bold'}, 'class': 'features__item' }) }}
+              </div>
+
+              <div class="text text_theme-gray text_type-inline text-type_formated section__text_align-center mt-32">
+                <b>Карта будет готова <span>на следующий день</span> после одобрения</b>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="section section_padding-default page__section mb-32" id="calculator">
+        <div class="calculator landings-calculator js-calc-result">
+          <div class="page__container page__container_landing-container-short page__container_landing-container-short-rowed">
+
+
+            <div class="section__row">
+              <div class="form form_layout-narrow">
+
+                <h2 class="heading heading_type-default-landings heading_type-double-colored  mb-16">
+                  <span>Рассчитайте свою <span>выгоду</span></span>
+                </h2>
+
+                <div class="text text_theme-gray mb-56">
+                  Хотите узнать насколько это выгодно? Просто посчитайте!
+                </div>
+
+                <form>
+                  <fieldset>
+                    {{ Input.input({ 'label': 'Расходы на АЗС', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_fuel_costs', 'class': 'js-numeric-input' }, 'title': '#ruble/мес.', 'slider': { 'min': 0, 'max': 100000, 'from': 30000, 'step': 1000 } }) }}
+                    {{ Input.input({ 'label': 'Расходы на рестораны', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_cafe_costs', 'class': 'js-numeric-input' }, 'title': '#ruble/мес.', 'slider': { 'min': 0, 'max': 300000, 'from': 50000, 'step': 1000 } }) }}
+                    {{ Input.input({ 'label': 'Расходы на театр и кино', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_film_costs', 'class': 'js-numeric-input' }, 'title': '#ruble/мес.', 'slider': { 'min': 0, 'max': 100000, 'from': 10000, 'step': 1000 } }) }}
+                    {{ Input.input({ 'label': 'Расходы на спорт и красоту', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_sport_costs', 'class': 'js-numeric-input' }, 'title': '#ruble/мес.', 'slider': { 'min': 0, 'max': 300000, 'from': 100000, 'step': 1000 } }) }}
+                    {{ Input.input({ 'label': 'Расходы на продукты', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_meal_costs', 'class': 'js-numeric-input' }, 'title': '#ruble/мес.', 'slider': { 'min': 0, 'max': 100000, 'from': 5000, 'step': 1000 } }) }}
+                    {{ Input.input({ 'label': 'Расходы на прочие покупки', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '7', 'name': 'calc_others_costs', 'class': 'js-numeric-input' }, 'title': '#ruble/мес.', 'slider': { 'min': 0, 'max': 300000, 'from': 20000, 'step': 1000 } }) }}
+                  </fieldset>
+                  <div class="calculator-hidden-out">
+                    <!--#1-->
+                    <span
+                            data-calc="YXpzK2NhZmUrZmlsbStzcG9ydCttZWFsK290aGVy"
+                            data-params="azs|calc_fuel_costs,cafe|calc_cafe_costs,film|calc_film_costs,sport|calc_sport_costs,meal|calc_meal_costs,other|calc_others_costs"
+                            data-bind="allcost"
+                            data-ordered="0"
+                            data-round="2"
+                    ></span>
+                    <input type="hidden" value="0" name="allcost">
+                    <!--/#1-->
+                  </div>
+                </form>
+
+                <div class="calc-result-inline calc-result-all mb-64 mt-10">
+                  <div class="calc-result-inline__left-block">
+                    <span class="calc-result-inline__description-text">
+                      Вы заработаете за год
+                    </span>
+
+                    <div class="calc-result-inline__main-result">
+                     <span
+                             data-calc="KHN1bW0qMi8xMDApKjEy"
+                             data-params="summ|allcost"
+                             data-ordered="1"
+                             data-round="2"
+                     >10 500</span>
+                      <span class="js-currency-span currency-span">₽</span>
+                    </div>
+                  </div>
+                  <div class="calc-result-inline__right-block">
+                    <span class="calc-result-inline__description-text">
+                      Этих бонусов будет достаточно  для покупки авиабилета в Милан.
+                    </span>
+                  </div>
+                </div>
+
+
+                {{ Button.button({ 'title': 'Оформить карту', 'mods': { 'theme': 'default' }, 'class': 'products-detail__nav-button products-detail__nav-button-left', attr: {'scroll': '#request'} }) }}
+              </div>
+              <div class="image-layout">
+                <img class="illustration-image" src="assets/illustrations/credit_online.svg" alt="Пополняемый накопительный вклад">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section page__section mb-225 form-landing-bg" id="request">
+        <div class="page__container page__container_landing-container-short">
+          <div class="section__row">
+            <h2 class="heading heading_type-default-landings heading_type-double-colored heading_align-centered-landings  mb-16">
+              <span><span>Заявка</span> на карту</span>
+            </h2>
+            <div class="text text_theme-gray text_type-block text_align-center mb-64">
+              Оформите заявку и получите бесплатную карту Visa Classic
+            </div>
+            <div class="form form_layout-landing form_layout-landing-centered js-form" data-form="cards">
+              <form action="http://localhost/rplpost/index.php" class="js-calc-result">
+                <div class="step-form__item js-step  js-sms-step js-send-form js-send-validate-form" data-send-validate-url="http://localhost/rplpost/index3.php" data-send-url="http://localhost/rplpost/index.php">
+                  <fieldset>
+                    {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Выберите город', 'name': 'bid_select-city', 'items': [{'title': 'Краснодар', 'value': '12345'}, {'title': 'Москва', 'value': '13456'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'bid-city-list'}, 'field': 'js-city-select' }) }}
+                    {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': 'js-fio-masked', 'maxlength': '64', 'name': 'bid_user-name', 'required': 'true' } }) }}
+                    {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': {'class': 'js-phone-masked', 'name': 'question_phone', 'required': 'true' } }) }}
+                    {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': {'class': 'js-mail-masked', 'name': 'question_mail', 'required': 'true' } }) }}
+                  </fieldset>
+                  <div class="form__agreements">
+                    <label class="checkbox checkbox_type-centered checkbox_theme-dark js-checkbox js-personal-checkbox">
+                      <input type="checkbox" class="checkbox__control"
+                             name="question__personal" checked>
+                      <span class="checkbox__state"></span>
+                      <span class="checkbox__label">
+                        Даю согласие на обработку
+                            {{ Button.button({ 'href': '#', 'title': 'персональных данных', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
+                      </span>
+                    </label>
+                  </div>
+                  {{ Button.button({ 'title': 'Отправить заявку', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button button_type-centered mt-64' }) }}
+                </div>
+                <div class="step-form__item js-step js-send-form js-send-validate-form" data-send-validate-url="http://localhost/rplpost/index3.php" data-send-url="http://localhost/rplpost">
+                  {% include "../components/modules/sms-code-form/sms-code-form.njk" %}
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mobile section page__section page__section_theme-large mb-100" id="mobile-app">
+        <div class="page__container">
+          <div class="section__row">
+            <div class="mobile__figure mobile__figure-relative">
+              <div class="illustration" data-illustration="data_il1"></div>
+            </div>
+            <div class="mobile__content">
+
+              <h2 class="heading heading_type-default-landings heading_type-double-colored  mb-16">
+                <span>Удобный <span>мобильный банк</span></span>
+              </h2>
+
+              <div class="text text_theme-gray text_type-block mb-40">
+                Мы очень постарались, сделать для вас простое и удобное приложение
+              </div>
+
+              <div class="section__text section__text_theme-normal">
+                <p class="section__text-list-item">Управление банковскими и инвестиционными продуктами</p>
+                <p class="section__text-list-item">Оплата услуг без комиссии</p>
+                <p class="section__text-list-item">Переводы по всему миру</p>
+                <p class="section__text-list-item">Обмен валюты по курсу близкому к биржевому</p>
+                <p class="section__text-list-item">Чат с оператором</p>
+              </div>
+              <div class="mobile__vendors">
+                {{ Button.button({ 'href': 'https://play.google.com/store/apps/details?id=cz.bsc.bcs', 'name': 'android', 'mods': { 'type': 'icon', 'theme': 'default', 'size': 'large' } }) }}
+                {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'default', 'size': 'large' } }) }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    </main>
+
+    {% include "../components/modules/footer/footer-landings.njk" %}
+  </div>
+{% endblock %}
+
+

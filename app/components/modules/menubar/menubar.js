@@ -22,6 +22,14 @@ export default class Menubar {
       this.controlHandler();
     });
 
+    this.mobileMenu.on('click', (e) => {
+      console.log(e);
+      if ($(e.target).hasClass('js-landings-menu__item') || $(e.target).closest('.js-landings-menu__item').length) {
+        this.controlHandler();
+        $(e.target).find('a').trigger('click');
+      }
+    });
+
     $(window).on('resize', () => {
       if (window.innerWidth >= 1280) {
         if (this.menuControl.hasClass('state_open')) {
