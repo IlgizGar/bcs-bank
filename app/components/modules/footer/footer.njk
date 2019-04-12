@@ -219,11 +219,18 @@
 
 
 <div class="modal bonus-modal js-bonus-modal">
-  {{ Heading.heading({ 'title': 'Как получить бонусы?', 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+  {{ Heading.heading({ 'title': 'Получить бонусы Aviasales', 'mods': { 'type': 'default', 'margin': 'small' } }) }}
   <p class="text mt-16 mb-40">
-    Что бы получить бонусы, необходимо пройти регистрацию в Личном кабинете партнера и оплатить покупки картой БКС Банка.
+    Чтобы получить бонусы за покупку авиабилетов, необходимо перейти в мобильное приложение БКС.
   </p>
-  {{ Button.button({ 'href': '#', 'title': 'Регистрация', 'class': 'js-bonus-modal-button', 'mods': { 'type': 'button', 'theme': 'default' } }) }}
+  <p class="text mt-16 mb-10">
+    Установить приложение
+  </p>
+  <div class="mobile__vendors">
+    {{ Button.button({ 'href': 'https://play.google.com/store/apps/details?id=cz.bsc.bcs', 'name': 'android', 'mods': { 'type': 'icon', 'theme': 'default', 'size': 'large' } }) }}
+    {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'default', 'size': 'large' } }) }}
+  </div>
+{#  {{ Button.button({ 'href': '#', 'title': 'Регистрация', 'class': 'js-bonus-modal-button', 'mods': { 'type': 'button', 'theme': 'default' } }) }}#}
 </div>
 
 

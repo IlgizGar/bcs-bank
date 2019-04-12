@@ -29,7 +29,7 @@
             <div class="section__header_landings">
               <div class="section__header_landings-title">
                 <h2 class="heading heading_type-default heading_type-double-colored  heading_margin-medium">
-                  <span>Выгодный кредит <br><span> для сотрудников ФГ БКС</span></span>
+                  <span>Выгодный кредит <br><span>для сотрудников ФГ БКС</span></span>
                 </h2>
                 <div class="section__header_landings-info">
                   <img src="assets/illustrations/clock.svg">
@@ -94,12 +94,12 @@
 
 
                 <form>
-                    <fieldset>
-                      {{ Input.input({ 'label': 'Сумма кредита', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'credit_calc_amount', 'class': 'js-numeric-input' }, 'title': '#ruble', 'slider': { 'min': 50000, 'max': 1500000, 'from': 800000, 'step': 1000 } }) }}
-                      {{ Input.input({ 'label': 'Срок кредита', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '2', 'name': 'credit_calc_period', 'class': 'js-numeric-input' }, 'slider': { 'min': 13, 'max': 60, 'from': 16, 'step': 1, 'postfix': ' мес.' } }) }}
-                    </fieldset>
-                    <input type="hidden" value="800000" name="monthly_pay" >
-                  </form>
+                  <fieldset>
+                    {{ Input.input({ 'label': 'Сумма кредита', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'credit_calc_amount', 'class': 'js-numeric-input' }, 'title': '#ruble', 'slider': { 'min': 50000, 'max': 1500000, 'from': 800000, 'step': 1000 } }) }}
+                    {{ Input.input({ 'label': 'Срок кредита', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '2', 'name': 'credit_calc_period', 'class': 'js-numeric-input' }, 'slider': { 'min': 13, 'max': 60, 'from': 16, 'step': 1, 'postfix': ' мес.' } }) }}
+                  </fieldset>
+                  <input type="hidden" value="800000" name="monthly_pay" >
+                </form>
 
 
 
@@ -303,5 +303,6 @@
     {% include "../components/modules/footer/footer-landings.njk" %}
   </div>
 {% endblock %}
+
 
 
