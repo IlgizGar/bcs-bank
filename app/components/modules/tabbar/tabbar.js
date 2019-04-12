@@ -7,10 +7,21 @@ module.exports = (elem) => {
       this.anchors = this.tabbar.find('.js-anchor');
       this.scroller = this.tabbar.closest('.js-tab-scroll');
       this.wrapper = this.scroller.parent();
-
       this.init();
       this.events();
       this.activateTabOnLoad();
+    }
+    createTabbarMarker() {
+      const marker = document.createElement('div');
+      marker.classList.add('tabbar__marker');
+      const anchorStyle = window.getComputedStyle(this.active.find('span')[0], null) || this.active.find('span')[0];
+      marker.style.color = anchorStyle.color;
+      if (this.active.hasClass('button_view-underscore')) {
+        marker.style.top = 'auto';
+        marker.style.bottom = '0';
+      }
+      this.tabbar[0].appendChild(marker);
+      return marker;
     }
 
     init() {
@@ -19,6 +30,8 @@ module.exports = (elem) => {
         this.active = this.anchors.eq(0);
         this.active.addClass('state_active');
       }
+      this.marker = $(this.createTabbarMarker());
+      this.setMarkerPos(this.active);
 
       this.$tab = $(this.active.attr('href'));
       this.$tab.removeClass('state_invisible');
@@ -49,11 +62,21 @@ module.exports = (elem) => {
           this.setAnchorPosition();
           this.$tab = $(this.active.attr('href'));
           this.$tab.removeClass('state_invisible');
+          this.setMarkerPos(this.active);
         }
         if ($anchor.closest('.js-products-tabbar').length) {
           Tabs.handleProductsFilter($anchor);
         }
       }
+    }
+
+    setMarkerPos(activeAnchor) {
+      const width = activeAnchor.width();
+      const position = activeAnchor.position();
+      const props = {};
+      props.width = width;
+      props.transform = `translate3d(${position.left}px, 0, 0)`;
+      this.marker.css(props);
     }
 
     setAnchorPosition() {
