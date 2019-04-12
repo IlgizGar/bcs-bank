@@ -86,7 +86,8 @@ module.exports = (elem) => {
           } else if (parseFloat(this.field.val().replace(/ /g, '')) < this.slider.data('min')) {
             this.field.val(this.slider.data('min'));
           } else if (this.field.val().length < 1) {
-            this.field.val(this.slider.attr('data-from'));
+            // this.field.val(this.slider.attr('data-from'));
+            this.field.val(this.slider.data('min'));
           }
           this.ionSlider.update({
             from: parseFloat(this.field.val().replace(/ /g, '')),

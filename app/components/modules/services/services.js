@@ -33,6 +33,7 @@ export class ExchangeService {
     this.updateTime = 30000;
     this.apiUrl = '';
     this.loadedData = null;
+    this.dateBlock = this.exchangeBlock.closest('.js-card ').find('.js-exchange-date');
     this.getApiUrl();
     this.getExchangeCources();
   }
@@ -42,11 +43,15 @@ export class ExchangeService {
   // Exchange table
   getExchangeCources() {
     $.get(this.apiUrl, (response) => {
+      const dateString = response.online_date;
+      const date = new Date(dateString);
+      this.date = `${date.getDate() < 10 ? 0 : ''}${date.getDate()}.${date.getMonth() < 10 ? 0 : ''}${date.getMonth() + 1}.${date.getFullYear()}, ${date.getHours()}:${date.getMinutes()} мск`;
       this.exchangeBlock.find('tbody')
         .replaceWith(ExchangeService.generateExchangeTable(this.getAdaptedData(response)));
       this.timer = setTimeout(() => {
         this.getExchangeCources();
       }, this.updateTime);
+      this.dateBlock.html(this.date);
     });
   }
 
@@ -61,14 +66,14 @@ export class ExchangeService {
         <tr>
           <td class="services__table-currency">${currency}</td>
           <td>
-            <div class="currency ${getPriceState(data[currency].buy, data[currency].prevBuy)} ">
-                ${getPriceValue(data[currency].buy)}
+            <div class="currency ${getPriceState(data[currency].sell, data[currency].prevSell)} ">
+                ${getPriceValue(data[currency].sell)}
                 <svg role="presentation" class="icon icon-fall_arrow "><use xlink:href="assets/images/icons.svg#icon_fall_arrow"></use></svg>
             </div>
           </td>
           <td>
-            <div class="currency ${getPriceState(data[currency].sell, data[currency].prevSell)} ">
-                ${getPriceValue(data[currency].sell)}
+            <div class="currency ${getPriceState(data[currency].buy, data[currency].prevBuy)} ">
+                ${getPriceValue(data[currency].buy)}
                 <svg role="presentation" class="icon icon-fall_arrow "><use xlink:href="assets/images/icons.svg#icon_fall_arrow"></use></svg>
             </div>
           </td>
@@ -85,16 +90,21 @@ export class FixService {
     this.fixBlock = $('#fix-service');
     this.apiUrl = this.fixBlock.closest('.js-card').attr('data-api-url');
     this.updateTime = 10000;
+    this.dateBlock = this.fixBlock.closest('.js-card ').find('.js-fix-course-date');
     this.getFixCources();
   }
 
   // Exchange table
   getFixCources() {
     $.get(this.apiUrl, (response) => {
+      const dateString = String(response.dealDate).split('.');
+      const date = new Date(dateString[2], dateString[1], dateString[0]);
+      this.date = `До ${date.getDate() < 10 ? 0 : ''}${date.getDate()}  ${FixService.getMonthName(date.getMonth() - 1)}  ${date.getFullYear()}`;
       this.updateTableData(response);
       setTimeout(() => {
         this.getFixCources();
       }, this.updateTime);
+      this.dateBlock.html(this.date);
     });
   }
 
@@ -120,7 +130,7 @@ export class FixService {
       }
     });
 
-    this.fixBlock.find('.radio__field:checked').closest('.js-course-radio').trigger('click');
+    this.fixBlock.find('.radio__field:checked').closest('.js-course-radio').trigger('change');
   }
 
   static updateTableCellValue(el, price) {
@@ -144,6 +154,22 @@ export class FixService {
     });
     el.prepend(getPriceValue(current));
     el.append(' <svg role="presentation" class="icon icon-fall_arrow "><use xlink:href="assets/images/icons.svg#icon_fall_arrow"></use></svg>');
+  }
+  static getMonthName(mNum) {
+    const monthArray = [
+      'января',
+      'февраля',
+      'марта',
+      'апреля',
+      'июня',
+      'июля',
+      'августа',
+      'сентября',
+      'октября',
+      'ноября',
+      'декабря',
+    ];
+    return monthArray[mNum];
   }
 }
 
@@ -187,10 +213,13 @@ export class ExchangeBanksServiceCorp extends ExchangeService {
 
 export class ExchangeBanksServiceDefault extends ExchangeService {
   getAdaptedData(data) {
+    if (!this.dataKey) {
+      this.dataKey = this.exchangeBlock.closest('.js-card').attr('data-key');
+    }
     this.loadedData = data;
-    this.exchangeBlock[0].value = data.online_courses;
+    this.exchangeBlock[0].value = data[(this.dataKey) ? this.dataKey : 'online_courses'];
     this.exchangeBlock[0].dispatchEvent(new window.Event('change'));
-    return data.online_courses;
+    return data[(this.dataKey) ? this.dataKey : 'online_courses'];
   }
 }
 

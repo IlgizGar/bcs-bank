@@ -180,7 +180,7 @@ module.exports = (elem) => {
       if (this.dropdown.hasClass('state_filled')) {
         this.dropdown.removeClass('state_filled');
         this.hideList();
-        this.input.val('');
+        // this.input.val('');
         this.options.attr('selected', false);
         if (this.input.closest('form').length) {
           this.input.valid();

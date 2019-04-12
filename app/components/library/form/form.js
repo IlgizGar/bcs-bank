@@ -202,15 +202,7 @@ module.exports = (elem) => {
         });
       }
       const sendUrl = url;
-      Object.keys(formData)
-        .forEach((item) => {
-          const dataItem = formData[item];
-          if ($(`[name=${dataItem.name}]`)
-            .hasClass('js-numeric-input')) {
-            dataItem.value = dataItem.value.replace(' ', '');
-          }
-        });
-
+      Form.formatOutput(formData);
       $.ajax({
         method: 'POST',
         type: 'POST',
@@ -289,6 +281,17 @@ module.exports = (elem) => {
           }
         },
       });
+    }
+    static formatOutput(formData) {
+      Object.keys(formData)
+        .forEach((item) => {
+          const dataItem = formData[item];
+          dataItem.value = String(dataItem.value).trim();
+          if ($(`[name=${dataItem.name}]`)
+            .hasClass('js-numeric-input')) {
+            dataItem.value = dataItem.value.replace(/\s+/g, '');
+          }
+        });
     }
 
     setHiddenValue(name, value) {
@@ -388,7 +391,7 @@ module.exports = (elem) => {
         const value = $(e.currentTarget)
           .find('input')
           .val();
-        if (value === 'true') {
+        if (value === 'false') {
           this.form.find('.js-button[type="submit"]')
             .attr('disabled', '');
         } else {
