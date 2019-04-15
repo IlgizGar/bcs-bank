@@ -1,7 +1,9 @@
 {% macro advice( options ) %}
   <div class="advice {{ options.class }}">
     <a href="{{ options.href }}" class="advice__wrap">
-      <img class="advice__figure" src="{{ options.img }}" alt="{{ options.title }}">
+      <span class="advice__figure-wrapper">
+         <img class="advice__figure" src="{{ options.img }}" alt="{{ options.title }}">
+      </span>
       <p class="advice__subtitle">{{ options.subtitle }}</p>
       <h3 class="advice__title">{{ options.title }}</h3>
     </a>
