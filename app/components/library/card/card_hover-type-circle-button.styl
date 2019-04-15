@@ -2,6 +2,8 @@
   .card__action
     position relative
     overflow hidden
+    .icon-arrow
+      transition all 0.5s ease
     .card__button
       position relative
       z-index 4
@@ -22,6 +24,8 @@
       background $card_circle_hover_default
       transition 0.5s ease
     &:hover
+      .icon-arrow
+        transform translateX(10px)
       &:after
         transform translateY(-50%) scale(1)
         opacity 1
