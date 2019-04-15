@@ -18,6 +18,32 @@ export default class Animator {
     }
   }
 
+  static scrollSpeedAnimate(el, index) {
+    const scrollPos = window.pageYOffset;
+    let scrollRange = 0;
+    $(el).addClass('state-scroll-speed');
+    function tick() {
+      scrollRange = window.pageYOffset - scrollPos;
+      $(el).css({ transform: `translate3d(0,${scrollRange * (index / 2)}px,0)` });
+      if ($(el).hasClass('state-scroll-speed-end')) {
+        setTimeout(() => {
+          $(el).css({ transform: 'translate3d(0,0,0)' });
+        }, 5);
+        return false;
+      }
+      window.requestAnimationFrame(tick);
+      return true;
+    }
+    tick();
+    let timer = null;
+    $(window).on('scroll', () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        $(el).addClass('state-scroll-speed-end');
+      }, 2);
+    });
+  }
+
   observe() {
     const options = {
       rootMargin: '0px',
@@ -33,6 +59,9 @@ export default class Animator {
           if (!$(check.target).hasClass('state_animate-double')) {
             delete dataItem.obserber;
           }
+          $(check.target).find('.js-card').each((index, element) => {
+            Animator.scrollSpeedAnimate(element, index);
+          });
         }
         if (scroll > window.pageYOffset) {
           if ($(check.target).hasClass('state_animate-double')) {
