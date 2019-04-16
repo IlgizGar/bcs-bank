@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import { parse } from 'filepond';
 
 export default class Animator {
   constructor(elements) {
@@ -6,6 +7,13 @@ export default class Animator {
     this.animations = [];
     this.init();
     this.observe();
+    let timer = null;
+    $(window).on('scroll', () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        document.body.dispatchEvent(new window.Event('scrollend'));
+      }, 1);
+    });
   }
   init() {
     if (this.elements.length) {
@@ -19,28 +27,30 @@ export default class Animator {
   }
 
   static scrollSpeedAnimate(el, index) {
+    $(el).removeClass('state-scroll-speed-end');
+    $(el).removeAttr('style');
     const scrollPos = window.pageYOffset;
     let scrollRange = 0;
+    let savedRange = 0;
     $(el).addClass('state-scroll-speed');
     function tick() {
       scrollRange = window.pageYOffset - scrollPos;
-      $(el).css({ transform: `translate3d(0,${scrollRange * (index / 2)}px,0)` });
+      $(el).css({ transform: `translate3d(0,${scrollRange * ((index + 1) / 3)}px,0)` });
       if ($(el).hasClass('state-scroll-speed-end')) {
+        savedRange = scrollRange;
+        $(el).css({ transform: `translate3d(0,${savedRange * ((index + 1) / 3)}px,0)`, transition: 'all 0.8s ease' });
         setTimeout(() => {
           $(el).css({ transform: 'translate3d(0,0,0)' });
-        }, 5);
+        }, 10);
         return false;
       }
       window.requestAnimationFrame(tick);
       return true;
     }
     tick();
-    let timer = null;
-    $(window).on('scroll', () => {
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        $(el).addClass('state-scroll-speed-end');
-      }, 2);
+    $('body').bind('scrollend', () => {
+      $(el).addClass('state-scroll-speed-end');
+      $('body').unbind('scrollend');
     });
   }
 
