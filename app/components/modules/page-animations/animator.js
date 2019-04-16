@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import { parse } from 'filepond';
+
 
 export default class Animator {
   constructor(elements) {
