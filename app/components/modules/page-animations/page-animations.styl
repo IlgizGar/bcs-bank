@@ -57,22 +57,28 @@ body
       animation headerControlsShow 1s ease-out
       opacity 1
     .slick-slide,.products-detail__content,.products-detail__figure
-        .heading,.illustration,.breadcrumbs
+      .heading,.breadcrumbs
+        opacity 0
+        animation slideHeadingHide 1s ease-out
+      .illustration
+        opacity 0
+        animation slideHeadingHideLeft 1s ease-out forwards
+      .index-carousel__features,.features,.products-detail__content_description
+        opacity 0
+        animation slideFeaturesHide 1s ease-out
+      &.state_animate,&.state_animate-page
+        .heading,.breadcrumbs
+          animation slideHeadingShow 1s ease-out forwards
+        .illustration
           opacity 0
-          animation slideHeadingHide 1s ease-out
+          animation slideHeadingShowLeft 1s ease-out forwards
         .index-carousel__features,.features,.products-detail__content_description
-          opacity 0
-          animation slideFeaturesHide 1s ease-out
-        &.state_animate,&.state_animate-page
-          .heading,.illustration,.breadcrumbs
-              animation slideHeadingShow 1s ease-out forwards
-          .index-carousel__features,.features,.products-detail__content_description
-              animation slideFeaturesShow 1s ease-out forwards
-          &.state_init
-            .heading,.illustration
-              animation-delay  1s
-            .index-carousel__features
-              animation-delay  1s
+          animation slideFeaturesShow 1s ease-out forwards
+        &.state_init
+          .heading,.illustration
+            animation-delay  1s
+          .index-carousel__features
+            animation-delay  1s
     .card__heading
       opacity 0
       transition opacity 0.8s ease-out
@@ -178,6 +184,14 @@ body
     transform translateY(0)
     opacity 1
 
+@keyframes slideHeadingShowLeft
+  from
+    transform translateX(28px)
+    opacity 0
+  to
+    transform translateX(0)
+    opacity 1
+
 @keyframes slideFeaturesShow
   from
     transform translateY(28px)
@@ -192,6 +206,14 @@ body
     opacity 1
   to
     transform translateY(-28px)
+    opacity 0
+
+@keyframes slideHeadingHideLeft
+  from
+    transform translateX(0)
+    opacity 1
+  to
+    transform translateX(28px)
     opacity 0
 
 @keyframes slideFeaturesHide
