@@ -41,7 +41,7 @@ export default class Animator {
         $(el).css({ transform: `translate3d(0,${savedRange * ((index + 1) / 3)}px,0)`, transition: 'all 0.8s ease' });
         setTimeout(() => {
           $(el).css({ transform: 'translate3d(0,0,0)' });
-        }, 10);
+        }, 50);
         return false;
       }
       window.requestAnimationFrame(tick);
