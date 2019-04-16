@@ -57,21 +57,15 @@ body
       animation headerControlsShow 1s ease-out
       opacity 1
     .slick-slide,.products-detail__content,.products-detail__figure
-        .heading,.breadcrumbs
+        .heading,.illustration,.breadcrumbs
           opacity 0
           animation slideHeadingHide 1s ease-out
-        .illustration
-          opacity 0
-          animation slideHeadingHideLeft 1s ease-out forwards
         .index-carousel__features,.features,.products-detail__content_description
           opacity 0
           animation slideFeaturesHide 1s ease-out
         &.state_animate,&.state_animate-page
-          .heading,.breadcrumbs
+          .heading,.illustration,.breadcrumbs
               animation slideHeadingShow 1s ease-out forwards
-          .illustration
-              opacity 0
-              animation slideHeadingShowLeft 1s ease-out forwards
           .index-carousel__features,.features,.products-detail__content_description
               animation slideFeaturesShow 1s ease-out forwards
           &.state_init
@@ -87,12 +81,8 @@ body
       transform translateY(10px);
       transition all 0.8s ease-out
     .animate
-      &.transfer-iframe
+      .mobile__figure,.company__figure,&.transfer-iframe,&.brand-features__props,.brand-features__item,.calculation__thumbnail,&.plastic-card,&.feature,&.text__quote
         transform translateY(28px)
-        opacity 0
-        transition all 0.8s ease-out
-      .mobile__figure,.company__figure,&.brand-features__props,.brand-features__item,.calculation__thumbnail,&.plastic-card,&.feature,&.text__quote
-        transform translateX(28px)
         opacity 0
         transition all 0.8s ease-out
       .brand-features__item
@@ -134,12 +124,9 @@ body
       .card__figure
         opacity 1
         transform translateY(0);
-      .mobile__figure,.company__figure,&.brand-features__props,.brand-features__item,.calculation__thumbnail,&.plastic-card,&.feature,&.text__quote
-          transform translateX(0)
+      .mobile__figure,.company__figure,&.transfer-iframe,&.brand-features__props,.brand-features__item,.calculation__thumbnail,&.plastic-card,&.feature,&.text__quote
+          transform translateY(0)
           opacity 1
-      &.transfer-iframe
-        transform translateY(0)
-        opacity 1
       .heading,.section__text,.page__container>.text,.form__steps,.section__heading .button
         transform translateX(0)
         opacity 1
@@ -191,14 +178,6 @@ body
     transform translateY(0)
     opacity 1
 
-@keyframes slideHeadingShowLeft
-  from
-    transform translateX(28px)
-    opacity 0
-  to
-    transform translateX(0)
-    opacity 1
-
 @keyframes slideFeaturesShow
   from
     transform translateY(28px)
@@ -213,14 +192,6 @@ body
     opacity 1
   to
     transform translateY(-28px)
-    opacity 0
-
-@keyframes slideHeadingHideLeft
-  from
-    transform translateX(0)
-    opacity 1
-  to
-    transform translateX(28px)
     opacity 0
 
 @keyframes slideFeaturesHide
