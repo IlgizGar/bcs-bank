@@ -14,6 +14,7 @@ export default class Animator {
       if (delay === 0) {
         const date = new Date();
         delay = date.getTime();
+        document.body.dispatchEvent(new window.Event('scrollstart'));
       }
       clearTimeout(timer);
       timer = setTimeout(() => {
@@ -47,7 +48,7 @@ export default class Animator {
     function tick() {
       if (window.pageYOffset > scrollPos) {
         scrollRange = window.pageYOffset - scrollPos;
-        let transform = (scrollRange * ((index + 1) / 4)) - fade;
+        let transform = (scrollRange * ((index + 1) / 10)) - fade;
         if (transform < 0) {
           transform = 0;
         }
@@ -117,7 +118,10 @@ export default class Animator {
         if (check.isIntersecting) {
           $(check.target).find('.js-card').each((index, element) => {
             observer.disconnect();
-            Animator.scrollSpeedAnimate(element, index, this.delay);
+            $('body').bind('scrollstart', () => {
+              Animator.scrollSpeedAnimate(element, index, this.delay);
+              $('body').unbind('scrollstart');
+            });
           });
         }
       }
