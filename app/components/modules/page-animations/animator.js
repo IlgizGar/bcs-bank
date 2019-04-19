@@ -8,11 +8,21 @@ export default class Animator {
     this.init();
     this.observe();
     let timer = null;
+    let delay = 0;
+    this.delay = 0;
     $(window).on('scroll', () => {
+      if (delay === 0) {
+        const date = new Date();
+        delay = date.getTime();
+      }
       clearTimeout(timer);
       timer = setTimeout(() => {
         document.body.dispatchEvent(new window.Event('scrollend'));
-      }, 1);
+        const date = new Date();
+        delay = date.getTime() - delay;
+        this.delay = delay;
+        delay = 0;
+      }, 100);
     });
   }
   init() {
@@ -26,7 +36,8 @@ export default class Animator {
     }
   }
 
-  static scrollSpeedAnimate(el, index) {
+  static scrollSpeedAnimate(el, index, delay) {
+    let fade = 0;
     $(el).removeClass('state-scroll-speed-end');
     $(el).removeAttr('style');
     const scrollPos = window.pageYOffset;
@@ -34,15 +45,22 @@ export default class Animator {
     let savedRange = 0;
     $(el).addClass('state-scroll-speed');
     function tick() {
-      scrollRange = window.pageYOffset - scrollPos;
-      $(el).css({ transform: `translate3d(0,${scrollRange * ((index + 1) / 3)}px,0)` });
-      if ($(el).hasClass('state-scroll-speed-end')) {
-        savedRange = scrollRange;
-        $(el).css({ transform: `translate3d(0,${savedRange * ((index + 1) / 3)}px,0)`, transition: 'all 0.8s ease' });
-        setTimeout(() => {
-          $(el).css({ transform: 'translate3d(0,0,0)' });
-        }, 50);
-        return false;
+      if (window.pageYOffset > scrollPos) {
+        scrollRange = window.pageYOffset - scrollPos;
+        let transform = (scrollRange * ((index + 1) / 4)) - fade;
+        if (transform < 0) {
+          transform = 0;
+        }
+        fade += 2;
+        $(el).css({ transform: `translate3d(0,${transform}px,0)` });
+        if ($(el).hasClass('state-scroll-speed-end')) {
+          savedRange = transform;
+          $(el).css({ transform: `translate3d(0,${savedRange}`, transition: 'all 0.8s ease' });
+          setTimeout(() => {
+            $(el).css({ transform: 'translate3d(0,0,0)' });
+          }, delay);
+          return false;
+        }
       }
       window.requestAnimationFrame(tick);
       return true;
@@ -69,9 +87,6 @@ export default class Animator {
           if (!$(check.target).hasClass('state_animate-double')) {
             delete dataItem.obserber;
           }
-          $(check.target).find('.js-card').each((index, element) => {
-            Animator.scrollSpeedAnimate(element, index);
-          });
         }
         if (scroll > window.pageYOffset) {
           if ($(check.target).hasClass('state_animate-double')) {
@@ -90,6 +105,27 @@ export default class Animator {
           $(dataItem.element).removeClass('state_animate-page');
         }, 200);
       }
+    });
+    const SpeedScrollOptions = {
+      rootMargin: '0px',
+      threshold: 0.1,
+    };
+    Object.keys(this.animations).forEach((key) => {
+      const dataItem = this.animations[key];
+      function speedCallback(entries, observer) {
+        const check = entries[0];
+        if (check.isIntersecting) {
+          $(check.target).find('.js-card').each((index, element) => {
+            observer.disconnect();
+            Animator.scrollSpeedAnimate(element, index, this.delay);
+          });
+        }
+      }
+      dataItem.speedObserber = new window.IntersectionObserver(speedCallback, SpeedScrollOptions);
+      const speedObserve = () => {
+        dataItem.speedObserber.observe(dataItem.element);
+      };
+      speedObserve();
     });
   }
 }
