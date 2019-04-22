@@ -426,7 +426,7 @@ module.exports = (form) => {
       $.validator.addMethod(
         'checkEmail',
         (value) => {
-          const regExp = new RegExp('^[A-Za-zА-я0-9][A-Za-zА-я0-9\\.-_]*[A-Za-z0-9]*@([A-Za-zА-я0-9]+([A-Za-zА-я0-9-]*[A-Za-zА-я0-9]+)*\\.)+[A-ZА-яa-z]*$');
+          const regExp = new RegExp('^[A-Za-zА-я0-9][A-Za-zА-я0-9\\.\\-_]*[A-Za-z0-9]*@([A-Za-zА-я0-9]+([A-Za-zА-я0-9-]*[A-Za-zА-я0-9]+)*\\.)+[A-ZА-яa-z]*$');
           return String(value)
             .match(regExp);
         },
