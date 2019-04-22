@@ -33,9 +33,9 @@
                 <div class="filter__wrapper">
                   <div class="filter__title hidden-mobile">Бонусы за:</div>
                   <div class="filter__select hidden-mobile">
-                    {{ Checkbox.checkbox({ 'label': 'АЗС', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'filter__item', "attr": {"filter":"boolean", "filter-param":"azs"} }) }}
-                    {{ Checkbox.checkbox({ 'label': 'Кафе и рестораны', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'filter__item', "attr": {"filter":"boolean", "filter-param":"cafe"} }) }}
-                    {{ Checkbox.checkbox({ 'label': 'Театр и кино', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'filter__item', "attr": {"filter":"boolean", "filter-param":"cinema"} }) }}
+                    {{ Checkbox.checkbox({ 'label': 'АЗС', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'filter__item', "inptattr": {"filter":"boolean", "filter-param":"azs"} }) }}
+                    {{ Checkbox.checkbox({ 'label': 'Кафе и рестораны', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'filter__item', "inptattr": {"filter":"boolean", "filter-param":"cafe"} }) }}
+                    {{ Checkbox.checkbox({ 'label': 'Театр и кино', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'filter__item', "inptattr": {"filter":"boolean", "filter-param":"cinema"} }) }}
                   </div>
                   {{ Context.context({ 'title': 'Еще', 'name': 'dropdown', 'icon': 'filter', 'mods': { 'type': 'menu', 'theme': 'black' }, 'attr': {'id': 'select-filter'}, 'class': 'filter__item' }) }}
                 </div>
@@ -57,7 +57,7 @@
                 'theme': 'blue',
                 'href': '/cards-detail_more-visa-platinum.html',
                 'button': 'Оформите карту',
-                'filterAttributes': 'azs:true|cinema:true|cafe:true',
+                'filterAttributes': 'azs:true|cinema:true|cafe:true|bonus:#4,#1',
                 'features': [
                   { 'title': '3%',
                     'text': 'кэшбека \n за покупки',
@@ -76,7 +76,7 @@
                 'category': {'lifestyle': 'Стиль жизни', 'vip': 'VIP'},
                 'image': 'assets/illustrations/digital_signature2.png',
                 'button': 'Оформите карту',
-                'filterAttributes': 'azs:true|cinema:true',
+                'filterAttributes': 'azs:true|cinema:true|bonus:#3,#2',
                 'features': [
                   { 'title': '12%',
                     'text': 'в выбранной \n категории',
@@ -97,7 +97,7 @@
                 'animate': 'data-il2',
                 'href': 'cards-detail_digital-visa-platinum.html',
                 'button': 'Оформите карту',
-                'filterAttributes': 'azs:true',
+                'filterAttributes': 'azs:true|bonus:#2,#1',
                 'features': [
                   { 'title': '7%',
                     'text': 'в выбранной \n категории',
@@ -117,7 +117,7 @@
                 'category': {'travel': 'Путешествия', 'vip': 'VIP'},
                 'image': 'assets/illustrations/more_signature.svg',
                 'button': 'Оформите карту',
-                'filterAttributes': 'cinema:true|cafe:true',
+                'filterAttributes': 'cinema:true|cafe:true|bonus:#1,#5',
                 'features': [
                   { 'title': '5%',
                     'text': 'кэшбека \n за покупки',

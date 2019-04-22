@@ -69,6 +69,7 @@ module.exports = (elem) => {
           element.on(defaultEvent, (e) => {
             const key = dataItem.param;
             const isValued = !!$(e.currentTarget).attr('data-value');
+            console.log(e.currentTarget, isValued);
             Filter.removeFromFilter(`${key}-type`, 'boolean');
             Filter.addToFilter(`${key}-type`, 'boolean');
             if ($(e.currentTarget).hasClass('state_active')) {
@@ -140,6 +141,7 @@ module.exports = (elem) => {
       return 'no-property-set';
     }
     applyFilter() {
+      console.log(global.filterData);
       Object.keys(this.items).forEach((item) => {
         let valid = true;
         Object.keys(global.filterData).forEach((key) => {
