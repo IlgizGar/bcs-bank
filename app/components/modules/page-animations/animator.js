@@ -48,7 +48,7 @@ export default class Animator {
     function tick() {
       if (window.pageYOffset > scrollPos) {
         scrollRange = window.pageYOffset - scrollPos;
-        let transform = (scrollRange * ((index + 1) / 10)) - fade;
+        let transform = (scrollRange * ((index + 1) / 15)) - fade;
         if (transform < 0) {
           transform = 0;
         }
