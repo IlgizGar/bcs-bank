@@ -48,11 +48,13 @@
 
 body
   &.state_animations-start
+    .mobile .mobile__content
+      width calc(54.666667% - 40px)
     .mobile .mobile__figure
-      @media (min-width: 1280px)
-        size(6.9)
       @media (min-width: 992px) and (max-width: 1279px)
-        size(4.9)
+        width: calc(52.833333% - 40px);
+      @media (min-width: 1280px)
+        width: calc(53.5% - 40px);
     background $color_light
     .not-found-block__section-header
       background $color_light
