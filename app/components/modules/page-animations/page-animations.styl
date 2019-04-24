@@ -2,9 +2,9 @@
   background $royal_blue
   overflow hidden
   height 100vh
-  .section__header-controls,.section__nav-wrapper,.feature,.carousel__progressbar,.index-products,.menubar,.heading,.illustration,.index-carousel__features,.features,.breadcrumbs,.brand-features__item
+  .section__header-controls,.navbar,.footer,.not-found-block__item_img,.not-found-block__item_text,.section__nav-wrapper,.feature,.carousel__progressbar,.index-products,.menubar,.heading,.illustration,.index-carousel__features,.features,.breadcrumbs,.brand-features__item
     opacity 0
-  .heading,.section__text,.page__container>.text,.form__steps,.section__heading .button,.products-detail__content_description,.leaders__person,.card
+  .heading,.section__text,.navbar,.page__container>.text,.form__steps,.section__heading .button,.products-detail__content_description,.leaders__person,.card
     opacity 0
   .page
     opacity 0
@@ -38,7 +38,9 @@
     //transition-delay 1s
     position relative
     z-index 2
-  .section__header-controls,.section__nav-wrapper,.header,.feature,.carousel__progressbar,.index-products,.menubar,.heading,.illustration,.index-carousel__features,.features,.breadcrumbs,.brand-features__item
+  .not-found-block__section-header
+    background $color_default
+  .section__header-controls,.navbar,.not-found-block__item_img,.not-found-block__item_text,.footer,.section__nav-wrapper,.header,.feature,.carousel__progressbar,.index-products,.menubar,.heading,.illustration,.index-carousel__features,.features,.breadcrumbs,.brand-features__item
     opacity 0
   .heading,.section >*:not(.section__header),.section__text,.page__container>.text,.form__steps,.section__heading .button,.products-detail__content_description,.leaders__person,.card
     opacity 0
@@ -52,7 +54,12 @@ body
       @media (min-width: 992px) and (max-width: 1279px)
         size(4.9)
     background $color_light
-    .menubar
+    .not-found-block__section-header
+      background $color_light
+      transition all 0.5s ease
+    .footer
+      opacity 0
+    .menubar,.navbar
       animation menubarShow 1s ease-out
       opacity 1
     .section__header-controls,.carousel__progressbar,.index-products,.section__nav-wrapper
@@ -93,7 +100,7 @@ body
         transform translateX(28px)
         opacity 0
         transition all 0.8s ease-out
-      .form,&.transfer-iframe,&.brand-features__props,.brand-features__item,.calculation__thumbnail,&.plastic-card,&.feature,&.text__quote
+      .form,&.transfer-iframe,.not-found-block__item_img,.not-found-block__item_text,&.brand-features__props,&.not-found-block__item_img,.brand-features__item,.calculation__thumbnail,&.plastic-card,&.feature,&.text__quote
         transform translateY(28px)
         opacity 0
         transition all 0.8s ease-out
@@ -131,6 +138,8 @@ body
           opacity 0
           transition all 0.3s ease-out
     .state_animate-page
+      &.footer
+        opacity 1
       .card__heading
         opacity 1
       .card__figure
@@ -139,7 +148,7 @@ body
       .mobile__figure,.company__figure
         transform translateX(0)
         opacity 1
-      .form,&.transfer-iframe,&.brand-features__props,.brand-features__item,.calculation__thumbnail,&.plastic-card,&.feature,&.text__quote
+      .form,&.transfer-iframe,.not-found-block__item_img,.not-found-block__item_text,&.not-found-block__item_img,&.brand-features__props,.brand-features__item,.calculation__thumbnail,&.plastic-card,&.feature,&.text__quote
           transform translateY(0)
           opacity 1
       .heading,.section__text,.page__container>.text,.form__steps,.section__heading .button

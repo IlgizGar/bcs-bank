@@ -20,16 +20,18 @@
     {% include "../components/modules/header/header.njk" %}
 
     <main role="main">
-      <section class="section page__section ">
-        <div class="page__container">
-          <div class="not-found-block mb-112 mt-82">
-            <div class="not-found-block__item not-found-block__item_text">
-              {{ Heading.heading({ 'title': 'Страница не найдена', 'mods': { 'type': 'default', 'margin': 'short' }, 'class': '' }) }}
-              <div class="text text_theme-gray mb-56">Вы можете перейти на главную страницу либо воспользоваться картой сайта внизу.</div>
-              {{ Button.button({ 'title': 'На главную', 'href': '/', 'mods': {'theme': 'default'}, 'class': '' }) }}
-            </div>
-            <div class="not-found-block__item not-found-block__item_img">
+      <section class="section page__section js-scroll-animate">
+        <div class="section__header not-found-block__section-header">
+          <div class="page__container">
+            <div class="not-found-block mb-112 mt-82">
+              <div class="not-found-block__item not-found-block__item_text">
+                {{ Heading.heading({ 'title': 'Страница не найдена', 'mods': { 'type': 'default', 'margin': 'short' }, 'class': '' }) }}
+                <div class="text text_theme-gray mb-56">Вы можете перейти на главную страницу либо воспользоваться картой сайта внизу.</div>
+                {{ Button.button({ 'title': 'На главную', 'href': '/', 'mods': {'theme': 'default'}, 'class': '' }) }}
+              </div>
+              <div class="not-found-block__item not-found-block__item_img js-scroll-animate">
                 <img src="assets/images/404.svg">
+              </div>
             </div>
           </div>
         </div>
