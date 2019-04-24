@@ -48,7 +48,7 @@ export default class Animator {
     function tick() {
       if (window.pageYOffset > scrollPos) {
         scrollRange = window.pageYOffset - scrollPos;
-        let transform = (scrollRange * ((index + 1) / 15)) - fade;
+        let transform = (scrollRange * ((index + 1) / 12)) - fade;
         if (transform < 0) {
           transform = 0;
         }
@@ -116,13 +116,17 @@ export default class Animator {
       function speedCallback(entries, observer) {
         const check = entries[0];
         if (check.isIntersecting) {
+          observer.disconnect();
           $(check.target).find('.js-card').each((index, element) => {
-            observer.disconnect();
             $('body').bind('scrollstart', () => {
               Animator.scrollSpeedAnimate(element, index, this.delay);
               $('body').unbind('scrollstart');
             });
           });
+          if ($(check.target).hasClass('js-card')) {
+            Animator.scrollSpeedAnimate(check.target, 0, this.delay);
+            $('body').unbind('scrollstart');
+          }
         }
       }
       dataItem.speedObserber = new window.IntersectionObserver(speedCallback, SpeedScrollOptions);

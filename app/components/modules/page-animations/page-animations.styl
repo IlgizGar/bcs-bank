@@ -20,13 +20,9 @@
       width 100%
       z-index 999
     &:before
-      height 57px
       bottom: 100%
       animation upShow 0.8s ease-out
-      @media (max-width: 1279px)
-        height 114px
-      @media (max-width: 767px)
-        height 104px
+      height calc(100vh - 100%)
     &:after
       height calc(100vh - 100%)
       top: 100%
@@ -168,7 +164,9 @@ body
 
 @keyframes upShow
   from
-    transform translateY(-101%)
+    transform translateY(-57px)
+    @media (min-width: 1280px)
+      transform translateY(-114px)
   to
     transform translateY(0)
 
