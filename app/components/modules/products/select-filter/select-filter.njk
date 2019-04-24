@@ -1,7 +1,7 @@
 {% import "../../../../components/library/button/button.njk" as Button %}
 {% import "../../../../components/library/checkbox/checkbox.njk" as Checkbox %}
 
-<div id="select-filter" class="select-filter context__list js-context-list state_invisible" data-type="modal-view">
+<div id="select-filter" class="select-filter context__list js-context-list state_invisible js-filter" data-type="modal-view">
   <div class="select-filter__wrapper">
     <a href="#" class="select-filter__close-icon"></a>
     <div class="page__container">
@@ -10,25 +10,25 @@
       <div class="select-filter__content">
         <ul class="select-filter__list">
           <li>
-            {{ Checkbox.checkbox({ 'label': 'АЗС', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'select-filter__item js-context-item' }) }}
+            {{ Checkbox.checkbox({ 'label': 'АЗС', 'mods': {'theme': 'dark'}, 'name': 'azs', "inptattr": {"filter":"boolean", "filter-param":"bonus" , 'value': '1'}, 'class': 'select-filter__item js-context-item' }) }}
           </li>
           <li>
-            {{ Checkbox.checkbox({ 'label': 'Кафе и рестораны', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'select-filter__item js-context-item' }) }}
+            {{ Checkbox.checkbox({ 'label': 'Кафе и рестораны', 'mods': {'theme': 'dark'}, 'name': 'cafe',  "inptattr": {"filter":"boolean", "filter-param":"bonus" , 'value': '2'}, 'class': 'select-filter__item js-context-item' }) }}
           </li>
           <li>
-            {{ Checkbox.checkbox({ 'label': 'Театр и кино', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'select-filter__item js-context-item' }) }}
+            {{ Checkbox.checkbox({ 'label': 'Театр и кино', 'mods': {'theme': 'dark'}, 'name': 'teatre', "inptattr": {"filter":"boolean", "filter-param":"bonus" , 'value': '3'}, 'class': 'select-filter__item js-context-item' }) }}
           </li>
           <li>
-            {{ Checkbox.checkbox({ 'label': 'АЗС', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'select-filter__item js-context-item' }) }}
+            {{ Checkbox.checkbox({ 'label': 'АЗС', 'mods': {'theme': 'dark'}, 'name': 'azs1', "inptattr": {"filter":"boolean", "filter-param":"bonus" , 'value': '4'}, 'class': 'select-filter__item js-context-item' }) }}
           </li>
           <li>
-            {{ Checkbox.checkbox({ 'label': 'Кафе и рестораны', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'select-filter__item js-context-item' }) }}
+            {{ Checkbox.checkbox({ 'label': 'Кафе и рестораны', 'mods': {'theme': 'dark'}, 'name': 'cafe1', "inptattr": {"filter":"boolean", "filter-param":"bonus" , 'value': '5'}, 'class': 'select-filter__item js-context-item' }) }}
           </li>
           <li>
-            {{ Checkbox.checkbox({ 'label': 'Театр и кино', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'select-filter__item js-context-item' }) }}
+            {{ Checkbox.checkbox({ 'label': 'Театр и кино', 'mods': {'theme': 'dark'}, 'name': 'teatre1', "inptattr": {"filter":"boolean", "filter-param":"bonus" , 'value': '6'}, 'class': 'select-filter__item js-context-item' }) }}
           </li>
           <li>
-            {{ Checkbox.checkbox({ 'label': 'Театр и кино', 'mods': {'theme': 'dark'}, 'name': '', 'class': 'select-filter__item js-context-item' }) }}
+            {{ Checkbox.checkbox({ 'label': 'Театр и кино', 'mods': {'theme': 'dark'}, 'name': 'teatre2',  "inptattr": {"filter":"boolean", "filter-param":"bonus" , 'value': '7'},'class': 'select-filter__item js-context-item' }) }}
           </li>
         </ul>
         <div class="select-filter__controls">
