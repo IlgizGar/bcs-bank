@@ -2,7 +2,7 @@
   background $royal_blue
   overflow hidden
   height 100vh
-  .section__header-controls,.socials,.navbar,.footer,.not-found-block__item_img,.not-found-block__item_text,.section__nav-wrapper,.feature,.carousel__progressbar,.index-products,.menubar,.heading,.illustration,.index-carousel__features,.features,.breadcrumbs,.brand-features__item
+  .section__header-controls,.socials,.navbar,.footer,.not-found-block__item_img,.not-found-block__item_text,.section__nav-wrapper,.feature,.carousel__progressbar,.index-products,.menubar,.heading,.illustration,.index-carousel__features,.features,.breadcrumbs,.title-head,.brand-features__item
     opacity 0
   .heading,.section__nav,.section-tabs__nav,.section__text,.navbar,.page__container>.text,.form__steps,.section__heading .button,.products-detail__content_description,.leaders__person,.card
     opacity 0
@@ -36,7 +36,7 @@
     z-index 2
   .not-found-block__section-header
     background $color_default
-  .section__header-controls,.navbar,.section-tabs__nav,.socials,.not-found-block__item_img,.not-found-block__item_text,.footer,.section__nav-wrapper,.header,.feature,.carousel__progressbar,.index-products,.menubar,.heading,.illustration,.index-carousel__features,.features,.breadcrumbs,.brand-features__item
+  .section__header-controls,.navbar,.section-tabs__nav,.socials,.not-found-block__item_img,.not-found-block__item_text,.footer,.section__nav-wrapper,.header,.feature,.carousel__progressbar,.index-products,.menubar,.heading,.illustration,.index-carousel__features,.features,.breadcrumbs,.title-head,.brand-features__item
     opacity 0
   .heading,.section__nav,.section >*:not(.section__header),.section__text,.page__container>.text,.form__steps,.section__heading .button,.products-detail__content_description,.leaders__person,.card
     opacity 0
@@ -58,14 +58,14 @@ body
       transition all 0.5s ease
     .footer
       opacity 0
-    .menubar,.navbar,.page-header__title,.breadcrumbs,.heading_type-large
+    .menubar,.navbar,.page-header__title,.breadcrumbs,.title-head,.title-head,.heading_type-large
       animation menubarShow 1s ease-out
       opacity 1
     .section__header-controls,.carousel__progressbar,.index-products,.section__nav-wrapper,.section__nav,.features,.socials
       animation headerControlsShow 1s ease-out
       opacity 1
     .slick-slide,.products-detail__content,.products-detail__figure
-      .heading,.breadcrumbs
+      .heading,.title-head,.breadcrumbs
         opacity 0
         animation slideHeadingHide 1s ease-out
       .illustration
@@ -75,7 +75,7 @@ body
         opacity 0
         animation slideFeaturesHide 1s ease-out
       &.state_animate,&.state_animate-page
-        .heading,.breadcrumbs
+        .heading,.title-head,.breadcrumbs
           animation slideHeadingShow 1s ease-out forwards
         .illustration
           opacity 0
