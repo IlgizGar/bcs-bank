@@ -59,8 +59,8 @@
     document.body.style.overflowY = 'scroll';
     document.body.classList.remove('state_load-start');
     document.body.classList.add('state_load-end');
-    document.body.querySelector('.js-page').addEventListener(transitionEvent , function (e) {
-      if(e.target === document.body.querySelector('.js-page')){
+    document.body.querySelector('main').addEventListener(transitionEvent , function (e) {
+      if(e.target === document.body.querySelector('main')){
         startPageAnimation();
         clearTimeout(timer);
       }
