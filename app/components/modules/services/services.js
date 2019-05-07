@@ -216,9 +216,6 @@ export class ExchangeBanksServiceDefault extends ExchangeService {
     if (!this.dataKey) {
       this.dataKey = this.exchangeBlock.closest('.js-card').attr('data-key');
     }
-    this.loadedData = data;
-    this.exchangeBlock[0].value = data[(this.dataKey) ? this.dataKey : 'online_courses'];
-    this.exchangeBlock[0].dispatchEvent(new window.Event('change'));
     return data[(this.dataKey) ? this.dataKey : 'online_courses'];
   }
 }
