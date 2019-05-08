@@ -9,6 +9,7 @@
 {% import "../components/modules/menubar/menubar.njk" as Menubar %}
 
 {% set root = "." %}
+{% set bodyClass = "theme-transparent" %}
 {% set title = "Новости" %}
 {% set card = [
   {'title': 'Как поужинать \n в любимом ресторане за счет банка',
@@ -31,7 +32,6 @@
     <main role="main" class="news js-news" data-api="http://localhost:3002/news">
 
       <section class="section page__section page__section_theme-last">
-        <div class="section__header not-found-block__section-header"></div>
         <div class="page__container">
           <div class="section__row">
             <div class="section__content section__content_theme-default">
