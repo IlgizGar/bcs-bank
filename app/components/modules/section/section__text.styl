@@ -2,6 +2,13 @@
   display: flex
   flex-direction: column
   color: rgba($color_elem, 0.8)
+  &_size-big
+    padding-left 50px
+    .section__text-list-item
+      font-size 25px
+      &:before
+        left: -40px;
+
   @media (max-width 1279px)
     &.mt-40
       margin-top: 24px
