@@ -26,7 +26,7 @@ export default class Menubar {
       });
       const activePosition = mobileNav.find('.state_active.js-button').position();
       if (mobileNav.outerWidth(true) < menuWidth) {
-        mobileNav[0].scrollTo(activePosition.left-30, 0);
+        mobileNav[0].scrollTo(activePosition.left - 30, 0);
       }
       this.controlHandler();
     });
