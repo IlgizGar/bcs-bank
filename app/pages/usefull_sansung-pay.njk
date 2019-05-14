@@ -1,0 +1,327 @@
+{% extends "layout/layout.njk" %}
+{#{% extends "library/card/card.njk" %}#}
+
+{% set root = "." %}
+{% set title = "Полезное" %}
+{% set header = 'blue' %}
+
+{% import "../components/modules/menubar/menubar.njk" as Menubar %}
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/library/feature/feature.njk" as Feature %}
+{% import "../components/library/button/button.njk" as Button %}
+{% import "../components/library/card/card.njk" as Card with context %}
+{% import "../components/modules/advice/advice.njk" as Advice %}
+{% import "../components/library/input/input.njk" as Input %}
+{% import "../components/icon/icon.njk" as Icon %}
+{% import "../components/modules/tabbar/tabbar.njk" as Tabbar %}
+{% import "../components/modules/brand-features/brand-features.njk" as BrandFeatures %}
+{% import "../components/library/usefull-advantage/usefull-advantage.njk" as UsefullAdvantage %}
+
+{% block body %}
+    <div class="page js-page">
+
+        {% include "../components/modules/header/header.njk" %}
+
+        <main role="main">
+            <section class="section page__section">
+                <div class="section__header section__header_theme-blue">
+
+                    <div class="carousel">
+                        <div class="index-carousel js-carousel" data-id="index-header">
+                            <div class="index-carousel__slide" data-href="http://google.com"
+                                 data-read-more-href="http://ya.ru" data-scroll-id="">
+                                <!-- data-read-more-href url для первой кнопки    data-href  для второй кнопки -->
+                                <div class="page__container">
+                                    <div class="index-carousel__wrap">
+                                        <div class="section__row">
+                                            <div class="index-carousel__content">
+                                                {{ Heading.heading({ 'tag': 'h1', 'title': 'Оплачивайте покупки смартфоном и  носимым устройством', 'mods': { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}
+                                                <div class="index-carousel__content-text">
+                                                    Совершайте покупки c сервисом Samsung Pay и картами Visa БКС Банка
+                                                </div>
+                                            </div>
+                                            <div class="index-carousel__image">
+                                                <div class="illustration">
+                                                    <img class="illustration-image illustration-image-short"
+                                                         src="assets/illustrations/samsung-pay_img.png">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="index-products section page__section mb-52">
+                <div class="page__container mb-64">
+                    {{ Heading.heading({ 'title': 'Преимущества сервиса', 'mods': { 'type': 'default' } }) }}
+                </div>
+                <div class="page__container">
+                    <div class="section__row ">
+                        <div class="section__col">
+                            {{ UsefullAdvantage.UsefullAdvantage({'path':'assets/images/svg/map.svg', 'title':'Повсеместно', 'text':[
+                                {'text':'Samsung Pay принимается к оплате везде, где можно оплатить покупку по обычной банковской карте по бесконтактной технологии или магнитной полосе.'},
+                                {'text':'Благодаря собственной технологии MST (от англ. Magnetic Secure Transmission) Samsung Pay позволяет оплачивать покупки на любых терминалах — не только тех, которые поддерживают бесконтактную оплату.'}
+                            ]}) }}
+                        </div>
+                        <div class="section__col">
+                            {{ UsefullAdvantage.UsefullAdvantage({'path':'assets/images/svg/shield-image.svg', 'title':'Безопасно', 'text':[
+                                {'text':'Вместо номера карты используется специальный цифровой код, созданный случайным образом — токен'},
+                                {'text':'Для каждой покупки требуется авторизация пользователя приложения по отпечатку пальца, радужке глаз (в зависимости  от модели смартфона) или PIN-коду приложения — только вы можете совершать покупки.'},
+                                {'text':'Встроенная система безопасности Samsung Knox обеспечивает защиту данных Samsung Pay независимо от операционной системы на устройстве'}
+                            ]}) }}
+                        </div>
+                        <div class="section__col">
+                            {{ UsefullAdvantage.UsefullAdvantage({'path':'assets/images/svg/card-image.svg', 'title':'Просто', 'text':[
+                                {'text':'Проведите по экрану снизу вверх, чтобы запустить Samsung Pay'},
+                                {'text':'Выберите карту и авторизуйтесь для оплаты'},
+                                {'text':'После этого просто поднесите устройство к терминалу'}
+                            ]}) }}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+
+
+            <section class="mobile section page__section page__section_theme-large">
+                <div class="page__container">
+
+                    <div class="section__row ">
+                        <div class="mobile__content">
+                            <div class="mb-40">
+                                {{ Heading.heading({ 'title': 'Ваша карта БКС Банка готова для покупок!', 'mods': { 'type': 'default', 'margin': 'small', 'theme': 'thin' } }) }}
+                            </div>
+                            {{ Button.button({ 'title': 'Оформить карту', 'mods': { 'theme': 'default' } }) }}
+                        </div>
+
+                        <div class="mobile__figure">
+                            <img class="illustration" style="max-width: 550px;"
+                                 src="assets/illustrations/digital_visa_platinum.svg"
+                                 alt="Ваша карта БКС Банка готова для покупокк">
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+
+            <div class="js-section-tabs hide_mobile">
+                <section class="index-products section page__section mb-52">
+                    <div class="page__container mb-10">
+                        {{ Heading.heading({ 'title': 'Оплачивайте покупки в магазинах, \n  на сайтах и в приложениях с Google Pay', 'mods': { 'type': 'default' } }) }}
+                        <div class="text text_size-big mt-24">Google Pay работает везде, где принимают карты <br> по
+                            бесконтактной технологии
+                        </div>
+                    </div>
+                    <div class="page__container">
+                        <div class="section-tabs__nav">
+                            <ul class="section-tabs__nav-list">
+                                <li data-tab-show="#shop" class="section-tabs__nav-item">
+                                    В магазине
+                                </li>
+                                <li data-tab-show="#internet" class="section-tabs__nav-item">
+                                    В интернете
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section id="shop" class="section page__section mb-112 js-section-tab">
+                    {{ BrandFeatures.brandFeatures({ 'items': [
+                        {
+                            'icon': 'assets/images/svg/sand-clock-image.svg',
+                            'title': 'Разблокируйте ',
+                            'subtitle': 'Разблокируйте экран телефона',
+                            'mods': {
+                            'theme': 'lined'
+                        }
+                        },
+                        {
+                            'icon': 'assets/images/svg/kopeiki-image.svg',
+                            'title': 'Оплатите',
+                            'subtitle': 'Поднесите устройство к терминалу',
+                            'mods': {
+                            'theme': 'lined'
+                        }
+                        },
+                        {
+                            'icon': 'assets/images/svg/crown-image.svg',
+                            'title': 'Пользуйтесь',
+                            'subtitle': 'Платеж успешно проведен!'
+                        }
+                    ] }) }}
+                </section>
+                <section id="internet" class="section page__section mb-64 js-section-tab">
+                    {{ BrandFeatures.brandFeatures({ 'items': [
+                        {
+                            'icon': 'assets/images/svg/sand-clock-image.svg',
+                            'title': 'Разблокируйте ',
+                            'subtitle': 'Разблокируйте экран телефона',
+                            'mods': {
+                            'theme': 'lined'
+                        }
+                        },
+                        {
+                            'icon': 'assets/images/svg/kopeiki-image.svg',
+                            'title': 'Оплатите',
+                            'subtitle': 'Поднесите устройство к терминалу',
+                            'mods': {
+                            'theme': 'lined'
+                        }
+                        },
+                        {
+                            'icon': 'assets/images/svg/crown-image.svg',
+                            'title': 'Пользуйтесь',
+                            'subtitle': 'Платеж успешно проведен!'
+                        }
+                    ] }) }}
+                </section>
+            </div>
+            <div class="hide_desktop">
+                <section class="section page__section mb-64">
+                    <div class="page__container">
+                        {{ Heading.heading({ 'title': 'Оплачивайте покупки в магазинах, \n  на сайтах и в приложениях с Google Pay', 'mods': { 'type': 'default', 'margin': 'normal' } }) }}
+                    </div>
+                    {{ BrandFeatures.brandFeatures({ 'items': [
+                        {
+                            'icon': 'assets/images/svg/sand-clock-image.svg',
+                            'title': 'Разблокируйте ',
+                            'subtitle': 'Разблокируйте экран телефона',
+                            'mods': {
+                            'theme': 'lined'
+                        }
+                        },
+                        {
+                            'icon': 'assets/images/svg/kopeiki-image.svg',
+                            'title': 'Оплатите',
+                            'subtitle': 'Поднесите устройство к терминалу',
+                            'mods': {
+                            'theme': 'lined'
+                        }
+                        },
+                        {
+                            'icon': 'assets/images/svg/crown-image.svg',
+                            'title': 'Пользуйтесь',
+                            'subtitle': 'Платеж успешно проведен!'
+                        },
+                        {
+                            'icon': 'assets/images/svg/sand-clock-image.svg',
+                            'title': 'Разблокируйте ',
+                            'subtitle': 'Разблокируйте экран телефона',
+                            'mods': {
+                            'theme': 'lined'
+                        }
+                        },
+                        {
+                            'icon': 'assets/images/svg/kopeiki-image.svg',
+                            'title': 'Оплатите',
+                            'subtitle': 'Поднесите устройство к терминалу',
+                            'mods': {
+                            'theme': 'lined'
+                        }
+                        },
+                        {
+                            'icon': 'assets/images/svg/crown-image.svg',
+                            'title': 'Пользуйтесь',
+                            'subtitle': 'Платеж успешно проведен!'
+                        }
+                    ] }) }}
+                </section>
+            </div>
+
+            <section class="section page__section page__section_theme-last">
+                <div class="page__container">
+                    <div class="section__row">
+                        <div class="section__content">
+                            {{ Heading.heading({ 'title': 'Частые вопросы' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'short' } }) }}
+                        </div>
+                    </div>
+                    <div class="collapse collapse_size-full collapse_theme-grey">
+                        <div class="collapse__item">
+                            <div class="collapse__control">
+                                <div class="collapse__control-title">На каких устройствах работает Google Pay?</div>
+                                <div class="collapse__control-icon">
+                                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                                </div>
+                            </div>
+                            <div class="collapse__content">
+                                <p class="text">
+                                    ответ
+                                </p>
+                            </div>
+                        </div>
+                        <div class="collapse__item">
+                            <div class="collapse__control">
+                                <div class="collapse__control-title">Где можно оплачивать покупки с помощью Google Pay?
+                                </div>
+                                <div class="collapse__control-icon">
+                                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                                </div>
+                            </div>
+                            <div class="collapse__content">
+                                <p class="text">
+                                    ответ
+                                </p>
+                            </div>
+                        </div>
+                        <div class="collapse__item">
+                            <div class="collapse__control">
+                                <div class="collapse__control-title">Какие карты можно использовать с Google Pay?
+                                </div>
+                                <div class="collapse__control-icon">
+                                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                                </div>
+                            </div>
+                            <div class="collapse__content"><p class="text">
+                                    ответ
+                                </p></div>
+
+                        </div>
+                        <div class="collapse__item">
+                            <div class="collapse__control">
+                                <div class="collapse__control-title">Будут ли начисляться бонусы по программе лояльности
+                                    БКС Бонус?
+                                </div>
+                                <div class="collapse__control-icon">
+                                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                                </div>
+                            </div>
+                            <div class="collapse__content">
+                                <p class="text">
+                                    ответ
+                                </p>
+                            </div>
+                        </div>
+                        <div class="collapse__item">
+                            <div class="collapse__control">
+                                <div class="collapse__control-title">Что делать, если я потерял свой смартфон?</div>
+                                <div class="collapse__control-icon">
+                                    {{ Icon.icon({ 'name': 'dropdown' }) }}
+                                </div>
+                            </div>
+                            <div class="collapse__content">
+                                <p class="text">
+                                    ответ
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+
+        </main>
+
+        {% include "../components/modules/footer/footer.njk" %}
+    </div>
+{% endblock %}
