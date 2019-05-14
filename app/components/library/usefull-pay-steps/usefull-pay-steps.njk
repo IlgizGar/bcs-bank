@@ -1,0 +1,38 @@
+
+
+{% macro UsefullPaySteps( options ) %}
+
+    {% set class_sep = joiner(' ') %}
+
+    {% if options.data %}
+        {% set options = options.data %}
+        {% set paragraphs = options.text %}
+    {% endif %}
+
+    {% if options.mods %}
+        {% set mods = '' %}
+        {% set mods %}
+            {% for key, value in options.mods -%}
+                {{ class_sep() }} usefull-pay-step_{{ key }}-{{ value }}
+            {%- endfor %}
+        {% endset %}
+    {% endif %}
+
+    <ol class="usefull-pay-steps {{ mods | safe }} {{ options.class }}">
+        {% for item in options.steps  %}
+            <li class="usefull-pay-steps__item">
+                {% if item.text %}
+                    <span class="usefull-pay-steps__item-text">
+                        {{ item.text }}
+                    </span>
+                {% endif %}
+                {% if item.img %}
+                    <span class="usefull-pay-steps__item-img">
+                        <img src="{{ item.img }}">
+                    </span>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ol>
+
+{% endmacro %}

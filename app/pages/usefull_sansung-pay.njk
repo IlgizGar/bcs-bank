@@ -16,6 +16,7 @@
 {% import "../components/modules/tabbar/tabbar.njk" as Tabbar %}
 {% import "../components/modules/brand-features/brand-features.njk" as BrandFeatures %}
 {% import "../components/library/usefull-advantage/usefull-advantage.njk" as UsefullAdvantage %}
+{% import "../components/library/usefull-pay-steps/usefull-pay-steps.njk" as UsefullPaySteps %}
 
 {% block body %}
     <div class="page js-page">
@@ -140,10 +141,48 @@
                     </div>
                 </section>
                 <section id="phone" class="section page__section mb-112 js-section-tab">
-
+                    <div class="page__container">
+                        {{ UsefullPaySteps.UsefullPaySteps({'steps':[
+                            {
+                                'img':'assets/illustrations/samsung_mob_step1.png',
+                                'text':'Проведите по экрану снизу вверх, чтобы запустить Samsung Pay'
+                            },
+                            {
+                                'img':'assets/illustrations/samsung_mob_step2.png',
+                                'text':'Выберите карту и авторизуйтесь по отпечатку пальца, радужке глаз  (в зависимости от модели смартфона) или PIN-коду приложения'
+                            },
+                            {
+                                'img':'assets/illustrations/samsung_mob_step3.png',
+                                'text':'После этого для оплаты просто поднесите устройство к терминалу'
+                            }
+                        ]}) }}
+                    </div>
                 </section>
                 <section id="watch" class="section page__section mb-64 js-section-tab">
-
+                    <div class="page__container">
+                        {{ UsefullPaySteps.UsefullPaySteps({'steps':[
+                            {
+                                'img':'assets/illustrations/samsung_watch_step1.png',
+                                'text':'Подключите Gear S3 к смартфону Samsung Galaxy в приложении Galaxy Wearable'
+                            },
+                            {
+                                'img':'assets/illustrations/samsung_watch_step2.png',
+                                'text':'Чтобы оплатить покупку с помощью Gear S3, нажмите и удерживайте клавишу «НАЗАД»'
+                            },
+                            {
+                                'img':'assets/illustrations/samsung_watch_step3.png',
+                                'text':'Выберите банковскую карту поворотом безеля'
+                            },
+                            {
+                                'img':'assets/illustrations/samsung_watch_step4.png',
+                                'text':'Нажмите на кнопку «ОПЛАТИТЬ» на экране устройства'
+                            },
+                            {
+                                'img':'assets/illustrations/samsung_watch_step5.png',
+                                'text':'Поднесите устройство к платежному терминалу'
+                            }
+                        ]}) }}
+                    </div>
                 </section>
             </div>
 
