@@ -18,7 +18,7 @@
         {% endset %}
     {% endif %}
 
-    <ol class="usefull-pay-steps {{ mods | safe }} {{ options.class }}">
+    <ol class="usefull-pay-steps js-scroll-animate {{ mods | safe }} {{ options.class }}">
         {% for item in options.steps  %}
             <li class="usefull-pay-steps__item">
                 {% if item.text %}

@@ -19,7 +19,7 @@
         {% endset %}
     {% endif %}
 
-    <div class="usefull-advantage {{ mods | safe }} {{ options.class }}">
+    <div class="usefull-advantage js-scroll-animate {{ mods | safe }} {{ options.class }}">
         {% if options.path %}
             <div class='usefull-advantage__icon'>{{ Svg.inlineSvg({ 'path': [options.path] }) }}</div>
         {% elseif options.name %}
