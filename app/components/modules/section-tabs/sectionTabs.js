@@ -41,6 +41,9 @@ module.exports = (elem) => {
         const tab = $($(element).attr('data-tab-show'));
         tab.addClass('state_hidden');
         $(id).removeClass('state_hidden');
+        if ($(id).find('.slick-slider').length) {
+          $(id).find('.slick-slider').slick('setPosition', '0');
+        }
       });
     }
     events() {

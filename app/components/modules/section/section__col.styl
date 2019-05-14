@@ -1,0 +1,23 @@
+.section__col
+    img
+      max-width 100%
+      display block
+      @media (max-width: 767px)
+        margin 0 auto
+    col()
+    &_1
+      size(3)
+    &_2
+      size(9)
+    @media (max-width: 767px)
+      width 100%!important
+    &_3
+      size(4)
+      @media (max-width: 767px)
+        width 100%!important
+    &_half
+      size(6)
+      @media (max-width: 767px)
+        width 100%!important
+    &_full
+      width 100%

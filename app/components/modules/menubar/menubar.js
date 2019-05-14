@@ -19,6 +19,15 @@ export default class Menubar {
 
   events() {
     this.menuControl.on('click', () => {
+      const mobileNav = $('.js-mobile-menu .js-nav');
+      let menuWidth = 0;
+      mobileNav.find('.js-button').each((index, element) => {
+        menuWidth += $(element).outerWidth(true);
+      });
+      const activePosition = mobileNav.find('.state_active.js-button').position();
+      if (mobileNav.outerWidth(true) < menuWidth) {
+        mobileNav[0].scrollTo(activePosition.left - 30, 0);
+      }
       this.controlHandler();
     });
 

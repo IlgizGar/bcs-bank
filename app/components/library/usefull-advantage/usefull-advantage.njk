@@ -1,0 +1,40 @@
+{% import "../../../components/icon/icon.njk" as Icon %}
+{% import "../../../components/inline-svg/inline-svg.njk" as Svg %}
+
+{% macro UsefullAdvantage( options ) %}
+
+    {% set class_sep = joiner(' ') %}
+
+    {% if options.data %}
+        {% set options = options.data %}
+        {% set paragraphs = options.text %}
+    {% endif %}
+
+    {% if options.mods %}
+        {% set mods = '' %}
+        {% set mods %}
+            {% for key, value in options.mods -%}
+                {{ class_sep() }} usefull-advantage_{{ key }}-{{ value }}
+            {%- endfor %}
+        {% endset %}
+    {% endif %}
+
+    <div class="usefull-advantage {{ mods | safe }} {{ options.class }}">
+        {% if options.path %}
+            <div class='usefull-advantage__icon'>{{ Svg.inlineSvg({ 'path': [options.path] }) }}</div>
+        {% elseif options.name %}
+            <div class='usefull-advantage__icon'>{{ Icon.icon({ 'name': options.name }) }}</div>
+        {% endif %}
+        <div class="usefull-advantage__title">
+            {{ options.title }}
+        </div>
+        <div class="usefull-advantage__text">
+            {% for item in options.text  %}
+                <p>
+                    {{ item.text }}
+                </p>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endmacro %}

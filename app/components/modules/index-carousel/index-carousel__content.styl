@@ -4,6 +4,12 @@
 
   color: $color_light
 
+  &-text
+    opensansRegular(24px)
+    margin-bottom: 53px;
+    margin-top: -14px;
+    line-height: 1.6;
+
   col()
   @media (min-width: 1280px)
     size(7)
@@ -17,5 +23,9 @@
   @media (max-width: 767px)
     order: 1
     size(12)
+  @media (max-width: 991px)
+    .features
+      +.button
+        margin-top 40px
 
     padding-bottom: 0

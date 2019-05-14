@@ -26,7 +26,9 @@ module.exports = (elem) => {
           this.search.parent().find('.navbar__button').addClass('state_hidden');
         } else {
           const queryString = `/search?searchid=160570&text=${encodeURIComponent(this.input.val())}&web=0#`;
-          window.location.href = queryString;
+          if (this.input.val()) {
+            window.location.href = queryString;
+          }
           // this.form.submit();
         }
       });
@@ -44,7 +46,8 @@ module.exports = (elem) => {
         }
       });
 
-      this.close.on('click', () => {
+      this.close.on('click', (e) => {
+        e.preventDefault();
         this.input.val('');
         this.label.removeClass('state_hidden');
         this.search.removeClass('state_explored');
