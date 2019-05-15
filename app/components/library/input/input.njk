@@ -12,6 +12,7 @@
         {%- endfor %}
     {% endset %}
 
+
     {% set mods = '' %}
     {% set mods %}
         {% for key, value in options.mods -%}
@@ -35,7 +36,7 @@
             {% if options.tag === "textarea" %}
                 <textarea class="input__field js-input-field {{ options.field.class | safe }}" {{ field | safe }}></textarea>
             {% else %}
-                <input class="input__field js-input-field {{ options.field.class | safe }}" {{ field | safe }} {% if options.value %}value="{{ options.value }}"{% endif %}>
+                <input class="input__field js-input-field {{ options.field.class | safe }}" {{ field | safe }} {% if options.value %}value="{{ options.value }}"{% endif %} {% if options.fieldType %}type="{{ options.fieldType}}"{% endif %}>
             {% endif %}
         </label>
 
