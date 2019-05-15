@@ -33,6 +33,8 @@ export default class Offices {
     this.map = null;
     this.markCollection = null;
     this.points = [];
+    this.mapContainer = document.getElementById('map-container');
+    this.mapBlock = null;
     this.init();
   }
 
@@ -113,6 +115,7 @@ export default class Offices {
         this.appBlock.removeClass('state_listed');
         this.switcher.data('state', 'map');
         this.switcher.find('.js-button-title').html('Показать списком');
+        this.mapContainer.append(this.mapBlock);
       } else {
         this.appBlock.addClass('state_listed');
         this.switcher.data('state', 'list');
@@ -210,6 +213,8 @@ export default class Offices {
     this.map.options.set('suppressMapOpenBlock', true);
     this.setZoomControls();
     this.handleMapSize();
+    this.mapBlock = document.getElementById('map-container').firstChild;
+    console.log(this.mapBlock);
   }
 
   initObjectCollection() {
@@ -405,19 +410,22 @@ export default class Offices {
     // Пересчет высоты при раскрытии элементов
     $('.collapse__control').on('click', (e) => {
       if (!this.appBlock.hasClass('state_explored')) {
-        const point = this.getPointById(Offices.generatePointId($(e.target).closest('.collapse__item').data('coords')));
+        const collapseContent = $(e.target).closest('.collapse__item');
+        const point = this.getPointById(Offices.generatePointId(collapseContent.data('coords')));
         // const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${$(e.target).closest('.collapse__item').data('coords')}]"] .collapse__control`);
         this.scrollToCollapse($(e.target));
         Offices.reInitScroll(this.pane, 225);
+
         this.togglePointState(point, $(e.target).closest('.collapse__control'));
 
         if (window.innerWidth < 992) {
           if (!this.appBlock.hasClass('state_explored')) {
-            this.appBlock.removeClass('state_listed').addClass('state_explored');
-            this.initPointMobileDetail($(e.target).closest('.collapse__control'));
-
-            this.point = point;
-            this.target = $(e.target).closest('.collapse__control');
+            // this.appBlock.removeClass('state_listed').addClass('state_explored');
+            // this.initPointMobileDetail($(e.target).closest('.collapse__control'));
+            //
+            // this.point = point;
+            // this.target = $(e.target).closest('.collapse__control');
+            collapseContent.find('.js-collapse-map-wrap')[0].append(this.mapBlock);
           }
         }
       }
