@@ -6,8 +6,14 @@
   @media (max-width: 425px)
     font-size: 8.5vw
 
+
 @media (max-width: 1279px)
   .page__container_type-header
     .heading.heading_type-large
       font-size: 32px
       padding-top: 0
+.page__container_type-header
+  .heading.heading_type-large
+    max-width calc(100% - 200px)
+    @media (max-width: 425px)
+      max-width 100%
