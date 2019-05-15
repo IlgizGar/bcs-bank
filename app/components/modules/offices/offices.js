@@ -215,6 +215,9 @@ export default class Offices {
     this.handleMapSize();
     this.mapBlock = document.getElementById('map-container').firstChild;
     console.log(this.mapBlock);
+    if (window.innerWidth < 992) {
+      this.map.behaviors.disable('drag');
+    }
   }
 
   initObjectCollection() {
