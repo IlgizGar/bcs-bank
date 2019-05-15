@@ -1,0 +1,46 @@
+.usefull-advantage
+  background $color_light
+  box-shadow: 0 2px 40px 0 rgba(0, 25, 52, 0.08);
+  padding 85px 40px 40px 40px
+  position relative
+  margin-top 70px
+  align-self stretch
+  @media (max-width 767px)
+    padding 85px 20px 20px 20px
+  &__title
+    formular(24px)
+    height: 32px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: center;
+    margin-bottom 20px
+  &__text
+    p
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.5;
+      letter-spacing: normal;
+      opensansRegular(16px)
+      margin-bottom 25px
+  &__icon
+    position absolute
+    left 50%
+    transform translateX(-50%) translateY(-50%)
+    top: 0
+  &_theme-large
+    .usefull-advantage__text
+        display flex
+        flex-wrap nowrap
+        flex-direction row
+        justify-content space-between
+        align-items stretch
+        width 100%
+        @media (max-width 767px)
+          flex-wrap wrap
+        p
+          display inline-block
+          max-width 300px

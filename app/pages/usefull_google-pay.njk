@@ -1,0 +1,303 @@
+{% extends "layout/layout.njk" %}
+{#{% extends "library/card/card.njk" %}#}
+
+{% set root = "." %}
+{% set title = "Полезное" %}
+{% set header = 'blue' %}
+
+{% import "../components/modules/menubar/menubar.njk" as Menubar %}
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/library/feature/feature.njk" as Feature %}
+{% import "../components/library/button/button.njk" as Button %}
+{% import "../components/library/card/card.njk" as Card with context %}
+{% import "../components/modules/advice/advice.njk" as Advice %}
+{% import "../components/library/input/input.njk" as Input %}
+{% import "../components/icon/icon.njk" as Icon %}
+{% import "../components/modules/tabbar/tabbar.njk" as Tabbar %}
+{% import "../components/modules/brand-features/brand-features.njk" as BrandFeatures %}
+
+{% block body %}
+  <div class="page js-page">
+
+    {% include "../components/modules/header/header.njk" %}
+
+    <main role="main">
+      <section class="section page__section">
+        <div class="section__header section__header_theme-blue">
+
+          <div class="carousel">
+            <div class="index-carousel js-carousel" data-id="index-header">
+              <div class="index-carousel__slide" data-href="http://google.com" data-read-more-href="http://ya.ru" data-scroll-id=""><!-- data-read-more-href url для первой кнопки    data-href  для второй кнопки -->
+                <div class="page__container">
+                  <div class="index-carousel__wrap">
+                    <div class="section__row">
+                      <div class="index-carousel__content">
+                        {{ Heading.heading({ 'tag': 'h1', 'title': 'Покупайте легко \n с Visa и Google Pay', 'mods': { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}
+                        <div class="index-carousel__content-text">
+                          Добавьте карту БКС Банка в приложение Google Pay и оплачивайте смартфоном любые покупки
+                        </div>
+                      </div>
+                      <div class="index-carousel__image">
+                        <div class="illustration">
+                          <img class="illustration-image illustration-image-short" src="assets/illustrations/gpay_img.png">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        <section class="index-products section page__section mb-52">
+          <div class="page__container mb-64">
+            {{ Heading.heading({ 'title': 'Добавьте карту БКС Банка в Google Pay', 'mods': { 'type': 'default' } }) }}
+          </div>
+          <div class="page__container">
+            <div class="section__row ">
+              <div class="section__col section__col_1">
+                <img width="185" src="assets/illustrations/gpay_mob_img.png">
+              </div>
+              <div class="section__col section__col_2">
+                <div class="section__text section__text_theme-normal section__text_size-big v-center">
+                  <p class="section__text-list-item">Скачайте приложение Google Pay     и, открыв его, нажмите «Добавить карту»</p>
+                  <p class="section__text-list-item">Введите данные карты и платёжный адрес, примите пользовательское соглашение и условия банка-эмитента</p>
+                  <p class="section__text-list-item">Выберите способ проверки карты по SMS. Введите код подтверждения из SMS и нажмите «Отправить»</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+      <section class="mobile section page__section page__section_theme-large">
+        <div class="page__container">
+
+            <div class="section__row ">
+              <div class="mobile__content">
+                <div class="mb-40">
+                  {{ Heading.heading({ 'title': 'Ваша карта БКС Банка готова для покупок!', 'mods': { 'type': 'default', 'margin': 'small', 'theme': 'thin' } }) }}
+                </div>
+                {{ Button.button({ 'title': 'Оформить карту', 'mods': { 'theme': 'default' } }) }}
+              </div>
+
+              <div class="mobile__figure">
+                <img class="illustration" style="max-width: 550px;" src="assets/illustrations/digital_visa_platinum.svg" alt="Ваша карта БКС Банка готова для покупокк">
+              </div>
+            </div>
+
+        </div>
+      </section>
+
+
+      <div class="js-section-tabs hide_mobile">
+        <section class="index-products section page__section mb-52">
+          <div class="page__container mb-10">
+            {{ Heading.heading({ 'title': 'Оплачивайте покупки в магазинах, \n  на сайтах и в приложениях с Google Pay', 'mods': { 'type': 'default' } }) }}
+            <div class="text text_size-big mt-24">Google Pay работает везде, где принимают карты <br> по бесконтактной технологии
+            </div>
+          </div>
+          <div class="page__container">
+            <div class="section-tabs__nav">
+              <ul class="section-tabs__nav-list">
+                <li data-tab-show="#shop" class="section-tabs__nav-item">
+                  В магазине
+                </li>
+                <li data-tab-show="#internet" class="section-tabs__nav-item">
+                  В интернете
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section id="shop" class="section page__section mb-112 js-section-tab">
+          {{ BrandFeatures.brandFeatures({ 'items': [
+            {
+              'icon': 'assets/images/svg/sand-clock-image.svg',
+              'title': 'Разблокируйте ',
+              'subtitle': 'Разблокируйте экран телефона',
+              'mods': {
+              'theme': 'lined'
+            }
+            },
+            {
+              'icon': 'assets/images/svg/kopeiki-image.svg',
+              'title': 'Оплатите',
+              'subtitle': 'Поднесите устройство к терминалу',
+              'mods': {
+              'theme': 'lined'
+            }
+            },
+            {
+              'icon': 'assets/images/svg/crown-image.svg',
+              'title': 'Пользуйтесь',
+              'subtitle': 'Платеж успешно проведен!'
+            }
+          ] }) }}
+        </section>
+        <section id="internet"  class="section page__section mb-64 js-section-tab">
+          {{ BrandFeatures.brandFeatures({ 'items': [
+            {
+              'icon': 'assets/images/svg/sand-clock-image.svg',
+              'title': 'Разблокируйте ',
+              'subtitle': 'Разблокируйте экран телефона',
+              'mods': {
+              'theme': 'lined'
+            }
+            },
+            {
+              'icon': 'assets/images/svg/kopeiki-image.svg',
+              'title': 'Оплатите',
+              'subtitle': 'Поднесите устройство к терминалу',
+              'mods': {
+              'theme': 'lined'
+            }
+            },
+            {
+              'icon': 'assets/images/svg/crown-image.svg',
+              'title': 'Пользуйтесь',
+              'subtitle': 'Платеж успешно проведен!'
+            }
+          ] }) }}
+        </section>
+      </div>
+      <div class="hide_desktop">
+        <section class="section page__section mb-64">
+          <div class="page__container">
+            {{ Heading.heading({ 'title': 'Оплачивайте покупки в магазинах, \n  на сайтах и в приложениях с Google Pay', 'mods': { 'type': 'default', 'margin': 'normal' } }) }}
+          </div>
+          {{ BrandFeatures.brandFeatures({ 'items': [
+            {
+              'icon': 'assets/images/svg/sand-clock-image.svg',
+              'title': 'Разблокируйте ',
+              'subtitle': 'Разблокируйте экран телефона',
+              'mods': {
+              'theme': 'lined'
+            }
+            },
+            {
+              'icon': 'assets/images/svg/kopeiki-image.svg',
+              'title': 'Оплатите',
+              'subtitle': 'Поднесите устройство к терминалу',
+              'mods': {
+              'theme': 'lined'
+            }
+            },
+            {
+              'icon': 'assets/images/svg/crown-image.svg',
+              'title': 'Пользуйтесь',
+              'subtitle': 'Платеж успешно проведен!'
+            },
+            {
+              'icon': 'assets/images/svg/sand-clock-image.svg',
+              'title': 'Разблокируйте ',
+              'subtitle': 'Разблокируйте экран телефона',
+              'mods': {
+              'theme': 'lined'
+            }
+            },
+            {
+              'icon': 'assets/images/svg/kopeiki-image.svg',
+              'title': 'Оплатите',
+              'subtitle': 'Поднесите устройство к терминалу',
+              'mods': {
+              'theme': 'lined'
+            }
+            },
+            {
+              'icon': 'assets/images/svg/crown-image.svg',
+              'title': 'Пользуйтесь',
+              'subtitle': 'Платеж успешно проведен!'
+            }
+          ] }) }}
+        </section>
+      </div>
+
+      <section class="section page__section page__section_theme-last">
+        <div class="page__container">
+          <div class="section__row">
+            <div class="section__content">
+              {{ Heading.heading({ 'title': 'Частые вопросы' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'short' } }) }}
+            </div>
+          </div>
+          <div class="collapse collapse_size-full collapse_theme-grey">
+            <div class="collapse__item">
+              <div class="collapse__control">
+                <div class="collapse__control-title">На каких устройствах работает Google Pay?</div>
+                <div class="collapse__control-icon">
+                  {{ Icon.icon({ 'name': 'dropdown' }) }}
+                </div>
+              </div>
+              <div class="collapse__content">
+                <p class="text">
+                  ответ
+                </p>
+              </div>
+            </div>
+            <div class="collapse__item">
+              <div class="collapse__control">
+                <div class="collapse__control-title">Где можно оплачивать покупки с помощью Google Pay?
+                </div>
+                <div class="collapse__control-icon">
+                  {{ Icon.icon({ 'name': 'dropdown' }) }}
+                </div>
+              </div>
+              <div class="collapse__content">
+                <p class="text">
+                  ответ
+                </p>
+              </div>
+            </div>
+            <div class="collapse__item">
+              <div class="collapse__control">
+                <div class="collapse__control-title">Какие карты можно использовать с Google Pay?
+                </div>
+                <div class="collapse__control-icon">
+                  {{ Icon.icon({ 'name': 'dropdown' }) }}
+                </div>
+              </div>
+              <div class="collapse__content"> <p class="text">
+                  ответ
+                </p></div>
+
+            </div>
+            <div class="collapse__item">
+              <div class="collapse__control">
+                <div class="collapse__control-title">Будут ли начисляться бонусы по программе лояльности БКС Бонус?</div>
+                <div class="collapse__control-icon">
+                  {{ Icon.icon({ 'name': 'dropdown' }) }}
+                </div>
+              </div>
+              <div class="collapse__content">
+                <p class="text">
+                  ответ
+                </p>
+              </div>
+            </div>
+            <div class="collapse__item">
+              <div class="collapse__control">
+                <div class="collapse__control-title">Что делать, если я потерял свой смартфон?</div>
+                <div class="collapse__control-icon">
+                  {{ Icon.icon({ 'name': 'dropdown' }) }}
+                </div>
+              </div>
+              <div class="collapse__content">
+                <p class="text">
+                  ответ
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+
+    </main>
+
+    {% include "../components/modules/footer/footer.njk" %}
+  </div>
+{% endblock %}
