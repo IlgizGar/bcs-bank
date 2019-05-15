@@ -59,6 +59,7 @@ module.exports = (elem) => {
             $(slick.$slides[currentSlide]).removeClass('state_animate');
             $(slick.$slides[nextSlide]).addClass('state_init');
             $(slick.$slides[nextSlide]).addClass('state_animate');
+            this.progressBarPause();
           });
           this.carousel.on('afterChange', () => {
             this.progressBarPlay();
@@ -66,6 +67,9 @@ module.exports = (elem) => {
           this.carousel.on('init', (event, slick) => {
             Carousel.setButtonsUrls(event, slick);
             $(slick.$slides[0]).addClass('state_animate');
+            setTimeout(()=>{
+              $('.js-carousel-progressbar').addClass('state_busy');
+            },200)
           });
 
           this.carousel.not('.slick-initialized').slick({
