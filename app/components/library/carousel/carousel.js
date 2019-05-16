@@ -67,7 +67,7 @@ module.exports = (elem) => {
           this.carousel.on('init', (event, slick) => {
             Carousel.setButtonsUrls(event, slick);
             $(slick.$slides[0]).addClass('state_animate');
-            setTimeout(()=>{
+            setTimeout(() => {
               $('.js-carousel-progressbar').addClass('state_busy');
             }, 200);
           });
