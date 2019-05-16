@@ -3,4 +3,14 @@
   flex-wrap nowrap
   border-bottom 1px solid $gainsboro
   margin-right auto
-  max-width calc(100% -40px)
+
+  @media (max-width 768px)
+    max-width calc(100% + 36px)
+    margin  0 -20px
+    padding 0 20px
+    -ms-overflow-style: none
+    overflow: -moz-scrollbars-none
+    overflow auto
+    &::-webkit-scrollbar
+      width: 0
+      height: 0

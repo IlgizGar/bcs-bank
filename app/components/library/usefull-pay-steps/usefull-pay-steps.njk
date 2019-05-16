@@ -1,5 +1,4 @@
 
-
 {% macro UsefullPaySteps( options ) %}
 
     {% set class_sep = joiner(' ') %}
@@ -17,22 +16,27 @@
             {%- endfor %}
         {% endset %}
     {% endif %}
-
-    <ol class="usefull-pay-steps {{ mods | safe }} {{ options.class }}">
-        {% for item in options.steps  %}
-            <li class="usefull-pay-steps__item">
-                {% if item.text %}
-                    <span class="usefull-pay-steps__item-text">
+    <div class="carousel carousel_type-mobile">
+        <ol class="usefull-pay-steps js-carousel carousel__content {{ mods | safe }} {{ options.class }} " data-id="{{ options.sliderId }}" data-breakpoint="991">
+            {% for item in options.steps  %}
+                <li class="usefull-pay-steps__item">
+                    {% if item.text %}
+                        <span class="usefull-pay-steps__item-text">
                         {{ item.text }}
                     </span>
-                {% endif %}
-                {% if item.img %}
-                    <span class="usefull-pay-steps__item-img">
+                    {% endif %}
+                    {% if item.img %}
+                        <span class="usefull-pay-steps__item-img">
                         <img src="{{ item.img }}">
                     </span>
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ol>
-
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ol>
+        <div class="carousel-controls carousel-controls_theme-dark js-carousel-controls hide_desktop mb-64">
+            <div class="carousel-controls__pagination js-carousel-pagination" data-carousel="{{ options.sliderId }}">
+                <span>01</span><span></span><span></span>
+            </div>
+        </div>
+    </div>
 {% endmacro %}
