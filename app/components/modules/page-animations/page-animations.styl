@@ -4,9 +4,45 @@
     background transparent
   overflow hidden
   height 100vh
-  .section__header-controls,.index-carousel__content-text,.navbar,.landing-white-block,.text,.section__header_landings-image,.socials,.footer,.not-found-block__item_img,.not-found-block__item_text,.section__nav-wrapper,.feature,.carousel__progressbar,.index-products,.menubar,.heading,.illustration,.image-layout,.index-carousel__features,.features,.breadcrumbs,.title-head,.brand-features__item
+  .section__header-controls,
+
+  .index-carousel__content-text,
+
+  .navbar,
+  .landing-white-block,
+
+  .text,
+  .section__header_landings-image,
+  .socials,
+  .footer,
+  .not-found-block__item_img,
+  .not-found-block__item_text,
+  .section__nav-wrapper,
+  .feature,
+  .carousel__progressbar,
+  .index-products,
+  .menubar,
+  .heading,
+  .illustration,
+  .image-layout,
+  .index-carousel__features,
+  .features,
+  .breadcrumbs,
+  .title-head,
+  .brand-features__item
     opacity 0
-  .heading,.section__header_landings .button,.section__header_landings-info,.section__nav,.section-tabs__nav,.section__text,.page__container>.text,.form__steps,.section__heading .button,.products-detail__content_description,.leaders__person,.card
+  .heading,
+  .section__header_landings .button,
+  .section__header_landings-info,
+  .section__nav,
+  .section-tabs__nav,
+  .section__text,
+  .page__container>.text,
+  .form__steps,
+  .section__heading .button,
+  .products-detail__content_description,
+  .leaders__person,
+  .card
     opacity 0
   main
     opacity 0
@@ -37,9 +73,42 @@
     opacity 1
   .not-found-block__section-header
     //background $color_default
-  .section__header-controls,.index-carousel__content-text,.landing-white-block,.section__header_landings-image,.section-tabs__nav,.socials,.image-layout,.not-found-block__item_img,.not-found-block__item_text,.text,.footer,.section__nav-wrapper,.feature,.carousel__progressbar,.index-products,.menubar,.heading,.illustration,.index-carousel__features,.features,.breadcrumbs,.title-head,.brand-features__item
+  .section__header-controls,
+  .index-carousel__content-text,
+  .landing-white-block,
+  .section__header_landings-image,
+  .section-tabs__nav,
+  .socials,
+  .image-layout,
+  .not-found-block__item_img,
+  .not-found-block__item_text,
+  .text,
+  .footer,
+  .section__nav-wrapper,
+  .feature,
+  .carousel__progressbar,
+  .index-products,
+  .menubar,
+  .heading,
+  .illustration,
+  .index-carousel__features,
+  .features,
+  .breadcrumbs,
+  .title-head,
+  .brand-features__item
     opacity 0
-  .heading,.section__header_landings .button,.section__header_landings-info,.section__nav,.section >*:not(.section__header),.section__text,.page__container>.text,.form__steps,.section__heading .button,.products-detail__content_description,.leaders__person,.card
+  .heading,
+  .section__header_landings .button,
+  .section__header_landings-info,
+  .section__nav,
+  .section >*:not(.section__header),
+  .section__text,
+  .page__container>.text,
+  .form__steps,
+  .section__heading .button,
+  .products-detail__content_description,
+  .leaders__person,
+  .card
     opacity 0
 
 
@@ -67,37 +136,70 @@ body
         animation headerControlsShow 1s ease-out forwards
       .not-found-block__item_img
         animation slideHeadingShowLeft 1s ease-out forwards
+    .section__header .features .feature, .section__header .heading
+      transition none!important
     .footer
       opacity 0
-    .menubar,.page-header__title,.breadcrumbs,.title-head,.title-head,.heading_type-large,.section__header  .heading_type-double-colored
+    .menubar,
+    .page-header__title,
+    .breadcrumbs,
+    .title-head,
+    .title-head,
+    .heading_type-large,
+    .section__header  .heading_type-double-colored
       animation menubarShow 1s ease-out
       opacity 1
-    .section__header-controls,.index-carousel__content-text,.news,.map,.search,.products,.carousel__progressbar,.index-products,.section__nav-wrapper,.section__nav,.features,.socials,.section__header_landings-info,.section__header_landings .button
+    .section__header-controls,
+    .index-carousel__content-text,
+    .news,
+    .map,
+    .search,
+    .products,
+    .carousel__progressbar,
+    .index-products,
+    .section__nav-wrapper,
+    .section__nav,
+    .features,
+    .socials,
+    .section__header_landings-info,
+    .section__header_landings .button
       animation headerControlsShow 1s ease-out
       opacity 1
     .section__header_landings-image
       animation slideHeadingShow 1s ease-out forwards
       opacity 1
-    .slick-slide,.products-detail__content,.products-detail__figure
-      .heading,.title-head,.breadcrumbs
+    .slick-slide,
+    .products-detail__content,
+    .products-detail__figure
+      .heading,
+      .title-head,
+      .breadcrumbs
         opacity 0
         animation slideHeadingHide 1s ease-out
       .illustration
         opacity 0
         animation slideHeadingHideLeft 1s ease-out forwards
-      .index-carousel__features,.features,.products-detail__content_description
+      .index-carousel__features,
+      .features,
+      .products-detail__content_description
         opacity 0
         animation slideFeaturesHide 1s ease-out
-      &.state_animate,&.state_animate-page
-        .heading,.title-head,.breadcrumbs
+      &.state_animate,
+      &.state_animate-page
+        .heading,
+        .title-head,
+        .breadcrumbs
           animation slideHeadingShow 1s ease-out forwards
         .illustration
           opacity 0
           animation slideHeadingShowLeft 1s ease-out forwards
-        .index-carousel__features,.features,.products-detail__content_description
+        .index-carousel__features,
+        .features,
+        .products-detail__content_description
           animation slideFeaturesShow 1s ease-out forwards
         &.state_init
-          .heading,.illustration
+          .heading,
+          .illustration
             animation-delay  1s
           .index-carousel__features
             animation-delay  1s
@@ -109,29 +211,62 @@ body
       transform translateY(10px);
       transition all 1s ease-out
     .animate
-      .mobile__figure,.company__figure,.image-layout
+      .mobile__figure,
+      .company__figure,
+      .image-layout
         transform translateX(28px)
         opacity 0
         transition all 1s ease-out
-      .form,.brand-features__title,img,&.usefull-pay-steps,&.usefull-advantage,&.transfer-iframe,.landing-white-block,.section-tabs__nav,&.search-card,.not-found-block__item_img,.not-found-block__item_text,.text,&.brand-features__props,&.not-found-block__item_img,.brand-features__item,.calculation__thumbnail,&.plastic-card,&.feature,&.text__quote
+      .form,
+      .brand-features__title,
+      img,
+      &.usefull-pay-steps,
+      &.usefull-advantage,
+      &.transfer-iframe,
+      .landing-white-block,
+      .section-tabs__nav,
+      &.search-card,
+      .not-found-block__item_img,
+      .not-found-block__item_text,
+      .text,
+      &.brand-features__props,
+      &.not-found-block__item_img,
+      .brand-features__item,
+      .calculation__thumbnail,
+      &.plastic-card,
+      &.feature,
+      &.text__quote
         transform translateY(28px)
         opacity 0
         transition all 1s ease-out
-      .text,.brand-features__title
+      .text,
+      .brand-features__title
         transition-delay 0.4s
       .brand-features__item
         &:nth-child(2)
           transition-delay 0.3s
         &:nth-child(3)
           transition-delay 0.3s
-      .heading,.section__text,.page__container>.text,.form__steps,.section__heading .button
+      .heading,
+      .section__text,
+      .page__container>.text,
+      .form__steps,
+      .section__heading .button
         transform translateY(28px)
         opacity 0
         transition all 1s ease-out
-      .section__text,.page__container>.text,.form__steps
+      .section__text,
+      .page__container>.text,
+      .form__steps
         transition-delay 0.3s
       &:not(.index-products)
-        .card,.section__element,.bonus-card,.bonus-types-list__item,.bonus-plastic-card,.leaders__person,&.card
+        .card,
+        .section__element,
+        .bonus-card,
+        .bonus-types-list__item,
+        .bonus-plastic-card,
+        .leaders__person,
+        &.card
           transform translateY(28px)
           opacity 0
           transition all 1s ease-out
@@ -160,17 +295,47 @@ body
       .card__figure
         opacity 1
         transform translateY(0);
-      .mobile__figure,.company__figure,.image-layout
+      .mobile__figure,
+      .company__figure,
+      .image-layout
         transform translateX(0)
         opacity 1
-      .form,.brand-features__title,img,&.usefull-pay-steps,&.usefull-advantage,&.transfer-iframe,.landing-white-block,.section-tabs__nav,&.search-card,.not-found-block__item_img,.not-found-block__item_text,.text,&.not-found-block__item_img,&.brand-features__props,.brand-features__item,.calculation__thumbnail,&.plastic-card,&.feature,&.text__quote
+      .form,
+      .brand-features__title,
+      img,
+      &.usefull-pay-steps,
+      &.usefull-advantage,
+      &.transfer-iframe,
+      .landing-white-block,
+      .section-tabs__nav,
+      &.search-card,
+      .not-found-block__item_img,
+      .not-found-block__item_text,
+      .text,
+      &.not-found-block__item_img,
+      &.brand-features__props,
+      .brand-features__item,
+      .calculation__thumbnail,
+      &.plastic-card,
+      &.feature,
+      &.text__quote
           transform translateY(0)
           opacity 1
-      .heading,.section__text,.page__container>.text,.form__steps,.section__heading .button
+      .heading,
+      .section__text,
+      .page__container>.text,
+      .form__steps,
+      .section__heading .button
         transform translateY(0)
         opacity 1
       &:not(.index-products)
-        .card,.section__element,.bonus-card,.bonus-types-list__item,.bonus-plastic-card,.leaders__person,&.card
+        .card,
+        .section__element,
+        .bonus-card,
+        .bonus-types-list__item,
+        .bonus-plastic-card,
+        .leaders__person,
+        &.card
           transform translateY(0)
           opacity 1
       &.footer
