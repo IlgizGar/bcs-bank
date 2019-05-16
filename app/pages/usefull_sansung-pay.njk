@@ -61,27 +61,29 @@
                     {{ Heading.heading({ 'title': 'Преимущества сервиса', 'mods': { 'type': 'default' } }) }}
                 </div>
                 <div class="page__container">
-                    <div class="section__row ">
-
-                        {{ UsefullAdvantage.UsefullAdvantage({'class':'section__col section__col_half','mods':{'theme':'default'},'path':'assets/images/svg/map.svg', 'title':'Повсеместно', 'text':[
-                            {'text':'Samsung Pay принимается к оплате везде, где можно оплатить покупку по обычной банковской карте по бесконтактной технологии или магнитной полосе.'},
-                            {'text':'Благодаря собственной технологии MST (от англ. Magnetic Secure Transmission) Samsung Pay позволяет оплачивать покупки на любых терминалах — не только тех, которые поддерживают бесконтактную оплату.'}
-                        ]}) }}
-
-                        {{ UsefullAdvantage.UsefullAdvantage({'class':'section__col section__col_half','mods':{'theme':'default'},'path':'assets/images/svg/shield-image.svg', 'title':'Безопасно', 'text':[
-                            {'text':'Вместо номера карты используется специальный цифровой код, созданный случайным образом — токен'},
-                            {'text':'Для каждой покупки требуется авторизация пользователя приложения по отпечатку пальца, радужке глаз (в зависимости от модели смартфона) или PIN-коду приложения — только вы можете совершать покупки.'},
-                            {'text':'Встроенная система безопасности Samsung Knox обеспечивает защиту данных Samsung Pay независимо от операционной системы на устройстве'}
-                        ]}) }}
-
-
-                        {{ UsefullAdvantage.UsefullAdvantage({'class':'section__col section__col_full','mods':{'theme':'large'},'path':'assets/images/svg/card-image.svg', 'title':'Просто', 'text':[
-                            {'text':'Проведите по экрану снизу вверх, чтобы запустить Samsung Pay'},
-                            {'text':'Выберите карту и авторизуйтесь для оплаты'},
-                            {'text':'После этого просто поднесите устройство к терминалу'}
-                        ]}) }}
-
-                    </div>
+                        <div class="carousel carousel_type-mobile">
+                            <div class="js-carousel section__row carousel__content" data-id="samsung-pay-1" data-breakpoint="991">
+                                {{ UsefullAdvantage.UsefullAdvantage({'class':'section__col section__col_half','mods':{'theme':'default'},'path':'assets/images/svg/map.svg', 'title':'Повсеместно', 'text':[
+                                    {'text':'Samsung Pay принимается к оплате везде, где можно оплатить покупку по обычной банковской карте по бесконтактной технологии или магнитной полосе.'},
+                                    {'text':'Благодаря собственной технологии MST (от англ. Magnetic Secure Transmission) Samsung Pay позволяет оплачивать покупки на любых терминалах — не только тех, которые поддерживают бесконтактную оплату.'}
+                                ]}) }}
+                                {{ UsefullAdvantage.UsefullAdvantage({'class':'section__col section__col_half','mods':{'theme':'default'},'path':'assets/images/svg/shield-image.svg', 'title':'Безопасно', 'text':[
+                                    {'text':'Вместо номера карты используется специальный цифровой код, созданный случайным образом — токен'},
+                                    {'text':'Для каждой покупки требуется авторизация пользователя приложения по отпечатку пальца, радужке глаз (в зависимости от модели смартфона) или PIN-коду приложения — только вы можете совершать покупки.'},
+                                    {'text':'Встроенная система безопасности Samsung Knox обеспечивает защиту данных Samsung Pay независимо от операционной системы на устройстве'}
+                                ]}) }}
+                                {{ UsefullAdvantage.UsefullAdvantage({'class':'section__col section__col_full','mods':{'theme':'large'},'path':'assets/images/svg/card-image.svg', 'title':'Просто', 'text':[
+                                    {'text':'Проведите по экрану снизу вверх, чтобы запустить Samsung Pay'},
+                                    {'text':'Выберите карту и авторизуйтесь для оплаты'},
+                                    {'text':'После этого просто поднесите устройство к терминалу'}
+                                ]}) }}
+                            </div>
+                            <div class="carousel-controls carousel-controls_theme-dark js-carousel-controls hide_desktop">
+                                <div class="carousel-controls__pagination js-carousel-pagination" data-carousel="samsung-pay-1">
+                                    <span>01</span><span></span><span></span>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </section>
 
@@ -95,26 +97,33 @@
             <section class="section page__section section_theme-gray">
                 <div class="page__container">
                     {{ Heading.heading({ 'title': 'Безопасность', 'mods': { 'type': 'default' } }) }}
-                    <div class="section__row mt-64 mb-70">
-                        <div class="section__col section__col_3">
-                            <img width="47" class="mb-16" src="assets/illustrations/samsung_mob_icon1.png">
-                            {{ Heading.heading({ 'title': 'Токенизация', 'mods': { 'type': 'normal' } }) }}
-                            <div class="text mt-32">
-                                Во время покупки вместо номера карты используется специальный цифровой код, созданный случайным образом — токен. Ваша личная информация не используется во время оплаты и остается в безопасности.
+                    <div class="carousel carousel_type-mobile">
+                        <div class="js-carousel section__row mt-64 mb-70 carousel__content" data-id="samsung-pay-2" data-breakpoint="991">
+                            <div class="section__col section__col_3">
+                                <img width="47" class="mb-16" src="assets/illustrations/samsung_mob_icon1.png">
+                                {{ Heading.heading({ 'title': 'Токенизация', 'mods': { 'type': 'normal' } }) }}
+                                <div class="text mt-32">
+                                    Во время покупки вместо номера карты используется специальный цифровой код, созданный случайным образом — токен. Ваша личная информация не используется во время оплаты и остается в безопасности.
+                                </div>
+                            </div>
+                            <div class="section__col section__col_3">
+                                <img width="38" class="mb-16" src="assets/illustrations/samsung_mob_icon2.png">
+                                {{ Heading.heading({ 'title': 'Авторизация', 'mods': { 'type': 'normal' } }) }}
+                                <div class="text mt-32">
+                                    Каждая транзакция обязательно подтверждается по вашему отпечатку пальца, радужке глаз или PIN-коду приложения — только вы можете совершать покупки.
+                                </div>
+                            </div>
+                            <div class="section__col section__col_3">
+                                <img width="80" class="mb-16" src="assets/illustrations/samsung_mob_icon3.png">
+                                {{ Heading.heading({ 'title': 'Samsung Knox', 'mods': { 'type': 'normal' } }) }}
+                                <div class="text mt-32">
+                                    Специальная встроенная система безопасности Samsung Knox обеспечивает защиту устройства и данных Samsung Pay от вредоносных атак, а также непрерывно отслеживает возможные уязвимости независимо от операционной системы на устройстве.
+                                </div>
                             </div>
                         </div>
-                        <div class="section__col section__col_3">
-                            <img width="38" class="mb-16" src="assets/illustrations/samsung_mob_icon2.png">
-                            {{ Heading.heading({ 'title': 'Авторизация', 'mods': { 'type': 'normal' } }) }}
-                            <div class="text mt-32">
-                                Каждая транзакция обязательно подтверждается по вашему отпечатку пальца, радужке глаз или PIN-коду приложения — только вы можете совершать покупки.
-                            </div>
-                        </div>
-                        <div class="section__col section__col_3">
-                            <img width="80" class="mb-16" src="assets/illustrations/samsung_mob_icon3.png">
-                            {{ Heading.heading({ 'title': 'Samsung Knox', 'mods': { 'type': 'normal' } }) }}
-                            <div class="text mt-32">
-                                Специальная встроенная система безопасности Samsung Knox обеспечивает защиту устройства и данных Samsung Pay от вредоносных атак, а также непрерывно отслеживает возможные уязвимости независимо от операционной системы на устройстве.
+                        <div class="carousel-controls carousel-controls_theme-dark js-carousel-controls hide_desktop mb-64">
+                            <div class="carousel-controls__pagination js-carousel-pagination" data-carousel="samsung-pay-2">
+                                <span>01</span><span></span><span></span>
                             </div>
                         </div>
                     </div>
@@ -142,7 +151,7 @@
                 </section>
                 <section id="phone" class="section page__section mb-112 js-section-tab">
                     <div class="page__container">
-                        {{ UsefullPaySteps.UsefullPaySteps({'steps':[
+                        {{ UsefullPaySteps.UsefullPaySteps({'sliderId':'samsung-3','steps':[
                             {
                                 'img':'assets/illustrations/samsung_mob_step1.png',
                                 'text':'Проведите по экрану снизу вверх, чтобы запустить Samsung Pay'
@@ -160,7 +169,7 @@
                 </section>
                 <section id="watch" class="section page__section mb-64 js-section-tab">
                     <div class="page__container">
-                        {{ UsefullPaySteps.UsefullPaySteps({'steps':[
+                        {{ UsefullPaySteps.UsefullPaySteps({'sliderId':'samsung-4','steps':[
                             {
                                 'img':'assets/illustrations/samsung_watch_step1.png',
                                 'text':'Подключите Gear S3 к смартфону Samsung Galaxy в приложении Galaxy Wearable'

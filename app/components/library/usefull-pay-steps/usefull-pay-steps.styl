@@ -3,7 +3,9 @@
   padding 0
   margin 0
   list-style none
-  counter-reset: list;
+  display block!important
+  counter-reset: list
+  width 100%
   &__item
     counter-increment: list
     display flex
@@ -11,8 +13,11 @@
     align-items center
     justify-content space-between
     margin-bottom 80px
-    @media (max-width 767px)
-      flex-wrap wrap
+    width 100%
+    @media (max-width 991px)
+      flex-direction column
+      margin-bottom 0
+      display inline-flex!important
     span
       display inline-block
     &-text
@@ -23,8 +28,9 @@
       line-height: 1.33
       letter-spacing: normal
       max-width 475px
-      @media (max-width 767px)
+      @media (max-width 991px)
         margin-bottom 30px
+        order 2
       &:before
         content: counter(list)
         formular(32px)
@@ -35,8 +41,8 @@
         line-height: normal
         letter-spacing: normal
         margin-bottom 15px
-        @media (max-width 767px)
-          text-align center
+        @media (max-width 991px)
+          content none
     &-img
       width 100%
       height auto
@@ -44,3 +50,5 @@
       position relative
       img
         width 100%
+      @media (max-width 991px)
+        order 1

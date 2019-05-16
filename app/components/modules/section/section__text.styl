@@ -4,10 +4,15 @@
   color: rgba($color_elem, 0.8)
   &_size-big
     padding-left 50px
+    @media (max-width 991px)
+      padding-left 0
     .section__text-list-item
       font-size 25px
       &:before
         left: -40px;
+        @media (max-width 991px)
+          left -5px
+          font-size 18px
 
   @media (max-width 1279px)
     &.mt-40
