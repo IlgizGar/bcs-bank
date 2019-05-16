@@ -1,23 +1,29 @@
 .section__col
     img
-      max-width 100%
       display block
-      @media (max-width: 767px)
+      @media (max-width: 1271px)
         margin 0 auto
+        max-width 100%!important
     col()
     &_1
       size(3)
     &_2
       size(9)
     @media (max-width: 767px)
-      width 100%!important
+      width calc(100% - 40px)!important
     &_3
       size(4)
       @media (max-width: 767px)
-        width 100%!important
+        width calc(100% - 40px)!important
     &_half
       size(6)
       @media (max-width: 767px)
-        width 100%!important
+        width calc(100% - 40px)!important
     &_full
-      width 100%
+      width calc(100% - 40px)!important
+
+.slick-slide
+  .section__col
+    width 100%!important
+    margin-left auto!important
+    margin-right auto!important

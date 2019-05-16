@@ -69,7 +69,7 @@ module.exports = (elem) => {
             $(slick.$slides[0]).addClass('state_animate');
             setTimeout(()=>{
               $('.js-carousel-progressbar').addClass('state_busy');
-            },200)
+            }, 200);
           });
 
           this.carousel.not('.slick-initialized').slick({
