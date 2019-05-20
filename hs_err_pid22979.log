@@ -1,0 +1,392 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 171966464 bytes for committing reserved memory.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_linux.cpp:2753), pid=22979, tid=0x00007fb872cba700
+#
+# JRE version:  (8.0_202-b49) (build )
+# Java VM: OpenJDK 64-Bit Server VM (25.202-b49 mixed mode linux-amd64 compressed oops)
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007fb86c00b000):  JavaThread "Unknown thread" [_thread_in_vm, id=22980, stack(0x00007fb872bbb000,0x00007fb872cbb000)]
+
+Stack: [0x00007fb872bbb000,0x00007fb872cbb000],  sp=0x00007fb872cb93e0,  free space=1016k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [libjvm.so+0xa4458e]  VMError::report_and_die()+0x14e
+V  [libjvm.so+0x4dfff9]  report_vm_out_of_memory(char const*, int, unsigned long, VMErrorType, char const*)+0x99
+V  [libjvm.so+0x8b4313]  os::Linux::commit_memory_impl(char*, unsigned long, bool)+0x113
+V  [libjvm.so+0x8b4539]  os::pd_commit_memory(char*, unsigned long, unsigned long, bool)+0x29
+V  [libjvm.so+0x8a95ca]  os::commit_memory(char*, unsigned long, unsigned long, bool)+0x2a
+V  [libjvm.so+0x91906b]  PSVirtualSpace::expand_by(unsigned long)+0x6b
+V  [libjvm.so+0x909659]  PSOldGen::initialize(ReservedSpace, unsigned long, char const*, int)+0xc9
+V  [libjvm.so+0x2d224e]  AdjoiningGenerations::AdjoiningGenerations(ReservedSpace, GenerationSizer*, unsigned long)+0x38e
+V  [libjvm.so+0x8d1197]  ParallelScavengeHeap::initialize()+0x1e7
+V  [libjvm.so+0xa0efd1]  Universe::initialize_heap()+0x101
+V  [libjvm.so+0xa10083]  universe_init()+0x33
+V  [libjvm.so+0x60d435]  init_globals()+0x55
+V  [libjvm.so+0x9f4aa7]  Threads::create_vm(JavaVMInitArgs*, bool*)+0x207
+V  [libjvm.so+0x6723c4]  JNI_CreateJavaVM+0x74
+C  [libjli.so+0x75f7]  JavaMain+0x87
+C  [libpthread.so.0+0x76db]  start_thread+0xdb
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x00007fb86c00b000 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=22980, stack(0x00007fb872bbb000,0x00007fb872cbb000)]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+heap address: 0x00000006ca200000, size: 3934 MB, Compressed Oops mode: Non-zero based:0x00000006ca1ff000, Oop shift amount: 3
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 07:0a 29                                 /snap/phpstorm/98/jre64/bin/java
+00600000-00601000 rw-p 00000000 07:0a 29                                 /snap/phpstorm/98/jre64/bin/java
+01af9000-01b1a000 rw-p 00000000 00:00 0                                  [heap]
+6d4600000-76e100000 ---p 00000000 00:00 0 
+76e100000-773300000 rw-p 00000000 00:00 0 
+773300000-7c0000000 ---p 00000000 00:00 0 
+7fb85bed7000-7fb85c063000 rw-p 00000000 00:00 0 
+7fb85c063000-7fb85c582000 ---p 00000000 00:00 0 
+7fb85c582000-7fb85c5ac000 rw-p 00000000 00:00 0 
+7fb85c5ac000-7fb85c812000 ---p 00000000 00:00 0 
+7fb85c812000-7fb85c81d000 rw-p 00000000 00:00 0 
+7fb85c81d000-7fb85cbd3000 ---p 00000000 00:00 0 
+7fb85cbd3000-7fb85ce43000 rwxp 00000000 00:00 0 
+7fb85ce43000-7fb86bbd3000 ---p 00000000 00:00 0 
+7fb86bbd3000-7fb86bbee000 r-xp 00000000 07:0a 92                         /snap/phpstorm/98/jre64/lib/amd64/libzip.so
+7fb86bbee000-7fb86bded000 ---p 0001b000 07:0a 92                         /snap/phpstorm/98/jre64/lib/amd64/libzip.so
+7fb86bded000-7fb86bdee000 rw-p 0001a000 07:0a 92                         /snap/phpstorm/98/jre64/lib/amd64/libzip.so
+7fb86bdee000-7fb86bdf9000 r-xp 00000000 08:02 2102113                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7fb86bdf9000-7fb86bff8000 ---p 0000b000 08:02 2102113                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7fb86bff8000-7fb86bff9000 r--p 0000a000 08:02 2102113                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7fb86bff9000-7fb86bffa000 rw-p 0000b000 08:02 2102113                    /lib/x86_64-linux-gnu/libnss_files-2.27.so
+7fb86bffa000-7fb86c000000 rw-p 00000000 00:00 0 
+7fb86c000000-7fb86c033000 rw-p 00000000 00:00 0 
+7fb86c033000-7fb870000000 ---p 00000000 00:00 0 
+7fb870024000-7fb870114000 rw-p 00000000 00:00 0 
+7fb870114000-7fb87012b000 r-xp 00000000 08:02 2102107                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7fb87012b000-7fb87032a000 ---p 00017000 08:02 2102107                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7fb87032a000-7fb87032b000 r--p 00016000 08:02 2102107                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7fb87032b000-7fb87032c000 rw-p 00017000 08:02 2102107                    /lib/x86_64-linux-gnu/libnsl-2.27.so
+7fb87032c000-7fb87032e000 rw-p 00000000 00:00 0 
+7fb87032e000-7fb870339000 r-xp 00000000 08:02 2102124                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7fb870339000-7fb870538000 ---p 0000b000 08:02 2102124                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7fb870538000-7fb870539000 r--p 0000a000 08:02 2102124                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7fb870539000-7fb87053a000 rw-p 0000b000 08:02 2102124                    /lib/x86_64-linux-gnu/libnss_nis-2.27.so
+7fb87053a000-7fb870542000 r-xp 00000000 08:02 2102109                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7fb870542000-7fb870742000 ---p 00008000 08:02 2102109                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7fb870742000-7fb870743000 r--p 00008000 08:02 2102109                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7fb870743000-7fb870744000 rw-p 00009000 08:02 2102109                    /lib/x86_64-linux-gnu/libnss_compat-2.27.so
+7fb870744000-7fb87076e000 r-xp 00000000 07:0a 62                         /snap/phpstorm/98/jre64/lib/amd64/libjava.so
+7fb87076e000-7fb87096d000 ---p 0002a000 07:0a 62                         /snap/phpstorm/98/jre64/lib/amd64/libjava.so
+7fb87096d000-7fb87096f000 rw-p 00029000 07:0a 62                         /snap/phpstorm/98/jre64/lib/amd64/libjava.so
+7fb87096f000-7fb87097e000 r-xp 00000000 07:0a 91                         /snap/phpstorm/98/jre64/lib/amd64/libverify.so
+7fb87097e000-7fb870b7d000 ---p 0000f000 07:0a 91                         /snap/phpstorm/98/jre64/lib/amd64/libverify.so
+7fb870b7d000-7fb870b7f000 rw-p 0000e000 07:0a 91                         /snap/phpstorm/98/jre64/lib/amd64/libverify.so
+7fb870b7f000-7fb870b86000 r-xp 00000000 08:02 2102164                    /lib/x86_64-linux-gnu/librt-2.27.so
+7fb870b86000-7fb870d85000 ---p 00007000 08:02 2102164                    /lib/x86_64-linux-gnu/librt-2.27.so
+7fb870d85000-7fb870d86000 r--p 00006000 08:02 2102164                    /lib/x86_64-linux-gnu/librt-2.27.so
+7fb870d86000-7fb870d87000 rw-p 00007000 08:02 2102164                    /lib/x86_64-linux-gnu/librt-2.27.so
+7fb870d87000-7fb870f24000 r-xp 00000000 08:02 2102086                    /lib/x86_64-linux-gnu/libm-2.27.so
+7fb870f24000-7fb871123000 ---p 0019d000 08:02 2102086                    /lib/x86_64-linux-gnu/libm-2.27.so
+7fb871123000-7fb871124000 r--p 0019c000 08:02 2102086                    /lib/x86_64-linux-gnu/libm-2.27.so
+7fb871124000-7fb871125000 rw-p 0019d000 08:02 2102086                    /lib/x86_64-linux-gnu/libm-2.27.so
+7fb871125000-7fb871d74000 r-xp 00000000 07:0a 96                         /snap/phpstorm/98/jre64/lib/amd64/server/libjvm.so
+7fb871d74000-7fb871f74000 ---p 00c4f000 07:0a 96                         /snap/phpstorm/98/jre64/lib/amd64/server/libjvm.so
+7fb871f74000-7fb872044000 rw-p 00c4f000 07:0a 96                         /snap/phpstorm/98/jre64/lib/amd64/server/libjvm.so
+7fb872044000-7fb872086000 rw-p 00000000 00:00 0 
+7fb872086000-7fb87226d000 r-xp 00000000 08:02 2102023                    /lib/x86_64-linux-gnu/libc-2.27.so
+7fb87226d000-7fb87246d000 ---p 001e7000 08:02 2102023                    /lib/x86_64-linux-gnu/libc-2.27.so
+7fb87246d000-7fb872471000 r--p 001e7000 08:02 2102023                    /lib/x86_64-linux-gnu/libc-2.27.so
+7fb872471000-7fb872473000 rw-p 001eb000 08:02 2102023                    /lib/x86_64-linux-gnu/libc-2.27.so
+7fb872473000-7fb872477000 rw-p 00000000 00:00 0 
+7fb872477000-7fb87247a000 r-xp 00000000 08:02 2102046                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7fb87247a000-7fb872679000 ---p 00003000 08:02 2102046                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7fb872679000-7fb87267a000 r--p 00002000 08:02 2102046                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7fb87267a000-7fb87267b000 rw-p 00003000 08:02 2102046                    /lib/x86_64-linux-gnu/libdl-2.27.so
+7fb87267b000-7fb872690000 r-xp 00000000 07:0a 43                         /snap/phpstorm/98/jre64/lib/amd64/jli/libjli.so
+7fb872690000-7fb872890000 ---p 00015000 07:0a 43                         /snap/phpstorm/98/jre64/lib/amd64/jli/libjli.so
+7fb872890000-7fb872891000 rw-p 00015000 07:0a 43                         /snap/phpstorm/98/jre64/lib/amd64/jli/libjli.so
+7fb872891000-7fb8728ab000 r-xp 00000000 08:02 2102156                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7fb8728ab000-7fb872aaa000 ---p 0001a000 08:02 2102156                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7fb872aaa000-7fb872aab000 r--p 00019000 08:02 2102156                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7fb872aab000-7fb872aac000 rw-p 0001a000 08:02 2102156                    /lib/x86_64-linux-gnu/libpthread-2.27.so
+7fb872aac000-7fb872ab0000 rw-p 00000000 00:00 0 
+7fb872ab0000-7fb872ad7000 r-xp 00000000 08:02 2101995                    /lib/x86_64-linux-gnu/ld-2.27.so
+7fb872bba000-7fb872bbb000 ---p 00000000 00:00 0 
+7fb872bbb000-7fb872bbe000 ---p 00000000 00:00 0 
+7fb872bbe000-7fb872cbf000 rw-p 00000000 00:00 0 
+7fb872ccd000-7fb872cd5000 rw-s 00000000 08:02 4328504                    /tmp/hsperfdata_max/22979
+7fb872cd5000-7fb872cd6000 rw-p 00000000 00:00 0 
+7fb872cd6000-7fb872cd7000 r--p 00000000 00:00 0 
+7fb872cd7000-7fb872cd8000 r--p 00027000 08:02 2101995                    /lib/x86_64-linux-gnu/ld-2.27.so
+7fb872cd8000-7fb872cd9000 rw-p 00028000 08:02 2101995                    /lib/x86_64-linux-gnu/ld-2.27.so
+7fb872cd9000-7fb872cda000 rw-p 00000000 00:00 0 
+7fffa23f1000-7fffa2412000 rw-p 00000000 00:00 0                          [stack]
+7fffa24d8000-7fffa24db000 r--p 00000000 00:00 0                          [vvar]
+7fffa24db000-7fffa24dd000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
+
+VM Arguments:
+java_command: org.jetbrains.git4idea.nativessh.GitNativeSshAskPassApp The authenticity of host 'github.com (140.82.118.3)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no)? 
+java_class_path (initial): /snap/phpstorm/98/plugins/git4idea/lib/git4idea-rt.jar:/snap/phpstorm/98/lib/xmlrpc-2.0.1.jar:/snap/phpstorm/98/lib/commons-codec-1.10.jar:/snap/phpstorm/98/lib/util.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/usr/lib/git-core:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+SHELL=/bin/bash
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0xa44f70], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGBUS: [libjvm.so+0xa44f70], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGFPE: [libjvm.so+0x8add30], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGPIPE: [libjvm.so+0x8add30], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGXFSZ: [libjvm.so+0x8add30], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGILL: [libjvm.so+0x8add30], sa_mask[0]=11111111011111111101111111111110, sa_flags=SA_RESTART|SA_SIGINFO
+SIGUSR1: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGUSR2: [libjvm.so+0x8af430], sa_mask[0]=00100000000000000000000000000000, sa_flags=SA_RESTART|SA_SIGINFO
+SIGHUP: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGINT: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGTERM: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+SIGQUIT: SIG_DFL, sa_mask[0]=00000000000000000000000000000000, sa_flags=none
+
+
+---------------  S Y S T E M  ---------------
+
+OS:DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=18.04
+DISTRIB_CODENAME=bionic
+DISTRIB_DESCRIPTION="Ubuntu 18.04.2 LTS"
+
+uname:Linux 4.18.0-20-generic #21~18.04.1-Ubuntu SMP Wed May 8 08:43:37 UTC 2019 x86_64
+libc:glibc 2.27 NPTL 2.27 
+rlimit: STACK 8192k, CORE 0k, NPROC 62023, NOFILE 1048576, AS infinity
+load average:29.79 19.52 10.04
+
+/proc/meminfo:
+MemTotal:       16112600 kB
+MemFree:          133824 kB
+MemAvailable:      62160 kB
+Buffers:            6068 kB
+Cached:           536060 kB
+SwapCached:         3412 kB
+Active:          3933548 kB
+Inactive:         751540 kB
+Active(anon):    3874592 kB
+Inactive(anon):   690748 kB
+Active(file):      58956 kB
+Inactive(file):    60792 kB
+Unevictable:         112 kB
+Mlocked:             112 kB
+SwapTotal:       2097148 kB
+SwapFree:            900 kB
+Dirty:                48 kB
+Writeback:            64 kB
+AnonPages:       4141512 kB
+Mapped:         11096548 kB
+Shmem:            421904 kB
+Slab:             284548 kB
+SReclaimable:      71504 kB
+SUnreclaim:       213044 kB
+KernelStack:       20224 kB
+PageTables:       121868 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:    10153448 kB
+Committed_AS:   27631380 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:           0 kB
+VmallocChunk:          0 kB
+HardwareCorrupted:     0 kB
+AnonHugePages:         0 kB
+ShmemHugePages:        0 kB
+ShmemPmdMapped:        0 kB
+CmaTotal:              0 kB
+CmaFree:               0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       2048 kB
+Hugetlb:               0 kB
+DirectMap4k:     2117784 kB
+DirectMap2M:    14342144 kB
+
+container (cgroup) information:
+container_type: cgroupv1
+cpu_cpuset_cpus: 0-3
+cpu_memory_nodes: 0
+active_processor_count: 4
+cpu_quota: -1
+cpu_period: 100000
+cpu_shares: -1
+memory_limit_in_bytes: -1
+memory_and_swap_limit_in_bytes: -2
+memory_soft_limit_in_bytes: -1
+memory_usage_in_bytes: 4932608000
+memory_max_usage_in_bytes: 8100925440
+
+
+CPU:total 4 (initial active 4) (2 cores per cpu, 2 threads per core) family 6 model 58 stepping 9, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, clmul, erms, ht, tsc, tscinvbit, tscinv
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 58
+model name	: Intel(R) Core(TM) i3-3220 CPU @ 3.30GHz
+stepping	: 9
+microcode	: 0x21
+cpu MHz		: 3299.943
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 0
+initial apicid	: 0
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 popcnt tsc_deadline_timer xsave avx f16c lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm arat pln pts md_clear flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
+bogomips	: 6599.88
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 58
+model name	: Intel(R) Core(TM) i3-3220 CPU @ 3.30GHz
+stepping	: 9
+microcode	: 0x21
+cpu MHz		: 3299.942
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 2
+apicid		: 2
+initial apicid	: 2
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 popcnt tsc_deadline_timer xsave avx f16c lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm arat pln pts md_clear flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
+bogomips	: 6599.88
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 2
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 58
+model name	: Intel(R) Core(TM) i3-3220 CPU @ 3.30GHz
+stepping	: 9
+microcode	: 0x21
+cpu MHz		: 3299.941
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 0
+cpu cores	: 2
+apicid		: 1
+initial apicid	: 1
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 popcnt tsc_deadline_timer xsave avx f16c lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm arat pln pts md_clear flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
+bogomips	: 6599.88
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 3
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 58
+model name	: Intel(R) Core(TM) i3-3220 CPU @ 3.30GHz
+stepping	: 9
+microcode	: 0x21
+cpu MHz		: 3299.941
+cache size	: 3072 KB
+physical id	: 0
+siblings	: 4
+core id		: 1
+cpu cores	: 2
+apicid		: 3
+initial apicid	: 3
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 13
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 popcnt tsc_deadline_timer xsave avx f16c lahf_lm cpuid_fault epb pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm arat pln pts md_clear flush_l1d
+bugs		: cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds
+bogomips	: 6599.88
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 16112600k(133272k free), swap 2097148k(908k free)
+
+vm_info: OpenJDK 64-Bit Server VM (25.202-b49) for linux-amd64 JRE (1.8.0_202-release-1483-b49), built on Apr 10 2019 13:56:32 by "root" with gcc 4.4.7 20120313 (Red Hat 4.4.7-16)
+
+time: Mon May 20 14:11:02 2019
+timezone: MSK
+elapsed time: 0 seconds (0d 0h 0m 0s)
+

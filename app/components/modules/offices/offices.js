@@ -34,6 +34,7 @@ export default class Offices {
     this.markCollection = null;
     this.points = [];
     this.mapContainer = document.getElementById('map-container');
+    this.mapContainer.setAttribute('tab-index', '1');
     this.mapBlock = null;
     this.init();
   }
@@ -116,6 +117,10 @@ export default class Offices {
         this.switcher.data('state', 'map');
         this.switcher.find('.js-button-title').html('Показать списком');
         this.mapContainer.append(this.mapBlock);
+        const pos = $('#map-container').offset().top;
+        $('html, body').animate({
+          scrollTop: pos - 150,
+        }, 600);
       } else {
         this.appBlock.addClass('state_listed');
         this.switcher.data('state', 'list');
