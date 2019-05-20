@@ -30,8 +30,8 @@
   .index-carousel__wrap
   .breadcrumbs,
   .title-head,
-  .brand-features__item
-    opacity 0
+  .brand-features__item,
+  .advices,
   .heading,
   .section__header_landings .button,
   .section__header_landings-info,
@@ -102,6 +102,8 @@
   .breadcrumbs,
   .title-head,
   .brand-features__item
+  .advices,
+  .tabbar__marker
     opacity 0
   .menubar
     @media (max-width: 1279px)
@@ -127,12 +129,18 @@ body
   &.theme-transparent
     background transparent
   &.state_animations-start
+    .index-carousel__features
+      .feature
+        transition none!important
     .heading.heading_type-default
       opacity 1
       transition all 1s ease-out
-      transition-delay 0.8s
+      transition-delay 0.8s!important
+    .tabbar__scroll-wrapper
+      overflow visible
     .tabbar__marker
-      animation slideHeadingShowRight 1s ease-out
+      animation slideHeadingShowRight 0.8s ease-out
+      opacity 1
     .mobile .mobile__content
       width calc(54.666667% - 40px)
       @media (max-width: 991px)
@@ -187,7 +195,8 @@ body
     .socials,
     .section__header_landings-info,
     .section__header_landings .button,
-    .index-carousel__wrap
+    .index-carousel__wrap,
+    .advices
       animation headerControlsShow 1s ease-out
       opacity 1
     .section__header_landings-image
@@ -290,7 +299,7 @@ body
         .bonus-card,
         .bonus-types-list__item,
         .bonus-plastic-card,
-        .leaders__person,
+        &.leaders__person,
         &.card
           transform translateY(28px)
           opacity 0
@@ -359,7 +368,7 @@ body
         .bonus-card,
         .bonus-types-list__item,
         .bonus-plastic-card,
-        .leaders__person,
+        &.leaders__person,
         &.card
           transform translateY(0)
           opacity 1

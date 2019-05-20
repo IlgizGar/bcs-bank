@@ -76,7 +76,7 @@ export default class Animator {
   observe() {
     const options = {
       rootMargin: '0px',
-      threshold: 0.5,
+      threshold: 0.3,
     };
     let scroll = 0;
     Object.keys(this.animations).forEach((key) => {
