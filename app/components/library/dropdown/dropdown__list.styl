@@ -11,6 +11,8 @@
   background-color: $color_light
   box-shadow: 0 2px 4px 0 rgba($color_dark, 0.05), 0 4px 24px 0 rgba($color_dark, 0.03);
   outline: none
+  @media (max-width: 991px)
+    max-width calc(100vw - 40px)
 
   ul
     li
@@ -27,7 +29,11 @@
       white-space: nowrap
 
       transition: all $interval
-
+      @media (max-width: 991px)
+        white-space normal
+        height auto
+        padding-top 5px
+        padding-bottom 5px
       &:first-child
         border-top-left-radius: 4px
         border-top-right-radius: 4px

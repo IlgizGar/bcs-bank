@@ -175,6 +175,12 @@ module.exports = (form) => {
           placeholder: ' ',
           showMaskOnHover: false,
         });
+      $('.js-snils')
+        .inputmask({
+          mask: '999-999-999 99',
+          placeholder: ' ',
+          showMaskOnHover: false,
+        });
       $('.js-pass-serial')
         .inputmask({
           mask: '99 99',
@@ -323,15 +329,13 @@ module.exports = (form) => {
         if (flatInput.find('.js-input-field').length) {
           flatInput = flatInput.find('.js-input-field');
         }
+
         $(element)
           .suggestions({
             serviceUrl: 'https://api.bcs.ru/kladr/v3',
             token: '574fec4e42aa48a2ac22841a3f6def1d',
             type: 'ADDRESS',
-            autoSelectFirst: true,
-            hint: false,
-            mobileWidth: 420,
-            geoLocation: true,
+            mobileWidth: 0,
             onSelect: (suggestion) => {
               valid = true;
               if (!suggestion.data.city && !suggestion.data.settlement) {
