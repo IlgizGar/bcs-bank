@@ -65,9 +65,11 @@ export default class Modal {
 
     global.forms.push(new Form($el.find('form')));
     global.checkboxes.push(new Checkbox($el.find('.js-checkbox')));
+    $('form').removeClass('state_loading');
   }
 
   static closeWindow() {
+    $('form').removeClass('state_loading');
     $.modal.close();
   }
 }

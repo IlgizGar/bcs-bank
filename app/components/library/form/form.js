@@ -256,6 +256,7 @@ module.exports = (elem) => {
                 .modal({
                   showClose: false,
                 });
+              $(form).removeClass('state_loading');
             }
           } else {
             $(form)
@@ -272,8 +273,7 @@ module.exports = (elem) => {
         },
         error: () => {
           if (!url) {
-            $(form)
-              .removeClass('state_loading');
+            $(form).removeClass('state_loading');
             $('.js-products-error')
               .modal({
                 showClose: false,

@@ -39,11 +39,13 @@ module.exports = (elem) => {
           }
           err();
           $('.js-products-error').modal();
+          $('form').removeClass('state_loading');
           return false;
         },
         error: () => {
           err();
           $('.js-products-error').modal();
+          $('form').removeClass('state_loading');
         },
       });
     }
