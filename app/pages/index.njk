@@ -4,6 +4,7 @@
 {% set root = "." %}
 {% set title = "Главная" %}
 {% set header = 'blue' %}
+{% set bodyClass = 'index-page' %}
 
 {% import "../components/modules/menubar/menubar.njk" as Menubar %}
 {% import "../components/library/heading/heading.njk" as Heading %}
@@ -108,18 +109,18 @@
 
         </div>
       </section>
-      <section class="index-products section page__section">
+      <section class="index-products section page__section js-scroll-animate">
         <div class="page__container">
           <div class="section__row">
             <div class="index-products__list">
-              {{ Card.card({ 'href': '#', 'type': 'figure', 'img': 'assets/illustrations/index_credit.svg', 'view': 'uppercase', 'theme': 'black', 'hoverType': 'button', 'title': '12,9%', 'subtitle': 'ставка по кредиту \n без переплат' | striptags(true) | escape | nl2br, 'link': 'Потребительский кредит', 'mobile': 'Кредит', 'class': 'section__element index-products__card' }) }}
-              {{ Card.card({ 'href': '#', 'type': 'figure', 'img': 'assets/illustrations/index_card.svg', 'view': 'uppercase', 'theme': 'black', 'hoverType': 'button', 'title': '30%', 'subtitle': 'кешбек за покупки \n у партнеров' | striptags(true) | escape | nl2br, 'link': 'Кредитная карта', 'mobile': 'Карта', 'class': 'section__element index-products__card' }) }}
-              {{ Card.card({ 'href': '#', 'type': 'figure', 'img': 'assets/illustrations/index_vklad.svg', 'view': 'uppercase', 'theme': 'black', 'hoverType': 'button', 'title': '8,1%', 'subtitle': 'годовых по вкладу \n в рублях' | striptags(true) | escape | nl2br, 'link': 'Вклад', 'class': 'section__element index-products__card' }) }}
+              {{ Card.card({ 'href': '#', 'type': 'figure', 'img': 'assets/illustrations/index_credit.svg', 'view': 'uppercase', 'theme': 'black', 'hoverType': 'circle',  'title': '12,9%', 'subtitle': 'ставка по кредиту \n без переплат' | striptags(true) | escape | nl2br, 'link': 'Потребительский кредит', 'mobile': 'Кредит', 'class': 'section__element index-products__card' }) }}
+              {{ Card.card({ 'href': '#', 'type': 'figure', 'img': 'assets/illustrations/index_card.svg', 'view': 'uppercase', 'theme': 'black', 'hoverType': 'circle', 'title': '30%', 'subtitle': 'кешбек за покупки \n у партнеров' | striptags(true) | escape | nl2br, 'link': 'Кредитная карта', 'mobile': 'Карта', 'class': 'section__element index-products__card' }) }}
+              {{ Card.card({ 'href': '#', 'type': 'figure', 'img': 'assets/illustrations/index_vklad.svg', 'view': 'uppercase', 'theme': 'black', 'hoverType': 'circle', 'title': '8,1%', 'subtitle': 'годовых по вкладу \n в рублях' | striptags(true) | escape | nl2br, 'link': 'Вклад', 'class': 'section__element index-products__card' }) }}
             </div>
           </div>
         </div>
       </section>
-      <section class="mobile section section_theme-blue page__section page__section_theme-large">
+      <section class="mobile section section_theme-blue page__section page__section_theme-large js-scroll-animate">
         <div class="page__container">
           <div class="section__row">
             <div class="mobile__content">
@@ -144,16 +145,16 @@
       </section>
       <section class="services section page__section page__section_theme-large">
         <div class="page__container">
-          <div class="section__heading">
+          <div class="section__heading js-scroll-animate">
             {{ Heading.heading({ 'title': 'Полезные сервисы', 'mods': { 'type': 'default', 'margin': 'none', 'theme': 'default' } }) }}
             {{ Button.button({ 'href': '#', 'title': 'Все сервисы', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
           </div>
           <div class="section__row">
-            <div class="services__carousel carousel carousel_type-mobile">
+            <div class="services__carousel carousel carousel_type-mobile js-scroll-animate">
               <div class="js-carousel carousel__content" data-id="index-services" data-breakpoint="992">
-                {{ Card.card({ 'block': 'modules/services/fix-course', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Зафиксировать курс', 'class': 'section__element services__card', 'action': 'https://valuta.bcs-bank.com/', 'attr': {'form': 'fix-course', 'api-url': 'https://beta.bcs-bank.com/get_xchng_update '} }) }}
-                {{ Card.card({ 'block': 'modules/services/exchange', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Обменять валюту', 'class': 'section__element services__card', 'attr': {'api-url': 'https://beta.bcs-bank.com/get_courses_update'}  }) }}
-                {{ Card.card({ 'block': 'modules/services/exchange-map', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Найти на карте', 'linkhref': 'offices.html', 'class': 'section__element services__card', 'attr': {'api-url': 'https://beta.bcs-bank.com/get_courses_update'} }) }}
+                {{ Card.card({ 'block': 'modules/services/fix-course', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'circle-button', 'link': 'Зафиксировать курс', 'class': 'section__element services__card', 'action': 'https://valuta.bcs-bank.com/', 'attr': {'form': 'fix-course', 'api-url': 'https://beta.bcs-bank.com/get_xchng_update '} }) }}
+                {{ Card.card({ 'block': 'modules/services/exchange', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'circle-button', 'link': 'Обменять валюту', 'class': 'section__element services__card', 'attr': {'api-url': 'https://beta.bcs-bank.com/get_courses_update'}  }) }}
+                {{ Card.card({ 'block': 'modules/services/exchange-map', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'circle-button', 'link': 'Найти на карте', 'linkhref': 'offices.html', 'class': 'section__element services__card', 'attr': {'api-url': 'https://beta.bcs-bank.com/get_courses_update'} }) }}
                 {# Поиск штрафов #}
                 {#{{ Card.card({ 'block': 'modules/services/check-exist', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'link': 'Проверить наличие', 'class': 'section__element services__card' }) }}#}
               </div>
@@ -167,8 +168,8 @@
           </div>
         </div>
       </section>
-      <iframe class="transfer-iframe" src="https://pay.best2pay.net/webapi/P2PTransfer?sector=1480&code=643"></iframe>
-      <section class="advices section page__section page__section_theme-large">
+      <iframe class="transfer-iframe js-scroll-animate" src="https://pay.best2pay.net/webapi/P2PTransfer?sector=1480&code=643"></iframe>
+      <section class="advices section page__section page__section_theme-large js-scroll-animate">
         <div class="page__container">
           <div class="section__heading">
             {{ Heading.heading({ 'title': 'Только нужные советы', 'mods': { 'type': 'default', 'margin': 'none', 'theme': 'default' } }) }}
@@ -181,7 +182,7 @@
           </div>
         </div>
       </section>
-      <section class="company section section_theme-blue page__section">
+      <section class="company section section_theme-blue page__section js-scroll-animate">
         <div class="page__container">
           <img class="company__figure" src="assets/illustrations/bks_group.svg" alt="Безграничные возможности">
           {{ Heading.heading({ 'title': 'Откройте безграничные \n возможности сгруппой \n компаний БКС', 'mods': { 'type': 'default', 'margin': 'normal', 'theme': 'light' }, 'class': 'hidden-mobile' }) }}
@@ -189,9 +190,9 @@
           <div class="section__row">
             <div class="company__carousel carousel carousel_type-mobile">
               <div class="js-carousel carousel__content" data-id="index-company" data-breakpoint="768">
-                {{ Card.card({ 'href': '#', 'icon': 'assets/images/svg/premier.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Ваш персональный финансовый советник в БКС онлайн', 'subtitle': 'Инвестиции доступные \n каждому' | striptags(true) | escape | nl2br, 'link': 'БКС Премьер', 'class': 'section__element company__card js-show-partners-modal-button' , "attr": {"title":"Переход на БКС Премьер", "text":"Инвестиции, доступные каждому. Для профессионалов и новичков.", "link":"#"} }) }}
-                {{ Card.card({ 'href': '#', 'icon': 'assets/images/svg/logo-dark.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Инвестируйте \n с крупнейшим \n брокером России' | striptags(true) | escape | nl2br, 'subtitle': 'Достижение ваших \n финансовых целей' | striptags(true) | escape | nl2br, 'link': 'БКС Брокер', 'class': 'section__element company__card js-show-partners-modal-button' , "attr": {"title":"Переход на БКС Брокер", "text":"Торгуйте на бирже с ведущим брокером №1 в рейтинге московских бирж.", "link":"#"} }) }}
-                {{ Card.card({ 'href': '#', 'icon': 'assets/images/svg/ultima.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'button', 'title': 'Персональный банк самых амбициозных', 'subtitle': 'Уникальные привилегии \n и безграничные возможности' | striptags(true) | escape | nl2br, 'link': 'БКС Ультима', 'class': 'section__element company__card js-show-partners-modal-button' , "attr": {"title":"Переход на БКС Ультима", "text":"Ваш личный финансист составит финансовый план и подберет банковские продукты.", "link":"#"} }) }}
+                {{ Card.card({ 'href': '#', 'icon': 'assets/images/svg/premier.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'circle', 'title': 'Ваш персональный финансовый советник в БКС онлайн', 'subtitle': 'Инвестиции доступные \n каждому' | striptags(true) | escape | nl2br, 'link': 'БКС Премьер', 'class': 'section__element company__card js-show-partners-modal-button' , "attr": {"title":"Переход на БКС Премьер", "text":"Инвестиции, доступные каждому. Для профессионалов и новичков.", "link":"#"} }) }}
+                {{ Card.card({ 'href': '#', 'icon': 'assets/images/svg/logo-dark.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'circle', 'title': 'Инвестируйте \n с крупнейшим \n брокером России' | striptags(true) | escape | nl2br, 'subtitle': 'Достижение ваших \n финансовых целей' | striptags(true) | escape | nl2br, 'link': 'БКС Брокер', 'class': 'section__element company__card js-show-partners-modal-button' , "attr": {"title":"Переход на БКС Брокер", "text":"Торгуйте на бирже с ведущим брокером №1 в рейтинге московских бирж.", "link":"#"} }) }}
+                {{ Card.card({ 'href': '#', 'icon': 'assets/images/svg/ultima.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'circle', 'title': 'Персональный банк самых амбициозных', 'subtitle': 'Уникальные привилегии \n и безграничные возможности' | striptags(true) | escape | nl2br, 'link': 'БКС Ультима', 'class': 'section__element company__card js-show-partners-modal-button' , "attr": {"title":"Переход на БКС Ультима", "text":"Ваш личный финансист составит финансовый план и подберет банковские продукты.", "link":"#"} }) }}
               </div>
               <div class="carousel-controls js-carousel-controls">
                 <div class="carousel-controls__pagination js-carousel-pagination" data-carousel="index-company">

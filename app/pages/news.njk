@@ -9,6 +9,7 @@
 {% import "../components/modules/menubar/menubar.njk" as Menubar %}
 
 {% set root = "." %}
+{% set bodyClass = "theme-transparent" %}
 {% set title = "Новости" %}
 {% set card = [
   {'title': 'Как поужинать \n в любимом ресторане за счет банка',
@@ -38,7 +39,7 @@
               <div class="js-news-cards news-cards">
                 {# Для первой страницы сразу вывести новости #}
                 {% for card in card %}
-                  {{ Card.card({ 'href': card.href, 'type': 'default', 'view': 'uppercase', 'hoverType': 'card', 'title': card.title | striptags(true) | escape | nl2br, 'subtitle': card.subtitle, 'link': 'Читать' }) }}
+                  {{ Card.card({ 'href': card.href, "class":"js-scroll-animate", 'type': 'default', 'view': 'uppercase', 'hoverType': 'card', 'title': card.title | striptags(true) | escape | nl2br, 'subtitle': card.subtitle, 'link': 'Читать' }) }}
                 {% endfor %}
               </div>
               {{ Button.button({ 'title': 'Показать еще', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'wide'}, 'attr': {'see-more': ''} }) }}

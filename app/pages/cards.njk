@@ -9,6 +9,7 @@
 
 {% set root = "." %}
 {% set title = "Карты" %}
+{% set bodyClass = "theme-transparent" %}
 
 {% block body %}
   <div class="page js-page">
@@ -18,10 +19,12 @@
     <main role="main" class="products js-plastic-cards">
 
       <section class="section page__section page__section_theme-first mb-82">
-        <div class="page__container">
-          <div class="section__row">
-            <div class="section__content section__content_theme-default">
-              {{ Heading.heading({ 'tag': 'h1', 'title': 'Карты', 'mods': { 'type': 'default', 'margin': 'small', 'theme': 'default' } }) }}
+        <div class="not-found-block__section-header">
+          <div class="page__container">
+            <div class="section__row">
+              <div class="section__content section__content_theme-default">
+                {{ Heading.heading({ 'tag': 'h1', 'title': 'Карты', 'mods': { 'type': 'default', 'margin': 'small', 'theme': 'default' } }) }}
+              </div>
             </div>
           </div>
         </div>

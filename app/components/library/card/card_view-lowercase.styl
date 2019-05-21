@@ -4,8 +4,18 @@
 
   .card__action
     order: 1
-    margin-top auto
-
-    border-top: solid 1px $color_borders
+    position relative
+    border-top: solid 1px transparent
+    padding-top 1px
+    @media (max-width 991px)
+      margin-top auto
+    &:before
+      content: ''
+      position absolute
+      border-top: solid 1px $color_borders
+      top: -0px
+      left 0
+      width 100%
+      height 0
   .card__content
     order: 0

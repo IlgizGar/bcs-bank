@@ -54,8 +54,11 @@ module.exports = (elem) => {
       global.tabs = [];
       switch (this.id) {
         case 'index-header':
-          this.carousel.on('beforeChange', (event, slick, prevSlide, currentSlide) => {
-            Carousel.setButtonsUrls(event, slick, prevSlide, currentSlide);
+          this.carousel.on('beforeChange', (event, slick, currentSlide, nextSlide) => {
+            Carousel.setButtonsUrls(event, slick, currentSlide, nextSlide);
+            $(slick.$slides[currentSlide]).removeClass('state_animate');
+            $(slick.$slides[nextSlide]).addClass('state_init');
+            $(slick.$slides[nextSlide]).addClass('state_animate');
             this.progressBarPause();
           });
           this.carousel.on('afterChange', () => {
@@ -63,6 +66,7 @@ module.exports = (elem) => {
           });
           this.carousel.on('init', (event, slick) => {
             Carousel.setButtonsUrls(event, slick);
+            $(slick.$slides[0]).addClass('state_animate');
             setTimeout(() => {
               $('.js-carousel-progressbar').addClass('state_busy');
             }, 200);
@@ -71,9 +75,12 @@ module.exports = (elem) => {
           this.carousel.not('.slick-initialized').slick({
             autoplay: true,
             autoplaySpeed: 12000,
+            speed: 800,
             appendArrows: $('.js-index-carousel-controls'),
             nextArrow: this.next,
             prevArrow: this.prev,
+            fade: true,
+            cssEase: 'linear',
           });
           break;
         case 'advice-filtered':

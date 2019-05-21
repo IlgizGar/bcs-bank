@@ -4,7 +4,8 @@
 {% set root = "." %}
 {% set title = "Советы" %}
 {% set header = 'blue' %}
-
+{% set bodyClass = 'index-page' %}
+{% set bodyClass = "theme-transparent" %}
 {% import "../components/modules/menubar/menubar.njk" as Menubar %}
 {% import "../components/library/heading/heading.njk" as Heading %}
 {% import "../components/library/feature/feature.njk" as Feature %}
@@ -97,7 +98,7 @@
           </div>
         </div>
       </section>
-      <section class="section section_theme-blue page__section page__section_view-advice">
+      <section class="section section_theme-blue page__section page__section_view-advice js-scroll-animate">
         <div class="page__container">
             {{ Heading.heading({ 'title': 'Подборки', 'mods': { 'type': 'default', 'margin': 'normal', 'theme': 'light' }, 'class': 'hidden-mobile' }) }}
           <div class="section__row">
@@ -131,7 +132,7 @@
           </div>
         </div>
       </section>
-      <section class="section section_theme-blue page__section page__section_view-advice">
+      <section class="section section_theme-blue page__section page__section_view-advice js-scroll-animate">
         <div class="page__container">
             {{ Heading.heading({ 'title': 'Подписка на советы от БКС', 'mods': { 'type': 'default', 'align':'centered', 'margin': 'normal', 'theme': 'light' }, 'class': 'hidden-mobile' }) }}
           <div class="section__row">
