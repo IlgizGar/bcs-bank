@@ -4,6 +4,7 @@ import 'core-js/es6/symbol';
 
 import $ from 'jquery';
 
+import sticky from 'stickyfilljs';
 import svg4everybody from 'svg4everybody';
 import Header from '../components/modules/header/header';
 import Footer from '../components/modules/footer/footer';
@@ -36,6 +37,7 @@ import Filter from '../components/modules/filter/filter';
 import Animations from '../components/modules/animations/animations';
 import PartnerModalForm from '../components/modules/partners-modal/partners-modal';
 import SectionTabs from '../components/modules/section-tabs/sectionTabs';
+import Animator from '../components/modules/page-animations/animator';
 
 require('intersection-observer');
 
@@ -297,5 +299,17 @@ $(() => {
       .each((i, el) => {
         global.sectionTabs.push(SectionTabs(el));
       });
+  }
+
+  global.pageAnimators = [];
+
+  if ($('.js-scroll-animate').length) {
+    global.pageAnimators.push(new Animator($('.js-scroll-animate')));
+  }
+
+  if ($('.js-sticky').length) {
+    $('.js-sticky').each((index, el) => {
+      sticky.add(el);
+    });
   }
 });

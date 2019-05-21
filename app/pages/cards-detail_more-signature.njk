@@ -24,7 +24,7 @@
         <div class="section__header section__header_theme-blue">
           <div class="page__container">
             <div class="section__row">
-              <div class="products-detail__content">
+              <div class="products-detail__content js-scroll-animate">
                 {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Дебетовые карты', 'link': '#' } }) }}
                 {{ Heading.heading({ 'tag': 'h1', 'title': 'MORE Signature', 'mods': { 'type': 'large', 'margin': 'medium' } }) }}
                 <div class="features">
@@ -33,7 +33,7 @@
                   {{ Feature.feature({ 'title': 'От 0#ruble', 'text': 'стоимость \n обслуживания', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
                 </div>
               </div>
-              <div class="products-detail__figure" data-illustration="">
+              <div class="products-detail__figure js-scroll-animate" data-illustration="">
                 <div class="illustration">
                   <img class="illustration-image" src="assets/illustrations/more_signature.svg" alt="MORE Signature"></div>
               </div>
@@ -56,9 +56,9 @@
       <div class="tabs js-tabs">
         <div id="about-card" class="tabs__item js-tab state_invisible">
           <section
-              class="section page__section"> {{ BrandFeatures.brandFeatures({ 'items': [ { 'icon': 'assets/images/svg/card-image.svg', 'title': 'Удобно', 'subtitle': 'Все самое необходимое \n для комфортных \n путешествий в одной карте', 'props': { 'large': '500', 'small': 'тыс. #ruble' }, 'descr': 'Снятие наличных в месяц \n без комиссии по всему миру' }, { 'icon': 'assets/images/svg/sand-clock-image.svg', 'title': 'Комфортно', 'subtitle': 'Консьерж-сервис 24/7, трансферы \n в аэропорты, доступ в бизнес \n залы Lounge Key бесплатно', 'props': { 'small': 'до', 'large': '30%' }, 'descr': 'Бонусов за покупки \n у партнеров' }, { 'icon': 'assets/images/svg/kopeiki-image.svg', 'title': 'Выгодно', 'subtitle': '1 карта \n с 3 валютными \n счетами #ruble, #dollar, #euro', 'props': { 'large': '0#ruble' }, 'descr': 'Консультации врачей, страховка \n путешествий до 100 000 #euro + спорт' } ] }) }}
+              class="section page__section js-scroll-animate"> {{ BrandFeatures.brandFeatures({ 'items': [ { 'icon': 'assets/images/svg/card-image.svg', 'title': 'Удобно', 'subtitle': 'Все самое необходимое \n для комфортных \n путешествий в одной карте', 'props': { 'large': '500', 'small': 'тыс. #ruble' }, 'descr': 'Снятие наличных в месяц \n без комиссии по всему миру' }, { 'icon': 'assets/images/svg/sand-clock-image.svg', 'title': 'Комфортно', 'subtitle': 'Консьерж-сервис 24/7, трансферы \n в аэропорты, доступ в бизнес \n залы Lounge Key бесплатно', 'props': { 'small': 'до', 'large': '30%' }, 'descr': 'Бонусов за покупки \n у партнеров' }, { 'icon': 'assets/images/svg/kopeiki-image.svg', 'title': 'Выгодно', 'subtitle': '1 карта \n с 3 валютными \n счетами #ruble, #dollar, #euro', 'props': { 'large': '0#ruble' }, 'descr': 'Консультации врачей, страховка \n путешествий до 100 000 #euro + спорт' } ] }) }}
           </section>
-          <section class="section section_theme-white-smoke section_padding-default page__section mobile-mb-0">
+          <section class="section section_theme-white-smoke section_padding-default page__section mobile-mb-0 js-scroll-animate">
             <div class="calculator js-calc-result">
               <div
                   class="page__container"> {{ Heading.heading({ 'title': 'Рассчитайте свой кэшбэк', 'mods': { 'type': 'default', 'margin': 'medium' } }) }}
@@ -111,7 +111,7 @@
             </div>
           </section>
 
-          <section class="mobile section mobile_theme-blue page__section page__section_theme-large">
+          <section class="mobile section mobile_theme-blue page__section page__section_theme-large js-scroll-animate">
             <div class="page__container">
               <div class="mobile__wrapper">
                 <div class="section__row">
@@ -137,14 +137,14 @@
             </div>
           </section>
 
-          <section class="section page__section">
+          <section class="section page__section js-scroll-animate">
             <div class="page__container">
               {{ Heading.heading({ 'title': 'Оформите заявку - получите \n карту на следующий день', 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered hidden-mobile' }) }}
               {{ Heading.heading({ 'title': 'Как оформить заявку?', 'mods': { 'type': 'default', 'margin': 'normal' }, 'class': 'heading_mobile-centered hidden-desktop' }) }}
             </div>
             {{ BrandFeatures.brandFeatures({ 'items': [ { 'icon': 'assets/images/svg/list-image.svg', 'title': 'Оставьте заявку', 'subtitle': 'Заполнение заявки \n займет 5 минут', 'mods': { 'theme': 'lined' } }, { 'icon': 'assets/images/svg/sand-clock-image.svg', 'title': 'Получите карту', 'subtitle': 'Наш специалист доставит Вам \n документы и карту бесплатно', 'mods': { 'theme': 'lined' } }, { 'icon': 'assets/images/svg/card-image.svg', 'title': 'Пользуйтесь картой', 'subtitle': 'Получайте бонусы с каждой \n покупки и меняйте их на рубли' } ] }) }}
           </section>
-          <section id="section-request" class="section section_theme-white-smoke section_padding-default page__section">
+          <section id="section-request" class="section section_theme-white-smoke section_padding-default page__section js-scroll-animate">
             <div class="products-detail__request">
               <div class="page__container">
                 {{ Heading.heading({ 'title': 'Заявка на карту' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}

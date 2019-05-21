@@ -17,14 +17,14 @@
                         {%- endfor %}
                     {% endset %}
 
-                    <div class="brand-features__item {{ mods | safe }}">
+                    <div class="brand-features__item js-scroll-animate{{ mods | safe }}">
                         <div class="brand-features__icon">
                             {{ Svg.inlineSvg({ 'path': [ item.icon ] }) }}
                         </div>
                         <p class="brand-features__title">{{ item.title | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | replace("#euro", Icon.icon({ 'name': 'euro' })) | replace("#pound", Icon.icon({ 'name': 'pound' })) | replace("#dollar", Icon.icon({ 'name': 'baks' })) | safe }}</p>
                         <p class="text">{{ item.subtitle | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | replace("#euro", Icon.icon({ 'name': 'euro' })) | replace("#pound", Icon.icon({ 'name': 'pound' })) | replace("#dollar", Icon.icon({ 'name': 'baks' })) | safe }}</p>
                         {% if item.props %}
-                            <div class="brand-features__props">
+                            <div class="brand-features__props js-scroll-animate">
                                 {% for key, value in item.props %}
                                     <p class="state_{{ key }}">{{ value | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | replace("#euro", Icon.icon({ 'name': 'euro' })) | replace("#pound", Icon.icon({ 'name': 'pound' })) | replace("#dollar", Icon.icon({ 'name': 'baks' })) | safe }}</p>
                                 {% endfor %}

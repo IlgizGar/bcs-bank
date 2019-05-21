@@ -10,8 +10,67 @@
 
   <link href="{{ root }}/assets/styles/app.min.css" rel="stylesheet">
 </head>
-<body>
+<body  class="{{ bodyClass }}">
+<script type="text/javascript">
+  document.body.classList.add('state_load-start');
+</script>
   {% block body %}{% endblock %}
   <script src="{{ root }}/assets/scripts/app.min.js"></script>
+<script type="text/javascript">
+  function whichTransitionEvent(){
+    var t, el = document.createElement("div");
+    var transitions = [
+      {
+        name: 'transition',
+        event: 'transitionend'
+      },
+      {
+        name: 'OTransition',
+        event: 'oTransitionEnd'
+      },
+      {
+        name: 'MozTransition',
+        event: 'transitionend'
+      },
+      {
+        name: 'WebkitTransition',
+        event: 'webkitTransitionEnd'
+      },
+    ];
+    for (var i=0 ; i<transitions.length; i++){
+      t = transitions[i];
+      if (el.style[t.name] !== undefined){
+        return t.event
+      }
+    }
+  }
+  function startPageAnimation() {
+    document.body.removeAttribute('style');
+    document.body.classList.remove('state_load-end');
+    document.body.classList.add('state_animations-start');
+    $('.slick-slider').slick('slickGoTo',1,true);
+    $('.slick-slider').slick('slickGoTo',0,true);
+  }
+  var transitionEvent = whichTransitionEvent();
+  window.addEventListener('load',function () {
+    var timer = null;
+    document.body.style.position = "fixed";
+    document.body.style.overflow = "hidden";
+    document.body.style.height = "100%";
+    document.body.style.width = "100%";
+    document.body.style.overflowY = 'scroll';
+    document.body.classList.remove('state_load-start');
+    document.body.classList.add('state_load-end');
+    document.body.querySelector('main').addEventListener(transitionEvent , function (e) {
+      if(e.target === document.body.querySelector('main')){
+        startPageAnimation();
+        clearTimeout(timer);
+      }
+    },false);
+    timer = setTimeout(function () {
+      startPageAnimation();
+    }, 5000)
+  },false);
+</script>
 </body>
 </html>

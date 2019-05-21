@@ -18,7 +18,7 @@
 
   {% if options.theme === 'blue' %}
 
-    <div class="plastic-card plastic-card_theme-blue {{ mods | safe }}" data-filter-item="{{ options.filterAttributes }}">
+    <div class="plastic-card js-card plastic-card_theme-blue {{ mods | safe }} js-scroll-animate" data-filter-item="{{ options.filterAttributes }} ">
       <div class="section__row">
         <div class="plastic-card__content">
           <div class="plastic-card__header">
@@ -56,7 +56,7 @@
 
   {% else %}
 
-    <div class="plastic-card {{ mods | safe }}" data-filter-item="{{ options.filterAttributes }}">
+    <div class="plastic-card js-card {{ mods | safe }} js-scroll-animate" data-filter-item="{{ options.filterAttributes }}">
       <div class="section__row">
         <div class="plastic-card__content">
           <div class="plastic-card__header">

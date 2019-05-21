@@ -26,7 +26,7 @@
         <div class="section__header section__header_theme-blue">
           <div class="page__container">
             <div class="section__row">
-              <div class="products-detail__content products-detail__content_theme-simple">
+              <div class="products-detail__content products-detail__content_theme-simple js-scroll-animate">
                 {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Вклады', 'link': '#' } }) }}
                 {{ Heading.heading({ 'tag': 'h1', 'title': 'Доходный', 'mods': { 'type': 'large', 'margin': 'default' } }) }}
                 <div class="features">
@@ -35,7 +35,7 @@
                   {{ Feature.feature({ 'title': 'До 3 лет', 'text': 'гибкий срок \n по Вашему выбору', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
                 </div>
               </div>
-              <div class="products-detail__figure" data-illustration="">
+              <div class="products-detail__figure js-scroll-animate" data-illustration="">
                 <div class="illustration">
                   <img class="illustration-image" src="assets/illustrations/dohodny.svg" alt="Вклад Доходный">
                 </div>
@@ -91,7 +91,7 @@
               }
             ] }) }}
           </section>
-          <section class="section section_theme-white-smoke section_padding-default page__section">
+          <section class="section section_theme-white-smoke section_padding-default page__section js-scroll-animate">
             <div class="calculator js-calc-result">
               <div class="page__container">
                 {{ Heading.heading({ 'title': 'Рассчитайте свой доход', 'mods': { 'type': 'default', 'margin': 'default' } }) }}
@@ -166,7 +166,7 @@
             </div>
           </section>
 
-          <section class="mobile section mobile_theme-blue page__section page__section_theme-large">
+          <section class="mobile section mobile_theme-blue page__section page__section_theme-large js-scroll-animate">
             <div class="page__container">
               <div class="mobile__wrapper">
                 <div class="section__row">
@@ -192,7 +192,7 @@
             </div>
           </section>
 
-          <section class="section page__section">
+          <section class="section page__section js-scroll-animate">
             <div class="page__container">
               {{ Heading.heading({ 'title': 'Оформите заявку на вклад', 'mods': { 'type': 'default', 'margin': 'normal' } }) }}
             </div>
@@ -220,7 +220,7 @@
               }
             ] }) }}
           </section>
-          <section id="section-request" class="section section_theme-white-smoke section_padding-default page__section">
+          <section id="section-request" class="section section_theme-white-smoke section_padding-default page__section js-scroll-animate">
             <div class="products-detail__request">
               <div class="page__container">
                 {{ Heading.heading({ 'title': 'Заявка на открытие вклада' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}
@@ -281,7 +281,7 @@
 
                     </form>
                   </div>
-                  <div class="calculation js-calc-result calculation_theme-uslugi">
+                  <div class="calculation js-calc-result calculation_theme-uslugi js-sticky">
                     <div class="calculation__thumbnail">
                       <div class="text">Сумма к концу срока</div>
                       <!--#4-->

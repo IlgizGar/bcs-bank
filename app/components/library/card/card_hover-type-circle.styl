@@ -1,0 +1,35 @@
+.card_hover-type-circle
+  position relative
+  .card__action
+    position relative
+    z-index 1
+  .card__wrap
+    &:before
+      content ''
+      width 100%
+      padding 50% 0
+      border-radius 50%
+      position absolute
+      left 0
+      top: 50%
+      transform translateY(-50%) scale(0)
+      filter blur(3px)
+      opacity 0
+      background $card_circle_hover_default
+      transition 0.5s ease
+  .icon-arrow
+    transition 0.5s ease
+  &:hover
+    .icon-arrow
+      transform translateX(10px)
+    .card__wrap
+      &:before
+        opacity 1
+        transform translateY(-50%) scale(1.75)
+
+.section_theme-light
+  .card_hover-type-circle
+    .card__wrap
+
+      &:before
+        background $card_circle_hover_gray

@@ -11,7 +11,7 @@
     {% endset %}
   {% endif %}
 
-  <div class="feature {{ mods | safe }} {{ options.class }}">
+  <div class="feature {{ mods | safe }} {{ options.class }} js-scroll-animate">
     {% if options.iconPath %}
       <div class="feature__icon">
         <img src="{{ options.iconPath }}">

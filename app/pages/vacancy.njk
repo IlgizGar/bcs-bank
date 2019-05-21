@@ -19,7 +19,7 @@
     {% include "../components/modules/header/header.njk" %}
 
     <main role="main">
-      <section class="page-header section page__section">
+      <section class="page-header section page__section js-scroll-animate">
 
         {# Чтобы установить картинку на фон, необходимо добавить style="backgraun-image: url(путь до картинки)" #}
         <div class="page-header__vacancy section__header section__header_theme-blue">
@@ -39,13 +39,13 @@
 
       </section>
 
-      <section class="section">
+      <section class="section ">
         <div class="page__container">
           <div class="section__row">
             <div class="section__content section__content_medium section__content_theme-centered">
 
-              {{ Heading.heading({ 'tag': 'h2', 'title': 'Требования:' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'normal-small' }, 'class': 'news-detail__title pb-32' }) }}
-              <ul class="brand-list brand-list_type-disc brand-list_margin-medium">
+              {{ Heading.heading({ 'tag': 'h2', 'title': 'Требования:' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'normal-small' }, 'class': 'js-scroll-animate news-detail__title pb-32' }) }}
+              <ul class="brand-list brand-list_type-disc brand-list_margin-medium js-scroll-animate">
                 <li>Наличие собственной клиентской базы;</li>
                 <li>Знание всех банковских продуктов и технологий для корпоративных клиентов;</li>
                 <li>Опыт проведения презентаций, переговоров;</li>
@@ -56,8 +56,8 @@
                 <li>Успешный опыт привлечения корпоративных клиентов на активы и пассивы.</li>
               </ul>
 
-              {{ Heading.heading({ 'tag': 'h2', 'title': 'Задачи:' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'normal-small' }, 'class': 'news-detail__title' }) }}
-              <ul class="brand-list brand-list_type-disc brand-list_margin-medium">
+              {{ Heading.heading({ 'tag': 'h2', 'title': 'Задачи:' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'normal-small' }, 'class': 'news-detail__title js-scroll-animate' }) }}
+              <ul class="brand-list brand-list_type-disc brand-list_margin-medium js-scroll-animate">
                 <li>Привлечение крупных корпоративных клиентов на обслуживание в Банк;</li>
                 <li>Выполнение плановых показателей по приросту активов, пассивов и комиссионного дохода Банка,
                   выполнение плана продаж (в т.ч. по паспортам сделок, гарантиям, зарплатным проектам);
@@ -79,8 +79,8 @@
                 <li>Составление периодической отчетности.</li>
               </ul>
 
-              {{ Heading.heading({ 'tag': 'h2', 'title': 'Условия:' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'normal-small' }, 'class': 'news-detail__title' }) }}
-              <ul class="brand-list brand-list_type-disc brand-list_margin-big mb-64">
+              {{ Heading.heading({ 'tag': 'h2', 'title': 'Условия:' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'normal-small' }, 'class': 'news-detail__title js-scroll-animate' }) }}
+              <ul class="brand-list brand-list_type-disc brand-list_margin-big mb-64 js-scroll-animate">
                 <li>Высокий уровень фиксированного оклада + бонусы;</li>
                 <li>Широкие возможности профессионального роста, корпоративная система обучения в компании;</li>
                 <li>Работа в команде профессионалов, в молодом и дружном коллективе;</li>

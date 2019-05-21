@@ -26,7 +26,7 @@
         <div class="section__header section__header_theme-blue">
           <div class="page__container">
             <div class="section__row">
-              <div class="products-detail__content products-detail__content_theme-simple">
+              <div class="products-detail__content products-detail__content_theme-simple js-scroll-animate">
                 {{ Breadcrumbs.breadcrumbs({ 'main': {'title': 'Вклады', 'link': '#' } }) }}
                 {{ Heading.heading({ 'tag': 'h1', 'title': 'Универсальный выбор', 'mods': { 'type': 'large', 'margin': 'default' } }) }}
                 <div class="features">
@@ -35,7 +35,7 @@
                   {{ Feature.feature({ 'title': 'До 2 лет', 'text': 'гибкие \n сроки вклада', 'mods': {'type': 'normal', 'theme': 'light'}, 'class': 'features__item' }) }}
                 </div>
               </div>
-              <div class="products-detail__figure" data-illustration="">
+              <div class="products-detail__figure js-scroll-animate" data-illustration="">
                 <div class="illustration">
                   <img class="illustration-image" src="assets/illustrations/universal.svg" alt="Вклад Универсальный выбор">
                 </div>
@@ -59,7 +59,7 @@
 
       <div class="tabs js-tabs">
         <div id="about-deposit" class="tabs__item js-tab state_invisible">
-          <section class="section page__section">
+          <section class="section page__section js-scroll-animate">
             {{ BrandFeatures.brandFeatures({ 'items': [
               {
                 'icon': 'assets/images/svg/shield-image.svg',
@@ -92,7 +92,7 @@
               }
             ] }) }}
           </section>
-          <section class="section section_theme-white-smoke js-calc-result section_padding-default page__section">
+          <section class="section section_theme-white-smoke js-calc-result section_padding-default page__section js-scroll-animate">
             <div class="calculator">
               <div class="page__container">
                 {{ Heading.heading({ 'title': 'Рассчитайте свой доход', 'mods': { 'type': 'default', 'margin': 'default' } }) }}
@@ -166,7 +166,7 @@
             </div>
           </section>
 
-          <section class="mobile section mobile_theme-blue page__section page__section_theme-large">
+          <section class="mobile section mobile_theme-blue page__section page__section_theme-large js-scroll-animate">
             <div class="page__container">
               <div class="mobile__wrapper">
                 <div class="section__row">
@@ -192,7 +192,7 @@
             </div>
           </section>
 
-          <section class="section page__section">
+          <section class="section page__section js-scroll-animate">
             <div class="page__container">
               {{ Heading.heading({ 'title': 'Оформите заявку на вклад', 'mods': { 'type': 'default', 'margin': 'normal' } }) }}
             </div>
@@ -220,7 +220,7 @@
               }
             ] }) }}
           </section>
-          <section id="section-request" class="section section_theme-white-smoke section_padding-default page__section">
+          <section id="section-request" class="section section_theme-white-smoke section_padding-default page__section js-scroll-animate">
             <div class="products-detail__request">
               <div class="page__container">
                 {{ Heading.heading({ 'title': 'Заявка на открытие вклада' | striptags(true) | escape | nl2br, 'mods': { 'type': 'default', 'margin': 'small' } }) }}

@@ -11,14 +11,14 @@
     {% include "../components/modules/header/header.njk" %}
     <main role="main" class="leaders">
       <section
-          class="section page__section"> {# Чтобы установить картинку на фон, необходимо добавить style="backgraun-image: url(путь до картинки)" #}
+          class="section page__section js-scroll-animate"> {# Чтобы установить картинку на фон, необходимо добавить style="backgraun-image: url(путь до картинки)" #}
         <div class="section__header section__header_theme-blue">
           <div class="page__container page__container_type-header">
             {{ Heading.heading({ 'tag': 'h1', 'title': 'Руководство', 'mods': { 'type': 'large' } }) }}
           </div>
         </div>
       </section>
-      <section class="section page__section page__section_theme-normal">
+      <section class="section page__section page__section_theme-normal js-scroll-animate">
         <div class="page__container">
           <div class="section__row">
             <div class="section__content section__content_theme-centered">
@@ -43,14 +43,14 @@
         <div class="page__container">
           <div class="section__content">
             <div class="section__row">
-              <a class="leaders__person js-open-modal" href="ajax/leader-1.html" data-type="modal-ajax">
+              <a class="leaders__person js-open-modal js-scroll-animate" href="ajax/leader-1.html" data-type="modal-ajax">
                 <div class="leaders__photo">
                   <img src="assets/images/mihasenko.jpg" alt="Председатель Совета директоров">
                 </div>
                 <p class="leaders__name">Михасенко <br> Олег Владимирович</p>
                 <p class="leaders__post">Председатель Совета директоров</p>
               </a>
-              <a class="leaders__person js-open-modal" href="ajax/leader-2.html" data-type="modal-ajax">
+              <a class="leaders__person js-open-modal js-scroll-animate" href="ajax/leader-2.html" data-type="modal-ajax">
                 <div class="leaders__photo">
                   <img src="assets/images/peshnev.jpg" alt="Председатель Совета директоров">
                 </div>
@@ -80,13 +80,18 @@
           <div class="section__row">
             <div class="section__content section__content_theme-centered">
               {{ Heading.heading({ 'title': 'Совет директоров', 'mods': {'type': 'normal', 'margin': 'min'} }) }}
-              <div class="text">
-                <div class="text__row">Степакина Елена Владимировна</div>
-                <div class="text__row">Хлызов Константин Борисович</div>
-                <div class="text__row">Новиков Станислав Михайлович</div>
+              <div class="js-scroll-animate">
+                <div class="text">
+                  <div class="text__row">Степакина Елена Владимировна</div>
+                  <div class="text__row">Хлызов Константин Борисович</div>
+                  <div class="text__row">Новиков Станислав Михайлович</div>
+                </div>
               </div>
-              {{ Heading.heading({ 'title': 'Правление банка', 'mods': {'type': 'normal', 'margin': 'min', 'margin-top': 'normal'} }) }}
-              <div class="leaders__person-group">
+             <div class="js-scroll-animate">
+               {{ Heading.heading({ 'title': 'Правление банка', 'mods': {'type': 'normal', 'margin': 'min', 'margin-top': 'normal'} }) }}
+             </div>
+
+              <div class="leaders__person-group js-scroll-animate">
                 <div class="leaders__person leaders__person_theme-simple">
                   <div class="leaders__photo">
                     <img src="assets/images/peshnev.jpg" alt="Председатель Правления">
