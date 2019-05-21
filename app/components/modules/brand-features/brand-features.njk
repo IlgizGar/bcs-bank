@@ -5,7 +5,7 @@
 
     {% set class_sep = joiner(' ') %}
 
-    <div class="brand-features {{ options.class }} js-scroll-animate">
+    <div class="brand-features {{ options.class }}">
         <div class="page__container brand-features__carousel carousel carousel_type-mobile {% if options.landing  %} page__container_landing {% endif %}">
             <div class="section__row js-carousel" data-id="product-cards" data-breakpoint="992">
                 {% for item in options.items %}
@@ -17,7 +17,7 @@
                         {%- endfor %}
                     {% endset %}
 
-                    <div class="brand-features__item {{ mods | safe }}">
+                    <div class="brand-features__item js-scroll-animate{{ mods | safe }}">
                         <div class="brand-features__icon">
                             {{ Svg.inlineSvg({ 'path': [ item.icon ] }) }}
                         </div>

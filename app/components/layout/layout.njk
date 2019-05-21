@@ -48,6 +48,8 @@
     document.body.removeAttribute('style');
     document.body.classList.remove('state_load-end');
     document.body.classList.add('state_animations-start');
+    $('.slick-slider').slick('slickGoTo',1,true);
+    $('.slick-slider').slick('slickGoTo',0,true);
   }
   var transitionEvent = whichTransitionEvent();
   window.addEventListener('load',function () {

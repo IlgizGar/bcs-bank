@@ -81,13 +81,19 @@ export default class Animator {
     let scroll = 0;
     Object.keys(this.animations).forEach((key) => {
       const dataItem = this.animations[key];
+      if ($(dataItem.element).offset().top < window.innerHeight) {
+        // console.log($(dataItem.element).offset().top, window.innerHeight);
+        $(dataItem.element).addClass('state_animate-page');
+      }
       function callback(entries) {
         const check = entries[0];
-        if (check.isIntersecting) {
-          $(check.target).addClass('state_animate-page');
-          if (!$(check.target).hasClass('state_animate-double')) {
-            delete dataItem.obserber;
-          }
+        if (check.intersectionRatio <= 0) {
+          return;
+        }
+        $(check.target).addClass('state_animate-page');
+        if (!$(check.target).hasClass('state_animate-double')) {
+          delete dataItem.obserber;
+          return;
         }
         if (scroll > window.pageYOffset) {
           if ($(check.target).hasClass('state_animate-double')) {
@@ -101,10 +107,12 @@ export default class Animator {
         dataItem.obserber.observe(dataItem.element);
       };
       observe();
-      if ($(dataItem.element).offset().top + ($(dataItem.element).height() / 2) > (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight)) {
-        setTimeout(() => {
-          $(dataItem.element).removeClass('state_animate-page');
-        }, 200);
+      if ($(dataItem.element).hasClass('state_animate-double')) {
+        if ($(dataItem.element).offset().top + ($(dataItem.element).height() / 2) > (window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight)) {
+          setTimeout(() => {
+            $(dataItem.element).removeClass('state_animate-page');
+          }, 200);
+        }
       }
     });
     const SpeedScrollOptions = {
@@ -115,18 +123,19 @@ export default class Animator {
       const dataItem = this.animations[key];
       function speedCallback(entries, observer) {
         const check = entries[0];
-        if (check.isIntersecting) {
-          observer.disconnect();
-          $(check.target).find('.js-card').each((index, element) => {
-            $('body').bind('scrollstart', () => {
-              Animator.scrollSpeedAnimate(element, index, this.delay);
-              $('body').unbind('scrollstart');
-            });
-          });
-          if ($(check.target).hasClass('js-card')) {
-            Animator.scrollSpeedAnimate(check.target, 0, this.delay);
+        if (check.intersectionRatio <= 0) {
+          return;
+        }
+        observer.disconnect();
+        $(check.target).find('.js-card').each((index, element) => {
+          $('body').bind('scrollstart', () => {
+            Animator.scrollSpeedAnimate(element, index, this.delay);
             $('body').unbind('scrollstart');
-          }
+          });
+        });
+        if ($(check.target).hasClass('js-card')) {
+          Animator.scrollSpeedAnimate(check.target, 0, this.delay);
+          $('body').unbind('scrollstart');
         }
       }
       dataItem.speedObserber = new window.IntersectionObserver(speedCallback, SpeedScrollOptions);
