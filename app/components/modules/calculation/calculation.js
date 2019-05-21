@@ -67,11 +67,11 @@ export default class Calculation {
             console.warn(e);
             result = Number(this.calc.calc(...values)).toFixed(this.round);
           }
+          const resultString = String(result.replace('.', ',')).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
           if (this.bindInput) {
-            this.bindInput.val(result);
+            this.bindInput.val(resultString);
             this.bindInput.trigger('change');
           }
-          const resultString = String(result.replace('.', ',')).replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
           if (resultString.length > 12) {
             this.resultBlock.parent().addClass('font_down');
           } else {
