@@ -8,6 +8,29 @@ export default class Modal {
     this.$link = $openLink;
     this.init();
   }
+  bodyNoScroll(open) {
+    const body = document.querySelector('body');
+    if (!window.scrollPos) {
+      window.scrollPos = window.pageYOffset;
+    }
+    this.div = document.createElement('div');
+    this.div.style.overflowY = 'scroll';
+    this.div.style.width = '50px';
+    this.div.style.height = '50px';
+    this.div.style.visibility = 'hidden';
+    body.appendChild(this.div);
+    const scrollWidth = this.div.offsetWidth - this.div.clientWidth;
+    body.removeChild(this.div);
+    delete this.div;
+    if (!open) {
+      body.attributes.removeNamedItem('style');
+      window.scrollTo(0, window.scrollPos);
+      window.scrollPos = null;
+    } else {
+      body.setAttribute('style', `padding-right: ${scrollWidth}px; top:${-1 * window.scrollPos}px;`);
+      document.body.style.position = 'fixed';
+    }
+  }
 
   init() {
     $.modal.defaults = {
@@ -47,7 +70,7 @@ export default class Modal {
 
   openWindow(ajax) {
     let $el = null;
-
+    this.bodyNoScroll(true);
     if (ajax) {
       const id = $(this.html).attr('id');
       $el = $(`#${id}`);
@@ -62,10 +85,13 @@ export default class Modal {
       $el = $(this.windowId);
       $el.modal();
     }
-
     global.forms.push(new Form($el.find('form')));
     global.checkboxes.push(new Checkbox($el.find('.js-checkbox')));
     $('form').removeClass('state_loading');
+    $el.unbind('');
+    $el.bind($.modal.BEFORE_CLOSE, () => {
+      this.bodyNoScroll(false);
+    });
   }
 
   static closeWindow() {
