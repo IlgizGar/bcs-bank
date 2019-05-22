@@ -3,6 +3,7 @@ import Datepicker from '../../library/datepicker/datepicker';
 
 export default class News {
   constructor() {
+    window.NewsLastPage = 'false';
     this.newsBlock = $('.js-news');
     this.contentBlock = this.newsBlock.find('.js-news-cards');
     this.moreButton = this.newsBlock.find('.js-button[data-see-more]');
@@ -42,22 +43,22 @@ export default class News {
 
   getNews() {
     $.ajax({
-      url: this.apiUrl,
+      url: `${this.apiUrl}${this.currentPage}`,
       data: {
         from: this.dateFrom,
         to: this.dateTo,
-        page: this.currentPage,
       },
       method: 'GET',
-      dataType: 'json',
-      success: (e) => {
-        if (e.pagination.nextPage) {
-          this.currentPage = e.pagination.currentPage;
-        } else {
-          this.moreButton.hide();
-        }
-        e.items.forEach((el) => {
-          this.contentBlock.append(News.itemTemplate(el));
+      dataType: 'html',
+      success: (html) => {
+        this.contentBlock.append(html);
+        this.contentBlock.ready(() => {
+          this.contentBlock.find('.js-card').addClass('animate').addClass('state_animate-page');
+          if (window.NewsLastPage !== 'true') {
+            this.currentPage += 1;
+          } else {
+            this.moreButton.hide();
+          }
         });
       },
     });
