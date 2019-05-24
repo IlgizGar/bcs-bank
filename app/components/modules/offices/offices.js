@@ -117,7 +117,8 @@ export default class Offices {
   }
 
   handleSwitch() {
-    this.switcher.on('click', (e) => {
+    this.switcher.unbind('click');
+    this.switcher.bind('click', (e) => {
       console.log(e);
       if (this.appBlock.hasClass('state_listed')) {
         this.appBlock.removeClass('state_listed');
@@ -365,11 +366,11 @@ export default class Offices {
       currentCollapse.openContent(target);
       Offices.reInitScroll(this.pane, 225);
       this.togglePointState(e.get('target'), target);
+      console.log(e.get('target'));
       if (window.innerWidth < 992) {
         if (!this.appBlock.hasClass('state_explored')) {
           this.appBlock.addClass('state_explored');
           this.initPointMobileDetail(target);
-
           this.point = e.get('target');
           this.target = target;
         }
@@ -380,18 +381,14 @@ export default class Offices {
   initPointMobileDetail(target) {
     this.handleMapSize();
     this.goToPoints();
-    const targeBlock = target;
-
-    $('html, body').animate({ scrollTop: this.appBlock.offset().top }, () => {
-      const $collapse = $.extend(true, {}, targeBlock.parent().clone());
-      $collapse.addClass('collapse__item_state-open');
-      $collapse.find('.collapse__content').css({ display: 'block' });
-      this.switcher.addClass('state_hidden');
-      if (this.detailBlock.hasClass('state_hidden')) {
-        this.detailBlock.removeClass('state_hidden').find('.js-detail-content').append($collapse);
-      }
-      $('.js-footer').addClass('state_hidden');
-    });
+    const $collapse = $.extend(true, {}, target.parent().clone());
+    $collapse.addClass('collapse__item_state-open');
+    $collapse.find('.collapse__content').css({ display: 'block', height: 'auto' });
+    this.switcher.addClass('state_hidden');
+    if (this.detailBlock.hasClass('state_hidden')) {
+      this.detailBlock.removeClass('state_hidden').find('.js-detail-content').append($collapse);
+    }
+    $('.js-footer').addClass('state_hidden');
   }
 
   togglePointState(point, collapse) {
