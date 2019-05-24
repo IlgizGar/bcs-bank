@@ -118,21 +118,20 @@ export default class Offices {
 
   handleSwitch() {
     this.switcher.on('click', (e) => {
-      if ($(e.currentTarget) === this.switcher) {
-        if (this.appBlock.hasClass('state_listed')) {
-          this.appBlock.removeClass('state_listed');
-          this.switcher.data('state', 'map');
-          this.switcher.find('.js-button-title').html('Показать списком');
-          this.mapContainer.append(this.mapBlock);
-          const pos = $('#map-container').offset().top;
-          $('html, body').animate({
-            scrollTop: pos - 150,
-          }, 600);
-        } else {
-          this.appBlock.addClass('state_listed');
-          this.switcher.data('state', 'list');
-          this.switcher.find('.js-button-title').html('Показать на карте');
-        }
+      console.log(e);
+      if (this.appBlock.hasClass('state_listed')) {
+        this.appBlock.removeClass('state_listed');
+        this.switcher.data('state', 'map');
+        this.switcher.find('.js-button-title').html('Показать списком');
+        this.mapContainer.append(this.mapBlock);
+        const pos = $('#map-container').offset().top;
+        $('html, body').animate({
+          scrollTop: pos - 150,
+        }, 600);
+      } else {
+        this.appBlock.addClass('state_listed');
+        this.switcher.data('state', 'list');
+        this.switcher.find('.js-button-title').html('Показать на карте');
       }
     });
 
@@ -361,13 +360,11 @@ export default class Offices {
   onPointEvent(e, coordinates) {
     const currentCollapse = global.collapses[this.currentTabId];
     const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${coordinates.join()}]"] .collapse__control`);
-
     if (!this.appBlock.hasClass('state_explored')) {
       this.scrollToCollapse(target);
       currentCollapse.openContent(target);
       Offices.reInitScroll(this.pane, 225);
       this.togglePointState(e.get('target'), target);
-
       if (window.innerWidth < 992) {
         if (!this.appBlock.hasClass('state_explored')) {
           this.appBlock.addClass('state_explored');
