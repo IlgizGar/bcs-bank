@@ -42,7 +42,7 @@ export default class Offices {
       $('html, body').animate({
         scrollTop: pos - 150,
       }, 600);
-    })
+    });
   }
 
   init() {
@@ -213,7 +213,6 @@ export default class Offices {
           console.error(err);
         },
       );
-
     });
   }
 
