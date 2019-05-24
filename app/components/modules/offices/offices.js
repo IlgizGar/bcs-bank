@@ -37,6 +37,12 @@ export default class Offices {
     this.mapContainer.setAttribute('tab-index', '1');
     this.mapBlock = null;
     this.init();
+    $('#select-city .js-context-item').on('click', () => {
+      const pos = $('#map-container').offset().top;
+      $('html, body').animate({
+        scrollTop: pos - 150,
+      }, 600);
+    })
   }
 
   init() {
@@ -111,20 +117,22 @@ export default class Offices {
   }
 
   handleSwitch() {
-    this.switcher.on('click', () => {
-      if (this.appBlock.hasClass('state_listed')) {
-        this.appBlock.removeClass('state_listed');
-        this.switcher.data('state', 'map');
-        this.switcher.find('.js-button-title').html('Показать списком');
-        this.mapContainer.append(this.mapBlock);
-        const pos = $('#map-container').offset().top;
-        $('html, body').animate({
-          scrollTop: pos - 150,
-        }, 600);
-      } else {
-        this.appBlock.addClass('state_listed');
-        this.switcher.data('state', 'list');
-        this.switcher.find('.js-button-title').html('Показать на карте');
+    this.switcher.on('click', (e) => {
+      if ($(e.currentTarget) === this.switcher) {
+        if (this.appBlock.hasClass('state_listed')) {
+          this.appBlock.removeClass('state_listed');
+          this.switcher.data('state', 'map');
+          this.switcher.find('.js-button-title').html('Показать списком');
+          this.mapContainer.append(this.mapBlock);
+          const pos = $('#map-container').offset().top;
+          $('html, body').animate({
+            scrollTop: pos - 150,
+          }, 600);
+        } else {
+          this.appBlock.addClass('state_listed');
+          this.switcher.data('state', 'list');
+          this.switcher.find('.js-button-title').html('Показать на карте');
+        }
       }
     });
 
@@ -148,7 +156,7 @@ export default class Offices {
     this.detailBlock.find('.js-detail-content').html('');
     this.detailBlock.addClass('state_hidden');
     $('.js-footer').removeClass('state_hidden');
-    $('html, body').scrollTop(0).removeClass('state_unscroll');
+    // $('html, body').scrollTop(0).removeClass('state_unscroll');
 
     this.goToPoints();
   }
@@ -205,6 +213,7 @@ export default class Offices {
           console.error(err);
         },
       );
+
     });
   }
 
@@ -375,9 +384,12 @@ export default class Offices {
   initPointMobileDetail(target) {
     this.handleMapSize();
     this.goToPoints();
+    const targeBlock = target;
 
-    $('html, body').addClass('state_unscroll').animate({ scrollTop: this.appBlock.offset().top }, () => {
-      const $collapse = $.extend(true, {}, target.parent().clone());
+    $('html, body').animate({ scrollTop: this.appBlock.offset().top }, () => {
+      const $collapse = $.extend(true, {}, targeBlock.parent().clone());
+      $collapse.addClass('collapse__item_state-open');
+      $collapse.find('.collapse__content').css({ display: 'block' });
       this.switcher.addClass('state_hidden');
       if (this.detailBlock.hasClass('state_hidden')) {
         this.detailBlock.removeClass('state_hidden').find('.js-detail-content').append($collapse);
