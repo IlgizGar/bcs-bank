@@ -297,35 +297,33 @@
 
                           <div class="calculator-hidden-out">
 
-                            {#todo: сюда вывести курсы карт#}
-                            <!--курсы обычные покупка-->
-                            <input type="hidden" value="64.48" name="curseUsd">
-                            <input type="hidden" value="71.92" name="curseEur">
-                            <input type="hidden" value="81.68" name="curseGbp">
-
-                            <!--курсы обычные покупки банком-->
-                            <input type="hidden" value="64.48" name="curseUsdB">
-                            <input type="hidden" value="71.92" name="curseEurB">
-                            <input type="hidden" value="81.68" name="curseGbpB">
-
-                            <!--валютная карта курсы продажи банком-->
-                            <input type="hidden" value="65.38272" name="cardVusd">
-                            <input type="hidden" value="72.92688" name="cardVeur">
-                            <input type="hidden" value="82.82352" name="cardVgbp">
-                            <!--валютная карта премиум курсы продажи банком-->
-                            <input type="hidden" value="65.38272" name="cardPusd">
-                            <input type="hidden" value="72.92688" name="cardPeur">
-                            <input type="hidden" value="82.82352" name="cardPgbp">
-
-
-                            <!--валютная карта курсы покупки банком-->
-                            <input type="hidden" value="63.57728" name="cardVusdB">
-                            <input type="hidden" value="70.91312" name="cardVeurB">
-                            <input type="hidden" value="80.53648" name="cardVgbpB">
-                            <!--валютная карта премиум курсы покупки банком-->
-                            <input type="hidden" value="63.57728" name="cardPusdB">
-                            <input type="hidden" value="70.91312" name="cardPeurB">
-                            <input type="hidden" value="80.53648" name="cardPgbpB">
+                              <div id="courcesExchangeblock">
+                                  {#todo: сюда вывести курсы карт#}
+                                  <!--курсы обычные продажа-->
+                                  <input type="hidden" value="64.48" name="curseUsd">
+                                  <input type="hidden" value="71.92" name="curseEur">
+                                  <input type="hidden" value="81.68" name="curseGbp">
+                                  <!--курсы обычные покупки банком-->
+                                  <input type="hidden" value="64.48" name="curseUsdB">
+                                  <input type="hidden" value="71.92" name="curseEurB">
+                                  <input type="hidden" value="81.68" name="curseGbpB">
+                                  <!--валютная карта курсы продажи банком-->
+                                  <input type="hidden" value="65.38272" name="cardVusd">
+                                  <input type="hidden" value="72.92688" name="cardVeur">
+                                  <input type="hidden" value="82.82352" name="cardVgbp">
+                                  <!--валютная карта премиум курсы продажи банком-->
+                                  <input type="hidden" value="65.38272" name="cardPusd">
+                                  <input type="hidden" value="72.92688" name="cardPeur">
+                                  <input type="hidden" value="82.82352" name="cardPgbp">
+                                  <!--валютная карта курсы покупки банком-->
+                                  <input type="hidden" value="63.57728" name="cardVusdB">
+                                  <input type="hidden" value="70.91312" name="cardVeurB">
+                                  <input type="hidden" value="80.53648" name="cardVgbpB">
+                                  <!--валютная карта премиум курсы покупки банком-->
+                                  <input type="hidden" value="63.57728" name="cardPusdB">
+                                  <input type="hidden" value="70.91312" name="cardPeurB">
+                                  <input type="hidden" value="80.53648" name="cardPgbpB">
+                              </div>
 
                                  <span
                                          data-calc="KGZ1bmN0aW9uICh2YWx1dGUsY2FyZFZ1c2QsY2FyZFZldXIsY2FyZFZnYnApIHsKICAgIGlmKHZhbHV0ZT09MSl7CiAgICAgICAgcmV0dXJuIDE7CiAgICB9IGVsc2UgaWYodmFsdXRlID09IDIpewogICAgICAgIHJldHVybiBjYXJkVnVzZDsKICAgIH0gZWxzZSBpZih2YWx1dGUgPT0gMyl7CiAgICAgICAgcmV0dXJuIGNhcmRWZXVyOwogICAgfSBlbHNlIGlmKHZhbHV0ZSA9PSA0ICl7CiAgICAgICAgcmV0dXJuIGNhcmRWZ2JwCiAgICB9CiAgICByZXR1cm4gMTsKfSkodmFsdXRlLGNhcmRWdXNkLGNhcmRWZXVyLGNhcmRWZ2JwKQo="
