@@ -571,64 +571,64 @@ module.exports = (form) => {
       return result;
     }
 
-    static addValidateDate() {
-      $.validator.addMethod('checkDate', (value, element) => {
-        function getCurrentAge(date) {
-          return ((new Date().getTime() - date) / (24 * 3600 * 365.25 * 1000)) || 0;
-        }
+    // static addValidateDate() {
+    //   $.validator.addMethod('checkDate', (value, element) => {
+    //     function getCurrentAge(date) {
+    //       return ((new Date().getTime() - date) / (24 * 3600 * 365.25 * 1000)) || 0;
+    //     }
+    //
+    //     const currentDate = new Date();
+    //     const parsedValue = String(value)
+    //       .split('.');
+    //     const date = new Date(parseInt(parsedValue[2], 10), parseInt((parsedValue[1] - 1), 10), parseInt(parsedValue[0], 10));
+    //     if (!$(element)
+    //       .hasClass('js-default-date')) {
+    //       let valid = true;
+    //       const regExp = new RegExp('^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$');
+    //       valid = !!String(value)
+    //         .match(regExp);
+    //       if ($(element)
+    //         .hasClass('js-date-type__pass-prodused')) {
+    //         if ($('.js-date-type__birth')
+    //           .val()) {
+    //           valid = Validator.checkPassportDate(String(value), $('.js-date-type__birth')
+    //             .val());
+    //           if (!valid) {
+    //             $.validator.messages.checkDate = 'Паспорт просрочен';
+    //           }
+    //         }
+    //       }
+    //       if ($(element)
+    //         .hasClass('js-date-type__birth')) {
+    //         const age = getCurrentAge(date);
+    //         if (age < 18) {
+    //           valid = false;
+    //           $.validator.messages.checkDate = 'Неверный возраст';
+    //         }
+    //         if (age > 130) {
+    //           valid = false;
+    //           $.validator.messages.checkDate = 'Неверный возраст';
+    //         }
+    //       }
+    //       if (valid) {
+    //         return !(Number(currentDate) < Number(date));
+    //       }
+    //       return false;
+    //     }
+    //     return !(Number(currentDate) <= Number(date));
+    //   }, 'Введите верную дату');
+    // }
 
-        const currentDate = new Date();
-        const parsedValue = String(value)
-          .split('.');
-        const date = new Date(parseInt(parsedValue[2], 10), parseInt((parsedValue[1] - 1), 10), parseInt(parsedValue[0], 10));
-        if (!$(element)
-          .hasClass('js-default-date')) {
-          let valid = true;
-          const regExp = new RegExp('^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1|(?:(?:29|30)(\\/|-|\\.)(?:0?[1,3-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$');
-          valid = !!String(value)
-            .match(regExp);
-          if ($(element)
-            .hasClass('js-date-type__pass-prodused')) {
-            if ($('.js-date-type__birth')
-              .val()) {
-              valid = Validator.checkPassportDate(String(value), $('.js-date-type__birth')
-                .val());
-              if (!valid) {
-                $.validator.messages.checkDate = 'Паспорт просрочен';
-              }
-            }
-          }
-          if ($(element)
-            .hasClass('js-date-type__birth')) {
-            const age = getCurrentAge(date);
-            if (age < 18) {
-              valid = false;
-              $.validator.messages.checkDate = 'Неверный возраст';
-            }
-            if (age > 130) {
-              valid = false;
-              $.validator.messages.checkDate = 'Неверный возраст';
-            }
-          }
-          if (valid) {
-            return !(Number(currentDate) < Number(date));
-          }
-          return false;
-        }
-        return !(Number(currentDate) <= Number(date));
-      }, 'Введите верную дату');
-    }
-
-    static addValidateSnils() {
-      const errors = {
-        message: 'Неверный СНИЛС',
-      };
-      $.validator.addMethod('checkSnils', (value) => {
-        const valid = Validator.validateSnils(value, errors);
-        $.validator.messages.checkSnils = errors.message;
-        return valid;
-      }, errors.message);
-    }
+    // static addValidateSnils() {
+    //   const errors = {
+    //     message: 'Неверный СНИЛС',
+    //   };
+    //   $.validator.addMethod('checkSnils', (value) => {
+    //     const valid = Validator.validateSnils(value, errors);
+    //     $.validator.messages.checkSnils = errors.message;
+    //     return valid;
+    //   }, errors.message);
+    // }
 
     scrollToError(el) {
       if (!this.scrollTimout) {
