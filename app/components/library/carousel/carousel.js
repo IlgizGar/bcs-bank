@@ -84,36 +84,29 @@ module.exports = (elem) => {
           });
           break;
         case 'advice-filtered':
-          this.carousel.not('.slick-initialized').slick({
-            appendArrows: this.carousel.next('.js-carousel-controls'),
-            nextArrow: this.next,
-            prevArrow: this.prev,
-            mobileFirst: false,
-            infinite: false,
-            responsive: [
-              {
-                breakpoint: 9999,
-                settings: {
-                  slidesToShow: 3,
-                  slidesToScroll: 3,
-                },
+          this.initDefault([
+            {
+              breakpoint: 9999,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
               },
-              {
-                breakpoint: 992,
-                settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 2,
-                },
+            },
+            {
+              breakpoint: 992,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
               },
-              {
-                breakpoint: 768,
-                settings: {
-                  slidesToShow: 1,
-                  slidesToScroll: 1,
-                },
+            },
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
               },
-            ],
-          });
+            },
+          ], this.carousel.next('.js-carousel-controls'));
           break;
         case 'bonus-card':
           if (count <= 3) {
@@ -121,36 +114,29 @@ module.exports = (elem) => {
           } else {
             this.carousel.prev('.js-carousel-controls').show();
           }
-          this.carousel.not('.slick-initialized').slick({
-            appendArrows: this.carousel.prev('.js-carousel-controls'),
-            nextArrow: this.next,
-            prevArrow: this.prev,
-            mobileFirst: false,
-            infinite: false,
-            responsive: [
-              {
-                breakpoint: 9999,
-                settings: (count > 3) ? {
-                  slidesToShow: 3,
-                  slidesToScroll: 1,
-                } : 'unslick',
+          this.initDefault([
+            {
+              breakpoint: 9999,
+              settings: (count > 3) ? {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+              } : 'unslick',
+            },
+            {
+              breakpoint: 992,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
               },
-              {
-                breakpoint: 992,
-                settings: {
-                  slidesToShow: 2,
-                  slidesToScroll: 1,
-                },
+            },
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
               },
-              {
-                breakpoint: 768,
-                settings: {
-                  slidesToShow: 1,
-                  slidesToScroll: 1,
-                },
-              },
-            ],
-          });
+            },
+          ], this.carousel.prev('.js-carousel-controls'));
           break;
         default:
           this.initMobileSlick(this.carousel.data('breakpoint') - 1);
@@ -217,6 +203,16 @@ module.exports = (elem) => {
             settings: 'unslick',
           },
         ],
+      });
+    }
+    initDefault(responsiveSettings, appendArrowsSet) {
+      this.carousel.not('.slick-initialized').slick({
+        appendArrows: appendArrowsSet,
+        nextArrow: this.next,
+        prevArrow: this.prev,
+        mobileFirst: false,
+        infinite: false,
+        responsive: responsiveSettings,
       });
     }
   }
