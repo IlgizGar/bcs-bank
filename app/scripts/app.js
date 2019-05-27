@@ -38,6 +38,7 @@ import Animations from '../components/modules/animations/animations';
 import PartnerModalForm from '../components/modules/partners-modal/partners-modal';
 import SectionTabs from '../components/modules/section-tabs/sectionTabs';
 import Animator from '../components/modules/page-animations/animator';
+import FxCourses from '../components/modules/landing-fx/landing-fx';
 
 require('intersection-observer');
 
@@ -311,5 +312,9 @@ $(() => {
     $('.js-sticky').each((index, el) => {
       sticky.add(el);
     });
+  }
+
+  if ($('#courcesExchangeblock').length) {
+    global.fxCourses = new FxCourses();
   }
 });

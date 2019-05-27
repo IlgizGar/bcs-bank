@@ -133,9 +133,9 @@
           <div class="section__row">
             <div class="services__carousel carousel carousel_type-mobile">
               <div class="js-carousel carousel__content" data-id="landing-services" data-breakpoint="992">
-                {{ Card.card({ 'exchange': 'true', 'type':'div', 'title':'в среднем по рынку','subtitle':'на основе информации из открытых источников *', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'class': 'section__element default-exchange-card', 'attr': {'api-url': 'https://bcs-bank.com/get_courses_update', 'key':'online_courses'}  }) }}
-                {{ Card.card({ 'exchange': 'true', 'type':'div', 'title':'для Валютных карт','subtitle':'', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'class': 'section__element default-exchange-card js-valute-card', 'attr': {'api-url': 'https://bcs-bank.com/get_courses_update', 'key':'online_courses'}  }) }}
-                {{ Card.card({ 'exchange': 'true', 'type':'div', 'title':'для Валютных карт Premium','subtitle':'', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'class': 'section__element default-exchange-card js-valute-card-premium', 'attr': {'api-url': 'https://bcs-bank.com/get_courses_update', 'key':'online_courses'}  }) }}
+                {{ Card.card({ 'exchange': 'true', 'type':'div', 'title':'в среднем по рынку','subtitle':'на основе информации из открытых источников *', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'class': 'section__element default-exchange-card', 'attr': {'api-url': 'https://beta.bcs-bank.com/get_fx_courses_update', 'key':'online_courses'}  }) }}
+                {{ Card.card({ 'exchange': 'true', 'type':'div', 'title':'для Валютных карт','subtitle':'', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'class': 'section__element default-exchange-card js-valute-card', 'attr': {'api-url': 'https://beta.bcs-bank.com/get_fx_courses_update', 'key':'currency_courses'}  }) }}
+                {{ Card.card({ 'exchange': 'true', 'type':'div', 'title':'для Валютных карт Premium','subtitle':'', 'view': 'lowercase', 'theme': 'black', 'hoverType': 'button', 'class': 'section__element default-exchange-card js-valute-card-premium', 'attr': {'api-url': 'https://beta.bcs-bank.com/get_fx_courses_update', 'key':'currency_premium_courses'}  }) }}
               </div>
               <div class="carousel-controls carousel-controls_theme-dark js-carousel-controls">
                 <div class="carousel-controls__pagination js-carousel-pagination" data-carousel="landing-services">
@@ -193,8 +193,8 @@
                           {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Валюта покупки', 'name': 'bye_currency', 'items': [{'title': 'RUR', 'value': '1 '}, {'title': 'USD', 'value': '2','selected':'selected'}, {'title': 'EUR', 'value': '3'}], 'class': 'form__field-group form__field-group_dropdown'}) }}
                           {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Валюта продажи', 'name': 'sell_currency', 'items': [{'title': 'RUR', 'value': '1 ','selected':'selected'}, {'title': 'USD', 'value': '2'}, {'title': 'EUR', 'value': '3'}], 'class': 'form__field-group form__field-group_dropdown' }) }}
                           {{ Input.input({ 'label': 'Cумма покупки', 'class': 'form__field-slider', 'field': { 'type': 'text', 'maxlength': '9', 'name': 'calc_exchange', 'class': 'js-numeric-input' }, 'title': '#dollar', 'slider': { 'min': 0, 'max': 1000000, 'from': 2000, 'step': 1000 } }) }}
-                          {{ Input.input({ 'label': 'Стоимость покупки по курсу Валютной карты', 'class': 'form__field-group', 'field': { 'type': 'text', "readonly":"readonly" , 'maxlength': '10', "value":"0", 'name': 'calc_exchange_result_card', 'class': 'js-exchange-result-input' }, 'title': '#ruble' }) }}
-                          {{ Input.input({ 'label': 'Стоимость покупки по среднему курсу рынка', 'class': 'form__field-group', 'field': { 'type': 'text', "readonly":"readonly" , 'maxlength': '10', "value":"0" ,  'name': 'calc_exchange_result_all', 'class': 'js-exchange-result-input' }, 'title': '#ruble' }) }}
+                          {{ Input.input({ 'label': 'Стоимость покупки по курсу Валютной карты', 'class': 'form__field-group', 'field': { 'type': 'text', "readonly":"readonly" , 'maxlength': '100', "value":"0", 'name': 'calc_exchange_result_card', 'class': 'js-exchange-result-input' }, 'title': '#ruble' }) }}
+                          {{ Input.input({ 'label': 'Стоимость покупки по среднему курсу рынка', 'class': 'form__field-group', 'field': { 'type': 'text', "readonly":"readonly" , 'maxlength': '100', "value":"0" ,  'name': 'calc_exchange_result_all', 'class': 'js-exchange-result-input' }, 'title': '#ruble' }) }}
 
 
                           <div class="calculator-hidden-out">
@@ -210,11 +210,11 @@
 
                           <div class="calculator-hidden-out">
                                  <span
-                                         data-calc="KGZ1bmN0aW9uICh2YWx1dGVCeWUsY2FyZCkgewogICAgdmFyIGN1cmNlcyA9IHt9OwogICAgY3VyY2VzLlVTRCA9IHt9OwogICAgY3VyY2VzLkVVUiA9IHt9OwogICAgdmFyIGN1cnNlID0gMTsKICAgIHZhciBzZWxsSW5wdXQgPSAkKCdbbmFtZT0ic2VsZWN0X3NlbGxfY3VycmVuY3kiXScpOwogICAgdmFyIGJ5ZUlucHV0ID0gJCgnW25hbWU9InNlbGVjdF9ieWVfY3VycmVuY3kiXScpOwogICAgZnVuY3Rpb24gc2V0Q3VycmVuY3kodmFsdXRlQnllLHZhbHV0ZVNlbGwpewogICAgICAgIGlmKGNhcmQgPT0gMSl7CiAgICAgICAgICAgIGlmKHZhbHV0ZUJ5ZSAhPSAxKXsKICAgICAgICAgICAgICAgIGN1cmNlcy5VU0QuYnV5PSAkKCdbbmFtZT0iY2FyZFZ1c2QiXScpLnZhbCgpOwogICAgICAgICAgICAgICAgY3VyY2VzLkVVUi5idXk9ICQoJ1tuYW1lPSJjYXJkVmV1ciJdJykudmFsKCk7CiAgICAgICAgICAgIH0gZWxzZSB7CiAgICAgICAgICAgICAgICBjdXJjZXMuVVNELmJ1eT0gJCgnW25hbWU9ImNhcmRWdXNkQiJdJykudmFsKCk7CiAgICAgICAgICAgICAgICBjdXJjZXMuRVVSLmJ1eT0gJCgnW25hbWU9ImNhcmRWZXVyQiJdJykudmFsKCk7CiAgICAgICAgICAgIH0KCiAgICAgICAgfSBlbHNlIHsKICAgICAgICAgICAgaWYodmFsdXRlQnllICE9IDEpewogICAgICAgICAgICAgICAgY3VyY2VzLlVTRC5idXk9ICQoJ1tuYW1lPSJjYXJkUHVzZCJdJykudmFsKCk7CiAgICAgICAgICAgICAgICBjdXJjZXMuRVVSLmJ1eT0gJCgnW25hbWU9ImNhcmRQZXVyIl0nKS52YWwoKTsKICAgICAgICAgICAgfSBlbHNlIHsKICAgICAgICAgICAgICAgIGN1cmNlcy5VU0QuYnV5PSAkKCdbbmFtZT0iY2FyZFB1c2RCIl0nKS52YWwoKTsKICAgICAgICAgICAgICAgIGN1cmNlcy5FVVIuYnV5PSAkKCdbbmFtZT0iY2FyZFBldXJCIl0nKS52YWwoKTsKICAgICAgICAgICAgfQoKICAgICAgICB9CiAgICAgICAgdmFyIHVzZEN1cnNlID0gMDsKICAgICAgICB2YXIgZXVyQ3Vyc2UgPSAwOwogICAgICAgIHRyeSB7CiAgICAgICAgICAgIHVzZEN1cnNlID0gIGN1cmNlcy5VU0QuYnV5OwogICAgICAgIH0gY2F0Y2ggKGUpIHt9CiAgICAgICAgdHJ5IHsKICAgICAgICAgICAgZXVyQ3Vyc2UgPSBjdXJjZXMuRVVSLmJ1eTsKICAgICAgICB9IGNhdGNoIChlKSB7fQogICAgICAgIGNvbnNvbGUubG9nKHZhbHV0ZUJ5ZSk7CiAgICAgICAgaWYodmFsdXRlQnllICE9IDEpewogICAgICAgICAgICBpZih2YWx1dGVCeWUgPT0gMil7CiAgICAgICAgICAgICAgICBjdXJzZSA9IHVzZEN1cnNlOwogICAgICAgICAgICB9CiAgICAgICAgICAgIGlmKHZhbHV0ZUJ5ZSA9PSAzKXsKICAgICAgICAgICAgICAgIGN1cnNlID0gZXVyQ3Vyc2U7CiAgICAgICAgICAgIH0KICAgICAgICB9IGVsc2UgewogICAgICAgICAgICBpZih2YWx1dGVTZWxsID09IDIpewogICAgICAgICAgICAgICAgY3Vyc2UgPSB1c2RDdXJzZTsKICAgICAgICAgICAgfQogICAgICAgICAgICBpZih2YWx1dGVTZWxsID09IDMpewogICAgICAgICAgICAgICAgY3Vyc2UgPSBldXJDdXJzZTsKICAgICAgICAgICAgfQogICAgICAgIH0KICAgIH0KICAgIHNldEN1cnJlbmN5KHZhbHV0ZUJ5ZSwgc2VsbElucHV0LnZhbCgpKTsKICAgIHZhciBpbnB1dCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJ1tuYW1lPSJjYWxjX2V4Y2hhbmdlX2N1cnNlIl0nKTsKICAgIGlucHV0LnZhbHVlID0gY3Vyc2U7CnZhciBldmVudDsKaWYodHlwZW9mKEV2ZW50KSA9PT0gJ2Z1bmN0aW9uJykgewogICAgZXZlbnQgPSBuZXcgRXZlbnQoJ2NoYW5nZScpOwp9ZWxzZXsKICAgIGV2ZW50ID0gZG9jdW1lbnQuY3JlYXRlRXZlbnQoJ0V2ZW50Jyk7CiAgICBldmVudC5pbml0RXZlbnQoJ2NoYW5nZScsIHRydWUsIHRydWUpOwp9CiAgICBpbnB1dC5kaXNwYXRjaEV2ZW50KGV2ZW50KTsKICAgIHJldHVybiBjdXJzZTsKfSkodmFsdXRlQnllLGNhcmQpOw=="
+                                         data-calc="KGZ1bmN0aW9uICh2YWx1dGVCeWUsY2FyZCx2YWx1dGVTZWxsKSB7CiAgICAgIHZhbHV0ZVNlbGwgPSAkKCdbbmFtZT1zZWxlY3Rfc2VsbF9jdXJyZW5jeV0nKS52YWwoKTsKICAgICAgdmFyIGN1cnNlID0gMDsKICAgICBpZih2YWx1dGVCeWUgPT0gMSl7CiAgICAgICBpZih2YWx1dGVTZWxsID09IDIpewogICAgICAgICBpZihjYXJkID09MSApewogICAgICAgICAgIGN1cnNlID0gJCgnW25hbWU9Y2FyZFZ1c2RCXScpLnZhbCgpOwogICAgICAgICB9IGVsc2UgewogICAgICAgICAgIGN1cnNlID0gJCgnW25hbWU9Y2FyZFB1c2RCXScpLnZhbCgpOwogICAgICAgICB9CiAgICAgICB9CiAgICAgICBpZih2YWx1dGVTZWxsID09IDMpewogICAgICAgICBpZihjYXJkID09MSApewogICAgICAgICAgIGN1cnNlID0gJCgnW25hbWU9Y2FyZFZldXJCXScpLnZhbCgpOwogICAgICAgICB9IGVsc2UgewogICAgICAgICAgIGN1cnNlID0gJCgnW25hbWU9Y2FyZFBldXJCXScpLnZhbCgpOwogICAgICAgICB9CiAgICAgICB9CiAgICAgfQogICAgIGlmKHZhbHV0ZUJ5ZSA9PSAyKXsKICAgICAgIGlmKGNhcmQgPT0xICl7CiAgICAgICAgIGN1cnNlID0gJCgnW25hbWU9Y2FyZFZ1c2RdJykudmFsKCk7CiAgICAgICB9IGVsc2UgewogICAgICAgICBjdXJzZSA9ICQoJ1tuYW1lPWNhcmRQdXNkXScpLnZhbCgpOwogICAgICAgfQogICAgIH0KICAgICBpZih2YWx1dGVCeWUgPT0gMyl7CiAgICAgICBpZihjYXJkID09MSApewogICAgICAgICBjdXJzZSA9ICQoJ1tuYW1lPWNhcmRWZXVyXScpLnZhbCgpOwogICAgICAgfSBlbHNlIHsKICAgICAgICAgY3Vyc2UgPSAkKCdbbmFtZT1jYXJkUGV1cl0nKS52YWwoKTsKICAgICAgIH0KICAgICB9CgogICAgICByZXR1cm4gY3Vyc2U7CiAgICB9KSh2YWx1dGVCeWUsY2FyZCx2YWx1dGVTZWxsKTs="
                                          data-params="valuteBye|select_bye_currency,card|select_calc_select_card_exchange,valuteSell|select_sell_currency"
                                          data-bind="calc_exchange_curse"
                                          data-ordered="3"
-                                         data-round="2"
+                                         data-round="10"
                                  ></span>
                             <input type="hidden"  value="65.38272" name="calc_exchange_curse">{#todo:сюда вывести курс доллара карты для первоначальных расчетов#}
 
@@ -222,11 +222,11 @@
 
                           <div class="calculator-hidden-out">
                                  <span
-                                         data-calc="KGZ1bmN0aW9uICh2YWx1dGVCeWUsY2FyZCkgewogICAgdmFyIGN1cmNlcyA9IHt9OwogICAgY3VyY2VzLlVTRCA9IHt9OwogICAgY3VyY2VzLkVVUiA9IHt9OwogICAgdmFyIGN1cnNlID0gMTsKICAgIHZhciBzZWxsSW5wdXQgPSAkKCdbbmFtZT0ic2VsZWN0X3NlbGxfY3VycmVuY3kiXScpOwogICAgdmFyIGJ5ZUlucHV0ID0gJCgnW25hbWU9InNlbGVjdF9ieWVfY3VycmVuY3kiXScpOwogICAgZnVuY3Rpb24gc2V0Q3VycmVuY3kodmFsdXRlQnllLHZhbHV0ZVNlbGwpewogICAgICAgICAgICBpZih2YWx1dGVCeWUgIT0gMSl7CiAgICAgICAgICAgICAgICBjdXJjZXMuVVNELmJ1eT0gJCgnW25hbWU9ImN1cnNlVXNkIl0nKS52YWwoKTsKICAgICAgICAgICAgICAgIGN1cmNlcy5FVVIuYnV5PSAkKCdbbmFtZT0iY3Vyc2VFdXIiXScpLnZhbCgpOwogICAgICAgICAgICB9IGVsc2V7CiAgICAgICAgICAgICAgICBjdXJjZXMuVVNELmJ1eT0gJCgnW25hbWU9ImN1cnNlVXNkQiJdJykudmFsKCk7CiAgICAgICAgICAgICAgICBjdXJjZXMuRVVSLmJ1eT0gJCgnW25hbWU9ImN1cnNlRXVyQiJdJykudmFsKCk7CiAgICAgICAgICAgIH0KCgogICAgICAgIHZhciB1c2RDdXJzZSA9IDA7CiAgICAgICAgdmFyIGV1ckN1cnNlID0gMDsKICAgICAgICB0cnkgewogICAgICAgICAgICB1c2RDdXJzZSA9ICBjdXJjZXMuVVNELmJ1eTsKICAgICAgICB9IGNhdGNoIChlKSB7fQogICAgICAgIHRyeSB7CiAgICAgICAgICAgIGV1ckN1cnNlID0gY3VyY2VzLkVVUi5idXk7CiAgICAgICAgfSBjYXRjaCAoZSkge30KICAgICAgICBjb25zb2xlLmxvZyh2YWx1dGVCeWUpOwogICAgICAgIGlmKHZhbHV0ZUJ5ZSAhPSAxKXsKICAgICAgICAgICAgaWYodmFsdXRlQnllID09IDIpewogICAgICAgICAgICAgICAgY3Vyc2UgPSB1c2RDdXJzZTsKICAgICAgICAgICAgfQogICAgICAgICAgICBpZih2YWx1dGVCeWUgPT0gMyl7CiAgICAgICAgICAgICAgICBjdXJzZSA9IGV1ckN1cnNlOwogICAgICAgICAgICB9CiAgICAgICAgfSBlbHNlIHsKICAgICAgICAgICAgaWYodmFsdXRlU2VsbCA9PSAyKXsKICAgICAgICAgICAgICAgIGN1cnNlID0gdXNkQ3Vyc2U7CiAgICAgICAgICAgIH0KICAgICAgICAgICAgaWYodmFsdXRlU2VsbCA9PSAzKXsKICAgICAgICAgICAgICAgIGN1cnNlID0gZXVyQ3Vyc2U7CiAgICAgICAgICAgIH0KICAgICAgICB9CiAgICB9CiAgICBzZXRDdXJyZW5jeSh2YWx1dGVCeWUsIHNlbGxJbnB1dC52YWwoKSk7CiAgICB2YXIgaW5wdXQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKCdbbmFtZT0iY2FsY19leGNoYW5nZV9jdXJzZV9hbGwiXScpOwogICAgaW5wdXQudmFsdWUgPSBjdXJzZTsKdmFyIGV2ZW50OwppZih0eXBlb2YoRXZlbnQpID09PSAnZnVuY3Rpb24nKSB7CiAgICBldmVudCA9IG5ldyBFdmVudCgnY2hhbmdlJyk7Cn1lbHNlewogICAgZXZlbnQgPSBkb2N1bWVudC5jcmVhdGVFdmVudCgnRXZlbnQnKTsKICAgIGV2ZW50LmluaXRFdmVudCgnY2hhbmdlJywgdHJ1ZSwgdHJ1ZSk7Cn0KICAgIGlucHV0LmRpc3BhdGNoRXZlbnQoZXZlbnQpOwogICAgcmV0dXJuIGN1cnNlOwp9KSh2YWx1dGVCeWUsY2FyZCk7"
+                                         data-calc="KGZ1bmN0aW9uICh2YWx1dGVCeWUsY2FyZCx2YWx1dGVTZWxsKSB7CiAgICAgIHZhbHV0ZVNlbGwgPSAkKCdbbmFtZT1zZWxlY3Rfc2VsbF9jdXJyZW5jeV0nKS52YWwoKTsKICAgICAgdmFyIGN1cnNlID0gMDsKICAgICBpZih2YWx1dGVCeWUgPT0gMSl7CiAgICAgICBpZih2YWx1dGVTZWxsID09IDIpewogICAgICAgICAgIGN1cnNlID0gJCgnW25hbWU9Y3Vyc2VVc2RCXScpLnZhbCgpOwogICAgICAgfQogICAgICAgaWYodmFsdXRlU2VsbCA9PSAzKXsKICAgICAgICAgICAgIGN1cnNlID0gJCgnW25hbWU9Y3Vyc2VFdXJCXScpLnZhbCgpOwogICAgICAgfQogICAgIH0KICAgICBpZih2YWx1dGVCeWUgPT0gMil7CiAgICAgICBjdXJzZSA9ICQoJ1tuYW1lPWN1cnNlVXNkXScpLnZhbCgpOwogICAgIH0KICAgICBpZih2YWx1dGVCeWUgPT0gMyl7CiAgICAgICBjdXJzZSA9ICQoJ1tuYW1lPWN1cnNlRXVyXScpLnZhbCgpOwogICAgIH0KCiAgICAgIHJldHVybiBjdXJzZTsKICAgIH0pKHZhbHV0ZUJ5ZSxjYXJkLHZhbHV0ZVNlbGwpOw=="
                                          data-params="valuteBye|select_bye_currency,card|select_calc_select_card_exchange,valuteSell|select_sell_currency"
                                          data-bind="calc_exchange_curse_all"
                                          data-ordered="4"
-                                         data-round="2"
+                                         data-round="10"
                                  ></span>
                             <input type="hidden"  value="64.48" name="calc_exchange_curse_all">{#todo:сюда вывести курс доллара карты для первоначальных расчетов#}
                           </div>
@@ -235,7 +235,7 @@
                           <div class="calculator-hidden-out">
                             <!--#2-->
                             <span
-                                    data-calc="KGZ1bmN0aW9uIChieWUsc3VtbSxjdXJzZSkgewogICAgdmFyIHZhbHVlID0gMDsKICAgIGlmKGJ5ZSA9PSAxKXsKICAgICAgICB2YWx1ZSA9IHN1bW0vY3Vyc2U7CiAgICB9IGVsc2UgewogICAgICAgIHZhbHVlID0gc3VtbSpjdXJzZTsKICAgIH0KICAgIHJldHVybiB2YWx1ZTsKfSkoYnllLHN1bW0sY3Vyc2UpOw=="
+                                    data-calc="KGZ1bmN0aW9uIChieWUsc3VtbSxjdXJzZSkgewogICAgdmFyIHZhbHVlID0gMDsKICAgIGJ5ZSA9ICQoJ1tuYW1lPXNlbGVjdF9ieWVfY3VycmVuY3ldJykudmFsKCk7CiAgICBpZihieWUgPT0gMSl7CiAgICAgICAgdmFsdWUgPSBzdW1tL2N1cnNlOwogICAgfSBlbHNlIHsKICAgICAgICB2YWx1ZSA9IHN1bW0qY3Vyc2U7CiAgICB9CiAgICByZXR1cm4gdmFsdWU7Cn0pKGJ5ZSxzdW1tLGN1cnNlKTs="
                                     data-params="bye|select_bye_currency,summ|calc_exchange,curse|calc_exchange_curse_all"
                                     data-bind="calc_exchange_result_card"
                                     data-ordered="5"
@@ -247,7 +247,7 @@
                           <div class="calculator-hidden-out">
                             <!--#2-->
                             <span
-                                    data-calc="KGZ1bmN0aW9uIChieWUsc3VtbSxjdXJzZSkgewogICAgdmFyIHZhbHVlID0gMDsKICAgIGlmKGJ5ZSA9PSAxKXsKICAgICAgICB2YWx1ZSA9IHN1bW0vY3Vyc2U7CiAgICB9IGVsc2UgewogICAgICAgIHZhbHVlID0gc3VtbSpjdXJzZTsKICAgIH0KICAgIHJldHVybiB2YWx1ZTsKfSkoYnllLHN1bW0sY3Vyc2UpOw=="
+                                    data-calc="KGZ1bmN0aW9uIChieWUsc3VtbSxjdXJzZSkgewogICAgdmFyIHZhbHVlID0gMDsKICAgIGJ5ZSA9ICQoJ1tuYW1lPXNlbGVjdF9ieWVfY3VycmVuY3ldJykudmFsKCk7CiAgICBpZihieWUgPT0gMSl7CiAgICAgICAgdmFsdWUgPSBzdW1tL2N1cnNlOwogICAgfSBlbHNlIHsKICAgICAgICB2YWx1ZSA9IHN1bW0qY3Vyc2U7CiAgICB9CiAgICByZXR1cm4gdmFsdWU7Cn0pKGJ5ZSxzdW1tLGN1cnNlKTs="
                                     data-params="bye|select_bye_currency,summ|calc_exchange,curse|calc_exchange_curse"
                                     data-bind="calc_exchange_result_all"
                                     data-ordered="6"
@@ -264,7 +264,7 @@
                                     data-params="summ1|calc_exchange_result_all,summ2|calc_exchange_result_card"
                                     data-bind="allcost_exchange"
                                     data-ordered="7"
-                                    data-round="2"
+                                    data-round="4"
                             ></span>
                             <input type="hidden" class="js-land-calc-input-hidden" value="0" name="allcost_exchange">
                             <!--/#2-->
@@ -286,7 +286,7 @@
 
                           <div class="calculator-hidden-out">
                                  <span
-                                         data-calc="KGZ1bmN0aW9uIChjYXJkLGN1cnJlbmN5KSB7CiAgICB2YXIgaW5wdXQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKCdbbmFtZT0iZGVwb3NpdF90aW1lIl0nKTsKICAgIHdpbmRvdy5jYWxjRGVwb3NpdFRpbWVWYWx1ZSA9IDM2NTsKICAgIHZhciBzbGlkZXIgPSBpbnB1dC5wYXJlbnROb2RlLnBhcmVudE5vZGUucXVlcnlTZWxlY3RvcignLmlucHV0X19zbGlkZXInKTsKICAgIGlmKGNhcmQgPT0gMSkgewogICAgICAgIHdpbmRvdy5jYWxjRGVwb3NpdFRpbWVWYWx1ZSA9IGlucHV0LnZhbHVlOwogICAgfQogICAgaWYoY2FyZCA9PSAyKXsKICAgICAgICBpbnB1dC52YWx1ZSA9IDM2NTsKICAgICAgICBpbnB1dC5yZWFkT25seSA9IHRydWU7CiAgICAgICAgc2xpZGVyLmNsYXNzTGlzdC5hZGQoJ3N0YXRlX2hpZGRlbicpOwogICAgfSBlbHNlIHsKICAgICAgICBpbnB1dC5yZWFkT25seSA9IGZhbHNlOwogICAgICAgIGlucHV0LnZhbHVlID0gd2luZG93LmNhbGNEZXBvc2l0VGltZVZhbHVlOwogICAgICAgIHNsaWRlci5jbGFzc0xpc3QucmVtb3ZlKCdzdGF0ZV9oaWRkZW4nKTsKICAgIH0KICAgIHNldEN1cnJlbmN5KGN1cnJlbmN5KTsKICAgIGZ1bmN0aW9uIHNldEN1cnJlbmN5KGN1cnJlbmN5KSB7CiAgICAgICAgdmFyIGlucHV0ID0gJCgnW25hbWU9ImNhbGNfZGVwb3NpdF9zdW1tIl0nKS5jbG9zZXN0KCcuanMtaW5wdXQnKTsKICAgICAgICB2YXIgc2xpZGVyID0gaW5wdXQuZmluZCgnLmpzLWlucHV0LXNsaWRlcicpWzBdOwogICAgICAgIGlmKGN1cnJlbmN5ID09IDEpey8vcnViCiAgICAgICAgICAgICQoJ1tuYW1lPSJjYWxjX2RlcG9zaXRfc3VtbSJdJykudmFsKDMwMDAwMCk7CiAgICAgICAgICAgIHNsaWRlci5pb1NsaWRlci51cGRhdGUoe2Zyb206MzAwMDAwfSk7Ly/QvNC40L3QuNC80LDQu9GM0L3QsNGPINGB0YPQvNC80LAKICAgICAgICB9CiAgICAgICAgaWYoY3VycmVuY3kgPT0gMil7Ly9kb2xsYXIKICAgICAgICAgICAgJCgnW25hbWU9ImNhbGNfZGVwb3NpdF9zdW1tIl0nKS52YWwoNTAwMCk7CiAgICAgICAgICAgIHNsaWRlci5pb1NsaWRlci51cGRhdGUoe2Zyb206NTAwMH0pOy8v0LzQuNC90LjQvNCw0LvRjNC90LDRjyDRgdGD0LzQvNCwCiAgICAgICAgfQogICAgICAgIGlmKGN1cnJlbmN5ID09IDMpey8vZXVybwogICAgICAgICAgICAkKCdbbmFtZT0iY2FsY19kZXBvc2l0X3N1bW0iXScpLnZhbCg1MDAwKTsKICAgICAgICAgICAgc2xpZGVyLmlvU2xpZGVyLnVwZGF0ZSh7ZnJvbTo1MDAwfSk7Ly/QvNC40L3QuNC80LDQu9GM0L3QsNGPINGB0YPQvNC80LAKICAgICAgICB9CiAgICAgICAgaWYoY3VycmVuY3kgPT0gNCl7Ly9wb3VuZAogICAgICAgICAgICAkKCdbbmFtZT0iY2FsY19kZXBvc2l0X3N1bW0iXScpLnZhbCg1MDAwKTsKICAgICAgICAgICAgc2xpZGVyLmlvU2xpZGVyLnVwZGF0ZSh7ZnJvbTo1MDAwfSk7Ly/QvNC40L3QuNC80LDQu9GM0L3QsNGPINGB0YPQvNC80LAKICAgICAgICB9CiAgICAgICAgZ2xvYmFsLnNldEN1cnJlbmN5KGN1cnJlbmN5LGlucHV0KTsKICAgIH0KICAgIHJldHVybiAxMDsKfSkoY2FyZCxjdXJyZW5jeSk7"
+                                         data-calc="IChmdW5jdGlvbiAoY2FyZCxjdXJyZW5jeSkgewogICAgICB2YXIgaW5wdXQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKCdbbmFtZT0iZGVwb3NpdF90aW1lIl0nKTsKICAgICAgd2luZG93LmNhbGNEZXBvc2l0VGltZVZhbHVlID0gMzY1OwogICAgICB2YXIgc2xpZGVyID0gaW5wdXQucGFyZW50Tm9kZS5wYXJlbnROb2RlLnF1ZXJ5U2VsZWN0b3IoJy5pbnB1dF9fc2xpZGVyJyk7CiAgICAgIGlmKGNhcmQgPT0gMSkgewogICAgICAgIHdpbmRvdy5jYWxjRGVwb3NpdFRpbWVWYWx1ZSA9IGlucHV0LnZhbHVlOwogICAgICB9CiAgICAgIGlmKGNhcmQgPT0gMil7CiAgICAgICAgaW5wdXQudmFsdWUgPSAzNjU7CiAgICAgICAgaW5wdXQucmVhZE9ubHkgPSB0cnVlOwogICAgICAgIHNsaWRlci5jbGFzc0xpc3QuYWRkKCdzdGF0ZV9oaWRkZW4nKTsKICAgICAgfSBlbHNlIHsKICAgICAgICBpbnB1dC5yZWFkT25seSA9IGZhbHNlOwogICAgICAgIGlucHV0LnZhbHVlID0gd2luZG93LmNhbGNEZXBvc2l0VGltZVZhbHVlOwogICAgICAgIHNsaWRlci5jbGFzc0xpc3QucmVtb3ZlKCdzdGF0ZV9oaWRkZW4nKTsKICAgICAgfQogICAgICBzZXRDdXJyZW5jeShjdXJyZW5jeSk7CiAgICAgIGZ1bmN0aW9uIHNldEN1cnJlbmN5KGN1cnJlbmN5KSB7CiAgICAgICAgdmFyIGlucHV0ID0gJCgnW25hbWU9ImNhbGNfZGVwb3NpdF9zdW1tIl0nKS5jbG9zZXN0KCcuanMtaW5wdXQnKTsKICAgICAgICB2YXIgdGltZWlucHV0ID0gJCgnW25hbWU9ImRlcG9zaXRfdGltZSJdJykuY2xvc2VzdCgnLmpzLWlucHV0Jyk7CiAgICAgICAgdmFyIHNsaWRlciA9IGlucHV0LmZpbmQoJy5qcy1pbnB1dC1zbGlkZXInKVswXTsKICAgICAgICB2YXIgc2xpZGVyVGltZSA9IHRpbWVpbnB1dC5maW5kKCcuanMtaW5wdXQtc2xpZGVyJylbMF07CgogICAgICAgIGlmKGNhcmQgPT0gMSl7CgogICAgICAgICAgaWYoY3VycmVuY3kgPT0gMSl7Ly9ydWIKICAgICAgICAgICAgJCgnW25hbWU9ImNhbGNfZGVwb3NpdF9zdW1tIl0nKS52YWwoMzAwMDAwKTsKICAgICAgICAgICAgc2xpZGVyLmlvU2xpZGVyLnVwZGF0ZSh7ZnJvbTozMDAwMDB9KTsKICAgICAgICAgICAgc2xpZGVyLmlvU2xpZGVyLnVwZGF0ZSh7bWluOjEwMDAwfSk7CiAgICAgICAgICAgIHNsaWRlci5pb1NsaWRlci51cGRhdGUoe21heDoxMDAwMDAwfSk7CgogICAgICAgICAgICBzbGlkZXJUaW1lLmlvU2xpZGVyLnVwZGF0ZSh7bWF4OjczMH0pOwogICAgICAgICAgICBzbGlkZXJUaW1lLmlvU2xpZGVyLnVwZGF0ZSh7bWluOjMxfSk7CgogICAgICAgICAgfQogICAgICAgICAgaWYoY3VycmVuY3kgPT0gMil7Ly9kb2xsYXIKICAgICAgICAgICAgJCgnW25hbWU9ImNhbGNfZGVwb3NpdF9zdW1tIl0nKS52YWwoNTAwMCk7CiAgICAgICAgICAgIHNsaWRlci5pb1NsaWRlci51cGRhdGUoe2Zyb206NTAwMH0pOwogICAgICAgICAgICBzbGlkZXIuaW9TbGlkZXIudXBkYXRlKHttaW46MTAwfSk7CiAgICAgICAgICAgIHNsaWRlci5pb1NsaWRlci51cGRhdGUoe21heDoxMDAwMDAwfSk7CgogICAgICAgICAgICBzbGlkZXJUaW1lLmlvU2xpZGVyLnVwZGF0ZSh7bWF4OjczMH0pOwogICAgICAgICAgICBzbGlkZXJUaW1lLmlvU2xpZGVyLnVwZGF0ZSh7bWluOjMxfSk7CiAgICAgICAgICB9CiAgICAgICAgICBpZihjdXJyZW5jeSA9PSAzKXsvL2V1cm8KICAgICAgICAgICAgJCgnW25hbWU9ImNhbGNfZGVwb3NpdF9zdW1tIl0nKS52YWwoNTAwMCk7CiAgICAgICAgICAgIHNsaWRlci5pb1NsaWRlci51cGRhdGUoe2Zyb206NTAwMH0pOwogICAgICAgICAgICBzbGlkZXIuaW9TbGlkZXIudXBkYXRlKHttaW46MTAwfSk7CiAgICAgICAgICAgIHNsaWRlci5pb1NsaWRlci51cGRhdGUoe21heDoxMDAwMDB9KTsKCiAgICAgICAgICAgIHNsaWRlclRpbWUuaW9TbGlkZXIudXBkYXRlKHttYXg6NzMwfSk7CiAgICAgICAgICAgIHNsaWRlclRpbWUuaW9TbGlkZXIudXBkYXRlKHttaW46OTF9KTsKICAgICAgICAgIH0KICAgICAgICAgIGlmKGN1cnJlbmN5ID09IDQpey8vcG91bmQKICAgICAgICAgICAgJCgnW25hbWU9ImNhbGNfZGVwb3NpdF9zdW1tIl0nKS52YWwoNTAwMCk7CiAgICAgICAgICAgIHNsaWRlci5pb1NsaWRlci51cGRhdGUoe2Zyb206NTAwMH0pOwogICAgICAgICAgICBzbGlkZXIuaW9TbGlkZXIudXBkYXRlKHttaW46MTAwfSk7CiAgICAgICAgICAgIHNsaWRlci5pb1NsaWRlci51cGRhdGUoe21heDoxMDAwMDAwfSk7CgogICAgICAgICAgICBzbGlkZXJUaW1lLmlvU2xpZGVyLnVwZGF0ZSh7bWF4OjczMH0pOwogICAgICAgICAgICBzbGlkZXJUaW1lLmlvU2xpZGVyLnVwZGF0ZSh7bWluOjMxfSk7CiAgICAgICAgICB9CgoKICAgICAgICB9CiAgICAgICAgaWYoY2FyZCA9PTIpIHsKCiAgICAgICAgICBpZihjdXJyZW5jeSA9PSAxKXsvL3J1YgogICAgICAgICAgICAkKCdbbmFtZT0iY2FsY19kZXBvc2l0X3N1bW0iXScpLnZhbCgzMDAwMDApOwogICAgICAgICAgICBzbGlkZXIuaW9TbGlkZXIudXBkYXRlKHtmcm9tOjMwMDAwMH0pOwogICAgICAgICAgICBzbGlkZXIuaW9TbGlkZXIudXBkYXRlKHttaW46MTAwMDB9KTsKICAgICAgICAgICAgc2xpZGVyLmlvU2xpZGVyLnVwZGF0ZSh7bWF4OjEwMDAwMDB9KTsKCiAgICAgICAgICB9CiAgICAgICAgICBpZihjdXJyZW5jeSA9PSAyKXsvL2RvbGxhcgogICAgICAgICAgICAkKCdbbmFtZT0iY2FsY19kZXBvc2l0X3N1bW0iXScpLnZhbCg1MDAwKTsKICAgICAgICAgICAgc2xpZGVyLmlvU2xpZGVyLnVwZGF0ZSh7ZnJvbTo1MDAwfSk7CiAgICAgICAgICAgIHNsaWRlci5pb1NsaWRlci51cGRhdGUoe21pbjoxMDB9KTsKICAgICAgICAgICAgc2xpZGVyLmlvU2xpZGVyLnVwZGF0ZSh7bWF4OjEwMDAwMDB9KTsKICAgICAgICAgIH0KICAgICAgICAgIGlmKGN1cnJlbmN5ID09IDMpey8vZXVybwogICAgICAgICAgICAkKCdbbmFtZT0iY2FsY19kZXBvc2l0X3N1bW0iXScpLnZhbCg1MDAwKTsKICAgICAgICAgICAgc2xpZGVyLmlvU2xpZGVyLnVwZGF0ZSh7ZnJvbTo1MDAwfSk7CiAgICAgICAgICAgIHNsaWRlci5pb1NsaWRlci51cGRhdGUoe21pbjoxMDB9KTsKICAgICAgICAgICAgc2xpZGVyLmlvU2xpZGVyLnVwZGF0ZSh7bWF4OjEwMDAwMH0pOwogICAgICAgICAgfQogICAgICAgICAgaWYoY3VycmVuY3kgPT0gNCl7Ly9wb3VuZAogICAgICAgICAgICAkKCdbbmFtZT0iY2FsY19kZXBvc2l0X3N1bW0iXScpLnZhbCg1MDAwKTsKICAgICAgICAgICAgc2xpZGVyLmlvU2xpZGVyLnVwZGF0ZSh7ZnJvbTo1MDAwfSk7CiAgICAgICAgICAgIHNsaWRlci5pb1NsaWRlci51cGRhdGUoe21pbjoxMDB9KTsKICAgICAgICAgICAgc2xpZGVyLmlvU2xpZGVyLnVwZGF0ZSh7bWF4OjEwMDAwMDB9KTsKICAgICAgICAgIH0KCiAgICAgICAgfQoKCiAgICAgICAgZ2xvYmFsLnNldEN1cnJlbmN5KGN1cnJlbmN5LGlucHV0KTsKICAgICAgfQogICAgICByZXR1cm4gMTA7CiAgICB9KShjYXJkLGN1cnJlbmN5KTs="
                                          data-params="card|select_calc_select_card_deposit-vklad,currency|accum_deposit_currency"
                                          data-bind="controller"
                                          data-ordered="0"
@@ -297,35 +297,33 @@
 
                           <div class="calculator-hidden-out">
 
-                            {#todo: сюда вывести курсы карт#}
-                            <!--курсы обычные покупка-->
-                            <input type="hidden" value="64.48" name="curseUsd">
-                            <input type="hidden" value="71.92" name="curseEur">
-                            <input type="hidden" value="81.68" name="curseGbp">
-
-                            <!--курсы обычные покупки банком-->
-                            <input type="hidden" value="64.48" name="curseUsdB">
-                            <input type="hidden" value="71.92" name="curseEurB">
-                            <input type="hidden" value="81.68" name="curseGbpB">
-
-                            <!--валютная карта курсы продажи банком-->
-                            <input type="hidden" value="65.38272" name="cardVusd">
-                            <input type="hidden" value="72.92688" name="cardVeur">
-                            <input type="hidden" value="82.82352" name="cardVgbp">
-                            <!--валютная карта премиум курсы продажи банком-->
-                            <input type="hidden" value="65.38272" name="cardPusd">
-                            <input type="hidden" value="72.92688" name="cardPeur">
-                            <input type="hidden" value="82.82352" name="cardPgbp">
-
-
-                            <!--валютная карта курсы покупки банком-->
-                            <input type="hidden" value="63.57728" name="cardVusdB">
-                            <input type="hidden" value="70.91312" name="cardVeurB">
-                            <input type="hidden" value="80.53648" name="cardVgbpB">
-                            <!--валютная карта премиум курсы покупки банком-->
-                            <input type="hidden" value="63.57728" name="cardPusdB">
-                            <input type="hidden" value="70.91312" name="cardPeurB">
-                            <input type="hidden" value="80.53648" name="cardPgbpB">
+                              <div id="courcesExchangeblock">
+                                  {#todo: сюда вывести курсы карт#}
+                                  <!--курсы обычные продажа-->
+                                  <input type="hidden" value="64.48" name="curseUsd">
+                                  <input type="hidden" value="71.92" name="curseEur">
+                                  <input type="hidden" value="81.68" name="curseGbp">
+                                  <!--курсы обычные покупки банком-->
+                                  <input type="hidden" value="64.48" name="curseUsdB">
+                                  <input type="hidden" value="71.92" name="curseEurB">
+                                  <input type="hidden" value="81.68" name="curseGbpB">
+                                  <!--валютная карта курсы продажи банком-->
+                                  <input type="hidden" value="65.38272" name="cardVusd">
+                                  <input type="hidden" value="72.92688" name="cardVeur">
+                                  <input type="hidden" value="82.82352" name="cardVgbp">
+                                  <!--валютная карта премиум курсы продажи банком-->
+                                  <input type="hidden" value="65.38272" name="cardPusd">
+                                  <input type="hidden" value="72.92688" name="cardPeur">
+                                  <input type="hidden" value="82.82352" name="cardPgbp">
+                                  <!--валютная карта курсы покупки банком-->
+                                  <input type="hidden" value="63.57728" name="cardVusdB">
+                                  <input type="hidden" value="70.91312" name="cardVeurB">
+                                  <input type="hidden" value="80.53648" name="cardVgbpB">
+                                  <!--валютная карта премиум курсы покупки банком-->
+                                  <input type="hidden" value="63.57728" name="cardPusdB">
+                                  <input type="hidden" value="70.91312" name="cardPeurB">
+                                  <input type="hidden" value="80.53648" name="cardPgbpB">
+                              </div>
 
                                  <span
                                          data-calc="KGZ1bmN0aW9uICh2YWx1dGUsY2FyZFZ1c2QsY2FyZFZldXIsY2FyZFZnYnApIHsKICAgIGlmKHZhbHV0ZT09MSl7CiAgICAgICAgcmV0dXJuIDE7CiAgICB9IGVsc2UgaWYodmFsdXRlID09IDIpewogICAgICAgIHJldHVybiBjYXJkVnVzZDsKICAgIH0gZWxzZSBpZih2YWx1dGUgPT0gMyl7CiAgICAgICAgcmV0dXJuIGNhcmRWZXVyOwogICAgfSBlbHNlIGlmKHZhbHV0ZSA9PSA0ICl7CiAgICAgICAgcmV0dXJuIGNhcmRWZ2JwCiAgICB9CiAgICByZXR1cm4gMTsKfSkodmFsdXRlLGNhcmRWdXNkLGNhcmRWZXVyLGNhcmRWZ2JwKQo="
@@ -364,12 +362,7 @@
                           <div class="calculator-hidden-out">
                             <!--#3-->
                             <span
-                                    data-calc="(function (loyalty,base,summ) {
-                                    console.log(loyalty,base,summ);
-    const percentage = ((summ/100)*base) * 365 / 365;
-    console.log(percentage);
-    return loyalty + percentage;
-})(loyalty,base,summ)"
+                                    data-calc="KGZ1bmN0aW9uIChsb3lhbHR5LGJhc2Usc3VtbSkgewogICAgY29uc3QgcGVyY2VudGFnZSA9ICgoc3VtbS8xMDApKmJhc2UpICogMzY1IC8gMzY1OwogICAgcmV0dXJuIGxveWFsdHkgKyBwZXJjZW50YWdlOwp9KShsb3lhbHR5LGJhc2Usc3VtbSk="
                                     data-params="loyalty|calc_deposit_z,base|calc_deposit_x,summ|calc_deposit_summ"
                                     data-bind="allcost_deposit"
                                     data-ordered="6"

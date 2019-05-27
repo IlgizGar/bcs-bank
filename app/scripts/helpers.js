@@ -4,7 +4,7 @@
 export default class Helpers {
   static getGeolocation(callback) {
     if (typeof ymaps === 'undefined') {
-      Helpers.loadScript('https://api-maps.yandex.ru/2.1/?lang=ru_RU', () => {
+      Helpers.loadScript('https://api-maps.yandex.ru/2.1/?apikey=&lang=ru_RU', () => {
         Helpers.getGeolocation(callback);
       });
     } else {
