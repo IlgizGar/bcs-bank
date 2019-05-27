@@ -33,8 +33,8 @@ export default class FxCourses {
       $('[name="cardPusdB"]').val(this.currencyCardPremium.USD.buy);
       $('[name="cardPeurB"]').val(this.currencyCardPremium.EUR.buy);
       $('[name="cardPgbpB"]').val(this.currencyCardPremium.GBP.buy);
-      $('[name="calc_exchange_curse"]').val(this.currencyOnline.USD.sell);
-      $('[name="calc_exchange_curse_all"]').val(this.currencyCard.USD.sell);
+      $('[name="calc_exchange_curse_all"]').val(this.currencyOnline.USD.sell);
+      $('[name="calc_exchange_curse"]').val(this.currencyCard.USD.sell);
       $('[name="calc_exchange_curse"]').trigger('change');
       $('[name="calc_exchange_curse_all"]').trigger('change');
       $('#courcesExchangeblock').find('input').trigger('change');

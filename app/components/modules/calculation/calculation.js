@@ -57,7 +57,10 @@ export default class Calculation {
       this.inputs[i].on('change', () => {
         const values = [];
         Object.keys(this.inputs).forEach((j) => {
-          values.push(parseFloat(String(((this.inputs[j].attr('type') !== 'radio') && (this.inputs[j].attr('type') !== 'checkbox')) ? this.inputs[j].val() : this.inputs[j].filter(':checked').val()).replace(/ /g, '')));
+          values.push(parseFloat(String(((this.inputs[j]
+            .attr('type') !== 'radio') && (this.inputs[j]
+            .attr('type') !== 'checkbox')) ? this.inputs[j].val() : this.inputs[j]
+              .filter(':checked').val()).replace(/ /g, '').replace(',', '.')));
         });
         setTimeout(() => {
           let result;
