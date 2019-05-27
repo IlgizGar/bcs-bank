@@ -50,9 +50,12 @@ export default class Offices {
     this.getCurrentTab();
     Helpers.getGeolocation((location) => {
       ymaps.ready(() => {
-        const userCity = Cookie.get('select-city') !== undefined ? Cookie.get('select-city') : Offices.checkUserCity(location.GeocoderMetaData.InternalToponymInfo.geoid);
+        const savedCity = Cookie.get('select-city');
+        const userCity = savedCity !== undefined ? savedCity : Offices.checkUserCity(location.GeocoderMetaData.InternalToponymInfo.geoid);
         this.initMap();
-        this.questionHandler();
+        if (savedCity === undefined) {
+          this.questionHandler();
+        }
         this.initObjectCollection();
         if (userCity) {
           global.contexts['select-city'].handleNamedList($(`.js-context-item[data-value="${userCity}"]`));
@@ -162,8 +165,6 @@ export default class Offices {
   }
 
   questionHandler() {
-    if (Cookie.get('select-city') !== undefined) return;
-
     const questionPopup = new AskQuestion('select-city', 'Мы правильно определили Ваше местоположение?');
     global.contexts['select-city'].setPosition(questionPopup.popup);
 
