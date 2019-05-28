@@ -1,7 +1,27 @@
 .state_load-start
-  background $royal_blue
+  background url("../images/bg-blue-patern.svg") no-repeat center
+  background-size cover
+  &:before,&:after
+    content: ''
+    position fixed
+    height 5px
+    width 100%
+    z-index 500
+    background $color_light
+    left 0
+  &:before
+    top 0
+    transform-origin left
+    animation loaderLeft 4s ease infinite
+  &:after
+    bottom 0
+    transform-origin right
+    animation loaderRight 4s ease infinite
+
   &.theme-transparent
     background transparent
+    &:before,&:after
+      background $color_default
   overflow hidden
   height 100vh
   .section__header-controls,
@@ -465,4 +485,41 @@ body
 
 .state-scroll-speed
   transition-delay 0s !important
+
+
+@keyframes loaderLeft
+  from
+    transform scaleX(0)
+    opacity 1
+    transform-origin left
+  50%
+    transform-origin left
+    transform scaleX(1)
+    opacity 1
+  51%
+    transform-origin right
+    transform scaleX(1)
+    opacity 1
+  to
+    transform-origin right
+    transform scaleX(0)
+    opacity 0
+
+@keyframes loaderRight
+  from
+    transform-origin right
+    transform scaleX(0)
+    opacity 1
+  50%
+    transform-origin right
+    transform scaleX(1)
+    opacity 1
+  51%
+    transform-origin left
+    transform scaleX(1)
+    opacity 1
+  to
+    transform-origin left
+    transform scaleX(0)
+    opacity 0
 

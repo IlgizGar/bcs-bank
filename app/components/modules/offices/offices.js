@@ -50,9 +50,12 @@ export default class Offices {
     this.getCurrentTab();
     Helpers.getGeolocation((location) => {
       ymaps.ready(() => {
-        const userCity = Cookie.get('select-city') !== undefined ? Cookie.get('select-city') : Offices.checkUserCity(location.GeocoderMetaData.InternalToponymInfo.geoid);
+        const savedCity = Cookie.get('select-city');
+        const userCity = savedCity !== undefined ? savedCity : Offices.checkUserCity(location.GeocoderMetaData.InternalToponymInfo.geoid);
         this.initMap();
-        this.questionHandler();
+        if (savedCity === undefined) {
+          this.questionHandler();
+        }
         this.initObjectCollection();
         if (userCity) {
           global.contexts['select-city'].handleNamedList($(`.js-context-item[data-value="${userCity}"]`));
@@ -117,8 +120,8 @@ export default class Offices {
   }
 
   handleSwitch() {
-    this.switcher.unbind('click');
-    this.switcher.bind('click', (e) => {
+    this.switcher.unbind('touchstart  click');
+    this.switcher.bind('touchstart  click', (e) => {
       console.log(e);
       if (this.appBlock.hasClass('state_listed')) {
         this.appBlock.removeClass('state_listed');
@@ -162,8 +165,6 @@ export default class Offices {
   }
 
   questionHandler() {
-    if (Cookie.get('select-city') !== undefined) return;
-
     const questionPopup = new AskQuestion('select-city', 'Мы правильно определили Ваше местоположение?');
     global.contexts['select-city'].setPosition(questionPopup.popup);
 
@@ -359,6 +360,9 @@ export default class Offices {
   }
 
   onPointEvent(e, coordinates) {
+    if (this.appBlock.hasClass('state_explored')) {
+      this.removeExploredDetail();
+    }
     const currentCollapse = global.collapses[this.currentTabId];
     const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${coordinates.join()}]"] .collapse__control`);
     if (!this.appBlock.hasClass('state_explored')) {

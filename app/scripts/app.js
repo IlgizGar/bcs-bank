@@ -22,7 +22,7 @@ import FileInput from '../components/library/file-input/file-input';
 import Form from '../components/library/form/form';
 import Input from '../components/library/input/input';
 import Tabs from '../components/modules/tabbar/tabbar';
-import Card from '../components/library/card/card';
+// import Card from '../components/library/card/card';
 import Checkbox from '../components/library/checkbox/checkbox';
 import PageHeader from '../components/modules/page-header/page-header';
 import Offices from '../components/modules/offices/offices';
@@ -30,7 +30,7 @@ import Transfer from '../components/modules/services/transfer';
 import DocumentsFilter from '../components/modules/documents/documents';
 import IndexSearch from '../components/modules/index-search/index-search';
 import News from '../components/modules/news/news';
-import Search from '../components/modules/search/search';
+// import Search from '../components/modules/search/search';
 import Calculation from '../components/modules/calculation/calculation';
 import InfoShow from '../components/library/info-show/infoShow';
 import Filter from '../components/modules/filter/filter';
@@ -132,9 +132,9 @@ $(() => {
 
   global.cards = [];
   if ($('.js-card').length) {
-    $('.js-card').each((i, el) => {
-      global.cards.push(new Card($(el)));
-    });
+    // $('.js-card').each((i, el) => {
+    //   global.cards.push(new Card($(el)));
+    // });
     $(document).on('click', '.js-card', (e) => {
       if ($(e.currentTarget).data('href')) {
         window.location.href = $(e.currentTarget).data('href');
@@ -166,10 +166,10 @@ $(() => {
     global.news.push(new News());
   }
 
-  global.search = [];
-  if ($('.js-search').length) {
-    global.search.push(new Search());
-  }
+  // global.search = [];
+  // if ($('.js-search').length) {
+  //   global.search.push(new Search());
+  // }
 
   global.transfer = [];
   if ($('.js-transfer').length) {

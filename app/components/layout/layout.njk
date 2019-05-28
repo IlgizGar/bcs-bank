@@ -44,6 +44,8 @@
       }
     }
   }
+  var loadTimer = null;
+  var isLoad = false;
   function startPageAnimation() {
     document.body.removeAttribute('style');
     document.body.classList.remove('state_load-end');
@@ -51,8 +53,12 @@
     $('.slick-slider').slick('slickGoTo',1,true);
     $('.slick-slider').slick('slickGoTo',0,true);
   }
-  var transitionEvent = whichTransitionEvent();
-  window.addEventListener('load',function () {
+  function onPageLoad(){
+    clearTimeout(loadTimer);
+    if(isLoad){
+      return;
+    }
+    isLoad = true;
     var timer = null;
     document.body.style.position = "fixed";
     document.body.style.overflow = "hidden";
@@ -70,7 +76,11 @@
     timer = setTimeout(function () {
       startPageAnimation();
     }, 5000)
-  },false);
+  }
+  var transitionEvent = whichTransitionEvent();
+  window.addEventListener('load',onPageLoad,false);
+  loadTimer = setTimeout(onPageLoad, 4000);
+
 </script>
 </body>
 </html>

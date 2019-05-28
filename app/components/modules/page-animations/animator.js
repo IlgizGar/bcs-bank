@@ -78,29 +78,50 @@ export default class Animator {
       rootMargin: '0px',
       threshold: 0.3,
     };
+    const SpeedScrollOptions = {
+      rootMargin: '0px',
+      threshold: 0.1,
+    };
     let scroll = 0;
+    function callback(entries) {
+      const check = entries[0];
+      if (check.intersectionRatio <= 0) {
+        return;
+      }
+      $(check.target).addClass('state_animate-page');
+      if (!$(check.target).hasClass('state_animate-double')) {
+        delete check.target.obserber;
+        return;
+      }
+      if (scroll > window.pageYOffset) {
+        if ($(check.target).hasClass('state_animate-double')) {
+          $(check.target).removeClass('state_animate-page');
+        }
+      }
+      scroll = window.pageYOffset;
+    }
+    function speedCallback(entries, observer) {
+      const check = entries[0];
+      if (check.intersectionRatio <= 0) {
+        return;
+      }
+      observer.disconnect();
+      $(check.target).find('.js-card').each((index, element) => {
+        $('body').bind('scrollstart', () => {
+          Animator.scrollSpeedAnimate(element, index, this.delay);
+          $('body').unbind('scrollstart');
+        });
+      });
+      if ($(check.target).hasClass('js-card')) {
+        Animator.scrollSpeedAnimate(check.target, 0, this.delay);
+        $('body').unbind('scrollstart');
+      }
+    }
     Object.keys(this.animations).forEach((key) => {
       const dataItem = this.animations[key];
       if ($(dataItem.element).offset().top < window.innerHeight) {
         // console.log($(dataItem.element).offset().top, window.innerHeight);
         $(dataItem.element).addClass('state_animate-page');
-      }
-      function callback(entries) {
-        const check = entries[0];
-        if (check.intersectionRatio <= 0) {
-          return;
-        }
-        $(check.target).addClass('state_animate-page');
-        if (!$(check.target).hasClass('state_animate-double')) {
-          delete dataItem.obserber;
-          return;
-        }
-        if (scroll > window.pageYOffset) {
-          if ($(check.target).hasClass('state_animate-double')) {
-            $(check.target).removeClass('state_animate-page');
-          }
-        }
-        scroll = window.pageYOffset;
       }
       dataItem.obserber = new window.IntersectionObserver(callback, options);
       const observe = () => {
@@ -112,30 +133,6 @@ export default class Animator {
           setTimeout(() => {
             $(dataItem.element).removeClass('state_animate-page');
           }, 200);
-        }
-      }
-    });
-    const SpeedScrollOptions = {
-      rootMargin: '0px',
-      threshold: 0.1,
-    };
-    Object.keys(this.animations).forEach((key) => {
-      const dataItem = this.animations[key];
-      function speedCallback(entries, observer) {
-        const check = entries[0];
-        if (check.intersectionRatio <= 0) {
-          return;
-        }
-        observer.disconnect();
-        $(check.target).find('.js-card').each((index, element) => {
-          $('body').bind('scrollstart', () => {
-            Animator.scrollSpeedAnimate(element, index, this.delay);
-            $('body').unbind('scrollstart');
-          });
-        });
-        if ($(check.target).hasClass('js-card')) {
-          Animator.scrollSpeedAnimate(check.target, 0, this.delay);
-          $('body').unbind('scrollstart');
         }
       }
       dataItem.speedObserber = new window.IntersectionObserver(speedCallback, SpeedScrollOptions);
