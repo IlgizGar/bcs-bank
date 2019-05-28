@@ -325,15 +325,14 @@ export default class Offices {
   }
 
   addPoints() {
+    this.clearRoute();
     this.markCollection.removeAll();
     Object.values(this.points).forEach((el) => {
       this.createPlacemark(el, this.iconNormal);
     });
-    this.getUserPos().then((positionIsFind) => {
+    this.getUserPos().then(() => {
       this.map.geoObjects.add(this.markCollection);
-      if (!positionIsFind) {
-        this.goToPoints();
-      }
+      this.goToPoints();
     });
   }
 
@@ -366,9 +365,7 @@ export default class Offices {
     this.userPos = pos;
   }
   createRoute(toPoint) {
-    if (this.multiRoute) {
-      this.map.geoObjects.remove(this.multiRoute);
-    }
+    this.clearRoute();
     this.multiRoute = new ymaps.multiRouter.MultiRoute({
       referencePoints: [
         this.userPos,
@@ -385,8 +382,6 @@ export default class Offices {
       el.coordinates = [latitude, longitude];
       self.saveUserPos([latitude, longitude]);
       self.createPlacemark(el, self.iconActive);
-      self.map.setCenter(el.coordinates);
-      self.map.setZoom(10);
     }
     return new Promise((resolve) => {
       if (window.navigator.geolocation) {
@@ -416,6 +411,7 @@ export default class Offices {
     this.updateList();
     this.getPoints();
     this.addPoints();
+    this.clearRoute();
   }
 
   onPointEvent(e, coordinates) {
@@ -470,12 +466,14 @@ export default class Offices {
       }
     } else {
       this.goToPoints();
-      if (this.multiRoute) {
-        this.map.geoObjects.remove(this.multiRoute);
-      }
+      this.clearRoute();
     }
   }
-
+  clearRoute() {
+    if (this.multiRoute) {
+      this.map.geoObjects.remove(this.multiRoute);
+    }
+  }
   setScrollPane() {
     this.pane.jScrollPane({
       contentWidth: 100,
@@ -516,9 +514,7 @@ export default class Offices {
       this.getCurrentTab();
       this.getPoints();
       this.addPoints();
-      if (!this.userPos) {
-        this.goToPoints();
-      }
+      this.goToPoints();
     });
   }
 
@@ -550,6 +546,11 @@ export default class Offices {
     this.map.setBounds(this.markCollection.getBounds(), {
       checkZoomRange: true,
       zoom: 10,
+    }).then(() => {
+      console.log(111);
+      if (this.userPos) {
+        this.map.setCenter(this.userPos);
+      }
     });
   }
 
