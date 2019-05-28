@@ -438,9 +438,6 @@ export default class Offices {
         }
       }
     }
-    if (this.userPos) {
-      this.createRoute(coordinates);
-    }
   }
 
   initPointMobileDetail(target) {
@@ -466,9 +463,16 @@ export default class Offices {
       point.options.set('iconImageHref', this.iconActive.iconImageHref);
       point.options.set('iconImageSize', this.iconActive.iconImageSize);
       point.options.set('iconImageOffset', this.iconActive.iconImageOffset);
-      this.goToPoint(point);
+      if (this.userPos) {
+        this.createRoute(point);
+      } else {
+        this.goToPoint(point);
+      }
     } else {
       this.goToPoints();
+      if (this.multiRoute) {
+        this.map.geoObjects.remove(this.multiRoute);
+      }
     }
   }
 
