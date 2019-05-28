@@ -120,8 +120,8 @@ export default class Offices {
   }
 
   handleSwitch() {
-    this.switcher.unbind('click');
-    this.switcher.bind('click', (e) => {
+    this.switcher.unbind('touchstart  click');
+    this.switcher.bind('touchstart  click', (e) => {
       console.log(e);
       if (this.appBlock.hasClass('state_listed')) {
         this.appBlock.removeClass('state_listed');
@@ -360,6 +360,9 @@ export default class Offices {
   }
 
   onPointEvent(e, coordinates) {
+    if (this.appBlock.hasClass('state_explored')) {
+      this.removeExploredDetail();
+    }
     const currentCollapse = global.collapses[this.currentTabId];
     const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${coordinates.join()}]"] .collapse__control`);
     if (!this.appBlock.hasClass('state_explored')) {
