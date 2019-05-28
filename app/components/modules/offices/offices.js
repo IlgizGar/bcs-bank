@@ -365,6 +365,20 @@ export default class Offices {
   saveUserPos(pos) {
     this.userPos = pos;
   }
+  createRoute(toPoint) {
+    if (this.multiRoute) {
+      this.map.geoObjects.remove(this.multiRoute);
+    }
+    this.multiRoute = new ymaps.multiRouter.MultiRoute({
+      referencePoints: [
+        this.userPos,
+        toPoint, // улица Льва Толстого.
+      ],
+    }, {
+      boundsAutoApply: true,
+    });
+    this.map.geoObjects.add(this.multiRoute);
+  }
   getUserPos() {
     function addPlacemark(self, latitude, longitude) {
       const el = {};
@@ -423,6 +437,9 @@ export default class Offices {
           this.target = target;
         }
       }
+    }
+    if (this.userPos) {
+      this.createRoute(coordinates);
     }
   }
 
