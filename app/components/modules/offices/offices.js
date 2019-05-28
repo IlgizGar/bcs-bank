@@ -9,6 +9,7 @@ import AskQuestion from '../../library/question-popup/question-popup';
 
 export default class Offices {
   constructor(offices) {
+    this.userPos = null;
     this.appBlock = offices;
     this.pane = $('.offices__tabs');
     this.content = this.pane.parent();
@@ -121,8 +122,7 @@ export default class Offices {
 
   handleSwitch() {
     this.switcher.unbind('touchstart  click');
-    this.switcher.bind('touchstart  click', (e) => {
-      console.log(e);
+    this.switcher.bind('touchstart  click', () => {
       if (this.appBlock.hasClass('state_listed')) {
         this.appBlock.removeClass('state_listed');
         this.switcher.data('state', 'map');
@@ -228,7 +228,6 @@ export default class Offices {
     this.setZoomControls();
     this.handleMapSize();
     this.mapBlock = document.getElementById('map-container').firstChild;
-    console.log(this.mapBlock);
     if (window.innerWidth < 992) {
       this.map.behaviors.disable('drag');
     }
@@ -328,18 +327,29 @@ export default class Offices {
   addPoints() {
     this.markCollection.removeAll();
     Object.values(this.points).forEach((el) => {
-      const placemark = new ymaps.Placemark(
-        el.coordinates, {
-          collapse_id: el.id,
-        },
-        this.iconNormal,
-      );
+      this.createPlacemark(el, this.iconNormal);
+    });
+    this.getUserPos().then((positionIsFind) => {
+      this.map.geoObjects.add(this.markCollection);
+      if (!positionIsFind) {
+        this.goToPoints();
+      }
+    });
+  }
+
+  createPlacemark(el, icon) {
+    const placemark = new ymaps.Placemark(
+      el.coordinates, {
+        collapse_id: el.id !== undefined ? el.id : null,
+      },
+      icon,
+    );
+    if (el.id) {
       placemark.events.add('click', (e) => {
         this.onPointEvent(e, el.coordinates);
       });
-      this.markCollection.add(placemark);
-    });
-    this.map.geoObjects.add(this.markCollection);
+    }
+    this.markCollection.add(placemark);
   }
 
   updateList() {
@@ -352,11 +362,46 @@ export default class Offices {
     });
   }
 
+  saveUserPos(pos) {
+    this.userPos = pos;
+  }
+  getUserPos() {
+    function addPlacemark(self, latitude, longitude) {
+      const el = {};
+      el.coordinates = [latitude, longitude];
+      self.saveUserPos([latitude, longitude]);
+      self.createPlacemark(el, self.iconActive);
+      self.map.setCenter(el.coordinates);
+      self.map.setZoom(10);
+    }
+    return new Promise((resolve) => {
+      if (window.navigator.geolocation) {
+        window.navigator.geolocation.getCurrentPosition((position) => {
+          addPlacemark(this, position.coords.latitude, position.coords.longitude);
+          resolve(true);
+        }, (error) => {
+          console.log(error);
+          resolve(false);
+        });
+      } else {
+        ymaps.geolocation.get().then(
+          (result) => {
+            addPlacemark(this, result.geoObjects.position[0], result.geoObjects.position[1]);
+            resolve(true);
+          },
+          (err) => {
+            console.log(`Ошибка: ${err}`);
+            resolve(false);
+          },
+        );
+      }
+    });
+  }
+
   changeCity() {
     this.updateList();
     this.getPoints();
     this.addPoints();
-    this.goToPoints();
   }
 
   onPointEvent(e, coordinates) {
@@ -370,7 +415,6 @@ export default class Offices {
       currentCollapse.openContent(target);
       Offices.reInitScroll(this.pane, 225);
       this.togglePointState(e.get('target'), target);
-      console.log(e.get('target'));
       if (window.innerWidth < 992) {
         if (!this.appBlock.hasClass('state_explored')) {
           this.appBlock.addClass('state_explored');
@@ -407,10 +451,7 @@ export default class Offices {
       point.options.set('iconImageOffset', this.iconActive.iconImageOffset);
       this.goToPoint(point);
     } else {
-      this.map.setBounds(this.markCollection.getBounds(), {
-        checkZoomRange: true,
-        zoom: 10,
-      });
+      this.goToPoints();
     }
   }
 
@@ -454,7 +495,9 @@ export default class Offices {
       this.getCurrentTab();
       this.getPoints();
       this.addPoints();
-      this.goToPoints();
+      if (!this.userPos) {
+        this.goToPoints();
+      }
     });
   }
 
