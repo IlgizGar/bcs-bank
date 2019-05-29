@@ -25,7 +25,11 @@ export default class Offices {
       iconImageSize: [56, 56],
       iconImageOffset: [-28, -44],
     };
+    this.iconUserPosition = {
+      preset: 'islands#redIcon',
+    };
     this.switcher = $('.js-offices-switcher');
+    this.routeButton = $('[name=select_routeType]');
     this.detailBlock = $('.js-offices-detail');
     this.detailBlockClose = $('.js-offices-detail-close');
     this.cityInput = $('.context input[name="current-city_input"]');
@@ -91,6 +95,17 @@ export default class Offices {
           this.appBlock.addClass('state_listed');
         }
       }
+    });
+
+    this.routeButton.on('change', (e) => {
+      const button = $(e.currentTarget);
+      const type = button.val();
+      let toPoint = button.closest('[data-coords]').attr('data-coords');
+      toPoint = String(toPoint).split(',').map((el) => {
+        const coords = parseFloat(el.replace('[', '').replace(']', ''));
+        return coords;
+      });
+      this.createRoute(toPoint, type);
     });
   }
 
@@ -221,7 +236,7 @@ export default class Offices {
     this.map = new ymaps.Map('map-container', {
       center: [61.698653, 99.505405],
       zoom: 5,
-      controls: [],
+      controls: ['routeButtonControl'],
     });
     this.map.behaviors.disable('scrollZoom');
     this.map.options.set('suppressMapOpenBlock', true);
@@ -347,6 +362,8 @@ export default class Offices {
       placemark.events.add('click', (e) => {
         this.onPointEvent(e, el.coordinates);
       });
+    } else {
+      placemark.iconReadOnly = true;
     }
     this.markCollection.add(placemark);
   }
@@ -364,13 +381,16 @@ export default class Offices {
   saveUserPos(pos) {
     this.userPos = pos;
   }
-  createRoute(toPoint) {
+  createRoute(toPoint, mode) {
     this.clearRoute();
     this.multiRoute = new ymaps.multiRouter.MultiRoute({
       referencePoints: [
         this.userPos,
         toPoint, // улица Льва Толстого.
       ],
+      params: {
+        routingMode: (mode !== undefined) ? mode : 'auto',
+      },
     }, {
       boundsAutoApply: true,
     });
@@ -381,7 +401,7 @@ export default class Offices {
       const el = {};
       el.coordinates = [latitude, longitude];
       self.saveUserPos([latitude, longitude]);
-      self.createPlacemark(el, self.iconActive);
+      self.createPlacemark(el, self.iconUserPosition);
     }
     return new Promise((resolve) => {
       if (window.navigator.geolocation) {
@@ -451,19 +471,19 @@ export default class Offices {
 
   togglePointState(point, collapse) {
     this.markCollection.each((el) => {
-      el.options.set('iconImageHref', this.iconNormal.iconImageHref);
-      el.options.set('iconImageSize', this.iconNormal.iconImageSize);
-      el.options.set('iconImageOffset', this.iconNormal.iconImageOffset);
+      if (!el.iconReadOnly) {
+        el.options.set('iconImageHref', this.iconNormal.iconImageHref);
+        el.options.set('iconImageSize', this.iconNormal.iconImageSize);
+        el.options.set('iconImageOffset', this.iconNormal.iconImageOffset);
+      }
     });
     if (collapse.parent().hasClass('collapse__item_state-open')) {
-      point.options.set('iconImageHref', this.iconActive.iconImageHref);
-      point.options.set('iconImageSize', this.iconActive.iconImageSize);
-      point.options.set('iconImageOffset', this.iconActive.iconImageOffset);
-      if (this.userPos) {
-        this.createRoute(point);
-      } else {
-        this.goToPoint(point);
+      if (!point.iconReadOnly) {
+        point.options.set('iconImageHref', this.iconActive.iconImageHref);
+        point.options.set('iconImageSize', this.iconActive.iconImageSize);
+        point.options.set('iconImageOffset', this.iconActive.iconImageOffset);
       }
+      this.goToPoint(point);
     } else {
       this.goToPoints();
       this.clearRoute();
