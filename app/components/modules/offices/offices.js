@@ -331,11 +331,14 @@ export default class Offices {
   getPoints() {
     const citySelector = this.city ? `[data-city="${this.city}"]` : '[data-city]';
     this.points = [];
-    this.appBlock.find(`.offices__collapse${citySelector}[data-id="${this.currentTabId}"]`).children('.collapse__item').each((i, el) => {
-      this.points.push({
-        id: Offices.generatePointId($(el).data('coords')),
-        coordinates: $(el).data('coords'),
-      });
+    this.appBlock.find(`.offices__collapse${citySelector}[data-id="${this.currentTabId}"]`).find('.collapse__item[data-coords]').each((i, el) => {
+      const coords = $(el).data('coords');
+      if (coords) {
+        this.points.push({
+          id: Offices.generatePointId(coords),
+          coordinates: coords,
+        });
+      }
     });
   }
 
@@ -444,6 +447,11 @@ export default class Offices {
     }
     const currentCollapse = global.collapses[this.currentTabId];
     const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${coordinates.join()}]"] .collapse__control`);
+    const parentCollapse = target.parent().parent().closest('.collapse__item');
+    if (parentCollapse.length) {
+      parentCollapse.children('.collapse__control').trigger('click');
+      this.scrollToCollapse(target);
+    }
     if (!this.appBlock.hasClass('state_explored')) {
       this.scrollToCollapse(target);
       currentCollapse.openContent(target);
@@ -510,16 +518,20 @@ export default class Offices {
     });
 
     // Пересчет высоты при раскрытии элементов
-    $('.collapse__control').on('click', (e) => {
+
+    $('.collapse__control').on('click', () => {
       if (!this.appBlock.hasClass('state_explored')) {
+        Offices.reInitScroll(this.pane, 300);
+      }
+    });
+
+    $('.collapse__item[data-coords] .collapse__control').on('click', (e) => {
+      if (!this.appBlock.hasClass('state_explored')) {
+        this.scrollToCollapse($(e.target));
         const collapseContent = $(e.target).closest('.collapse__item');
         const point = this.getPointById(Offices.generatePointId(collapseContent.data('coords')));
         // const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${$(e.target).closest('.collapse__item').data('coords')}]"] .collapse__control`);
-        this.scrollToCollapse($(e.target));
-        Offices.reInitScroll(this.pane, 225);
-
         this.togglePointState(point, $(e.target).closest('.collapse__control'));
-
         if (window.innerWidth < 992) {
           if (!this.appBlock.hasClass('state_explored')) {
             // this.appBlock.removeClass('state_listed').addClass('state_explored');
