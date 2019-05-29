@@ -100,21 +100,21 @@
                     <div class="carousel carousel_type-mobile">
                         <div class="js-carousel section__row mt-64 mb-70 carousel__content" data-id="samsung-pay-2" data-breakpoint="991">
                             <div class="section__col section__col_3">
-                                <img width="47" class="mb-16" src="assets/illustrations/samsung_mob_icon1.png">
+                                <img width="47" class="mb-16" src="assets/illustrations/samsung_mob_icon1.svg">
                                 {{ Heading.heading({ 'title': 'Токенизация', 'mods': { 'type': 'normal' } }) }}
                                 <div class="text mt-32">
                                     Во время покупки вместо номера карты используется специальный цифровой код, созданный случайным образом — токен. Ваша личная информация не используется во время оплаты и остается в безопасности.
                                 </div>
                             </div>
                             <div class="section__col section__col_3">
-                                <img width="38" class="mb-16" src="assets/illustrations/samsung_mob_icon2.png">
+                                <img width="38" class="mb-16" src="assets/illustrations/samsung_mob_icon2.svg">
                                 {{ Heading.heading({ 'title': 'Авторизация', 'mods': { 'type': 'normal' } }) }}
                                 <div class="text mt-32">
                                     Каждая транзакция обязательно подтверждается по вашему отпечатку пальца, радужке глаз или PIN-коду приложения — только вы можете совершать покупки.
                                 </div>
                             </div>
                             <div class="section__col section__col_3">
-                                <img width="80" class="mb-16" src="assets/illustrations/samsung_mob_icon3.png">
+                                <img width="80" class="mb-16" src="assets/illustrations/samsung_mob_icon3.svg">
                                 {{ Heading.heading({ 'title': 'Samsung Knox', 'mods': { 'type': 'normal' } }) }}
                                 <div class="text mt-32">
                                     Специальная встроенная система безопасности Samsung Knox обеспечивает защиту устройства и данных Samsung Pay от вредоносных атак, а также непрерывно отслеживает возможные уязвимости независимо от операционной системы на устройстве.
@@ -237,37 +237,60 @@
                 </div>
             </section>
 
-            <section class="mobile section page__section mt-82 js-scroll-animate">
+            <section class="mobile section page__section mt-82 js-scroll-animate" style="overflow: hidden;">
                 <div class="page__container">
                     {{ Heading.heading({ 'title': 'Как добавить карту в Samsung Pay', 'mods': { 'type': 'default', 'margin': 'small', 'theme': 'default' } }) }}
                     <div class="section__row mt-64">
-                        <div class="section__col section__col_2">
+                        <div class="section__col section__col_full">
                             <div class="js-section-tabs">
 
-                                <ul class="section-tabs__nav-list">
-                                    <li data-tab-show="#phoneadd" class="section-tabs__nav-item">
-                                        На смартфоне
-                                    </li>
-                                    <li data-tab-show="#watchadd" class="section-tabs__nav-item">
-                                        На носимом устройстве
-                                    </li>
-                                </ul>
+                                <div class="section-tabs__nav">
+                                    <ul class="section-tabs__nav-list">
+                                        <li data-tab-show="#phoneadd" class="section-tabs__nav-item">
+                                            На смартфоне
+                                        </li>
+                                        <li data-tab-show="#watchadd" class="section-tabs__nav-item">
+                                            На носимом устройстве
+                                        </li>
+                                    </ul>
+                                </div>
 
                                 <div id="phoneadd" class="js-section-tab mt-40">
-                                    <div class="carousel carousel_type-text">
+                                    <div class="carousel carousel_type-text carousel_type-text-full js-scroll-animate">
                                         <div class="js-carousel carousel__content" data-id="phoneadd" data-breakpoint="9000">
-                                            <div class="text">
-                                                Подключите устройство к совместимому смартфону с помощью мобильного приложения Galaxy Wearable
+                                            <div class="slide">
+                                                <div class="text">
+                                                    Откройте приложение Samsung Pay, укажите Вашу действующую учетную запись Samsung Account (e-mail) и настройте удобный для Вас способ авторизации: по отпечатку пальца, радужке глаз (в зависимости от модели смартфона) или PIN-коду приложения.
+                                                </div>
+                                                <div class="image">
+                                                    <img  src="assets/illustrations/samsung-pay_img2.png" alt="Легкий мобильный банк">
+                                                </div>
                                             </div>
-                                            <div class="text">
-                                                Подключите устройство к совместимому смартфону с помощью мобильного приложения Galaxy Wearable
+                                            <div class="slide">
+                                                <div class="text">
+                                                    Отсканируйте карту с помощью камеры смартфона или введите ее данные вручную. Примите Условия обслуживания Банка.
+                                                </div>
+                                                <div class="image">
+                                                    <img  src="assets/illustrations/samsung-pay_img2.png" alt="Легкий мобильный банк">
+                                                </div>
                                             </div>
-                                            <div class="text">
-                                                Подключите устройство к совместимому смартфону с помощью мобильного приложения Galaxy Wearable
+                                            <div class="slide">
+                                                <div class="text">
+                                                    Нажмите на кнопку SMS для прохождения идентификации держателя карты. Введите код, полученный в SMS, и нажмите «Отправить».
+                                                </div>
+                                                <div class="image">
+                                                    <img  src="assets/illustrations/samsung-pay_img2.png" alt="Легкий мобильный банк">
+                                                </div>
                                             </div>
-                                            <div class="text">
-                                                Подключите устройство к совместимому смартфону с помощью мобильного приложения Galaxy Wearable
+                                            <div class="slide">
+                                                <div class="text">
+                                                    Введите подпись с помощью пальца или стилуса. Карта добавлена! На одно устройство можно добавить максимум 10 банковских карт.
+                                                </div>
+                                                <div class="image">
+                                                    <img  src="assets/illustrations/samsung-pay_img2.png" alt="Легкий мобильный банк">
+                                                </div>
                                             </div>
+
                                         </div>
                                         <div class="carousel-controls carousel-controls_theme-dark js-carousel-controls">
                                             <div class="carousel-controls__pagination js-carousel-pagination" data-carousel="phoneadd">
@@ -277,20 +300,56 @@
                                     </div>
                                 </div>
                                 <div id="watchadd" class="js-section-tab mt-40">
-                                    <div class="carousel carousel_type-text">
+                                    <div class="carousel carousel_type-text carousel_type-text-full js-scroll-animate">
                                         <div class="js-carousel carousel__content" data-id="watchadd" data-breakpoint="9000">
-                                            <div class="text">
-                                                Подключите устройство к совместимому смартфону с помощью мобильного приложения Galaxy Wearable
-                                            </div>
-                                            <div class="text">
-                                                Подключите устройство к совместимому смартфону с помощью мобильного приложения Galaxy Wearable
-                                            </div>
-                                            <div class="text">
-                                                Подключите устройство к совместимому смартфону с помощью мобильного приложения Galaxy Wearable
-                                            </div>
-                                            <div class="text">
-                                                Подключите устройство к совместимому смартфону с помощью мобильного приложения Galaxy Wearable
-                                            </div>
+                                                <div class="slide">
+                                                    <div class="text">
+                                                        Подключите устройство к совместимому смартфону с помощью мобильного приложения Galaxy Wearable.
+                                                    </div>
+                                                    <div class="image">
+                                                        <img  src="assets/illustrations/samsung-pay_img2.png" alt="Легкий мобильный банк">
+                                                    </div>
+                                                </div>
+                                                <div class="slide">
+                                                    <div class="text">
+                                                        В Galaxy Wearable нажмите «Открыть Samsung Pay», войдите в учетную запись Samsung Account и нажмите «Добавить карту».
+                                                    </div>
+                                                    <div class="image">
+                                                        <img  src="assets/illustrations/samsung-pay_img2.png" alt="Легкий мобильный банк">
+                                                    </div>
+                                                </div>
+                                                <div class="slide">
+                                                    <div class="text">
+                                                        На устройстве настройте блокировку экрана по PIN-коду.
+                                                    </div>
+                                                    <div class="image">
+                                                        <img  src="assets/illustrations/samsung-pay_img2.png" alt="Легкий мобильный банк">
+                                                    </div>
+                                                </div>
+                                                <div class="slide">
+                                                    <div class="text">
+                                                        Откройте Samsung Pay на устройстве, удерживая клавишу «Назад».
+                                                    </div>
+                                                    <div class="image">
+                                                        <img  src="assets/illustrations/samsung-pay_img2.png" alt="Легкий мобильный банк">
+                                                    </div>
+                                                </div>
+                                                <div class="slide">
+                                                    <div class="text">
+                                                        На смартфоне в Galaxy Wearable отсканируйте банковскую карту либо введите её данные вручную. Примите Условия обслуживания Банка.
+                                                    </div>
+                                                    <div class="image">
+                                                        <img  src="assets/illustrations/samsung-pay_img2.png" alt="Легкий мобильный банк">
+                                                    </div>
+                                                </div>
+                                                <div class="slide">
+                                                    <div class="text">
+                                                        Нажмите на кнопку SMS для прохождения идентификации держателя карты Банка с помощью одноразового кода по SMS.
+                                                    </div>
+                                                    <div class="image">
+                                                        <img  src="assets/illustrations/samsung-pay_img2.png" alt="Легкий мобильный банк">
+                                                    </div>
+                                                </div>
                                         </div>
                                         <div class="carousel-controls carousel-controls_theme-dark js-carousel-controls">
                                             <div class="carousel-controls__pagination js-carousel-pagination" data-carousel="watchadd">
@@ -301,9 +360,6 @@
                                 </div>
                             </div>
 
-                        </div>
-                        <div class="section__col section__col_1 hidden-mobile">
-                            <img class="illustration" style="max-width: 270px; float: right"  src="assets/illustrations/samsung-pay_img2.png" alt="Легкий мобильный банк">
                         </div>
                     </div>
                 </div>
