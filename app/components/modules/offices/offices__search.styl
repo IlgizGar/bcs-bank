@@ -1,0 +1,31 @@
+.offices__search
+  position relative
+  display flex
+  padding 24px 20px
+  @media (max-width 991px)
+    padding-right 0
+  .button
+    .button__wrap
+      &:before,&:after
+        content: ''!important
+        width 20px
+        height 20px
+        position absolute
+        top: 50%
+        left 50%
+        transform translateX(-50%) translateY(-50%)
+        background-size contain
+        background-position center
+        background-repeat no-repeat
+      &:before
+        background-image url("../images/svg/oficcess_button_switch_list.svg")
+      &:after
+        background-image url("../images/svg/oficcess_button_switch_map.svg")
+    &[data-state="map"]
+      .button__wrap
+        &:after
+          opacity 0
+    &[data-state="list"]
+      .button__wrap
+        &:before
+          opacity 0

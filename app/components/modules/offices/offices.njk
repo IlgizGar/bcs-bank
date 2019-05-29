@@ -2,6 +2,7 @@
 {% import "../../../components/icon/icon.njk" as Icon %}
 {% import "../../library/button/button.njk" as Button %}
 {% import "../../../components/library/dropdown/dropdown.njk" as Dropdown %}
+{% import "../../../components/library/input/input.njk" as Input %}
 
 <div class="offices js-offices">
   <div id="map-container" class="offices__map-wrapper" style="height: 678px;"></div>
@@ -12,6 +13,11 @@
   <div class="offices__content js-tab-scroll">
 
     {{ Tabbar.tabbar({ 'anchor': { 'theme': 'default-tab', 'view': 'underscore', 'class': 'offices__tab-control' }, 'tabs': [{'title': 'Отделения', 'id': 'offices-tab' }, {'title': 'Банкоматы', 'id': 'atm-tab'}, {'title': 'Ультима', 'id': 'ultima-tab'}], 'class': 'offices__tabbar' }) }}
+
+    <div class="offices__search">
+        {{ Input.input({ 'label': 'Введите адрес', 'class': 'search__field-group', 'name': 'search', 'icon': 'search' }) }}
+        {{ Button.button({ 'mods': {'type': 'icon','theme': 'transparent'}, 'attr': {'state': 'map'}, 'class': 'offices__switch-view js-offices-switcher' }) }}
+    </div>
 
     <div class="tabs js-tabs offices__tabs scroll-pane">
       {#
@@ -73,7 +79,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type1'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -130,7 +136,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type2'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -187,7 +193,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type3'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -244,7 +250,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type4'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -301,7 +307,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type5'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -358,7 +364,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type6'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -417,7 +423,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type7'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -475,7 +481,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type8'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -532,7 +538,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type9'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -589,7 +595,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type10'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -646,7 +652,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type12'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -703,7 +709,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type13'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -761,7 +767,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type14'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -815,7 +821,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type15'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -869,7 +875,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type16'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -923,7 +929,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type17'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -977,7 +983,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type18'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -1031,7 +1037,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type19'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -1087,7 +1093,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type20'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -1141,7 +1147,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type21'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -1195,7 +1201,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type22'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -1249,7 +1255,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type23'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -1303,7 +1309,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type24'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -1357,7 +1363,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type25'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -1417,7 +1423,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type26'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -1497,7 +1503,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type27'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -1551,7 +1557,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type28'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -1605,7 +1611,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type29'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -1659,7 +1665,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type30'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -1715,7 +1721,7 @@
                         {'title': 'Пешком', 'value': 'pedestrian'},
                         {'title': 'На велосипеде', 'value': 'bicycle'}],
                     'class': 'form__field-group form__field-group_dropdown',
-                    'attr': {'id': 'route-type'},
+                    'attr': {'id': 'route-type31'},
                     'field': 'js-create-route' }) }}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
@@ -1724,5 +1730,5 @@
       </div>
     </div>
   </div>
-  {{ Button.button({ 'title': 'Показать списком', 'mods': {'theme': 'default'}, 'attr': {'state': 'map'}, 'class': 'offices__switch-view js-offices-switcher' }) }}
+
 </div>

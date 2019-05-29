@@ -166,8 +166,8 @@ module.exports = (elem) => {
         }
         this.list.removeClass('state_invisible');
         this.list.css('min-width', this.dropdown.outerWidth());
-        this.list.css('top', this.dropdown.offset().top + this.dropdown.outerHeight());
-        this.list.css('left', this.dropdown.offset().left);
+        this.list.css('top', $(el).offset().top + this.dropdown.outerHeight());
+        this.list.css('left', $(el).offset().left);
       }
     }
 

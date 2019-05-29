@@ -11,7 +11,7 @@ export default class Offices {
   constructor(offices) {
     this.userPos = null;
     this.appBlock = offices;
-    this.pane = $('.offices__tabs');
+    this.pane = $('.js-tabs');
     this.content = this.pane.parent();
     this.iconNormal = {
       iconLayout: 'default#image',
@@ -136,21 +136,21 @@ export default class Offices {
   }
 
   handleSwitch() {
-    this.switcher.unbind('touchstart  click');
-    this.switcher.bind('touchstart  click', () => {
+    this.switcher.unbind('click');
+    this.switcher.bind('click', () => {
       if (this.appBlock.hasClass('state_listed')) {
         this.appBlock.removeClass('state_listed');
-        this.switcher.data('state', 'map');
-        this.switcher.find('.js-button-title').html('Показать списком');
+        this.switcher.attr('data-state', 'map');
+        // this.switcher.find('.js-button-title').html('Показать списком');
         this.mapContainer.append(this.mapBlock);
-        const pos = $('#map-container').offset().top;
-        $('html, body').animate({
-          scrollTop: pos - 150,
-        }, 600);
+        // const pos = $('#map-container').offset().top;
+        // $('html, body').animate({
+        //   scrollTop: pos - 150,
+        // }, 600);
       } else {
         this.appBlock.addClass('state_listed');
-        this.switcher.data('state', 'list');
-        this.switcher.find('.js-button-title').html('Показать на карте');
+        this.switcher.attr('data-state', 'list');
+        // this.switcher.find('.js-button-title').html('Показать на карте');
       }
     });
 
@@ -236,7 +236,7 @@ export default class Offices {
     this.map = new ymaps.Map('map-container', {
       center: [61.698653, 99.505405],
       zoom: 5,
-      controls: ['routeButtonControl'],
+      controls: [],
     });
     this.map.behaviors.disable('scrollZoom');
     this.map.options.set('suppressMapOpenBlock', true);
@@ -351,7 +351,7 @@ export default class Offices {
     });
   }
 
-  createPlacemark(el, icon) {
+  createPlacemark(el, icon, isSingle) {
     const placemark = new ymaps.Placemark(
       el.coordinates, {
         collapse_id: el.id !== undefined ? el.id : null,
@@ -365,7 +365,11 @@ export default class Offices {
     } else {
       placemark.iconReadOnly = true;
     }
-    this.markCollection.add(placemark);
+    if (isSingle) {
+      this.map.geoObjects.add(placemark);
+    } else {
+      this.markCollection.add(placemark);
+    }
   }
 
   updateList() {
@@ -401,7 +405,7 @@ export default class Offices {
       const el = {};
       el.coordinates = [latitude, longitude];
       self.saveUserPos([latitude, longitude]);
-      self.createPlacemark(el, self.iconUserPosition);
+      self.createPlacemark(el, self.iconUserPosition, true);
     }
     return new Promise((resolve) => {
       if (window.navigator.geolocation) {
@@ -459,10 +463,10 @@ export default class Offices {
   initPointMobileDetail(target) {
     this.handleMapSize();
     this.goToPoints();
-    const $collapse = $.extend(true, {}, target.parent().clone());
+    const $collapse = $.extend(true, {}, target.parent().clone(true, true));
     $collapse.addClass('collapse__item_state-open');
     $collapse.find('.collapse__content').css({ display: 'block', height: 'auto' });
-    this.switcher.addClass('state_hidden');
+    // this.switcher.addClass('state_hidden');
     if (this.detailBlock.hasClass('state_hidden')) {
       this.detailBlock.removeClass('state_hidden').find('.js-detail-content').append($collapse);
     }
@@ -493,6 +497,7 @@ export default class Offices {
     if (this.multiRoute) {
       this.map.geoObjects.remove(this.multiRoute);
     }
+    this.multiRoute = null;
   }
   setScrollPane() {
     this.pane.jScrollPane({
@@ -566,11 +571,6 @@ export default class Offices {
     this.map.setBounds(this.markCollection.getBounds(), {
       checkZoomRange: true,
       zoom: 10,
-    }).then(() => {
-      console.log(111);
-      if (this.userPos) {
-        this.map.setCenter(this.userPos);
-      }
     });
   }
 
