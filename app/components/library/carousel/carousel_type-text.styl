@@ -3,6 +3,32 @@
   max-width 470px
   width 100%
   text-align left
+  &-full
+    max-width 100%
+    .slick-list
+      overflow visible
+      max-width 100%
+      .slick-slide
+        .slide
+          transition opacity 0.5s ease
+          opacity 0
+        &.slick-current
+          .slide
+            opacity 1
+    .slide
+      display flex!important
+      flex-direction row
+      justify-content space-between
+      align-items flex-end
+      flex-wrap nowrap
+      .text
+        max-width 470px
+      .image
+        max-width 270px
+        position relative
+        img
+          max-width 100%
+          margin-top -60%
   @media(max-width 425px)
     text-align center
   .carousel-controls
