@@ -13,6 +13,7 @@ export default class Offices {
     this.appBlock = offices;
     this.pane = $('.js-tabs');
     this.content = this.pane.parent();
+    this.searchTimout = null;
     this.iconNormal = {
       iconLayout: 'default#image',
       iconImageHref: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4gICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz4gICAgICAgIDxnPiAgICAgICAgICAgIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEyIiBmaWxsPSIjRkZGIi8+ICAgICAgICAgICAgPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiIGZpbGw9IiM0NTczRDkiLz4gICAgICAgICAgICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSI0IiBmaWxsPSIjRkZGIi8+ICAgICAgICA8L2c+ICAgIDwvZz48L3N2Zz4=',
@@ -107,6 +108,7 @@ export default class Offices {
       });
       this.createRoute(toPoint, type);
     });
+    this.searchInit();
   }
 
   handleMapSize() {
@@ -333,10 +335,12 @@ export default class Offices {
     this.points = [];
     this.appBlock.find(`.offices__collapse${citySelector}[data-id="${this.currentTabId}"]`).find('.collapse__item[data-coords]').each((i, el) => {
       const coords = $(el).data('coords');
+      $(el).removeClass('state_hidden');
       if (coords) {
         this.points.push({
           id: Offices.generatePointId(coords),
           coordinates: coords,
+          element: el,
         });
       }
     });
@@ -573,17 +577,25 @@ export default class Offices {
   }
 
   goToPoint(point) {
-    this.map.setBounds(point.geometry.getBounds(), {
-      checkZoomRange: true,
-      zoom: 10,
-    });
+    try {
+      this.map.setBounds(point.geometry.getBounds(), {
+        checkZoomRange: true,
+        zoom: 10,
+      });
+    } catch (e) {
+      console.warn('no points');
+    }
   }
 
   goToPoints() {
-    this.map.setBounds(this.markCollection.getBounds(), {
-      checkZoomRange: true,
-      zoom: 10,
-    });
+    try {
+      this.map.setBounds(this.markCollection.getBounds(), {
+        checkZoomRange: true,
+        zoom: 10,
+      });
+    } catch (e) {
+      console.warn('no points');
+    }
   }
 
   getPointById(id) {
@@ -602,5 +614,36 @@ export default class Offices {
 
   getCurrentTab() {
     this.currentTabId = this.appBlock.find('.offices__content .tabs .tabs__item:not(.state_invisible)').attr('id');
+  }
+
+  searchInit() {
+    $('[name=map-search]').on('keyup', (e) => {
+      const searchInput = $(e.currentTarget);
+      const value = searchInput.val();
+      clearTimeout(this.searchTimout);
+      this.searchTimout = setTimeout(() => {
+        if (value) {
+          this.search(value);
+        } else {
+          this.getPoints();
+          this.addPoints();
+        }
+      }, 250);
+    });
+  }
+  search(text) {
+    this.getPoints();
+    const result = [];
+    this.points.forEach((point) => {
+      $(point.element).removeClass('state_hidden');
+      const elText = String($(point.element).find('.offices__info').text() + $(point.element).find('.collapse__control').text()).toLowerCase();
+      if (elText.indexOf(text.toLowerCase()) + 1) {
+        result.push(point);
+      } else {
+        $(point.element).addClass('state_hidden');
+      }
+    });
+    this.points = result;
+    this.addPoints();
   }
 }
