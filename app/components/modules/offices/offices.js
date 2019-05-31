@@ -9,9 +9,11 @@ import AskQuestion from '../../library/question-popup/question-popup';
 
 export default class Offices {
   constructor(offices) {
+    this.userPos = null;
     this.appBlock = offices;
-    this.pane = $('.offices__tabs');
+    this.pane = $('.js-tabs');
     this.content = this.pane.parent();
+    this.searchTimout = null;
     this.iconNormal = {
       iconLayout: 'default#image',
       iconImageHref: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4gICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz4gICAgICAgIDxnPiAgICAgICAgICAgIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEyIiBmaWxsPSIjRkZGIi8+ICAgICAgICAgICAgPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiIGZpbGw9IiM0NTczRDkiLz4gICAgICAgICAgICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSI0IiBmaWxsPSIjRkZGIi8+ICAgICAgICA8L2c+ICAgIDwvZz48L3N2Zz4=',
@@ -24,7 +26,11 @@ export default class Offices {
       iconImageSize: [56, 56],
       iconImageOffset: [-28, -44],
     };
+    this.iconUserPosition = {
+      preset: 'islands#redIcon',
+    };
     this.switcher = $('.js-offices-switcher');
+    this.routeButton = $('[name=select_routeType]');
     this.detailBlock = $('.js-offices-detail');
     this.detailBlockClose = $('.js-offices-detail-close');
     this.cityInput = $('.context input[name="current-city_input"]');
@@ -91,6 +97,18 @@ export default class Offices {
         }
       }
     });
+
+    this.routeButton.on('change', (e) => {
+      const button = $(e.currentTarget);
+      const type = button.val();
+      let toPoint = button.closest('[data-coords]').attr('data-coords');
+      toPoint = String(toPoint).split(',').map((el) => {
+        const coords = parseFloat(el.replace('[', '').replace(']', ''));
+        return coords;
+      });
+      this.createRoute(toPoint, type);
+    });
+    this.searchInit();
   }
 
   handleMapSize() {
@@ -120,22 +138,21 @@ export default class Offices {
   }
 
   handleSwitch() {
-    this.switcher.unbind('touchstart  click');
-    this.switcher.bind('touchstart  click', (e) => {
-      console.log(e);
+    this.switcher.unbind('click');
+    this.switcher.bind('click', () => {
       if (this.appBlock.hasClass('state_listed')) {
         this.appBlock.removeClass('state_listed');
-        this.switcher.data('state', 'map');
-        this.switcher.find('.js-button-title').html('Показать списком');
+        this.switcher.attr('data-state', 'map');
+        // this.switcher.find('.js-button-title').html('Показать списком');
         this.mapContainer.append(this.mapBlock);
-        const pos = $('#map-container').offset().top;
-        $('html, body').animate({
-          scrollTop: pos - 150,
-        }, 600);
+        // const pos = $('#map-container').offset().top;
+        // $('html, body').animate({
+        //   scrollTop: pos - 150,
+        // }, 600);
       } else {
         this.appBlock.addClass('state_listed');
-        this.switcher.data('state', 'list');
-        this.switcher.find('.js-button-title').html('Показать на карте');
+        this.switcher.attr('data-state', 'list');
+        // this.switcher.find('.js-button-title').html('Показать на карте');
       }
     });
 
@@ -228,7 +245,6 @@ export default class Offices {
     this.setZoomControls();
     this.handleMapSize();
     this.mapBlock = document.getElementById('map-container').firstChild;
-    console.log(this.mapBlock);
     if (window.innerWidth < 992) {
       this.map.behaviors.disable('drag');
     }
@@ -317,29 +333,50 @@ export default class Offices {
   getPoints() {
     const citySelector = this.city ? `[data-city="${this.city}"]` : '[data-city]';
     this.points = [];
-    this.appBlock.find(`.offices__collapse${citySelector}[data-id="${this.currentTabId}"]`).children('.collapse__item').each((i, el) => {
-      this.points.push({
-        id: Offices.generatePointId($(el).data('coords')),
-        coordinates: $(el).data('coords'),
-      });
+    this.appBlock.find(`.offices__collapse${citySelector}[data-id="${this.currentTabId}"]`).find('.collapse__item[data-coords]').each((i, el) => {
+      const coords = $(el).data('coords');
+      $(el).removeClass('state_hidden');
+      if (coords) {
+        this.points.push({
+          id: Offices.generatePointId(coords),
+          coordinates: coords,
+          element: el,
+        });
+      }
     });
   }
 
   addPoints() {
+    this.clearRoute();
     this.markCollection.removeAll();
     Object.values(this.points).forEach((el) => {
-      const placemark = new ymaps.Placemark(
-        el.coordinates, {
-          collapse_id: el.id,
-        },
-        this.iconNormal,
-      );
+      this.createPlacemark(el, this.iconNormal);
+    });
+    this.getUserPos().then(() => {
+      this.map.geoObjects.add(this.markCollection);
+      this.goToPoints();
+    });
+  }
+
+  createPlacemark(el, icon, isSingle) {
+    const placemark = new ymaps.Placemark(
+      el.coordinates, {
+        collapse_id: el.id !== undefined ? el.id : null,
+      },
+      icon,
+    );
+    if (el.id) {
       placemark.events.add('click', (e) => {
         this.onPointEvent(e, el.coordinates);
       });
+    } else {
+      placemark.iconReadOnly = true;
+    }
+    if (isSingle) {
+      this.map.geoObjects.add(placemark);
+    } else {
       this.markCollection.add(placemark);
-    });
-    this.map.geoObjects.add(this.markCollection);
+    }
   }
 
   updateList() {
@@ -352,11 +389,60 @@ export default class Offices {
     });
   }
 
+  saveUserPos(pos) {
+    this.userPos = pos;
+  }
+  createRoute(toPoint, mode) {
+    this.clearRoute();
+    this.multiRoute = new ymaps.multiRouter.MultiRoute({
+      referencePoints: [
+        this.userPos,
+        toPoint, // улица Льва Толстого.
+      ],
+      params: {
+        routingMode: (mode !== undefined) ? mode : 'auto',
+      },
+    }, {
+      boundsAutoApply: true,
+    });
+    this.map.geoObjects.add(this.multiRoute);
+  }
+  getUserPos() {
+    function addPlacemark(self, latitude, longitude) {
+      const el = {};
+      el.coordinates = [latitude, longitude];
+      self.saveUserPos([latitude, longitude]);
+      self.createPlacemark(el, self.iconUserPosition, true);
+    }
+    return new Promise((resolve) => {
+      if (window.navigator.geolocation) {
+        window.navigator.geolocation.getCurrentPosition((position) => {
+          addPlacemark(this, position.coords.latitude, position.coords.longitude);
+          resolve(true);
+        }, (error) => {
+          console.log(error);
+          resolve(false);
+        });
+      } else {
+        ymaps.geolocation.get().then(
+          (result) => {
+            addPlacemark(this, result.geoObjects.position[0], result.geoObjects.position[1]);
+            resolve(true);
+          },
+          (err) => {
+            console.log(`Ошибка: ${err}`);
+            resolve(false);
+          },
+        );
+      }
+    });
+  }
+
   changeCity() {
     this.updateList();
     this.getPoints();
     this.addPoints();
-    this.goToPoints();
+    this.clearRoute();
   }
 
   onPointEvent(e, coordinates) {
@@ -365,12 +451,16 @@ export default class Offices {
     }
     const currentCollapse = global.collapses[this.currentTabId];
     const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${coordinates.join()}]"] .collapse__control`);
+    const parentCollapse = target.parent().parent().closest('.collapse__item');
+    if (parentCollapse.length) {
+      parentCollapse.children('.collapse__control').trigger('click');
+      this.scrollToCollapse(target);
+    }
     if (!this.appBlock.hasClass('state_explored')) {
       this.scrollToCollapse(target);
       currentCollapse.openContent(target);
       Offices.reInitScroll(this.pane, 225);
       this.togglePointState(e.get('target'), target);
-      console.log(e.get('target'));
       if (window.innerWidth < 992) {
         if (!this.appBlock.hasClass('state_explored')) {
           this.appBlock.addClass('state_explored');
@@ -385,10 +475,10 @@ export default class Offices {
   initPointMobileDetail(target) {
     this.handleMapSize();
     this.goToPoints();
-    const $collapse = $.extend(true, {}, target.parent().clone());
+    const $collapse = $.extend(true, {}, target.parent().clone(true, true));
     $collapse.addClass('collapse__item_state-open');
     $collapse.find('.collapse__content').css({ display: 'block', height: 'auto' });
-    this.switcher.addClass('state_hidden');
+    // this.switcher.addClass('state_hidden');
     if (this.detailBlock.hasClass('state_hidden')) {
       this.detailBlock.removeClass('state_hidden').find('.js-detail-content').append($collapse);
     }
@@ -397,23 +487,30 @@ export default class Offices {
 
   togglePointState(point, collapse) {
     this.markCollection.each((el) => {
-      el.options.set('iconImageHref', this.iconNormal.iconImageHref);
-      el.options.set('iconImageSize', this.iconNormal.iconImageSize);
-      el.options.set('iconImageOffset', this.iconNormal.iconImageOffset);
+      if (!el.iconReadOnly) {
+        el.options.set('iconImageHref', this.iconNormal.iconImageHref);
+        el.options.set('iconImageSize', this.iconNormal.iconImageSize);
+        el.options.set('iconImageOffset', this.iconNormal.iconImageOffset);
+      }
     });
     if (collapse.parent().hasClass('collapse__item_state-open')) {
-      point.options.set('iconImageHref', this.iconActive.iconImageHref);
-      point.options.set('iconImageSize', this.iconActive.iconImageSize);
-      point.options.set('iconImageOffset', this.iconActive.iconImageOffset);
+      if (!point.iconReadOnly) {
+        point.options.set('iconImageHref', this.iconActive.iconImageHref);
+        point.options.set('iconImageSize', this.iconActive.iconImageSize);
+        point.options.set('iconImageOffset', this.iconActive.iconImageOffset);
+      }
       this.goToPoint(point);
     } else {
-      this.map.setBounds(this.markCollection.getBounds(), {
-        checkZoomRange: true,
-        zoom: 10,
-      });
+      this.goToPoints();
+      this.clearRoute();
     }
   }
-
+  clearRoute() {
+    if (this.multiRoute) {
+      this.map.geoObjects.remove(this.multiRoute);
+    }
+    this.multiRoute = null;
+  }
   setScrollPane() {
     this.pane.jScrollPane({
       contentWidth: 100,
@@ -425,16 +522,20 @@ export default class Offices {
     });
 
     // Пересчет высоты при раскрытии элементов
-    $('.collapse__control').on('click', (e) => {
+
+    $('.collapse__control').on('click', () => {
       if (!this.appBlock.hasClass('state_explored')) {
+        Offices.reInitScroll(this.pane, 300);
+      }
+    });
+
+    $('.collapse__item[data-coords] .collapse__control').on('click', (e) => {
+      if (!this.appBlock.hasClass('state_explored')) {
+        this.scrollToCollapse($(e.target));
         const collapseContent = $(e.target).closest('.collapse__item');
         const point = this.getPointById(Offices.generatePointId(collapseContent.data('coords')));
         // const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${$(e.target).closest('.collapse__item').data('coords')}]"] .collapse__control`);
-        this.scrollToCollapse($(e.target));
-        Offices.reInitScroll(this.pane, 225);
-
         this.togglePointState(point, $(e.target).closest('.collapse__control'));
-
         if (window.innerWidth < 992) {
           if (!this.appBlock.hasClass('state_explored')) {
             // this.appBlock.removeClass('state_listed').addClass('state_explored');
@@ -476,17 +577,25 @@ export default class Offices {
   }
 
   goToPoint(point) {
-    this.map.setBounds(point.geometry.getBounds(), {
-      checkZoomRange: true,
-      zoom: 10,
-    });
+    try {
+      this.map.setBounds(point.geometry.getBounds(), {
+        checkZoomRange: true,
+        zoom: 10,
+      });
+    } catch (e) {
+      console.warn('no points');
+    }
   }
 
   goToPoints() {
-    this.map.setBounds(this.markCollection.getBounds(), {
-      checkZoomRange: true,
-      zoom: 10,
-    });
+    try {
+      this.map.setBounds(this.markCollection.getBounds(), {
+        checkZoomRange: true,
+        zoom: 10,
+      });
+    } catch (e) {
+      console.warn('no points');
+    }
   }
 
   getPointById(id) {
@@ -505,5 +614,36 @@ export default class Offices {
 
   getCurrentTab() {
     this.currentTabId = this.appBlock.find('.offices__content .tabs .tabs__item:not(.state_invisible)').attr('id');
+  }
+
+  searchInit() {
+    $('[name=map-search]').on('keyup', (e) => {
+      const searchInput = $(e.currentTarget);
+      const value = searchInput.val();
+      clearTimeout(this.searchTimout);
+      this.searchTimout = setTimeout(() => {
+        if (value) {
+          this.search(value);
+        } else {
+          this.getPoints();
+          this.addPoints();
+        }
+      }, 250);
+    });
+  }
+  search(text) {
+    this.getPoints();
+    const result = [];
+    this.points.forEach((point) => {
+      $(point.element).removeClass('state_hidden');
+      const elText = String($(point.element).find('.offices__info').text() + $(point.element).find('.collapse__control').text()).toLowerCase();
+      if (elText.indexOf(text.toLowerCase()) + 1) {
+        result.push(point);
+      } else {
+        $(point.element).addClass('state_hidden');
+      }
+    });
+    this.points = result;
+    this.addPoints();
   }
 }
