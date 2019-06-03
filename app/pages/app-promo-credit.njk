@@ -1,0 +1,164 @@
+{% extends "layout/mobile-app.njk" %}
+
+{% set root = "." %}
+{% set title = "Кредит под залог вклада" %}
+
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/icon/icon.njk" as Icon %}
+{% import "../components/library/button/button.njk" as Button %}
+
+{% block body %}
+  <div class="page page_mobile-app js-page">
+    <main role="main">
+      <section class="section page__section">
+        {{ Heading.heading({ 'tag': 'h1', 'title': 'Кредит под залог вклада', 'mods': { 'type': 'large', 'margin': 'medium', 'margin-top': 'normal' } }) }}
+        <div class="text text_size-small">
+          <p class="text__paragraph">
+            Кредит оформляется под залог одного или сразу нескольких рублевых вкладов, что позволяет Вам сохранить проценты и не закрывать вклады досрочно.
+          </p>
+        </div>
+        <ul class="brand-list brand-list_type-disc brand-list_size-small">
+          <li>
+            Без предоставления документов
+          </li>
+          <li>
+            Без посещения отделения Банка
+          </li>
+          <li>
+            Оформление и подписание документов сразу в Мобильном приложении
+          </li>
+          <li>
+            Получение денежных средств в день оформления кредита на Ваш текущий счет
+          </li>
+        </ul>
+      </section>
+      <div class="brand-image">
+        <img src="assets/images/loan_secured.png" alt=""/>
+      </div>
+      <section class="section page__section">
+        {{ Heading.heading({ 'tag': 'h2', 'title': 'Возможно у Вас остались вопросы?', 'mods': { 'type': 'normal', 'margin': 'top-normal' } }) }}
+        {{ Heading.heading({ 'tag': 'h2', 'title': 'Мы на них отвечаем.', 'mods': { 'type': 'normal', 'margin': 'none' } }) }}
+      </section>
+      <div class="collapse collapse_mobile-app mt-40 mb-40">
+        <div class="collapse__item">
+          <div class="collapse__control">
+            <div class="collapse__control-title">
+              Зачем мне нужен кредит под залог вклада в БКС?
+            </div>
+            <div class="collapse__control-icon">
+              {{ Icon.icon({ 'name': 'td-arrow' }) }}
+            </div>
+          </div>
+          <div class="collapse__content">
+            <p>
+              Вы являетесь одним из ключевых Клиентов Банка, и мы Вам доверяем. Именно поэтому мы уже одобрили для Вас кредит, который Вы можете получить уже сегодня. Превратите Ваши желания в реальность, а мы Вам в этом поможем!
+            </p>
+          </div>
+        </div>
+        <div class="collapse__item">
+          <div class="collapse__control">
+            <div class="collapse__control-title">
+              <p>Что будет с моим вкладом после оформления его в залог? Потеряю ли я проценты?</p>
+            </div>
+            <div class="collapse__control-icon">
+              {{ Icon.icon({ 'name': 'td-arrow' }) }}
+            </div>
+          </div>
+          <div class="collapse__content">
+            <p>Нет, не потеряете. Ваш вклад продолжает действовать по тем же условиям, но сумма денежных средств будет автоматически переведена  на залоговый  счет, который мы для Вас откроем.</p>
+          </div>
+        </div>
+        <div class="collapse__item">
+          <div class="collapse__control">
+            <div class="collapse__control-title">
+              Что будет с моим вкладом , когда срок вклада закончится?
+            </div>
+            <div class="collapse__control-icon">
+              {{ Icon.icon({ 'name': 'td-arrow' }) }}
+            </div>
+          </div>
+          <div class="collapse__content">
+            <p>Вклад автоматически будет пролонгирован по тем условиям, которые будут  действовать в момент пролонгации.</p>
+          </div>
+        </div>
+        <div class="collapse__item">
+          <div class="collapse__control">
+            <div class="collapse__control-title">При пролонгации, могу ли я переоформить вклад, который лежит в залоге у Банка на другой?</div>
+            <div class="collapse__control-icon">
+              {{ Icon.icon({ 'name': 'td-arrow' }) }}
+            </div>
+          </div>
+          <div class="collapse__content">
+            <p>В данный момент такая возможность отсутствует.</p>
+          </div>
+        </div>
+        <div class="collapse__item">
+          <div class="collapse__control">
+            <div class="collapse__control-title">Могу ли я пополнять/снимать денежные средства со вклада пока он будет находиться в залоге у Банка?</div>
+            <div class="collapse__control-icon">
+              {{ Icon.icon({ 'name': 'td-arrow' }) }}
+            </div>
+          </div>
+          <div class="collapse__content">
+            <p>Вклад, находящийся у Банка в залоге действует по тем, же условиям, которые у Вас были ранее. И в случае если по условиям вклад был пополняемым/снимаемым, то Вы можете это делать. Однако Вы не сможете снять сумму больше, чем сумма, которая находится в залоге у Банка.</p>
+          </div>
+        </div>
+        <div class="collapse__item">
+          <div class="collapse__control">
+            <div class="collapse__control-title">Что будет с моим вкладом, когда я погашу кредит?</div>
+            <div class="collapse__control-icon">
+              {{ Icon.icon({ 'name': 'td-arrow' }) }}
+            </div>
+          </div>
+          <div class="collapse__content">
+            <p>Ваши сбережения полностью разблокируются и будут перечислены с залогового счета на счет вклада. После этого вы сможете ими воспользоваться.</p>
+          </div>
+        </div>
+        <div class="collapse__item">
+          <div class="collapse__control">
+            <div class="collapse__control-title">Как я могу погашать свой кредит?</div>
+            <div class="collapse__control-icon">
+              {{ Icon.icon({ 'name': 'td-arrow' }) }}
+            </div>
+          </div>
+          <div class="collapse__content">
+            <p>Погашение кредита Вы можете осуществлять безналично, просто перечисляя денежные средства на Ваш счет или можете погашать через наши офисы</p>
+          </div>
+        </div>
+        <div class="collapse__item">
+          <div class="collapse__control">
+            <div class="collapse__control-title">Могу ли я погасить кредит за счет денежных средств, которые находятся в залоге у Банка?</div>
+            <div class="collapse__control-icon">
+              {{ Icon.icon({ 'name': 'td-arrow' }) }}
+            </div>
+          </div>
+          <div class="collapse__content">
+            <p>Нет, не можете, так как денежные средства, которые находятся в залоге у Банка будут разблокированы только после погашения кредита. </p>
+          </div>
+        </div>
+        <div class="collapse__item">
+          <div class="collapse__control">
+            <div class="collapse__control-title">Могу ли я сделать досрочное погашение по кредиту?</div>
+            <div class="collapse__control-icon">
+              {{ Icon.icon({ 'name': 'td-arrow' }) }}
+            </div>
+          </div>
+          <div class="collapse__content">
+            <p>По кредиту Вы сможете сделать как частичное, так и полное досрочное погашение. Для этого Вам необходимо прийти в офис и написать заявление.</p>
+          </div>
+        </div>
+        <div class="collapse__item">
+          <div class="collapse__control">
+            <div class="collapse__control-title">Как узнать дату и сумму ежемесячного платежа?</div>
+            <div class="collapse__control-icon">
+              {{ Icon.icon({ 'name': 'td-arrow' }) }}
+            </div>
+          </div>
+          <div class="collapse__content">
+            <p>Дата погашения и сумма ежемесячного платежа будет указана в договоре (Индивидуальных условиях). Также Вы сможете всегда посмотреть график платежей в Мобильном приложении.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}
