@@ -21,19 +21,35 @@
       justify-content space-between
       align-items flex-end
       flex-wrap nowrap
+      @media (max-width: 991px)
+        flex-direction column
+        align-items center
       .text
         max-width 470px
+        @media (max-width: 991px)
+          order: 1
+          text-align center
       .image
         max-width 270px
         position relative
+        @media (max-width: 991px)
+          order: 0
+          margin-bottom 24px
         img
           max-width 100%
           margin-top -60%
+          @media (min-width: 1280px)
+            max-height: 400px
+          @media (min-width: 992px) and (max-width: 1279px)
+            max-height: 300px
+          @media (max-width: 991px)
+            margin-top 0
+            max-height: 200px
   @media(max-width 425px)
     text-align center
   .carousel-controls
     margin-left 0
     justify-content flex-start
     margin-top 30px
-    @media(max-width 425px)
+    @media(max-width 991px)
       justify-content center
