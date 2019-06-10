@@ -17,6 +17,7 @@
 {% import "../components/modules/brand-features/brand-features.njk" as BrandFeatures %}
 {% import "../components/library/usefull-advantage/usefull-advantage.njk" as UsefullAdvantage %}
 {% import "../components/library/usefull-pay-steps/usefull-pay-steps.njk" as UsefullPaySteps %}
+{% import "../components/library/contact/contact.njk" as Contact %}
 
 {% block body %}
     <div class="page js-page">
@@ -366,7 +367,7 @@
             </section>
 
 
-            <section class="section page__section page__section_theme-last ">
+            <section class="section page__section">
                 <div class="page__container">
                     <div class="section__row">
                         <div class="section__content">
@@ -497,6 +498,20 @@
                 </div>
 
             </section>
+
+          <section class="section page__section page__section_theme-last">
+            <div class="page__container">
+              <div class="section__row">
+                <div class="section__content">
+                  {{ Heading.heading({ 'title': 'Служба поддержки Samsung' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'short' } }) }}
+                  {{ Button.button({ 'href': 'http://www.samsung.com/ru/info/contuctus', 'title': 'Обратиться в Службу поддержки', 'mods': {'theme': 'default'} }) }}
+                  {{ Contact.contact({ 'title': '' | striptags(true) | escape | nl2br,
+                    'items': [{ 'name': 'Горячая линия (Россия)', 'value': '8 (800) 555 55 55', 'href': 'tel:+78005555555' }, { 'name': 'Горячая линия (Беларусь)', 'value': '8 10 (800) 500 55 500', 'href': 'tel:+71080050055500' }],
+                    'class': 'news__contact js-contact' }) }}
+                </div>
+              </div>
+            </div>
+          </section>
 
 
         </main>
