@@ -61,95 +61,104 @@
             <div class="tabs js-tabs">
                 <div id="about-credit" class="tabs__item js-tab state_invisible js-scroll-animate">
 
-                    <section class="section page__section hidden-mobile">
+                    <section class="section page__section">
                         {{ BrandFeatures.brandFeatures({ 'items': [
                             {
                                 'icon': 'assets/images/svg/busines-prson-image.svg',
                                 'title': 'Честно',
-                                'subtitle': 'Предварительное решение \n в день одобрения',
-                                'props': {
-                                'large': '13',
-                                'small': 'мес'
-                            },
-                                'descr': 'Минимальный срок \n кредитования'
+                                'subtitle': 'Предварительное решение \n в день одобрения'
                             },
                             {
                                 'icon': 'assets/images/svg/sand-clock-image.svg',
                                 'title': 'Быстро',
-                                'subtitle': 'Получение кредита онлайн \n на карту БКС Банка за 20 мин',
-                                'props': {
-                                'large': '50',
-                                'small': 'тыс. #ruble'
-                            },
-                                'descr': 'Минимальная \n сумма кредита'
+                                'subtitle': 'Получение кредита онлайн \n на карту БКС Банка за 20 мин'
                             },
                             {
                                 'icon': 'assets/images/svg/list-image.svg',
                                 'title': 'Удобно',
-                                'subtitle': 'Бесплатный выезд специалиста \n для оформления документов',
+                                'subtitle': 'Бесплатный выезд специалиста \n для оформления документов'
+                            },
+                            {
+                                'props': {
+                                'large': '13',
+                                'small': 'мес'
+                                },
+                                'descr': 'Минимальный срок \n кредитования'
+                            },
+                            {
+                                'props': {
+                                'large': '50',
+                                'small': 'тыс. #ruble'
+                                },
+                                'descr': 'Минимальная \n сумма кредита'
+                            },
+                            {
                                 'props': {
                                 'large': '0#ruble'
-                            },
+                                },
                                 'descr': 'Без комиссий, без страховок \n и дополнительных сборов'
                             }
                         ] }) }}
                     </section>
-                    <section class="section page__section hidden-desktop js-scroll-animate">
-                        <div class="brand-features ">
-                            <div class="page__container brand-features__carousel carousel carousel_type-mobile ">
-                                <div class="section__row js-carousel" data-id="product-cards-mobile" data-breakpoint="992">
-                                    <div class="brand-features__item">
-                                        <div class="brand-features__icon">
-                                            <img class="image " src="assets/images/svg/busines-prson-image.svg">
-                                        </div>
-                                        <p class="brand-features__title">Честно</p>
-                                        <p class="text">Предварительное решение<br> в день одобрения</p>
-                                    </div>
-                                    <div class="brand-features__item">
-                                        <div class="brand-features__icon">
-                                            <img class="image " src="assets/images/svg/sand-clock-image.svg">
-                                        </div>
-                                        <p class="brand-features__title">Быстро</p>
-                                        <p class="text">Получение кредита онлайн<br> на карту БКС Банка за 20 мин</p>
-                                    </div>
-                                    <div class="brand-features__item">
-                                        <div class="brand-features__icon">
-                                            <img class="image " src="assets/images/svg/list-image.svg">
-                                        </div>
-                                        <p class="brand-features__title">Удобно</p>
-                                        <p class="text">Бесплатный выезд специалиста<br> для оформления документов</p>
-                                    </div>
-                                    <div class="brand-features__item ">
-                                        <div class="brand-features__icon">
-                                            <img class="image " src="assets/images/svg/busines-prson-image.svg">
-                                        </div>
-                                        <p class="brand-features__title">Честно</p>
-                                        <p class="text">Предварительное решение<br> в день одобрения</p>
-                                    </div>
-                                    <div class="brand-features__item ">
-                                        <div class="brand-features__icon">
-                                            <img class="image " src="assets/images/svg/sand-clock-image.svg">
-                                        </div>
-                                        <p class="brand-features__title">Быстро</p>
-                                        <p class="text">Получение кредита онлайн<br> на карту БКС Банка за 20 мин</p>
-                                    </div>
-                                    <div class="brand-features__item ">
-                                        <div class="brand-features__icon">
-                                            <img class="image " src="assets/images/svg/list-image.svg">
-                                        </div>
-                                        <p class="brand-features__title">Удобно</p>
-                                        <p class="text">Бесплатный выезд специалиста<br> для оформления документов</p>
-                                    </div>
-                                </div>
-                                <div class="carousel-controls carousel-controls_theme-dark js-carousel-controls">
-                                    <div class="carousel-controls__pagination js-carousel-pagination"
-                                         data-carousel="product-cards-mobile">
-                                        <span>01</span><span></span><span>06</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+
+
+{#                    <section class="section page__section hidden-desktop js-scroll-animate">#}
+{#                        <div class="brand-features ">#}
+{#                            <div class="page__container brand-features__carousel carousel carousel_type-mobile ">#}
+{#                                <div class="section__row js-carousel" data-id="product-cards-mobile" data-breakpoint="992">#}
+{#                                    <div class="brand-features__item">#}
+{#                                        <div class="brand-features__icon">#}
+{#                                            <img class="image " src="assets/images/svg/busines-prson-image.svg">#}
+{#                                        </div>#}
+{#                                        <p class="brand-features__title">Честно</p>#}
+{#                                        <p class="text">Предварительное решение<br> в день одобрения</p>#}
+{#                                    </div>#}
+{#                                    <div class="brand-features__item">#}
+{#                                        <div class="brand-features__icon">#}
+{#                                            <img class="image " src="assets/images/svg/sand-clock-image.svg">#}
+{#                                        </div>#}
+{#                                        <p class="brand-features__title">Быстро</p>#}
+{#                                        <p class="text">Получение кредита онлайн<br> на карту БКС Банка за 20 мин</p>#}
+{#                                    </div>#}
+{#                                    <div class="brand-features__item">#}
+{#                                        <div class="brand-features__icon">#}
+{#                                            <img class="image " src="assets/images/svg/list-image.svg">#}
+{#                                        </div>#}
+{#                                        <p class="brand-features__title">Удобно</p>#}
+{#                                        <p class="text">Бесплатный выезд специалиста<br> для оформления документов</p>#}
+{#                                    </div>#}
+{#                                    <div class="brand-features__item ">#}
+{#                                        <div class="brand-features__icon">#}
+{#                                            <img class="image " src="assets/images/svg/busines-prson-image.svg">#}
+{#                                        </div>#}
+{#                                        <p class="brand-features__title">Честно</p>#}
+{#                                        <p class="text">Предварительное решение<br> в день одобрения</p>#}
+{#                                    </div>#}
+{#                                    <div class="brand-features__item ">#}
+{#                                        <div class="brand-features__icon">#}
+{#                                            <img class="image " src="assets/images/svg/sand-clock-image.svg">#}
+{#                                        </div>#}
+{#                                        <p class="brand-features__title">Быстро</p>#}
+{#                                        <p class="text">Получение кредита онлайн<br> на карту БКС Банка за 20 мин</p>#}
+{#                                    </div>#}
+{#                                    <div class="brand-features__item ">#}
+{#                                        <div class="brand-features__icon">#}
+{#                                            <img class="image " src="assets/images/svg/list-image.svg">#}
+{#                                        </div>#}
+{#                                        <p class="brand-features__title">Удобно</p>#}
+{#                                        <p class="text">Бесплатный выезд специалиста<br> для оформления документов</p>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="carousel-controls carousel-controls_theme-dark js-carousel-controls">#}
+{#                                    <div class="carousel-controls__pagination js-carousel-pagination"#}
+{#                                         data-carousel="product-cards-mobile">#}
+{#                                        <span>01</span><span></span><span>06</span>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </section>#}
+
 
                     <section class="section section_theme-white-smoke section_padding-default page__section js-scroll-animate">
                         <div class="calculator ">

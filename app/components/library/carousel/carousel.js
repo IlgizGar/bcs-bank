@@ -18,17 +18,23 @@ module.exports = (elem) => {
 
     init() {
       const self = this;
-      this.paging = $(`.js-carousel-pagination[data-carousel="${this.id}"]`);
+      // this.paging = $(`.js-carousel-pagination[data-carousel="${this.id}"]`);
 
-      this.carousel.on('init reInit afterChange', (event, slick, currentSlide) => {
-        const i = (!currentSlide ? 0 : currentSlide) + 1;
-        self.paging.find('span:first-child').html(i < 10 ? `0${i}` : i);
-        self.paging.find('span:last-child').html(slick.slideCount < 10 ? `0${slick.slideCount}` : slick.slideCount);
+      this.carousel.on('init reInit', (event, slick, currentSlide) => {
+        console.log('SLICK', slick);
+        if (!slick.$slider.hasClass('controls-initialized')) {
+          const paging = slick.$slider.next('.js-carousel-controls').find('.js-carousel-pagination');
+          const i = (!currentSlide ? 0 : currentSlide) + 1;
+          paging.find('span:first-child').html(i < 10 ? `0${i}` : i);
+          paging.find('span:last-child').html(slick.slideCount < 10 ? `0${slick.slideCount}` : slick.slideCount);
+          slick.$slider.addClass('controls-initialized');
+        }
       });
       this.carousel.on('afterChange', (event, slick, currentSlide) => {
+        const paging = slick.$slider.next('.js-carousel-controls').find('.js-carousel-pagination');
         const i = (!currentSlide ? 0 : currentSlide) + 1;
-        self.paging.find('span:first-child').html(i < 10 ? `0${i}` : i);
-        self.paging.find('span:last-child').html(slick.slideCount < 10 ? `0${slick.slideCount}` : slick.slideCount);
+        paging.find('span:first-child').html(i < 10 ? `0${i}` : i);
+        paging.find('span:last-child').html(slick.slideCount < 10 ? `0${slick.slideCount}` : slick.slideCount);
       });
       this.carousel.on('mouseenter', () => {
         console.log('pause');
