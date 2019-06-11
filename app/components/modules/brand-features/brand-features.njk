@@ -17,23 +17,27 @@
                         {%- endfor %}
                     {% endset %}
 
-                    <div class="brand-features__item js-scroll-animate{{ mods | safe }}">
-                        <div class="brand-features__icon">
-                            {{ Svg.inlineSvg({ 'path': [ item.icon ] }) }}
-                        </div>
-                        <p class="brand-features__title">{{ item.title | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | replace("#euro", Icon.icon({ 'name': 'euro' })) | replace("#pound", Icon.icon({ 'name': 'pound' })) | replace("#dollar", Icon.icon({ 'name': 'baks' })) | safe }}</p>
-                        <p class="text">{{ item.subtitle | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | replace("#euro", Icon.icon({ 'name': 'euro' })) | replace("#pound", Icon.icon({ 'name': 'pound' })) | replace("#dollar", Icon.icon({ 'name': 'baks' })) | safe }}</p>
-                        {% if item.props %}
-                            <div class="brand-features__props js-scroll-animate">
-                                {% for key, value in item.props %}
-                                    <p class="state_{{ key }}">{{ value | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | replace("#euro", Icon.icon({ 'name': 'euro' })) | replace("#pound", Icon.icon({ 'name': 'pound' })) | replace("#dollar", Icon.icon({ 'name': 'baks' })) | safe }}</p>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
+                    {% if item.title %}
+                      <div class="brand-features__item js-scroll-animate {{ mods | safe }}">
+                          <div class="brand-features__icon">
+                              {{ Svg.inlineSvg({ 'path': [ item.icon ] }) }}
+                          </div>
+                          <p class="brand-features__title">{{ item.title | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | replace("#euro", Icon.icon({ 'name': 'euro' })) | replace("#pound", Icon.icon({ 'name': 'pound' })) | replace("#dollar", Icon.icon({ 'name': 'baks' })) | safe }}</p>
+                          <p class="text">{{ item.subtitle | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | replace("#euro", Icon.icon({ 'name': 'euro' })) | replace("#pound", Icon.icon({ 'name': 'pound' })) | replace("#dollar", Icon.icon({ 'name': 'baks' })) | safe }}</p>
+                      </div>
+                    {% endif %}
+                    {% if item.props %}
+                      <div class="brand-features__item js-scroll-animate {{ mods | safe }}">
+                          <div class="brand-features__props js-scroll-animate">
+                            {% for key, value in item.props %}
+                              <p class="state_{{ key }}">{{ value | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | replace("#euro", Icon.icon({ 'name': 'euro' })) | replace("#pound", Icon.icon({ 'name': 'pound' })) | replace("#dollar", Icon.icon({ 'name': 'baks' })) | safe }}</p>
+                            {% endfor %}
+                          </div>
                         {% if item.descr %}
-                            <p class="text">{{ item.descr | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | replace("#euro", Icon.icon({ 'name': 'euro' })) | replace("#pound", Icon.icon({ 'name': 'pound' })) | replace("#dollar", Icon.icon({ 'name': 'baks' })) | safe }}</p>
+                          <p class="text">{{ item.descr | striptags(true) | escape | nl2br | replace("#ruble", Icon.icon({ 'name': 'ruble' })) | replace("#euro", Icon.icon({ 'name': 'euro' })) | replace("#pound", Icon.icon({ 'name': 'pound' })) | replace("#dollar", Icon.icon({ 'name': 'baks' })) | safe }}</p>
                         {% endif %}
-                    </div>
+                      </div>
+                    {% endif %}
                 {% endfor %}
             </div>
             <div class="carousel-controls carousel-controls_theme-dark js-carousel-controls">
