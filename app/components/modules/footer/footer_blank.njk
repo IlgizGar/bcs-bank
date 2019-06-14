@@ -106,8 +106,8 @@
     {{ Heading.heading({ 'title': 'Есть вопросы?', 'mods': {'type': 'default', 'margin': 'normal'}, 'class': 'header__contacts-heading' }) }}
     {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': {'class': 'js-fio-masked', 'name': 'queston_p_name', 'required': 'required'} }) }}
     <div class="form__line-group">
-      {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': { 'class': 'js-phone-masked', 'name': 'question_p_phone', 'required': 'required' } }) }}
-      {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': { 'class': 'js-mail-masked', 'name': 'question_p_mail', 'required': 'required' } }) }}
+      {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': { 'class': 'js-phone-masked', 'name': 'question_p_phone', 'required': 'required', 'type': 'tel' } }) }}
+      {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': { 'class': 'js-mail-masked', 'name': 'question_p_mail', 'required': 'required', 'type': 'email' } }) }}
     </div>
    <div class="form__action">
       <div class="form__agreements">
