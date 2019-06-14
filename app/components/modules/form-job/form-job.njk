@@ -9,7 +9,7 @@
 <div class="form-job">
     <fieldset>
             {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Вид занятости', 'name': 'bid_select_job_timed', 'items': [{'title': 'полная', 'value': '12345'}, {'title': 'Частичная', 'value': '13456'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'job-timed-select-list'}, 'field': 'js-job-timed-select' }) }}
-            {{ Input.input({ 'label': 'Общий трудовой стаж', 'class': 'form__field-group', 'field': {'class': 'js-numeric-input', 'name': 'job_years_count', 'required': 'true' } }) }}
+            {{ Input.input({ 'label': 'Общий трудовой стаж', 'class': 'form__field-group', 'field': {'class': 'js-numeric-input', 'name': 'job_years_count', 'required': 'true', 'type': 'tel' } }) }}
             <div class="form__line-group">
                 {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Месяц', 'name': 'bid_select-job-month', 'items': [{'title': 'январь', 'value': '1'}, {'title': 'Февраль', 'value': '2'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'job-month-select-list'}, 'field': 'js-job-month' }) }}
                 {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Год', 'name': 'bid_select-job-year', 'items': [{'title': '2019', 'value': '12345'}, {'title': '2018', 'value': '13456'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'job-year-select-list'}, 'field': 'js-job-year' }) }}

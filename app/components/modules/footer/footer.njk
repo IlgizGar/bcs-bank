@@ -99,10 +99,10 @@
 <div id="question-modal-form" class="modal js-form" data-form="question-modal">
   <form id="question-form" action="/" class="form question-form">
     {{ Heading.heading({ 'title': 'У Вас есть вопрос?', 'mods': {'type': 'default', 'margin': 'normal'}, 'class': 'header__contacts-heading' }) }}
-    {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': {'class': 'js-fio-masked', 'name': 'queston_name', 'required': 'required'} }) }}
+    {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': {'class': 'js-fio-masked', 'name': 'queston_name', 'required': 'required', 'type': 'text' } }) }}
     <div class="form__line-group">
-      {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': { 'class': 'js-phone-masked', 'name': 'question_phone', 'required': 'required' } }) }}
-      {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': { 'class': 'js-mail-masked', 'name': 'question_mail', 'required': 'required' } }) }}
+      {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': { 'class': 'js-phone-masked', 'name': 'question_phone', 'required': 'required', 'type': 'tel' } }) }}
+      {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': { 'class': 'js-mail-masked', 'name': 'question_mail', 'required': 'required', 'type': 'email' } }) }}
     </div>
     {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Тема', 'name': 'question', 'items': [{'title': 'Предложения по сайту', 'value': '0'},{'title': 'Интернет-банк', 'value': '1'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'question-form-list'}, 'field': 'js-question-topic' }) }}
     {{ Input.input({ 'label': 'Текст вопроса', 'tag': 'textarea', 'rows': '6', 'class': 'input_textarea form__field-group', 'field': { 'required': 'required', 'name': 'question_text', 'class': 'js-question-textarea' } }) }}
@@ -247,10 +247,10 @@
   <form  action="/" class="form partners-modal__form mt-64">
     <input type="hidden" name="theme" class="js-partners-modal-theme" value="">
     {{ Heading.heading({ 'title': 'Есть вопросы?', 'mods': {'type': 'default', 'margin': 'normal'}, 'class': 'header__contacts-heading' }) }}
-    {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': {'class': 'js-fio-masked', 'name': 'queston_p_name', 'required': 'required'} }) }}
+    {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': {'class': 'js-fio-masked', 'name': 'queston_p_name', 'required': 'required', 'type': 'text' } }) }}
     <div class="form__line-group">
-      {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': { 'class': 'js-phone-masked', 'name': 'question_p_phone', 'required': 'required' } }) }}
-      {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': { 'class': 'js-mail-masked', 'name': 'question_p_mail', 'required': 'required' } }) }}
+      {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': { 'class': 'js-phone-masked', 'name': 'question_p_phone', 'required': 'required', 'tyep': 'tel' } }) }}
+      {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': { 'class': 'js-mail-masked', 'name': 'question_p_mail', 'required': 'required', 'type': 'email' } }) }}
     </div>
    <div class="form__action">
       <div class="form__agreements">
