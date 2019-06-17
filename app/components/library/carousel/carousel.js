@@ -30,11 +30,29 @@ module.exports = (elem) => {
           slick.$slider.addClass('controls-initialized');
         }
       });
+
+      // this.carousel.on('beforeChange', (event, slick, currentSlide, nextSlide) => {
+      //   if ((currentSlide === 0 && nextSlide === slick.$slides.length - 1) || (currentSlide === slick.$slides.length - 1 && nextSlide === 0)) {
+      //     console.log('NEXT_ROUND');
+      //   } else {
+      //     this.carousel.find('.slick-slide:not(.slick-active) .js-scroll-animate.state_animate-page').removeClass('state_animate-page');
+      //   }
+      //
+      // });
+
       this.carousel.on('afterChange', (event, slick, currentSlide) => {
         const paging = slick.$slider.next('.js-carousel-controls').find('.js-carousel-pagination');
         const i = (!currentSlide ? 0 : currentSlide) + 1;
         paging.find('span:first-child').html(i < 10 ? `0${i}` : i);
         paging.find('span:last-child').html(slick.slideCount < 10 ? `0${slick.slideCount}` : slick.slideCount);
+        console.log('i', i);
+        // console.log('LEN', slick.$slides.length);
+
+        if (this.carousel.find('.slick-slide:not(.slick-active) .js-scroll-animate').hasClass('state_animate-page')) {
+          console.log('REMOVE_ANIMATION');
+          this.carousel.find('.slick-slide:not(.slick-active) .js-scroll-animate.state_animate-page').removeClass('state_animate-page');
+        }
+        // console.log('ANIMATED', slick);
       });
       this.carousel.on('mouseenter', () => {
         console.log('pause');
@@ -149,12 +167,15 @@ module.exports = (elem) => {
           break;
       }
     }
+
     progressBarPlay() {
       this.progressbar.addClass('state_busy');
     }
+
     progressBarPause() {
       this.progressbar.removeClass('state_busy');
     }
+
     static setButtonsUrls(event, slick, prevSlide, currentSlide) {
       const slideNum = (currentSlide !== undefined) ? currentSlide : 0;
 
@@ -211,6 +232,7 @@ module.exports = (elem) => {
         ],
       });
     }
+
     initDefault(responsiveSettings, appendArrowsSet) {
       this.carousel.not('.slick-initialized').slick({
         appendArrows: appendArrowsSet,
