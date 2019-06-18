@@ -48,11 +48,10 @@ module.exports = (elem) => {
       this.carousel.on('afterChange', (event, slick, currentSlide) => {
         const paging = this.paging.length ? this.paging : slick.$slider.next('.js-carousel-controls').find('.js-carousel-pagination');
         Carousel.setPagination(paging, slick, currentSlide);
-        if (this.carousel.find('.slick-slide:not(.slick-active) .js-scroll-animate').hasClass('state_animate-page')) {
-          // console.log('REMOVE_ANIMATION');
-          this.carousel.find('.slick-slide:not(.slick-active) .js-scroll-animate.state_animate-page').removeClass('state_animate-page');
+        const $notActiveSlides = this.carousel.find('.slick-slide:not(.slick-active) .js-scroll-animate');
+        if ($notActiveSlides.hasClass('state_animate-page')) {
+          $notActiveSlides.removeClass('state_animate-page');
         }
-        // console.log('ANIMATED', slick);
       });
       this.carousel.on('mouseenter', () => {
         console.log('pause');
