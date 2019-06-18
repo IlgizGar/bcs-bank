@@ -11,22 +11,27 @@ module.exports = (elem) => {
       this.ProgressBarSpeed = 0;
       this.progressBarstoped = false;
       this.id = this.carousel.data('id');
+      this.paging = null;
       this.progressBarTimer = null;
       this.init();
       this.events();
     }
 
+    static setPagination(paging, slick, currentSlide) {
+      const i = (!currentSlide ? 0 : currentSlide) + 1;
+      paging.find('span:first-child').html(i < 10 ? `0${i}` : i);
+      paging.find('span:last-child').html(slick.slideCount < 10 ? `0${slick.slideCount}` : slick.slideCount);
+    }
+
     init() {
       const self = this;
-      // this.paging = $(`.js-carousel-pagination[data-carousel="${this.id}"]`);
+      this.paging = $(`.js-carousel-pagination[data-carousel="${this.id}"]`);
 
       this.carousel.on('init reInit', (event, slick, currentSlide) => {
-        console.log('SLICK', slick);
+        // console.log('SLICK', slick);
         if (!slick.$slider.hasClass('controls-initialized')) {
-          const paging = slick.$slider.next('.js-carousel-controls').find('.js-carousel-pagination');
-          const i = (!currentSlide ? 0 : currentSlide) + 1;
-          paging.find('span:first-child').html(i < 10 ? `0${i}` : i);
-          paging.find('span:last-child').html(slick.slideCount < 10 ? `0${slick.slideCount}` : slick.slideCount);
+          const paging = this.paging.length ? this.paging : slick.$slider.next('.js-carousel-controls').find('.js-carousel-pagination');
+          Carousel.setPagination(paging, slick, currentSlide);
           slick.$slider.addClass('controls-initialized');
         }
       });
@@ -41,15 +46,10 @@ module.exports = (elem) => {
       // });
 
       this.carousel.on('afterChange', (event, slick, currentSlide) => {
-        const paging = slick.$slider.next('.js-carousel-controls').find('.js-carousel-pagination');
-        const i = (!currentSlide ? 0 : currentSlide) + 1;
-        paging.find('span:first-child').html(i < 10 ? `0${i}` : i);
-        paging.find('span:last-child').html(slick.slideCount < 10 ? `0${slick.slideCount}` : slick.slideCount);
-        console.log('i', i);
-        // console.log('LEN', slick.$slides.length);
-
+        const paging = this.paging.length ? this.paging : slick.$slider.next('.js-carousel-controls').find('.js-carousel-pagination');
+        Carousel.setPagination(paging, slick, currentSlide);
         if (this.carousel.find('.slick-slide:not(.slick-active) .js-scroll-animate').hasClass('state_animate-page')) {
-          console.log('REMOVE_ANIMATION');
+          // console.log('REMOVE_ANIMATION');
           this.carousel.find('.slick-slide:not(.slick-active) .js-scroll-animate.state_animate-page').removeClass('state_animate-page');
         }
         // console.log('ANIMATED', slick);
