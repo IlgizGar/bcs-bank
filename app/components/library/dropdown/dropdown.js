@@ -123,9 +123,11 @@ module.exports = (elem) => {
 
       $(window).on('click', (e) => {
         if (!$(e.target).closest('.js-dropdown').length) {
-          global.dropdowns.forEach((el) => {
-            el.hideList();
-          });
+          Object.keys(global.dropdowns)
+            .forEach((item) => {
+              const dataItem = global.dropdowns[item];
+              dataItem.hideList();
+            });
         }
       });
     }

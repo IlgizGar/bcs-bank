@@ -47,7 +47,7 @@ require('babel-polyfill');
 $(() => {
   svg4everybody();
 
-  global.dropdowns = [];
+  global.dropdowns = {};
   $('.js-dropdown').each((i, el) => {
     global.dropdowns[$(el).data('id')] = Dropdown(el);
     // global.dropdowns.push(Dropdown(el));
