@@ -130,7 +130,7 @@ module.exports = (elem) => {
                 slidesToScroll: 1,
               },
             },
-          ], this.carousel.next('.js-carousel-controls'));
+          ], this.carousel.next('.js-carousel-controls'), false, false);
           break;
         case 'bonus-card':
           if (count <= 3) {
@@ -160,7 +160,7 @@ module.exports = (elem) => {
                 slidesToScroll: 1,
               },
             },
-          ], this.carousel.prev('.js-carousel-controls'));
+          ], this.carousel.prev('.js-carousel-controls'), false, false);
           break;
         default:
           this.initMobileSlick(this.carousel.data('breakpoint') - 1);
@@ -219,27 +219,33 @@ module.exports = (elem) => {
     }
 
     initMobileSlick(bpoint) {
-      this.carousel.not('.slick-initialized').slick({
-        appendArrows: this.carousel.next('.js-carousel-controls'),
-        nextArrow: this.next,
-        prevArrow: this.prev,
-        mobileFirst: true,
-        responsive: [
-          {
-            breakpoint: bpoint,
-            settings: 'unslick',
-          },
-        ],
-      });
+      // this.carousel.not('.slick-initialized').slick({
+      //   appendArrows: this.carousel.next('.js-carousel-controls'),
+      //   nextArrow: this.next,
+      //   prevArrow: this.prev,
+      //   mobileFirst: true,
+      //   responsive: [
+      //     {
+      //       breakpoint: bpoint,
+      //       settings: 'unslick',
+      //     },
+      //   ],
+      // });
+      this.initDefault([
+        {
+          breakpoint: bpoint,
+          settings: 'unslick',
+        },
+      ], this.carousel.next('.js-carousel-controls'), true, true);
     }
 
-    initDefault(responsiveSettings, appendArrowsSet) {
+    initDefault(responsiveSettings, appendArrowsSet, mobileFirst, infinite) {
       this.carousel.not('.slick-initialized').slick({
         appendArrows: appendArrowsSet,
         nextArrow: this.next,
         prevArrow: this.prev,
-        mobileFirst: false,
-        infinite: false,
+        mobileFirst: !!mobileFirst,
+        infinite: !!infinite,
         responsive: responsiveSettings,
       });
     }
