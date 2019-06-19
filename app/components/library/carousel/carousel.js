@@ -56,7 +56,7 @@ module.exports = (elem) => {
       this.carousel.on('afterChange', (event, slick, currentSlide) => {
         const paging = this.paging.length ? this.paging : slick.$slider.next('.js-carousel-controls').find('.js-carousel-pagination');
         Carousel.setPagination(paging, slick, currentSlide);
-        const $notActiveSlides = this.carousel.find('.slick-slide:not(.slick-active) .js-scroll-animate');
+        const $notActiveSlides = this.carousel.find('.slick-slide:not(.slick-active) .js-scroll-animate:not(.feature)');
         if ($notActiveSlides.hasClass('state_animate-page')) {
           $notActiveSlides.removeClass('state_animate-page');
         }
