@@ -8,11 +8,19 @@ module.exports = (elem) => {
     constructor(selector) {
       this.carousel = $(selector);
       this.progressbar = $('.js-carousel-progressbar');
-      this.ProgressBarSpeed = 0;
-      this.progressBarstoped = false;
       this.id = this.carousel.data('id');
       this.paging = null;
-      this.progressBarTimer = null;
+      this.next = '<button class="carousel-controls__button carousel-controls__button_type-next">' +
+        ' <svg role="presentation" class="icon icon-tr-arrow">\n' +
+        '    <use xlink:href="/assets/images/icons.svg#icon_tr-arrow"></use>\n' +
+        '  </svg>' +
+        '</button>';
+
+      this.prev = '<button class="carousel-controls__button carousel-controls__button_type-prev">' +
+        ' <svg role="presentation" class="icon icon-tr-arrow">\n' +
+        '    <use xlink:href="/assets/images/icons.svg#icon_tr-arrow"></use>\n' +
+        '  </svg>' +
+        '</button>';
       this.init();
       this.events();
     }
@@ -54,24 +62,12 @@ module.exports = (elem) => {
         }
       });
       this.carousel.on('mouseenter', () => {
-        console.log('pause');
         self.progressBarPause();
       });
       this.carousel.on('mouseleave', () => {
         self.progressBarPlay();
       });
       self.progressbar.removeClass('state_busy');
-      this.next = '<button class="carousel-controls__button carousel-controls__button_type-next">' +
-        ' <svg role="presentation" class="icon icon-tr-arrow">\n' +
-        '    <use xlink:href="/assets/images/icons.svg#icon_tr-arrow"></use>\n' +
-        '  </svg>' +
-        '</button>';
-
-      this.prev = '<button class="carousel-controls__button carousel-controls__button_type-prev">' +
-        ' <svg role="presentation" class="icon icon-tr-arrow">\n' +
-        '    <use xlink:href="/assets/images/icons.svg#icon_tr-arrow"></use>\n' +
-        '  </svg>' +
-        '</button>';
       const count = this.carousel.find('>*').length;
       const global = {};
       global.tabs = [];
