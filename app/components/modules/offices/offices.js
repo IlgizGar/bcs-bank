@@ -83,7 +83,6 @@ export default class Offices {
     }
 
     $(window).on('resize', () => {
-      this.handleMapSize();
       if (window.innerWidth > 991) {
         if (this.appBlock.hasClass('state_listed')) {
           this.appBlock.removeClass('state_listed');
@@ -109,32 +108,6 @@ export default class Offices {
       this.createRoute(toPoint, type);
     });
     this.searchInit();
-  }
-
-  handleMapSize() {
-    if (!this.appBlock.hasClass('state_explored')) {
-      if (window.innerWidth > 991) {
-        Offices.reInitScroll(this.pane);
-        if (this.map.container.getSize()[1] !== 678) {
-          $('#map-container').css('height', '678px');
-          this.map.container.fitToViewport();
-        }
-      } else if (window.innerWidth < 992 && window.innerWidth > 767) {
-        if (this.map.container.getSize()[1] !== 440) {
-          $('#map-container').css('height', '440px');
-          this.map.container.fitToViewport();
-        }
-      } else if (this.map.container.getSize()[1] !== 330) {
-        $('#map-container').css('height', '330px');
-        this.map.container.fitToViewport();
-      }
-    } else if (window.innerWidth < 992 && window.innerWidth > 575) {
-      $('#map-container').css('height', '300px');
-      this.map.container.fitToViewport();
-    } else {
-      $('#map-container').css('height', '200px');
-      this.map.container.fitToViewport();
-    }
   }
 
   handleSwitch() {
@@ -171,7 +144,6 @@ export default class Offices {
     this.togglePointState(this.point, this.target);
     this.point = null;
     this.target = null;
-    this.handleMapSize();
     this.switcher.removeClass('state_hidden');
     this.detailBlock.find('.js-detail-content').html('');
     this.detailBlock.addClass('state_hidden');
@@ -235,7 +207,11 @@ export default class Offices {
   }
 
   initMap() {
-    this.map = new ymaps.Map('map-container', {
+    const mapContainer = document.createElement('div');
+    const mapContainerWrapper = document.getElementById('map-container');
+    $(mapContainerWrapper).attr('style', '');
+    mapContainerWrapper.appendChild(mapContainer);
+    this.map = new ymaps.Map(mapContainer, {
       center: [61.698653, 99.505405],
       zoom: 5,
       controls: [],
@@ -243,7 +219,6 @@ export default class Offices {
     this.map.behaviors.disable('scrollZoom');
     this.map.options.set('suppressMapOpenBlock', true);
     this.setZoomControls();
-    this.handleMapSize();
     this.mapBlock = document.getElementById('map-container').firstChild;
     if (window.innerWidth < 992) {
       this.map.behaviors.disable('drag');
@@ -473,7 +448,6 @@ export default class Offices {
   }
 
   initPointMobileDetail(target) {
-    this.handleMapSize();
     this.goToPoints();
     const $collapse = $.extend(true, {}, target.parent().clone(true, true));
     $collapse.addClass('collapse__item_state-open');
