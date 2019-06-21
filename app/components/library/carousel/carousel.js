@@ -31,6 +31,11 @@ module.exports = (elem) => {
       paging.find('span:last-child').html(slick.slideCount < 10 ? `0${slick.slideCount}` : slick.slideCount);
     }
 
+    findPagination(slick) {
+      const isNext = slick.$slider.next('.js-carousel-controls').find('.js-carousel-pagination');
+      return isNext.length ? isNext : this.paging;
+    }
+
     init() {
       const self = this;
       this.paging = $(`.js-carousel-pagination[data-carousel="${this.id}"]`);
@@ -38,7 +43,7 @@ module.exports = (elem) => {
       this.carousel.on('init reInit', (event, slick, currentSlide) => {
         // console.log('SLICK', slick);
         if (!slick.$slider.hasClass('controls-initialized')) {
-          const paging = this.paging.length ? this.paging : slick.$slider.next('.js-carousel-controls').find('.js-carousel-pagination');
+          const paging = this.findPagination(slick);
           Carousel.setPagination(paging, slick, currentSlide);
           slick.$slider.addClass('controls-initialized');
         }
@@ -54,7 +59,7 @@ module.exports = (elem) => {
       // });
 
       this.carousel.on('afterChange', (event, slick, currentSlide) => {
-        const paging = this.paging.length ? this.paging : slick.$slider.next('.js-carousel-controls').find('.js-carousel-pagination');
+        const paging = this.findPagination(slick);
         Carousel.setPagination(paging, slick, currentSlide);
         const $notActiveSlides = this.carousel.find('.slick-slide:not(.slick-active) .js-scroll-animate:not(.feature)');
         if ($notActiveSlides.hasClass('state_animate-page')) {
