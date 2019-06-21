@@ -63,18 +63,19 @@ module.exports = (elem) => {
     }
 
     events() {
-      this.input.find('input').on('focus', () => {
-        if (this.input.hasClass('state_init')) {
-          this.input.removeClass('state_init');
-          this.field.focus();
+      function triggerInputState(self) {
+        if (self.input.hasClass('state_init')) {
+          self.input.removeClass('state_init');
+          self.field.focus();
         }
+      }
+
+      this.input.find('input').on('focus', () => {
+        triggerInputState(this);
       });
 
       this.input.on('click', () => {
-        if (this.input.hasClass('state_init')) {
-          this.input.removeClass('state_init');
-          this.field.focus();
-        }
+        triggerInputState(this);
       });
 
       this.field.on('blur', () => {
