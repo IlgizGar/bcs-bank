@@ -23,11 +23,11 @@ export default class Modal {
     body.removeChild(this.div);
     delete this.div;
     if (!open) {
-      body.attributes.removeNamedItem('style');
+      $(body).attr('style', '');
       window.scrollTo(0, window.scrollPos);
       window.scrollPos = null;
     } else {
-      body.setAttribute('style', `padding-right: ${scrollWidth}px; top:${-1 * window.scrollPos}px;`);
+      body.setAttribute('style', `padding-right: ${scrollWidth}px; top:${-1 * window.scrollPos}px; left:0; right:0`);
       document.body.style.position = 'fixed';
     }
   }
@@ -59,18 +59,22 @@ export default class Modal {
           $.get(`${this.windowId}`, (html) => {
             this.html = html;
             this.openWindow(ajax);
-            console.log('HTML', html);
           });
         }
       }
 
       if (!ajax) this.openWindow(ajax);
     });
+    $('body').on('click', (e) => {
+      const block = $(e.target);
+      if (block.hasClass('blocker') || block.attr('rel') === 'modal:close') {
+        this.bodyNoScroll(false);
+      }
+    });
   }
 
   openWindow(ajax) {
     let $el = null;
-    this.bodyNoScroll(true);
     if (ajax) {
       const id = $(this.html).attr('id');
       $el = $(`#${id}`);
@@ -88,7 +92,8 @@ export default class Modal {
     global.forms.push(new Form($el.find('form')));
     global.checkboxes.push(new Checkbox($el.find('.js-checkbox')));
     $('form').removeClass('state_loading');
-    $el.unbind('');
+    this.bodyNoScroll(true);
+    $el.unbind($.modal.BEFORE_CLOSE);
     $el.bind($.modal.BEFORE_CLOSE, () => {
       this.bodyNoScroll(false);
     });
@@ -97,5 +102,6 @@ export default class Modal {
   static closeWindow() {
     $('form').removeClass('state_loading');
     $.modal.close();
+    this.bodyNoScroll(false);
   }
 }
