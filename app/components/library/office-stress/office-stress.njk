@@ -1,0 +1,36 @@
+{% macro officeStress( options ) %}
+
+    {% if options.data %}
+        {% set options = options.data %}
+    {% endif %}
+
+    {% set class_sep = joiner(' ') %}
+
+    {% set mods = '' %}
+    {% set mods %}
+        {% for key, value in options.mods -%}
+            {{ class_sep() }} office-stress_{{ key }}-{{ value }}
+        {%- endfor %}
+    {% endset %}
+
+    {% set attr = '' %}
+    {% set attr %}
+        {% for key, value in options.attr -%}
+            {{ class_sep() }} data-{{ key }} = "{{ value }}"
+        {%- endfor %}
+    {% endset %}
+
+    <div class="office-stress">
+        <div class="office-stress__time">
+            <div class="office-stress__time-hours">
+                {{ options.h }}
+            </div>
+            <div class="office-stress__time-minutes">
+                {{ options.m }}
+            </div>
+        </div>
+        <div class="office-stress__load" data-stress="{{ options.stress }}">
+        </div>
+    </div>
+
+{% endmacro %}
