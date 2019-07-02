@@ -1,0 +1,48 @@
+.office-stress
+  display flex
+  position relative
+  width 100%
+  &-list
+    display flex
+    flex-basis 100%
+    flex-direction row
+    justify-content stretch
+    align-items flex-end
+    padding-bottom 19px
+    width 100%
+  &__time
+    display flex
+    flex-basis 100%
+    flex-direction row
+    justify-content flex-start
+    align-items flex-start
+    font-size 15px
+    letter-spacing -0.8px
+    line-height 15px
+    padding 4px
+    padding-bottom 7px
+    @media (max-width: 1279px) and (min-width: 992px)
+      font-size 10px
+    @media (max-width: 767px)
+      padding 1px
+      padding-bottom 5px
+    &-minutes
+      font-size 8px
+      letter-spacing 0.2px
+      opacity 0.5
+      margin-left 2px
+      line-height 8px
+  &__load
+    height 2px
+    width 100%
+    position absolute
+    bottom 0
+    left 0
+    &[data-stress=min]
+      background #23d56c
+    &[data-stress=normal]
+      background #f7c61a
+    &[data-stress=high]
+      background #ee4c1d
+
+
