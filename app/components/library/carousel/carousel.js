@@ -62,9 +62,7 @@ module.exports = (elem) => {
         const paging = this.findPagination(slick);
         Carousel.setPagination(paging, slick, currentSlide);
         const $notActiveSlides = this.carousel.find('.slick-slide:not(.slick-active) .js-scroll-animate:not(.feature)');
-        if ($notActiveSlides.hasClass('state_animate-page')) {
-          $notActiveSlides.removeClass('state_animate-page');
-        }
+        $notActiveSlides.addClass('state_animate-page');
       });
       this.carousel.on('mouseenter', () => {
         self.progressBarPause();
