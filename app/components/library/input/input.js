@@ -60,6 +60,9 @@ module.exports = (elem) => {
           });
         }
       }
+      if (this.field.attr('readonly')) {
+        this.input.addClass('state_readonly');
+      }
     }
 
     events() {
