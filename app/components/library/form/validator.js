@@ -369,7 +369,6 @@ module.exports = (form) => {
 
     static addValidateFio() {
       $('.js-fio-auto-complete').each((index, element) => {
-        console.log(element);
         if (!$(element).attr('readonly')) {
           $(element).suggestions({
             serviceUrl: 'https://api.bcs.ru/suggestion/v1',
@@ -403,7 +402,6 @@ module.exports = (form) => {
         ";":"ж", "'":"э", "z":"я", "x":"ч", "c":"с", "v":"м", "b":"и",
         "n":"т", "m":"ь", ",":"б", ".":"ю", "/":".", "0":"."
       }`;
-      console.log('STR', str);
       const replacer = JSON.parse(replacerString);
       return str.replace(/[A-z/,.;'\][]/g, x => (x === x.toLowerCase() ? replacer[x] : replacer[x.toLowerCase()].toUpperCase()));
     }
