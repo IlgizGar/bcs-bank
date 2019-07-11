@@ -309,7 +309,7 @@
                                                 <!-- класс js-send-form  указывает скрипту что на этом шаге нужно отправить форму на адресс указанный в data-send-url  -->
                                                 {{ Heading.heading({ 'title': 'Общая информация' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
                                                 <fieldset>
-                                                    {{ Input.input({'label': 'ФИО', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': 'js-fio-masked js-fio-auto-complete', 'maxlength': '64', 'name': 'bid_user-name', 'required': 'true' } }) }}
+                                                    {{ Input.input({'label': 'ФИО', 'class': 'form__field-group', 'value':'Иванов Иван Иванович', 'field': { 'readonly':'readonly','type': 'text', 'class': 'js-fio-masked js-fio-auto-complete', 'maxlength': '64', 'name': 'bid_user-name', 'required': 'true' } }) }}
                                                     <div class="form__line-group">
                                                         {{ Input.input({ 'fieldType':'tel', 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': {'class': 'js-phone-masked', 'name': 'question_phone', 'required': 'true' } }) }}
                                                         {{ Input.input({ 'fieldType':'email', 'label': 'Электронная почта', 'class': 'form__field-group', 'field': {'class': 'js-mail-masked', 'name': 'question_mail', 'required': 'true' } }) }}

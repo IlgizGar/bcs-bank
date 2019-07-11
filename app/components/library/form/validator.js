@@ -330,32 +330,34 @@ module.exports = (form) => {
           flatInput = flatInput.find('.js-input-field');
         }
 
-        $(element)
-          .suggestions({
-            serviceUrl: 'https://api.bcs.ru/kladr/v3',
-            token: '574fec4e42aa48a2ac22841a3f6def1d',
-            type: 'ADDRESS',
-            mobileWidth: 0,
-            onSelect: (suggestion) => {
-              valid = true;
-              if (!suggestion.data.city && !suggestion.data.settlement) {
-                errorMessage = 'Введите название населенного пункта';
-                valid = false;
-              } else if (!suggestion.data.settlement && !suggestion.data.street) {
-                errorMessage = 'Необходимо указать улицу';
-                valid = false;
-              } else if (!suggestion.data.house) {
-                errorMessage = 'Нужно указать номер дома';
-                valid = false;
-              } else {
-                errorMessage = '';
-              }
-              if (suggestion.data.flat) {
-                flatInput.val(suggestion.data.flat);
-                flatInput.trigger('keyup');
-              }
-            },
-          });
+        if (!$(element).attr('readonly')) {
+          $(element)
+            .suggestions({
+              serviceUrl: 'https://api.bcs.ru/kladr/v3',
+              token: '574fec4e42aa48a2ac22841a3f6def1d',
+              type: 'ADDRESS',
+              mobileWidth: 0,
+              onSelect: (suggestion) => {
+                valid = true;
+                if (!suggestion.data.city && !suggestion.data.settlement) {
+                  errorMessage = 'Введите название населенного пункта';
+                  valid = false;
+                } else if (!suggestion.data.settlement && !suggestion.data.street) {
+                  errorMessage = 'Необходимо указать улицу';
+                  valid = false;
+                } else if (!suggestion.data.house) {
+                  errorMessage = 'Нужно указать номер дома';
+                  valid = false;
+                } else {
+                  errorMessage = '';
+                }
+                if (suggestion.data.flat) {
+                  flatInput.val(suggestion.data.flat);
+                  flatInput.trigger('keyup');
+                }
+              },
+            });
+        }
       });
 
 
@@ -366,14 +368,17 @@ module.exports = (form) => {
     }
 
     static addValidateFio() {
-      $('.js-fio-auto-complete')
-        .suggestions({
-          serviceUrl: 'https://api.bcs.ru/suggestion/v1',
-          token: '574fec4e42aa48a2ac22841a3f6def1d',
-          type: 'NAME',
-          count: 5,
-          mobileWidth: 0,
-        });
+      $('.js-fio-auto-complete').each((index, element) => {
+        if (!$(element).attr('readonly')) {
+          $(element).suggestions({
+            serviceUrl: 'https://api.bcs.ru/suggestion/v1',
+            token: '574fec4e42aa48a2ac22841a3f6def1d',
+            type: 'NAME',
+            count: 5,
+            mobileWidth: 0,
+          });
+        }
+      });
       $('.js-fio-masked')
         .on('keyup', (e) => {
           const input = $(e.currentTarget);
@@ -397,7 +402,6 @@ module.exports = (form) => {
         ";":"ж", "'":"э", "z":"я", "x":"ч", "c":"с", "v":"м", "b":"и",
         "n":"т", "m":"ь", ",":"б", ".":"ю", "/":".", "0":"."
       }`;
-      console.log('STR', str);
       const replacer = JSON.parse(replacerString);
       return str.replace(/[A-z/,.;'\][]/g, x => (x === x.toLowerCase() ? replacer[x] : replacer[x.toLowerCase()].toUpperCase()));
     }

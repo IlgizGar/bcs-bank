@@ -218,7 +218,7 @@
                     <form action="http://localhost/rplpost/index.php"">
                       <div class="step-form__item js-step js-send-form" data-send-url="http://localhost/rplpost/index.php">
                         <fieldset>
-                          {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': 'js-fio-masked', 'maxlength': '64', 'name': 'bid_user-name', 'required': 'true' } }) }}
+                          {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': { 'type': 'text',  'class': 'js-fio-masked js-fio-auto-complete', 'maxlength': '64', 'name': 'bid_user-name', 'required': 'true' } }) }}
                           <div class="form__line-group">
                             {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': {'class': 'js-phone-masked', 'name': 'question_phone', 'required': 'true' } }) }}
                             {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': {'class': 'js-mail-masked', 'name': 'question_mail', 'required': 'true' } }) }}
