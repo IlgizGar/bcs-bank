@@ -566,6 +566,9 @@ export default class Offices {
       this.map.setBounds(this.markCollection.getBounds(), {
         checkZoomRange: true,
         zoom: 10,
+      }).then(() => {
+        console.log('cc');
+        this.map.setZoom(12);
       });
     } catch (e) {
       console.warn('no points');
