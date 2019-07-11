@@ -1,9 +1,12 @@
 .dropdown.dropdown_theme-bordered
   .dropdown__wrap
     background-color: transparent
-    box-shadow: inset 0 0 0 1px $gainsboro
+    box-shadow: inset 0 0 0 1px #D8D8D8
     transition: all $interval
 
-  &:not(.state_error):hover, &:not(.state_error).state_explored
+  &:not(.state_error):hover
     .dropdown__wrap
-      box-shadow: inset 0 0 0 1px $very_light_gray
+      box-shadow: inset 0 0 0 1px #78818F
+  &:not(.state_error).state_explored
+    .dropdown__wrap
+      box-shadow: inset 0 0 0 2px #4573D9
