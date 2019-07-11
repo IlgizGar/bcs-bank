@@ -75,6 +75,11 @@ module.exports = (elem) => {
 
       this.input.find('input').on('focus', () => {
         triggerInputState(this);
+        this.input.addClass('state_focus');
+      });
+
+      this.input.find('input').on('blur', () => {
+        this.input.removeClass('state_focus');
       });
 
       this.input.on('click', () => {
