@@ -200,6 +200,12 @@ module.exports = (elem) => {
               .val(),
           });
         });
+        formData.push({
+          name: $('#form_id')
+            .attr('name'),
+          value: $('#form_id')
+            .val(),
+        });
       }
       const sendUrl = url;
       Form.formatOutput(formData);
