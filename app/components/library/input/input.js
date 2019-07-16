@@ -95,7 +95,6 @@ module.exports = (elem) => {
           } else if (parseFloat(this.field.val().replace(/ /g, '')) < this.slider.data('min')) {
             this.field.val(this.slider.data('min'));
           } else if (this.field.val().length < 1) {
-            // this.field.val(this.slider.attr('data-from'));
             this.field.val(this.slider.data('min'));
           }
           this.ionSlider.update({
@@ -106,21 +105,6 @@ module.exports = (elem) => {
 
       this.field.on('keyup', () => {
         this.stateChange();
-        // if (this.field.val().length < 1) {
-        //   if (this.ionSlider === null) {
-        //     this.input.removeClass('state_filled');
-        //   }
-        // } else {
-        //   if (!this.input.hasClass('state_filled')) {
-        //     this.input.addClass('state_filled');
-        //   }
-        //
-        //   if (this.ionSlider !== null) {
-        //     this.ionSlider.update({
-        //       from: parseFloat(this.field.val().replace(/ /g, '')),
-        //     });
-        //   }
-        // }
       });
       this.stateChange();
     }
