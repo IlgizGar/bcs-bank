@@ -11,6 +11,7 @@ export default class FormHelper {
           dataItem.value = dataItem.value.replace(/\s+/g, '');
         }
       });
+    return formData;
   }
   static setHiddenValue(name, value, form) {
     let el = form.find(`[name="${name}"]`);
@@ -27,7 +28,6 @@ export default class FormHelper {
   static showInputError(name, errorMessage, formValidator) {
     const errorObject = {};
     Object.assign(errorObject, { [name]: errorMessage });
-    console.log(errorObject);
     formValidator.showErrors(errorObject);
   }
   static collectStepData(self) {
@@ -36,64 +36,46 @@ export default class FormHelper {
     const inputs = step.find('input[name]');
     const textareas = step.find('textarea[name]');
     const selects = step.find('select[name]');
+    function addData(el) {
+      formData.push({
+        name: $(el)
+          .attr('name'),
+        value: $(el)
+          .val(),
+      });
+    }
     inputs.each((index, el) => {
       if (($(el)
         .attr('type') === 'checkbox') || ($(el)
         .attr('type') === 'radio')) {
         if ($(el)
           .prop('checked')) {
-          formData.push({
-            name: $(el)
-              .attr('name'),
-            value: $(el)
-              .val(),
-          });
+          addData(el);
         }
       } else {
-        formData.push({
-          name: $(el)
-            .attr('name'),
-          value: $(el)
-            .val(),
-        });
+        addData(el);
       }
     });
     textareas.each((index, el) => {
-      formData.push({
-        name: $(el)
-          .attr('name'),
-        value: $(el)
-          .val(),
-      });
+      addData(el);
     });
     selects.each((index, el) => {
-      formData.push({
-        name: $(el)
-          .attr('name'),
-        value: $(el)
-          .val(),
-      });
+      addData(el);
     });
     const $formIdBlock = $('#form_id');
     if ($formIdBlock.length) {
-      formData.push({
-        name: $formIdBlock
-          .attr('name'),
-        value: $formIdBlock
-          .val(),
-      });
+      addData($formIdBlock);
     }
     return formData;
   }
 
   static getHandler() {
     return (form) => {
-      const redirectUrl = `${form.getAttribute('action')}?partner=bcs-bank&operation=${form.querySelector('.radio__field:checked')
+      document.location.href = `${form.getAttribute('action')}?partner=bcs-bank&operation=${form.querySelector('.radio__field:checked')
         .id
         .match(/buy|sell/g)}&amount=${form.querySelector('.js-course-input')
         .value
         .replace(' ', '')}&currency=${form.querySelector('.js-course-field .js-title').innerText}`;
-      document.location.href = redirectUrl;
     };
   }
   static postHandler(self) {

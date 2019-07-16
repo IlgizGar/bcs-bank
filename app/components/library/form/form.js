@@ -5,7 +5,6 @@ import Validator from './validator';
 import StepForm from '../../library/step-form/step-form';
 import SmsForm from '../../modules/sms-code-form/sms-code';
 import PlaceForm from '../../modules/form-place/form-place';
-// import TransferForm from './transferForm';
 import FormHelper from './formHelper';
 
 
@@ -16,13 +15,19 @@ module.exports = (elem) => {
       this.steps = null;
       this.smsCodeForm = null;
       this.stepClass = 'js-step';
-      // this.transferForm = new TransferForm();
       this.msgSucess = this.form.closest('.js-form')
         .find('.js-form-success');
       this.msgError = this.form.closest('.js-form')
         .find('.js-form-error');
       this.formType = this.form.closest('.js-form')
         .data('form');
+      this.validator = Validator(this.form);
+
+      this.initServices();
+      this.validateForm();
+      this.events();
+    }
+    initServices() {
       if (this.form.find(`.${this.stepClass}`).length) {
         this.steps = new StepForm({
           selector: this.stepClass,
@@ -33,20 +38,11 @@ module.exports = (elem) => {
       if (this.form.find('.js-sms-code-form').length) {
         this.smsCodeForm = SmsForm('.js-sms-code-form');
       }
-      this.validator = Validator(this.form);
-      this.validateForm();
-      // this.transferForm.blockEvents.call(this);
-      this.events();
       if (this.form.find('.js-place-to-live').length) {
         this.placeToLive = new PlaceForm('.js-place-to-live');
       }
     }
     events() {
-      if (this.form.closest('.modal').length) {
-        this.form.closest('.modal')
-          .on($.modal.BEFORE_CLOSE, () => {
-          });
-      }
       if (this.steps) {
         this.form.find('.js-prev-step')
           .on('click', (e) => {
@@ -89,20 +85,15 @@ module.exports = (elem) => {
     formSubmit(form, url, callback, sendStep) {
       $(form)
         .addClass('state_loading');
-      let formData = $(form)
-        .serializeArray();
-      if (sendStep) {
-        formData = FormHelper.collectStepData(this);
-      }
-      const sendUrl = url;
-      FormHelper.formatOutput(formData);
       $.ajax({
         method: 'POST',
         type: 'POST',
-        url: url ? sendUrl : form.getAttribute('action'),
+        url: (url !== undefined) ? url : form.getAttribute('action'),
         dataType: 'json',
-        data: formData,
+        data: FormHelper.formatOutput(sendStep ? FormHelper.collectStepData(this) : $(form).serializeArray()),
         success: (data) => {
+          $(form)
+            .removeClass('state_loading');
           if (!url) {
             if (data.success === true) {
               $('.js-products-success')
@@ -115,27 +106,17 @@ module.exports = (elem) => {
                 .modal({
                   showClose: false,
                 });
-              $(form)
-                .removeClass('state_loading');
             } else if (data.success === 'incorrect-code') {
-              $(form)
-                .removeClass('state_loading');
               FormHelper.showInputError('sms_code', data.error, this.formValidator);
             } else {
-              $(form)
-                .removeClass('state_loading');
               $('.js-products-error')
                 .modal({
                   showClose: false,
                 });
             }
           } else if (data.success === 'incorrect-code') {
-            $(form)
-              .removeClass('state_loading');
             FormHelper.showInputError('sms_code', data.error, this.formValidator);
           } else if (data.success === false) {
-            $(form)
-              .removeClass('state_loading');
             if (data.errors) {
               Object.keys(data.errors)
                 .forEach((item) => {
@@ -152,8 +133,6 @@ module.exports = (elem) => {
               $(form).removeClass('state_loading');
             }
           } else {
-            $(form)
-              .removeClass('state_loading');
             callback(data);
           }
           if (data.set_hidden_value) {
