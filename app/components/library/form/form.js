@@ -5,7 +5,7 @@ import Validator from './validator';
 import StepForm from '../../library/step-form/step-form';
 import SmsForm from '../../modules/sms-code-form/sms-code';
 import PlaceForm from '../../modules/form-place/form-place';
-import TransferForm from './transferForm';
+// import TransferForm from './transferForm';
 import FormHelper from './formHelper';
 
 
@@ -16,7 +16,7 @@ module.exports = (elem) => {
       this.steps = null;
       this.smsCodeForm = null;
       this.stepClass = 'js-step';
-      this.transferForm = new TransferForm();
+      // this.transferForm = new TransferForm();
       this.msgSucess = this.form.closest('.js-form')
         .find('.js-form-success');
       this.msgError = this.form.closest('.js-form')
@@ -35,7 +35,7 @@ module.exports = (elem) => {
       }
       this.validator = Validator(this.form);
       this.validateForm();
-      this.transferForm.blockEvents.call(this);
+      // this.transferForm.blockEvents.call(this);
       this.events();
       if (this.form.find('.js-place-to-live').length) {
         this.placeToLive = new PlaceForm('.js-place-to-live');
