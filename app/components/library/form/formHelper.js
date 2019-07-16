@@ -106,10 +106,10 @@ export default class FormHelper {
     function send(step, form, selfInner, full) {
       if (step.hasClass('js-send-form')) {
         selfInner.formSubmit(form, step.data('send-url'), () => {
-          selfInner.setStepFront();
+          FormHelper.setStepFront(selfInner);
         }, !full);
       } else {
-        selfInner.setStepFront();
+        FormHelper.setStepFront(selfInner);
       }
     }
     return (form) => {
@@ -127,7 +127,7 @@ export default class FormHelper {
         if (step.hasClass('js-sms-step')) {
           self.smsCodeForm.sendPhone(['question_phone', 'form_id', 'bid_user_name'], 'question_phone', () => {
           }, () => {
-            self.setStepBack();
+            FormHelper.setStepBack(self);
           });
         }
         if (step.hasClass('js-send-validate-form')) {
@@ -135,9 +135,24 @@ export default class FormHelper {
             send(step, form, self);
           }, true);
         } else {
-          send(step, form, self, self);
+          send(step, form, self, true);
         }
       }
     };
+  }
+  static setStepsCount(self) {
+    self.form.closest('.js-form')
+      .find('.js-step-informer-all')
+      .text(self.steps.getCount());
+  }
+  static setStepBack(self) {
+    self.form.closest('.js-form')
+      .find('.js-step-informer')
+      .text(self.steps.prevStep() + 1);
+  }
+  static setStepFront(self) {
+    self.form.closest('.js-form')
+      .find('.js-step-informer')
+      .text(self.steps.nextStep() + 1);
   }
 }

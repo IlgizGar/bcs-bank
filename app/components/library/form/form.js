@@ -28,7 +28,7 @@ module.exports = (elem) => {
           selector: this.stepClass,
           activeClass: 'state_active',
         }, this.form[0]);
-        this.setStepsCount();
+        FormHelper.setStepsCount(this);
       }
       if (this.form.find('.js-sms-code-form').length) {
         this.smsCodeForm = SmsForm('.js-sms-code-form');
@@ -40,21 +40,6 @@ module.exports = (elem) => {
       if (this.form.find('.js-place-to-live').length) {
         this.placeToLive = new PlaceForm('.js-place-to-live');
       }
-    }
-    setStepsCount() {
-      this.form.closest('.js-form')
-        .find('.js-step-informer-all')
-        .text(this.steps.getCount());
-    }
-    setStepBack() {
-      this.form.closest('.js-form')
-        .find('.js-step-informer')
-        .text(this.steps.prevStep() + 1);
-    }
-    setStepFront() {
-      this.form.closest('.js-form')
-        .find('.js-step-informer')
-        .text(this.steps.nextStep() + 1);
     }
     events() {
       if (this.form.closest('.modal').length) {
@@ -75,7 +60,7 @@ module.exports = (elem) => {
               .text(this.steps.prevStep(() => {
                 if ($(this.steps.getCurrent())
                   .find('.js-sms-code-form').length) {
-                  this.setStepBack();
+                  FormHelper.setStepBack(this);
                 }
               }) + 1);
           });
