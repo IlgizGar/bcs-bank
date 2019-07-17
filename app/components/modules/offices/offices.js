@@ -567,12 +567,22 @@ export default class Offices {
         checkZoomRange: true,
         zoom: 10,
       }).then(() => {
-        console.log('cc');
-        this.map.setZoom(12);
+        if (Offices.getMarksCount(this.markCollection) > 1) {
+          this.map.setZoom(12);
+        } else {
+          this.map.setZoom(15);
+        }
       });
     } catch (e) {
       console.warn('no points');
     }
+  }
+  static getMarksCount(collection) {
+    let placeCount = 0;
+    collection.each(() => {
+      placeCount += 1;
+    });
+    return placeCount;
   }
 
   getPointById(id) {
