@@ -14,6 +14,10 @@ module.exports = (elem) => {
       this.scrollBarInited = false;
       this.handle = null;
       this.id = '';
+      this.filledClass = 'state_filled';
+      this.exploredClass = 'state_explored';
+      this.hiddenClass = 'state_hidden';
+      this.invisibleClass = 'state_invisible';
 
       this.input.attr('readonly', true);
 
@@ -24,7 +28,7 @@ module.exports = (elem) => {
     init() {
       this.id = this.dropdown.data('id') ? this.dropdown.data('id') : `list_for_${this.select.attr('name')}`;
       this.dropdown.find('input').attr('autocomplete', 'off');
-      this.list = $(`<div id="${this.id}" class="dropdown__list state_invisible scroll-pane js-dropdown-list mt-10"><ul tabindex="1"></ul></div>`);
+      this.list = $(`<div id="${this.id}" class="dropdown__list ${this.invisibleClass} scroll-pane js-dropdown-list mt-10"><ul tabindex="1"></ul></div>`);
       $('.js-page').append(this.list);
 
       this.list[0].Dropdown = this;
@@ -34,7 +38,7 @@ module.exports = (elem) => {
           <li tabindex="${i + 1}" data-val="${$(el).val()}">${$(el).html()}</li>
         `);
         if ($(el).attr('selected')) {
-          this.dropdown.addClass('state_filled');
+          this.dropdown.addClass(this.filledClass);
           this.input.val($(el).html());
         }
       });
@@ -43,7 +47,7 @@ module.exports = (elem) => {
     events() {
       this.dropdown.on('click', (e) => {
         e.preventDefault();
-        if (this.dropdown.hasClass('state_explored')) {
+        if (this.dropdown.hasClass(this.exploredClass)) {
           this.hideList();
         } else {
           this.showList(e.target);
@@ -56,8 +60,19 @@ module.exports = (elem) => {
 
       let focusedElement;
 
+      function focusOn(direction, self) {
+        if (!focusedElement) {
+          focusedElement = self.list.find('li:first-child');
+        }
+        if (direction === 'next') {
+          focusedElement = focusedElement.next();
+        } else {
+          focusedElement = focusedElement.prev();
+        }
+        focusedElement.focus();
+      }
+
       this.dropdown.find('input').on('keydown', (e) => {
-        console.log(e.keyCode);
         focusedElement = null;
         if (e.keyCode === 40) {
           e.stopPropagation();
@@ -74,32 +89,21 @@ module.exports = (elem) => {
         if (e.keyCode === 40) {
           e.stopPropagation();
           e.preventDefault();
-          if (!focusedElement) {
-            focusedElement = this.list.find('li:first-child');
-          } else {
-            focusedElement = focusedElement.next();
-          }
-          focusedElement.focus();
+          focusOn('next', this);
         }
         if (e.keyCode === 38) {
           e.stopPropagation();
           e.preventDefault();
-          if (!focusedElement) {
-            focusedElement = this.list.find('li:first-child');
-          } else {
-            focusedElement = focusedElement.prev();
-          }
-          focusedElement.focus();
+          focusOn('prev', this);
         }
       });
 
       this.list.find('li').on('keydown', (e) => {
         if (e.keyCode === 13) {
-          console.log(e);
           this.listEl = $(e.currentTarget);
           this.list.trigger('click');
           $(e.currentTarget).trigger('click');
-          this.dropdown.focus();
+          this.dropdown.find('input').focus();
         }
       });
 
@@ -133,7 +137,7 @@ module.exports = (elem) => {
     }
 
     setValue(value) {
-      this.dropdown.addClass('state_filled');
+      this.dropdown.addClass(this.filledClass);
       this.input.val(this.list.find(`[data-val="${value}"]`).html());
       if (this.input.closest('form').length) {
         this.input.valid();
@@ -145,16 +149,16 @@ module.exports = (elem) => {
 
     hideValues(valToHide, dropdownVal) {
       this.setValue(dropdownVal);
-      this.list.find('[data-val]').removeClass('state_hidden');
+      this.list.find('[data-val]').removeClass(this.hiddenClass);
       for (let i = 0; i < valToHide.length; i += 1) {
-        this.list.find(`[data-val="${valToHide[i]}"]`).addClass('state_hidden');
+        this.list.find(`[data-val="${valToHide[i]}"]`).addClass(this.hiddenClass);
       }
     }
 
     showList(el) {
-      this.dropdown.addClass('state_filled');
+      this.dropdown.addClass(this.filledClass);
       if (!$(el).closest('.js-dropdown-clear').length) {
-        this.dropdown.addClass('state_explored');
+        this.dropdown.addClass(this.exploredClass);
         if (!this.scrollBarInited) {
           this.dropdown.find('.scroll-pane').jScrollPane({
             contentWidth: 100,
@@ -166,7 +170,7 @@ module.exports = (elem) => {
           });
           this.scrollBarInited = true;
         }
-        this.list.removeClass('state_invisible');
+        this.list.removeClass(this.invisibleClass);
         this.list.css('min-width', this.dropdown.outerWidth());
         this.list.css('top', $(el).offset().top + this.dropdown.outerHeight());
         this.list.css('left', $(el).offset().left);
@@ -174,13 +178,13 @@ module.exports = (elem) => {
     }
 
     hideList() {
-      this.dropdown.removeClass('state_explored');
-      this.list.addClass('state_invisible');
+      this.dropdown.removeClass(this.exploredClass);
+      this.list.addClass(this.invisibleClass);
     }
 
     clearDropdown() {
-      if (this.dropdown.hasClass('state_filled')) {
-        this.dropdown.removeClass('state_filled');
+      if (this.dropdown.hasClass(this.filledClass)) {
+        this.dropdown.removeClass(this.filledClass);
         this.hideList();
         // this.input.val('');
         this.options.attr('selected', false);

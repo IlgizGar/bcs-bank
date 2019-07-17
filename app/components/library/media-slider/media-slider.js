@@ -30,17 +30,21 @@ module.exports = (elem) => {
     }
 
     initSlider() {
-      const arrow = ' <svg role="presentation" class="icon icon-tr-arrow">\n' +
-                    '    <use xlink:href="assets/images/icons.svg#icon_tr-arrow"></use>\n' +
-                    '  </svg>';
-      const clases = 'media-slider__control-button media-slider__control-button_type';
       this.carousel.slick({
         autoplay: true,
         autoplaySpeed: this.slideTime,
         appendArrows: this.carouselBlock.find('.media-slider__arrows'),
-        nextArrow: `<button class="${clases}-next">${arrow}</button>`,
-        prevArrow: `<button class="${clases}-prev">${arrow}</button>`,
+        nextArrow: Carousel.renderButton('next'),
+        prevArrow: Carousel.renderButton('prev'),
       });
+    }
+
+    static renderButton(mod) {
+      const arrow = ' <svg role="presentation" class="icon icon-tr-arrow">\n' +
+        '    <use xlink:href="assets/images/icons.svg#icon_tr-arrow"></use>\n' +
+        '  </svg>';
+      const clases = 'media-slider__control-button media-slider__control-button_type';
+      return `<button class="${clases}-${mod}">${arrow}</button>`;
     }
 
     slidersProgress() {

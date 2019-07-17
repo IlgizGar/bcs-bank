@@ -7,6 +7,9 @@ module.exports = (elem) => {
       this.input = $(selector);
       this.field = this.input.find('.js-input-field');
       this.ionSlider = null;
+      this.initClass = 'state_init';
+      this.focusClass = 'state_focus';
+      this.filledClass = 'state_filled';
 
       this.init();
       this.events();
@@ -38,8 +41,8 @@ module.exports = (elem) => {
         });
         this.slider[0].ioSlider = this.slider.data('ionRangeSlider');
         this.field.val(this.slider.data('from'));
-        this.input.removeClass('state_init');
-        this.input.addClass('state_filled');
+        this.input.removeClass(this.initClass);
+        this.input.addClass(this.filledClass);
 
         this.ionSlider = this.slider.data('ionRangeSlider');
       }
@@ -47,12 +50,12 @@ module.exports = (elem) => {
     stateChange() {
       if (String(this.field.val()).length < 1) {
         if (this.ionSlider === null) {
-          this.input.removeClass('state_filled');
+          this.input.removeClass(this.filledClass);
         }
       } else {
-        if (!this.input.hasClass('state_filled')) {
-          this.input.addClass('state_filled');
-          this.input.removeClass('state_init');
+        if (!this.input.hasClass(this.filledClass)) {
+          this.input.addClass(this.filledClass);
+          this.input.removeClass(this.initClass);
         }
         if (this.ionSlider !== null) {
           this.ionSlider.update({
@@ -67,19 +70,19 @@ module.exports = (elem) => {
 
     events() {
       function triggerInputState(self) {
-        if (self.input.hasClass('state_init')) {
-          self.input.removeClass('state_init');
+        if (self.input.hasClass(self.initClass)) {
+          self.input.removeClass(self.initClass);
           self.field.focus();
         }
       }
 
       this.input.find('input').on('focus', () => {
         triggerInputState(this);
-        this.input.addClass('state_focus');
+        this.input.addClass(this.focusClass);
       });
 
       this.input.find('input').on('blur', () => {
-        this.input.removeClass('state_focus');
+        this.input.removeClass(this.focusClass);
       });
 
       this.input.on('click', () => {
@@ -87,8 +90,8 @@ module.exports = (elem) => {
       });
 
       this.field.on('blur', () => {
-        if (!this.input.hasClass('state_filled')) {
-          this.input.addClass('state_init');
+        if (!this.input.hasClass(this.filledClass)) {
+          this.input.addClass(this.initClass);
         } else if (this.ionSlider !== null) {
           if (parseFloat(this.field.val().replace(/ /g, '')) > this.slider.data('max')) {
             this.field.val(this.slider.data('max'));

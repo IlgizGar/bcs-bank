@@ -9,16 +9,18 @@ module.exports = (elem) => {
       this.progressbar = $('.js-carousel-progressbar');
       this.id = this.carousel.data('id');
       this.paging = null;
-      const arrow = ' <svg role="presentation" class="icon icon-tr-arrow">\n' +
-                    '    <use xlink:href="/assets/images/icons.svg#icon_tr-arrow"></use>\n' +
-                    '  </svg>';
-      const classes = 'carousel-controls__button carousel-controls__button_type';
-      this.next = `<button class="${classes}-next">${arrow}</button>`;
-      this.prev = `<button class="${classes}-prev">${arrow}</button>`;
+      this.next = Carousel.renderButton('next');
+      this.prev = Carousel.renderButton('prev');
       this.init();
       this.events();
     }
-
+    static renderButton(mod) {
+      const arrow = ' <svg role="presentation" class="icon icon-tr-arrow">\n' +
+        '    <use xlink:href="/assets/images/icons.svg#icon_tr-arrow"></use>\n' +
+        '  </svg>';
+      const classes = 'carousel-controls__button carousel-controls__button_type';
+      return `<button class="${classes}-${mod}">${arrow}</button>`;
+    }
     static setPagination(paging, slick, currentSlide) {
       const i = (!currentSlide ? 0 : currentSlide) + 1;
       paging.find('span:first-child').html(i < 10 ? `0${i}` : i);
