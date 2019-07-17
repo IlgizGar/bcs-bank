@@ -22,7 +22,9 @@
       <div class="section__row">
         <div class="plastic-card__content">
           <div class="plastic-card__header">
-            {{ Heading.heading({ 'title': options.title }) }}
+              <a href="{{ options.href }}">
+                  {{ Heading.heading({ 'title': options.title }) }}
+              </a>
             <div class="plastic-card__category">
               {% for key, value in options.category %}
                 {{ Button.button({ 'title': value, 'mods': { 'view': 'outlined', 'size': 'mini' }, 'attr': { 'category': key } }) }}
@@ -60,7 +62,9 @@
       <div class="section__row">
         <div class="plastic-card__content">
           <div class="plastic-card__header">
-            {{ Heading.heading({ 'title': options.title }) }}
+              <a href="{{ options.href }}">
+                  {{ Heading.heading({ 'title': options.title }) }}
+              </a>
             <div class="plastic-card__category">
               {% for key, value in options.category %}
                 {{ Button.button({ 'title': value, 'mods': { 'theme': 'gray', 'view': 'outlined', 'size': 'mini' }, 'attr': { 'category': key } }) }}
