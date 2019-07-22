@@ -69,7 +69,7 @@ export default class FormHelper {
     return formData;
   }
 
-  static getHandler() {
+  static setGetHandler() {
     return (form) => {
       document.location.href = `${form.getAttribute('action')}?partner=bcs-bank&operation=${form.querySelector('.radio__field:checked')
         .id
@@ -78,13 +78,13 @@ export default class FormHelper {
         .replace(' ', '')}&currency=${form.querySelector('.js-course-field .js-title').innerText}`;
     };
   }
-  static postHandler(self) {
+  static setPostHandler(self) {
     return (form) => {
       self.formSubmit(form);
       return false;
     };
   }
-  static stepPostHandler(self) {
+  static setStepPostHandler(self) {
     function send(step, form, selfInner, full) {
       if (step.hasClass('js-send-form')) {
         selfInner.formSubmit(form, step.data('send-url'), () => {
@@ -136,5 +136,11 @@ export default class FormHelper {
     self.form.closest('.js-form')
       .find('.js-step-informer')
       .text(self.steps.nextStep() + 1);
+  }
+  static showErrorModal() {
+    $('.js-products-error')
+      .modal({
+        showClose: false,
+      });
   }
 }
