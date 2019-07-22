@@ -15,6 +15,8 @@ module.exports = (elem) => {
       this.scrollBarInited = false;
       this.id = '';
       this.list = null;
+      this.exploredClass = 'state_explored';
+      this.invisibleClass = 'state_invisible';
 
       this.init();
       this.events();
@@ -25,33 +27,24 @@ module.exports = (elem) => {
       this.list = $(`.js-context-list#${this.id}`);
 
       if (!this.list.length) {
-        this.list = $(`<div id="${this.id}" class="dropdown__list state_invisible scroll-pane js-context-list mt-16"><ul></ul></div>`);
+        this.list = $(`<div id="${this.id}" class="dropdown__list ${this.invisibleClass} scroll-pane js-context-list mt-16"><ul></ul></div>`);
         $('.js-page').append(this.list);
         this.options.each((i, el) => {
-          let itemLeft = `<li class="dropdown__list-item js-context-item" data-val="${$(el).val()}"`;
-          let item = '';
-
-          if ($(el).data('href')) {
-            item = `><a href="${$(el).data('href')}">${$(el).html()}</a></li>`;
-          } else {
-            item = `>${$(el).html()}</li>`;
-          }
-
-          if ($(el).data('title')) {
-            itemLeft += ` data-title="${$(el).data('title')}"`;
-          }
-          if ($(el).data('prefix')) {
-            itemLeft += ` data-prefix="${$(el).data('prefix')}"`;
-          }
-          item = itemLeft + item;
-          this.list.find('ul').append($(item));
-          if ($(el).attr('selected')) {
-            this.handleNamedList($(item));
-          }
+          this.renderItem(el);
         });
       } else {
-        const $item = this.list.find('.js-context-item.state_selected');
-        this.handleNamedList($item);
+        this.handleNamedList(this.list.find('.js-context-item.state_selected'));
+      }
+    }
+    renderItem(el) {
+      const $option = $(el);
+      const item = `<li class="dropdown__list-item js-context-item" data-val="${$option.val()}" 
+      ${$option.data('title') ? ` data-title="${$option.data('title')}"` : ''}  
+      ${$option.data('prefix') ? ` data-prefix="${$option.data('prefix')}"` : ''}
+      ${$option.data('href') ? `><a href="${$option.data('href')}">${$option.html()}</a></li>` : `>${$option.html()}</li>`}`;
+      this.list.find('ul').append($(item));
+      if ($option.attr('selected')) {
+        this.handleNamedList($(item));
       }
     }
 
@@ -73,7 +66,7 @@ module.exports = (elem) => {
       //
       $(document).on('click', `.js-context[data-id="${this.id}"]`, (e) => {
         e.preventDefault();
-        if (this.context.hasClass('state_explored')) {
+        if (this.context.hasClass(this.exploredClass)) {
           this.hideList();
         } else {
           this.showList();
@@ -119,7 +112,7 @@ module.exports = (elem) => {
     }
 
     showList() {
-      this.context.addClass('state_explored');
+      this.context.addClass(this.exploredClass);
 
       if (!this.scrollBarInited) {
         this.context.find('.scroll-pane').jScrollPane({
@@ -132,7 +125,7 @@ module.exports = (elem) => {
         });
         this.scrollBarInited = true;
       }
-      this.list.removeClass('state_invisible');
+      this.list.removeClass(this.invisibleClass);
       this.setPosition();
     }
 
@@ -160,9 +153,9 @@ module.exports = (elem) => {
     }
 
     hideList() {
-      if (this.context.hasClass('state_explored')) {
-        this.context.removeClass('state_explored');
-        this.list.addClass('state_invisible');
+      if (this.context.hasClass(this.exploredClass)) {
+        this.context.removeClass(this.exploredClass);
+        this.list.addClass(this.invisibleClass);
         if (this.list.data('type') === 'modal-view') {
           $('body').removeClass('state_unscroll');
           $('.js-page').css('max-height', 'none').removeClass('state_no-overflow');
@@ -171,21 +164,23 @@ module.exports = (elem) => {
     }
 
     handleNamedList($el) {
+      const className = 'context__prefix';
+      const jsClassName = 'js-context-prefix';
       if ($el.length) {
         if (!$el.find('a').length) {
           const val = $el.data('value');
           const name = $el.text().trim();
 
           this.context.addClass('state_filled');
-
+          const jsContentPrefix = () => this.context.find(`.${jsClassName}`);
           if ($el.data('prefix')) {
-            if (this.context.find('.js-context-prefix').length) {
-              this.context.find('.js-context-prefix').html($el.data('prefix'));
+            if (jsContentPrefix().length) {
+              jsContentPrefix().html($el.data('prefix'));
             } else {
-              this.context.prepend(`<span class="context__prefix js-context-prefix">${$el.data('prefix')}</span>`);
+              this.context.prepend(`<span class="${className} ${jsClassName}">${$el.data('prefix')}</span>`);
             }
           } else {
-            this.context.find('.js-context-prefix').remove();
+            jsContentPrefix().remove();
           }
 
           if ($el.data('title')) {
@@ -206,19 +201,20 @@ module.exports = (elem) => {
     static handleVacancies(id) {
       const $vacancies = $('.js-card[data-city]');
       const $active = $(`.js-card[data-city=${id}]`);
-
-
-      $('.js-vacancies').find('.documents__no-result').remove();
-      $vacancies.removeClass('state_no-margin-bottom');
+      const hiddenClass = 'state_hidden';
+      const marginClass = 'state_no-margin-bottom';
+      const $vacansiesEl = $('.js-vacancies');
+      $vacansiesEl.find('.documents__no-result').remove();
+      $vacancies.removeClass(marginClass);
       if (id === 'all') {
-        $vacancies.removeClass('state_hidden');
+        $vacancies.removeClass(hiddenClass);
       } else {
-        $vacancies.addClass('state_hidden');
+        $vacancies.addClass(hiddenClass);
         if ($active.length) {
-          $active.removeClass('state_hidden');
-          $active.last().addClass('state_no-margin-bottom');
+          $active.removeClass(hiddenClass);
+          $active.last().addClass(marginClass);
         } else {
-          $('.js-vacancies').append('<div class="documents__no-result">\n' +
+          $vacansiesEl.append('<div class="documents__no-result">\n' +
             '                    <p>Вакансий в этом городе нет.</p>\n' +
             '                    <p>Попробуйте выбрать другой город.</p>\n' +
             '                  </div>');
@@ -228,13 +224,11 @@ module.exports = (elem) => {
 
     static handleCreditCardTypes($el) {
       const $options = $el.find('select option');
-
+      const hiddenClass = 'state_invisible';
       $options.each((i, item) => {
-        if ($(item).is(':selected')) {
-          $(`#${$(item).val()}`).removeClass('state_invisible');
-        } else {
-          $(`#${$(item).val()}`).addClass('state_invisible');
-        }
+        const itemEl = $(`#${$(item).val()}`);
+        const selected = $(item).is(':selected') ? (itemEl.removeClass(hiddenClass)) : (itemEl.addClass(hiddenClass));
+        console.log(selected);
       });
     }
   }

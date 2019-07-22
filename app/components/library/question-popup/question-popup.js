@@ -16,18 +16,19 @@ export default class QuestionPopup {
     }
   }
 
-  generatePopupButtons() {
-    const buttonWrapper = $('<div class="question-popup__buttons"></div>');
-    const allowButton = $(`<button class="button button_theme-default button_view-text js-button-allow" type="button">
+  static GetButtonHtml(buttonsClass, buttonText, mod) {
+    return $(`<button class="${buttonsClass}-${mod}" type="button">
         <span class="button__wrap">
-          <span class="button__title">Да</span>
+          <span class="button__title">${buttonText}</span>
         </span>
        </button>`);
-    const disallowButton = $(`<button class="button button_theme-default button_view-text js-button-disallow" type="button">
-         <span class="button__wrap">
-           <span class="button__title">Нет</span>
-         </span>
-       </button>`);
+  }
+
+  generatePopupButtons() {
+    const buttonsClass = 'button button_theme-default button_view-text js-button';
+    const buttonWrapper = $('<div class="question-popup__buttons"></div>');
+    const allowButton = QuestionPopup.GetButtonHtml(buttonsClass, 'Да', 'allow');
+    const disallowButton = QuestionPopup.GetButtonHtml(buttonsClass, 'Нет', 'disallow');
     allowButton.on('click', (e) => {
       $(e.target).closest('.js-question').hide();
       this.popup.trigger('questionresolve', { response: true });

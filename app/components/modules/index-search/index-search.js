@@ -9,6 +9,8 @@ module.exports = (elem) => {
       this.input = this.search.find('input');
       this.label = this.search.find('.js-search-label');
       this.close = this.search.find('.js-search-close');
+      this.exploredClass = 'state_explored';
+      this.hiddenClass = 'state_hidden';
 
       this.$btnContacts = $('.js-btn-header-contacts');
       this.$btnOffices = $('.js-btn-header-offices');
@@ -19,11 +21,11 @@ module.exports = (elem) => {
     events() {
       this.submit.on('click', (e) => {
         e.preventDefault();
-        if (!this.search.hasClass('state_explored')) {
+        if (!this.search.hasClass(this.exploredClass)) {
           this.input.focus();
-          this.search.addClass('state_explored');
+          this.search.addClass(this.exploredClass);
           this.submit.attr('type', 'submit');
-          this.search.parent().find('.navbar__button').addClass('state_hidden');
+          this.search.parent().find('.navbar__button').addClass(this.hiddenClass);
         } else {
           const queryString = `/search?searchid=160570&text=${encodeURIComponent(this.input.val())}&web=0#`;
           if (this.input.val()) {
@@ -34,35 +36,26 @@ module.exports = (elem) => {
       });
 
       this.input.on('click', () => {
-        this.label.addClass('state_hidden');
+        this.label.addClass(this.hiddenClass);
       });
       this.input.on('focus', () => {
-        this.label.addClass('state_hidden');
+        this.label.addClass(this.hiddenClass);
       });
 
       this.input.on('blur', () => {
         if (!this.input.val().length) {
-          this.label.removeClass('state_hidden');
+          this.label.removeClass(this.hiddenClass);
         }
       });
 
       this.close.on('click', (e) => {
         e.preventDefault();
         this.input.val('');
-        this.label.removeClass('state_hidden');
+        this.label.removeClass(this.hiddenClass);
         this.search.removeClass('state_explored');
         setTimeout(() => {
-          this.search.parent().find('.navbar__button').removeClass('state_hidden');
+          this.search.parent().find('.navbar__button').removeClass(this.hiddenClass);
         }, 300);
-        // if (this.input.val().length) {
-        //   this.input.val('');
-        //   this.label.removeClass('state_hidden');
-        // } else {
-        //   this.search.removeClass('state_explored');
-        //   setTimeout(() => {
-        //     this.search.parent().find('.navbar__button').removeClass('state_hidden');
-        //   }, 300);
-        // }
       });
     }
   }
