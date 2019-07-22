@@ -135,9 +135,14 @@ $(() => {
     // $('.js-card').each((i, el) => {
     //   global.cards.push(new Card($(el)));
     // });
-    $(document).on('click', '.js-card', (e) => {
-      if ($(e.currentTarget).data('href')) {
-        window.location.href = $(e.currentTarget).data('href');
+    $('body').on('click', '.js-card', (e) => {
+      if ($(e.currentTarget).attr('data-href')) {
+        window.location.href = $(e.currentTarget).attr('data-href');
+      }
+    });
+    $('.js-card').on('click', (e) => {
+      if ($(e.currentTarget).attr('data-href')) {
+        window.location.href = $(e.currentTarget).attr('data-href');
       }
     });
   }
