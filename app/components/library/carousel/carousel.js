@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import 'slick-carousel';
 import Tabs from '../../modules/tabbar/tabbar';
-// import Context from '../context/context';
 
 module.exports = (elem) => {
   class Carousel {
@@ -10,21 +9,18 @@ module.exports = (elem) => {
       this.progressbar = $('.js-carousel-progressbar');
       this.id = this.carousel.data('id');
       this.paging = null;
-      this.next = '<button class="carousel-controls__button carousel-controls__button_type-next">' +
-        ' <svg role="presentation" class="icon icon-tr-arrow">\n' +
-        '    <use xlink:href="/assets/images/icons.svg#icon_tr-arrow"></use>\n' +
-        '  </svg>' +
-        '</button>';
-
-      this.prev = '<button class="carousel-controls__button carousel-controls__button_type-prev">' +
-        ' <svg role="presentation" class="icon icon-tr-arrow">\n' +
-        '    <use xlink:href="/assets/images/icons.svg#icon_tr-arrow"></use>\n' +
-        '  </svg>' +
-        '</button>';
+      this.next = Carousel.renderButton('next');
+      this.prev = Carousel.renderButton('prev');
       this.init();
       this.events();
     }
-
+    static renderButton(mod) {
+      const arrow = ' <svg role="presentation" class="icon icon-tr-arrow">\n' +
+        '    <use xlink:href="/assets/images/icons.svg#icon_tr-arrow"></use>\n' +
+        '  </svg>';
+      const classes = 'carousel-controls__button carousel-controls__button_type';
+      return `<button class="${classes}-${mod}">${arrow}</button>`;
+    }
     static setPagination(paging, slick, currentSlide) {
       const i = (!currentSlide ? 0 : currentSlide) + 1;
       paging.find('span:first-child').html(i < 10 ? `0${i}` : i);
@@ -41,22 +37,12 @@ module.exports = (elem) => {
       this.paging = $(`.js-carousel-pagination[data-carousel="${this.id}"]`);
 
       this.carousel.on('init reInit', (event, slick, currentSlide) => {
-        // console.log('SLICK', slick);
         if (!slick.$slider.hasClass('controls-initialized')) {
           const paging = this.findPagination(slick);
           Carousel.setPagination(paging, slick, currentSlide);
           slick.$slider.addClass('controls-initialized');
         }
       });
-
-      // this.carousel.on('beforeChange', (event, slick, currentSlide, nextSlide) => {
-      //   if ((currentSlide === 0 && nextSlide === slick.$slides.length - 1) || (currentSlide === slick.$slides.length - 1 && nextSlide === 0)) {
-      //     console.log('NEXT_ROUND');
-      //   } else {
-      //     this.carousel.find('.slick-slide:not(.slick-active) .js-scroll-animate.state_animate-page').removeClass('state_animate-page');
-      //   }
-      //
-      // });
 
       this.carousel.on('afterChange', (event, slick, currentSlide) => {
         const paging = this.findPagination(slick);
@@ -217,18 +203,6 @@ module.exports = (elem) => {
     }
 
     initMobileSlick(bpoint) {
-      // this.carousel.not('.slick-initialized').slick({
-      //   appendArrows: this.carousel.next('.js-carousel-controls'),
-      //   nextArrow: this.next,
-      //   prevArrow: this.prev,
-      //   mobileFirst: true,
-      //   responsive: [
-      //     {
-      //       breakpoint: bpoint,
-      //       settings: 'unslick',
-      //     },
-      //   ],
-      // });
       this.initDefault([
         {
           breakpoint: bpoint,

@@ -7,6 +7,9 @@ export default class Menubar {
     this.breakpoint = 1280;
     this.mobileMenu = $('.js-mobile-menu');
     this.bodyState = false;
+    this.openClass = 'state_open';
+    this.exploredClass = 'state_explored';
+    this.uscrollClass = 'state_unscroll';
     // this.init();
     this.events();
   }
@@ -41,7 +44,7 @@ export default class Menubar {
 
     $(window).on('resize', () => {
       if (window.innerWidth >= 1280) {
-        if (this.menuControl.hasClass('state_open')) {
+        if (this.menuControl.hasClass(this.openClass)) {
           this.controlHandler();
         }
       }
@@ -53,18 +56,19 @@ export default class Menubar {
   }
 
   controlHandler() {
-    if (!this.menuControl.hasClass('state_open')) {
-      this.menuControl.addClass('state_open');
-      this.mobileMenu.addClass('state_explored');
-      if ($('body').hasClass('state_unscroll')) {
+    const $body = $('body');
+    if (!this.menuControl.hasClass(this.openClass)) {
+      this.menuControl.addClass(this.openClass);
+      this.mobileMenu.addClass(this.exploredClass);
+      if ($body.hasClass(this.uscrollClass)) {
         this.bodyState = true;
       }
-      $('body').addClass('state_unscroll');
+      $body.addClass(this.uscrollClass);
     } else {
-      this.menuControl.removeClass('state_open');
-      this.mobileMenu.removeClass('state_explored');
+      this.menuControl.removeClass(this.openClass);
+      this.mobileMenu.removeClass(this.exploredClass);
       if (!this.bodyState) {
-        $('body').removeClass('state_unscroll');
+        $body.removeClass(this.uscrollClass);
         this.bodyState = false;
       }
     }
