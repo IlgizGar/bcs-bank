@@ -1,0 +1,10 @@
+{% import "../../library/radio/radio.njk" as Radio %}
+
+<div class="form__form-delivery">
+  <div class="form__title-short">Выберите способ получения карты</div>
+  {{ Radio.radio({'class': 'js-check-delivery mb-24', 'label': 'Доставка курьером', 'value': 'courier' , 'name': 'delivery', 'id': 'delivery-c'}) }}
+  {{ Radio.radio({'class': 'js-check-delivery mb-16', 'label': 'Нет',  'value': 'office', 'name': 'delivery', 'id': 'delivery-o', 'state': 'checked'}) }}
+  <div class="form__address-delivery mb-32">
+    <p>г.Краснодар, ул.Кубанская Набережная, д.37/12</p>
+  </div>
+</div>

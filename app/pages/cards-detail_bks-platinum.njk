@@ -215,7 +215,7 @@
                       Шаг <span class="js-step-informer">1</span> из <span class="js-step-informer-all">4</span>
                     </div>
                     {{ Heading.heading({ 'title': 'Общая информация', 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
-                    <form action="http://localhost/rplpost/index.php"">
+                    <form action="http://localhost/rplpost/index.php">
                       <div class="step-form__item js-step js-send-form" data-send-url="http://localhost/rplpost/index.php">
                         <fieldset>
                           {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': { 'type': 'text',  'class': 'js-fio-masked js-fio-auto-complete', 'maxlength': '64', 'name': 'bid_user-name', 'required': 'true' } }) }}
@@ -241,11 +241,12 @@
                         </div>
                       </div>
 
-                      <div class="step-form__item js-step js-sms-step js-send-form" data-send-url="http://localhost/rplpost/index.php"">
+                      <div class="step-form__item js-step js-sms-step js-send-form" data-send-url="http://localhost/rplpost/index.php">
                         {% include "../components/modules/sms-code-form/sms-code-form.njk" %}
                       </div>
-
                       <div class="step-form__item js-step">
+                        {{ Heading.heading({ 'title': 'Получение карты' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
+                        {% include "../components/modules/form-delivery/form-delivery.njk" %}
                         {{ Heading.heading({ 'title': 'Личная информация' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
                         {% include "../components/modules/form-personal-info/form-personal-info2.njk" %}
                         {% include "../components/modules/form-passport/form-passport2.njk" %}
