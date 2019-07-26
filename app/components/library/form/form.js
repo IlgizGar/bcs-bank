@@ -130,7 +130,7 @@ module.exports = (elem) => {
         formDelivery.deliveryAvailability(data);
       }
 
-      if (data.delivery !== null) {
+      if (data.delivery !== null && document.querySelector('.form__form-delivery')) {
         showDeliveryBlock.apply(this);
       }
 
