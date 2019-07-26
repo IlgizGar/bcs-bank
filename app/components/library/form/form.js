@@ -126,11 +126,13 @@ module.exports = (elem) => {
             FormHelper.setHiddenValue(key, value, this.form);
           });
       }
-      // function showDeliveryBlock() {
-      //   formDelivery();
-      // }
+      function showDeliveryBlock() {
+        formDelivery.deliveryAvailability(data);
+      }
 
-
+      if (data.delivery !== null) {
+        showDeliveryBlock.apply(this);
+      }
 
       if (data.success === 'incorrect-code') {
         showSmsError.apply(this);

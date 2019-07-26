@@ -245,7 +245,6 @@
                         {% include "../components/modules/sms-code-form/sms-code-form.njk" %}
                       </div>
                       <div class="step-form__item js-step">
-                        {{ Heading.heading({ 'title': 'Получение карты' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
                         {% include "../components/modules/form-delivery/form-delivery.njk" %}
                         {{ Heading.heading({ 'title': 'Личная информация' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
                         {% include "../components/modules/form-personal-info/form-personal-info2.njk" %}
