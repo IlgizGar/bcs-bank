@@ -17,7 +17,7 @@ export default class formDelivery {
   static deliveryOffice(deliveryBlock, deliveryContainerJson) {
     const officeDelivery = deliveryContainerJson.office;
     if (officeDelivery.length) {
-      const addressContainer = deliveryBlock.querySelector('.form__address-delivery');
+      const addressContainer = deliveryBlock.querySelector('.js-address-delivery');
       addressContainer.innerHTML = '';
       officeDelivery.forEach((address) => {
         const addAddress = document.createElement('p');

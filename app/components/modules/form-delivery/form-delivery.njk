@@ -1,11 +1,11 @@
 {% import "../../library/radio/radio.njk" as Radio %}
-{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../..//library/heading/heading.njk" as Heading %}
 
 <div class="form__form-delivery">
   {{ Heading.heading({ 'title': 'Получение карты' | striptags(true) | escape | nl2br, 'mods': { 'type': 'normal', 'margin': 'small' } }) }}
   <div class="form__title-short">Выберите способ получения карты</div>
-  {{ Radio.radio({'class': 'js-check-delivery js-check-delivery_courier mb-24', 'label': 'Доставка курьером', 'value': 'courier' , 'name': 'delivery', 'id': 'delivery-c'}) }}
-  {{ Radio.radio({'class': 'js-check-delivery js-check-delivery_office mb-16', 'label': 'Забрать из офиса',  'value': 'office', 'name': 'delivery', 'id': 'delivery-o', 'state': 'checked'}) }}
-  <div class="form__address-delivery mb-32">
+  {{ Radio.radio({'class': 'form-check-delivery js-check-delivery_courier mb-24', 'label': 'Доставка курьером', 'value': 'courier' , 'name': 'delivery', 'id': 'delivery-c'}) }}
+  {{ Radio.radio({'class': 'form-check-delivery js-check-delivery_office mb-16', 'label': 'Забрать из офиса',  'value': 'office', 'name': 'delivery', 'id': 'delivery-o', 'state': 'checked'}) }}
+  <div class="form__address-delivery js-address-delivery mb-32">
   </div>
 </div>
