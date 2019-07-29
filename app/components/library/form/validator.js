@@ -379,10 +379,19 @@ module.exports = (form) => {
           });
         }
       });
-      $('.js-fio-masked')
+      const $jsfiomasked = $('.js-fio-masked');
+      $jsfiomasked
         .on('keyup', (e) => {
           const input = $(e.currentTarget);
           input.val(Validator.autoLayoutKeyboard(input.val().replace(/[0-9]/g, '')));
+        });
+      $jsfiomasked
+        .on('change', (e) => {
+          const fioArr = $(e.currentTarget).val().split(' ');
+          if (fioArr.length >= 2) {
+            $('.js-en-first-name').val(fioArr[1]).trigger('keyup');
+            $('.js-en-last-name').val(fioArr[0]).trigger('keyup');
+          }
         });
       // $.validator.addMethod(
       //   'checkFio',

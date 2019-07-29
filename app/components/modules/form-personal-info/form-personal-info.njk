@@ -5,13 +5,12 @@
 {% import "../../library/dropdown/dropdown.njk" as Dropdown %}
 {% import "../../icon/icon.njk" as Icon %}
 
-
 <div class="form-form-personal-info">
     <div class="form__title-short">Информация для выпуска банковской карты</div>
     <fieldset>
         <div class="form__line-group">
-            {{ Input.input({ 'label': 'Имя латинскими буквами', 'class': 'form__field-group', 'field': {'class': 'js-en-letters', 'name': 'name_en', 'required': 'true' } }) }}
-            {{ Input.input({ 'label': 'Фамилия латинскими буквами', 'class': 'form__field-group', 'field': {'class': 'js-en-letters', 'name': 'second_name_en', 'required': 'true' } }) }}
+            {{ Input.input({ 'label': 'Имя латинскими буквами', 'class': 'form__field-group', 'field': {'class': 'js-en-letters js-en-first-name', 'name': 'name_en', 'required': 'true' } }) }}
+            {{ Input.input({ 'label': 'Фамилия латинскими буквами', 'class': 'form__field-group', 'field': {'class': 'js-en-letters js-en-last-name', 'name': 'second_name_en', 'required': 'true'  } }) }}
         </div>
 
         {{ Input.input({ 'label': 'Кодовое слово', 'class': 'form__field-group', 'field': { 'type': 'text', 'class': '', 'name': 'pass_code_word', 'required': 'true' } }) }}
