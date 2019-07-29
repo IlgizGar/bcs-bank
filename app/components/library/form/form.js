@@ -7,6 +7,7 @@ import SmsForm from '../../modules/sms-code-form/sms-code';
 import PlaceForm from '../../modules/form-place/form-place';
 import FormHelper from './formHelper';
 import TransferForm from './transferForm';
+import formDelivery from '../../modules/form-delivery/form-delivery';
 
 
 module.exports = (elem) => {
@@ -124,6 +125,13 @@ module.exports = (elem) => {
             const value = data.set_hidden_value[key];
             FormHelper.setHiddenValue(key, value, this.form);
           });
+      }
+      function showDeliveryBlock() {
+        formDelivery.deliveryAvailability(data);
+      }
+
+      if (data.delivery !== null && document.querySelector('.form__form-delivery')) {
+        showDeliveryBlock.apply(this);
       }
 
       if (data.success === 'incorrect-code') {
