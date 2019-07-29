@@ -24,8 +24,7 @@ export default class formDelivery {
         addAddress.innerHTML = address;
         addressContainer.appendChild(addAddress.cloneNode(true));
       });
-    }
-    else {
+    } else {
       deliveryBlock.querySelector('.js-check-delivery_office').classList.add('js-check-delivery_none');
     }
   }
