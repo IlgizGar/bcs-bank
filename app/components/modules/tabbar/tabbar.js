@@ -15,7 +15,14 @@ module.exports = (elem) => {
       const marker = document.createElement('div');
       marker.classList.add('tabbar__marker');
       const anchorStyle = window.getComputedStyle(this.active.find('span')[0], null) || this.active.find('span')[0];
-      marker.style.color = anchorStyle.color;
+      if (this.anchors.hasClass('button_line-blue')) {
+        marker.style.color = '#4573d9';
+      }
+      else {
+        marker.style.color = anchorStyle.color;
+      }
+
+
       if (this.active.hasClass('button_view-underscore')) {
         marker.style.top = 'auto';
         marker.style.bottom = '0';
