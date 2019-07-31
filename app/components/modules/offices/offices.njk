@@ -13,7 +13,12 @@
   </div>
   <div class="offices__content js-tab-scroll">
 
-    {{ Tabbar.tabbar({ 'anchor': { 'theme': 'default-tab', 'view': 'underscore', 'class': 'offices__tab-control' }, 'tabs': [{'title': 'Отделения', 'id': 'offices-tab' }, {'title': 'Банкоматы', 'id': 'atm-tab'}, {'title': 'Ультима', 'id': 'ultima-tab'}], 'class': 'offices__tabbar' }) }}
+        <div class="section__content">
+          {{ Heading.heading({ 'tag': 'h1', 'title': 'Кассы и банкоматы', 'mods': { 'type': 'default', 'margin': 'short', 'margin-top': 'normal', 'theme' : 'default' }, 'context': {'title': 'всех городах', 'name': 'current-city', 'attr': {'id': 'select-city', 'prefix': 'во'} } }) }}
+        </div>
+
+
+    {{ Tabbar.tabbar({ 'anchor': { 'theme': 'default-tab', 'view': 'underscore', 'class': 'offices__tab-control' }, 'tabs': [{'title': 'Отделения', 'id': 'offices-tab' }, {'title': 'Банкоматы', 'id': 'atm-tab'}], 'class': 'offices__tabbar' }) }}
 
     <div class="offices__search">
         {{ Input.input({ 'label': 'Введите адрес', 'class': 'search__field-group', 'field':{'name': 'map-search'}, 'icon': 'search' }) }}
