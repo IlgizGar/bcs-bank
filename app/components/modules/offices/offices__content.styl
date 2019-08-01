@@ -12,26 +12,33 @@
   border-top: 1px solid $gainsboro;
   box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1), 0 0 50px 0 rgba(255, 255, 255, 0.5)
 
+  @media (max-width: 1215px)
+    border-top none
+
   .heading_style-light
     margin-bottom: 29px;
 
   .section__content, .section__tabbar
     padding-left 91px
+    @media (min-width: 832px) and (max-width: 1215px)
+      padding-left 64px
 
   .section__tabbar
     border-bottom: 1px solid $gainsboro
 
-  @media (min-width: 992px) and (max-width: 1279px) {
-    max-width: 376px;
-
-    transform: translateX(-48vw);
-  }
+  //@media (min-width: 992px) and (max-width: 1279px) {
+  //  max-width: 376px;
+  //
+  //  //transform: translateX(-48vw);
+  //}
   +.offices__switch-view
     width 100%
 
+  @media (min-width: 832px) and (max-width: 1215px)
+    width: 94%
   @media (max-width: 991px)
     left: 0
-    width: 100%
+
     height: auto
     max-width: unset
 

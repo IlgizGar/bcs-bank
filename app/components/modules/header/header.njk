@@ -8,15 +8,24 @@
 <header class="header js-header">
   <div class="navbar js-navbar {% if page !== 'offices' %}state_init{% endif %}">
     <div class="page__container">
-      <div class="navbar__wrapper">
+      <div class="navbar__wrapper js-menubar">
         {% include "../../../components/modules/nav/nav.njk" %}
         {# Mobile #}
         {% if page === 'offices' %}
-            {{ Button.button({ 'title': 'На карте', 'href': 'http://juravlev.rusrobots.ru/bks/offices.html', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'navbar__button js-btn-header-offices hidden-desktop state_active', 'attr': {'title': 'На карте'} }) }}
+            {{ Button.button({ 'title': 'На карте', 'href': 'http://juravlev.rusrobots.ru/bks/offices.html', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore', 'tablet':'none'}, 'class': 'navbar__button js-btn-header-offices hidden-desktop state_active', 'attr': {'title': 'На карте'} }) }}
         {% else %}
             {{ Button.button({ 'title': 'На карте', 'href': 'http://juravlev.rusrobots.ru/bks/offices.html', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'navbar__button js-btn-header-offices hidden-desktop', 'attr': {'title': 'На карте'} }) }}
         {% endif %}
-        {{ Button.button({ 'title': 'Контакты', 'mods': {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'navbar__button navbar__button_contacts navbar__button_type-dropdown js-btn-header-contacts button_type-tab hidden-desktop' }) }}
+        {{ Button.button({ 'title': 'Контакты', 'mods': {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore', 'tablet':'none'}, 'class': 'navbar__button navbar__button_contacts navbar__button_type-dropdown js-btn-header-contacts button_type-tab hidden-desktop' }) }}
+
+        <button class="menubar__burger js-menubar-burger">
+          <span class="menubar__burger-title">Меню</span>
+          <span class="menubar__burger-control">
+            <span class="menubar__burger-line menubar__burger-line_first"></span>
+            <span class="menubar__burger-line menubar__burger-line_second"></span>
+            <span class="menubar__burger-line menubar__burger-line_third"></span>
+          </span>
+        </button>
 
         {# Desktop #}
         {{ Button.button({ 'title': 'Контакты', 'name': 'dropdown', 'mods': {'type': 'icon-right', 'theme': 'gray', 'view': 'text'}, 'class': 'navbar__button navbar__button_contacts navbar__button_type-dropdown js-btn-header-contacts button_type-tab hidden-mobile' }) }}
@@ -54,7 +63,7 @@
   {% if header === 'blue' %}
     {{ Menubar.menubar({ "class": "section__menubar js-menubar", 'vars': {'header': 'blue'} }) }}
   {% else %}
-    {{ Menubar.menubar({ "class": "section__menubar js-menubar" }) }}
+    {{ Menubar.menubar({ "class": "section__menubar" }) }}
   {% endif %}
 </header>
 

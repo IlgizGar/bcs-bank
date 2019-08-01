@@ -11,7 +11,7 @@
                 {% endif %}
                 {{ Button.button({ 'href': item.href, 'title': item.title, 'mods': {'theme': options.theme, 'type': 'tab', 'size': 'low', 'view': 'underscore'}, 'class': class }) }}
             {% endfor %}
-            {{ Context.context({ 'title': 'Еще', 'name': 'dropdown', 'mods': { 'type': 'menu', 'theme': options.theme }, 'attr': {'id': 'menu-explore', 'list-on-right': '' }, 'class': 'menu__item',
+            {{ Context.context({ 'title': 'Еще', 'name': 'dropdown', 'mods': { 'type': 'menu', 'theme': options.theme, 'icon': 'blue'}, 'attr': {'id': 'menu-explore', 'list-on-right': '' }, 'class': 'menu__item',
                                  'items': [{ 'title': 'Тарифы', 'value': 'tariffs', 'attr': { 'href': '#' } } ,
                                            { 'title': 'Сервисы и услуги', 'value': 'services', 'attr': { 'href': '#' } }] }) }}
         </div>
