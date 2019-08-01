@@ -16,16 +16,29 @@ export default class formDelivery {
 
   static deliveryOffice(deliveryBlock, deliveryContainerJson) {
     const officeDelivery = deliveryContainerJson.office;
+
     if (officeDelivery.length) {
-      const addressContainer = deliveryBlock.querySelector('.js-address-delivery');
-      addressContainer.innerHTML = '';
+      const addressContainer = deliveryBlock.querySelector('.js-address-delivery').cloneNode(true);
+      deliveryBlock.querySelector('.js-address-delivery').remove();
+      const officeDeliveryWrapper = deliveryBlock.querySelector('.form_office-delivery-wrapper');
+      officeDeliveryWrapper.innerHTML = '';
+      let forIdRandom = 0;
       officeDelivery.forEach((address) => {
+        if (addressContainer.querySelector('p')) {
+          addressContainer.querySelector('p').remove();
+        }
         const addAddress = document.createElement('p');
         addAddress.innerHTML = address;
-        addressContainer.appendChild(addAddress.cloneNode(true));
+
+        addressContainer.querySelector('.js-check-delivery_office input').setAttribute('value', address);
+        addressContainer.querySelector('.js-check-delivery_office input').setAttribute('id', 'delivery-'+forIdRandom);
+        addressContainer.querySelector('.js-check-delivery_office label').setAttribute('for', 'delivery-'+forIdRandom);
+        addressContainer.appendChild(addAddress);
+        officeDeliveryWrapper.appendChild(addressContainer.cloneNode(true));
+        forIdRandom++;
       });
     } else {
-      deliveryBlock.querySelector('.js-check-delivery_office').classList.add('js-check-delivery_none');
+      deliveryBlock.querySelector('.form_office-delivery-wrapper').classList.add('form_office-delivery-wrapper_none');
     }
   }
 }
