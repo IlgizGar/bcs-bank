@@ -1,0 +1,23 @@
+{% import "../../../components/icon/icon.njk" as Icon %}
+
+{% macro addressUnderground( options ) %}
+
+<div class="collapse__control">
+  <div class="collapse__control-underground">
+    <div class="collapse__control-underground-icon  {% if options.type %}{{ "underground-line-" + options.type }}{% endif %}">
+      {{ Icon.icon({ 'name': 'underground' }) }}
+    </div>
+    <div class="collapse__control-underground-name"> Проспект Мира </div>
+    <div class="collapse__control-distance"> 210м </div>
+  </div>
+  <div class="collapse__control-title">
+    ул. Валовая, 2-4/44
+  </div>
+  <div class="collapse__control-description">
+    Кредитно-кассовый офис
+  </div>
+  <div class="collapse__control-icon">
+    {{ Icon.icon({ 'name': 'dropdown' }) }}
+  </div>
+</div>
+{% endmacro %}

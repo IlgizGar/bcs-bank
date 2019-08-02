@@ -17,8 +17,7 @@ module.exports = (elem) => {
       const anchorStyle = window.getComputedStyle(this.active.find('span')[0], null) || this.active.find('span')[0];
       if (this.anchors.hasClass('button_line-blue')) {
         marker.style.color = '#4573d9';
-      }
-      else {
+      } else {
         marker.style.color = anchorStyle.color;
       }
 
