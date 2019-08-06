@@ -30,7 +30,7 @@
         {# Desktop #}
         {{ Button.button({ 'title': 'Контакты', 'name': 'dropdown', 'mods': {'type': 'icon-right', 'theme': 'gray', 'view': 'text'}, 'class': 'navbar__button navbar__button_contacts navbar__button_type-dropdown js-btn-header-contacts button_type-tab hidden-mobile' }) }}
         {% if page === 'offices' %}
-          {{ Button.button({ 'title': 'Офисы и банкоматы', 'href': 'http://juravlev.rusrobots.ru/bks/offices.html', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'navbar__button js-btn-header-offices hidden-mobile state_active', 'attr': {'title': 'На карте'} }) }}
+          {{ Button.button({ 'title': 'Офисы и банкоматы', 'href': 'http://juravlev.rusrobots.ru/bks/offices.html', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'theme': 'gray', 'view': 'underscore'}, 'class': 'navbar__button js-btn-header-offices hidden-mobile state_active', 'attr': {'title': 'На карте'} }) }}
         {% else %}
             {{ Button.button({ 'title': 'Офисы и банкоматы', 'href': 'http://juravlev.rusrobots.ru/bks/offices.html', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'navbar__button js-btn-header-offices hidden-mobile', 'attr': {'title': 'На карте'} }) }}
         {% endif %}
