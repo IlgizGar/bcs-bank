@@ -1,0 +1,21 @@
+{% import "../button/button.njk" as Button %}
+
+{% macro publicService( options ) %}
+
+<div class="public-services">
+  {% if options.signup.uslugi === 'no-sign' %}
+    {{ Button.button({ 'href': '#', 'title': 'Оформить через госуслуги', 'path': 'assets/images/uslugi.svg', 'mods': {'type': 'icon-left'}, 'class': 'button_theme-uslugi' }) }}
+  {% else %}
+    <div class="public-services_sign-block">
+      <div class="public-services_title">
+        Мы заполнили поля<br> вашими данными из Госуслуг
+      </div>
+      <div class="public-services_text">
+        Заполните оставшиеся поля<br> для того, чтобы отправить заявку
+      </div>
+      {{ Button.button({ 'href': '#', 'title': 'Проверьте корректность данных', 'mods': {'theme': 'for-uslugi'}, 'class': 'button_view-text'}) }}
+    </div>
+  {% endif %}
+</div>
+
+{% endmacro %}

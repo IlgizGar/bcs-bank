@@ -2,6 +2,7 @@
 {% import "../components/library/breadcrumbs/breadcrumbs.njk" as Breadcrumbs %}
 {% import "../components/library/heading/heading.njk" as Heading %}
 {% import "../components/library/button/button.njk" as Button %}
+{% import "../components/library/public-services/public-services.njk" as PublicService %}
 {% import "../components/modules/tabbar/tabbar.njk" as Tabbar %}
 {% import "../components/library/feature/feature.njk" as Feature %}
 {% import "../components/modules/brand-features/brand-features.njk" as BrandFeatures %}
@@ -175,11 +176,11 @@
                     </form>
                   </div>
                   <div class="calculation">
-                    <img src="assets/images/card_more_signature.png" class="calculation__image"
-                         alt="БКС Банк">
                     <div class="text calculation__text">2 дополнительные карты Visa Platinum бесплатно
                     </div>
-                    {{ Button.button({ 'href': '#', 'title': 'Оформите через госуслуги', 'path': 'assets/images/uslugi.svg', 'mods': {'theme': 'white', 'type': 'icon-left'}, 'class': 'button_theme-uslugi' }) }}
+                    <img src="assets/images/card_more_signature.png" class="calculation__image"
+                         alt="БКС Банк">
+                    {{ PublicService.publicService({'signup': {'uslugi': 'no-sign'} }) }}
                   </div>
                 </div>
               </div>
