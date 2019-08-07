@@ -1,6 +1,12 @@
 .offices .collapse__control-description
-  opensansRegular(12px)
-  font-size: $fntSize_basic-little
-  color: $slate_grey
-  line-height: 1;
-  padding-bottom: 4px;
+  opensansRegular(14px)
+  //font-size: $fntSize_basic-little
+  color $slate_grey
+  line-height 1
+  padding-bottom 4px
+  display flex
+
+  .collapse__control-description-timetable
+    margin-right 48px
+    @media (min-width: 832px) and (max-width: 1215px)
+      margin-right 24px

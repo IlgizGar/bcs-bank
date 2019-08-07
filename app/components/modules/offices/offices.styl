@@ -1,15 +1,18 @@
 .offices
-  position: relative
-  display: flex
+  position relative
+  display flex
   flex-direction row-reverse
   .map-wrap
     margin-top 30px!important
 
   & .offices__info-item-timetable
     display flex
+    @media (min-width 800px) and (max-width 1215px)
+      flex-direction column
+      margin-top 14px
 
   & .offices__info-item-timetable > div
-    margin-right: 48px
+    margin-right 48px
 
   .collapse .collapse__content
     .collapse__item

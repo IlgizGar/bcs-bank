@@ -75,7 +75,7 @@ export default class Offices {
     // Блок обработки карты и списка на мобильной версии
     this.handleSwitch();
 
-    if (window.innerWidth > 991) {
+    if (window.innerWidth > 800) {
       this.appBlock.removeClass('state_listed');
       Offices.reInitScroll(this.pane, 250);
     } else {
@@ -436,7 +436,7 @@ export default class Offices {
       currentCollapse.openContent(target);
       Offices.reInitScroll(this.pane, 225);
       this.togglePointState(e.get('target'), target);
-      if (window.innerWidth < 992) {
+      if (window.innerWidth < 800) {
         if (!this.appBlock.hasClass('state_explored')) {
           this.appBlock.addClass('state_explored');
           this.initPointMobileDetail(target);
@@ -510,16 +510,16 @@ export default class Offices {
         const point = this.getPointById(Offices.generatePointId(collapseContent.data('coords')));
         // const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${$(e.target).closest('.collapse__item').data('coords')}]"] .collapse__control`);
         this.togglePointState(point, $(e.target).closest('.collapse__control'));
-        if (window.innerWidth < 992) {
-          if (!this.appBlock.hasClass('state_explored')) {
-            // this.appBlock.removeClass('state_listed').addClass('state_explored');
-            // this.initPointMobileDetail($(e.target).closest('.collapse__control'));
-            //
-            // this.point = point;
-            // this.target = $(e.target).closest('.collapse__control');
-            collapseContent.find('.js-collapse-map-wrap')[0].append(this.mapBlock);
-          }
-        }
+        // if (window.innerWidth < 992) {
+        //   if (!this.appBlock.hasClass('state_explored')) {
+        //     // this.appBlock.removeClass('state_listed').addClass('state_explored');
+        //     // this.initPointMobileDetail($(e.target).closest('.collapse__control'));
+        //     //
+        //     // this.point = point;
+        //     // this.target = $(e.target).closest('.collapse__control');
+        //     collapseContent.find('.js-collapse-map-wrap')[0].append(this.mapBlock);
+        //   }
+        // }
       }
     });
 
@@ -534,7 +534,7 @@ export default class Offices {
   }
 
   static reInitScroll(pane, time = 0) {
-    if (window.innerWidth > 991) {
+    if (window.innerWidth > 800) {
       setTimeout(() => {
         pane.data('jsp').reinitialise();
       }, time);
@@ -542,7 +542,7 @@ export default class Offices {
   }
 
   scrollToCollapse(el) {
-    if (window.innerWidth > 991) {
+    if (window.innerWidth > 800) {
       this.pane.bind('jsp-initialised', () => {
         this.pane.data('jsp').scrollToElement(el.closest('.collapse__item'), 75);
         this.pane.unbind('jsp-initialised');

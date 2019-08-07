@@ -14,7 +14,18 @@
     ул. Валовая, 2-4/44
   </div>
   <div class="collapse__control-description">
-    Кредитно-кассовый офис
+    {% if options.atm === 'time' %}
+      <div class="collapse__control-description-timetable">
+        Пн-Пт, 6:00–23:00
+      </div>
+      <div class="collapse__control-description-timetable">
+        Сб-Вс — выходной
+      </div>
+      {% elif options.atm === 'always' %}
+      Круглосуточно
+    {% else %}
+      Кредитно-кассовый офис
+    {% endif %}
   </div>
   <div class="collapse__control-icon">
     {{ Icon.icon({ 'name': 'dropdown' }) }}
