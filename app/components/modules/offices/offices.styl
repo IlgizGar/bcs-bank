@@ -2,8 +2,12 @@
   position relative
   display flex
   flex-direction row-reverse
+  @media (min-width: 432px) and (max-width:831px)
+    flex-direction column-reverse
   .map-wrap
     margin-top 30px!important
+    @media (max-width: 831px)
+      margin-top: 0!important
 
   & .offices__info-item-timetable
     display flex

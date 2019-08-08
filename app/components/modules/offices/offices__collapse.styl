@@ -4,10 +4,15 @@
   .map-wrap
     margin 0 -20px
     width calc(100% + 40px);
+    @media (max-width: 831px)
+      display: none
+
   .collapse__control
     padding 24px 24px 24px 112px
     @media (min-width: 832px) and (max-width: 1215px)
       padding-left: 83px
+    @media (max-width 831px)
+      padding: 24px
 
     .collapse__control-title
       padding-right: 34px

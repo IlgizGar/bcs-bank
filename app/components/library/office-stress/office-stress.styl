@@ -4,14 +4,16 @@
   //position relative
   width 100%
   height 63px
-  @media (max-width: 767px)
-    width 45px
-    margin-bottom 8px
+
+  @media (max-width: 831px)
+    width 38px
+    //margin-bottom 8px
+
   &-list
     display flex
     margin-top 30px
-    padding-right 55px
-    padding-left 12px
+    padding-right 79px
+    padding-left 7px
     //flex-basis 100%
     //flex-direction row
     //justify-content stretch
@@ -22,6 +24,10 @@
       padding-left 5px
     @media (max-width: 767px)
       flex-wrap wrap
+    @media (max-width: 831px)
+      padding-right 0
+      padding-left 0
+
   &__time
     display flex
     //flex-basis 100%
@@ -65,6 +71,8 @@
       background $royal_blue
     @media (min-width: 832px) and (max-width: 1215px)
       width 26px
+    @media (max-width: 831px)
+      width 28px
 
   &__congestion
     display flex

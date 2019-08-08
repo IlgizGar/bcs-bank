@@ -36,66 +36,66 @@
       <div id="offices-tab" class="offices__tabs-item tabs__item js-tab state_invisible">
         <div class="collapse offices__collapse" data-city="213" data-id="offices-tab">
 
-            <div class="collapse__item" data-coords="[55.76,37.57]">
-                {{ addressUnderground.addressUnderground({ 'type': 'blue' }) }}
-                <div class="collapse__content">
-                    <ul class="offices__info">
+{#            <div class="collapse__item" data-coords="[55.76,37.57]">#}
+{#                {{ addressUnderground.addressUnderground({ 'type': 'blue' }) }}#}
+{#                <div class="collapse__content">#}
+{#                    <ul class="offices__info">#}
 
-                      <li  class="offices__info-item offices__info-item-timetable">
-                        <div>
-                          <div class="offices__info-title">Время работы с клиентами</div>
-                          <div class="offices__info-text">
-                            пн-пт: с 10:00 до 20:00 <br>
-                            сб-вс: выходной
-                          </div>
-                        </div>
-                        <div>
-                          <div class="offices__info-title">Кассовое обслуживание</div>
-                          <div class="offices__info-text">
-                            пн-пт: с 10:00 до 20:00 <br>
-                            сб-вс: выходной
-                          </div>
-                        </div>
-                      </li>
+{#                      <li  class="offices__info-item offices__info-item-timetable">#}
+{#                        <div>#}
+{#                          <div class="offices__info-title">Время работы с клиентами</div>#}
+{#                          <div class="offices__info-text">#}
+{#                            пн-пт: с 10:00 до 20:00 <br>#}
+{#                            сб-вс: выходной#}
+{#                          </div>#}
+{#                        </div>#}
+{#                        <div>#}
+{#                          <div class="offices__info-title">Кассовое обслуживание</div>#}
+{#                          <div class="offices__info-text">#}
+{#                            пн-пт: с 10:00 до 20:00 <br>#}
+{#                            сб-вс: выходной#}
+{#                          </div>#}
+{#                        </div>#}
+{#                      </li>#}
 
-                        <li class="offices__info-item">
-                          <div class="offices__info-title offices__info-stress-title">Оплата ЖКХ, аренда ячейки, открытие металлического счета,
-                            консультирование по ипотечному кредитованию</div>
-                            <div class="office-stress-list">
-                                {{ officeStress.officeStress({'h':'10','m':'00','stress':'min', 'height': '20%'}) }}
-                                {{ officeStress.officeStress({'h':'11','m':'00','stress':'normal', 'height': '40%'}) }}
-                                {{ officeStress.officeStress({'h':'12','m':'00','stress':'high', 'height': '100%'}) }}
-                                {{ officeStress.officeStress({'h':'13','m':'00','stress':'normal', 'height': '50%'}) }}
-                                {{ officeStress.officeStress({'h':'14','m':'00','stress':'normal', 'height': '45%'}) }}
-                                {{ officeStress.officeStress({'h':'15','m':'00','stress':'normal', 'height': '50%'}) }}
-                                {{ officeStress.officeStress({'h':'16','m':'00','stress':'min', 'height': '20%'}) }}
-                                {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
-                                {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
-                                {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
-                            </div>
-                            <div class="office-stress__time">
-                              <div class="office-stress__time-hours"> 10</div>
-                              <div class="office-stress__time-hours"> 13 </div>
-                              <div class="office-stress__time-hours"> 15 </div>
-                              <div class="office-stress__time-hours"> 17 </div>
-                              <div class="office-stress__time-hours">
-                                20
-                              </div>
-                            </div>
+{#                        <li class="offices__info-item">#}
+{#                          <div class="offices__info-title offices__info-stress-title">Оплата ЖКХ, аренда ячейки, открытие металлического счета,#}
+{#                            консультирование по ипотечному кредитованию</div>#}
+{#                            <div class="office-stress-list">#}
+{#                                {{ officeStress.officeStress({'h':'10','m':'00','stress':'min', 'height': '20%'}) }}#}
+{#                                {{ officeStress.officeStress({'h':'11','m':'00','stress':'normal', 'height': '40%'}) }}#}
+{#                                {{ officeStress.officeStress({'h':'12','m':'00','stress':'high', 'height': '100%'}) }}#}
+{#                                {{ officeStress.officeStress({'h':'13','m':'00','stress':'normal', 'height': '50%'}) }}#}
+{#                                {{ officeStress.officeStress({'h':'14','m':'00','stress':'normal', 'height': '45%'}) }}#}
+{#                                {{ officeStress.officeStress({'h':'15','m':'00','stress':'normal', 'height': '50%'}) }}#}
+{#                                {{ officeStress.officeStress({'h':'16','m':'00','stress':'min', 'height': '20%'}) }}#}
+{#                                {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}#}
+{#                                {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}#}
+{#                                {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}#}
+{#                            </div>#}
+{#                            <div class="office-stress__time">#}
+{#                              <div class="office-stress__time-hours"> 10</div>#}
+{#                              <div class="office-stress__time-hours"> 13 </div>#}
+{#                              <div class="office-stress__time-hours"> 15 </div>#}
+{#                              <div class="office-stress__time-hours"> 17 </div>#}
+{#                              <div class="office-stress__time-hours">#}
+{#                                20#}
+{#                              </div>#}
+{#                            </div>#}
 
-                            <div class="office-stress__congestion">
-                              <div class="office-stress__congestion-current-time">
-                                12:54
-                              </div>
-                              <div class="office-stress__congestion-current">
-                                Сейчас средняя загруженность
-                              </div>
-                            </div>
+{#                            <div class="office-stress__congestion">#}
+{#                              <div class="office-stress__congestion-current-time">#}
+{#                                12:54#}
+{#                              </div>#}
+{#                              <div class="office-stress__congestion-current">#}
+{#                                Сейчас средняя загруженность#}
+{#                              </div>#}
+{#                            </div>#}
 
-{#                              #}{#            <div class="office-stress__time-minutes">#}
+{#                              #}{##}{#            <div class="office-stress__time-minutes">#}
 {#                                              {{ options.m }}#}
 {#                                          </div>#}
-                        </li>
+{#                        </li>#}
 {#                        <li class="offices__info-item offices__info-item_bordered">#}
 {#                            <div class="offices__info-text">#}
 {#                                адрес9#}
@@ -106,8 +106,8 @@
 {#                                8 800 500 7065#}
 {#                            </div>#}
 {#                        </li>#}
-                    </ul>
-{#                    {{ Dropdown.dropdown({#}
+{#                    </ul>#}
+{#                    {{ Dropdown.dropdown(#}{#}#}
 {#                        'mods': {'theme': 'bordered'},#}
 {#                        'label': 'Построить Маршрут',#}
 {#                        'name': 'routeType',#}
@@ -119,80 +119,80 @@
 {#                        'class': 'form__field-group form__field-group_dropdown',#}
 {#                        'attr': {'id': 'route-type1'},#}
 {#                        'field': 'js-create-route' }) }}#}
-                    <div class="map-wrap js-collapse-map-wrap"></div>
-                </div>
-            </div>
+{#                    <div class="map-wrap js-collapse-map-wrap"></div>#}
+{#                </div>#}
+{#            </div>#}
 
-            <div class="collapse__item" data-coords="[55.76,37.58]">
-              {{ addressUnderground.addressUnderground({ 'type': 'dark-blue' }) }}
-              <div class="collapse__content">
-                <ul class="offices__info">
+{#            <div class="collapse__item" data-coords="[55.76,37.58]">#}
+{#              {{ addressUnderground.addressUnderground({ 'type': 'dark-blue' }) }}#}
+{#              <div class="collapse__content">#}
+{#                <ul class="offices__info">#}
 
-                  <li  class="offices__info-item offices__info-item-timetable">
-                    <div>
-                      <div class="offices__info-title">Время работы с клиентами</div>
-                      <div class="offices__info-text">
-                        пн-пт: с 10:00 до 20:00 <br>
-                        сб-вс: выходной
-                      </div>
-                    </div>
-                    <div>
-                      <div class="offices__info-title">Кассовое обслуживание</div>
-                      <div class="offices__info-text">
-                        пн-пт: с 10:00 до 20:00 <br>
-                        сб-вс: выходной
-                      </div>
-                    </div>
-                  </li>
+{#                  <li  class="offices__info-item offices__info-item-timetable">#}
+{#                    <div>#}
+{#                      <div class="offices__info-title">Время работы с клиентами</div>#}
+{#                      <div class="offices__info-text">#}
+{#                        пн-пт: с 10:00 до 20:00 <br>#}
+{#                        сб-вс: выходной#}
+{#                      </div>#}
+{#                    </div>#}
+{#                    <div>#}
+{#                      <div class="offices__info-title">Кассовое обслуживание</div>#}
+{#                      <div class="offices__info-text">#}
+{#                        пн-пт: с 10:00 до 20:00 <br>#}
+{#                        сб-вс: выходной#}
+{#                      </div>#}
+{#                    </div>#}
+{#                  </li>#}
 
-                  <li class="offices__info-item">
-                    <div class="offices__info-title offices__info-stress-title">Оплата ЖКХ, аренда ячейки, открытие металлического счета,
-                      консультирование по ипотечному кредитованию</div>
-                    <div class="office-stress-list">
-                      {{ officeStress.officeStress({'h':'10','m':'00','stress':'min', 'height': '20%'}) }}
-                      {{ officeStress.officeStress({'h':'11','m':'00','stress':'normal', 'height': '40%'}) }}
-                      {{ officeStress.officeStress({'h':'12','m':'00','stress':'high', 'height': '100%'}) }}
-                      {{ officeStress.officeStress({'h':'13','m':'00','stress':'normal', 'height': '50%'}) }}
-                      {{ officeStress.officeStress({'h':'14','m':'00','stress':'normal', 'height': '45%'}) }}
-                      {{ officeStress.officeStress({'h':'15','m':'00','stress':'normal', 'height': '50%'}) }}
-                      {{ officeStress.officeStress({'h':'16','m':'00','stress':'min', 'height': '20%'}) }}
-                      {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
-                      {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
-                      {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
-                      {{ officeStress.officeStress({'h':'20','m':'00','stress':'min', 'height': '20%'}) }}
-                    </div>
-                    <div class="office-stress__time">
-                      <div class="office-stress__time-hours"> 10</div>
-                      <div class="office-stress__time-hours"> 13 </div>
-                      <div class="office-stress__time-hours"> 15 </div>
-                      <div class="office-stress__time-hours"> 17 </div>
-                      <div class="office-stress__time-hours">
-                        20
-                      </div>
-                    </div>
+{#                  <li class="offices__info-item">#}
+{#                    <div class="offices__info-title offices__info-stress-title">Оплата ЖКХ, аренда ячейки, открытие металлического счета,#}
+{#                      консультирование по ипотечному кредитованию</div>#}
+{#                    <div class="office-stress-list">#}
+{#                      {{ officeStress.officeStress({'h':'10','m':'00','stress':'min', 'height': '20%'}) }}#}
+{#                      {{ officeStress.officeStress({'h':'11','m':'00','stress':'normal', 'height': '40%'}) }}#}
+{#                      {{ officeStress.officeStress({'h':'12','m':'00','stress':'high', 'height': '100%'}) }}#}
+{#                      {{ officeStress.officeStress({'h':'13','m':'00','stress':'normal', 'height': '50%'}) }}#}
+{#                      {{ officeStress.officeStress({'h':'14','m':'00','stress':'normal', 'height': '45%'}) }}#}
+{#                      {{ officeStress.officeStress({'h':'15','m':'00','stress':'normal', 'height': '50%'}) }}#}
+{#                      {{ officeStress.officeStress({'h':'16','m':'00','stress':'min', 'height': '20%'}) }}#}
+{#                      {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}#}
+{#                      {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}#}
+{#                      {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}#}
+{#                      {{ officeStress.officeStress({'h':'20','m':'00','stress':'min', 'height': '20%'}) }}#}
+{#                    </div>#}
+{#                    <div class="office-stress__time">#}
+{#                      <div class="office-stress__time-hours"> 10</div>#}
+{#                      <div class="office-stress__time-hours"> 13 </div>#}
+{#                      <div class="office-stress__time-hours"> 15 </div>#}
+{#                      <div class="office-stress__time-hours"> 17 </div>#}
+{#                      <div class="office-stress__time-hours">#}
+{#                        20#}
+{#                      </div>#}
+{#                    </div>#}
 
-                    <div class="office-stress__congestion">
-                      <div class="office-stress__congestion-current-time">
-                        12:54
-                      </div>
-                      <div class="office-stress__congestion-current">
-                        Сейчас средняя загруженность
-                      </div>
-                    </div>
+{#                    <div class="office-stress__congestion">#}
+{#                      <div class="office-stress__congestion-current-time">#}
+{#                        12:54#}
+{#                      </div>#}
+{#                      <div class="office-stress__congestion-current">#}
+{#                        Сейчас средняя загруженность#}
+{#                      </div>#}
+{#                    </div>#}
 
-                  </li>
-                  {#                        <li class="offices__info-item offices__info-item_bordered">#}
-                  {#                            <div class="offices__info-text">#}
-                  {#                                адрес9#}
-                  {#                            </div>#}
-                  {#                        </li>#}
-                  {#                        <li class="offices__info-item offices__info-item_bordered">#}
-                  {#                            <div class="offices__info-text">#}
-                  {#                                8 800 500 7065#}
-                  {#                            </div>#}
-                  {#                        </li>#}
-                </ul>
-{#                    {{ Dropdown.dropdown({#}
+{#                  </li>#}
+{#                  #}{#                        <li class="offices__info-item offices__info-item_bordered">#}
+{#                  #}{#                            <div class="offices__info-text">#}
+{#                  #}{#                                адрес9#}
+{#                  #}{#                            </div>#}
+{#                  #}{#                        </li>#}
+{#                  #}{#                        <li class="offices__info-item offices__info-item_bordered">#}
+{#                  #}{#                            <div class="offices__info-text">#}
+{#                  #}{#                                8 800 500 7065#}
+{#                  #}{#                            </div>#}
+{#                  #}{#                        </li>#}
+{#                </ul>#}
+{#                    {{ Dropdown.dropdown(#}{#}#}
 {#                        'mods': {'theme': 'bordered'},#}
 {#                        'label': 'Построить Маршрут',#}
 {#                        'name': 'routeType',#}
@@ -205,79 +205,79 @@
 {#                        'attr': {'id': 'route-type2'},#}
 {#                        'field': 'js-create-route' }) }}#}
 
-                    <div class="map-wrap js-collapse-map-wrap"></div>
-                </div>
-            </div>
+{#                    <div class="map-wrap js-collapse-map-wrap"></div>#}
+{#                </div>#}
+{#            </div>#}
 
-            <div class="collapse__item" data-coords="[55.73,37.57]">
-              {{ addressUnderground.addressUnderground({ 'type': 'yellow' }) }}
-              <div class="collapse__content">
-                <ul class="offices__info">
+{#            <div class="collapse__item" data-coords="[55.73,37.57]">#}
+{#              {{ addressUnderground.addressUnderground({ 'type': 'yellow' }) }}#}
+{#              <div class="collapse__content">#}
+{#                <ul class="offices__info">#}
 
-                  <li  class="offices__info-item offices__info-item-timetable">
-                    <div>
-                      <div class="offices__info-title">Время работы с клиентами</div>
-                      <div class="offices__info-text">
-                        пн-пт: с 10:00 до 20:00 <br>
-                        сб-вс: выходной
-                      </div>
-                    </div>
-                    <div>
-                      <div class="offices__info-title">Кассовое обслуживание</div>
-                      <div class="offices__info-text">
-                        пн-пт: с 10:00 до 20:00 <br>
-                        сб-вс: выходной
-                      </div>
-                    </div>
-                  </li>
+{#                  <li  class="offices__info-item offices__info-item-timetable">#}
+{#                    <div>#}
+{#                      <div class="offices__info-title">Время работы с клиентами</div>#}
+{#                      <div class="offices__info-text">#}
+{#                        пн-пт: с 10:00 до 20:00 <br>#}
+{#                        сб-вс: выходной#}
+{#                      </div>#}
+{#                    </div>#}
+{#                    <div>#}
+{#                      <div class="offices__info-title">Кассовое обслуживание</div>#}
+{#                      <div class="offices__info-text">#}
+{#                        пн-пт: с 10:00 до 20:00 <br>#}
+{#                        сб-вс: выходной#}
+{#                      </div>#}
+{#                    </div>#}
+{#                  </li>#}
 
-                  <li class="offices__info-item">
-                    <div class="offices__info-title offices__info-stress-title">Оплата ЖКХ, аренда ячейки, открытие металлического счета,
-                      консультирование по ипотечному кредитованию</div>
-                    <div class="office-stress-list">
-                      {{ officeStress.officeStress({'h':'10','m':'00','stress':'min', 'height': '20%'}) }}
-                      {{ officeStress.officeStress({'h':'11','m':'00','stress':'normal', 'height': '40%'}) }}
-                      {{ officeStress.officeStress({'h':'12','m':'00','stress':'high', 'height': '100%'}) }}
-                      {{ officeStress.officeStress({'h':'13','m':'00','stress':'normal', 'height': '50%'}) }}
-                      {{ officeStress.officeStress({'h':'14','m':'00','stress':'normal', 'height': '45%'}) }}
-                      {{ officeStress.officeStress({'h':'15','m':'00','stress':'normal', 'height': '50%'}) }}
-                      {{ officeStress.officeStress({'h':'16','m':'00','stress':'min', 'height': '20%'}) }}
-                      {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
-                      {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
-                      {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
-                      {{ officeStress.officeStress({'h':'20','m':'00','stress':'min', 'height': '20%'}) }}
-                    </div>
-                    <div class="office-stress__time">
-                      <div class="office-stress__time-hours"> 10</div>
-                      <div class="office-stress__time-hours"> 13 </div>
-                      <div class="office-stress__time-hours"> 15 </div>
-                      <div class="office-stress__time-hours"> 17 </div>
-                      <div class="office-stress__time-hours">
-                        20
-                      </div>
-                    </div>
+{#                  <li class="offices__info-item">#}
+{#                    <div class="offices__info-title offices__info-stress-title">Оплата ЖКХ, аренда ячейки, открытие металлического счета,#}
+{#                      консультирование по ипотечному кредитованию</div>#}
+{#                    <div class="office-stress-list">#}
+{#                      {{ officeStress.officeStress({'h':'10','m':'00','stress':'min', 'height': '20%'}) }}#}
+{#                      {{ officeStress.officeStress({'h':'11','m':'00','stress':'normal', 'height': '40%'}) }}#}
+{#                      {{ officeStress.officeStress({'h':'12','m':'00','stress':'high', 'height': '100%'}) }}#}
+{#                      {{ officeStress.officeStress({'h':'13','m':'00','stress':'normal', 'height': '50%'}) }}#}
+{#                      {{ officeStress.officeStress({'h':'14','m':'00','stress':'normal', 'height': '45%'}) }}#}
+{#                      {{ officeStress.officeStress({'h':'15','m':'00','stress':'normal', 'height': '50%'}) }}#}
+{#                      {{ officeStress.officeStress({'h':'16','m':'00','stress':'min', 'height': '20%'}) }}#}
+{#                      {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}#}
+{#                      {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}#}
+{#                      {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}#}
+{#                      {{ officeStress.officeStress({'h':'20','m':'00','stress':'min', 'height': '20%'}) }}#}
+{#                    </div>#}
+{#                    <div class="office-stress__time">#}
+{#                      <div class="office-stress__time-hours"> 10</div>#}
+{#                      <div class="office-stress__time-hours"> 13 </div>#}
+{#                      <div class="office-stress__time-hours"> 15 </div>#}
+{#                      <div class="office-stress__time-hours"> 17 </div>#}
+{#                      <div class="office-stress__time-hours">#}
+{#                        20#}
+{#                      </div>#}
+{#                    </div>#}
 
-                    <div class="office-stress__congestion">
-                      <div class="office-stress__congestion-current-time">
-                        12:54
-                      </div>
-                      <div class="office-stress__congestion-current">
-                        Сейчас средняя загруженность
-                      </div>
-                    </div>
-                  </li>
-                  {#                        <li class="offices__info-item offices__info-item_bordered">#}
-                  {#                            <div class="offices__info-text">#}
-                  {#                                адрес9#}
-                  {#                            </div>#}
-                  {#                        </li>#}
-                  {#                        <li class="offices__info-item offices__info-item_bordered">#}
-                  {#                            <div class="offices__info-text">#}
-                  {#                                8 800 500 7065#}
-                  {#                            </div>#}
-                  {#                        </li>#}
-                </ul>
-{#                    {{ Dropdown.dropdown({#}
+{#                    <div class="office-stress__congestion">#}
+{#                      <div class="office-stress__congestion-current-time">#}
+{#                        12:54#}
+{#                      </div>#}
+{#                      <div class="office-stress__congestion-current">#}
+{#                        Сейчас средняя загруженность#}
+{#                      </div>#}
+{#                    </div>#}
+{#                  </li>#}
+{#                  #}{#                        <li class="offices__info-item offices__info-item_bordered">#}
+{#                  #}{#                            <div class="offices__info-text">#}
+{#                  #}{#                                адрес9#}
+{#                  #}{#                            </div>#}
+{#                  #}{#                        </li>#}
+{#                  #}{#                        <li class="offices__info-item offices__info-item_bordered">#}
+{#                  #}{#                            <div class="offices__info-text">#}
+{#                  #}{#                                8 800 500 7065#}
+{#                  #}{#                            </div>#}
+{#                  #}{#                        </li>#}
+{#                </ul>#}
+{#                    {{ Dropdown.dropdown(#}{#}#}
 {#                        'mods': {'theme': 'bordered'},#}
 {#                        'label': 'Построить Маршрут',#}
 {#                        'name': 'routeType',#}
@@ -289,9 +289,9 @@
 {#                        'class': 'form__field-group form__field-group_dropdown',#}
 {#                        'attr': {'id': 'route-type3'},#}
 {#                        'field': 'js-create-route' }) }}#}
-                    <div class="map-wrap js-collapse-map-wrap"></div>
-                </div>
-            </div>
+{#                    <div class="map-wrap js-collapse-map-wrap"></div>#}
+{#                </div>#}
+{#            </div>#}
 
             <div class="collapse__item" data-coords="[55.73,37.56]">
               {{ addressUnderground.addressUnderground({ 'type': 'blue' }) }}
@@ -329,7 +329,6 @@
                       {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
                       {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
                       {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
-                      {{ officeStress.officeStress({'h':'20','m':'00','stress':'min', 'height': '20%'}) }}
                     </div>
                     <div class="office-stress__time">
                       <div class="office-stress__time-hours"> 10</div>
@@ -414,7 +413,6 @@
                       {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
                       {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
                       {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
-                      {{ officeStress.officeStress({'h':'20','m':'00','stress':'min', 'height': '20%'}) }}
                     </div>
                     <div class="office-stress__time">
                       <div class="office-stress__time-hours"> 10</div>
@@ -496,7 +494,6 @@
                           {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
                           {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
                           {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
-                          {{ officeStress.officeStress({'h':'20','m':'00','stress':'min', 'height': '20%'}) }}
                         </div>
                         <div class="office-stress__time">
                           <div class="office-stress__time-hours"> 10</div>
@@ -573,7 +570,6 @@
                     {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
                     {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
                     {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
-                    {{ officeStress.officeStress({'h':'20','m':'00','stress':'min', 'height': '20%'}) }}
                   </div>
                   <div class="office-stress__time">
                     <div class="office-stress__time-hours"> 10</div>
@@ -645,7 +641,6 @@
                     {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
                     {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
                     {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
-                    {{ officeStress.officeStress({'h':'20','m':'00','stress':'min', 'height': '20%'}) }}
                   </div>
                   <div class="office-stress__time">
                     <div class="office-stress__time-hours"> 10</div>
@@ -717,7 +712,6 @@
                     {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
                     {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
                     {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
-                    {{ officeStress.officeStress({'h':'20','m':'00','stress':'min', 'height': '20%'}) }}
                   </div>
                   <div class="office-stress__time">
                     <div class="office-stress__time-hours"> 10</div>
@@ -789,7 +783,6 @@
                     {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
                     {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
                     {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
-                    {{ officeStress.officeStress({'h':'20','m':'00','stress':'min', 'height': '20%'}) }}
                   </div>
                   <div class="office-stress__time">
                     <div class="office-stress__time-hours"> 10</div>
@@ -861,7 +854,6 @@
                     {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
                     {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
                     {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
-                    {{ officeStress.officeStress({'h':'20','m':'00','stress':'min', 'height': '20%'}) }}
                   </div>
                   <div class="office-stress__time">
                     <div class="office-stress__time-hours"> 10</div>
@@ -933,7 +925,6 @@
                     {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
                     {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
                     {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
-                    {{ officeStress.officeStress({'h':'20','m':'00','stress':'min', 'height': '20%'}) }}
                   </div>
                   <div class="office-stress__time">
                     <div class="office-stress__time-hours"> 10</div>
