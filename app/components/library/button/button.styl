@@ -10,7 +10,7 @@
 
   border-radius: 4px
 
-  transition: background-color $interval
+  transition: all $interval
   @media(max-width 991px)
     height 48px
   &:hover, &:not(.button_type-tab).state_active
@@ -22,6 +22,15 @@
 
       .button__icon
         color: currentColor
+
+  &.button_theme-uslugi:hover
+    background-color transparent
+    opacity 0.5
+    .button__title
+      color: $black
+
+      .button__icon
+        color: $black
 
   &:after
     display: none
