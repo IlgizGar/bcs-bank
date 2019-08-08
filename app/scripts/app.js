@@ -322,4 +322,18 @@ $(() => {
   if ($('#courcesExchangeblock').length) {
     global.fxCourses = new FxCourses();
   }
+
+  const urlHash = document.location.hash;
+
+  if (urlHash) {
+    if ($(urlHash).closest('.js-tab').length === 0) {
+      if (screen.width < 960) {
+        setTimeout(() => {
+          $('html, body').animate({ scrollTop: $(urlHash).offset().top}, 500);}, 3000);
+      } else {
+        setTimeout(() => {
+          $('html, body').animate({ scrollTop: $(urlHash).offset().top - ($(urlHash).height() * 0.2) }, 500);}, 3000);
+      }
+    }
+  }
 });
