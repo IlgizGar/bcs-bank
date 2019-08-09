@@ -108,6 +108,10 @@ export default class Offices {
       this.createRoute(toPoint, type);
     });
     this.searchInit();
+
+    // $('.office-stress__load').tooltipster({
+    //   theme: ['tooltipster-noir', 'tooltipster-noir-customized']
+    // });
   }
 
   handleSwitch() {
@@ -633,4 +637,5 @@ export default class Offices {
     this.points = result;
     this.addPoints();
   }
+
 }
