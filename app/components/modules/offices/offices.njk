@@ -297,7 +297,9 @@
               {{ addressUnderground.addressUnderground({ 'type': 'blue' }) }}
               <div class="collapse__content">
                 <ul class="offices__info">
-
+                  <li class="offices__info-item">
+                    {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                  </li>
                   <li  class="offices__info-item offices__info-item-timetable">
                     <div>
                       <div class="offices__info-title">Время работы с клиентами</div>
@@ -381,7 +383,9 @@
               {{ addressUnderground.addressUnderground({ 'type': 'blue' }) }}
               <div class="collapse__content">
                 <ul class="offices__info">
-
+                  <li class="offices__info-item">
+                    {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                  </li>
                   <li  class="offices__info-item offices__info-item-timetable">
                     <div>
                       <div class="offices__info-title">Время работы с клиентами</div>
@@ -463,6 +467,9 @@
               {{ addressUnderground.addressUnderground({ 'type': 'blue' }) }}
                 <div class="collapse__content">
                     <ul class="offices__info">
+                      <li class="offices__info-item">
+                        {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                      </li>
                       <li  class="offices__info-item offices__info-item-timetable">
                         <div>
                           <div class="offices__info-title">Время работы с клиентами</div>
@@ -514,18 +521,18 @@
                         </div>
                       </li>
                     </ul>
-                    {{ Dropdown.dropdown({
-                        'mods': {'theme': 'bordered'},
-                        'label': 'Построить Маршрут',
-                        'name': 'routeType',
-                        'items': [
-                            {'title': 'На автомобиле', 'value': 'auto'},
-                            {'title': 'На общественном транспорте', 'value': 'masstransit'},
-                            {'title': 'Пешком', 'value': 'pedestrian'},
-                            {'title': 'На велосипеде', 'value': 'bicycle'}],
-                        'class': 'form__field-group form__field-group_dropdown',
-                        'attr': {'id': 'route-type6'},
-                        'field': 'js-create-route' }) }}
+{#                    {{ Dropdown.dropdown({#}
+{#                        'mods': {'theme': 'bordered'},#}
+{#                        'label': 'Построить Маршрут',#}
+{#                        'name': 'routeType',#}
+{#                        'items': [#}
+{#                            {'title': 'На автомобиле', 'value': 'auto'},#}
+{#                            {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+{#                            {'title': 'Пешком', 'value': 'pedestrian'},#}
+{#                            {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+{#                        'class': 'form__field-group form__field-group_dropdown',#}
+{#                        'attr': {'id': 'route-type6'},#}
+{#                        'field': 'js-create-route' }) }}#}
 
                     <div class="map-wrap js-collapse-map-wrap"></div>
                 </div>
@@ -539,6 +546,9 @@
             {{ addressUnderground.addressUnderground({ 'type': 'blue' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
                 <li  class="offices__info-item offices__info-item-timetable">
                   <div>
                     <div class="offices__info-title">Время работы с клиентами</div>
@@ -610,6 +620,9 @@
             {{ addressUnderground.addressUnderground({ 'type': 'blue' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
                 <li  class="offices__info-item offices__info-item-timetable">
                   <div>
                     <div class="offices__info-title">Время работы с клиентами</div>
@@ -681,6 +694,9 @@
             {{ addressUnderground.addressUnderground({ 'type': 'blue' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
                 <li  class="offices__info-item offices__info-item-timetable">
                   <div>
                     <div class="offices__info-title">Время работы с клиентами</div>
@@ -752,6 +768,9 @@
             {{ addressUnderground.addressUnderground({ 'type': 'blue' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
                 <li  class="offices__info-item offices__info-item-timetable">
                   <div>
                     <div class="offices__info-title">Время работы с клиентами</div>
@@ -823,6 +842,9 @@
             {{ addressUnderground.addressUnderground({ 'type': 'blue' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
                 <li  class="offices__info-item offices__info-item-timetable">
                   <div>
                     <div class="offices__info-title">Время работы с клиентами</div>
@@ -894,6 +916,9 @@
             {{ addressUnderground.addressUnderground({ 'type': 'blue' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
                 <li  class="offices__info-item offices__info-item-timetable">
                   <div>
                     <div class="offices__info-title">Время работы с клиентами</div>
@@ -970,9 +995,11 @@
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
                   <div class="offices__info-title offices__info-stress-title">
-                    Оплата ЖКХ, аренда ячейки, открытие металлического счета,
-                    консультирование по ипотечному кредитованию</div>
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
                 </li>
                 <li class="offices__info-item offices__info-item-atm">
                   <div class="offices__info-text">
@@ -1004,9 +1031,11 @@
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
                   <div class="offices__info-title offices__info-stress-title">
-                    Оплата ЖКХ, аренда ячейки, открытие металлического счета,
-                    консультирование по ипотечному кредитованию</div>
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
                 </li>
                 <li class="offices__info-item offices__info-item-atm">
                   <div class="offices__info-text">
@@ -1038,9 +1067,11 @@
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
                   <div class="offices__info-title offices__info-stress-title">
-                    Оплата ЖКХ, аренда ячейки, открытие металлического счета,
-                    консультирование по ипотечному кредитованию</div>
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
                 </li>
                 <li class="offices__info-item offices__info-item-atm">
                   <div class="offices__info-text">
@@ -1072,9 +1103,11 @@
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
                   <div class="offices__info-title offices__info-stress-title">
-                    Оплата ЖКХ, аренда ячейки, открытие металлического счета,
-                    консультирование по ипотечному кредитованию</div>
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
                 </li>
                 <li class="offices__info-item offices__info-item-atm">
                   <div class="offices__info-text">
@@ -1106,9 +1139,11 @@
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
                   <div class="offices__info-title offices__info-stress-title">
-                    Оплата ЖКХ, аренда ячейки, открытие металлического счета,
-                    консультирование по ипотечному кредитованию</div>
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
                 </li>
                 <li class="offices__info-item offices__info-item-atm">
                   <div class="offices__info-text">
@@ -1140,9 +1175,11 @@
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
                   <div class="offices__info-title offices__info-stress-title">
-                    Оплата ЖКХ, аренда ячейки, открытие металлического счета,
-                    консультирование по ипотечному кредитованию</div>
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
                 </li>
                 <li class="offices__info-item offices__info-item-atm">
                   <div class="offices__info-text">
@@ -1176,9 +1213,11 @@
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
                   <div class="offices__info-title offices__info-stress-title">
-                    Оплата ЖКХ, аренда ячейки, открытие металлического счета,
-                    консультирование по ипотечному кредитованию</div>
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
                 </li>
                 <li class="offices__info-item offices__info-item-atm">
                   <div class="offices__info-text">
@@ -1210,9 +1249,11 @@
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
                   <div class="offices__info-title offices__info-stress-title">
-                    Оплата ЖКХ, аренда ячейки, открытие металлического счета,
-                    консультирование по ипотечному кредитованию</div>
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
                 </li>
                 <li class="offices__info-item offices__info-item-atm">
                   <div class="offices__info-text">
@@ -1244,9 +1285,11 @@
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
                   <div class="offices__info-title offices__info-stress-title">
-                    Оплата ЖКХ, аренда ячейки, открытие металлического счета,
-                    консультирование по ипотечному кредитованию</div>
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
                 </li>
                 <li class="offices__info-item offices__info-item-atm">
                   <div class="offices__info-text">
@@ -1278,9 +1321,11 @@
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
                   <div class="offices__info-title offices__info-stress-title">
-                    Оплата ЖКХ, аренда ячейки, открытие металлического счета,
-                    консультирование по ипотечному кредитованию</div>
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
                 </li>
                 <li class="offices__info-item offices__info-item-atm">
                   <div class="offices__info-text">
@@ -1312,9 +1357,11 @@
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
                   <div class="offices__info-title offices__info-stress-title">
-                    Оплата ЖКХ, аренда ячейки, открытие металлического счета,
-                    консультирование по ипотечному кредитованию</div>
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
                 </li>
                 <li class="offices__info-item offices__info-item-atm">
                   <div class="offices__info-text">
@@ -1346,9 +1393,11 @@
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
                   <div class="offices__info-title offices__info-stress-title">
-                    Оплата ЖКХ, аренда ячейки, открытие металлического счета,
-                    консультирование по ипотечному кредитованию</div>
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
                 </li>
                 <li class="offices__info-item offices__info-item-atm">
                   <div class="offices__info-text">
