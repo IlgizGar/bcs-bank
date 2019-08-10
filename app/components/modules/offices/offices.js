@@ -112,6 +112,8 @@ export default class Offices {
     // $('.office-stress__load').tooltipster({
     //   theme: ['tooltipster-noir', 'tooltipster-noir-customized']
     // });
+
+    this.lookAtTheMap();
   }
 
   handleSwitch() {
@@ -615,13 +617,29 @@ export default class Offices {
       this.searchTimout = setTimeout(() => {
         if (value) {
           this.search(value);
+          this.autoCompleteShow(value);
         } else {
+          $('.offices__search-variations').hide();
           this.getPoints();
           this.addPoints();
         }
       }, 250);
     });
+
+    $(document).on('click', '.offices__search-option', (e) => {
+      e.preventDefault();
+      //добавление выбранного текста по клику в инпут
+      let parent = $(e.target).closest('.offices__search-option'); //привязка к текущему элементу на который кликнули
+      let text = $.trim(parent.find('.offices__search-title').text());
+      $('[name=map-search]').val(text);
+      $('[name=map-search]').closest('.js-input').addClass('state_filled');
+      $('[name=map-search]').closest('.js-input').removeClass('state_init');
+      $('.offices__search-variations').hide();
+      this.search(text);
+    });
   }
+
+  //скрывает карточки и центрирует карту относительно оставшихся точек на карте
   search(text) {
     this.getPoints();
     const result = [];
@@ -634,8 +652,63 @@ export default class Offices {
         $(point.element).addClass('state_hidden');
       }
     });
+
     this.points = result;
     this.addPoints();
   }
 
+  autoCompleteShow(text)
+  {
+    this.getPoints();
+    const autoCompleteResult = []; //резулттирующий массив для выпадающего списка
+
+    this.points.forEach((point) => {
+      //ищем информацию для выпадающего списка
+      let metroVariantion = String($(point.element).find('.collapse__control-underground-name').text()).toLowerCase();
+      let streetVariantion = String($(point.element).find('.collapse__control-title').text()).toLowerCase();
+
+      if (metroVariantion.indexOf(text.toLowerCase()) + 1) {
+        var classList = $('.collapse__control-underground-icon').attr('class').split(/\s+/);
+        let MetrocustomPoint = {
+          title: $(point.element).find('.collapse__control-underground-name').text(),
+          description: 'станция метро',
+          type: 'metro',
+          colorMetro: classList[1],
+          svg: $('.collapse__control-underground-icon')[0]
+        };
+        autoCompleteResult.push(MetrocustomPoint);
+      }
+
+      if (streetVariantion.indexOf(text.toLowerCase()) + 1) {
+        let StreetcustomPoint = {
+          title: $(point.element).find('.collapse__control-title').text(),
+          description: 'метро' + $(point.element).find('.collapse__control-underground-name').text(),
+          type: 'street',
+          svg: $('.collapse__control-underground-icon')[0]
+        };
+        autoCompleteResult.push(StreetcustomPoint);
+      }
+    });
+
+    if (autoCompleteResult.length > 0) {
+      $('.offices__search-variations').show();
+      const searchVariationsContainer = $('.offices__search-variations');
+      let searchVartiations = $('.offices__search-option').first();
+      searchVariationsContainer.html('');
+      autoCompleteResult.forEach((customPoint) => {
+        searchVartiations.find('.offices__search-title').text(customPoint.title);
+        searchVartiations.find('.offices__search-description').text(customPoint.description);
+        searchVartiations.clone().appendTo(searchVariationsContainer);
+      });
+    }
+  }
+
+  //кнопка "показать на карте"
+  lookAtTheMap() {
+    $('.js-offices-button-for-map').on('click', (e) => {
+      setTimeout(() => {
+        $('html, body').animate({ scrollTop: $('#map-container').offset().top - ($('#map-container').height() / 3)}, 800);
+      }, 200);
+    });
+  }
 }
