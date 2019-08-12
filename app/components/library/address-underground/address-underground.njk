@@ -7,11 +7,11 @@
     <div class="collapse__control-underground-icon  {% if options.type %}{{ "underground-line-" + options.type }}{% endif %}">
       {{ Icon.icon({ 'name': 'orange' }) }}
     </div>
-    <div class="collapse__control-underground-name"> Проспект Мира </div>
+    <div class="collapse__control-underground-name"> {{ options.metro }} </div>
     <div class="collapse__control-distance"> 210м </div>
   </div>
   <div class="collapse__control-title">
-    ул. Валовая, 2-4/44
+    {{ options.title }}
   </div>
   <div class="collapse__control-description">
     {% if options.atm === 'time' %}

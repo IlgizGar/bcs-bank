@@ -611,11 +611,17 @@ export default class Offices {
 
   searchInit() {
     $('[name=map-search]').on('keyup', (e) => {
+      console.log($('[name=map-search]').closest('.js-input').val());
       const searchInput = $(e.currentTarget);
       const value = searchInput.val();
+
+      this.addOrRemoveButtonClose(value);
+      this.removeValueInput(searchInput);
+
       clearTimeout(this.searchTimout);
       this.searchTimout = setTimeout(() => {
         if (value) {
+          this.removeValueInput();
           this.search(value);
           this.autoCompleteShow(value);
         } else {
@@ -626,8 +632,18 @@ export default class Offices {
       }, 250);
     });
 
+
+    $(window).click((e) => {
+      $('.search-close').css({ display: 'none'});
+      $('.icon-search').css({ display: 'block'});
+      $('.offices__search-variations').hide();
+    });
+
+
     $(document).on('click', '.offices__search-option', (e) => {
       e.preventDefault();
+      $('.search-close').css({ display: 'none'});
+      $('.icon-search').css({ display: 'block'});
       //добавление выбранного текста по клику в инпут
       let parent = $(e.target).closest('.offices__search-option'); //привязка к текущему элементу на который кликнули
       let text = $.trim(parent.find('.offices__search-title').text());
@@ -668,15 +684,16 @@ export default class Offices {
       let streetVariantion = String($(point.element).find('.collapse__control-title').text()).toLowerCase();
 
       if (metroVariantion.indexOf(text.toLowerCase()) + 1) {
-        var classList = $('.collapse__control-underground-icon').attr('class').split(/\s+/);
+        var classList = $(point.element).find('.collapse__control-underground-icon').attr('class').split(/\s+/);
         let MetrocustomPoint = {
           title: $(point.element).find('.collapse__control-underground-name').text(),
           description: 'станция метро',
           type: 'metro',
-          colorMetro: classList[1],
+          colorMetro:  classList[1],
           svg: $('.collapse__control-underground-icon')[0]
         };
         autoCompleteResult.push(MetrocustomPoint);
+        // console.log(classList[1]);
       }
 
       if (streetVariantion.indexOf(text.toLowerCase()) + 1) {
@@ -695,11 +712,36 @@ export default class Offices {
       const searchVariationsContainer = $('.offices__search-variations');
       let searchVartiations = $('.offices__search-option').first();
       searchVariationsContainer.html('');
+
       autoCompleteResult.forEach((customPoint) => {
         searchVartiations.find('.offices__search-title').text(customPoint.title);
         searchVartiations.find('.offices__search-description').text(customPoint.description);
+        if (customPoint.type === 'street') {
+          searchVartiations.find('.icon-street-icon').css({ display: 'block'})
+        }
+        else {
+          searchVartiations.find('.offices__search-icon').addClass(customPoint.colorMetro);
+          searchVartiations.find('.icon-orange').css({ display: 'block'})
+        }
         searchVartiations.clone().appendTo(searchVariationsContainer);
       });
+    }
+  }
+
+  removeValueInput(searchInput) {
+    $('.search-close').on('click', (e) => {
+     searchInput.val('');
+    })
+  }
+
+  addOrRemoveButtonClose(value) {
+    if (value) {
+      $('.search-close').css({ display: 'block'});
+      $('.icon-search').css({ display: 'none'});
+    }
+    else {
+      $('.search-close').css({ display: 'none'});
+      $('.icon-search').css({ display: 'block'});
     }
   }
 

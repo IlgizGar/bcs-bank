@@ -42,6 +42,11 @@
 
         {% if options.icon %}
             {{ Icon.icon({ 'name': options.icon }) }}
+
+            <button class="search-close">
+              <span class="line-close line-1"></span>
+              <span class="line-close line-2"></span>
+            </button>
         {% endif %}
 
         {% if options.title %}
