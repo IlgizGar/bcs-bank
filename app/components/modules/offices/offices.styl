@@ -2,8 +2,10 @@
   position relative
   display flex
   flex-direction row-reverse
-  @media (min-width: 432px) and (max-width:831px)
+  @media (min-width: 320px) and (max-width:831px)
     flex-direction column-reverse
+  @media (max-width: 831px)
+    display: none;
 
   & .section__content
     @media (min-width: 832px) and (max-width: 1215px)
@@ -67,3 +69,8 @@
   //  .offices__map-wrapper
   //    @media (max-width: 991px)
   //      visibility: visible
+
+.for-mobil
+  display: none;
+  @media (max-width: 831px)
+    display: block!important;

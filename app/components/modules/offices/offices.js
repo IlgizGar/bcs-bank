@@ -712,10 +712,16 @@ export default class Offices {
       const searchVariationsContainer = $('.offices__search-variations');
       let searchVartiations = $('.offices__search-option').first();
       searchVariationsContainer.html('');
+      console.log(searchVartiations);
+
 
       autoCompleteResult.forEach((customPoint) => {
+
         searchVartiations.find('.offices__search-title').text(customPoint.title);
         searchVartiations.find('.offices__search-description').text(customPoint.description);
+        searchVartiations.find('.offices__search-icon').removeClass(customPoint.colorMetro);
+        searchVartiations.find('.icon-street-icon').css({ display: 'none'});
+        searchVartiations.find('.icon-orange').css({ display: 'none'});
         if (customPoint.type === 'street') {
           searchVartiations.find('.icon-street-icon').css({ display: 'block'})
         }
@@ -723,6 +729,7 @@ export default class Offices {
           searchVartiations.find('.offices__search-icon').addClass(customPoint.colorMetro);
           searchVartiations.find('.icon-orange').css({ display: 'block'})
         }
+
         searchVartiations.clone().appendTo(searchVariationsContainer);
       });
     }

@@ -23,12 +23,14 @@
     {{ Tabbar.tabbar({ 'anchor': { 'theme': 'default-tab', 'view': 'underscore', 'line': 'blue', 'class': 'offices__tab-control'}, 'tabs': [{'title': 'Кассы', 'id': 'offices-tab' }, {'title': 'Банкоматы', 'id': 'atm-tab'}], 'class': 'offices__tabbar' }) }}
     </div>
 
-    <div class="offices__search">
-        {{ Input.input({ 'label': 'Введите адрес', 'class': 'search__field-group', 'field':{'name': 'map-search'}, 'icon': 'search' }) }}
-        {{ Button.button({ 'mods': {'type': 'icon','theme': 'transparent'}, 'attr': {'state': 'map'}, 'class': 'offices__switch-view js-offices-switcher' }) }}
+    <div class="offices__search-wrapper">
+      <div class="offices__search">
+          {{ Input.input({ 'label': 'Введите адрес', 'class': 'search__field-group', 'field':{'name': 'map-search'}, 'icon': 'search' }) }}
+          {{ Button.button({ 'mods': {'type': 'icon','theme': 'transparent'}, 'attr': {'state': 'map'}, 'class': 'offices__switch-view js-offices-switcher' }) }}
 
-      <div class="offices__search-variations">
-        {{SearchVariations.searchVariations ({'class': 'offices__switch-view js-search-variations' }) }}
+        <div class="offices__search-variations">
+          {{SearchVariations.searchVariations ({'class': 'offices__switch-view js-search-variations' }) }}
+        </div>
       </div>
     </div>
 
@@ -696,7 +698,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[45.061511,38.962091]">
-            {{ addressUnderground.addressUnderground({ 'type': 'blue' }) }}
+            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
@@ -770,7 +772,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[45.030114,38.996424]">
-            {{ addressUnderground.addressUnderground({ 'type': 'blue' }) }}
+            {{ addressUnderground.addressUnderground({ 'type': 'orange', 'title':'ул. Гогена, 2-4/44', 'metro': 'Гогена' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
@@ -844,7 +846,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[45.054697,39.010843]">
-            {{ addressUnderground.addressUnderground({ 'type': 'blue' }) }}
+            {{ addressUnderground.addressUnderground({ 'type': 'yellow', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
@@ -918,7 +920,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[45.019887,38.967241]">
-            {{ addressUnderground.addressUnderground({ 'type': 'blue' }) }}
+            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
@@ -996,7 +998,7 @@
         <div class="collapse offices__collapse" data-city="213" data-id="atm-tab">
 
           <div class="collapse__item" data-coords="[55.76,37.587]">
-            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'time' }) }}
+            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'time', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
@@ -1032,7 +1034,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[55.747,37.57]">
-            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'always' }) }}
+            {{ addressUnderground.addressUnderground({ 'type': 'red', 'atm':'always', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
@@ -1068,7 +1070,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[55.77,37.48]">
-            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'time' }) }}
+            {{ addressUnderground.addressUnderground({ 'type': 'pink', 'atm':'time', 'title':'ул. Мира, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
@@ -1104,7 +1106,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[55.76,37.57]">
-            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'time' }) }}
+            {{ addressUnderground.addressUnderground({ 'type': 'red', 'atm':'time', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
@@ -1140,7 +1142,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[55.77,37.55]">
-            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'time' }) }}
+            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'time', 'title':'ул. Валяева, 2-4/44', 'metro': 'Валяева' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
@@ -1176,7 +1178,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[55.746,37.578]">
-            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'always' }) }}
+            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'always', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
@@ -1214,7 +1216,7 @@
         <div class="collapse offices__collapse" data-city="35" data-id="atm-tab">
 
           <div class="collapse__item" data-coords="[45.019887,38.967241]">
-            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'always' }) }}
+            {{ addressUnderground.addressUnderground({ 'type': 'grey', 'atm':'always', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
@@ -1250,7 +1252,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[45.035469,38.968443]">
-            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'always' }) }}
+            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'always', 'title':'ул. Шуваши, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
@@ -1286,7 +1288,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[45.055792,38.983377]">
-            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'always' }) }}
+            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'always', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
@@ -1322,7 +1324,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[45.047761,38.939947]">
-            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'always' }) }}
+            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'always', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
@@ -1358,7 +1360,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[45.061024,38.973764]">
-            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'always' }) }}
+            {{ addressUnderground.addressUnderground({ 'type': 'pink', 'atm':'always', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
@@ -1394,7 +1396,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[45.057009,38.939947]">
-            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'always' }) }}
+            {{ addressUnderground.addressUnderground({ 'type': 'green', 'atm':'always', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
@@ -1793,6 +1795,1794 @@
 
 </div>
 
+<div class="for-mobil offices js-offices">
+  <div class="offices__search-variations">
+    {{SearchVariations.searchVariations ({'class': 'offices__switch-view js-search-variations' }) }}
+  </div>
+  <div id="map-container" class="offices__map-wrapper" style="height: 678px;"></div>
+  <div class="collapse offices__detail js-offices-detail state_hidden">
+    <div class="js-detail-content"></div>
+    {{ Icon.icon({ 'name': 'close', 'elementClass': 'offices__detail-icon js-offices-detail-close' }) }}
+  </div>
+  <div class="offices__content js-tab-scroll">
+
+    <div class="section__content">
+      {{ Heading.heading({ 'tag': 'h1', 'title': 'Кассы и банкоматы', 'mods': { 'type': 'default', 'margin': 'short', 'margin-top': 'normal', 'theme' : 'default' }, 'context': {'title': 'всех городах', 'name': 'current-city', 'attr': {'id': 'select-city', 'prefix': 'во'} } }) }}
+      {{ Heading.heading({ 'tag': 'h3', 'title': 'Тарифы в кассах могут отличаться от указанных на сайте', 'mods': { 'style': 'light'}, 'class': 'mb-62' }) }}
+    </div>
+    <div class="section__tabbar">
+      {{ Tabbar.tabbar({ 'anchor': { 'theme': 'default-tab', 'view': 'underscore', 'line': 'blue', 'class': 'offices__tab-control'}, 'tabs': [{'title': 'Кассы', 'id': 'offices-tab' }, {'title': 'Банкоматы', 'id': 'atm-tab'}], 'class': 'offices__tabbar' }) }}
+    </div>
+
+    <div class="offices__search-wrapper">
+      <div class="offices__search">
+        {{ Input.input({ 'label': 'Введите адрес', 'class': 'search__field-group', 'field':{'name': 'map-search'}, 'icon': 'search' }) }}
+        {{ Button.button({ 'mods': {'type': 'icon','theme': 'transparent'}, 'attr': {'state': 'map'}, 'class': 'offices__switch-view js-offices-switcher' }) }}
+
+
+      </div>
+    </div>
+
+    <div class="tabs js-tabs offices__tabs scroll-pane">
+      {#
+        data-city - geoid города
+        data-id - привязка списка к табу
+        data-coords - координаты точки. Без пробелов!
+      #}
+      <div id="offices-tab" class="offices__tabs-item tabs__item js-tab state_invisible">
+        <div class="collapse offices__collapse" data-city="213" data-id="offices-tab">
+
+          {#            <div class="collapse__item" data-coords="[55.76,37.57]">#}
+          {#                {{ addressUnderground.addressUnderground({ 'type': 'blue' }) }}#}
+          {#                <div class="collapse__content">#}
+          {#                    <ul class="offices__info">#}
+
+          {#                      <li  class="offices__info-item offices__info-item-timetable">#}
+          {#                        <div>#}
+          {#                          <div class="offices__info-title">Время работы с клиентами</div>#}
+          {#                          <div class="offices__info-text">#}
+          {#                            пн-пт: с 10:00 до 20:00 <br>#}
+          {#                            сб-вс: выходной#}
+          {#                          </div>#}
+          {#                        </div>#}
+          {#                        <div>#}
+          {#                          <div class="offices__info-title">Кассовое обслуживание</div>#}
+          {#                          <div class="offices__info-text">#}
+          {#                            пн-пт: с 10:00 до 20:00 <br>#}
+          {#                            сб-вс: выходной#}
+          {#                          </div>#}
+          {#                        </div>#}
+          {#                      </li>#}
+
+          {#                        <li class="offices__info-item">#}
+          {#                          <div class="offices__info-title offices__info-stress-title">Оплата ЖКХ, аренда ячейки, открытие металлического счета,#}
+          {#                            консультирование по ипотечному кредитованию</div>#}
+          {#                            <div class="office-stress-list">#}
+          {#                                {{ officeStress.officeStress({'h':'10','m':'00','stress':'min', 'height': '20%'}) }}#}
+          {#                                {{ officeStress.officeStress({'h':'11','m':'00','stress':'normal', 'height': '40%'}) }}#}
+          {#                                {{ officeStress.officeStress({'h':'12','m':'00','stress':'high', 'height': '100%'}) }}#}
+          {#                                {{ officeStress.officeStress({'h':'13','m':'00','stress':'normal', 'height': '50%'}) }}#}
+          {#                                {{ officeStress.officeStress({'h':'14','m':'00','stress':'normal', 'height': '45%'}) }}#}
+          {#                                {{ officeStress.officeStress({'h':'15','m':'00','stress':'normal', 'height': '50%'}) }}#}
+          {#                                {{ officeStress.officeStress({'h':'16','m':'00','stress':'min', 'height': '20%'}) }}#}
+          {#                                {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}#}
+          {#                                {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}#}
+          {#                                {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}#}
+          {#                            </div>#}
+          {#                            <div class="office-stress__time">#}
+          {#                              <div class="office-stress__time-hours"> 10</div>#}
+          {#                              <div class="office-stress__time-hours"> 13 </div>#}
+          {#                              <div class="office-stress__time-hours"> 15 </div>#}
+          {#                              <div class="office-stress__time-hours"> 17 </div>#}
+          {#                              <div class="office-stress__time-hours">#}
+          {#                                20#}
+          {#                              </div>#}
+          {#                            </div>#}
+
+          {#                            <div class="office-stress__congestion">#}
+          {#                              <div class="office-stress__congestion-current-time">#}
+          {#                                12:54#}
+          {#                              </div>#}
+          {#                              <div class="office-stress__congestion-current">#}
+          {#                                Сейчас средняя загруженность#}
+          {#                              </div>#}
+          {#                            </div>#}
+
+          {#                              #}{##}{#            <div class="office-stress__time-minutes">#}
+          {#                                              {{ options.m }}#}
+          {#                                          </div>#}
+          {#                        </li>#}
+          {#                        <li class="offices__info-item offices__info-item_bordered">#}
+          {#                            <div class="offices__info-text">#}
+          {#                                адрес9#}
+          {#                            </div>#}
+          {#                        </li>#}
+          {#                        <li class="offices__info-item offices__info-item_bordered">#}
+          {#                            <div class="offices__info-text">#}
+          {#                                8 800 500 7065#}
+          {#                            </div>#}
+          {#                        </li>#}
+          {#                    </ul>#}
+          {#                    {{ Dropdown.dropdown(#}{#}#}
+          {#                        'mods': {'theme': 'bordered'},#}
+          {#                        'label': 'Построить Маршрут',#}
+          {#                        'name': 'routeType',#}
+          {#                        'items': [#}
+          {#                            {'title': 'На автомобиле', 'value': 'auto'},#}
+          {#                            {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+          {#                            {'title': 'Пешком', 'value': 'pedestrian'},#}
+          {#                            {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+          {#                        'class': 'form__field-group form__field-group_dropdown',#}
+          {#                        'attr': {'id': 'route-type1'},#}
+          {#                        'field': 'js-create-route' }) }}#}
+          {#                    <div class="map-wrap js-collapse-map-wrap"></div>#}
+          {#                </div>#}
+          {#            </div>#}
+
+          {#            <div class="collapse__item" data-coords="[55.76,37.58]">#}
+          {#              {{ addressUnderground.addressUnderground({ 'type': 'dark-blue' }) }}#}
+          {#              <div class="collapse__content">#}
+          {#                <ul class="offices__info">#}
+
+          {#                  <li  class="offices__info-item offices__info-item-timetable">#}
+          {#                    <div>#}
+          {#                      <div class="offices__info-title">Время работы с клиентами</div>#}
+          {#                      <div class="offices__info-text">#}
+          {#                        пн-пт: с 10:00 до 20:00 <br>#}
+          {#                        сб-вс: выходной#}
+          {#                      </div>#}
+          {#                    </div>#}
+          {#                    <div>#}
+          {#                      <div class="offices__info-title">Кассовое обслуживание</div>#}
+          {#                      <div class="offices__info-text">#}
+          {#                        пн-пт: с 10:00 до 20:00 <br>#}
+          {#                        сб-вс: выходной#}
+          {#                      </div>#}
+          {#                    </div>#}
+          {#                  </li>#}
+
+          {#                  <li class="offices__info-item">#}
+          {#                    <div class="offices__info-title offices__info-stress-title">Оплата ЖКХ, аренда ячейки, открытие металлического счета,#}
+          {#                      консультирование по ипотечному кредитованию</div>#}
+          {#                    <div class="office-stress-list">#}
+          {#                      {{ officeStress.officeStress({'h':'10','m':'00','stress':'min', 'height': '20%'}) }}#}
+          {#                      {{ officeStress.officeStress({'h':'11','m':'00','stress':'normal', 'height': '40%'}) }}#}
+          {#                      {{ officeStress.officeStress({'h':'12','m':'00','stress':'high', 'height': '100%'}) }}#}
+          {#                      {{ officeStress.officeStress({'h':'13','m':'00','stress':'normal', 'height': '50%'}) }}#}
+          {#                      {{ officeStress.officeStress({'h':'14','m':'00','stress':'normal', 'height': '45%'}) }}#}
+          {#                      {{ officeStress.officeStress({'h':'15','m':'00','stress':'normal', 'height': '50%'}) }}#}
+          {#                      {{ officeStress.officeStress({'h':'16','m':'00','stress':'min', 'height': '20%'}) }}#}
+          {#                      {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}#}
+          {#                      {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}#}
+          {#                      {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}#}
+          {#                      {{ officeStress.officeStress({'h':'20','m':'00','stress':'min', 'height': '20%'}) }}#}
+          {#                    </div>#}
+          {#                    <div class="office-stress__time">#}
+          {#                      <div class="office-stress__time-hours"> 10</div>#}
+          {#                      <div class="office-stress__time-hours"> 13 </div>#}
+          {#                      <div class="office-stress__time-hours"> 15 </div>#}
+          {#                      <div class="office-stress__time-hours"> 17 </div>#}
+          {#                      <div class="office-stress__time-hours">#}
+          {#                        20#}
+          {#                      </div>#}
+          {#                    </div>#}
+
+          {#                    <div class="office-stress__congestion">#}
+          {#                      <div class="office-stress__congestion-current-time">#}
+          {#                        12:54#}
+          {#                      </div>#}
+          {#                      <div class="office-stress__congestion-current">#}
+          {#                        Сейчас средняя загруженность#}
+          {#                      </div>#}
+          {#                    </div>#}
+
+          {#                  </li>#}
+          {#                  #}{#                        <li class="offices__info-item offices__info-item_bordered">#}
+          {#                  #}{#                            <div class="offices__info-text">#}
+          {#                  #}{#                                адрес9#}
+          {#                  #}{#                            </div>#}
+          {#                  #}{#                        </li>#}
+          {#                  #}{#                        <li class="offices__info-item offices__info-item_bordered">#}
+          {#                  #}{#                            <div class="offices__info-text">#}
+          {#                  #}{#                                8 800 500 7065#}
+          {#                  #}{#                            </div>#}
+          {#                  #}{#                        </li>#}
+          {#                </ul>#}
+          {#                    {{ Dropdown.dropdown(#}{#}#}
+          {#                        'mods': {'theme': 'bordered'},#}
+          {#                        'label': 'Построить Маршрут',#}
+          {#                        'name': 'routeType',#}
+          {#                        'items': [#}
+          {#                            {'title': 'На автомобиле', 'value': 'auto'},#}
+          {#                            {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+          {#                            {'title': 'Пешком', 'value': 'pedestrian'},#}
+          {#                            {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+          {#                        'class': 'form__field-group form__field-group_dropdown',#}
+          {#                        'attr': {'id': 'route-type2'},#}
+          {#                        'field': 'js-create-route' }) }}#}
+
+          {#                    <div class="map-wrap js-collapse-map-wrap"></div>#}
+          {#                </div>#}
+          {#            </div>#}
+
+          {#            <div class="collapse__item" data-coords="[55.73,37.57]">#}
+          {#              {{ addressUnderground.addressUnderground({ 'type': 'yellow' }) }}#}
+          {#              <div class="collapse__content">#}
+          {#                <ul class="offices__info">#}
+
+          {#                  <li  class="offices__info-item offices__info-item-timetable">#}
+          {#                    <div>#}
+          {#                      <div class="offices__info-title">Время работы с клиентами</div>#}
+          {#                      <div class="offices__info-text">#}
+          {#                        пн-пт: с 10:00 до 20:00 <br>#}
+          {#                        сб-вс: выходной#}
+          {#                      </div>#}
+          {#                    </div>#}
+          {#                    <div>#}
+          {#                      <div class="offices__info-title">Кассовое обслуживание</div>#}
+          {#                      <div class="offices__info-text">#}
+          {#                        пн-пт: с 10:00 до 20:00 <br>#}
+          {#                        сб-вс: выходной#}
+          {#                      </div>#}
+          {#                    </div>#}
+          {#                  </li>#}
+
+          {#                  <li class="offices__info-item">#}
+          {#                    <div class="offices__info-title offices__info-stress-title">Оплата ЖКХ, аренда ячейки, открытие металлического счета,#}
+          {#                      консультирование по ипотечному кредитованию</div>#}
+          {#                    <div class="office-stress-list">#}
+          {#                      {{ officeStress.officeStress({'h':'10','m':'00','stress':'min', 'height': '20%'}) }}#}
+          {#                      {{ officeStress.officeStress({'h':'11','m':'00','stress':'normal', 'height': '40%'}) }}#}
+          {#                      {{ officeStress.officeStress({'h':'12','m':'00','stress':'high', 'height': '100%'}) }}#}
+          {#                      {{ officeStress.officeStress({'h':'13','m':'00','stress':'normal', 'height': '50%'}) }}#}
+          {#                      {{ officeStress.officeStress({'h':'14','m':'00','stress':'normal', 'height': '45%'}) }}#}
+          {#                      {{ officeStress.officeStress({'h':'15','m':'00','stress':'normal', 'height': '50%'}) }}#}
+          {#                      {{ officeStress.officeStress({'h':'16','m':'00','stress':'min', 'height': '20%'}) }}#}
+          {#                      {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}#}
+          {#                      {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}#}
+          {#                      {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}#}
+          {#                      {{ officeStress.officeStress({'h':'20','m':'00','stress':'min', 'height': '20%'}) }}#}
+          {#                    </div>#}
+          {#                    <div class="office-stress__time">#}
+          {#                      <div class="office-stress__time-hours"> 10</div>#}
+          {#                      <div class="office-stress__time-hours"> 13 </div>#}
+          {#                      <div class="office-stress__time-hours"> 15 </div>#}
+          {#                      <div class="office-stress__time-hours"> 17 </div>#}
+          {#                      <div class="office-stress__time-hours">#}
+          {#                        20#}
+          {#                      </div>#}
+          {#                    </div>#}
+
+          {#                    <div class="office-stress__congestion">#}
+          {#                      <div class="office-stress__congestion-current-time">#}
+          {#                        12:54#}
+          {#                      </div>#}
+          {#                      <div class="office-stress__congestion-current">#}
+          {#                        Сейчас средняя загруженность#}
+          {#                      </div>#}
+          {#                    </div>#}
+          {#                  </li>#}
+          {#                  #}{#                        <li class="offices__info-item offices__info-item_bordered">#}
+          {#                  #}{#                            <div class="offices__info-text">#}
+          {#                  #}{#                                адрес9#}
+          {#                  #}{#                            </div>#}
+          {#                  #}{#                        </li>#}
+          {#                  #}{#                        <li class="offices__info-item offices__info-item_bordered">#}
+          {#                  #}{#                            <div class="offices__info-text">#}
+          {#                  #}{#                                8 800 500 7065#}
+          {#                  #}{#                            </div>#}
+          {#                  #}{#                        </li>#}
+          {#                </ul>#}
+          {#                    {{ Dropdown.dropdown(#}{#}#}
+          {#                        'mods': {'theme': 'bordered'},#}
+          {#                        'label': 'Построить Маршрут',#}
+          {#                        'name': 'routeType',#}
+          {#                        'items': [#}
+          {#                            {'title': 'На автомобиле', 'value': 'auto'},#}
+          {#                            {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+          {#                            {'title': 'Пешком', 'value': 'pedestrian'},#}
+          {#                            {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+          {#                        'class': 'form__field-group form__field-group_dropdown',#}
+          {#                        'attr': {'id': 'route-type3'},#}
+          {#                        'field': 'js-create-route' }) }}#}
+          {#                    <div class="map-wrap js-collapse-map-wrap"></div>#}
+          {#                </div>#}
+          {#            </div>#}
+
+          <div class="collapse__item" data-coords="[55.73,37.56]">
+            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'title':'ул. Валовая, 2-4/44', 'metro': 'Тульская'}) }}
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li  class="offices__info-item offices__info-item-timetable">
+                  <div>
+                    <div class="offices__info-title">Время работы с клиентами</div>
+                    <div class="offices__info-text">
+                      пн-пт: с 10:00 до 20:00 <br>
+                      сб-вс: выходной
+                    </div>
+                  </div>
+                  <div>
+                    <div class="offices__info-title">Кассовое обслуживание</div>
+                    <div class="offices__info-text">
+                      пн-пт: с 10:00 до 20:00 <br>
+                      сб-вс: выходной
+                    </div>
+                  </div>
+                </li>
+
+                <li class="offices__info-item">
+                  <div class="offices__info-title offices__info-stress-title">Оплата ЖКХ, аренда ячейки, открытие металлического счета,
+                    консультирование по ипотечному кредитованию</div>
+                  <div class="office-stress-list">
+                    {{ officeStress.officeStress({'h':'10','m':'00','stress':'min', 'height': '20%'}) }}
+                    {{ officeStress.officeStress({'h':'11','m':'00','stress':'normal', 'height': '40%'}) }}
+                    {{ officeStress.officeStress({'h':'12','m':'00','stress':'high', 'height': '100%'}) }}
+                    {{ officeStress.officeStress({'h':'13','m':'00','stress':'normal', 'height': '50%'}) }}
+                    {{ officeStress.officeStress({'h':'14','m':'00','stress':'normal', 'height': '45%'}) }}
+                    {{ officeStress.officeStress({'h':'15','m':'00','stress':'normal', 'height': '50%'}) }}
+                    {{ officeStress.officeStress({'h':'16','m':'00','stress':'min', 'height': '20%'}) }}
+                    {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
+                    {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
+                    {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
+                  </div>
+                  <div class="office-stress__time">
+                    <div class="office-stress__time-hours"> 10</div>
+                    <div class="office-stress__time-hours"> 13 </div>
+                    <div class="office-stress__time-hours"> 15 </div>
+                    <div class="office-stress__time-hours"> 17 </div>
+                    <div class="office-stress__time-hours">
+                      20
+                    </div>
+                  </div>
+
+                  <div class="office-stress__congestion">
+                    <div class="office-stress__congestion-current-time">
+                      12:54
+                    </div>
+                    <div class="office-stress__congestion-current">
+                      Сейчас средняя загруженность
+                    </div>
+                  </div>
+                </li>
+                {#                        <li class="offices__info-item offices__info-item_bordered">#}
+                {#                                              <div class="offices__info-text">#}
+                {#                                                  адрес9#}
+                {#                                              </div>#}
+                {#                                          </li>#}
+                {#                                          <li class="offices__info-item offices__info-item_bordered">#}
+                {#                                              <div class="offices__info-text">#}
+                {#                                                  8 800 500 7065#}
+                {#                                              </div>#}
+                {#                                          </li>#}
+              </ul>
+              {#                    {{ Dropdown.dropdown({#}
+              {#                        'mods': {'theme': 'bordered'},#}
+              {#                        'label': 'Построить Маршрут',#}
+              {#                        'name': 'routeType',#}
+              {#                        'items': [#}
+              {#                            {'title': 'На автомобиле', 'value': 'auto'},#}
+              {#                            {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+              {#                            {'title': 'Пешком', 'value': 'pedestrian'},#}
+              {#                            {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+              {#                        'class': 'form__field-group form__field-group_dropdown',#}
+              {#                        'attr': {'id': 'route-type4'},#}
+              {#                        'field': 'js-create-route' }) }}#}
+
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[55.78,37.56]">
+            {{ addressUnderground.addressUnderground({ 'type': 'green', 'title':'ул. Мирная, 2-4/44', 'metro': 'Проспект Мира' }) }}
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li  class="offices__info-item offices__info-item-timetable">
+                  <div>
+                    <div class="offices__info-title">Время работы с клиентами</div>
+                    <div class="offices__info-text">
+                      пн-пт: с 10:00 до 20:00 <br>
+                      сб-вс: выходной
+                    </div>
+                  </div>
+                  <div>
+                    <div class="offices__info-title">Кассовое обслуживание</div>
+                    <div class="offices__info-text">
+                      пн-пт: с 10:00 до 20:00 <br>
+                      сб-вс: выходной
+                    </div>
+                  </div>
+                </li>
+
+                <li class="offices__info-item">
+                  <div class="offices__info-title offices__info-stress-title">Оплата ЖКХ, аренда ячейки, открытие металлического счета,
+                    консультирование по ипотечному кредитованию</div>
+                  <div class="office-stress-list">
+                    {{ officeStress.officeStress({'h':'10','m':'00','stress':'min', 'height': '20%'}) }}
+                    {{ officeStress.officeStress({'h':'11','m':'00','stress':'normal', 'height': '40%'}) }}
+                    {{ officeStress.officeStress({'h':'12','m':'00','stress':'high', 'height': '100%'}) }}
+                    {{ officeStress.officeStress({'h':'13','m':'00','stress':'normal', 'height': '50%'}) }}
+                    {{ officeStress.officeStress({'h':'14','m':'00','stress':'normal', 'height': '45%'}) }}
+                    {{ officeStress.officeStress({'h':'15','m':'00','stress':'normal', 'height': '50%'}) }}
+                    {{ officeStress.officeStress({'h':'16','m':'00','stress':'min', 'height': '20%'}) }}
+                    {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
+                    {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
+                    {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
+                  </div>
+                  <div class="office-stress__time">
+                    <div class="office-stress__time-hours"> 10</div>
+                    <div class="office-stress__time-hours"> 13 </div>
+                    <div class="office-stress__time-hours"> 15 </div>
+                    <div class="office-stress__time-hours"> 17 </div>
+                    <div class="office-stress__time-hours">
+                      20
+                    </div>
+                  </div>
+                  <div class="office-stress__congestion">
+                    <div class="office-stress__congestion-current-time">
+                      12:54
+                    </div>
+                    <div class="office-stress__congestion-current">
+                      Сейчас средняя загруженность
+                    </div>
+                  </div>
+                </li>
+                {#                        <li class="offices__info-item offices__info-item_bordered">#}
+                {#                            <div class="offices__info-text">#}
+                {#                                адрес9#}
+                {#                            </div>#}
+                {#                        </li>#}
+                {#                        <li class="offices__info-item offices__info-item_bordered">#}
+                {#                            <div class="offices__info-text">#}
+                {#                                8 800 500 7065#}
+                {#                            </div>#}
+                {#                        </li>#}
+              </ul>
+              {#                    {{ Dropdown.dropdown({#}
+              {#                        'mods': {'theme': 'bordered'},#}
+              {#                        'label': 'Построить Маршрут',#}
+              {#                        'name': 'routeType',#}
+              {#                        'items': [#}
+              {#                            {'title': 'На автомобиле', 'value': 'auto'},#}
+              {#                            {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+              {#                            {'title': 'Пешком', 'value': 'pedestrian'},#}
+              {#                            {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+              {#                        'class': 'form__field-group form__field-group_dropdown',#}
+              {#                        'attr': {'id': 'route-type5'},#}
+              {#                        'field': 'js-create-route' }) }}#}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[55.72,37.54]">
+            {{ addressUnderground.addressUnderground({ 'type': 'brown', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li  class="offices__info-item offices__info-item-timetable">
+                  <div>
+                    <div class="offices__info-title">Время работы с клиентами</div>
+                    <div class="offices__info-text">
+                      пн-пт: с 10:00 до 20:00 <br>
+                      сб-вс: выходной
+                    </div>
+                  </div>
+                  <div>
+                    <div class="offices__info-title">Кассовое обслуживание</div>
+                    <div class="offices__info-text">
+                      пн-пт: с 10:00 до 20:00 <br>
+                      сб-вс: выходной
+                    </div>
+                  </div>
+                </li>
+
+                <li class="offices__info-item">
+                  <div class="offices__info-title offices__info-stress-title">Оплата ЖКХ, аренда ячейки, открытие металлического счета,
+                    консультирование по ипотечному кредитованию</div>
+                  <div class="office-stress-list">
+                    {{ officeStress.officeStress({'h':'10','m':'00','stress':'min', 'height': '20%'}) }}
+                    {{ officeStress.officeStress({'h':'11','m':'00','stress':'normal', 'height': '40%'}) }}
+                    {{ officeStress.officeStress({'h':'12','m':'00','stress':'high', 'height': '100%'}) }}
+                    {{ officeStress.officeStress({'h':'13','m':'00','stress':'normal', 'height': '50%'}) }}
+                    {{ officeStress.officeStress({'h':'14','m':'00','stress':'normal', 'height': '45%'}) }}
+                    {{ officeStress.officeStress({'h':'15','m':'00','stress':'normal', 'height': '50%'}) }}
+                    {{ officeStress.officeStress({'h':'16','m':'00','stress':'min', 'height': '20%'}) }}
+                    {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
+                    {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
+                    {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
+                  </div>
+                  <div class="office-stress__time">
+                    <div class="office-stress__time-hours"> 10</div>
+                    <div class="office-stress__time-hours"> 13 </div>
+                    <div class="office-stress__time-hours"> 15 </div>
+                    <div class="office-stress__time-hours"> 17 </div>
+                    <div class="office-stress__time-hours">
+                      20
+                    </div>
+                  </div>
+                  <div class="office-stress__congestion">
+                    <div class="office-stress__congestion-current-time">
+                      12:54
+                    </div>
+                    <div class="office-stress__congestion-current">
+                      Сейчас средняя загруженность
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              {#                    {{ Dropdown.dropdown({#}
+              {#                        'mods': {'theme': 'bordered'},#}
+              {#                        'label': 'Построить Маршрут',#}
+              {#                        'name': 'routeType',#}
+              {#                        'items': [#}
+              {#                            {'title': 'На автомобиле', 'value': 'auto'},#}
+              {#                            {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+              {#                            {'title': 'Пешком', 'value': 'pedestrian'},#}
+              {#                            {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+              {#                        'class': 'form__field-group form__field-group_dropdown',#}
+              {#                        'attr': {'id': 'route-type6'},#}
+              {#                        'field': 'js-create-route' }) }}#}
+
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="collapse offices__collapse" data-city="35" data-id="offices-tab">
+
+          <div class="collapse__item" data-coords="[45.037538,38.967756]">
+            {{ addressUnderground.addressUnderground({ 'type': 'red', 'title':'ул. Сормовская , 2-4/44', 'metro': 'Великая' }) }}
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li  class="offices__info-item offices__info-item-timetable">
+                  <div>
+                    <div class="offices__info-title">Время работы с клиентами</div>
+                    <div class="offices__info-text">
+                      пн-пт: с 10:00 до 20:00 <br>
+                      сб-вс: выходной
+                    </div>
+                  </div>
+                  <div>
+                    <div class="offices__info-title">Кассовое обслуживание</div>
+                    <div class="offices__info-text">
+                      пн-пт: с 10:00 до 20:00 <br>
+                      сб-вс: выходной
+                    </div>
+                  </div>
+                </li>
+
+                <li class="offices__info-item">
+                  <div class="offices__info-title offices__info-stress-title">Оплата ЖКХ, аренда ячейки, открытие металлического счета,
+                    консультирование по ипотечному кредитованию</div>
+                  <div class="office-stress-list">
+                    {{ officeStress.officeStress({'h':'10','m':'00','stress':'min', 'height': '20%'}) }}
+                    {{ officeStress.officeStress({'h':'11','m':'00','stress':'normal', 'height': '40%'}) }}
+                    {{ officeStress.officeStress({'h':'12','m':'00','stress':'high', 'height': '100%'}) }}
+                    {{ officeStress.officeStress({'h':'13','m':'00','stress':'normal', 'height': '50%'}) }}
+                    {{ officeStress.officeStress({'h':'14','m':'00','stress':'normal', 'height': '45%'}) }}
+                    {{ officeStress.officeStress({'h':'15','m':'00','stress':'normal', 'height': '50%'}) }}
+                    {{ officeStress.officeStress({'h':'16','m':'00','stress':'min', 'height': '20%'}) }}
+                    {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
+                    {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
+                    {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
+                  </div>
+                  <div class="office-stress__time">
+                    <div class="office-stress__time-hours"> 10</div>
+                    <div class="office-stress__time-hours"> 13 </div>
+                    <div class="office-stress__time-hours"> 15 </div>
+                    <div class="office-stress__time-hours"> 17 </div>
+                    <div class="office-stress__time-hours">
+                      20
+                    </div>
+                  </div>
+                  <div class="office-stress__congestion">
+                    <div class="office-stress__congestion-current-time">
+                      12:54
+                    </div>
+                    <div class="office-stress__congestion-current">
+                      Сейчас средняя загруженность
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              {#                {{ Dropdown.dropdown({#}
+              {#                    'mods': {'theme': 'bordered'},#}
+              {#                    'label': 'Построить Маршрут',#}
+              {#                    'name': 'routeType',#}
+              {#                    'items': [#}
+              {#                        {'title': 'На автомобиле', 'value': 'auto'},#}
+              {#                        {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+              {#                        {'title': 'Пешком', 'value': 'pedestrian'},#}
+              {#                        {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+              {#                    'class': 'form__field-group form__field-group_dropdown',#}
+              {#                    'attr': {'id': 'route-type7'},#}
+              {#                    'field': 'js-create-route' }) }}#}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[45.060537,39.022001]">
+            {{ addressUnderground.addressUnderground({ 'type': 'fenny', 'title':'ул. Тюляева, 2-4/44', 'metro': 'Тульская' }) }}
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li  class="offices__info-item offices__info-item-timetable">
+                  <div>
+                    <div class="offices__info-title">Время работы с клиентами</div>
+                    <div class="offices__info-text">
+                      пн-пт: с 10:00 до 20:00 <br>
+                      сб-вс: выходной
+                    </div>
+                  </div>
+                  <div>
+                    <div class="offices__info-title">Кассовое обслуживание</div>
+                    <div class="offices__info-text">
+                      пн-пт: с 10:00 до 20:00 <br>
+                      сб-вс: выходной
+                    </div>
+                  </div>
+                </li>
+
+                <li class="offices__info-item">
+                  <div class="offices__info-title offices__info-stress-title">Оплата ЖКХ, аренда ячейки, открытие металлического счета,
+                    консультирование по ипотечному кредитованию</div>
+                  <div class="office-stress-list">
+                    {{ officeStress.officeStress({'h':'10','m':'00','stress':'min', 'height': '20%'}) }}
+                    {{ officeStress.officeStress({'h':'11','m':'00','stress':'normal', 'height': '40%'}) }}
+                    {{ officeStress.officeStress({'h':'12','m':'00','stress':'high', 'height': '100%'}) }}
+                    {{ officeStress.officeStress({'h':'13','m':'00','stress':'normal', 'height': '50%'}) }}
+                    {{ officeStress.officeStress({'h':'14','m':'00','stress':'normal', 'height': '45%'}) }}
+                    {{ officeStress.officeStress({'h':'15','m':'00','stress':'normal', 'height': '50%'}) }}
+                    {{ officeStress.officeStress({'h':'16','m':'00','stress':'min', 'height': '20%'}) }}
+                    {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
+                    {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
+                    {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
+                  </div>
+                  <div class="office-stress__time">
+                    <div class="office-stress__time-hours"> 10</div>
+                    <div class="office-stress__time-hours"> 13 </div>
+                    <div class="office-stress__time-hours"> 15 </div>
+                    <div class="office-stress__time-hours"> 17 </div>
+                    <div class="office-stress__time-hours">
+                      20
+                    </div>
+                  </div>
+                  <div class="office-stress__congestion">
+                    <div class="office-stress__congestion-current-time">
+                      12:54
+                    </div>
+                    <div class="office-stress__congestion-current">
+                      Сейчас средняя загруженность
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              {#                {{ Dropdown.dropdown({#}
+              {#                    'mods': {'theme': 'bordered'},#}
+              {#                    'label': 'Построить Маршрут',#}
+              {#                    'name': 'routeType',#}
+              {#                    'items': [#}
+              {#                        {'title': 'На автомобиле', 'value': 'auto'},#}
+              {#                        {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+              {#                        {'title': 'Пешком', 'value': 'pedestrian'},#}
+              {#                        {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+              {#                    'class': 'form__field-group form__field-group_dropdown',#}
+              {#                    'attr': {'id': 'route-type8'},#}
+              {#                    'field': 'js-create-route' }) }}#}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[45.061511,38.962091]">
+            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li  class="offices__info-item offices__info-item-timetable">
+                  <div>
+                    <div class="offices__info-title">Время работы с клиентами</div>
+                    <div class="offices__info-text">
+                      пн-пт: с 10:00 до 20:00 <br>
+                      сб-вс: выходной
+                    </div>
+                  </div>
+                  <div>
+                    <div class="offices__info-title">Кассовое обслуживание</div>
+                    <div class="offices__info-text">
+                      пн-пт: с 10:00 до 20:00 <br>
+                      сб-вс: выходной
+                    </div>
+                  </div>
+                </li>
+
+                <li class="offices__info-item">
+                  <div class="offices__info-title offices__info-stress-title">Оплата ЖКХ, аренда ячейки, открытие металлического счета,
+                    консультирование по ипотечному кредитованию</div>
+                  <div class="office-stress-list">
+                    {{ officeStress.officeStress({'h':'10','m':'00','stress':'min', 'height': '20%'}) }}
+                    {{ officeStress.officeStress({'h':'11','m':'00','stress':'normal', 'height': '40%'}) }}
+                    {{ officeStress.officeStress({'h':'12','m':'00','stress':'high', 'height': '100%'}) }}
+                    {{ officeStress.officeStress({'h':'13','m':'00','stress':'normal', 'height': '50%'}) }}
+                    {{ officeStress.officeStress({'h':'14','m':'00','stress':'normal', 'height': '45%'}) }}
+                    {{ officeStress.officeStress({'h':'15','m':'00','stress':'normal', 'height': '50%'}) }}
+                    {{ officeStress.officeStress({'h':'16','m':'00','stress':'min', 'height': '20%'}) }}
+                    {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
+                    {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
+                    {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
+                  </div>
+                  <div class="office-stress__time">
+                    <div class="office-stress__time-hours"> 10</div>
+                    <div class="office-stress__time-hours"> 13 </div>
+                    <div class="office-stress__time-hours"> 15 </div>
+                    <div class="office-stress__time-hours"> 17 </div>
+                    <div class="office-stress__time-hours">
+                      20
+                    </div>
+                  </div>
+                  <div class="office-stress__congestion">
+                    <div class="office-stress__congestion-current-time">
+                      12:54
+                    </div>
+                    <div class="office-stress__congestion-current">
+                      Сейчас средняя загруженность
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              {#                {{ Dropdown.dropdown({#}
+              {#                    'mods': {'theme': 'bordered'},#}
+              {#                    'label': 'Построить Маршрут',#}
+              {#                    'name': 'routeType',#}
+              {#                    'items': [#}
+              {#                        {'title': 'На автомобиле', 'value': 'auto'},#}
+              {#                        {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+              {#                        {'title': 'Пешком', 'value': 'pedestrian'},#}
+              {#                        {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+              {#                    'class': 'form__field-group form__field-group_dropdown',#}
+              {#                    'attr': {'id': 'route-type9'},#}
+              {#                    'field': 'js-create-route' }) }}#}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[45.030114,38.996424]">
+            {{ addressUnderground.addressUnderground({ 'type': 'orange', 'title':'ул. Гогена, 2-4/44', 'metro': 'Гогена' }) }}
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li  class="offices__info-item offices__info-item-timetable">
+                  <div>
+                    <div class="offices__info-title">Время работы с клиентами</div>
+                    <div class="offices__info-text">
+                      пн-пт: с 10:00 до 20:00 <br>
+                      сб-вс: выходной
+                    </div>
+                  </div>
+                  <div>
+                    <div class="offices__info-title">Кассовое обслуживание</div>
+                    <div class="offices__info-text">
+                      пн-пт: с 10:00 до 20:00 <br>
+                      сб-вс: выходной
+                    </div>
+                  </div>
+                </li>
+
+                <li class="offices__info-item">
+                  <div class="offices__info-title offices__info-stress-title">Оплата ЖКХ, аренда ячейки, открытие металлического счета,
+                    консультирование по ипотечному кредитованию</div>
+                  <div class="office-stress-list">
+                    {{ officeStress.officeStress({'h':'10','m':'00','stress':'min', 'height': '20%'}) }}
+                    {{ officeStress.officeStress({'h':'11','m':'00','stress':'normal', 'height': '40%'}) }}
+                    {{ officeStress.officeStress({'h':'12','m':'00','stress':'high', 'height': '100%'}) }}
+                    {{ officeStress.officeStress({'h':'13','m':'00','stress':'normal', 'height': '50%'}) }}
+                    {{ officeStress.officeStress({'h':'14','m':'00','stress':'normal', 'height': '45%'}) }}
+                    {{ officeStress.officeStress({'h':'15','m':'00','stress':'normal', 'height': '50%'}) }}
+                    {{ officeStress.officeStress({'h':'16','m':'00','stress':'min', 'height': '20%'}) }}
+                    {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
+                    {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
+                    {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
+                  </div>
+                  <div class="office-stress__time">
+                    <div class="office-stress__time-hours"> 10</div>
+                    <div class="office-stress__time-hours"> 13 </div>
+                    <div class="office-stress__time-hours"> 15 </div>
+                    <div class="office-stress__time-hours"> 17 </div>
+                    <div class="office-stress__time-hours">
+                      20
+                    </div>
+                  </div>
+                  <div class="office-stress__congestion">
+                    <div class="office-stress__congestion-current-time">
+                      12:54
+                    </div>
+                    <div class="office-stress__congestion-current">
+                      Сейчас средняя загруженность
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              {#                {{ Dropdown.dropdown({#}
+              {#                    'mods': {'theme': 'bordered'},#}
+              {#                    'label': 'Построить Маршрут',#}
+              {#                    'name': 'routeType',#}
+              {#                    'items': [#}
+              {#                        {'title': 'На автомобиле', 'value': 'auto'},#}
+              {#                        {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+              {#                        {'title': 'Пешком', 'value': 'pedestrian'},#}
+              {#                        {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+              {#                    'class': 'form__field-group form__field-group_dropdown',#}
+              {#                    'attr': {'id': 'route-type10'},#}
+              {#                    'field': 'js-create-route' }) }}#}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[45.054697,39.010843]">
+            {{ addressUnderground.addressUnderground({ 'type': 'yellow', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li  class="offices__info-item offices__info-item-timetable">
+                  <div>
+                    <div class="offices__info-title">Время работы с клиентами</div>
+                    <div class="offices__info-text">
+                      пн-пт: с 10:00 до 20:00 <br>
+                      сб-вс: выходной
+                    </div>
+                  </div>
+                  <div>
+                    <div class="offices__info-title">Кассовое обслуживание</div>
+                    <div class="offices__info-text">
+                      пн-пт: с 10:00 до 20:00 <br>
+                      сб-вс: выходной
+                    </div>
+                  </div>
+                </li>
+
+                <li class="offices__info-item">
+                  <div class="offices__info-title offices__info-stress-title">Оплата ЖКХ, аренда ячейки, открытие металлического счета,
+                    консультирование по ипотечному кредитованию</div>
+                  <div class="office-stress-list">
+                    {{ officeStress.officeStress({'h':'10','m':'00','stress':'min', 'height': '20%'}) }}
+                    {{ officeStress.officeStress({'h':'11','m':'00','stress':'normal', 'height': '40%'}) }}
+                    {{ officeStress.officeStress({'h':'12','m':'00','stress':'high', 'height': '100%'}) }}
+                    {{ officeStress.officeStress({'h':'13','m':'00','stress':'normal', 'height': '50%'}) }}
+                    {{ officeStress.officeStress({'h':'14','m':'00','stress':'normal', 'height': '45%'}) }}
+                    {{ officeStress.officeStress({'h':'15','m':'00','stress':'normal', 'height': '50%'}) }}
+                    {{ officeStress.officeStress({'h':'16','m':'00','stress':'min', 'height': '20%'}) }}
+                    {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
+                    {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
+                    {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
+                  </div>
+                  <div class="office-stress__time">
+                    <div class="office-stress__time-hours"> 10</div>
+                    <div class="office-stress__time-hours"> 13 </div>
+                    <div class="office-stress__time-hours"> 15 </div>
+                    <div class="office-stress__time-hours"> 17 </div>
+                    <div class="office-stress__time-hours">
+                      20
+                    </div>
+                  </div>
+                  <div class="office-stress__congestion">
+                    <div class="office-stress__congestion-current-time">
+                      12:54
+                    </div>
+                    <div class="office-stress__congestion-current">
+                      Сейчас средняя загруженность
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              {#                {{ Dropdown.dropdown({#}
+              {#                    'mods': {'theme': 'bordered'},#}
+              {#                    'label': 'Построить Маршрут',#}
+              {#                    'name': 'routeType',#}
+              {#                    'items': [#}
+              {#                        {'title': 'На автомобиле', 'value': 'auto'},#}
+              {#                        {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+              {#                        {'title': 'Пешком', 'value': 'pedestrian'},#}
+              {#                        {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+              {#                    'class': 'form__field-group form__field-group_dropdown',#}
+              {#                    'attr': {'id': 'route-type12'},#}
+              {#                    'field': 'js-create-route' }) }}#}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[45.019887,38.967241]">
+            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li  class="offices__info-item offices__info-item-timetable">
+                  <div>
+                    <div class="offices__info-title">Время работы с клиентами</div>
+                    <div class="offices__info-text">
+                      пн-пт: с 10:00 до 20:00 <br>
+                      сб-вс: выходной
+                    </div>
+                  </div>
+                  <div>
+                    <div class="offices__info-title">Кассовое обслуживание</div>
+                    <div class="offices__info-text">
+                      пн-пт: с 10:00 до 20:00 <br>
+                      сб-вс: выходной
+                    </div>
+                  </div>
+                </li>
+
+                <li class="offices__info-item">
+                  <div class="offices__info-title offices__info-stress-title">Оплата ЖКХ, аренда ячейки, открытие металлического счета,
+                    консультирование по ипотечному кредитованию</div>
+                  <div class="office-stress-list">
+                    {{ officeStress.officeStress({'h':'10','m':'00','stress':'min', 'height': '20%'}) }}
+                    {{ officeStress.officeStress({'h':'11','m':'00','stress':'normal', 'height': '40%'}) }}
+                    {{ officeStress.officeStress({'h':'12','m':'00','stress':'high', 'height': '100%'}) }}
+                    {{ officeStress.officeStress({'h':'13','m':'00','stress':'normal', 'height': '50%'}) }}
+                    {{ officeStress.officeStress({'h':'14','m':'00','stress':'normal', 'height': '45%'}) }}
+                    {{ officeStress.officeStress({'h':'15','m':'00','stress':'normal', 'height': '50%'}) }}
+                    {{ officeStress.officeStress({'h':'16','m':'00','stress':'min', 'height': '20%'}) }}
+                    {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
+                    {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
+                    {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
+                  </div>
+                  <div class="office-stress__time">
+                    <div class="office-stress__time-hours"> 10</div>
+                    <div class="office-stress__time-hours"> 13 </div>
+                    <div class="office-stress__time-hours"> 15 </div>
+                    <div class="office-stress__time-hours"> 17 </div>
+                    <div class="office-stress__time-hours">
+                      20
+                    </div>
+                  </div>
+                  <div class="office-stress__congestion">
+                    <div class="office-stress__congestion-current-time">
+                      12:54
+                    </div>
+                    <div class="office-stress__congestion-current">
+                      Сейчас средняя загруженность
+                    </div>
+                  </div>
+                </li>
+              </ul>
+              {#                {{ Dropdown.dropdown({#}
+              {#                    'mods': {'theme': 'bordered'},#}
+              {#                    'label': 'Построить Маршрут',#}
+              {#                    'name': 'routeType',#}
+              {#                    'items': [#}
+              {#                        {'title': 'На автомобиле', 'value': 'auto'},#}
+              {#                        {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+              {#                        {'title': 'Пешком', 'value': 'pedestrian'},#}
+              {#                        {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+              {#                    'class': 'form__field-group form__field-group_dropdown',#}
+              {#                    'attr': {'id': 'route-type13'},#}
+              {#                    'field': 'js-create-route' }) }}#}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="atm-tab" class="offices__tabs-item tabs__item js-tab state_invisible">
+        <div class="collapse offices__collapse" data-city="213" data-id="atm-tab">
+
+          <div class="collapse__item" data-coords="[55.76,37.587]">
+            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'time', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title offices__info-stress-title">
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
+                </li>
+                <li class="offices__info-item offices__info-item-atm">
+                  <div class="offices__info-text">
+                    Прием валюты: ₽ $ €
+                  </div>
+                  <div class="offices__info-text">
+                    Выдача валюты: ₽ $
+                  </div>
+                </li>
+              </ul>
+              {#                {{ Dropdown.dropdown({#}
+              {#                    'mods': {'theme': 'bordered'},#}
+              {#                    'label': 'Построить Маршрут',#}
+              {#                    'name': 'routeType',#}
+              {#                    'items': [#}
+              {#                        {'title': 'На автомобиле', 'value': 'auto'},#}
+              {#                        {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+              {#                        {'title': 'Пешком', 'value': 'pedestrian'},#}
+              {#                        {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+              {#                    'class': 'form__field-group form__field-group_dropdown',#}
+              {#                    'attr': {'id': 'route-type14'},#}
+              {#                    'field': 'js-create-route' }) }}#}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[55.747,37.57]">
+            {{ addressUnderground.addressUnderground({ 'type': 'red', 'atm':'always', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title offices__info-stress-title">
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
+                </li>
+                <li class="offices__info-item offices__info-item-atm">
+                  <div class="offices__info-text">
+                    Прием валюты: ₽ $ €
+                  </div>
+                  <div class="offices__info-text">
+                    Выдача валюты: ₽ $
+                  </div>
+                </li>
+              </ul>
+              {#                {{ Dropdown.dropdown({#}
+              {#                    'mods': {'theme': 'bordered'},#}
+              {#                    'label': 'Построить Маршрут',#}
+              {#                    'name': 'routeType',#}
+              {#                    'items': [#}
+              {#                        {'title': 'На автомобиле', 'value': 'auto'},#}
+              {#                        {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+              {#                        {'title': 'Пешком', 'value': 'pedestrian'},#}
+              {#                        {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+              {#                    'class': 'form__field-group form__field-group_dropdown',#}
+              {#                    'attr': {'id': 'route-type15'},#}
+              {#                    'field': 'js-create-route' }) }}#}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[55.77,37.48]">
+            {{ addressUnderground.addressUnderground({ 'type': 'pink', 'atm':'time', 'title':'ул. Мира, 2-4/44', 'metro': 'Таганская' }) }}
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title offices__info-stress-title">
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
+                </li>
+                <li class="offices__info-item offices__info-item-atm">
+                  <div class="offices__info-text">
+                    Прием валюты: ₽ $ €
+                  </div>
+                  <div class="offices__info-text">
+                    Выдача валюты: ₽ $
+                  </div>
+                </li>
+              </ul>
+              {#                {{ Dropdown.dropdown({#}
+              {#                    'mods': {'theme': 'bordered'},#}
+              {#                    'label': 'Построить Маршрут',#}
+              {#                    'name': 'routeType',#}
+              {#                    'items': [#}
+              {#                        {'title': 'На автомобиле', 'value': 'auto'},#}
+              {#                        {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+              {#                        {'title': 'Пешком', 'value': 'pedestrian'},#}
+              {#                        {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+              {#                    'class': 'form__field-group form__field-group_dropdown',#}
+              {#                    'attr': {'id': 'route-type16'},#}
+              {#                    'field': 'js-create-route' }) }}#}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[55.76,37.57]">
+            {{ addressUnderground.addressUnderground({ 'type': 'red', 'atm':'time', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title offices__info-stress-title">
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
+                </li>
+                <li class="offices__info-item offices__info-item-atm">
+                  <div class="offices__info-text">
+                    Прием валюты: ₽ $ €
+                  </div>
+                  <div class="offices__info-text">
+                    Выдача валюты: ₽ $
+                  </div>
+                </li>
+              </ul>
+              {#                {{ Dropdown.dropdown({#}
+              {#                    'mods': {'theme': 'bordered'},#}
+              {#                    'label': 'Построить Маршрут',#}
+              {#                    'name': 'routeType',#}
+              {#                    'items': [#}
+              {#                        {'title': 'На автомобиле', 'value': 'auto'},#}
+              {#                        {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+              {#                        {'title': 'Пешком', 'value': 'pedestrian'},#}
+              {#                        {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+              {#                    'class': 'form__field-group form__field-group_dropdown',#}
+              {#                    'attr': {'id': 'route-type17'},#}
+              {#                    'field': 'js-create-route' }) }}#}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[55.77,37.55]">
+            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'time', 'title':'ул. Валяева, 2-4/44', 'metro': 'Валяева' }) }}
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title offices__info-stress-title">
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
+                </li>
+                <li class="offices__info-item offices__info-item-atm">
+                  <div class="offices__info-text">
+                    Прием валюты: ₽ $ €
+                  </div>
+                  <div class="offices__info-text">
+                    Выдача валюты: ₽ $
+                  </div>
+                </li>
+              </ul>
+              {#                {{ Dropdown.dropdown({#}
+              {#                    'mods': {'theme': 'bordered'},#}
+              {#                    'label': 'Построить Маршрут',#}
+              {#                    'name': 'routeType',#}
+              {#                    'items': [#}
+              {#                        {'title': 'На автомобиле', 'value': 'auto'},#}
+              {#                        {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+              {#                        {'title': 'Пешком', 'value': 'pedestrian'},#}
+              {#                        {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+              {#                    'class': 'form__field-group form__field-group_dropdown',#}
+              {#                    'attr': {'id': 'route-type18'},#}
+              {#                    'field': 'js-create-route' }) }}#}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[55.746,37.578]">
+            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'always', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title offices__info-stress-title">
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
+                </li>
+                <li class="offices__info-item offices__info-item-atm">
+                  <div class="offices__info-text">
+                    Прием валюты: ₽ $ €
+                  </div>
+                  <div class="offices__info-text">
+                    Выдача валюты: ₽ $
+                  </div>
+                </li>
+              </ul>
+              {#                {{ Dropdown.dropdown({#}
+              {#                    'mods': {'theme': 'bordered'},#}
+              {#                    'label': 'Построить Маршрут',#}
+              {#                    'name': 'routeType',#}
+              {#                    'items': [#}
+              {#                        {'title': 'На автомобиле', 'value': 'auto'},#}
+              {#                        {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+              {#                        {'title': 'Пешком', 'value': 'pedestrian'},#}
+              {#                        {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+              {#                    'class': 'form__field-group form__field-group_dropdown',#}
+              {#                    'attr': {'id': 'route-type19'},#}
+              {#                    'field': 'js-create-route' }) }}#}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+        </div>
+        <div class="collapse offices__collapse" data-city="35" data-id="atm-tab">
+
+          <div class="collapse__item" data-coords="[45.019887,38.967241]">
+            {{ addressUnderground.addressUnderground({ 'type': 'grey', 'atm':'always', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title offices__info-stress-title">
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
+                </li>
+                <li class="offices__info-item offices__info-item-atm">
+                  <div class="offices__info-text">
+                    Прием валюты: ₽ $ €
+                  </div>
+                  <div class="offices__info-text">
+                    Выдача валюты: ₽ $
+                  </div>
+                </li>
+              </ul>
+              {#                {{ Dropdown.dropdown({#}
+              {#                    'mods': {'theme': 'bordered'},#}
+              {#                    'label': 'Построить Маршрут',#}
+              {#                    'name': 'routeType',#}
+              {#                    'items': [#}
+              {#                        {'title': 'На автомобиле', 'value': 'auto'},#}
+              {#                        {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+              {#                        {'title': 'Пешком', 'value': 'pedestrian'},#}
+              {#                        {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+              {#                    'class': 'form__field-group form__field-group_dropdown',#}
+              {#                    'attr': {'id': 'route-type20'},#}
+              {#                    'field': 'js-create-route' }) }}#}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[45.035469,38.968443]">
+            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'always', 'title':'ул. Шуваши, 2-4/44', 'metro': 'Таганская' }) }}
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title offices__info-stress-title">
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
+                </li>
+                <li class="offices__info-item offices__info-item-atm">
+                  <div class="offices__info-text">
+                    Прием валюты: ₽ $ €
+                  </div>
+                  <div class="offices__info-text">
+                    Выдача валюты: ₽ $
+                  </div>
+                </li>
+              </ul>
+              {#                {{ Dropdown.dropdown({#}
+              {#                    'mods': {'theme': 'bordered'},#}
+              {#                    'label': 'Построить Маршрут',#}
+              {#                    'name': 'routeType',#}
+              {#                    'items': [#}
+              {#                        {'title': 'На автомобиле', 'value': 'auto'},#}
+              {#                        {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+              {#                        {'title': 'Пешком', 'value': 'pedestrian'},#}
+              {#                        {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+              {#                    'class': 'form__field-group form__field-group_dropdown',#}
+              {#                    'attr': {'id': 'route-type21'},#}
+              {#                    'field': 'js-create-route' }) }}#}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[45.055792,38.983377]">
+            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'always', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title offices__info-stress-title">
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
+                </li>
+                <li class="offices__info-item offices__info-item-atm">
+                  <div class="offices__info-text">
+                    Прием валюты: ₽ $ €
+                  </div>
+                  <div class="offices__info-text">
+                    Выдача валюты: ₽ $
+                  </div>
+                </li>
+              </ul>
+              {#                {{ Dropdown.dropdown({#}
+              {#                    'mods': {'theme': 'bordered'},#}
+              {#                    'label': 'Построить Маршрут',#}
+              {#                    'name': 'routeType',#}
+              {#                    'items': [#}
+              {#                        {'title': 'На автомобиле', 'value': 'auto'},#}
+              {#                        {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+              {#                        {'title': 'Пешком', 'value': 'pedestrian'},#}
+              {#                        {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+              {#                    'class': 'form__field-group form__field-group_dropdown',#}
+              {#                    'attr': {'id': 'route-type22'},#}
+              {#                    'field': 'js-create-route' }) }}#}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[45.047761,38.939947]">
+            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'always', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title offices__info-stress-title">
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
+                </li>
+                <li class="offices__info-item offices__info-item-atm">
+                  <div class="offices__info-text">
+                    Прием валюты: ₽ $ €
+                  </div>
+                  <div class="offices__info-text">
+                    Выдача валюты: ₽ $
+                  </div>
+                </li>
+              </ul>
+              {#                {{ Dropdown.dropdown({#}
+              {#                    'mods': {'theme': 'bordered'},#}
+              {#                    'label': 'Построить Маршрут',#}
+              {#                    'name': 'routeType',#}
+              {#                    'items': [#}
+              {#                        {'title': 'На автомобиле', 'value': 'auto'},#}
+              {#                        {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+              {#                        {'title': 'Пешком', 'value': 'pedestrian'},#}
+              {#                        {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+              {#                    'class': 'form__field-group form__field-group_dropdown',#}
+              {#                    'attr': {'id': 'route-type23'},#}
+              {#                    'field': 'js-create-route' }) }}#}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[45.061024,38.973764]">
+            {{ addressUnderground.addressUnderground({ 'type': 'pink', 'atm':'always', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title offices__info-stress-title">
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
+                </li>
+                <li class="offices__info-item offices__info-item-atm">
+                  <div class="offices__info-text">
+                    Прием валюты: ₽ $ €
+                  </div>
+                  <div class="offices__info-text">
+                    Выдача валюты: ₽ $
+                  </div>
+                </li>
+              </ul>
+              {#                {{ Dropdown.dropdown({#}
+              {#                    'mods': {'theme': 'bordered'},#}
+              {#                    'label': 'Построить Маршрут',#}
+              {#                    'name': 'routeType',#}
+              {#                    'items': [#}
+              {#                        {'title': 'На автомобиле', 'value': 'auto'},#}
+              {#                        {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+              {#                        {'title': 'Пешком', 'value': 'pedestrian'},#}
+              {#                        {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+              {#                    'class': 'form__field-group form__field-group_dropdown',#}
+              {#                    'attr': {'id': 'route-type24'},#}
+              {#                    'field': 'js-create-route' }) }}#}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[45.057009,38.939947]">
+            {{ addressUnderground.addressUnderground({ 'type': 'green', 'atm':'always', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item">
+                  {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title offices__info-stress-title">
+                    Выдача наличных, безналичные платежи, прием наличных, наличные платежи, оплата ЖКХ, оплата кредитов, оплата штрафа</div>
+                </li>
+                <li class="offices__info-item offices__info-item-atm">
+                  <div class="offices__info-text">
+                    Прием валюты: ₽ $ €
+                  </div>
+                  <div class="offices__info-text">
+                    Выдача валюты: ₽ $
+                  </div>
+                </li>
+              </ul>
+              {#                {{ Dropdown.dropdown({#}
+              {#                    'mods': {'theme': 'bordered'},#}
+              {#                    'label': 'Построить Маршрут',#}
+              {#                    'name': 'routeType',#}
+              {#                    'items': [#}
+              {#                        {'title': 'На автомобиле', 'value': 'auto'},#}
+              {#                        {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+              {#                        {'title': 'Пешком', 'value': 'pedestrian'},#}
+              {#                        {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+              {#                    'class': 'form__field-group form__field-group_dropdown',#}
+              {#                    'attr': {'id': 'route-type25'},#}
+              {#                    'field': 'js-create-route' }) }}#}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="ultima-tab" class="offices__tabs-item tabs__item js-tab state_invisible">
+        {{ Button.button({ 'title': 'Посмотреть список банкоматов Росбанка', 'name': 'download', 'class': 'offices__external-link' }) }}
+        <div class="collapse offices__collapse" data-city="213" data-id="ultima-tab">
+
+          <div class="collapse__item" data-coords="[55.76,37.57]">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                109147, Россия, г. Москва, ул. Марксистская, д. 3, строение 1
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    адрес3
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+              {{ Dropdown.dropdown({
+                'mods': {'theme': 'bordered'},
+                'label': 'Построить Маршрут',
+                'name': 'routeType',
+                'items': [
+                  {'title': 'На автомобиле', 'value': 'auto'},
+                  {'title': 'На общественном транспорте', 'value': 'masstransit'},
+                  {'title': 'Пешком', 'value': 'pedestrian'},
+                  {'title': 'На велосипеде', 'value': 'bicycle'}],
+                'class': 'form__field-group form__field-group_dropdown',
+                'attr': {'id': 'route-type26'},
+                'field': 'js-create-route' }) }}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[55.78,37.56]">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                115054, Россия, г. Москва, ул. Валовая, д. 2-4/44, строение 1
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    Выдача наличных
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    Круглосуточно
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[55.72,37.54]">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                109147, Россия, г. Москва, ул. Марксистская, д. 3, строение 1
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    адрес4
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+              {{ Dropdown.dropdown({
+                'mods': {'theme': 'bordered'},
+                'label': 'Построить Маршрут',
+                'name': 'routeType',
+                'items': [
+                  {'title': 'На автомобиле', 'value': 'auto'},
+                  {'title': 'На общественном транспорте', 'value': 'masstransit'},
+                  {'title': 'Пешком', 'value': 'pedestrian'},
+                  {'title': 'На велосипеде', 'value': 'bicycle'}],
+                'class': 'form__field-group form__field-group_dropdown',
+                'attr': {'id': 'route-type27'},
+                'field': 'js-create-route' }) }}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[55.77,37.55]">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                109147, Россия, г. Москва, ул. Марксистская, д. 3, строение 1
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    адрес5
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+              {{ Dropdown.dropdown({
+                'mods': {'theme': 'bordered'},
+                'label': 'Построить Маршрут',
+                'name': 'routeType',
+                'items': [
+                  {'title': 'На автомобиле', 'value': 'auto'},
+                  {'title': 'На общественном транспорте', 'value': 'masstransit'},
+                  {'title': 'Пешком', 'value': 'pedestrian'},
+                  {'title': 'На велосипеде', 'value': 'bicycle'}],
+                'class': 'form__field-group form__field-group_dropdown',
+                'attr': {'id': 'route-type28'},
+                'field': 'js-create-route' }) }}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[55.77,37.48]">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                109147, Россия, г. Москва, ул. Марксистская, д. 3, строение 1
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    адрес6
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+              {{ Dropdown.dropdown({
+                'mods': {'theme': 'bordered'},
+                'label': 'Построить Маршрут',
+                'name': 'routeType',
+                'items': [
+                  {'title': 'На автомобиле', 'value': 'auto'},
+                  {'title': 'На общественном транспорте', 'value': 'masstransit'},
+                  {'title': 'Пешком', 'value': 'pedestrian'},
+                  {'title': 'На велосипеде', 'value': 'bicycle'}],
+                'class': 'form__field-group form__field-group_dropdown',
+                'attr': {'id': 'route-type29'},
+                'field': 'js-create-route' }) }}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+
+          <div class="collapse__item" data-coords="[55.747,37.57]">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                109147, Россия, г. Москва, ул. Марксистская, д. 3, строение 1
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    адрес7
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+              {{ Dropdown.dropdown({
+                'mods': {'theme': 'bordered'},
+                'label': 'Построить Маршрут',
+                'name': 'routeType',
+                'items': [
+                  {'title': 'На автомобиле', 'value': 'auto'},
+                  {'title': 'На общественном транспорте', 'value': 'masstransit'},
+                  {'title': 'Пешком', 'value': 'pedestrian'},
+                  {'title': 'На велосипеде', 'value': 'bicycle'}],
+                'class': 'form__field-group form__field-group_dropdown',
+                'attr': {'id': 'route-type30'},
+                'field': 'js-create-route' }) }}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+
+        </div>
+        <div class="collapse offices__collapse" data-city="35" data-id="ultima-tab">
+          <div class="collapse__item" data-coords="[45.057131,38.984407]">
+            <div class="collapse__control">
+              <div class="collapse__control-title">
+                109147, Россия, г. Москва, ул. Марксистская, д. 3, строение 1
+              </div>
+              <div class="collapse__control-icon">
+                {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+            </div>
+            <div class="collapse__content">
+              <ul class="offices__info">
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    адрес8
+                  </div>
+                </li>
+                <li class="offices__info-item offices__info-item_bordered">
+                  <div class="offices__info-text">
+                    8 800 500 7065
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Время работы с клиентами</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 <br>
+                    СБ: с 10:00 до 18:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+                <li class="offices__info-item">
+                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-text">
+                    ПН-ПТ с 10:00 до 20:00 <br>
+                    СБ: с 10:00 до 13:00 <br>
+                    ВС: выходной
+                  </div>
+                </li>
+              </ul>
+              {{ Dropdown.dropdown({
+                'mods': {'theme': 'bordered'},
+                'label': 'Построить Маршрут',
+                'name': 'routeType',
+                'items': [
+                  {'title': 'На автомобиле', 'value': 'auto'},
+                  {'title': 'На общественном транспорте', 'value': 'masstransit'},
+                  {'title': 'Пешком', 'value': 'pedestrian'},
+                  {'title': 'На велосипеде', 'value': 'bicycle'}],
+                'class': 'form__field-group form__field-group_dropdown',
+                'attr': {'id': 'route-type31'},
+                'field': 'js-create-route' }) }}
+              <div class="map-wrap js-collapse-map-wrap"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
 <script>
     //сюда прописать ключ API карт
     var yandexMapApiKey = '43aae7e6-b7a1-4f85-b4ca-242979d9dcfd';

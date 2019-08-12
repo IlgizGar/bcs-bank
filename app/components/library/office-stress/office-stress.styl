@@ -8,6 +8,10 @@
   @media (max-width: 831px)
     width 38px
     //margin-bottom 8px
+  @media (min-width: 351px) and (max-width: 431px)
+    width: 30px;
+  @media (max-width: 350px)
+    width: 26px;
 
   &-list
     display flex
@@ -84,6 +88,20 @@
         margin-right 95px
       &-hours:last-child
         margin-left 33px
+    @media (min-width: 351px) and (max-width: 431px)
+      &-hours
+        margin-right 47px
+      &-hours:first-child
+        margin-right 62px
+      &-hours:last-child
+        margin-left 15px
+    @media (max-width: 351px)
+      &-hours
+        margin-right 42px
+      &-hours:first-child
+        margin-right 51px
+      &-hours:last-child
+        margin-left 9px
 
   &__load
     width 32px
@@ -102,6 +120,10 @@
       width 26px
     @media (max-width: 831px)
       width 28px
+    @media (min-width: 351px) and (max-width: 431px)
+      width: 25px;
+    @media (max-width: 350px)
+      width: 20px;
 
   &__congestion
     display flex
