@@ -318,11 +318,21 @@ export default class Offices {
       const coords = $(el).data('coords');
       $(el).removeClass('state_hidden');
       if (coords) {
-        this.points.push({
-          id: Offices.generatePointId(coords),
-          coordinates: coords,
-          element: el,
+        var foundDot = false;
+        this.points.forEach((currentPoint) => {
+          if (currentPoint.id == Offices.generatePointId(coords))
+          {
+            foundDot = true;
+          }
         });
+        if (!foundDot)
+        {
+          this.points.push({
+            id: Offices.generatePointId(coords),
+            coordinates: coords,
+            element: el,
+          });
+        }
       }
     });
   }
@@ -677,7 +687,6 @@ export default class Offices {
   {
     this.getPoints();
     const autoCompleteResult = []; //резулттирующий массив для выпадающего списка
-
     this.points.forEach((point) => {
       //ищем информацию для выпадающего списка
       let metroVariantion = String($(point.element).find('.collapse__control-underground-name').text()).toLowerCase();
@@ -690,10 +699,9 @@ export default class Offices {
           description: 'станция метро',
           type: 'metro',
           colorMetro:  classList[1],
-          svg: $('.collapse__control-underground-icon')[0]
+          //svg: $('.collapse__control-underground-icon')[0]
         };
         autoCompleteResult.push(MetrocustomPoint);
-        // console.log(classList[1]);
       }
 
       if (streetVariantion.indexOf(text.toLowerCase()) + 1) {
@@ -711,12 +719,8 @@ export default class Offices {
       $('.offices__search-variations').show();
       const searchVariationsContainer = $('.offices__search-variations');
       let searchVartiations = $('.offices__search-option').first();
-      searchVariationsContainer.html('');
-      console.log(searchVartiations);
-
 
       autoCompleteResult.forEach((customPoint) => {
-
         searchVartiations.find('.offices__search-title').text(customPoint.title);
         searchVartiations.find('.offices__search-description').text(customPoint.description);
         searchVartiations.find('.offices__search-icon').removeClass(customPoint.colorMetro);
@@ -729,9 +733,9 @@ export default class Offices {
           searchVartiations.find('.offices__search-icon').addClass(customPoint.colorMetro);
           searchVartiations.find('.icon-orange').css({ display: 'block'})
         }
-
         searchVartiations.clone().appendTo(searchVariationsContainer);
       });
+      $('.offices__search-option').first().remove();
     }
   }
 
