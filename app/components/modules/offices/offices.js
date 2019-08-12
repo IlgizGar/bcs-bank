@@ -39,7 +39,8 @@ export default class Offices {
     this.map = null;
     this.markCollection = null;
     this.points = [];
-    this.mapContainer = document.getElementById('map-container');
+    this.mapContainerId = window.innerWidth > 831 ? 'map-container' : "map-container-mobile";
+    this.mapContainer = document.getElementById(this.mapContainerId);
     this.mapContainer.setAttribute('tab-index', '1');
     this.mapBlock = null;
     this.init();
@@ -214,7 +215,7 @@ export default class Offices {
 
   initMap() {
     const mapContainer = document.createElement('div');
-    const mapContainerWrapper = document.getElementById('map-container');
+    const mapContainerWrapper = this.mapContainer;
     $(mapContainerWrapper).attr('style', '');
     mapContainerWrapper.appendChild(mapContainer);
     this.map = new ymaps.Map(mapContainer, {
@@ -225,7 +226,7 @@ export default class Offices {
     this.map.behaviors.disable('scrollZoom');
     this.map.options.set('suppressMapOpenBlock', true);
     this.setZoomControls();
-    this.mapBlock = document.getElementById('map-container').firstChild;
+    this.mapBlock = this.mapContainer.firstChild;
     if (window.innerWidth < 992) {
       this.map.behaviors.disable('drag');
     }
@@ -699,7 +700,7 @@ export default class Offices {
           description: 'станция метро',
           type: 'metro',
           colorMetro:  classList[1],
-          //svg: $('.collapse__control-underground-icon')[0]
+          svg: $('.collapse__control-underground-icon')[0]
         };
         autoCompleteResult.push(MetrocustomPoint);
       }
