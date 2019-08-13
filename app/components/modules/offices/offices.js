@@ -652,9 +652,10 @@ export default class Offices {
       }, 250);
     });
 
-    $('[name=map-search]').on('change', () => {
+    $('[name=map-search]').on('change', (e) => {
       const searchInput = $(e.currentTarget);
       const value = searchInput.val();
+      console.log(value);
       if (value) {
         $('.collapse__control-underground').css({ display: 'none' });
         $('.collapse__control-distance-to-bcs').css({ display: 'block' });
