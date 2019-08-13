@@ -652,6 +652,18 @@ export default class Offices {
       }, 250);
     });
 
+    $('[name=map-search]').on('change', () => {
+      const searchInput = $(e.currentTarget);
+      const value = searchInput.val();
+      if (value) {
+        $('.collapse__control-underground').css({ display: 'none' });
+        $('.collapse__control-distance-to-bcs').css({ display: 'block' });
+      }
+      else {
+        $('.collapse__control-underground').css({ display: 'flex' });
+        $('.collapse__control-distance-to-bcs').css({ display: 'none' });
+      }
+    });
 
     $(window).click((e) => {
       $('.search-close').css({ display: 'none'});
@@ -758,25 +770,24 @@ export default class Offices {
   }
 
   removeValueInput(searchInput) {
-    $('.search-close').on('click', (e) => {
-     searchInput.val('');
-    })
+    $('.search-close').on('click', () => {
+      searchInput.val('');
+    });
   }
 
   addOrRemoveButtonClose(value) {
     if (value) {
-      $('.search-close').css({ display: 'block'});
-      $('.icon-search').css({ display: 'none'});
-    }
-    else {
-      $('.search-close').css({ display: 'none'});
-      $('.icon-search').css({ display: 'block'});
+      $('.search-close').css({ display: 'block' });
+      $('.icon-search').css({ display: 'none' });
+    } else {
+      $('.search-close').css({ display: 'none' });
+      $('.icon-search').css({ display: 'block' });
     }
   }
 
-  //кнопка "показать на карте"
+  // кнопка "показать на карте"
   lookAtTheMap() {
-    $('.js-offices-button-for-map').on('click', (e) => {
+    $('.js-offices-button-for-map').on('click', () => {
       setTimeout(() => {
         $('html, body').animate({ scrollTop: $('#map-container').offset().top - ($('#map-container').height() / 3) }, 800);
       }, 200);
