@@ -34,7 +34,11 @@
       </div>
     </div>
 
-    <div id="map-container-mobile" class="offices__map-wrapper offices__map-mobile" style="height: 678px;"></div>
+    <div id="map-container-mobile" class="offices__map-wrapper offices__map-mobile" style="height: 678px;">
+      <button class="get-geo" id="get-geo">
+        {{ Icon.icon({ 'name': 'vector' }) }}
+      </button>
+    </div>
 
     <div class="tabs js-tabs offices__tabs scroll-pane">
       {#
@@ -1794,8 +1798,12 @@
       </div>
     </div>
   </div>
-  <a href="#" id="get-geo">get geo</a>
-  <div id="map-container" class="offices__map-wrapper offices__map-desktop" style="height: 678px;"></div>
+
+  <div id="map-container" class="offices__map-wrapper offices__map-desktop" style="height: 678px;">
+    <button class="get-geo" id="get-geo">
+      {{ Icon.icon({ 'name': 'vector' }) }}
+    </button>
+  </div>
 </div>
 
 <script>

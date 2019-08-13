@@ -1,6 +1,6 @@
 .offices .offices__map-wrapper
   position: relative
-  padding-top 32%
+  //padding-top 32%
   min-height 887px
   width: 100%
   @media (min-width: 960px) and (max-width: 1215px)
@@ -19,15 +19,44 @@
     top 432px
 
   >*
-    position absolute
+    //position absolute
     width 100%!important
     height 100%!important
     left 0
     top 0
+
+.offices__map-mobile
+  >*
+    position absolute
     //@media (max-width: 831px)
     //  height: 330px
     //  top -357px
   //@media (min-width: 768px) and (max-width: 991px)
   //  height: 440px
   //
+.offices .get-geo
+  width: 64px!important;
+  height: 64px!important;
+  padding: 16px;
+  position: absolute;
+  z-index: 10;
+  top: 3%;
+  right: 3%!important;
+  left auto
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.05), 0px 4px 4px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  background-color $white
+  border-radius: 4px;
+  svg
+    fill none
+    color $royal_blue
+    stroke-width: 3;
+    height: 100%;
+    width: 100%;
+  &:hover
+    background-color: $royal_blue
+    svg
+      color: $white
+      stroke-width: 3;
+
 

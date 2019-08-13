@@ -10,7 +10,7 @@ gulp.task('icons', () => {
       removeTitle: true
     }, {
       removeAttrs: {
-        attrs: '(fill|fill-rule)'
+        // attrs: '(fill|fill-rule)'
       }
     }]
   };
