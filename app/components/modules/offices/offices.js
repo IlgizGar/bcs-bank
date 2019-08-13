@@ -728,8 +728,8 @@ export default class Offices {
     if (autoCompleteResult.length > 0) {
       $('.offices__search-variations').show();
       const searchVariationsContainer = $('.offices__search-variations');
-      let searchVartiations = $('.offices__search-option').first();
-      $.each($('.offices__search-option'), function (i,item) {
+      const searchVartiations = $('.offices__search-option').first();
+      $.each($('.offices__search-option'), function (i, item) {
         if (i !== 0) {
           $(item).remove();
         }
@@ -739,18 +739,21 @@ export default class Offices {
         searchVartiations.find('.offices__search-title').text(customPoint.title);
         searchVartiations.find('.offices__search-description').text(customPoint.description);
         searchVartiations.find('.offices__search-icon').removeClass(customPoint.colorMetro);
-        searchVartiations.find('.icon-street-icon').css({ display: 'none'});
-        searchVartiations.find('.icon-orange').css({ display: 'none'});
+        searchVartiations.find('.icon-street-icon').css({ display: 'none' });
+        searchVartiations.find('.icon-orange').css({ display: 'none' });
         if (customPoint.type === 'street') {
-          searchVartiations.find('.icon-street-icon').css({ display: 'block'})
+          searchVartiations.find('.icon-street-icon').css( { display: 'block' })
         }
         else {
           searchVartiations.find('.offices__search-icon').addClass(customPoint.colorMetro);
-          searchVartiations.find('.icon-orange').css({ display: 'block'})
+          searchVartiations.find('.icon-orange').css({ display: 'block' })
         }
         searchVartiations.clone().appendTo(searchVariationsContainer);
       });
       $('.offices__search-option').first().remove();
+    }
+    else {
+      $('.offices__search-variations').hide();
     }
   }
 
@@ -775,7 +778,7 @@ export default class Offices {
   lookAtTheMap() {
     $('.js-offices-button-for-map').on('click', (e) => {
       setTimeout(() => {
-        $('html, body').animate({ scrollTop: $('#map-container').offset().top - ($('#map-container').height() / 3)}, 800);
+        $('html, body').animate({ scrollTop: $('#map-container').offset().top - ($('#map-container').height() / 3) }, 800);
       }, 200);
     });
   }
