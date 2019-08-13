@@ -27,7 +27,10 @@ export default class Offices {
       iconImageOffset: [-28, -44],
     };
     this.iconUserPosition = {
-      preset: 'islands#redIcon',
+      iconLayout: 'default#image',
+      iconImageHref: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSI1NiIgdmlld0JveD0iMCAwIDU2IDU2Ij4gICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoNTZ2NTZIMHoiLz4gICAgICAgIDxnIGZpbGwtcnVsZT0ibm9uemVybyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTMgNikiPiAgICAgICAgICAgIDxwYXRoIGZpbGw9IiMzQjY2QzUiIGQ9Ik0zMCAxNC45NDNjLS4wMDIuNDA5LS4wMTkuODE4LS4wNSAxLjIyNS0uNDkyIDYuMTgzLTQuNTk0IDEyLjUzMS04LjI1NiAxOC41OTRMMTUgNDVWMjkuODg2Yy04LjI4NCAwLTE1LTYuNjktMTUtMTQuOTQzUzYuNzE2IDAgMTUgMGM4LjI4NCAwIDE1IDYuNjkgMTUgMTQuOTQzeiIvPiAgICAgICAgICAgIDxjaXJjbGUgY3g9IjE1IiBjeT0iMTUiIHI9IjYiIGZpbGw9IiNGRkYiLz4gICAgICAgIDwvZz4gICAgPC9nPjwvc3ZnPg==',
+      iconImageSize: [56, 56],
+      iconImageOffset: [-28, -44],
     };
     this.switcher = $('.js-offices-switcher');
     this.routeButton = $('[name=select_routeType]');
@@ -285,7 +288,6 @@ export default class Offices {
         // Снимаем обработчики кликов.
         $('#zoom-in').unbind('click', this.zoomInCallback);
         $('#zoom-out').unbind('click', this.zoomOutCallback);
-
         // Вызываем родительский метод clear.
         ZoomLayout.superclass.clear.call(this);
       },
@@ -300,6 +302,7 @@ export default class Offices {
         map.setZoom(map.getZoom() - 1, { checkZoomRange: true });
       },
     });
+
     const zoomControl = new ymaps.control.ZoomControl({
       options: {
         layout: ZoomLayout,
@@ -404,7 +407,9 @@ export default class Offices {
       const el = {};
       el.coordinates = [latitude, longitude];
       self.saveUserPos([latitude, longitude]);
-      self.createPlacemark(el, self.iconUserPosition, true);
+      self.createPlacemark(el, self.iconUserPosition, true)
+      self.map.setZoom(self.map.getZoom() + 5, { checkZoomRange: true });
+      self.map.setCenter(el.coordinates, self.map.getZoom(), {duration: 1000});
     }
     return new Promise((resolve) => {
       if (window.navigator.geolocation) {
@@ -518,6 +523,10 @@ export default class Offices {
       if (!this.appBlock.hasClass('state_explored')) {
         Offices.reInitScroll(this.pane, 300);
       }
+    });
+
+    $('#get-geo').on('click', () => {
+      this.getUserPos();
     });
 
     $('.collapse__item[data-coords] .collapse__control').on('click', (e) => {
