@@ -42,7 +42,7 @@ export default class Offices {
     this.map = null;
     this.markCollection = null;
     this.points = [];
-    this.mapContainerId = window.innerWidth > 831 ? 'map-container' : "map-container-mobile";
+    this.mapContainerId = window.innerWidth > 831 ? 'map-container' : 'map-container-mobile';
     this.mapContainer = document.getElementById(this.mapContainerId);
     this.mapContainer.setAttribute('tab-index', '1');
     this.mapBlock = null;
@@ -72,6 +72,11 @@ export default class Offices {
         } else {
           this.changeCity();
         }
+
+        this.getPoints();
+        this.getUserPos().then(() => {
+          this.distanceCalculation(this.userPos);
+        });
       });
     });
     this.setScrollPane();
@@ -322,15 +327,13 @@ export default class Offices {
       const coords = $(el).data('coords');
       $(el).removeClass('state_hidden');
       if (coords) {
-        var foundDot = false;
+        let foundDot = false;
         this.points.forEach((currentPoint) => {
-          if (currentPoint.id == Offices.generatePointId(coords))
-          {
+          if (currentPoint.id === Offices.generatePointId(coords)) {
             foundDot = true;
           }
         });
-        if (!foundDot)
-        {
+        if (!foundDot) {
           this.points.push({
             id: Offices.generatePointId(coords),
             coordinates: coords,
@@ -387,6 +390,8 @@ export default class Offices {
   saveUserPos(pos) {
     this.userPos = pos;
   }
+
+  // построение маршрута
   createRoute(toPoint, mode) {
     this.clearRoute();
     this.multiRoute = new ymaps.multiRouter.MultiRoute({
@@ -407,9 +412,9 @@ export default class Offices {
       const el = {};
       el.coordinates = [latitude, longitude];
       self.saveUserPos([latitude, longitude]);
-      self.createPlacemark(el, self.iconUserPosition, true)
+      self.createPlacemark(el, self.iconUserPosition, true);
       self.map.setZoom(self.map.getZoom() + 5, { checkZoomRange: true });
-      self.map.setCenter(el.coordinates, self.map.getZoom(), {duration: 1000});
+      self.map.setCenter(el.coordinates, self.map.getZoom(), { duration: 1000 });
     }
     return new Promise((resolve) => {
       if (window.navigator.geolocation) {
@@ -556,6 +561,9 @@ export default class Offices {
       this.getPoints();
       this.addPoints();
       this.goToPoints();
+      this.getUserPos().then(() => {
+        this.distanceCalculation(this.userPos);
+      });
     });
   }
 
@@ -659,27 +667,35 @@ export default class Offices {
       if (value) {
         $('.collapse__control-underground').css({ display: 'none' });
         $('.collapse__control-distance-to-bcs').css({ display: 'block' });
-      }
-      else {
+        const city = $('input[name=current-city_input]').attr('data-text');
+        const address = city + ', ' + value;
+        console.log(address);
+        ymaps.geocode(address).then((res) => {
+          const startPoint = res.geoObjects.get(0).geometry.getCoordinates();
+          this.distanceCalculation(startPoint);
+        });
+      } else {
         $('.collapse__control-underground').css({ display: 'flex' });
         $('.collapse__control-distance-to-bcs').css({ display: 'none' });
+        this.distanceCalculation(this.userPos);
+        // скрыть метры которые про поиске
       }
     });
 
-    $(window).click((e) => {
-      $('.search-close').css({ display: 'none'});
-      $('.icon-search').css({ display: 'block'});
+    $(window).click(() => {
+      // $('.search-close').css({ display: 'none' });
+      // $('.icon-search').css({ display: 'block' });
       $('.offices__search-variations').hide();
     });
 
 
     $(document).on('click', '.offices__search-option', (e) => {
       e.preventDefault();
-      $('.search-close').css({ display: 'none'});
-      $('.icon-search').css({ display: 'block'});
-      //добавление выбранного текста по клику в инпут
-      let parent = $(e.target).closest('.offices__search-option'); //привязка к текущему элементу на который кликнули
-      let text = $.trim(parent.find('.offices__search-title').text());
+      $('.search-close').css({ display: 'none' });
+      $('.icon-search').css({ display: 'block' });
+      // добавление выбранного текста по клику в инпут
+      const parent = $(e.target).closest('.offices__search-option'); // привязка к текущему элементу на который кликнули
+      const text = $.trim(parent.find('.offices__search-title').text());
       $('[name=map-search]').val(text);
       $('[name=map-search]').closest('.js-input').addClass('state_filled');
       $('[name=map-search]').closest('.js-input').removeClass('state_init');
@@ -688,7 +704,7 @@ export default class Offices {
     });
   }
 
-  //скрывает карточки и центрирует карту относительно оставшихся точек на карте
+  // скрывает карточки и центрирует карту относительно оставшихся точек на карте
   search(text) {
     this.getPoints();
     const result = [];
@@ -706,33 +722,44 @@ export default class Offices {
     this.addPoints();
   }
 
-  autoCompleteShow(text)
-  {
+  distanceCalculation(coord) {
+    if ((typeof coord) !== undefined && coord != null) {
+      this.points.forEach((point) => {
+        const distance = Math.ceil(ymaps.coordSystem.geo.getDistance(coord, point.coordinates));
+        $(point.element).find('.collapse__control-distance').text(distance + 'м');
+        $(point.element).find('.collapse__control-distance-metr').text(distance + 'м');
+      });
+    } else {
+      console.log('Не удалось найти позицию пользователя');
+    }
+  }
+
+  autoCompleteShow(text) {
     this.getPoints();
-    const autoCompleteResult = []; //резулттирующий массив для выпадающего списка
+    const autoCompleteResult = []; // резулттирующий массив для выпадающего списка
     this.points.forEach((point) => {
-      //ищем информацию для выпадающего списка
-      let metroVariantion = String($(point.element).find('.collapse__control-underground-name').text()).toLowerCase();
-      let streetVariantion = String($(point.element).find('.collapse__control-title').text()).toLowerCase();
+      // ищем информацию для выпадающего списка
+      const metroVariantion = String($(point.element).find('.collapse__control-underground-name').text()).toLowerCase();
+      const streetVariantion = String($(point.element).find('.collapse__control-title').text()).toLowerCase();
 
       if (metroVariantion.indexOf(text.toLowerCase()) + 1) {
-        var classList = $(point.element).find('.collapse__control-underground-icon').attr('class').split(/\s+/);
-        let MetrocustomPoint = {
+        const classList = $(point.element).find('.collapse__control-underground-icon').attr('class').split(/\s+/);
+        const MetrocustomPoint = {
           title: $(point.element).find('.collapse__control-underground-name').text(),
           description: 'станция метро',
           type: 'metro',
-          colorMetro:  classList[1],
-          svg: $('.collapse__control-underground-icon')[0]
+          colorMetro: classList[1],
+          svg: $('.collapse__control-underground-icon')[0],
         };
         autoCompleteResult.push(MetrocustomPoint);
       }
 
       if (streetVariantion.indexOf(text.toLowerCase()) + 1) {
-        let StreetcustomPoint = {
+        const StreetcustomPoint = {
           title: $(point.element).find('.collapse__control-title').text(),
           description: 'метро' + $(point.element).find('.collapse__control-underground-name').text(),
           type: 'street',
-          svg: $('.collapse__control-underground-icon')[0]
+          svg: $('.collapse__control-underground-icon')[0],
         };
         autoCompleteResult.push(StreetcustomPoint);
       }
@@ -755,17 +782,15 @@ export default class Offices {
         searchVartiations.find('.icon-street-icon').css({ display: 'none' });
         searchVartiations.find('.icon-orange').css({ display: 'none' });
         if (customPoint.type === 'street') {
-          searchVartiations.find('.icon-street-icon').css( { display: 'block' })
-        }
-        else {
+          searchVartiations.find('.icon-street-icon').css({ display: 'block' });
+        } else {
           searchVartiations.find('.offices__search-icon').addClass(customPoint.colorMetro);
-          searchVartiations.find('.icon-orange').css({ display: 'block' })
+          searchVartiations.find('.icon-orange').css({ display: 'block' });
         }
         searchVartiations.clone().appendTo(searchVariationsContainer);
       });
       $('.offices__search-option').first().remove();
-    }
-    else {
+    } else {
       $('.offices__search-variations').hide();
     }
   }
@@ -773,11 +798,13 @@ export default class Offices {
   removeValueInput(searchInput) {
     $('.search-close').on('click', () => {
       searchInput.val('');
+      $('.search-close').css({ display: 'none' });
+      $('.icon-search').css({ display: 'block' });
     });
   }
 
   addOrRemoveButtonClose(value) {
-    if (value) {
+    if (value !== '') {
       $('.search-close').css({ display: 'block' });
       $('.icon-search').css({ display: 'none' });
     } else {
