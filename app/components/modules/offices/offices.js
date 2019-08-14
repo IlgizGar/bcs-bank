@@ -405,7 +405,20 @@ export default class Offices {
     }, {
       boundsAutoApply: true,
     });
+    console.log("Длина: " + this.multiRoute.properties.get("distance"));
     this.map.geoObjects.add(this.multiRoute);
+    // this.multiRoute.model.mouseenter.add('requestsuccess', function() {
+    //   // Получение ссылки на активный маршрут.
+    //   var activeRoute = this.multiRoute.getActiveRoute();
+    //   // Вывод информации о маршруте.
+    //   console.log("Длина: " + activeRoute.properties.get("distance").text);
+    //   console.log("Время прохождения: " + activeRoute.properties.get("duration").text);
+    //   // Для автомобильных маршрутов можно вывести
+    //   // информацию о перекрытых участках.
+    //   if (activeRoute.properties.get("blocked")) {
+    //     console.log("На маршруте имеются участки с перекрытыми дорогами.");
+    //   }
+    // });
   }
   getUserPos() {
     function addPlacemark(self, latitude, longitude) {
@@ -660,10 +673,10 @@ export default class Offices {
       }, 250);
     });
 
+
     $('[name=map-search]').on('change', (e) => {
       const searchInput = $(e.currentTarget);
       const value = searchInput.val();
-      console.log(value);
       if (value) {
         $('.collapse__control-underground').css({ display: 'none' });
         $('.collapse__control-distance-to-bcs').css({ display: 'block' });
@@ -688,7 +701,6 @@ export default class Offices {
       $('.offices__search-variations').hide();
     });
 
-
     $(document).on('click', '.offices__search-option', (e) => {
       e.preventDefault();
       $('.search-close').css({ display: 'none' });
@@ -701,6 +713,12 @@ export default class Offices {
       $('[name=map-search]').closest('.js-input').removeClass('state_init');
       $('.offices__search-variations').hide();
       this.search(text);
+      const city = $('input[name=current-city_input]').attr('data-text');
+      const address = city + ', ' + text;
+      ymaps.geocode(address).then((res) => {
+        const startPoint = res.geoObjects.get(0).geometry.getCoordinates();
+        this.distanceCalculation(startPoint);
+      });
     });
   }
 
@@ -726,8 +744,14 @@ export default class Offices {
     if ((typeof coord) !== undefined && coord != null) {
       this.points.forEach((point) => {
         const distance = Math.ceil(ymaps.coordSystem.geo.getDistance(coord, point.coordinates));
-        $(point.element).find('.collapse__control-distance').text(distance + 'м');
-        $(point.element).find('.collapse__control-distance-metr').text(distance + 'м');
+        const temp =  Math.ceil((distance / 1000) *10) / 10;
+        if (distance > 1000) {
+          $(point.element).find('.collapse__control-distance').text('~' + temp + 'км');
+          $(point.element).find('.collapse__control-distance-metr').text('~' + temp + 'км');
+        } else {
+          $(point.element).find('.collapse__control-distance').text('~' + distance + 'м');
+          $(point.element).find('.collapse__control-distance-metr').text('~' + distance + 'м');
+        }
       });
     } else {
       console.log('Не удалось найти позицию пользователя');
