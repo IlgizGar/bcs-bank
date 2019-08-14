@@ -16,8 +16,8 @@ export default class Offices {
     this.searchTimout = null;
     this.iconNormal = {
       iconLayout: 'default#image',
-      iconImageHref: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4gICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoMjR2MjRIMHoiLz4gICAgICAgIDxnPiAgICAgICAgICAgIDxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjEyIiBmaWxsPSIjRkZGIi8+ICAgICAgICAgICAgPGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiIGZpbGw9IiM0NTczRDkiLz4gICAgICAgICAgICA8Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSI0IiBmaWxsPSIjRkZGIi8+ICAgICAgICA8L2c+ICAgIDwvZz48L3N2Zz4=',
-      iconImageSize: [24, 24],
+      iconImageHref: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiM0NTczRDkiLz4KPHJlY3QgeD0iNCIgeT0iNC4wMDE0NiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSJ3aGl0ZSIgZmlsbC1vcGFjaXR5PSIwLjAxIi8+CjxwYXRoIG9wYWNpdHk9IjAuNCIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yNi42MjE5IDEwLjMxMDRDMjYuNjMzOSAxMC4zMTUyIDI2LjY1NzIgMTAuMzI1NCAyNi42ODg0IDEwLjMzODlDMjYuOTA2NCAxMC40MzM2IDI3LjUwOSAxMC42OTUzIDI3LjM0MDIgMTAuNDk1M0MyNy4xNDI2IDEwLjI1MiAyNi45MDE1IDEwLjA0NzcgMjYuNjMxNSA5Ljg5MTk2QzEzLjAyMTEgMi4wMjQ5IDIuMzU2NSAyMC43MTcxIDEyLjc0MTUgMjkuMjA2OUwxMi43NzQ0IDI5LjIzNEwxMi43NzQ0IDI5LjIzNDFDMTMuMTUyMSAyOS41NDU1IDEzLjQxNDIgMjkuNzYxNyAxMy41MDMyIDI5Ljc2NjRDMTMuNTIzNCAyOS43NjggMTMuNjAwMSAyOS44MTI1IDEzLjcwNzYgMjkuODc1QzE0LjI2OSAzMC4yMDExIDE1LjY3IDMxLjAxNDkgMTQuMjQ1NyAyOC43NDQ3QzcuODA0NTIgMTguNTA4MyAxNS40NTEgNC44MjcyNyAyNi42MjE5IDEwLjMxMDRaTTMxLjQyODcgMTguNDQwMlYxOC40MzUzQzMxLjI5ODUgMTYuOTMxOSAzMC44ODM5IDE1LjQ2NzUgMzAuMjA0MSAxNC4xMTk4QzI1LjgwMjMgOC43Nzc4MyA4Ljg3NDg0IDE0LjI4MDQgMTQuNjY1MiAyOC4wODc5QzE0Ljg0MzYgMjguNTExMiAxNS4wNzk4IDI4Ljc0OTYgMTUuMTk1NSAyOC42NzE3QzE1LjIyMjIgMjguNjUzOCAxNS4yNzA5IDI4LjYzNzQgMTUuMzI5NCAyOC42MTc3QzE1LjUyNDUgMjguNTUyIDE1LjgyODIgMjguNDQ5OSAxNS43ODM3IDI4LjEzMTdDMTQuMjQ1NyAxNy4zMjYgMjcuNjU4NSAxNC43NDc1IDMxLjQyODcgMTguNDQwMlpNMTcuODQyMiAyOS44NDQ2QzE3LjgyNjcgMjkuNzgzMSAxNy44MDc3IDI5LjcwNzggMTcuNzc5NyAyOS42MTU2QzE1LjUwODkgMjIuMDQwNCAzMC40Nzg5IDE5LjQ0MjQgMzEuMjc5MiAyMi4wNDUzQzMxLjI3OTIgMjIuMDQ1MyAzMS4yMTE3IDIyLjExMzQgMzEuMjAyMSAyMi4zMjI2QzMwLjg5NCAyMy43NDczIDMwLjEyMDggMjQuOTE1MyAyOS4zNTU2IDI2LjA3MTRDMjkuMzE4NiAyNi4xMjczIDI5LjI4MTYgMjYuMTgzMiAyOS4yNDQ2IDI2LjIzOTFDMjguNjM3MiAyMy4zODMyIDE5LjY0MDcgMjYuODMyNyAxOS4yNTUgMzAuMTYwNUMxOS4yMjEzIDMwLjQ3MTkgMTguMDAxNSAzMC4xMDIxIDE3Ljk1ODEgMzAuMDgyNkMxNy44OTQ1IDMwLjA1MjIgMTcuODc3NCAyOS45ODQzIDE3Ljg0MjIgMjkuODQ0NloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTQuNjUzMyA5LjE4OTA2TDE0LjY5MzQgOS4xNTIxOUMxNS4wMTA1IDguODYwODQgMTUuMzAyNiA4LjU5MjQxIDE1LjE4NzIgOC41NzM4MkMxNS4wOTU4IDguNTU5MjggMTQuNzY4NyA4LjcxNDMxIDE0LjMyMTMgOC45NzEwNkM1Ljk1MTI1IDEzLjc2NzEgNy45MjM1MiAyOC42Nzg0IDE4LjgyMzkgMzEuMzcxOVYzMS4zODE2QzE5LjE0MTQgMzEuNDEwNiAxOS40NjM3IDMxLjQzIDE5Ljc4MTEgMzEuNDNDMjEuMDU1OSAzMS40MyAyMi4zMjU4IDMxLjIxNjkgMjMuNTI4NCAzMC43OTU0QzI0LjU4NjcgMzAuMzk4MSAyNS4xODMyIDMwLjA5MjkgMjYuMTkzNCAyOS40NjMyQzI2LjMwNCAyOS4zOTA1IDI2LjQxNDcgMjkuMzEzIDI2LjUyMDUgMjkuMjM1NUMxNy4wMTUyIDMyLjIxOTcgNi4wNjE4OSAxNy40Mjk1IDE0LjY1MzMgOS4xODkwNlpNMTYuMDk3NiAxMC4zMDEzTDE2LjA5NzYgMTAuMzAxMUMxNi4xNTg0IDkuOTg0MiAxNi4xODU4IDkuODQxNTkgMTYuMDk2NCA5Ljc1NTg3QzE1Ljk5NTQgOS42NTg5OCAxNS43NjkzIDkuOTA2MDQgMTUuNDk1MSAxMC4yNzkxQzEwLjExNzEgMTcuNzI1IDIxLjg2NCAyOS4wMzY5IDI5LjUwNzggMjYuMTA1OUMzMC4zMzUxIDI0LjgzNjcgMzAuOTE3MiAyMy40MTczIDMxLjIyMDMgMjEuOTNWMjEuOTI1MkMyNy4wMjU2IDI1LjE4MDcgMTQuNzQ5NSAxNy41NTU1IDE2LjA3MjMgMTAuNDM0MUMxNi4wODEyIDEwLjM4NjcgMTYuMDg5NyAxMC4zNDI1IDE2LjA5NzYgMTAuMzAxM1pNMTkuMjIzMSA5LjMyOTU1QzIwLjUzNjQgMTEuOTc0NiAyOS4yMTQzIDE2Ljc3MDcgMzAuMTQ3NSAxMy45ODUxQzMwLjgzMDYgMTUuMzI3IDMxLjI1ODcgMTYuNzg1MiAzMS40MDMxIDE4LjI4N0MzMS40MjcxIDE4LjM5ODQgMzEuNDMxOSAxOC41MDk4IDMxLjQyNzEgMTguNjIxMkMyNi41MjA1IDIwLjQ0MjggMTcuODg1OCAxMy4zNTUzIDE4LjY5NCA5LjQ0MDk4QzE4Ljc1NjUgOS4xMzA5MyAxOC44MjM5IDkuMDI0MzUgMTguOTIwMSA4Ljk5NTI4QzE4Ljk2ODIgOC45NzU5MSAxOS4wODg0IDkuMDQzNzMgMTkuMjIzMSA5LjMyOTU1WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==',
+      iconImageSize: [40, 40],
       iconImageOffset: [-12, -12],
     };
     this.iconActive = {
@@ -27,7 +27,10 @@ export default class Offices {
       iconImageOffset: [-28, -44],
     };
     this.iconUserPosition = {
-      preset: 'islands#redIcon',
+      iconLayout: 'default#image',
+      iconImageHref: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSI1NiIgdmlld0JveD0iMCAwIDU2IDU2Ij4gICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoNTZ2NTZIMHoiLz4gICAgICAgIDxnIGZpbGwtcnVsZT0ibm9uemVybyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTMgNikiPiAgICAgICAgICAgIDxwYXRoIGZpbGw9IiMzQjY2QzUiIGQ9Ik0zMCAxNC45NDNjLS4wMDIuNDA5LS4wMTkuODE4LS4wNSAxLjIyNS0uNDkyIDYuMTgzLTQuNTk0IDEyLjUzMS04LjI1NiAxOC41OTRMMTUgNDVWMjkuODg2Yy04LjI4NCAwLTE1LTYuNjktMTUtMTQuOTQzUzYuNzE2IDAgMTUgMGM4LjI4NCAwIDE1IDYuNjkgMTUgMTQuOTQzeiIvPiAgICAgICAgICAgIDxjaXJjbGUgY3g9IjE1IiBjeT0iMTUiIHI9IjYiIGZpbGw9IiNGRkYiLz4gICAgICAgIDwvZz4gICAgPC9nPjwvc3ZnPg==',
+      iconImageSize: [56, 56],
+      iconImageOffset: [-28, -44],
     };
     this.switcher = $('.js-offices-switcher');
     this.routeButton = $('[name=select_routeType]');
@@ -39,7 +42,8 @@ export default class Offices {
     this.map = null;
     this.markCollection = null;
     this.points = [];
-    this.mapContainer = document.getElementById('map-container');
+    this.mapContainerId = window.innerWidth > 831 ? 'map-container' : 'map-container-mobile';
+    this.mapContainer = document.getElementById(this.mapContainerId);
     this.mapContainer.setAttribute('tab-index', '1');
     this.mapBlock = null;
     this.init();
@@ -68,6 +72,11 @@ export default class Offices {
         } else {
           this.changeCity();
         }
+
+        this.getPoints();
+        this.getUserPos().then(() => {
+          this.distanceCalculation(this.userPos);
+        });
       });
     });
     this.setScrollPane();
@@ -75,7 +84,7 @@ export default class Offices {
     // Блок обработки карты и списка на мобильной версии
     this.handleSwitch();
 
-    if (window.innerWidth > 991) {
+    if (window.innerWidth > 800) {
       this.appBlock.removeClass('state_listed');
       Offices.reInitScroll(this.pane, 250);
     } else {
@@ -108,6 +117,12 @@ export default class Offices {
       this.createRoute(toPoint, type);
     });
     this.searchInit();
+
+    // $('.office-stress__load').tooltipster({
+    //   theme: ['tooltipster-noir', 'tooltipster-noir-customized']
+    // });
+
+    this.lookAtTheMap();
   }
 
   handleSwitch() {
@@ -208,7 +223,7 @@ export default class Offices {
 
   initMap() {
     const mapContainer = document.createElement('div');
-    const mapContainerWrapper = document.getElementById('map-container');
+    const mapContainerWrapper = this.mapContainer;
     $(mapContainerWrapper).attr('style', '');
     mapContainerWrapper.appendChild(mapContainer);
     this.map = new ymaps.Map(mapContainer, {
@@ -219,7 +234,7 @@ export default class Offices {
     this.map.behaviors.disable('scrollZoom');
     this.map.options.set('suppressMapOpenBlock', true);
     this.setZoomControls();
-    this.mapBlock = document.getElementById('map-container').firstChild;
+    this.mapBlock = this.mapContainer.firstChild;
     if (window.innerWidth < 992) {
       this.map.behaviors.disable('drag');
     }
@@ -278,7 +293,6 @@ export default class Offices {
         // Снимаем обработчики кликов.
         $('#zoom-in').unbind('click', this.zoomInCallback);
         $('#zoom-out').unbind('click', this.zoomOutCallback);
-
         // Вызываем родительский метод clear.
         ZoomLayout.superclass.clear.call(this);
       },
@@ -293,10 +307,11 @@ export default class Offices {
         map.setZoom(map.getZoom() - 1, { checkZoomRange: true });
       },
     });
+
     const zoomControl = new ymaps.control.ZoomControl({
       options: {
         layout: ZoomLayout,
-        position: { bottom: 80 },
+        position: { top: '0px' },
       },
     });
     this.map.controls.add(zoomControl);
@@ -312,11 +327,19 @@ export default class Offices {
       const coords = $(el).data('coords');
       $(el).removeClass('state_hidden');
       if (coords) {
-        this.points.push({
-          id: Offices.generatePointId(coords),
-          coordinates: coords,
-          element: el,
+        let foundDot = false;
+        this.points.forEach((currentPoint) => {
+          if (currentPoint.id === Offices.generatePointId(coords)) {
+            foundDot = true;
+          }
         });
+        if (!foundDot) {
+          this.points.push({
+            id: Offices.generatePointId(coords),
+            coordinates: coords,
+            element: el,
+          });
+        }
       }
     });
   }
@@ -367,6 +390,8 @@ export default class Offices {
   saveUserPos(pos) {
     this.userPos = pos;
   }
+
+  // построение маршрута
   createRoute(toPoint, mode) {
     this.clearRoute();
     this.multiRoute = new ymaps.multiRouter.MultiRoute({
@@ -380,7 +405,20 @@ export default class Offices {
     }, {
       boundsAutoApply: true,
     });
+    console.log("Длина: " + this.multiRoute.properties.get("distance"));
     this.map.geoObjects.add(this.multiRoute);
+    // this.multiRoute.model.mouseenter.add('requestsuccess', function() {
+    //   // Получение ссылки на активный маршрут.
+    //   var activeRoute = this.multiRoute.getActiveRoute();
+    //   // Вывод информации о маршруте.
+    //   console.log("Длина: " + activeRoute.properties.get("distance").text);
+    //   console.log("Время прохождения: " + activeRoute.properties.get("duration").text);
+    //   // Для автомобильных маршрутов можно вывести
+    //   // информацию о перекрытых участках.
+    //   if (activeRoute.properties.get("blocked")) {
+    //     console.log("На маршруте имеются участки с перекрытыми дорогами.");
+    //   }
+    // });
   }
   getUserPos() {
     function addPlacemark(self, latitude, longitude) {
@@ -388,6 +426,8 @@ export default class Offices {
       el.coordinates = [latitude, longitude];
       self.saveUserPos([latitude, longitude]);
       self.createPlacemark(el, self.iconUserPosition, true);
+      self.map.setZoom(self.map.getZoom() + 5, { checkZoomRange: true });
+      self.map.setCenter(el.coordinates, self.map.getZoom(), { duration: 1000 });
     }
     return new Promise((resolve) => {
       if (window.navigator.geolocation) {
@@ -436,7 +476,7 @@ export default class Offices {
       currentCollapse.openContent(target);
       Offices.reInitScroll(this.pane, 225);
       this.togglePointState(e.get('target'), target);
-      if (window.innerWidth < 992) {
+      if (window.innerWidth < 800) {
         if (!this.appBlock.hasClass('state_explored')) {
           this.appBlock.addClass('state_explored');
           this.initPointMobileDetail(target);
@@ -503,6 +543,10 @@ export default class Offices {
       }
     });
 
+    $('#get-geo').on('click', () => {
+      this.getUserPos();
+    });
+
     $('.collapse__item[data-coords] .collapse__control').on('click', (e) => {
       if (!this.appBlock.hasClass('state_explored')) {
         this.scrollToCollapse($(e.target));
@@ -510,16 +554,16 @@ export default class Offices {
         const point = this.getPointById(Offices.generatePointId(collapseContent.data('coords')));
         // const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${$(e.target).closest('.collapse__item').data('coords')}]"] .collapse__control`);
         this.togglePointState(point, $(e.target).closest('.collapse__control'));
-        if (window.innerWidth < 992) {
-          if (!this.appBlock.hasClass('state_explored')) {
-            // this.appBlock.removeClass('state_listed').addClass('state_explored');
-            // this.initPointMobileDetail($(e.target).closest('.collapse__control'));
-            //
-            // this.point = point;
-            // this.target = $(e.target).closest('.collapse__control');
-            collapseContent.find('.js-collapse-map-wrap')[0].append(this.mapBlock);
-          }
-        }
+        // if (window.innerWidth < 992) {
+        //   if (!this.appBlock.hasClass('state_explored')) {
+        //     // this.appBlock.removeClass('state_listed').addClass('state_explored');
+        //     // this.initPointMobileDetail($(e.target).closest('.collapse__control'));
+        //     //
+        //     // this.point = point;
+        //     // this.target = $(e.target).closest('.collapse__control');
+        //     collapseContent.find('.js-collapse-map-wrap')[0].append(this.mapBlock);
+        //   }
+        // }
       }
     });
 
@@ -530,11 +574,14 @@ export default class Offices {
       this.getPoints();
       this.addPoints();
       this.goToPoints();
+      this.getUserPos().then(() => {
+        this.distanceCalculation(this.userPos);
+      });
     });
   }
 
   static reInitScroll(pane, time = 0) {
-    if (window.innerWidth > 991) {
+    if (window.innerWidth > 800) {
       setTimeout(() => {
         pane.data('jsp').reinitialise();
       }, time);
@@ -542,7 +589,7 @@ export default class Offices {
   }
 
   scrollToCollapse(el) {
-    if (window.innerWidth > 991) {
+    if (window.innerWidth > 800) {
       this.pane.bind('jsp-initialised', () => {
         this.pane.data('jsp').scrollToElement(el.closest('.collapse__item'), 75);
         this.pane.unbind('jsp-initialised');
@@ -605,19 +652,77 @@ export default class Offices {
 
   searchInit() {
     $('[name=map-search]').on('keyup', (e) => {
+      console.log($('[name=map-search]').closest('.js-input').val());
       const searchInput = $(e.currentTarget);
       const value = searchInput.val();
+
+      this.addOrRemoveButtonClose(value);
+      this.removeValueInput(searchInput);
+
       clearTimeout(this.searchTimout);
       this.searchTimout = setTimeout(() => {
         if (value) {
+          this.removeValueInput();
           this.search(value);
+          this.autoCompleteShow(value);
         } else {
+          $('.offices__search-variations').hide();
           this.getPoints();
           this.addPoints();
         }
       }, 250);
     });
+
+
+    $('[name=map-search]').on('change', (e) => {
+      const searchInput = $(e.currentTarget);
+      const value = searchInput.val();
+      if (value) {
+        $('.collapse__control-underground').css({ display: 'none' });
+        $('.collapse__control-distance-to-bcs').css({ display: 'block' });
+        const city = $('input[name=current-city_input]').attr('data-text');
+        const address = city + ', ' + value;
+        console.log(address);
+        ymaps.geocode(address).then((res) => {
+          const startPoint = res.geoObjects.get(0).geometry.getCoordinates();
+          this.distanceCalculation(startPoint);
+        });
+      } else {
+        $('.collapse__control-underground').css({ display: 'flex' });
+        $('.collapse__control-distance-to-bcs').css({ display: 'none' });
+        this.distanceCalculation(this.userPos);
+        // скрыть метры которые про поиске
+      }
+    });
+
+    $(window).click(() => {
+      // $('.search-close').css({ display: 'none' });
+      // $('.icon-search').css({ display: 'block' });
+      $('.offices__search-variations').hide();
+    });
+
+    $(document).on('click', '.offices__search-option', (e) => {
+      e.preventDefault();
+      $('.search-close').css({ display: 'none' });
+      $('.icon-search').css({ display: 'block' });
+      // добавление выбранного текста по клику в инпут
+      const parent = $(e.target).closest('.offices__search-option'); // привязка к текущему элементу на который кликнули
+      const text = $.trim(parent.find('.offices__search-title').text());
+      $('[name=map-search]').val(text);
+      $('[name=map-search]').closest('.js-input').addClass('state_filled');
+      $('[name=map-search]').closest('.js-input').removeClass('state_init');
+      $('.offices__search-variations').hide();
+      this.search(text);
+      const city = $('input[name=current-city_input]').attr('data-text');
+      const address = city + ', ' + text;
+      ymaps.geocode(address).then((res) => {
+        const startPoint = res.geoObjects.get(0).geometry.getCoordinates();
+        this.distanceCalculation(startPoint);
+      });
+    });
   }
+
+  // скрывает карточки и центрирует карту относительно оставшихся точек на карте
   search(text) {
     this.getPoints();
     const result = [];
@@ -630,7 +735,114 @@ export default class Offices {
         $(point.element).addClass('state_hidden');
       }
     });
+
     this.points = result;
     this.addPoints();
+  }
+
+  distanceCalculation(coord) {
+    if ((typeof coord) !== undefined && coord != null) {
+      this.points.forEach((point) => {
+        const distance = Math.ceil(ymaps.coordSystem.geo.getDistance(coord, point.coordinates));
+        const temp =  Math.ceil((distance / 1000) *10) / 10;
+        if (distance > 1000) {
+          $(point.element).find('.collapse__control-distance').text('~' + temp + 'км');
+          $(point.element).find('.collapse__control-distance-metr').text('~' + temp + 'км');
+        } else {
+          $(point.element).find('.collapse__control-distance').text('~' + distance + 'м');
+          $(point.element).find('.collapse__control-distance-metr').text('~' + distance + 'м');
+        }
+      });
+    } else {
+      console.log('Не удалось найти позицию пользователя');
+    }
+  }
+
+  autoCompleteShow(text) {
+    this.getPoints();
+    const autoCompleteResult = []; // резулттирующий массив для выпадающего списка
+    this.points.forEach((point) => {
+      // ищем информацию для выпадающего списка
+      const metroVariantion = String($(point.element).find('.collapse__control-underground-name').text()).toLowerCase();
+      const streetVariantion = String($(point.element).find('.collapse__control-title').text()).toLowerCase();
+
+      if (metroVariantion.indexOf(text.toLowerCase()) + 1) {
+        const classList = $(point.element).find('.collapse__control-underground-icon').attr('class').split(/\s+/);
+        const MetrocustomPoint = {
+          title: $(point.element).find('.collapse__control-underground-name').text(),
+          description: 'станция метро',
+          type: 'metro',
+          colorMetro: classList[1],
+          svg: $('.collapse__control-underground-icon')[0],
+        };
+        autoCompleteResult.push(MetrocustomPoint);
+      }
+
+      if (streetVariantion.indexOf(text.toLowerCase()) + 1) {
+        const StreetcustomPoint = {
+          title: $(point.element).find('.collapse__control-title').text(),
+          description: 'метро' + $(point.element).find('.collapse__control-underground-name').text(),
+          type: 'street',
+          svg: $('.collapse__control-underground-icon')[0],
+        };
+        autoCompleteResult.push(StreetcustomPoint);
+      }
+    });
+
+    if (autoCompleteResult.length > 0) {
+      $('.offices__search-variations').show();
+      const searchVariationsContainer = $('.offices__search-variations');
+      const searchVartiations = $('.offices__search-option').first();
+      $.each($('.offices__search-option'), function (i, item) {
+        if (i !== 0) {
+          $(item).remove();
+        }
+      });
+
+      autoCompleteResult.forEach((customPoint) => {
+        searchVartiations.find('.offices__search-title').text(customPoint.title);
+        searchVartiations.find('.offices__search-description').text(customPoint.description);
+        searchVartiations.find('.offices__search-icon').removeClass(customPoint.colorMetro);
+        searchVartiations.find('.icon-street-icon').css({ display: 'none' });
+        searchVartiations.find('.icon-orange').css({ display: 'none' });
+        if (customPoint.type === 'street') {
+          searchVartiations.find('.icon-street-icon').css({ display: 'block' });
+        } else {
+          searchVartiations.find('.offices__search-icon').addClass(customPoint.colorMetro);
+          searchVartiations.find('.icon-orange').css({ display: 'block' });
+        }
+        searchVartiations.clone().appendTo(searchVariationsContainer);
+      });
+      $('.offices__search-option').first().remove();
+    } else {
+      $('.offices__search-variations').hide();
+    }
+  }
+
+  removeValueInput(searchInput) {
+    $('.search-close').on('click', () => {
+      searchInput.val('');
+      $('.search-close').css({ display: 'none' });
+      $('.icon-search').css({ display: 'block' });
+    });
+  }
+
+  addOrRemoveButtonClose(value) {
+    if (value !== '') {
+      $('.search-close').css({ display: 'block' });
+      $('.icon-search').css({ display: 'none' });
+    } else {
+      $('.search-close').css({ display: 'none' });
+      $('.icon-search').css({ display: 'block' });
+    }
+  }
+
+  // кнопка "показать на карте"
+  lookAtTheMap() {
+    $('.js-offices-button-for-map').on('click', () => {
+      setTimeout(() => {
+        $('html, body').animate({ scrollTop: $('#map-container').offset().top - ($('#map-container').height() / 3) }, 800);
+      }, 200);
+    });
   }
 }

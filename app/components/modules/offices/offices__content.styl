@@ -1,30 +1,59 @@
 .offices .offices__content
   overflow hidden
-  max-width: 476px
-  width: 100%
-  height: 518px
-  position: absolute
-  top: 80px
-  left: 50%
-  transform: translateX(-600px)
+  max-width 597px
+  width 100%
+  //height 100vh
+  display: flex;
+  flex-direction column
+  //position: absolute;
+  //top: 0px;
+  //left: 41.7%;
+  //transform: translateX(-600px)
+  z-index 100
+  flex-shrink: 0
   background-color: $white
-  border-radius: 4px
+  border-top: 1px solid $gainsboro;
   box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1), 0 0 50px 0 rgba(255, 255, 255, 0.5)
 
-  @media (min-width: 992px) and (max-width: 1279px) {
-    max-width: 376px;
+  @media (min-width: 800px) and (max-width: 1215px)
+    max-width: 464px;
+  @media (max-width: 1215px)
+    border-top none
+  @media (max-width: 1215px)
+    z-index 0
+  @media (max-width: 831px)
+    width: 100%;
+  //.offices .offices__content > div
+  //  flex:1
 
-    transform: translateX(-48vw);
-  }
+  .heading_style-light
+    margin-bottom: 15px;
+    padding-right: 110px;
+
+  .section__content, .section__tabbar
+    padding-left 91px
+    @media (min-width: 832px) and (max-width: 1215px)
+      padding-left 64px
+    @media (max-width 831px)
+      padding-left 0
+  .section__tabbar
+    border-bottom: 1px solid $gainsboro
+
+  //@media (min-width: 992px) and (max-width: 1279px) {
+  //  max-width: 376px;
+  //
+  //  //transform: translateX(-48vw);
+  //}
   +.offices__switch-view
     width 100%
 
-  @media (max-width: 991px)
+  @media (max-width: 831px)
     left: 0
-    width: 100%
+
     height: auto
     max-width: unset
 
     transform: translateX(0)
     box-shadow: none
     border-radius: 0
+

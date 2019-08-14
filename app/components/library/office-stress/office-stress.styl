@@ -1,50 +1,136 @@
 .office-stress
   display flex
-  position relative
+  align-items flex-end
+  //position relative
   width 100%
-  @media (max-width: 767px)
-    width 45px
-    margin-bottom 8px
+  height 63px
+
+  @media (max-width: 831px)
+    width 38px
+    //margin-bottom 8px
+  @media (min-width: 351px) and (max-width: 431px)
+    width: 30px;
+  @media (max-width: 350px)
+    width: 26px;
+
   &-list
     display flex
-    flex-basis 100%
-    flex-direction row
-    justify-content stretch
-    align-items flex-end
-    padding-bottom 19px
+    position: relative;
+    margin-top 30px
+    padding-right 79px
+    padding-left 7px
+    //flex-basis 100%
+    //flex-direction row
+    //justify-content stretch
+    padding-bottom 5px
     width 100%
+    cursor: pointer;
+
+    //&::before
+    //  content "Средняя загруженность"
+    //  position absolute
+    //  right: 60px;
+    //  bottom: 58px;
+    //  display: none;
+    //  align-items: center;
+    //  justify-content: center;
+    //  width 157px
+    //  height 27px
+    //  border-radius 4px
+    //  font-size: 12px;
+    //  line-height: 16px;
+    //  background-color $madison
+    //  color $white
+    //
+    //&:hover::before
+    //  display: flex;
+
+    @media (min-width: 800px) and (max-width: 1215px)
+      padding-right 20px
+      padding-left 5px
     @media (max-width: 767px)
       flex-wrap wrap
+    @media (max-width: 831px)
+      padding-right 0
+      padding-left 0
+
   &__time
     display flex
-    flex-basis 100%
-    flex-direction row
-    justify-content flex-start
-    align-items flex-start
-    font-size 15px
+    //flex-basis 100%
+    //flex-direction row
+    //justify-content flex-start
+    //align-items flex-start
+    color $madison
+    font-size 12px
     letter-spacing -0.8px
     line-height 15px
     padding 4px
     padding-bottom 7px
     @media (max-width: 1279px) and (min-width: 992px)
       font-size 10px
-    &-minutes
-      font-size 8px
-      letter-spacing 0.2px
-      opacity 0.5
-      margin-left 2px
-      line-height 8px
+    &-hours
+      margin-right 66px
+    &-hours:first-child
+      margin-right 102px
+    &-hours:last-child
+      margin-left 36px
+    @media (min-width: 832px) and (max-width: 1215px)
+      &-hours
+        margin-right 54px
+      &-hours:first-child
+        margin-right 84px
+      &-hours:last-child
+        margin-left 30px
+    @media (max-width: 831px)
+      &-hours
+        margin-right 62px
+      &-hours:first-child
+        margin-right 95px
+      &-hours:last-child
+        margin-left 33px
+    @media (min-width: 351px) and (max-width: 431px)
+      &-hours
+        margin-right 47px
+      &-hours:first-child
+        margin-right 62px
+      &-hours:last-child
+        margin-left 15px
+    @media (max-width: 351px)
+      &-hours
+        margin-right 42px
+      &-hours:first-child
+        margin-right 51px
+      &-hours:last-child
+        margin-left 9px
+
   &__load
-    height 2px
-    width 100%
-    position absolute
-    bottom 0
-    left 0
+    width 32px
+    border-top-right-radius 4px
+    border-top-left-radius 4px
+    //position absolute
+    //bottom 0
+    //left 0
     &[data-stress=min]
-      background #23d56c
+      background $stress_block_min
     &[data-stress=normal]
-      background #f7c61a
+      background $button_hover
     &[data-stress=high]
-      background #ee4c1d
+      background $royal_blue
+    @media (min-width: 832px) and (max-width: 1215px)
+      width 26px
+    @media (max-width: 831px)
+      width 28px
+    @media (min-width: 351px) and (max-width: 431px)
+      width: 25px;
+    @media (max-width: 350px)
+      width: 20px;
 
-
+  &__congestion
+    display flex
+    justify-content center
+    font-size 14px
+    margin-top 4px
+    margin-right 51px
+    &-current-time
+      color $royal_blue
+      margin-right 8px

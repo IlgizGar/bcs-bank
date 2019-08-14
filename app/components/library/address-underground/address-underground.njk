@@ -1,0 +1,37 @@
+{% import "../../../components/icon/icon.njk" as Icon %}
+
+{% macro addressUnderground( options ) %}
+
+<div class="collapse__control">
+  <div class="collapse__control-underground">
+    <div class="collapse__control-underground-icon  {% if options.type %}{{ "underground-line-" + options.type }}{% endif %}">
+      {{ Icon.icon({ 'name': 'orange' }) }}
+    </div>
+    <div class="collapse__control-underground-name"> {{ options.metro }} </div>
+    <div class="collapse__control-distance"> 210м </div>
+  </div>
+  <div class="collapse__control-distance-to-bcs"> От введенного адреса:
+    <span class="collapse__control-distance-metr">210м</span>
+  </div>
+  <div class="collapse__control-title">
+    {{ options.title }}
+  </div>
+  <div class="collapse__control-description">
+    {% if options.atm === 'time' %}
+      <div class="collapse__control-description-timetable">
+        Пн-Пт, 6:00–23:00
+      </div>
+      <div class="collapse__control-description-timetable">
+        Сб-Вс — выходной
+      </div>
+      {% elif options.atm === 'always' %}
+      Круглосуточно
+    {% else %}
+      Кредитно-кассовый офис
+    {% endif %}
+  </div>
+  <div class="collapse__control-icon">
+    {{ Icon.icon({ 'name': 'dropdown' }) }}
+  </div>
+</div>
+{% endmacro %}

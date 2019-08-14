@@ -36,12 +36,17 @@
             {% if options.tag === "textarea" %}
                 <textarea class="input__field js-input-field {{ options.field.class | safe }}" {{ field | safe }}></textarea>
             {% else %}
-                <input class="input__field js-input-field {{ options.field.class | safe }}" {{ field | safe }} {% if options.value %}value="{{ options.value }}"{% endif %} >
+                <input class="input__field js-input-field {{ options.field.class | safe }}" {{ field | safe }} {% if options.value %}value="{{ options.value }}"{% endif %} autocomplete="off" >
             {% endif %}
         </label>
 
         {% if options.icon %}
-            {{ Icon.icon({ 'name': options.icon }) }}
+            {{ Icon.icon({ 'name': options.icon, 'class':'icon-input-search' }) }}
+
+            <button class="search-close">
+              <span class="line-close line-1"></span>
+              <span class="line-close line-2"></span>
+            </button>
         {% endif %}
 
         {% if options.title %}

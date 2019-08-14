@@ -21,15 +21,7 @@
     {% endset %}
 
     <div class="office-stress">
-        <div class="office-stress__time">
-            <div class="office-stress__time-hours">
-                {{ options.h }}
-            </div>
-            <div class="office-stress__time-minutes">
-                {{ options.m }}
-            </div>
-        </div>
-        <div class="office-stress__load" data-stress="{{ options.stress }}">
+        <div class="office-stress__load" title="Средняя загруженность" data-stress="{{ options.stress }}" style="height: {{ options.height }};">
         </div>
     </div>
 

@@ -1,7 +1,14 @@
 .collapse .collapse__content
-  padding: 0 60px 35px 40px
+  padding: 0 60px 0 40px
+  padding-left: 112px!important
   display: none
   transition: background-color 0.175s linear
+  @media (min-width 832px) and (max-width 1215px)
+    padding-left 83px!important
+  @media (max-width 831px)
+    padding-left 24px!important
+    padding-right 24px!important
+
   .text:not(:last-child)
     margin-bottom: 10px
   *
@@ -10,7 +17,7 @@
   @media (max-width 1279px)
     padding-left: 16px
     padding-right: 16px
-    padding-bottom: 32px
+    //padding-bottom: 32px
 .collapse .collapse__item
   &.collapse__item_state-open
     .collapse__content
