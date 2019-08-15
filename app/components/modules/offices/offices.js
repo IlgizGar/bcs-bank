@@ -529,7 +529,7 @@ export default class Offices {
     this.pane.jScrollPane({
       contentWidth: 100,
       verticalDragMinHeight: 16,
-      verticalDragMaxHeight: 16,
+      verticalDragMaxHeight: 60,
       verticalGutter: 16,
       mouseWheelSpeed: 1,
       animateDuration: 1000,
@@ -703,8 +703,8 @@ export default class Offices {
 
     $(document).on('click', '.offices__search-option', (e) => {
       e.preventDefault();
-      $('.search-close').css({ display: 'none' });
-      $('.icon-search').css({ display: 'block' });
+      $('.search-close').css({ display: 'block' });
+      $('.icon-search').css({ display: 'none' });
       // добавление выбранного текста по клику в инпут
       const parent = $(e.target).closest('.offices__search-option'); // привязка к текущему элементу на который кликнули
       const text = $.trim(parent.find('.offices__search-title').text());
@@ -824,6 +824,13 @@ export default class Offices {
       searchInput.val('');
       $('.search-close').css({ display: 'none' });
       $('.icon-search').css({ display: 'block' });
+      $('[name=map-search]').closest('.js-input').addClass('state_init');
+      $('[name=map-search]').closest('.js-input').removeClass('state_filled');
+      $('.collapse__item').removeClass('state_hidden');
+      $('.collapse__item').find('.collapse__control-underground').css({ display: 'flex' });
+      $('.collapse__item').find('.collapse__control-distance-to-bcs').hide();
+      this.distanceCalculation(this.userPos);
+
     });
   }
 
