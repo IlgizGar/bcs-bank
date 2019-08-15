@@ -9,7 +9,7 @@ export default class formDelivery {
   }
 
   static deliveryCourier(deliveryBlock, deliveryContainerJson) {
-    if (deliveryContainerJson.courier === 'false') {
+    if (deliveryContainerJson.courier === false) {
       deliveryBlock.querySelector('.js-check-delivery_courier').classList.add('js-check-delivery_none');
     }
   }
