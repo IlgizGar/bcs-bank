@@ -13,7 +13,7 @@
   flex-shrink: 0
   background-color: $white
   border-top: 1px solid $gainsboro;
-  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1), 0 0 50px 0 rgba(255, 255, 255, 0.5)
+  //box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1), 0 0 50px 0 rgba(255, 255, 255, 0.5)
 
   @media (min-width: 800px) and (max-width: 1215px)
     max-width: 464px;
@@ -28,7 +28,10 @@
 
   .heading_style-light
     margin-bottom: 15px;
-    padding-right: 110px;
+    @media (max-width: 831px)
+      padding-right: 110px;
+    @media (max-width: 420px)
+      padding-right: 35px;
 
   .section__content, .section__tabbar
     padding-left 91px
