@@ -83,6 +83,7 @@ module.exports = (elem) => {
         dataType: 'json',
         data: FormHelper.formatOutput(sendStep ? FormHelper.collectStepData(this) : $(form).serializeArray()),
         success: (data) => {
+          console.log('DATA', data);
           $(form).removeClass('state_loading');
           this.processResult(url, form, data, callback);
         },
@@ -95,6 +96,8 @@ module.exports = (elem) => {
       });
     }
     processResult(url, form, data, callback) {
+      console.log(this.steps);
+
       function showSmsError() {
         FormHelper.showInputError('sms_code', data.error, this.formValidator);
       }
@@ -130,7 +133,7 @@ module.exports = (elem) => {
         formDelivery.deliveryAvailability(data);
       }
 
-      if (data.delivery !== null && document.querySelector('.form__form-delivery')) {
+      if (this.steps.currentStep === 1) {
         showDeliveryBlock.apply(this);
       }
 
