@@ -12,6 +12,7 @@ export default class Offices {
     this.userPos = null;
     this.appBlock = offices;
     this.pane = $('.js-tabs');
+    this.searchPane = $('.offices__search-variations');
     this.content = this.pane.parent();
     this.searchTimout = null;
     this.iconNormal = {
@@ -28,8 +29,8 @@ export default class Offices {
     };
     this.iconUserPosition = {
       iconLayout: 'default#image',
-      iconImageHref: 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSI1NiIgdmlld0JveD0iMCAwIDU2IDU2Ij4gICAgPGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4gICAgICAgIDxwYXRoIGZpbGw9Im5vbmUiIGQ9Ik0wIDBoNTZ2NTZIMHoiLz4gICAgICAgIDxnIGZpbGwtcnVsZT0ibm9uemVybyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTMgNikiPiAgICAgICAgICAgIDxwYXRoIGZpbGw9IiMzQjY2QzUiIGQ9Ik0zMCAxNC45NDNjLS4wMDIuNDA5LS4wMTkuODE4LS4wNSAxLjIyNS0uNDkyIDYuMTgzLTQuNTk0IDEyLjUzMS04LjI1NiAxOC41OTRMMTUgNDVWMjkuODg2Yy04LjI4NCAwLTE1LTYuNjktMTUtMTQuOTQzUzYuNzE2IDAgMTUgMGM4LjI4NCAwIDE1IDYuNjkgMTUgMTQuOTQzeiIvPiAgICAgICAgICAgIDxjaXJjbGUgY3g9IjE1IiBjeT0iMTUiIHI9IjYiIGZpbGw9IiNGRkYiLz4gICAgICAgIDwvZz4gICAgPC9nPjwvc3ZnPg==',
-      iconImageSize: [56, 56],
+      iconImageHref: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzQiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAzNCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMyLjc1MjMgMTEuOTQ2N0MzMi41ODE0IDExLjMwNjQgMzIuMjM0NSAxMC42MjQgMzEuOTc3OCAxMC4wMjY3QzI4LjkwNjQgMi42NDUzMyAyMi4xOTU0IDAgMTYuNzc2NiAwQzkuNTIyNjQgMCAxLjUzMzIxIDQuODY0MTIgMC40NjY1NTMgMTQuODkwMlYxNi45Mzg2QzAuNDY2NTUzIDE3LjAyNDEgMC40OTYwMTUgMTcuNzkyIDAuNTM3ODY0IDE4LjE3NjFDMS4xMzU4MSAyMi45NTQzIDQuOTA2MTYgMjguMDMyNSA3LjcyMjAxIDMyLjgxMDdDMTAuNzUxNSAzNy45MyAxMy44OTUgNDIuOTY2IDE3LjAwOTMgNDcuOTk5OUMxOC45Mjk3IDQ0LjcxNDkgMjAuODQzMiA0MS4zODY3IDIyLjcxOTggMzguMTg2N0MyMy4yMzEzIDM3LjI0NzYgMjMuODI1IDM2LjMwOTEgMjQuMzM3IDM1LjQxMjdDMjQuNjc4MyAzNC44MTU5IDI1LjMzMDIgMzQuMjE5MSAyNS42MjgxIDMzLjY2MzdDMjguNjU3NCAyOC4xMTc0IDMzLjUzMzUgMjIuNTI4MiAzMy41MzM1IDE3LjAyNFYxNC43NjI4QzMzLjUzMzYgMTQuMTY2MSAzMi43OTM5IDEyLjA3NTQgMzIuNzUyMyAxMS45NDY3Wk0xNi45MDk0IDIyLjIyOTZDMTQuNzc3MSAyMi4yMjk2IDEyLjQ0MzIgMjEuMTYzNCAxMS4yOTExIDE4LjIxODlDMTEuMTE5NSAxNy43NTAyIDExLjEzMzMgMTYuODEwOCAxMS4xMzMzIDE2LjcyNDhWMTUuNDAyMUMxMS4xMzMzIDExLjY0ODQgMTQuMzIwNiA5Ljk0MTQgMTcuMDkzNCA5Ljk0MTRDMjAuNTA2OSA5Ljk0MTQgMjMuMTQ3IDEyLjY3MjQgMjMuMTQ3IDE2LjA4NkMyMy4xNDcgMTkuNDk5NSAyMC4zMjMgMjIuMjI5NiAxNi45MDk0IDIyLjIyOTZaIiBmaWxsPSIjNDU3M0Q5Ii8+Cjwvc3ZnPgo=',
+      iconImageSize: [33, 48],
       iconImageOffset: [-28, -44],
     };
     this.switcher = $('.js-offices-switcher');
@@ -366,6 +367,11 @@ export default class Offices {
     if (el.id) {
       placemark.events.add('click', (e) => {
         this.onPointEvent(e, el.coordinates);
+        if (window.innerWidth > 831) {
+          setTimeout(() => {
+            $('html, body').animate({ scrollTop: $('.js-offices').offset().top }, 800);
+          }, 200);
+        }
       });
     } else {
       placemark.iconReadOnly = true;
@@ -405,20 +411,7 @@ export default class Offices {
     }, {
       boundsAutoApply: true,
     });
-    console.log("Длина: " + this.multiRoute.properties.get("distance"));
     this.map.geoObjects.add(this.multiRoute);
-    // this.multiRoute.model.mouseenter.add('requestsuccess', function() {
-    //   // Получение ссылки на активный маршрут.
-    //   var activeRoute = this.multiRoute.getActiveRoute();
-    //   // Вывод информации о маршруте.
-    //   console.log("Длина: " + activeRoute.properties.get("distance").text);
-    //   console.log("Время прохождения: " + activeRoute.properties.get("duration").text);
-    //   // Для автомобильных маршрутов можно вывести
-    //   // информацию о перекрытых участках.
-    //   if (activeRoute.properties.get("blocked")) {
-    //     console.log("На маршруте имеются участки с перекрытыми дорогами.");
-    //   }
-    // });
   }
   getUserPos() {
     function addPlacemark(self, latitude, longitude) {
@@ -426,8 +419,8 @@ export default class Offices {
       el.coordinates = [latitude, longitude];
       self.saveUserPos([latitude, longitude]);
       self.createPlacemark(el, self.iconUserPosition, true);
-      self.map.setZoom(self.map.getZoom() + 5, { checkZoomRange: true });
-      self.map.setCenter(el.coordinates, self.map.getZoom(), { duration: 1000 });
+      // self.map.setZoom(self.map.getZoom() + 5, { checkZoomRange: true });
+      self.map.setCenter(el.coordinates, 12, { duration: 1000, checkZoomRange: true });
     }
     return new Promise((resolve) => {
       if (window.navigator.geolocation) {
@@ -476,14 +469,15 @@ export default class Offices {
       currentCollapse.openContent(target);
       Offices.reInitScroll(this.pane, 225);
       this.togglePointState(e.get('target'), target);
-      if (window.innerWidth < 800) {
-        if (!this.appBlock.hasClass('state_explored')) {
-          this.appBlock.addClass('state_explored');
-          this.initPointMobileDetail(target);
-          this.point = e.get('target');
-          this.target = target;
-        }
-      }
+      // в данный момент на мобилке не нужен особенный сценарий
+      // if (window.innerWidth < 800) {
+      //   if (!this.appBlock.hasClass('state_explored')) {
+      //     this.appBlock.addClass('state_explored');
+      //     this.initPointMobileDetail(target);
+      //     this.point = e.get('target');
+      //     this.target = target;
+      //   }
+      // }
     }
   }
 
@@ -509,9 +503,9 @@ export default class Offices {
     });
     if (collapse.parent().hasClass('collapse__item_state-open')) {
       if (!point.iconReadOnly) {
-        point.options.set('iconImageHref', this.iconActive.iconImageHref);
-        point.options.set('iconImageSize', this.iconActive.iconImageSize);
-        point.options.set('iconImageOffset', this.iconActive.iconImageOffset);
+        point.options.set('iconImageHref', this.iconNormal.iconImageHref);
+        point.options.set('iconImageSize', this.iconNormal.iconImageSize);
+        point.options.set('iconImageOffset', this.iconNormal.iconImageOffset);
       }
       this.goToPoint(point);
     } else {
@@ -534,7 +528,6 @@ export default class Offices {
       mouseWheelSpeed: 1,
       animateDuration: 1000,
     });
-
     // Пересчет высоты при раскрытии элементов
 
     $('.collapse__control').on('click', () => {
@@ -543,7 +536,7 @@ export default class Offices {
       }
     });
 
-    $('#get-geo').on('click', () => {
+    $(document).on('click', '#get-geo', () => {
       this.getUserPos();
     });
 
@@ -573,11 +566,24 @@ export default class Offices {
       this.getCurrentTab();
       this.getPoints();
       this.addPoints();
-      this.goToPoints();
+      // this.goToPoints();
       this.getUserPos().then(() => {
         this.distanceCalculation(this.userPos);
       });
     });
+  }
+
+  setScrollSearch() {
+    this.searchPane.jScrollPane({
+      contentWidth: 100,
+      verticalDragMinHeight: 16,
+      verticalDragMaxHeight: 60,
+      verticalGutter: 16,
+      mouseWheelSpeed: 1,
+      animateDuration: 1000,
+    });
+    const heightSearchPane = this.searchPane.find('.offices__search-option').height();
+    if (this.searchPane > (heightSearchPane * 3)) {}
   }
 
   static reInitScroll(pane, time = 0) {
@@ -830,7 +836,8 @@ export default class Offices {
       $('.collapse__item').find('.collapse__control-underground').css({ display: 'flex' });
       $('.collapse__item').find('.collapse__control-distance-to-bcs').hide();
       this.distanceCalculation(this.userPos);
-
+      this.getPoints();
+      this.addPoints();
     });
   }
 
