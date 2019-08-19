@@ -1,8 +1,6 @@
 .navbar
   position: relative
   z-index: 500
-
-  box-shadow: inset 0 -2px 0 -1px $color_borders
   background-color: $color_light
 
   @media (min-width:416px) and (max-width: 831px)
@@ -20,8 +18,14 @@
     //  width 100%
     //  background $color_light
     //  display block
-
+  @media (min-width: 831px) and (max-width: 1215px)
+    box-shadow: inset 0 -2px 0 -1px $gainsboro;
   &.state_init
     @media (max-width: 1279px)
       .navbar__button .button__wrap
         color: $color_text
+
+  .page__new-container
+    box-shadow: inset 0 -2px 0 -1px $gainsboro;
+    @media (min-width: 831px) and (max-width: 1215px)
+      box-shadow none

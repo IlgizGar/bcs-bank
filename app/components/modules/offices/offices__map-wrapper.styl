@@ -41,12 +41,16 @@
   position: absolute;
   z-index: 10;
   top: 3%;
-  right: 3%!important;
+  right: 13%!important;
   left auto
   box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.05), 0px 4px 4px rgba(0, 0, 0, 0.05);
   cursor: pointer;
   background-color $white
   border-radius: 4px;
+  @media (max-width: 1215px)
+    right 17%!important;
+  @media (max-width: 831px)
+    right 24px!important;
   svg
     fill none
     color $royal_blue

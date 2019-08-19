@@ -580,8 +580,12 @@ export default class Offices {
   }
 
   setScrollSearch() {
-    const searchResCount = this.searchPane.find('.offices__search-option').length;
-    if (searchResCount > 3) {
+    if (this.searchPane.data('jsp'))
+    {
+      Offices.reInitScroll(this.searchPane, 250);
+    }
+    else
+    {
       this.searchPane.jScrollPane({
         contentWidth: 100,
         verticalDragMinHeight: 16,
@@ -590,8 +594,6 @@ export default class Offices {
         mouseWheelSpeed: 1,
         animateDuration: 1000,
       });
-    } else {
-      this.searchPane.find('.jspContainer').hide();
     }
   }
 
@@ -804,18 +806,26 @@ export default class Offices {
 
     if (autoCompleteResult.length > 0) {
       $('.offices__search-variations').show();
-      const searchVariationsContainer = $('.offices__search-variations');
-      const searchVartiations = $('.offices__search-option').first();
-      $.each($('.offices__search-option'), function (i, item) {
-        if (i !== 0) {
-          $(item).remove();
-        }
-      });
 
+      let searchVariationsContainer = $('.offices__search-variations');
+      const searchVartiations = $('.offices__search-option[data-template]');
+      $.each(searchVariationsContainer.find('.offices__search-option'), function (i, item) {
+        $(item).remove();
+      });
+      if (searchVariationsContainer.find('.jspPane').length)
+      {
+        searchVariationsContainer = searchVariationsContainer.find('.jspPane');
+      }
       autoCompleteResult.forEach((customPoint) => {
+        var iconClassList = searchVartiations.find('.offices__search-icon').attr('class').split(' ');
+        iconClassList.forEach(function (item, index) {
+          if (item != 'offices__search-icon')
+          {
+            searchVartiations.find('.offices__search-icon').removeClass(item);
+          }
+        });
         searchVartiations.find('.offices__search-title').text(customPoint.title);
         searchVartiations.find('.offices__search-description').text(customPoint.description);
-        searchVartiations.find('.offices__search-icon').removeClass(customPoint.colorMetro);
         searchVartiations.find('.icon-street-icon').css({ display: 'none' });
         searchVartiations.find('.icon-orange').css({ display: 'none' });
         if (customPoint.type === 'street') {
@@ -826,7 +836,10 @@ export default class Offices {
         }
         searchVartiations.clone().appendTo(searchVariationsContainer);
       });
-      $('.offices__search-option').first().remove();
+      $.each(searchVariationsContainer.find('.offices__search-option'), function (i, item) {
+        $(item).removeAttr('hidden');
+        $(item).removeAttr('data-template');
+      });
     } else {
       $('.offices__search-variations').hide();
     }
