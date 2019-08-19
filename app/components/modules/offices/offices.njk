@@ -7,6 +7,7 @@
 {% import "../../../components/library/address-underground/address-underground.njk" as addressUnderground %}
 {% import "../../../components/library/search-variations/search-variations.njk" as SearchVariations %}
 
+<div class="page__container" style="max-width: 1440px;">
 <div class="offices js-offices">
 
 {#  <div class="collapse offices__detail js-offices-detail state_hidden">#}
@@ -25,12 +26,13 @@
 
     <div class="offices__search-wrapper">
       <div class="offices__search">
-          {{ Input.input({ 'label': 'Введите адрес', 'class': 'search__field-group', 'field':{'name': 'map-search'}, 'icon': 'search' }) }}
+          {{ Input.input({ 'label': 'Введите адрес или метро', 'class': 'search__field-group', 'field':{'name': 'map-search'}, 'icon': 'search' }) }}
           {{ Button.button({ 'mods': {'type': 'icon','theme': 'transparent'}, 'attr': {'state': 'map'}, 'class': 'offices__switch-view js-offices-switcher' }) }}
 
         <div class="offices__search-variations">
-          {{SearchVariations.searchVariations ({'class': 'offices__switch-view js-search-variations' }) }}
+
         </div>
+        {{SearchVariations.searchVariations ({'class': 'offices__switch-view js-search-variations' }) }}
       </div>
     </div>
 
@@ -1804,6 +1806,7 @@
       {{ Icon.icon({ 'name': 'vector' }) }}
     </button>
   </div>
+</div>
 </div>
 
 <script>

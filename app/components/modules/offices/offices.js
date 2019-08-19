@@ -122,8 +122,9 @@ export default class Offices {
     // $('.office-stress__load').tooltipster({
     //   theme: ['tooltipster-noir', 'tooltipster-noir-customized']
     // });
-
-    this.lookAtTheMap();
+    if ($('.js-offices-button-for-map')) {
+      this.lookAtTheMap();
+    }
   }
 
   handleSwitch() {
@@ -365,11 +366,16 @@ export default class Offices {
       icon,
     );
     if (el.id) {
+      // событие клика по пину
       placemark.events.add('click', (e) => {
         this.onPointEvent(e, el.coordinates);
         if (window.innerWidth > 831) {
           setTimeout(() => {
             $('html, body').animate({ scrollTop: $('.js-offices').offset().top }, 800);
+          }, 200);
+        } else {
+          setTimeout(() => {
+            $('html, body').animate({ scrollTop: $('.collapse__item_state-open').offset().top }, 800);
           }, 200);
         }
       });
@@ -574,16 +580,19 @@ export default class Offices {
   }
 
   setScrollSearch() {
-    this.searchPane.jScrollPane({
-      contentWidth: 100,
-      verticalDragMinHeight: 16,
-      verticalDragMaxHeight: 60,
-      verticalGutter: 16,
-      mouseWheelSpeed: 1,
-      animateDuration: 1000,
-    });
-    const heightSearchPane = this.searchPane.find('.offices__search-option').height();
-    if (this.searchPane > (heightSearchPane * 3)) {}
+    const searchResCount = this.searchPane.find('.offices__search-option').length;
+    if (searchResCount > 3) {
+      this.searchPane.jScrollPane({
+        contentWidth: 100,
+        verticalDragMinHeight: 16,
+        verticalDragMaxHeight: 60,
+        verticalGutter: 16,
+        mouseWheelSpeed: 1,
+        animateDuration: 1000,
+      });
+    } else {
+      this.searchPane.find('.jspContainer').hide();
+    }
   }
 
   static reInitScroll(pane, time = 0) {
@@ -702,8 +711,6 @@ export default class Offices {
     });
 
     $(window).click(() => {
-      // $('.search-close').css({ display: 'none' });
-      // $('.icon-search').css({ display: 'block' });
       $('.offices__search-variations').hide();
     });
 
@@ -750,7 +757,7 @@ export default class Offices {
     if ((typeof coord) !== undefined && coord != null) {
       this.points.forEach((point) => {
         const distance = Math.ceil(ymaps.coordSystem.geo.getDistance(coord, point.coordinates));
-        const temp =  Math.ceil((distance / 1000) *10) / 10;
+        const temp = Math.ceil((distance / 1000) * 10) / 10;
         if (distance > 1000) {
           $(point.element).find('.collapse__control-distance').text('~' + temp + 'км');
           $(point.element).find('.collapse__control-distance-metr').text('~' + temp + 'км');
@@ -823,6 +830,7 @@ export default class Offices {
     } else {
       $('.offices__search-variations').hide();
     }
+    this.setScrollSearch();
   }
 
   removeValueInput(searchInput) {
@@ -855,7 +863,7 @@ export default class Offices {
   lookAtTheMap() {
     $('.js-offices-button-for-map').on('click', () => {
       setTimeout(() => {
-        $('html, body').animate({ scrollTop: $('#map-container').offset().top - ($('#map-container').height() / 3) }, 800);
+        $('html, body').animate({ scrollTop: $('.offices__search').offset().top }, 800);
       }, 200);
     });
   }
