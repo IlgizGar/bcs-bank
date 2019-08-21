@@ -31,11 +31,15 @@
     display flex
     @media (min-width 800px) and (max-width 1215px)
       margin-top 14px
-    @media (max-width 1215px)
+    @media (min-width: 832px) and (max-width 1215px)
       flex-direction column
 
   & .offices__info-item-timetable > div
     margin-right 48px
+    @media (max-width: 831px)
+      margin-right: 36px;
+      &:last-child
+        margin-right: 0;
 
   .collapse .collapse__content
     .collapse__item
