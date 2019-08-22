@@ -1,4 +1,3 @@
-
 import 'core-js/fn/symbol/iterator';
 import 'core-js/es6/symbol';
 
@@ -13,7 +12,13 @@ import Contact from '../components/library/contact/contact';
 import Dropdown from '../components/library/dropdown/dropdown';
 import Context from '../components/library/context/context';
 import Carousel from '../components/library/carousel/carousel';
-import { FixService, ExchangeService, ExchangeBanksService, ExchangeBanksServiceCorp, ExchangeBanksServiceDefault } from '../components/modules/services/services';
+import {
+  FixService,
+  ExchangeService,
+  ExchangeBanksService,
+  ExchangeBanksServiceCorp,
+  ExchangeBanksServiceDefault
+} from '../components/modules/services/services';
 import MediaSlider from '../components/library/media-slider/media-slider';
 import TableSort from '../components/library/table/table';
 import Collapse from '../components/library/collapse/collapse';
@@ -39,6 +44,7 @@ import PartnerModalForm from '../components/modules/partners-modal/partners-moda
 import SectionTabs from '../components/modules/section-tabs/sectionTabs';
 import Animator from '../components/modules/page-animations/animator';
 import FxCourses from '../components/modules/landing-fx/landing-fx';
+import OfficeStress from "../components/library/office-stress/office-stress";
 
 require('intersection-observer');
 
@@ -228,7 +234,7 @@ $(() => {
     const el = $(e.currentTarget).data('scroll');
     setTimeout(() => {
       if ($(el).length) {
-        $('html, body').animate({ scrollTop: $(el).offset().top }, 500);
+        $('html, body').animate({scrollTop: $(el).offset().top}, 500);
       }
     }, 200);
     return false;
@@ -329,11 +335,17 @@ $(() => {
     if ($(urlHash).closest('.js-tab').length === 0) {
       if (screen.width < 960) {
         setTimeout(() => {
-          $('html, body').animate({ scrollTop: $(urlHash).offset().top}, 500);}, 3000);
+          $('html, body').animate({scrollTop: $(urlHash).offset().top}, 500);
+        }, 3000);
       } else {
         setTimeout(() => {
-          $('html, body').animate({ scrollTop: $(urlHash).offset().top - ($(urlHash).height() * 0.2) }, 500);}, 3000);
+          $('html, body').animate({scrollTop: $(urlHash).offset().top - ($(urlHash).height() * 0.2)}, 500);
+        }, 3000);
       }
     }
+  }
+
+  if ($('.js-congestion-time').length) {
+    global.oficessStress = new OfficeStress();
   }
 });
