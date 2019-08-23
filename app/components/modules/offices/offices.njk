@@ -34,6 +34,31 @@
         {{SearchVariations.searchVariations ({'class': 'offices__switch-view js-search-variations' }) }}
       </div>
     </div>
+    <div class="offices__map-router">
+      <div class="offices__map-router-wrapper">
+        <div class="offices__map-router--walk">
+          <button class="offices__map-router-button js-map-router-button js-map-router--walk" data-value="pedestrian">
+            {{ Icon.icon({ 'name': 'icon_walk' }) }}
+          </button>
+        </div>
+        <div class="offices__map-router--bicycle">
+          <button class="offices__map-router-button js-map-router-button js-map-router--bicycle" data-value="bicycle">
+            {{ Icon.icon({ 'name': 'bicycle' }) }}
+          </button>
+        </div>
+        <div class="offices__map-router--car">
+          <button class="offices__map-router-button js-map-router-button js-map-router--car" data-value="auto">
+            {{ Icon.icon({ 'name': 'car' }) }}
+          </button>
+        </div>
+        <div class="offices__map-router--bus">
+          <button class="offices__map-router-button js-map-router-button js-map-router--bus" data-value="masstransit">
+            {{ Icon.icon({ 'name': 'bus' }) }}
+          </button>
+        </div>
+      </div>
+      {{ Button.button({'title':'Отменить', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-map-router-cancel' }) }}
+    </div>
 
     <div id="map-container-mobile" class="offices__map-wrapper offices__map-mobile" style="height: 678px;">
       <button class="get-geo" id="get-geo">
@@ -323,7 +348,7 @@
                       </div>
                     </div>
                     <div>
-                      <div class="offices__info-title">Кассовое обслуживание</div>
+                      <div class="offices__info-title">Кассовое<br> обслуживание</div>
                       <div class="offices__info-text">
                         пн-пт: с 10:00 до 20:00 <br>
                         сб-вс: выходной
@@ -370,18 +395,18 @@
 {#                                              </div>#}
 {#                                          </li>#}
                 </ul>
-{#                    {{ Dropdown.dropdown({#}
-{#                        'mods': {'theme': 'bordered'},#}
-{#                        'label': 'Построить Маршрут',#}
-{#                        'name': 'routeType',#}
-{#                        'items': [#}
-{#                            {'title': 'На автомобиле', 'value': 'auto'},#}
-{#                            {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
-{#                            {'title': 'Пешком', 'value': 'pedestrian'},#}
-{#                            {'title': 'На велосипеде', 'value': 'bicycle'}],#}
-{#                        'class': 'form__field-group form__field-group_dropdown',#}
-{#                        'attr': {'id': 'route-type4'},#}
-{#                        'field': 'js-create-route' }) }}#}
+                    {{ Dropdown.dropdown({
+                        'mods': {'theme': 'bordered'},
+                        'label': 'Построить Маршрут',
+                        'name': 'routeType',
+                        'items': [
+                            {'title': 'На автомобиле', 'value': 'auto'},
+                            {'title': 'На общественном транспорте', 'value': 'masstransit'},
+                            {'title': 'Пешком', 'value': 'pedestrian'},
+                            {'title': 'На велосипеде', 'value': 'bicycle'}],
+                        'class': 'form__field-group form__field-group_dropdown',
+                        'attr': {'id': 'route-type4'},
+                        'field': 'js-create-route' }) }}
 
                     <div class="map-wrap js-collapse-map-wrap"></div>
                 </div>
@@ -403,7 +428,7 @@
                       </div>
                     </div>
                     <div>
-                      <div class="offices__info-title">Кассовое обслуживание</div>
+                      <div class="offices__info-title">Кассовое<br> обслуживание</div>
                       <div class="offices__info-text">
                         пн-пт: с 10:00 до 20:00 <br>
                         сб-вс: выходной
@@ -487,7 +512,7 @@
                           </div>
                         </div>
                         <div>
-                          <div class="offices__info-title">Кассовое обслуживание</div>
+                          <div class="offices__info-title">Кассовое<br> обслуживание</div>
                           <div class="offices__info-text">
                             пн-пт: с 10:00 до 20:00 <br>
                             сб-вс: выходной
@@ -566,7 +591,7 @@
                     </div>
                   </div>
                   <div>
-                    <div class="offices__info-title">Кассовое обслуживание</div>
+                    <div class="offices__info-title">Кассовое<br> обслуживание</div>
                     <div class="offices__info-text">
                       пн-пт: с 10:00 до 20:00 <br>
                       сб-вс: выходной
@@ -608,18 +633,21 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
-{#                    'mods': {'theme': 'bordered'},#}
-{#                    'label': 'Построить Маршрут',#}
-{#                    'name': 'routeType',#}
-{#                    'items': [#}
-{#                        {'title': 'На автомобиле', 'value': 'auto'},#}
-{#                        {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
-{#                        {'title': 'Пешком', 'value': 'pedestrian'},#}
-{#                        {'title': 'На велосипеде', 'value': 'bicycle'}],#}
-{#                    'class': 'form__field-group form__field-group_dropdown',#}
-{#                    'attr': {'id': 'route-type7'},#}
-{#                    'field': 'js-create-route' }) }}#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low'}, 'class': 'js-button-bild-route' }) }}
+
+                {{ Dropdown.dropdown({
+                    'mods': {'theme': 'bordered'},
+                    'label': 'Построить Маршрут',
+                    'name': 'routeType',
+                    'items': [
+                        {'title': 'На автомобиле', 'value': 'auto'},
+                        {'title': 'На общественном транспорте', 'value': 'masstransit'},
+                        {'title': 'Пешком', 'value': 'pedestrian'},
+                        {'title': 'На велосипеде', 'value': 'bicycle'}],
+                    'class': 'form__field-group form__field-group_dropdown',
+                    'attr': {'id': 'route-type7'},
+                    'field': 'js-create-route' }) }}
+
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
           </div>
@@ -640,7 +668,7 @@
                     </div>
                   </div>
                   <div>
-                    <div class="offices__info-title">Кассовое обслуживание</div>
+                    <div class="offices__info-title">Кассовое<br> обслуживание</div>
                     <div class="offices__info-text">
                       пн-пт: с 10:00 до 20:00 <br>
                       сб-вс: выходной
@@ -714,7 +742,7 @@
                     </div>
                   </div>
                   <div>
-                    <div class="offices__info-title">Кассовое обслуживание</div>
+                    <div class="offices__info-title">Кассовое<br> обслуживание</div>
                     <div class="offices__info-text">
                       пн-пт: с 10:00 до 20:00 <br>
                       сб-вс: выходной
@@ -788,7 +816,7 @@
                     </div>
                   </div>
                   <div>
-                    <div class="offices__info-title">Кассовое обслуживание</div>
+                    <div class="offices__info-title">Кассовое<br> обслуживание</div>
                     <div class="offices__info-text">
                       пн-пт: с 10:00 до 20:00 <br>
                       сб-вс: выходной
@@ -862,7 +890,7 @@
                     </div>
                   </div>
                   <div>
-                    <div class="offices__info-title">Кассовое обслуживание</div>
+                    <div class="offices__info-title">Кассовое<br> обслуживание</div>
                     <div class="offices__info-text">
                       пн-пт: с 10:00 до 20:00 <br>
                       сб-вс: выходной
@@ -936,7 +964,7 @@
                     </div>
                   </div>
                   <div>
-                    <div class="offices__info-title">Кассовое обслуживание</div>
+                    <div class="offices__info-title">Кассовое<br> обслуживание</div>
                     <div class="offices__info-text">
                       пн-пт: с 10:00 до 20:00 <br>
                       сб-вс: выходной
@@ -1468,7 +1496,7 @@
                   </div>
                 </li>
                 <li class="offices__info-item">
-                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-title">Кассовое<br> обслуживание</div>
                   <div class="offices__info-text">
                     ПН-ПТ с 10:00 до 20:00 <br>
                     СБ: с 10:00 до 13:00 <br>
@@ -1548,7 +1576,7 @@
                   </div>
                 </li>
                 <li class="offices__info-item">
-                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-title">Кассовое<br> обслуживание</div>
                   <div class="offices__info-text">
                     ПН-ПТ с 10:00 до 20:00 <br>
                     СБ: с 10:00 до 13:00 <br>
@@ -1602,7 +1630,7 @@
                   </div>
                 </li>
                 <li class="offices__info-item">
-                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-title">Кассовое<br> обслуживание</div>
                   <div class="offices__info-text">
                     ПН-ПТ с 10:00 до 20:00 <br>
                     СБ: с 10:00 до 13:00 <br>
@@ -1656,7 +1684,7 @@
                   </div>
                 </li>
                 <li class="offices__info-item">
-                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-title">Кассовое<br> обслуживание</div>
                   <div class="offices__info-text">
                     ПН-ПТ с 10:00 до 20:00 <br>
                     СБ: с 10:00 до 13:00 <br>
@@ -1710,7 +1738,7 @@
                   </div>
                 </li>
                 <li class="offices__info-item">
-                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-title">Кассовое<br> обслуживание</div>
                   <div class="offices__info-text">
                     ПН-ПТ с 10:00 до 20:00 <br>
                     СБ: с 10:00 до 13:00 <br>
@@ -1766,7 +1794,7 @@
                   </div>
                 </li>
                 <li class="offices__info-item">
-                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-title">Кассовое<br> обслуживание</div>
                   <div class="offices__info-text">
                     ПН-ПТ с 10:00 до 20:00 <br>
                     СБ: с 10:00 до 13:00 <br>

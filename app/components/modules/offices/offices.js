@@ -34,7 +34,7 @@ export default class Offices {
       iconImageOffset: [-28, -44],
     };
     this.switcher = $('.js-offices-switcher');
-    this.routeButton = $('[name=select_routeType]');
+    this.routeButton = $('.js-button-bild-route');
     this.detailBlock = $('.js-offices-detail');
     this.detailBlockClose = $('.js-offices-detail-close');
     this.cityInput = $('.context input[name="current-city_input"]');
@@ -107,7 +107,7 @@ export default class Offices {
       }
     });
 
-    this.routeButton.on('change', (e) => {
+    this.routeButton.on('click', (e) => {
       const button = $(e.currentTarget);
       const type = button.val();
       let toPoint = button.closest('[data-coords]').attr('data-coords');
