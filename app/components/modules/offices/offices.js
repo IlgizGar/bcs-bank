@@ -6,6 +6,7 @@ import 'jscrollpane';
 import Cookie from 'js-cookie';
 import Helpers from '../../../scripts/helpers';
 import AskQuestion from '../../library/question-popup/question-popup';
+import cities from '../../../resources/assets/city.json';
 
 export default class Offices {
   constructor(offices) {
@@ -57,6 +58,17 @@ export default class Offices {
   }
 
   init() {
+    // const $cities = $('#select-city ul li .js-button');
+    // console.log('CITIES', $cities);
+    // $cities.each((i, el) => {
+    //     console.log('EL', $(el).data('value'));
+    //     console.log('TITLE', $(el).find('.js-button-title').text());
+    //     cities.push({
+    //       id: $(el).data('value'),
+    //       name: $(el).find('.js-button-title').text()
+    //     })
+    //   console.log('CITIES', cities);
+    //   });
     this.onCityChange();
     this.getCurrentTab();
     Helpers.getGeolocation((location) => {
@@ -207,24 +219,31 @@ export default class Offices {
         return;
       }
 
+      // console.log('ALL_CITIES', cities);
+      // console.log('NAME', e.target.value);
+      // const city = cities.filter(item => item.id === e.target.value);
+      // console.log('city', city);
+
+      this.city = e.target.value.toString();
+      this.changeCity();
+      Offices.reInitScroll(this.pane);
+
       // this.updateList();
-      const myGeocoder = ymaps.geocode(e.target.getAttribute('data-text'), {
-        kind: 'locality',
-        format: 'json',
-      });
-      myGeocoder.then(
-        (res) => {
-          console.log('RES', res);
-          console.log('RES_METADATA', res.geoObjects.get(0).properties.get('metaDataProperty'));
-          //this.city = res.geoObjects.get(0).properties.get('metaDataProperty').GeocoderMetaData.InternalToponymInfo.geoid;
-          this.city = '213';
-          this.changeCity();
-          Offices.reInitScroll(this.pane);
-        },
-        (err) => {
-          console.error(err);
-        },
-      );
+      // const myGeocoder = ymaps.geocode(e.target.getAttribute('data-text'), {
+      //   kind: 'locality',
+      //   format: 'json',
+      // });
+      // myGeocoder.then(
+      //   (res) => {
+      //     //this.city = res.geoObjects.get(0).properties.get('metaDataProperty').GeocoderMetaData.InternalToponymInfo.geoid;
+      //     this.city = '213';
+      //     this.changeCity();
+      //     Offices.reInitScroll(this.pane);
+      //   },
+      //   (err) => {
+      //     console.error(err);
+      //   },
+      // );
     });
   }
 
@@ -676,55 +695,46 @@ export default class Offices {
   }
 
   searchInit() {
-    $('[name="map-search"]').on('keyup', (e) => {
-      // console.log($('[name="map-search"]').val());
-      // const searchInput = $(e.currentTarget);
-      // const value = searchInput.val();
-      //
-      // this.addOrRemoveButtonClose(value);
-      // this.removeValueInput(searchInput);
-      //
-      // clearTimeout(this.searchTimout);
-      // this.searchTimout = setTimeout(() => {
-      //   if (value) {
-      //     this.removeValueInput();
-      //     this.search(value);
-      //     this.autoCompleteShow(value);
-      //   } else {
-      //     $('.offices__search-variations').hide();
-      //     this.getPoints();
-      //     this.addPoints();
-      //   }
-      // }, 250);
+    $('[name=map-search]').on('keyup', (e) => {
+      console.log($('[name=map-search]').closest('.js-input').val());
+      const searchInput = $(e.currentTarget);
+      const value = searchInput.val();
+
+      this.addOrRemoveButtonClose(value);
+      this.removeValueInput(searchInput);
+
+      clearTimeout(this.searchTimout);
+      this.searchTimout = setTimeout(() => {
+        if (value) {
+          this.removeValueInput();
+          this.search(value);
+          this.autoCompleteShow(value);
+        } else {
+          $('.offices__search-variations').hide();
+          this.getPoints();
+          this.addPoints();
+        }
+      }, 250);
     });
 
 
-    $('[name="map-search"]').on('change', (e) => {
+    $('[name=map-search]').on('change', (e) => {
       const searchInput = $(e.currentTarget);
       const value = searchInput.val();
       if (value) {
-        console.log('VALUE', value);
-        ymaps.suggest(value, {
-          results: 5,
-          provider: 'yandex#map'
-        }).then(
-          (items) => {
-            console.log('ITEMS', items);
-          }
-        )
-        // $('.collapse__control-underground').css({ display: 'none' });
-        // $('.collapse__control-distance-to-bcs').css({ display: 'block' });
-        // const city = $('input[name=current-city_input]').attr('data-text');
-        // const address = city + ', ' + value;
-        // console.log(address);
-        // ymaps.geocode(address).then((res) => {
-        //   const startPoint = res.geoObjects.get(0).geometry.getCoordinates();
-        //   this.distanceCalculation(startPoint);
-        // });
+        $('.collapse__control-underground').css({ display: 'none' });
+        $('.collapse__control-distance-to-bcs').css({ display: 'block' });
+        const city = $('input[name=current-city_input]').attr('data-text');
+        const address = city + ', ' + value;
+        console.log(address);
+        ymaps.geocode(address).then((res) => {
+          const startPoint = res.geoObjects.get(0).geometry.getCoordinates();
+          this.distanceCalculation(startPoint);
+        });
       } else {
-        // $('.collapse__control-underground').css({ display: 'flex' });
-        // $('.collapse__control-distance-to-bcs').css({ display: 'none' });
-        // this.distanceCalculation(this.userPos);
+        $('.collapse__control-underground').css({ display: 'flex' });
+        $('.collapse__control-distance-to-bcs').css({ display: 'none' });
+        this.distanceCalculation(this.userPos);
         // скрыть метры которые про поиске
       }
     });
