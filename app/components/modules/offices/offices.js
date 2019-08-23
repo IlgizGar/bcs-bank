@@ -207,12 +207,17 @@ export default class Offices {
         return;
       }
 
+      // this.updateList();
       const myGeocoder = ymaps.geocode(e.target.getAttribute('data-text'), {
         kind: 'locality',
+        format: 'json',
       });
       myGeocoder.then(
         (res) => {
-          this.city = res.geoObjects.get(0).properties.get('metaDataProperty').GeocoderMetaData.InternalToponymInfo.geoid;
+          console.log('RES', res);
+          console.log('RES_METADATA', res.geoObjects.get(0).properties.get('metaDataProperty'));
+          //this.city = res.geoObjects.get(0).properties.get('metaDataProperty').GeocoderMetaData.InternalToponymInfo.geoid;
+          this.city = '213';
           this.changeCity();
           Offices.reInitScroll(this.pane);
         },
@@ -391,6 +396,9 @@ export default class Offices {
 
   updateList() {
     this.appBlock.find('.offices__collapse').each((i, el) => {
+      console.log('CITY', this.city);
+      console.log('DATA-CITY', el.getAttribute('data-city'));
+      console.log('CITY_STRING', this.city.toString());
       if (this.city === null || el.getAttribute('data-city') === this.city.toString()) {
         $(el).show();
       } else {

@@ -8,7 +8,6 @@
 {% import "../../../components/library/search-variations/search-variations.njk" as SearchVariations %}
 
 <div class="offices js-offices">
-
 {#  <div class="collapse offices__detail js-offices-detail state_hidden">#}
 {#    <div class="js-detail-content"></div>#}
 {#    {{ Icon.icon({ 'name': 'close', 'elementClass': 'offices__detail-icon js-offices-detail-close' }) }}#}
@@ -34,31 +33,32 @@
         {{SearchVariations.searchVariations ({'class': 'offices__switch-view js-search-variations' }) }}
       </div>
     </div>
-    <div class="offices__map-router">
-      <div class="offices__map-router-wrapper">
-        <div class="offices__map-router--walk">
-          <button class="offices__map-router-button js-map-router-button js-map-router--walk" data-value="pedestrian">
-            {{ Icon.icon({ 'name': 'icon_walk' }) }}
-          </button>
-        </div>
-        <div class="offices__map-router--bicycle">
-          <button class="offices__map-router-button js-map-router-button js-map-router--bicycle" data-value="bicycle">
-            {{ Icon.icon({ 'name': 'bicycle' }) }}
-          </button>
-        </div>
-        <div class="offices__map-router--car">
-          <button class="offices__map-router-button js-map-router-button js-map-router--car" data-value="auto">
-            {{ Icon.icon({ 'name': 'car' }) }}
-          </button>
-        </div>
-        <div class="offices__map-router--bus">
-          <button class="offices__map-router-button js-map-router-button js-map-router--bus" data-value="masstransit">
-            {{ Icon.icon({ 'name': 'bus' }) }}
-          </button>
-        </div>
-      </div>
-      {{ Button.button({'title':'Отменить', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-map-router-cancel' }) }}
-    </div>
+
+{#    <div class="offices__map-router">#}
+{#      <div class="offices__map-router-wrapper">#}
+{#        <div class="offices__map-router--walk">#}
+{#          <button class="offices__map-router-button js-map-router-button js-map-router--walk" data-value="pedestrian">#}
+{#            {{ Icon.icon({ 'name': 'icon_walk' }) }}#}
+{#          </button>#}
+{#        </div>#}
+{#        <div class="offices__map-router--bicycle">#}
+{#          <button class="offices__map-router-button js-map-router-button js-map-router--bicycle" data-value="bicycle">#}
+{#            {{ Icon.icon({ 'name': 'bicycle' }) }}#}
+{#          </button>#}
+{#        </div>#}
+{#        <div class="offices__map-router--car">#}
+{#          <button class="offices__map-router-button js-map-router-button js-map-router--car" data-value="auto">#}
+{#            {{ Icon.icon({ 'name': 'car' }) }}#}
+{#          </button>#}
+{#        </div>#}
+{#        <div class="offices__map-router--bus">#}
+{#          <button class="offices__map-router-button js-map-router-button js-map-router--bus" data-value="masstransit">#}
+{#            {{ Icon.icon({ 'name': 'bus' }) }}#}
+{#          </button>#}
+{#        </div>#}
+{#      </div>#}
+{#      {{ Button.button({'title':'Отменить', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-map-router-cancel' }) }}#}
+{#    </div>#}
 
     <div id="map-container-mobile" class="offices__map-wrapper offices__map-mobile" style="height: 678px;">
       <button class="get-geo" id="get-geo">

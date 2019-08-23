@@ -17,7 +17,11 @@ export default class OfficeStress {
   }
 
   setStressData(userDate) {
-    this.currentTime.text(userDate.getHours() + ':' + userDate.getMinutes());
+    let minutes = parseInt(userDate.getMinutes());
+    minutes = minutes < 10 ? `0${minutes}` : minutes;
+    let hours = parseInt(userDate.getHours());
+    hours = hours < 10 ? `0${hours}` : hours;
+    this.currentTime.text(hours + ':' + minutes);
     if(userDate.getHours() < 10 || userDate.getHours() > 20) {
       this.currentTime.text('');
       this.resp.text('Откроется в 10:00');
