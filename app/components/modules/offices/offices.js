@@ -74,7 +74,8 @@ export default class Offices {
     Helpers.getGeolocation((location) => {
       ymaps.ready(() => {
         const savedCity = Cookie.get('select-city');
-        const userCity = savedCity !== undefined ? savedCity : Offices.checkUserCity(location.GeocoderMetaData.InternalToponymInfo.geoid);
+        const userCity = savedCity !== undefined ? savedCity : Offices.checkUserCity(213);
+        // const userCity = savedCity !== undefined ? savedCity : Offices.checkUserCity(location.GeocoderMetaData.InternalToponymInfo.geoid);
         this.initMap();
         if (savedCity === undefined) {
           this.questionHandler();
@@ -415,9 +416,9 @@ export default class Offices {
 
   updateList() {
     this.appBlock.find('.offices__collapse').each((i, el) => {
-      console.log('CITY', this.city);
-      console.log('DATA-CITY', el.getAttribute('data-city'));
-      console.log('CITY_STRING', this.city.toString());
+      // console.log('CITY', this.city);
+      // console.log('DATA-CITY', el.getAttribute('data-city'));
+      // console.log('CITY_STRING', this.city.toString());
       if (this.city === null || el.getAttribute('data-city') === this.city.toString()) {
         $(el).show();
       } else {
