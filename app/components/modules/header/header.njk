@@ -15,18 +15,18 @@
         {% include "../../../components/modules/nav/nav.njk" %}
         {# Mobile #}
         {% if page === 'offices' %}
-            {{ Button.button({ 'title': 'На карте', 'href': 'http://juravlev.rusrobots.ru/bks/offices.html', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore', 'tablet':'none'}, 'class': 'navbar__button js-btn-header-offices hidden-desktop state_active', 'attr': {'title': 'На карте'} }) }}
+            {{ Button.button({ 'title': 'На карте', 'href': 'http://juravlev.rusrobots.ru/bks/offices.html', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore', 'tablet':'none'}, 'class': 'navbar__button js-btn-header-offices hidden-from-md state_active', 'attr': {'title': 'На карте'} }) }}
         {% else %}
-            {{ Button.button({ 'title': 'На карте', 'href': 'http://juravlev.rusrobots.ru/bks/offices.html', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'navbar__button js-btn-header-offices hidden-desktop', 'attr': {'title': 'На карте'} }) }}
+            {{ Button.button({ 'title': 'На карте', 'href': 'http://juravlev.rusrobots.ru/bks/offices.html', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'navbar__button js-btn-header-offices hidden-from-md', 'attr': {'title': 'На карте'} }) }}
         {% endif %}
-        {{ Button.button({ 'title': 'Контакты', 'mods': {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore', 'tablet':'none'}, 'class': 'navbar__button navbar__button_contacts navbar__button_type-dropdown js-btn-header-contacts button_type-tab hidden-desktop' }) }}
+        {{ Button.button({ 'title': 'Контакты', 'mods': {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore', 'tablet':'none'}, 'class': 'navbar__button navbar__button_contacts navbar__button_type-dropdown js-btn-header-contacts button_type-tab hidden-from-md' }) }}
 
         {# Desktop #}
-        {{ Button.button({ 'title': 'Контакты', 'name': 'dropdown', 'mods': {'type': 'icon-right', 'theme': 'gray', 'view': 'text'}, 'class': 'navbar__button navbar__button_contacts navbar__button_type-dropdown js-btn-header-contacts button_type-tab hidden-mobile' }) }}
+        {{ Button.button({ 'title': 'Контакты', 'name': 'dropdown', 'mods': {'type': 'icon-right', 'theme': 'gray', 'view': 'text'}, 'class': 'navbar__button navbar__button_contacts navbar__button_type-dropdown js-btn-header-contacts button_type-tab hidden-to-md hidden-md' }) }}
         {% if page === 'offices' %}
-          {{ Button.button({ 'title': 'Офисы и банкоматы', 'href': 'http://juravlev.rusrobots.ru/bks/offices.html', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'theme': 'gray', 'view': 'underscore'}, 'class': 'navbar__button js-btn-header-offices hidden-mobile state_active', 'attr': {'title': 'На карте'} }) }}
+          {{ Button.button({ 'title': 'Офисы и банкоматы', 'href': 'http://juravlev.rusrobots.ru/bks/offices.html', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'theme': 'gray', 'view': 'underscore'}, 'class': 'navbar__button js-btn-header-offices hidden-to-md hidden-md state_active', 'attr': {'title': 'На карте'} }) }}
         {% else %}
-            {{ Button.button({ 'title': 'Офисы и банкоматы', 'href': 'http://juravlev.rusrobots.ru/bks/offices.html', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'navbar__button js-btn-header-offices hidden-mobile', 'attr': {'title': 'На карте'} }) }}
+            {{ Button.button({ 'title': 'Офисы и банкоматы', 'href': 'http://juravlev.rusrobots.ru/bks/offices.html', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'navbar__button js-btn-header-offices hidden-to-md hidden-md', 'attr': {'title': 'На карте'} }) }}
         {% endif %}
         <div style="display:flex;">
           {% include "../index-search/index-search.njk" %}
@@ -56,8 +56,8 @@
           { 'name': 'Если вы звоните из-за рубежа', 'value': '+7 (495) 777-57-03', 'href': 'tel:+74957775703' }], 'class': 'header__contact' }) }}
         <div class="header__contacts-links">
           {{ Button.button({ 'title': 'Задать вопрос', 'href': '#question-modal-form', 'mods' : {'theme': 'default', 'size': 'wide'}, 'class': 'js-open-modal' }) }}
-          {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'class': 'hidden-desktop' }) }}
-          <p class="hidden-mobile">Вам ответят в ближайшее время</p>
+          {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'class': 'hidden-from-md' }) }}
+          <p class="hidden-to-md">Вам ответят в ближайшее время</p>
         </div>
       </div>
     </div>

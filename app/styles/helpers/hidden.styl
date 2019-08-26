@@ -1,26 +1,34 @@
 .hidden-mobile {
   @media (max-width 1279px) {
-    display: none!important
+    display: none !important
     visibility: hidden
   }
 }
 
 .hidden-desktop {
   @media (min-width 1280px) {
-    display: none!important
+    display: none !important
+    visibility: hidden
+  }
+}
+
+.hidden-md {
+  @media (min-width 1024px) and (max-width 1279px) {
+    display: none !important
     visibility: hidden
   }
 }
 
 .hidden-to-md {
   @media (max-width 1023px) {
-    display: none!important
+    display: none !important
     visibility: hidden
   }
 }
+
 .hidden-from-md {
-  @media (max-width 1024px) {
-    display: none!important
+  @media (min-width 1024px) {
+    display: none !important
     visibility: hidden
   }
 }
