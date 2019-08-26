@@ -55,6 +55,22 @@ export default class Offices {
         scrollTop: pos - 150,
       }, 600);
     });
+    $('.js-map-router-button').on('click', (e) => {
+      $('.js-map-router-button').removeClass('router-active');
+      $(e.currentTarget).addClass('router-active');
+      const routerType = $('.offices__map-router');
+      const type = routerType.find('.router-active').attr('data-value');
+      routerType.css({ display: 'flex' });
+      setTimeout(() => {
+        $('html, body').animate({ scrollTop: $(routerType).offset().top }, 800);
+      }, 200);
+      let toPoint = $('.collapse__item_state-open').attr('data-coords');
+      toPoint = String(toPoint).split(',').map((el) => {
+        const coords = parseFloat(el.replace('[', '').replace(']', ''));
+        return coords;
+      });
+      this.createRoute(toPoint, type);
+    });
   }
 
   init() {
@@ -85,7 +101,6 @@ export default class Offices {
         } else {
           this.changeCity();
         }
-
         this.getPoints();
         this.getUserPos().then(() => {
           this.distanceCalculation(this.userPos);
@@ -121,7 +136,12 @@ export default class Offices {
 
     this.routeButton.on('click', (e) => {
       const button = $(e.currentTarget);
-      const type = button.val();
+      const routerType = $('.offices__map-router');
+      const type = routerType.find('.router-active').attr('data-value');
+      routerType.css({ display: 'flex' });
+      setTimeout(() => {
+        $('html, body').animate({ scrollTop: $(routerType).offset().top }, 800);
+      }, 200);
       let toPoint = button.closest('[data-coords]').attr('data-coords');
       toPoint = String(toPoint).split(',').map((el) => {
         const coords = parseFloat(el.replace('[', '').replace(']', ''));
@@ -129,6 +149,7 @@ export default class Offices {
       });
       this.createRoute(toPoint, type);
     });
+
     this.searchInit();
 
     // $('.office-stress__load').tooltipster({
@@ -138,6 +159,7 @@ export default class Offices {
       this.lookAtTheMap();
     }
   }
+
 
   handleSwitch() {
     this.switcher.unbind('click');
@@ -415,9 +437,6 @@ export default class Offices {
 
   updateList() {
     this.appBlock.find('.offices__collapse').each((i, el) => {
-      console.log('CITY', this.city);
-      console.log('DATA-CITY', el.getAttribute('data-city'));
-      console.log('CITY_STRING', this.city.toString());
       if (this.city === null || el.getAttribute('data-city') === this.city.toString()) {
         $(el).show();
       } else {
@@ -445,6 +464,11 @@ export default class Offices {
       boundsAutoApply: true,
     });
     this.map.geoObjects.add(this.multiRoute);
+    setTimeout(() => {
+      console.log(this.multiRoute.getRoutes().get(0));
+      var routeTime = this.multiRoute.getRoutes().get(0).properties.get("duration").text;
+      console.log(routeTime);
+    }, 1000);
   }
   getUserPos() {
     function addPlacemark(self, latitude, longitude) {
@@ -696,7 +720,6 @@ export default class Offices {
 
   searchInit() {
     $('[name=map-search]').on('keyup', (e) => {
-      console.log($('[name=map-search]').closest('.js-input').val());
       const searchInput = $(e.currentTarget);
       const value = searchInput.val();
 
