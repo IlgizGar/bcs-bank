@@ -1,27 +1,32 @@
 .offices .offices__search-option
   display: flex;
+  justify-content flex-start
+
   margin-top: 16px;
   margin-bottom: 16px;
   padding-left: 24px;
+  padding-right 24px;
   cursor: pointer;
+
   &:first-child
     padding-top: 9px;
+
   &:last-child
     padding-bottom: 9px;
 
   & .offices__search-icon
+    flex-shrink: 0
+
     height: 24px;
     width: 24px;
     margin-right: 16px;
+
+    &.state_hidden
+      display none !important
+
     svg
       height: 100%;
       width: 100%;
-
-  & .icon-orange
-    display none
-
-  & .icon-street-icon
-    display none
 
   & .offices__search-title
     color $madison
@@ -32,6 +37,9 @@
     color $slate_grey
     margin-top 5px
 
+  &.state_hidden
+    display none
+
 [hidden], template {
-  display: none!important;
+  display: none !important;
 }
