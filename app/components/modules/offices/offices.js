@@ -415,9 +415,9 @@ export default class Offices {
 
   updateList() {
     this.appBlock.find('.offices__collapse').each((i, el) => {
-      console.log('CITY', this.city);
-      console.log('DATA-CITY', el.getAttribute('data-city'));
-      console.log('CITY_STRING', this.city.toString());
+      // console.log('CITY', this.city);
+      // console.log('DATA-CITY', el.getAttribute('data-city'));
+      // console.log('CITY_STRING', this.city.toString());
       if (this.city === null || el.getAttribute('data-city') === this.city.toString()) {
         $(el).show();
       } else {
