@@ -56,8 +56,8 @@ export default class Offices {
       }, 600);
     });
     $('.js-map-router-button').on('click', (e) => {
-      $('.offices__map-router--type').removeClass('router-active');
-      $(e.currentTarget).parent('.offices__map-router--type').addClass('router-active');
+      $('.js-map-router-button').removeClass('router-active');
+      $(e.currentTarget).addClass('router-active');
       const routerType = $('.offices__map-router');
       const type = routerType.find('.router-active').attr('data-value');
       routerType.css({ display: 'flex' });
@@ -69,7 +69,17 @@ export default class Offices {
         const coords = parseFloat(el.replace('[', '').replace(']', ''));
         return coords;
       });
-      this.createRoute(toPoint, type);
+      this.createRoute(toPoint, type)
+        .then((time) => {
+          // console.log(time);
+          // $('.js-map-router-time').text('');
+          //
+          // $('.offices__map-router-wrapper').each((i, item) => {
+          //   if ($(item).find('.offices__map-router-button').hasClass('router-active')) {
+          //     $(item).find('.js-map-router-time').text(time);
+          //   }
+          // });
+        });
     });
   }
 
@@ -451,7 +461,7 @@ export default class Offices {
   }
 
   // построение маршрута
-  createRoute(toPoint, mode,searchVariationsContainer) {
+  createRoute(toPoint, mode) {
     this.clearRoute();
     this.multiRoute = new ymaps.multiRouter.MultiRoute({
       referencePoints: [
@@ -465,19 +475,20 @@ export default class Offices {
       boundsAutoApply: true,
     });
     this.map.geoObjects.add(this.multiRoute);
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        console.log(this.multiRoute.getRoutes().get(0));
+        const routeTime = this.multiRoute.getRoutes().get(0).properties.get("duration").text;
+        $('.js-map-router-time').text('');
 
-    setTimeout(() => {
-      console.log(this.multiRoute.getRoutes().get(0));
-      const routeTime = this.multiRoute.getRoutes().get(0).properties.get("duration").text;
-      console.log(routeTime);
-      $('.js-map-router-time').text('');
-
-      $.each('.offices__map-router-wrapper', function (item) {
-        if ($(item).hasClass('router-active')) {
-          $(this).find('.js-map-router-time').text(routeTime);
-        }
-      });
-    }, 1000);
+        $('.offices__map-router-wrapper').each((i, item) => {
+          if ($(item).find('.offices__map-router-button').hasClass('router-active')) {
+            $(item).find('.js-map-router-time').text(routeTime);
+          }
+        });
+        return resolve(routeTime);
+      }, 1000);
+    });
   }
   getUserPos() {
     function addPlacemark(self, latitude, longitude) {
