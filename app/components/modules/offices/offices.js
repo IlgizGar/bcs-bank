@@ -7,6 +7,7 @@ import Cookie from 'js-cookie';
 import Helpers from '../../../scripts/helpers';
 import AskQuestion from '../../library/question-popup/question-popup';
 import cities from '../../../resources/assets/city.json';
+import metro from '../../../resources/assets/metro.json';
 
 export default class Offices {
   constructor(offices) {
@@ -48,13 +49,17 @@ export default class Offices {
     this.mapContainer = document.getElementById(this.mapContainerId);
     this.mapContainer.setAttribute('tab-index', '1');
     this.mapBlock = null;
+    this.metroList = [];
     this.init();
-    $('#select-city .js-context-item').on('click', () => {
-      const pos = $('#map-container').offset().top;
-      $('html, body').animate({
-        scrollTop: pos - 150,
-      }, 600);
-    });
+    $('#select-city .js-context-item')
+      .on('click', () => {
+        const pos = $('#map-container')
+          .offset().top;
+        $('html, body')
+          .animate({
+            scrollTop: pos - 150,
+          }, 600);
+      });
   }
 
   init() {
@@ -71,6 +76,7 @@ export default class Offices {
     //   });
     this.onCityChange();
     this.getCurrentTab();
+    this.createMetroList();
     Helpers.getGeolocation((location) => {
       ymaps.ready(() => {
         const savedCity = Cookie.get('select-city');
@@ -88,12 +94,14 @@ export default class Offices {
         }
 
         this.getPoints();
-        this.getUserPos().then(() => {
-          this.distanceCalculation(this.userPos);
-        });
+        this.getUserPos()
+          .then(() => {
+            this.distanceCalculation(this.userPos);
+          });
       });
     });
     this.setScrollPane();
+    this.setScrollSearch();
 
     // Блок обработки карты и списка на мобильной версии
     this.handleSwitch();
@@ -102,32 +110,38 @@ export default class Offices {
       this.appBlock.removeClass('state_listed');
       Offices.reInitScroll(this.pane, 250);
     } else {
-      this.pane.data('jsp').destroy();
+      this.pane.data('jsp')
+        .destroy();
     }
 
-    $(window).on('resize', () => {
-      if (window.innerWidth > 991) {
-        if (this.appBlock.hasClass('state_listed')) {
-          this.appBlock.removeClass('state_listed');
+    $(window)
+      .on('resize', () => {
+        if (window.innerWidth > 991) {
+          if (this.appBlock.hasClass('state_listed')) {
+            this.appBlock.removeClass('state_listed');
+          }
+          if (this.appBlock.hasClass('state_explored')) {
+            this.removeExploredDetail();
+          }
+        } else if (this.switcher.data('state') === 'list') {
+          if (!this.appBlock.hasClass('state_listed')) {
+            this.appBlock.addClass('state_listed');
+          }
         }
-        if (this.appBlock.hasClass('state_explored')) {
-          this.removeExploredDetail();
-        }
-      } else if (this.switcher.data('state') === 'list') {
-        if (!this.appBlock.hasClass('state_listed')) {
-          this.appBlock.addClass('state_listed');
-        }
-      }
-    });
+      });
 
     this.routeButton.on('click', (e) => {
       const button = $(e.currentTarget);
       const type = button.val();
-      let toPoint = button.closest('[data-coords]').attr('data-coords');
-      toPoint = String(toPoint).split(',').map((el) => {
-        const coords = parseFloat(el.replace('[', '').replace(']', ''));
-        return coords;
-      });
+      let toPoint = button.closest('[data-coords]')
+        .attr('data-coords');
+      toPoint = String(toPoint)
+        .split(',')
+        .map((el) => {
+          const coords = parseFloat(el.replace('[', '')
+            .replace(']', ''));
+          return coords;
+        });
       this.createRoute(toPoint, type);
     });
     this.searchInit();
@@ -175,9 +189,11 @@ export default class Offices {
     this.point = null;
     this.target = null;
     this.switcher.removeClass('state_hidden');
-    this.detailBlock.find('.js-detail-content').html('');
+    this.detailBlock.find('.js-detail-content')
+      .html('');
     this.detailBlock.addClass('state_hidden');
-    $('.js-footer').removeClass('state_hidden');
+    $('.js-footer')
+      .removeClass('state_hidden');
     // $('html, body').scrollTop(0).removeClass('state_unscroll');
 
     this.goToPoints();
@@ -202,13 +218,14 @@ export default class Offices {
 
   static checkUserCity(id) {
     let cityId = null;
-    global.contexts['select-city'].getListData().forEach((el) => {
-      if (el.id.toString() === id.toString()) {
-        cityId = id;
-        return id;
-      }
-      return cityId;
-    });
+    global.contexts['select-city'].getListData()
+      .forEach((el) => {
+        if (el.id.toString() === id.toString()) {
+          cityId = id;
+          return id;
+        }
+        return cityId;
+      });
     return cityId;
   }
 
@@ -251,7 +268,8 @@ export default class Offices {
   initMap() {
     const mapContainer = document.createElement('div');
     const mapContainerWrapper = this.mapContainer;
-    $(mapContainerWrapper).attr('style', '');
+    $(mapContainerWrapper)
+      .attr('style', '');
     mapContainerWrapper.appendChild(mapContainer);
     this.map = new ymaps.Map(mapContainer, {
       center: [61.698653, 99.505405],
@@ -312,25 +330,33 @@ export default class Offices {
         this.zoomOutCallback = ymaps.util.bind(this.zoomOut, this);
 
         // Начинаем слушать клики на кнопках макета.
-        $('#zoom-in').bind('click', this.zoomInCallback);
-        $('#zoom-out').bind('click', this.zoomOutCallback);
+        $('#zoom-in')
+          .bind('click', this.zoomInCallback);
+        $('#zoom-out')
+          .bind('click', this.zoomOutCallback);
       },
 
       clear() {
         // Снимаем обработчики кликов.
-        $('#zoom-in').unbind('click', this.zoomInCallback);
-        $('#zoom-out').unbind('click', this.zoomOutCallback);
+        $('#zoom-in')
+          .unbind('click', this.zoomInCallback);
+        $('#zoom-out')
+          .unbind('click', this.zoomOutCallback);
         // Вызываем родительский метод clear.
         ZoomLayout.superclass.clear.call(this);
       },
 
       zoomIn() {
-        const map = this.getData().control.getMap();
+        const map = this.getData()
+          .control
+          .getMap();
         map.setZoom(map.getZoom() + 1, { checkZoomRange: true });
       },
 
       zoomOut() {
-        const map = this.getData().control.getMap();
+        const map = this.getData()
+          .control
+          .getMap();
         map.setZoom(map.getZoom() - 1, { checkZoomRange: true });
       },
     });
@@ -342,45 +368,53 @@ export default class Offices {
       },
     });
     this.map.controls.add(zoomControl);
-    zoomControl.getLayout().then((e) => {
-      $(e._parentElement).addClass('offices__ymaps-zoom-wrapper');
-    });
+    zoomControl.getLayout()
+      .then((e) => {
+        $(e._parentElement)
+          .addClass('offices__ymaps-zoom-wrapper');
+      });
   }
 
   getPoints() {
     const citySelector = this.city ? `[data-city="${this.city}"]` : '[data-city]';
     this.points = [];
-    this.appBlock.find(`.offices__collapse${citySelector}[data-id="${this.currentTabId}"]`).find('.collapse__item[data-coords]').each((i, el) => {
-      const coords = $(el).data('coords');
-      $(el).removeClass('state_hidden');
-      if (coords) {
-        let foundDot = false;
-        this.points.forEach((currentPoint) => {
-          if (currentPoint.id === Offices.generatePointId(coords)) {
-            foundDot = true;
-          }
-        });
-        if (!foundDot) {
-          this.points.push({
-            id: Offices.generatePointId(coords),
-            coordinates: coords,
-            element: el,
+    this.appBlock.find(`.offices__collapse${citySelector}[data-id="${this.currentTabId}"]`)
+      .find('.collapse__item[data-coords]')
+      .each((i, el) => {
+        const coords = $(el)
+          .data('coords');
+        $(el)
+          .removeClass('state_hidden');
+        if (coords) {
+          let foundDot = false;
+          this.points.forEach((currentPoint) => {
+            if (currentPoint.id === Offices.generatePointId(coords)) {
+              foundDot = true;
+            }
           });
+          if (!foundDot) {
+            this.points.push({
+              id: Offices.generatePointId(coords),
+              coordinates: coords,
+              element: el,
+            });
+          }
         }
-      }
-    });
+      });
   }
 
   addPoints() {
     this.clearRoute();
     this.markCollection.removeAll();
-    Object.values(this.points).forEach((el) => {
-      this.createPlacemark(el, this.iconNormal);
-    });
-    this.getUserPos().then(() => {
-      this.map.geoObjects.add(this.markCollection);
-      this.goToPoints();
-    });
+    Object.values(this.points)
+      .forEach((el) => {
+        this.createPlacemark(el, this.iconNormal);
+      });
+    this.getUserPos()
+      .then(() => {
+        this.map.geoObjects.add(this.markCollection);
+        this.goToPoints();
+      });
   }
 
   createPlacemark(el, icon, isSingle) {
@@ -396,11 +430,19 @@ export default class Offices {
         this.onPointEvent(e, el.coordinates);
         if (window.innerWidth > 831) {
           setTimeout(() => {
-            $('html, body').animate({ scrollTop: $('.js-offices').offset().top }, 800);
+            $('html, body')
+              .animate({
+                scrollTop: $('.js-offices')
+                  .offset().top,
+              }, 800);
           }, 200);
         } else {
           setTimeout(() => {
-            $('html, body').animate({ scrollTop: $('.collapse__item_state-open').offset().top }, 800);
+            $('html, body')
+              .animate({
+                scrollTop: $('.collapse__item_state-open')
+                  .offset().top,
+              }, 800);
           }, 200);
         }
       });
@@ -415,16 +457,19 @@ export default class Offices {
   }
 
   updateList() {
-    this.appBlock.find('.offices__collapse').each((i, el) => {
-      // console.log('CITY', this.city);
-      // console.log('DATA-CITY', el.getAttribute('data-city'));
-      // console.log('CITY_STRING', this.city.toString());
-      if (this.city === null || el.getAttribute('data-city') === this.city.toString()) {
-        $(el).show();
-      } else {
-        $(el).hide();
-      }
-    });
+    this.appBlock.find('.offices__collapse')
+      .each((i, el) => {
+        // console.log('CITY', this.city);
+        // console.log('DATA-CITY', el.getAttribute('data-city'));
+        // console.log('CITY_STRING', this.city.toString());
+        if (this.city === null || el.getAttribute('data-city') === this.city.toString()) {
+          $(el)
+            .show();
+        } else {
+          $(el)
+            .hide();
+        }
+      });
   }
 
   saveUserPos(pos) {
@@ -447,6 +492,7 @@ export default class Offices {
     });
     this.map.geoObjects.add(this.multiRoute);
   }
+
   getUserPos() {
     function addPlacemark(self, latitude, longitude) {
       const el = {};
@@ -454,8 +500,12 @@ export default class Offices {
       self.saveUserPos([latitude, longitude]);
       self.createPlacemark(el, self.iconUserPosition, true);
       // self.map.setZoom(self.map.getZoom() + 5, { checkZoomRange: true });
-      self.map.setCenter(el.coordinates, 12, { duration: 1000, checkZoomRange: true });
+      self.map.setCenter(el.coordinates, 12, {
+        duration: 1000,
+        checkZoomRange: true,
+      });
     }
+
     return new Promise((resolve) => {
       if (window.navigator.geolocation) {
         window.navigator.geolocation.getCurrentPosition((position) => {
@@ -466,16 +516,17 @@ export default class Offices {
           resolve(false);
         });
       } else {
-        ymaps.geolocation.get().then(
-          (result) => {
-            addPlacemark(this, result.geoObjects.position[0], result.geoObjects.position[1]);
-            resolve(true);
-          },
-          (err) => {
-            console.log(`Ошибка: ${err}`);
-            resolve(false);
-          },
-        );
+        ymaps.geolocation.get()
+          .then(
+            (result) => {
+              addPlacemark(this, result.geoObjects.position[0], result.geoObjects.position[1]);
+              resolve(true);
+            },
+            (err) => {
+              console.log(`Ошибка: ${err}`);
+              resolve(false);
+            },
+          );
       }
     });
   }
@@ -493,9 +544,12 @@ export default class Offices {
     }
     const currentCollapse = global.collapses[this.currentTabId];
     const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${coordinates.join()}]"] .collapse__control`);
-    const parentCollapse = target.parent().parent().closest('.collapse__item');
+    const parentCollapse = target.parent()
+      .parent()
+      .closest('.collapse__item');
     if (parentCollapse.length) {
-      parentCollapse.children('.collapse__control').trigger('click');
+      parentCollapse.children('.collapse__control')
+        .trigger('click');
       this.scrollToCollapse(target);
     }
     if (!this.appBlock.hasClass('state_explored')) {
@@ -517,14 +571,22 @@ export default class Offices {
 
   initPointMobileDetail(target) {
     this.goToPoints();
-    const $collapse = $.extend(true, {}, target.parent().clone(true, true));
+    const $collapse = $.extend(true, {}, target.parent()
+      .clone(true, true));
     $collapse.addClass('collapse__item_state-open');
-    $collapse.find('.collapse__content').css({ display: 'block', height: 'auto' });
+    $collapse.find('.collapse__content')
+      .css({
+        display: 'block',
+        height: 'auto',
+      });
     // this.switcher.addClass('state_hidden');
     if (this.detailBlock.hasClass('state_hidden')) {
-      this.detailBlock.removeClass('state_hidden').find('.js-detail-content').append($collapse);
+      this.detailBlock.removeClass('state_hidden')
+        .find('.js-detail-content')
+        .append($collapse);
     }
-    $('.js-footer').addClass('state_hidden');
+    $('.js-footer')
+      .addClass('state_hidden');
   }
 
   togglePointState(point, collapse) {
@@ -535,7 +597,8 @@ export default class Offices {
         el.options.set('iconImageOffset', this.iconNormal.iconImageOffset);
       }
     });
-    if (collapse.parent().hasClass('collapse__item_state-open')) {
+    if (collapse.parent()
+      .hasClass('collapse__item_state-open')) {
       if (!point.iconReadOnly) {
         point.options.set('iconImageHref', this.iconNormal.iconImageHref);
         point.options.set('iconImageSize', this.iconNormal.iconImageSize);
@@ -547,12 +610,14 @@ export default class Offices {
       this.clearRoute();
     }
   }
+
   clearRoute() {
     if (this.multiRoute) {
       this.map.geoObjects.remove(this.multiRoute);
     }
     this.multiRoute = null;
   }
+
   setScrollPane() {
     this.pane.jScrollPane({
       contentWidth: 100,
@@ -564,71 +629,86 @@ export default class Offices {
     });
     // Пересчет высоты при раскрытии элементов
 
-    $('.collapse__control').on('click', () => {
-      if (!this.appBlock.hasClass('state_explored')) {
-        Offices.reInitScroll(this.pane, 300);
-      }
-    });
+    $('.collapse__control')
+      .on('click', () => {
+        if (!this.appBlock.hasClass('state_explored')) {
+          Offices.reInitScroll(this.pane, 300);
+        }
+      });
 
-    $(document).on('click', '#get-geo', () => {
-      this.getUserPos();
-    });
+    $(document)
+      .on('click', '#get-geo', () => {
+        this.getUserPos();
+      });
 
-    $('.collapse__item[data-coords] .collapse__control').on('click', (e) => {
-      if (!this.appBlock.hasClass('state_explored')) {
-        this.scrollToCollapse($(e.target));
-        const collapseContent = $(e.target).closest('.collapse__item');
-        const point = this.getPointById(Offices.generatePointId(collapseContent.data('coords')));
-        // const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${$(e.target).closest('.collapse__item').data('coords')}]"] .collapse__control`);
-        this.togglePointState(point, $(e.target).closest('.collapse__control'));
-        // if (window.innerWidth < 992) {
-        //   if (!this.appBlock.hasClass('state_explored')) {
-        //     // this.appBlock.removeClass('state_listed').addClass('state_explored');
-        //     // this.initPointMobileDetail($(e.target).closest('.collapse__control'));
-        //     //
-        //     // this.point = point;
-        //     // this.target = $(e.target).closest('.collapse__control');
-        //     collapseContent.find('.js-collapse-map-wrap')[0].append(this.mapBlock);
-        //   }
-        // }
-      }
-    });
+    $('.collapse__item[data-coords] .collapse__control')
+      .on('click', (e) => {
+        if (!this.appBlock.hasClass('state_explored')) {
+          this.scrollToCollapse($(e.target));
+          const collapseContent = $(e.target)
+            .closest('.collapse__item');
+          const point = this.getPointById(Offices.generatePointId(collapseContent.data('coords')));
+          // const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${$(e.target).closest('.collapse__item').data('coords')}]"] .collapse__control`);
+          this.togglePointState(point, $(e.target)
+            .closest('.collapse__control'));
+          // if (window.innerWidth < 992) {
+          //   if (!this.appBlock.hasClass('state_explored')) {
+          //     // this.appBlock.removeClass('state_listed').addClass('state_explored');
+          //     // this.initPointMobileDetail($(e.target).closest('.collapse__control'));
+          //     //
+          //     // this.point = point;
+          //     // this.target = $(e.target).closest('.collapse__control');
+          //     collapseContent.find('.js-collapse-map-wrap')[0].append(this.mapBlock);
+          //   }
+          // }
+        }
+      });
 
     // Пересчет высоты при смене таба
-    $('.offices__tab-control').on('click', () => {
-      Offices.reInitScroll(this.pane);
-      this.getCurrentTab();
-      this.getPoints();
-      this.addPoints();
-      // this.goToPoints();
-      this.getUserPos().then(() => {
-        this.distanceCalculation(this.userPos);
+    $('.offices__tab-control')
+      .on('click', () => {
+        Offices.reInitScroll(this.pane);
+        this.getCurrentTab();
+        this.getPoints();
+        this.addPoints();
+        // this.goToPoints();
+        this.getUserPos()
+          .then(() => {
+            this.distanceCalculation(this.userPos);
+          });
       });
-    });
   }
 
   setScrollSearch() {
-    if (this.searchPane.data('jsp'))
-    {
-      Offices.reInitScroll(this.searchPane, 250);
-    }
-    else
-    {
-      this.searchPane.jScrollPane({
-        contentWidth: 100,
-        verticalDragMinHeight: 16,
-        verticalDragMaxHeight: 60,
-        verticalGutter: 16,
-        mouseWheelSpeed: 1,
-        animateDuration: 1000,
-      });
-    }
+    this.searchPane.jScrollPane({
+      contentWidth: 100,
+      verticalDragMinHeight: 16,
+      verticalDragMaxHeight: 60,
+      verticalGutter: 16,
+      mouseWheelSpeed: 1,
+      animateDuration: 1000,
+      autoReinitialise: true,
+    });
+
+    // if (this.searchPane.data('jsp')) {
+    //   Offices.reInitScroll(this.searchPane, 250);
+    // } else {
+    //   this.searchPane.jScrollPane({
+    //     contentWidth: 100,
+    //     verticalDragMinHeight: 16,
+    //     verticalDragMaxHeight: 60,
+    //     verticalGutter: 16,
+    //     mouseWheelSpeed: 1,
+    //     animateDuration: 1000,
+    //   });
+    // }
   }
 
   static reInitScroll(pane, time = 0) {
     if (window.innerWidth > 800) {
       setTimeout(() => {
-        pane.data('jsp').reinitialise();
+        pane.data('jsp')
+          .reinitialise();
       }, time);
     }
   }
@@ -636,7 +716,8 @@ export default class Offices {
   scrollToCollapse(el) {
     if (window.innerWidth > 800) {
       this.pane.bind('jsp-initialised', () => {
-        this.pane.data('jsp').scrollToElement(el.closest('.collapse__item'), 75);
+        this.pane.data('jsp')
+          .scrollToElement(el.closest('.collapse__item'), 75);
         this.pane.unbind('jsp-initialised');
       });
     }
@@ -658,17 +739,19 @@ export default class Offices {
       this.map.setBounds(this.markCollection.getBounds(), {
         checkZoomRange: true,
         zoom: 10,
-      }).then(() => {
-        if (Offices.getMarksCount(this.markCollection) > 1) {
-          this.map.setZoom(12);
-        } else {
-          this.map.setZoom(15);
-        }
-      });
+      })
+        .then(() => {
+          if (Offices.getMarksCount(this.markCollection) > 1) {
+            this.map.setZoom(12);
+          } else {
+            this.map.setZoom(15);
+          }
+        });
     } catch (e) {
       console.warn('no points');
     }
   }
+
   static getMarksCount(collection) {
     let placeCount = 0;
     collection.each(() => {
@@ -688,81 +771,190 @@ export default class Offices {
   }
 
   static generatePointId(coords) {
-    return coords.join().replace(/[. ,]+/g, '');
+    return coords.join()
+      .replace(/[. ,]+/g, '');
   }
 
   getCurrentTab() {
-    this.currentTabId = this.appBlock.find('.offices__content .tabs .tabs__item:not(.state_invisible)').attr('id');
+    this.currentTabId = this.appBlock.find('.offices__content .tabs .tabs__item:not(.state_invisible)')
+      .attr('id');
+  }
+
+  createMetroList() {
+    metro.forEach((city) => {
+      const name = city.name.toLowerCase().trim();
+      city.lines.forEach((line) => {
+        const color = typeof line['hex_color'] !== 'undefined' ? `#${line['hex_color']}` : '';
+        line.stations.forEach((st) => {
+          this.metroList.push({
+            metro: st.name.toLowerCase().trim(),
+            name,
+            color
+          })
+        })
+      })
+    });
+    console.log('СТАНЦИИ_МЕТРО', this.metroList);
   }
 
   searchInit() {
-    $('[name=map-search]').on('keyup', (e) => {
-      console.log($('[name=map-search]').closest('.js-input').val());
-      const searchInput = $(e.currentTarget);
-      const value = searchInput.val();
+    $('[name=map-search]')
+      .on('keyup', (e) => {
+        // console.log('USER_CITY', this.city);
+        const searchInput = $(e.currentTarget);
+        const city = this.city === null || this.city === 'all' ? '' : cities.filter(item => item.id.toString() === this.city.toString())[0].name;
+        const value = `${searchInput.val()}`;
+        const request = value.length ? `${value}` : '';
+        let counter = 0;
 
-      this.addOrRemoveButtonClose(value);
-      this.removeValueInput(searchInput);
-
-      clearTimeout(this.searchTimout);
-      this.searchTimout = setTimeout(() => {
-        if (value) {
-          this.removeValueInput();
-          this.search(value);
-          this.autoCompleteShow(value);
+        const searchVariationsContainer = $('.offices__search-variations');
+        const searchPane = searchVariationsContainer.data('jsp').getContentPane();
+        // console.log('CITY', city);
+        // console.log('REQUEST', request);
+        if (request.length) {
+          ymaps.suggest(request, {
+            results: 100,
+            provider: 'yandex#map',
+          })
+            .then((items) => {
+              // console.log('ITEMS', items);
+              searchVariationsContainer.hide();
+              searchVariationsContainer.find('.offices__search-option[data-template]').remove();
+              const searchVartiations = $('.offices__search-option[data-template]');
+              items.forEach((address) => {
+                if (counter < 10) {
+                  const item = $.extend(true, {}, searchVartiations.clone());
+                  const addressArr = address.value.split(',');
+                  // console.log(addressArr);
+                  const suggCity = addressArr[1];
+                  addressArr.splice(0, 2);
+                  const result = addressArr.join()
+                    .trim();
+                  // console.log('RESULT', result);
+                  // console.log('INDEX', result.indexOf('метро'));
+                  if(result.length) {
+                    item.find('.js-template-title')
+                      .text(result);
+                    item.find('.js-template-description')
+                      .text(suggCity.trim());
+                  } else {
+                    item.find('.js-template-title')
+                      .text(suggCity.trim());
+                    item.find('.js-template-description').remove();
+                  }
+                  if (address.value.indexOf('метро') >= 0) {
+                    addressArr.forEach((el) => {
+                      if(el.indexOf('метро')) {
+                        const metroName = el.substr(6).toLowerCase().trim();
+                        const st = this.metroList.filter(item => (item.metro === metroName && item.name === suggCity.toLowerCase().trim()));
+                        item.find('.js-search-icon').css('color', st.length ? st[0].color : '');
+                      }
+                    });
+                    item.find('.js-metro-icon').removeClass('state_hidden');
+                    item.find('.js-address-icon').addClass('state_hidden');
+                  } else {
+                    item.find('.js-metro-icon').addClass('state_hidden');
+                    item.find('.js-address-icon').removeClass('state_hidden');
+                  }
+                  item.removeClass('state_hidden');
+                  item.appendTo(searchPane);
+                  counter += 1;
+                }
+              });
+              if (searchVariationsContainer.find('.offices__search-option[data-template]').length) {
+                searchVariationsContainer.show();
+              }
+            });
         } else {
-          $('.offices__search-variations').hide();
-          this.getPoints();
-          this.addPoints();
+          searchVariationsContainer.find('.offices__search-option[data-template]').remove();
+          searchVariationsContainer.hide();
         }
-      }, 250);
-    });
 
+        this.addOrRemoveButtonClose(value);
+        this.removeValueInput(searchInput);
 
-    $('[name=map-search]').on('change', (e) => {
-      const searchInput = $(e.currentTarget);
-      const value = searchInput.val();
-      if (value) {
-        $('.collapse__control-underground').css({ display: 'none' });
-        $('.collapse__control-distance-to-bcs').css({ display: 'block' });
-        const city = $('input[name=current-city_input]').attr('data-text');
-        const address = city + ', ' + value;
-        console.log(address);
-        ymaps.geocode(address).then((res) => {
-          const startPoint = res.geoObjects.get(0).geometry.getCoordinates();
-          this.distanceCalculation(startPoint);
-        });
-      } else {
-        $('.collapse__control-underground').css({ display: 'flex' });
-        $('.collapse__control-distance-to-bcs').css({ display: 'none' });
-        this.distanceCalculation(this.userPos);
-        // скрыть метры которые про поиске
-      }
-    });
+        // const searchInput = $(e.currentTarget);
+        // const value = searchInput.val();
 
-    $(window).click(() => {
-      $('.offices__search-variations').hide();
-    });
-
-    $(document).on('click', '.offices__search-option', (e) => {
-      e.preventDefault();
-      $('.search-close').css({ display: 'block' });
-      $('.icon-search').css({ display: 'none' });
-      // добавление выбранного текста по клику в инпут
-      const parent = $(e.target).closest('.offices__search-option'); // привязка к текущему элементу на который кликнули
-      const text = $.trim(parent.find('.offices__search-title').text());
-      $('[name=map-search]').val(text);
-      $('[name=map-search]').closest('.js-input').addClass('state_filled');
-      $('[name=map-search]').closest('.js-input').removeClass('state_init');
-      $('.offices__search-variations').hide();
-      this.search(text);
-      const city = $('input[name=current-city_input]').attr('data-text');
-      const address = city + ', ' + text;
-      ymaps.geocode(address).then((res) => {
-        const startPoint = res.geoObjects.get(0).geometry.getCoordinates();
-        this.distanceCalculation(startPoint);
+        // clearTimeout(this.searchTimout);
+        // this.searchTimout = setTimeout(() => {
+        //   if (value) {
+        //     this.removeValueInput();
+        //     this.search(value);
+        //     this.autoCompleteShow(value);
+        //   } else {
+        //     $('.offices__search-variations').hide();
+        //     this.getPoints();
+        //     this.addPoints();
+        //   }
+        // }, 250);
       });
-    });
+
+
+    $('[name=map-search]')
+      .on('change', (e) => {
+
+        // const searchInput = $(e.currentTarget);
+        // const value = searchInput.val();
+        // if (value) {
+        //   $('.collapse__control-underground').css({ display: 'none' });
+        //   $('.collapse__control-distance-to-bcs').css({ display: 'block' });
+        //   const city = $('input[name=current-city_input]').attr('data-text');
+        //   const address = city + ', ' + value;
+        //   console.log(address);
+        //   ymaps.geocode(address).then((res) => {
+        //     const startPoint = res.geoObjects.get(0).geometry.getCoordinates();
+        //     this.distanceCalculation(startPoint);
+        //   });
+        // } else {
+        //   $('.collapse__control-underground').css({ display: 'flex' });
+        //   $('.collapse__control-distance-to-bcs').css({ display: 'none' });
+        //   this.distanceCalculation(this.userPos);
+        //   // скрыть метры которые про поиске
+        // }
+
+      });
+
+    $(window)
+      .click((e) => {
+        $('.offices__search-variations')
+          .hide();
+      });
+
+    $(document)
+      .on('click', '.offices__search-option', (e) => {
+        e.preventDefault();
+        $('.search-close')
+          .css({ display: 'block' });
+        $('.icon-search')
+          .css({ display: 'none' });
+        // добавление выбранного текста по клику в инпут
+        const parent = $(e.target)
+          .closest('.offices__search-option'); // привязка к текущему элементу на который кликнули
+        const text = $.trim(parent.find('.offices__search-title')
+          .text());
+        $('[name=map-search]')
+          .val(text);
+        $('[name=map-search]')
+          .closest('.js-input')
+          .addClass('state_filled');
+        $('[name=map-search]')
+          .closest('.js-input')
+          .removeClass('state_init');
+        $('.offices__search-variations')
+          .hide();
+        // this.search(text);
+        const city = $('input[name=current-city_input]')
+          .attr('data-text');
+        const address = `${city}, ${text}`;
+        ymaps.geocode(address)
+          .then((res) => {
+            const startPoint = res.geoObjects.get(0)
+              .geometry
+              .getCoordinates();
+            this.distanceCalculation(startPoint);
+          });
+      });
   }
 
   // скрывает карточки и центрирует карту относительно оставшихся точек на карте
@@ -770,12 +962,19 @@ export default class Offices {
     this.getPoints();
     const result = [];
     this.points.forEach((point) => {
-      $(point.element).removeClass('state_hidden');
-      const elText = String($(point.element).find('.offices__info').text() + $(point.element).find('.collapse__control').text()).toLowerCase();
+      $(point.element)
+        .removeClass('state_hidden');
+      const elText = String($(point.element)
+        .find('.offices__info')
+        .text() + $(point.element)
+        .find('.collapse__control')
+        .text())
+        .toLowerCase();
       if (elText.indexOf(text.toLowerCase()) + 1) {
         result.push(point);
       } else {
-        $(point.element).addClass('state_hidden');
+        $(point.element)
+          .addClass('state_hidden');
       }
     });
 
@@ -789,11 +988,19 @@ export default class Offices {
         const distance = Math.ceil(ymaps.coordSystem.geo.getDistance(coord, point.coordinates));
         const temp = Math.ceil((distance / 1000) * 10) / 10;
         if (distance > 1000) {
-          $(point.element).find('.collapse__control-distance').text('~' + temp + 'км');
-          $(point.element).find('.collapse__control-distance-metr').text('~' + temp + 'км');
+          $(point.element)
+            .find('.collapse__control-distance')
+            .text(`~${temp}км`);
+          $(point.element)
+            .find('.collapse__control-distance-metr')
+            .text(`~${temp}км`);
         } else {
-          $(point.element).find('.collapse__control-distance').text('~' + distance + 'м');
-          $(point.element).find('.collapse__control-distance-metr').text('~' + distance + 'м');
+          $(point.element)
+            .find('.collapse__control-distance')
+            .text(`~${distance}м`);
+          $(point.element)
+            .find('.collapse__control-distance-metr')
+            .text(`~${distance}м`);
         }
       });
     } else {
@@ -806,13 +1013,24 @@ export default class Offices {
     const autoCompleteResult = []; // резулттирующий массив для выпадающего списка
     this.points.forEach((point) => {
       // ищем информацию для выпадающего списка
-      const metroVariantion = String($(point.element).find('.collapse__control-underground-name').text()).toLowerCase();
-      const streetVariantion = String($(point.element).find('.collapse__control-title').text()).toLowerCase();
+      const metroVariantion = String($(point.element)
+        .find('.collapse__control-underground-name')
+        .text())
+        .toLowerCase();
+      const streetVariantion = String($(point.element)
+        .find('.collapse__control-title')
+        .text())
+        .toLowerCase();
 
       if (metroVariantion.indexOf(text.toLowerCase()) + 1) {
-        const classList = $(point.element).find('.collapse__control-underground-icon').attr('class').split(/\s+/);
+        const classList = $(point.element)
+          .find('.collapse__control-underground-icon')
+          .attr('class')
+          .split(/\s+/);
         const MetrocustomPoint = {
-          title: $(point.element).find('.collapse__control-underground-name').text(),
+          title: $(point.element)
+            .find('.collapse__control-underground-name')
+            .text(),
           description: 'станция метро',
           type: 'metro',
           colorMetro: classList[1],
@@ -823,8 +1041,12 @@ export default class Offices {
 
       if (streetVariantion.indexOf(text.toLowerCase()) + 1) {
         const StreetcustomPoint = {
-          title: $(point.element).find('.collapse__control-title').text(),
-          description: 'метро' + $(point.element).find('.collapse__control-underground-name').text(),
+          title: $(point.element)
+            .find('.collapse__control-title')
+            .text(),
+          description: `метро${$(point.element)
+            .find('.collapse__control-underground-name')
+            .text()}`,
           type: 'street',
           svg: $('.collapse__control-underground-icon')[0],
         };
@@ -833,79 +1055,114 @@ export default class Offices {
     });
 
     if (autoCompleteResult.length > 0) {
-      $('.offices__search-variations').show();
+      $('.offices__search-variations')
+        .show();
 
       let searchVariationsContainer = $('.offices__search-variations');
       const searchVartiations = $('.offices__search-option[data-template]');
-      $.each(searchVariationsContainer.find('.offices__search-option'), function (i, item) {
-        $(item).remove();
+      $.each(searchVariationsContainer.find('.offices__search-option'), (i, item) => {
+        $(item)
+          .remove();
       });
-      if (searchVariationsContainer.find('.jspPane').length)
-      {
+      if (searchVariationsContainer.find('.jspPane').length) {
         searchVariationsContainer = searchVariationsContainer.find('.jspPane');
       }
       autoCompleteResult.forEach((customPoint) => {
-        var iconClassList = searchVartiations.find('.offices__search-icon').attr('class').split(' ');
-        iconClassList.forEach(function (item, index) {
-          if (item != 'offices__search-icon')
-          {
-            searchVartiations.find('.offices__search-icon').removeClass(item);
+        const iconClassList = searchVartiations.find('.offices__search-icon')
+          .attr('class')
+          .split(' ');
+        iconClassList.forEach((item, index) => {
+          if (item != 'offices__search-icon') {
+            searchVartiations.find('.offices__search-icon')
+              .removeClass(item);
           }
         });
-        searchVartiations.find('.offices__search-title').text(customPoint.title);
-        searchVartiations.find('.offices__search-description').text(customPoint.description);
-        searchVartiations.find('.icon-street-icon').css({ display: 'none' });
-        searchVartiations.find('.icon-orange').css({ display: 'none' });
+        searchVartiations.find('.offices__search-title')
+          .text(customPoint.title);
+        searchVartiations.find('.offices__search-description')
+          .text(customPoint.description);
+        searchVartiations.find('.icon-street-icon')
+          .css({ display: 'none' });
+        searchVartiations.find('.icon-orange')
+          .css({ display: 'none' });
         if (customPoint.type === 'street') {
-          searchVartiations.find('.icon-street-icon').css({ display: 'block' });
+          searchVartiations.find('.icon-street-icon')
+            .css({ display: 'block' });
         } else {
-          searchVartiations.find('.offices__search-icon').addClass(customPoint.colorMetro);
-          searchVartiations.find('.icon-orange').css({ display: 'block' });
+          searchVartiations.find('.offices__search-icon')
+            .addClass(customPoint.colorMetro);
+          searchVartiations.find('.icon-orange')
+            .css({ display: 'block' });
         }
-        searchVartiations.clone().appendTo(searchVariationsContainer);
+        searchVartiations.clone()
+          .appendTo(searchVariationsContainer);
       });
-      $.each(searchVariationsContainer.find('.offices__search-option'), function (i, item) {
-        $(item).removeAttr('hidden');
-        $(item).removeAttr('data-template');
+      $.each(searchVariationsContainer.find('.offices__search-option'), (i, item) => {
+        $(item)
+          .removeAttr('hidden');
+        $(item)
+          .removeAttr('data-template');
       });
     } else {
-      $('.offices__search-variations').hide();
+      $('.offices__search-variations')
+        .hide();
     }
-    this.setScrollSearch();
+    // this.setScrollSearch();
   }
 
   removeValueInput(searchInput) {
-    $('.search-close').on('click', () => {
-      searchInput.val('');
-      $('.search-close').css({ display: 'none' });
-      $('.icon-search').css({ display: 'block' });
-      $('[name=map-search]').closest('.js-input').addClass('state_init');
-      $('[name=map-search]').closest('.js-input').removeClass('state_filled');
-      $('.collapse__item').removeClass('state_hidden');
-      $('.collapse__item').find('.collapse__control-underground').css({ display: 'flex' });
-      $('.collapse__item').find('.collapse__control-distance-to-bcs').hide();
-      this.distanceCalculation(this.userPos);
-      this.getPoints();
-      this.addPoints();
-    });
+    $('.search-close')
+      .on('click', () => {
+        searchInput.val('');
+        $('.search-close')
+          .css({ display: 'none' });
+        $('.icon-search')
+          .css({ display: 'block' });
+        $('[name=map-search]')
+          .closest('.js-input')
+          .addClass('state_init');
+        $('[name=map-search]')
+          .closest('.js-input')
+          .removeClass('state_filled');
+        $('.collapse__item')
+          .removeClass('state_hidden');
+        $('.collapse__item')
+          .find('.collapse__control-underground')
+          .css({ display: 'flex' });
+        $('.collapse__item')
+          .find('.collapse__control-distance-to-bcs')
+          .hide();
+        this.distanceCalculation(this.userPos);
+        this.getPoints();
+        this.addPoints();
+      });
   }
 
   addOrRemoveButtonClose(value) {
     if (value !== '') {
-      $('.search-close').css({ display: 'block' });
-      $('.icon-search').css({ display: 'none' });
+      $('.search-close')
+        .css({ display: 'block' });
+      $('.icon-search')
+        .css({ display: 'none' });
     } else {
-      $('.search-close').css({ display: 'none' });
-      $('.icon-search').css({ display: 'block' });
+      $('.search-close')
+        .css({ display: 'none' });
+      $('.icon-search')
+        .css({ display: 'block' });
     }
   }
 
   // кнопка "показать на карте"
   lookAtTheMap() {
-    $('.js-offices-button-for-map').on('click', () => {
-      setTimeout(() => {
-        $('html, body').animate({ scrollTop: $('.offices__search').offset().top }, 800);
-      }, 200);
-    });
+    $('.js-offices-button-for-map')
+      .on('click', () => {
+        setTimeout(() => {
+          $('html, body')
+            .animate({
+              scrollTop: $('.offices__search')
+                .offset().top,
+            }, 800);
+        }, 200);
+      });
   }
 }
