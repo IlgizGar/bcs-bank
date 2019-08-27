@@ -35,22 +35,23 @@
     </div>
     <div class="offices__map-router">
       <div class="offices__map-router-wrapper">
-        <div class="offices__map-router--walk">
-          <button class="offices__map-router-button js-map-router-button js-map-router--walk router-active" data-value="pedestrian">
+        <div class="offices__map-router--type offices__map-router--walk router-active">
+          <button class="offices__map-router-button js-map-router-button js-map-router--walk " data-value="pedestrian">
             {{ Icon.icon({ 'name': 'icon_walk' }) }}
           </button>
+          <div class="offices__map-router-time js-map-router-time"></div>
         </div>
-        <div class="offices__map-router--bicycle">
+        <div class="offices__map-router--type offices__map-router--bicycle">
           <button class="offices__map-router-button js-map-router-button js-map-router--bicycle" data-value="bicycle">
             {{ Icon.icon({ 'name': 'bicycle' }) }}
           </button>
         </div>
-        <div class="offices__map-router--car">
+        <div class="offices__map-router--type offices__map-router--car">
           <button class="offices__map-router-button js-map-router-button js-map-router--car" data-value="auto">
             {{ Icon.icon({ 'name': 'car' }) }}
           </button>
         </div>
-        <div class="offices__map-router--bus">
+        <div class="offices__map-router--type offices__map-router--bus">
           <button class="offices__map-router-button js-map-router-button js-map-router--bus" data-value="masstransit">
             {{ Icon.icon({ 'name': 'bus' }) }}
           </button>
