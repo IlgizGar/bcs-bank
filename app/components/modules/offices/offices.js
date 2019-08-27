@@ -74,8 +74,8 @@ export default class Offices {
     // нажатие кнопки отмена маршрута
     $('.js-map-router-cancel').on('click', () => {
       $('.offices__map-router').css({ display: 'none' });
-      this.routeButton.removeClass('clicked-button');
-      this.routeButton.text('Построить маршрут');
+      this.routeButton.removeClass('hidden-block');
+      $('.js-route-built').removeClass('route-built--active');
       this.clearRoute();
       this.getPoints();
       this.addPoints();
@@ -152,8 +152,8 @@ export default class Offices {
 
     this.routeButton.on('click', (e) => {
       const button = $(e.currentTarget);
-      button.addClass('clicked-button');
-      button.text('Маршрут построен');
+      button.addClass('hidden-block');
+      $('.js-route-built').addClass('route-built--active');
       $('.js-map-router-time').addClass('router-active');
       const routerType = $('.offices__map-router');
       const type = routerType.find('.router-active').attr('data-value');
@@ -996,6 +996,7 @@ export default class Offices {
             const startPoint = res.geoObjects.get(0)
               .geometry
               .getCoordinates();
+            this.userPos = startPoint;
             this.distanceCalculation(startPoint);
           });
         global.contexts['select-city'].handleNamedList($(`.js-context-item[data-value="${geoID}"]`));
@@ -1178,6 +1179,10 @@ export default class Offices {
           .find('.collapse__control-distance-to-bcs')
           .hide();
         this.distanceCalculation(this.userPos);
+        $('.offices__map-router').css({ display: 'none' });
+        this.routeButton.removeClass('hidden-block');
+        $('.js-route-built').removeClass('route-built--active');
+        this.clearRoute();
         this.getPoints();
         this.addPoints();
       });
