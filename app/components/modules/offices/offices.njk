@@ -397,21 +397,24 @@
 {#                                              </div>#}
 {#                                          </li>#}
                 </ul>
-                    {{ Dropdown.dropdown({
-                        'mods': {'theme': 'bordered'},
-                        'label': 'Построить Маршрут',
-                        'name': 'routeType',
-                        'items': [
-                            {'title': 'На автомобиле', 'value': 'auto'},
-                            {'title': 'На общественном транспорте', 'value': 'masstransit'},
-                            {'title': 'Пешком', 'value': 'pedestrian'},
-                            {'title': 'На велосипеде', 'value': 'bicycle'}],
-                        'class': 'form__field-group form__field-group_dropdown',
-                        'attr': {'id': 'route-type4'},
-                        'field': 'js-create-route' }) }}
+                {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+{#                {{ Dropdown.dropdown({#}
+{#                        'mods': {'theme': 'bordered'},#}
+{#                        'label': 'Построить Маршрут',#}
+{#                        'name': 'routeType',#}
+{#                        'items': [#}
+{#                            {'title': 'На автомобиле', 'value': 'auto'},#}
+{#                            {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+{#                            {'title': 'Пешком', 'value': 'pedestrian'},#}
+{#                            {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+{#                        'class': 'form__field-group form__field-group_dropdown',#}
+{#                        'attr': {'id': 'route-type4'},#}
+{#                        'field': 'js-create-route' }) }}#}
 
                     <div class="map-wrap js-collapse-map-wrap"></div>
                 </div>
+              <div class="offices__route-built js-route-built">Маршрут построен</div>
             </div>
 
             <div class="collapse__item" data-coords="[55.78,37.56]">
@@ -482,7 +485,9 @@
                   {#                            </div>#}
                   {#                        </li>#}
                 </ul>
-{#                    {{ Dropdown.dropdown({#}
+                {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+                {#                    {{ Dropdown.dropdown({#}
 {#                        'mods': {'theme': 'bordered'},#}
 {#                        'label': 'Построить Маршрут',#}
 {#                        'name': 'routeType',#}
@@ -496,6 +501,7 @@
 {#                        'field': 'js-create-route' }) }}#}
                     <div class="map-wrap js-collapse-map-wrap"></div>
                 </div>
+              <div class="offices__route-built js-route-built">Маршрут построен</div>
             </div>
 
             <div class="collapse__item" data-coords="[55.72,37.54]">
@@ -556,7 +562,9 @@
                         </div>
                       </li>
                     </ul>
-{#                    {{ Dropdown.dropdown({#}
+                  {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+                  {#                    {{ Dropdown.dropdown({#}
 {#                        'mods': {'theme': 'bordered'},#}
 {#                        'label': 'Построить Маршрут',#}
 {#                        'name': 'routeType',#}
@@ -571,6 +579,7 @@
 
                     <div class="map-wrap js-collapse-map-wrap"></div>
                 </div>
+              <div class="offices__route-built js-route-built">Маршрут построен</div>
             </div>
 
 
@@ -713,7 +722,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -727,6 +738,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[45.061511,38.962091]">
@@ -787,7 +799,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -801,6 +815,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[45.030114,38.996424]">
@@ -876,6 +891,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[45.054697,39.010843]">
@@ -936,7 +952,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -950,6 +968,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[45.019887,38.967241]">
@@ -1010,7 +1029,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1024,6 +1045,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
         </div>
       </div>
@@ -1050,7 +1072,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1064,6 +1088,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[55.747,37.57]">
@@ -1086,7 +1111,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1100,6 +1127,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[55.77,37.48]">
@@ -1122,7 +1150,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1136,6 +1166,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[55.76,37.57]">
@@ -1158,7 +1189,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1172,6 +1205,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[55.77,37.55]">
@@ -1194,7 +1228,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1208,6 +1244,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[55.746,37.578]">
@@ -1230,7 +1267,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1244,6 +1283,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
         </div>
         <div class="collapse offices__collapse" data-city="35" data-id="atm-tab">
@@ -1268,7 +1308,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1282,6 +1324,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[45.035469,38.968443]">
@@ -1304,7 +1347,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1318,6 +1363,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[45.055792,38.983377]">
@@ -1340,7 +1386,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1354,6 +1402,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[45.047761,38.939947]">
@@ -1376,7 +1425,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1390,6 +1441,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[45.061024,38.973764]">
@@ -1412,7 +1464,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1426,6 +1480,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[45.057009,38.939947]">
@@ -1448,7 +1503,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1462,6 +1519,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
         </div>
       </div>

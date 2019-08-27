@@ -60,9 +60,8 @@ export default class Offices {
     });
     $('.js-map-router-button').on('click', (e) => {
       $('.js-map-router-button').removeClass('router-active');
+      $('.js-map-router-time').text('');
       $(e.currentTarget).addClass('router-active');
-      console.log(e.currentTarget);
-      // $(e.currentTarget).next('.js-map-router-time').addClass('router-active');
       const type = $(e.currentTarget).attr('data-value');
       let toPoint = $('.collapse__item_state-open').attr('data-coords');
       toPoint = String(toPoint).split(',').map((el) => {
@@ -143,7 +142,7 @@ export default class Offices {
     this.routeButton.on('click', (e) => {
       const button = $(e.currentTarget);
       button.addClass('hidden-block');
-      $('.js-route-built').addClass('route-built--active');
+      button.closest('.collapse__item').find('.js-route-built').addClass('route-built--active');
       $('.js-map-router-time').addClass('router-active');
       const routerType = $('.offices__map-router');
       const type = routerType.find('.router-active').attr('data-value');
@@ -496,34 +495,44 @@ export default class Offices {
 
   // построение маршрута
   createRoute(toPoint, mode) {
-    this.clearRoute();
-    this.multiRoute = new ymaps.multiRouter.MultiRoute({
-      referencePoints: [
-        this.userPos,
-        toPoint, // улица Льва Толстого.
-      ],
-      params: {
-        routingMode: (mode !== undefined) ? mode : 'auto',
-      },
-    }, {
-      wayPointVisible: false,
-      boundsAutoApply: true,
-    });
-    this.map.geoObjects.add(this.multiRoute);
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        console.log(this.multiRoute.getRoutes().get(0));
-        const routeTime = this.multiRoute.getRoutes().get(0).properties.get("duration").text;
-        $('.js-map-router-time').text('');
-
-        $('.offices__map-router--type').each((i, item) => {
-          if ($(item).find('.offices__map-router-button').hasClass('router-active')) {
-            $(item).find('.js-map-router-time').text(routeTime);
-          }
+    if ($('.offices__map-router').css('display') != 'none')
+    {
+        this.clearRoute();
+        this.multiRoute = new ymaps.multiRouter.MultiRoute({
+            referencePoints: [
+                this.userPos,
+                toPoint, // улица Льва Толстого.
+            ],
+            params: {
+                routingMode: (mode !== undefined) ? mode : 'auto',
+            },
+        }, {
+            wayPointVisible: false,
+            boundsAutoApply: true,
         });
-        return resolve(routeTime);
-      }, 500);
-    });
+        this.map.geoObjects.add(this.multiRoute);
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                if (this.multiRoute.getRoutes().get(0) != undefined)
+                {
+                    const routeTime = String(this.multiRoute.getRoutes().get(0).properties.get("duration").text);
+                    $('.offices__map-router--type').each((i, item) => {
+                        if ($(item).find('.offices__map-router-button').hasClass('router-active')) {
+                          //костыль для того чтобы убрать лишние пробелы из яндекса
+                          let tempResult = routeTime;
+                          tempResult = (tempResult.replace(/\s/g, '')).replace('ч', 'ч ');
+                          if (tempResult.indexOf('ч') == -1)
+                          {
+                            tempResult = tempResult.replace('мин', ' мин');
+                          }
+                          $(item).find('.js-map-router-time').text(tempResult);
+                        }
+                    });
+                    return resolve(routeTime);
+                }
+            }, 500);
+        });
+    }
   }
 
   getUserPos() {
@@ -1201,14 +1210,16 @@ export default class Offices {
         $('.collapse__item')
           .find('.collapse__control-distance-to-bcs')
           .hide();
-        this.getUserPos();
-        this.distanceCalculation(this.userPos);
         $('.offices__map-router').css({ display: 'none' });
         this.routeButton.removeClass('hidden-block');
         $('.js-route-built').removeClass('route-built--active');
         this.clearRoute();
         this.getPoints();
         this.addPoints();
+        this.getUserPos();
+        setTimeout(() => {
+            this.distanceCalculation(this.userPos);
+        }, 1000);
       });
   }
 
