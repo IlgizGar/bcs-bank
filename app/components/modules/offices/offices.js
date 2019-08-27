@@ -12,6 +12,7 @@ import metro from '../../../resources/assets/metro.json';
 export default class Offices {
   constructor(offices) {
     this.userPos = null;
+    this.customPos = null;
     this.appBlock = offices;
     this.pane = $('.js-tabs');
     this.searchPane = $('.offices__search-variations');
@@ -350,21 +351,21 @@ export default class Offices {
         const map = this.getData()
           .control
           .getMap();
-        map.setZoom(map.getZoom() + 1, { checkZoomRange: true });
+        map.setZoom(map.getZoom() + 1, {checkZoomRange: true});
       },
 
       zoomOut() {
         const map = this.getData()
           .control
           .getMap();
-        map.setZoom(map.getZoom() - 1, { checkZoomRange: true });
+        map.setZoom(map.getZoom() - 1, {checkZoomRange: true});
       },
     });
 
     const zoomControl = new ymaps.control.ZoomControl({
       options: {
         layout: ZoomLayout,
-        position: { top: '0px' },
+        position: {top: '0px'},
       },
     });
     this.map.controls.add(zoomControl);
@@ -378,7 +379,9 @@ export default class Offices {
   getPoints() {
     const citySelector = this.city ? `[data-city="${this.city}"]` : '[data-city]';
     this.points = [];
+    this.appBlock.find('.offices__collapse').removeClass('state_active');
     this.appBlock.find(`.offices__collapse${citySelector}[data-id="${this.currentTabId}"]`)
+      .addClass('state_active')
       .find('.collapse__item[data-coords]')
       .each((i, el) => {
         const coords = $(el)
@@ -534,6 +537,8 @@ export default class Offices {
   changeCity() {
     this.updateList();
     this.getPoints();
+    if (this.customPos) this.distanceCalculation(this.customPos);
+    else if (this.userPos) this.distanceCalculation(this.userPos);
     this.addPoints();
     this.clearRoute();
   }
@@ -832,7 +837,7 @@ export default class Offices {
                     .trim();
                   // console.log('RESULT', result);
                   // console.log('INDEX', result.indexOf('метро'));
-                  if(result.length) {
+                  if (result.length) {
                     item.find('.js-template-title')
                       .text(result);
                     item.find('.js-template-description')
@@ -844,7 +849,7 @@ export default class Offices {
                   }
                   if (address.value.indexOf('метро') >= 0) {
                     addressArr.forEach((el) => {
-                      if(el.indexOf('метро')) {
+                      if (el.indexOf('метро')) {
                         const metroName = el.substr(6).toLowerCase().trim();
                         const st = this.metroList.filter(item => (item.metro === metroName && item.name === suggCity.toLowerCase().trim()));
                         item.find('.js-search-icon').css('color', st.length ? st[0].color : '');
@@ -924,15 +929,15 @@ export default class Offices {
     $(document)
       .on('click', '.offices__search-option', (e) => {
         e.preventDefault();
-        $('.search-close').css({ display: 'block' });
-        $('.icon-search').css({ display: 'none' });
+        $('.search-close').css({display: 'block'});
+        $('.icon-search').css({display: 'none'});
 
         // добавление выбранного текста по клику в инпут
         const parent = $(e.target).closest('[data-template]'); // привязка к текущему элементу на который кликнули
         let city = '';
         let text = '';
         let geoID = 'all';
-        if(parent.find('.js-template-description').length > 0) {
+        if (parent.find('.js-template-description').length > 0) {
           text = parent.find('.js-template-title').text().trim();
           city = parent.find('.js-template-description').text().trim();
         } else {
@@ -940,8 +945,11 @@ export default class Offices {
           text = city;
         }
         const data = cities.filter(item => item.name.toLowerCase().trim() === city.toLowerCase());
-        if(!data.length) { city = 'all'; }
-        else { geoID = data[0].id; }
+        if (!data.length) {
+          city = 'all';
+        } else {
+          geoID = data[0].id;
+        }
         $('[name=map-search]')
           .val(text)
           .closest('.js-input')
@@ -950,14 +958,15 @@ export default class Offices {
           .removeClass('state_init');
         $('.offices__search-variations').hide();
         const address = city === 'all' || city === text ? `${text}` : `${city}, ${text}`;
+        global.contexts['select-city'].handleNamedList($(`.js-context-item[data-value="${geoID}"]`));
         ymaps.geocode(address)
           .then((res) => {
             const startPoint = res.geoObjects.get(0)
               .geometry
               .getCoordinates();
+            this.customPos = startPoint;
             this.distanceCalculation(startPoint);
           });
-        global.contexts['select-city'].handleNamedList($(`.js-context-item[data-value="${geoID}"]`));
       });
   }
 
@@ -988,8 +997,18 @@ export default class Offices {
 
   distanceCalculation(coord) {
     if ((typeof coord) !== undefined && coord != null) {
+      console.log('DISTANCE_CALCULATION');
+      const $tab = $(this.points[0].element).closest('.js-tab');
+      if (this.city === 'all' || this.city === null) {
+        $tab.append('<div class="collapse offices__collapse" data-city="0" data-id="offices-tab" style="display: none;"></div>')
+      } else {
+        $tab.find('[data-city="0"]').remove();
+      }
       this.points.forEach((point) => {
         const distance = Math.ceil(ymaps.coordSystem.geo.getDistance(coord, point.coordinates));
+        $(point.element).css({
+          order: distance
+        });
         const temp = Math.ceil((distance / 1000) * 10) / 10;
         if (distance > 1000) {
           $(point.element)
@@ -1006,7 +1025,19 @@ export default class Offices {
             .find('.collapse__control-distance-metr')
             .text(`~${distance}м`);
         }
+        if (this.city === null || this.city === 'all') {
+          const item = $.extend(true, {}, $(point.element).clone());
+          item.appendTo($tab.find('[data-city="0"]'));
+        }
       });
+      if (this.city === null || this.city === 'all') {
+        $tab.find('.offices__collapse.state_active').css({
+          display: 'none'
+        });
+        $tab.find('[data-city="0"]').css({
+          display: 'flex'
+        })
+      }
     } else {
       console.log('Не удалось найти позицию пользователя');
     }
@@ -1086,17 +1117,17 @@ export default class Offices {
         searchVartiations.find('.offices__search-description')
           .text(customPoint.description);
         searchVartiations.find('.icon-street-icon')
-          .css({ display: 'none' });
+          .css({display: 'none'});
         searchVartiations.find('.icon-orange')
-          .css({ display: 'none' });
+          .css({display: 'none'});
         if (customPoint.type === 'street') {
           searchVartiations.find('.icon-street-icon')
-            .css({ display: 'block' });
+            .css({display: 'block'});
         } else {
           searchVartiations.find('.offices__search-icon')
             .addClass(customPoint.colorMetro);
           searchVartiations.find('.icon-orange')
-            .css({ display: 'block' });
+            .css({display: 'block'});
         }
         searchVartiations.clone()
           .appendTo(searchVariationsContainer);
@@ -1119,9 +1150,9 @@ export default class Offices {
       .on('click', () => {
         searchInput.val('');
         $('.search-close')
-          .css({ display: 'none' });
+          .css({display: 'none'});
         $('.icon-search')
-          .css({ display: 'block' });
+          .css({display: 'block'});
         $('[name=map-search]')
           .closest('.js-input')
           .addClass('state_init');
@@ -1132,7 +1163,7 @@ export default class Offices {
           .removeClass('state_hidden');
         $('.collapse__item')
           .find('.collapse__control-underground')
-          .css({ display: 'flex' });
+          .css({display: 'flex'});
         $('.collapse__item')
           .find('.collapse__control-distance-to-bcs')
           .hide();
@@ -1145,14 +1176,14 @@ export default class Offices {
   addOrRemoveButtonClose(value) {
     if (value !== '') {
       $('.search-close')
-        .css({ display: 'block' });
+        .css({display: 'block'});
       $('.icon-search')
-        .css({ display: 'none' });
+        .css({display: 'none'});
     } else {
       $('.search-close')
-        .css({ display: 'none' });
+        .css({display: 'none'});
       $('.icon-search')
-        .css({ display: 'block' });
+        .css({display: 'block'});
     }
   }
 
