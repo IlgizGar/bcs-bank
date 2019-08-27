@@ -29,6 +29,7 @@ module.exports = (elem) => {
       if (!this.list.length) {
         this.list = $(`<div id="${this.id}" class="dropdown__list ${this.invisibleClass} scroll-pane js-context-list mt-16"><ul></ul></div>`);
         $('.js-page').append(this.list);
+        console.log(this.options);
         this.options.each((i, el) => {
           this.renderItem(el);
         });
@@ -38,7 +39,7 @@ module.exports = (elem) => {
     }
     renderItem(el) {
       const $option = $(el);
-      const item = `<li class="dropdown__list-item js-context-item" data-val="${$option.val()}" 
+      const item = `<li class="dropdown__list-item js-context-item ${$option.data('class') ? $option.data('class') : ''}" data-val="${$option.val()}" 
       ${$option.data('title') ? ` data-title="${$option.data('title')}"` : ''}  
       ${$option.data('prefix') ? ` data-prefix="${$option.data('prefix')}"` : ''}
       ${$option.data('href') ? `><a href="${$option.data('href')}">${$option.html()}</a></li>` : `>${$option.html()}</li>`}`;
