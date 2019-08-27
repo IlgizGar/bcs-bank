@@ -64,25 +64,14 @@ export default class Offices {
   }
 
   init() {
-    // const $cities = $('#select-city ul li .js-button');
-    // console.log('CITIES', $cities);
-    // $cities.each((i, el) => {
-    //     console.log('EL', $(el).data('value'));
-    //     console.log('TITLE', $(el).find('.js-button-title').text());
-    //     cities.push({
-    //       id: $(el).data('value'),
-    //       name: $(el).find('.js-button-title').text()
-    //     })
-    //   console.log('CITIES', cities);
-    //   });
     this.onCityChange();
     this.getCurrentTab();
     this.createMetroList();
     Helpers.getGeolocation((location) => {
       ymaps.ready(() => {
         const savedCity = Cookie.get('select-city');
-        const userCity = savedCity !== undefined ? savedCity : Offices.checkUserCity(213);
-        // const userCity = savedCity !== undefined ? savedCity : Offices.checkUserCity(location.GeocoderMetaData.InternalToponymInfo.geoid);
+        const locality = location.GeocoderMetaData.Address.Components.filter(item => item.kind === 'locality')[0].name;
+        const userCity = savedCity !== undefined ? savedCity : Offices.checkUserCity(cities.filter(city => city.name === locality)[0].id);
         this.initMap();
         if (savedCity === undefined) {
           this.questionHandler();
@@ -799,7 +788,6 @@ export default class Offices {
         })
       })
     });
-    console.log('СТАНЦИИ_МЕТРО', this.metroList);
   }
 
   searchInit() {
@@ -997,7 +985,7 @@ export default class Offices {
 
   distanceCalculation(coord) {
     if ((typeof coord) !== undefined && coord != null) {
-      console.log('DISTANCE_CALCULATION');
+      // console.log('DISTANCE_CALCULATION');
       const $tab = $(this.points[0].element).closest('.js-tab');
       if (this.city === 'all' || this.city === null) {
         $tab.append('<div class="collapse offices__collapse" data-city="0" data-id="offices-tab" style="display: none;"></div>')
