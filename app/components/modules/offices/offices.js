@@ -60,28 +60,25 @@ export default class Offices {
     $('.js-map-router-button').on('click', (e) => {
       $('.js-map-router-button').removeClass('router-active');
       $(e.currentTarget).addClass('router-active');
-      const routerType = $('.offices__map-router');
-      const type = routerType.find('.router-active').attr('data-value');
-      routerType.css({ display: 'flex' });
-      setTimeout(() => {
-        $('html, body').animate({ scrollTop: $(routerType).offset().top }, 800);
-      }, 200);
+      console.log(e.currentTarget);
+      // $(e.currentTarget).next('.js-map-router-time').addClass('router-active');
+      const type = $(e.currentTarget).attr('data-value');
       let toPoint = $('.collapse__item_state-open').attr('data-coords');
       toPoint = String(toPoint).split(',').map((el) => {
         const coords = parseFloat(el.replace('[', '').replace(']', ''));
         return coords;
       });
-      this.createRoute(toPoint, type)
-        .then((time) => {
-          // console.log(time);
-          // $('.js-map-router-time').text('');
-          //
-          // $('.offices__map-router-wrapper').each((i, item) => {
-          //   if ($(item).find('.offices__map-router-button').hasClass('router-active')) {
-          //     $(item).find('.js-map-router-time').text(time);
-          //   }
-          // });
-        });
+      this.createRoute(toPoint, type);
+    });
+
+    // нажатие кнопки отмена маршрута
+    $('.js-map-router-cancel').on('click', () => {
+      $('.offices__map-router').css({ display: 'none' });
+      this.routeButton.removeClass('clicked-button');
+      this.routeButton.text('Построить маршрут');
+      this.clearRoute();
+      this.getPoints();
+      this.addPoints();
     });
   }
 
@@ -155,6 +152,9 @@ export default class Offices {
 
     this.routeButton.on('click', (e) => {
       const button = $(e.currentTarget);
+      button.addClass('clicked-button');
+      button.text('Маршрут построен');
+      $('.js-map-router-time').addClass('router-active');
       const routerType = $('.offices__map-router');
       const type = routerType.find('.router-active').attr('data-value');
       routerType.css({ display: 'flex' });
@@ -530,7 +530,7 @@ export default class Offices {
           }
         });
         return resolve(routeTime);
-      }, 1000);
+      }, 500);
     });
   }
 
