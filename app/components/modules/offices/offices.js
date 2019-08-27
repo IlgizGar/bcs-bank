@@ -944,7 +944,7 @@ export default class Offices {
           .removeClass('state_init');
         $('.offices__search-variations')
           .hide();
-        this.search(text);
+        // this.search(text);
         const city = $('input[name=current-city_input]')
           .attr('data-text');
         const address = `${city}, ${text}`;
