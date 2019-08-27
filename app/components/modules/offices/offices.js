@@ -80,9 +80,8 @@ export default class Offices {
     Helpers.getGeolocation((location) => {
       ymaps.ready(() => {
         const savedCity = Cookie.get('select-city');
-        const userCity = savedCity !== undefined ? savedCity : Offices.checkUserCity(location.GeocoderMetaData.InternalToponymInfo.geoid);
-
-        this.userCity = userCity;
+        const userCity = savedCity !== undefined ? savedCity : Offices.checkUserCity(213);
+        // const userCity = savedCity !== undefined ? savedCity : Offices.checkUserCity(location.GeocoderMetaData.InternalToponymInfo.geoid);
         this.initMap();
         if (savedCity === undefined) {
           this.questionHandler();
