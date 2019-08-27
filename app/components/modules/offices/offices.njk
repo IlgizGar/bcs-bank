@@ -27,9 +27,7 @@
           {{ Input.input({ 'label': 'Введите адрес или метро', 'class': 'search__field-group', 'field':{'name': 'map-search'}, 'icon': 'search' }) }}
           {{ Button.button({ 'mods': {'type': 'icon','theme': 'transparent'}, 'attr': {'state': 'map'}, 'class': 'offices__switch-view js-offices-switcher' }) }}
 
-        <div class="offices__search-variations">
-
-        </div>
+        <div class="offices__search-variations"></div>
         {{SearchVariations.searchVariations ({'class': 'offices__switch-view js-search-variations' }) }}
       </div>
     </div>
