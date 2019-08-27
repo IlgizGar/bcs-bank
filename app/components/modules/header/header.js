@@ -78,18 +78,29 @@ module.exports = (elem) => {
       const linkClass = 'button_theme-black mobile-menu__link';
 
       $nav.appendTo(this.mobileMenu);
-      // $contacts.appendTo(this.mobileMenu);
+
+      const $menuWrapper = $('<div class="header__mobile-wrapper"></div>');
       $menu.find('.js-button')
         .removeClass(this.activeClass)
         .addClass(linkClass);
-      $menu.appendTo(this.mobileMenu);
+      $menu.appendTo($menuWrapper);
       $explore.find('a')
         .addClass(`button button_theme-white-tab button_type-tab button_size-low button_view-underscore menu__item js-button button_theme-black ${linkClass}`)
         .appendTo(this.mobileMenu.find('.js-menu .menu__wrapper'));
+
+      $contacts.find('.header__contacts-links > a').remove();
+      $contacts.find('.header__contact')[1].remove();
+      $contacts.find('.header__contact')[1].remove();
+      $contacts.find('.heading').remove();
+      $contacts.appendTo($menuWrapper);
+
       $online
         .addClass('button_theme-default mobile-menu__online-bank')
         .removeClass('hidden-mobile button_theme-white button_view-outlined')
-        .appendTo(this.mobileMenu);
+        .appendTo($menuWrapper);
+
+      $menuWrapper.appendTo(this.mobileMenu);
+
 
       this.mobileMenu.addClass('state_filled');
     }
