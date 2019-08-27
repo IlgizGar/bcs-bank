@@ -16,6 +16,7 @@ export default class Helpers {
           // Включим автоматическое геокодирование результата.
           autoReverseGeocode: true,
         }).then((result) => {
+          console.log(result.geoObjects.get(0));
           callback(result.geoObjects.get(0).properties.get('metaDataProperty'));
         }); // Выведем результат геокодирования.
       });

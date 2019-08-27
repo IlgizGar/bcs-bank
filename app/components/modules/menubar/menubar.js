@@ -43,7 +43,7 @@ export default class Menubar {
     });
 
     $(window).on('resize', () => {
-      if (window.innerWidth >= 1280) {
+      if (window.innerWidth >= this.breakpoint) {
         if (this.menuControl.hasClass(this.openClass)) {
           this.controlHandler();
         }
