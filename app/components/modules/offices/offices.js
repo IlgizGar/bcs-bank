@@ -804,7 +804,7 @@ export default class Offices {
         const searchInput = $(e.currentTarget);
         const city = this.city === null || this.city === 'all' ? '' : cities.filter(item => item.id.toString() === this.city.toString())[0].name;
         const value = `${searchInput.val()}`;
-        const request = value.length ? `${value}` : '';
+        const request = value.length ? `Россия ${value}` : '';
         let counter = 0;
 
         const searchVariationsContainer = $('.offices__search-variations');
@@ -924,29 +924,32 @@ export default class Offices {
     $(document)
       .on('click', '.offices__search-option', (e) => {
         e.preventDefault();
-        $('.search-close')
-          .css({ display: 'block' });
-        $('.icon-search')
-          .css({ display: 'none' });
+        $('.search-close').css({ display: 'block' });
+        $('.icon-search').css({ display: 'none' });
+
         // добавление выбранного текста по клику в инпут
-        const parent = $(e.target)
-          .closest('.offices__search-option'); // привязка к текущему элементу на который кликнули
-        const text = $.trim(parent.find('.offices__search-title')
-          .text());
+        const parent = $(e.target).closest('[data-template]'); // привязка к текущему элементу на который кликнули
+        let city = '';
+        let text = '';
+        let geoID = 'all';
+        if(parent.find('.js-template-description').length > 0) {
+          text = parent.find('.js-template-title').text().trim();
+          city = parent.find('.js-template-description').text().trim();
+        } else {
+          city = parent.find('.js-template-title').text().trim();
+          text = city;
+        }
+        const data = cities.filter(item => item.name.toLowerCase().trim() === city.toLowerCase());
+        if(!data.length) { city = 'all'; }
+        else { geoID = data[0].id; }
         $('[name=map-search]')
-          .val(text);
-        $('[name=map-search]')
+          .val(text)
           .closest('.js-input')
-          .addClass('state_filled');
-        $('[name=map-search]')
+          .addClass('state_filled')
           .closest('.js-input')
           .removeClass('state_init');
-        $('.offices__search-variations')
-          .hide();
-        // this.search(text);
-        const city = $('input[name=current-city_input]')
-          .attr('data-text');
-        const address = `${city}, ${text}`;
+        $('.offices__search-variations').hide();
+        const address = city === 'all' || city === text ? `${text}` : `${city}, ${text}`;
         ymaps.geocode(address)
           .then((res) => {
             const startPoint = res.geoObjects.get(0)
@@ -954,6 +957,7 @@ export default class Offices {
               .getCoordinates();
             this.distanceCalculation(startPoint);
           });
+        global.contexts['select-city'].handleNamedList($(`.js-context-item[data-value="${geoID}"]`));
       });
   }
 
