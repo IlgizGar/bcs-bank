@@ -32,7 +32,6 @@ module.exports = (elem) => {
       $('.js-page').append(this.list);
 
       this.list[0].Dropdown = this;
-
       this.options.each((i, el) => {
         this.list.find('ul').append(`
           <li tabindex="${i + 1}" data-val="${$(el).val()}">${$(el).html()}</li>

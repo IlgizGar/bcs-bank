@@ -13,21 +13,27 @@
 }
 
 .hidden-md {
-  @media (min-width 1024px) and (max-width 1279px) {
+  @media (min-width 832px) and (max-width 1279px) {
     display: none !important
     visibility: hidden
   }
 }
 
 .hidden-to-md {
-  @media (max-width 1023px) {
+  @media (max-width 831px) {
+    display: none !important
+    visibility: hidden
+  }
+}
+.hidden-to-lg {
+  @media (max-width 1279px) {
     display: none !important
     visibility: hidden
   }
 }
 
 .hidden-from-md {
-  @media (min-width 1024px) {
+  @media (min-width 832px) {
     display: none !important
     visibility: hidden
   }

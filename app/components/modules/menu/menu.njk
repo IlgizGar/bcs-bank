@@ -13,7 +13,9 @@
             {% endfor %}
             {{ Context.context({ 'title': 'Еще', 'name': 'dropdown', 'mods': { 'type': 'menu', 'theme': options.theme }, 'attr': {'id': 'menu-explore', 'list-on-right': '' }, 'class': 'menu__item',
                                  'items': [{ 'title': 'Тарифы', 'value': 'tariffs', 'attr': { 'href': '#' } } ,
-                                           { 'title': 'Сервисы и услуги', 'value': 'services', 'attr': { 'href': '#' } }] }) }}
+                                           { 'title': 'Сервисы', 'value': 'services', 'attr': { 'href': '#' } },
+                                           { 'title': 'Банкоматы и кассы', 'value': 'offices', 'attr': { 'href': '#', 'class': 'hidden-desktop'} },
+                                           { 'title': 'Связаться с нами', 'value': 'contacts', 'attr': { 'href': '#', 'class': 'hidden-desktop'} }] }) }}
         </div>
     </div>
 {% endmacro %}

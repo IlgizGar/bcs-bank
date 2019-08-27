@@ -63,12 +63,13 @@
     @media (max-width: 991px)
       height: 48px
       min-height 48px!important
-
+    @media (min-width 832px) {
+      display: none !important
+      visibility: hidden
+    }
     .nav__wrapper
       padding-left: 16px
-
-      white-space nowrap
-
+      white-space: nowrap
       .nav__button:last-child
         margin-right: 16px
 

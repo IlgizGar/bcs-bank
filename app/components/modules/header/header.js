@@ -72,17 +72,19 @@ module.exports = (elem) => {
     fillMobileMenu() {
       const $menu = $.extend(true, {}, $('.js-menu').clone());
       const $nav = $.extend(true, {}, $('.js-nav').clone());
+      const $contacts = $.extend(true, {}, this.contacts.clone());
       const $online = $.extend(true, {}, $('.js-online-bank').clone());
       const $explore = $.extend(true, {}, this.exploreMenu.clone());
       const linkClass = 'button_theme-black mobile-menu__link';
 
       $nav.appendTo(this.mobileMenu);
+      // $contacts.appendTo(this.mobileMenu);
       $menu.find('.js-button')
         .removeClass(this.activeClass)
         .addClass(linkClass);
       $menu.appendTo(this.mobileMenu);
       $explore.find('a')
-        .addClass(`button button_view-text button_size-low menu__item js-button ${linkClass}`)
+        .addClass(`button button_theme-white-tab button_type-tab button_size-low button_view-underscore menu__item js-button button_theme-black ${linkClass}`)
         .appendTo(this.mobileMenu.find('.js-menu .menu__wrapper'));
       $online
         .addClass('button_theme-default mobile-menu__online-bank')
