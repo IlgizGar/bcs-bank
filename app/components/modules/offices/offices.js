@@ -7,6 +7,7 @@ import Cookie from 'js-cookie';
 import Helpers from '../../../scripts/helpers';
 import AskQuestion from '../../library/question-popup/question-popup';
 import cities from '../../../resources/assets/city.json';
+import metro from '../../../resources/assets/metro.json';
 
 export default class Offices {
   constructor(offices) {
@@ -16,7 +17,6 @@ export default class Offices {
     this.searchPane = $('.offices__search-variations');
     this.content = this.pane.parent();
     this.searchTimout = null;
-    this.userCity = null;
     this.iconNormal = {
       iconLayout: 'default#image',
       iconImageHref: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiM0NTczRDkiLz4KPHJlY3QgeD0iNCIgeT0iNC4wMDE0NiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSJ3aGl0ZSIgZmlsbC1vcGFjaXR5PSIwLjAxIi8+CjxwYXRoIG9wYWNpdHk9IjAuNCIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0yNi42MjE5IDEwLjMxMDRDMjYuNjMzOSAxMC4zMTUyIDI2LjY1NzIgMTAuMzI1NCAyNi42ODg0IDEwLjMzODlDMjYuOTA2NCAxMC40MzM2IDI3LjUwOSAxMC42OTUzIDI3LjM0MDIgMTAuNDk1M0MyNy4xNDI2IDEwLjI1MiAyNi45MDE1IDEwLjA0NzcgMjYuNjMxNSA5Ljg5MTk2QzEzLjAyMTEgMi4wMjQ5IDIuMzU2NSAyMC43MTcxIDEyLjc0MTUgMjkuMjA2OUwxMi43NzQ0IDI5LjIzNEwxMi43NzQ0IDI5LjIzNDFDMTMuMTUyMSAyOS41NDU1IDEzLjQxNDIgMjkuNzYxNyAxMy41MDMyIDI5Ljc2NjRDMTMuNTIzNCAyOS43NjggMTMuNjAwMSAyOS44MTI1IDEzLjcwNzYgMjkuODc1QzE0LjI2OSAzMC4yMDExIDE1LjY3IDMxLjAxNDkgMTQuMjQ1NyAyOC43NDQ3QzcuODA0NTIgMTguNTA4MyAxNS40NTEgNC44MjcyNyAyNi42MjE5IDEwLjMxMDRaTTMxLjQyODcgMTguNDQwMlYxOC40MzUzQzMxLjI5ODUgMTYuOTMxOSAzMC44ODM5IDE1LjQ2NzUgMzAuMjA0MSAxNC4xMTk4QzI1LjgwMjMgOC43Nzc4MyA4Ljg3NDg0IDE0LjI4MDQgMTQuNjY1MiAyOC4wODc5QzE0Ljg0MzYgMjguNTExMiAxNS4wNzk4IDI4Ljc0OTYgMTUuMTk1NSAyOC42NzE3QzE1LjIyMjIgMjguNjUzOCAxNS4yNzA5IDI4LjYzNzQgMTUuMzI5NCAyOC42MTc3QzE1LjUyNDUgMjguNTUyIDE1LjgyODIgMjguNDQ5OSAxNS43ODM3IDI4LjEzMTdDMTQuMjQ1NyAxNy4zMjYgMjcuNjU4NSAxNC43NDc1IDMxLjQyODcgMTguNDQwMlpNMTcuODQyMiAyOS44NDQ2QzE3LjgyNjcgMjkuNzgzMSAxNy44MDc3IDI5LjcwNzggMTcuNzc5NyAyOS42MTU2QzE1LjUwODkgMjIuMDQwNCAzMC40Nzg5IDE5LjQ0MjQgMzEuMjc5MiAyMi4wNDUzQzMxLjI3OTIgMjIuMDQ1MyAzMS4yMTE3IDIyLjExMzQgMzEuMjAyMSAyMi4zMjI2QzMwLjg5NCAyMy43NDczIDMwLjEyMDggMjQuOTE1MyAyOS4zNTU2IDI2LjA3MTRDMjkuMzE4NiAyNi4xMjczIDI5LjI4MTYgMjYuMTgzMiAyOS4yNDQ2IDI2LjIzOTFDMjguNjM3MiAyMy4zODMyIDE5LjY0MDcgMjYuODMyNyAxOS4yNTUgMzAuMTYwNUMxOS4yMjEzIDMwLjQ3MTkgMTguMDAxNSAzMC4xMDIxIDE3Ljk1ODEgMzAuMDgyNkMxNy44OTQ1IDMwLjA1MjIgMTcuODc3NCAyOS45ODQzIDE3Ljg0MjIgMjkuODQ0NloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNMTQuNjUzMyA5LjE4OTA2TDE0LjY5MzQgOS4xNTIxOUMxNS4wMTA1IDguODYwODQgMTUuMzAyNiA4LjU5MjQxIDE1LjE4NzIgOC41NzM4MkMxNS4wOTU4IDguNTU5MjggMTQuNzY4NyA4LjcxNDMxIDE0LjMyMTMgOC45NzEwNkM1Ljk1MTI1IDEzLjc2NzEgNy45MjM1MiAyOC42Nzg0IDE4LjgyMzkgMzEuMzcxOVYzMS4zODE2QzE5LjE0MTQgMzEuNDEwNiAxOS40NjM3IDMxLjQzIDE5Ljc4MTEgMzEuNDNDMjEuMDU1OSAzMS40MyAyMi4zMjU4IDMxLjIxNjkgMjMuNTI4NCAzMC43OTU0QzI0LjU4NjcgMzAuMzk4MSAyNS4xODMyIDMwLjA5MjkgMjYuMTkzNCAyOS40NjMyQzI2LjMwNCAyOS4zOTA1IDI2LjQxNDcgMjkuMzEzIDI2LjUyMDUgMjkuMjM1NUMxNy4wMTUyIDMyLjIxOTcgNi4wNjE4OSAxNy40Mjk1IDE0LjY1MzMgOS4xODkwNlpNMTYuMDk3NiAxMC4zMDEzTDE2LjA5NzYgMTAuMzAxMUMxNi4xNTg0IDkuOTg0MiAxNi4xODU4IDkuODQxNTkgMTYuMDk2NCA5Ljc1NTg3QzE1Ljk5NTQgOS42NTg5OCAxNS43NjkzIDkuOTA2MDQgMTUuNDk1MSAxMC4yNzkxQzEwLjExNzEgMTcuNzI1IDIxLjg2NCAyOS4wMzY5IDI5LjUwNzggMjYuMTA1OUMzMC4zMzUxIDI0LjgzNjcgMzAuOTE3MiAyMy40MTczIDMxLjIyMDMgMjEuOTNWMjEuOTI1MkMyNy4wMjU2IDI1LjE4MDcgMTQuNzQ5NSAxNy41NTU1IDE2LjA3MjMgMTAuNDM0MUMxNi4wODEyIDEwLjM4NjcgMTYuMDg5NyAxMC4zNDI1IDE2LjA5NzYgMTAuMzAxM1pNMTkuMjIzMSA5LjMyOTU1QzIwLjUzNjQgMTEuOTc0NiAyOS4yMTQzIDE2Ljc3MDcgMzAuMTQ3NSAxMy45ODUxQzMwLjgzMDYgMTUuMzI3IDMxLjI1ODcgMTYuNzg1MiAzMS40MDMxIDE4LjI4N0MzMS40MjcxIDE4LjM5ODQgMzEuNDMxOSAxOC41MDk4IDMxLjQyNzEgMTguNjIxMkMyNi41MjA1IDIwLjQ0MjggMTcuODg1OCAxMy4zNTUzIDE4LjY5NCA5LjQ0MDk4QzE4Ljc1NjUgOS4xMzA5MyAxOC44MjM5IDkuMDI0MzUgMTguOTIwMSA4Ljk5NTI4QzE4Ljk2ODIgOC45NzU5MSAxOS4wODg0IDkuMDQzNzMgMTkuMjIzMSA5LjMyOTU1WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg==',
@@ -49,6 +49,7 @@ export default class Offices {
     this.mapContainer = document.getElementById(this.mapContainerId);
     this.mapContainer.setAttribute('tab-index', '1');
     this.mapBlock = null;
+    this.metroList = [];
     this.init();
     $('#select-city .js-context-item')
       .on('click', () => {
@@ -75,6 +76,7 @@ export default class Offices {
     //   });
     this.onCityChange();
     this.getCurrentTab();
+    this.createMetroList();
     Helpers.getGeolocation((location) => {
       ymaps.ready(() => {
         const savedCity = Cookie.get('select-city');
@@ -779,6 +781,23 @@ export default class Offices {
       .attr('id');
   }
 
+  createMetroList() {
+    metro.forEach((city) => {
+      const name = city.name.toLowerCase().trim();
+      city.lines.forEach((line) => {
+        const color = typeof line['hex_color'] !== 'undefined' ? `#${line['hex_color']}` : '';
+        line.stations.forEach((st) => {
+          this.metroList.push({
+            metro: st.name.toLowerCase().trim(),
+            name,
+            color
+          })
+        })
+      })
+    });
+    console.log('СТАНЦИИ_МЕТРО', this.metroList);
+  }
+
   searchInit() {
     $('[name=map-search]')
       .on('keyup', (e) => {
@@ -786,7 +805,7 @@ export default class Offices {
         const searchInput = $(e.currentTarget);
         const city = this.city === null || this.city === 'all' ? '' : cities.filter(item => item.id.toString() === this.city.toString())[0].name;
         const value = `${searchInput.val()}`;
-        const request = value.length ? `${city} ${value}` : '';
+        const request = value.length ? `${value}` : '';
         let counter = 0;
 
         const searchVariationsContainer = $('.offices__search-variations');
@@ -806,7 +825,6 @@ export default class Offices {
               items.forEach((address) => {
                 if (counter < 10) {
                   const item = $.extend(true, {}, searchVartiations.clone());
-                  console.log('АДРЕС', address);
                   const addressArr = address.value.split(',');
                   // console.log(addressArr);
                   const suggCity = addressArr[1];
@@ -815,18 +833,27 @@ export default class Offices {
                     .trim();
                   // console.log('RESULT', result);
                   // console.log('INDEX', result.indexOf('метро'));
-                  if (result.indexOf('метро') >= 0) {
-                    item.find('.js-template-title')
-                      .text(result.substr(result.indexOf(' '), result.length - 1));
-                    item.find('.js-template-description')
-                      .text('Станция метро');
-                    item.find('.js-metro-icon').removeClass('state_hidden');
-                    item.find('.js-address-icon').addClass('state_hidden');
-                  } else {
+                  if(result.length) {
                     item.find('.js-template-title')
                       .text(result);
                     item.find('.js-template-description')
                       .text(suggCity.trim());
+                  } else {
+                    item.find('.js-template-title')
+                      .text(suggCity.trim());
+                    item.find('.js-template-description').remove();
+                  }
+                  if (address.value.indexOf('метро') >= 0) {
+                    addressArr.forEach((el) => {
+                      if(el.indexOf('метро')) {
+                        const metroName = el.substr(6).toLowerCase().trim();
+                        const st = this.metroList.filter(item => (item.metro === metroName && item.name === suggCity.toLowerCase().trim()));
+                        item.find('.js-search-icon').css('color', st.length ? st[0].color : '');
+                      }
+                    });
+                    item.find('.js-metro-icon').removeClass('state_hidden');
+                    item.find('.js-address-icon').addClass('state_hidden');
+                  } else {
                     item.find('.js-metro-icon').addClass('state_hidden');
                     item.find('.js-address-icon').removeClass('state_hidden');
                   }
