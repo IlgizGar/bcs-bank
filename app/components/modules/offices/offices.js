@@ -514,6 +514,7 @@ export default class Offices {
         routingMode: (mode !== undefined) ? mode : 'auto',
       },
     }, {
+      wayPointVisible: false,
       boundsAutoApply: true,
     });
     this.map.geoObjects.add(this.multiRoute);
@@ -523,7 +524,7 @@ export default class Offices {
         const routeTime = this.multiRoute.getRoutes().get(0).properties.get("duration").text;
         $('.js-map-router-time').text('');
 
-        $('.offices__map-router-wrapper').each((i, item) => {
+        $('.offices__map-router--type').each((i, item) => {
           if ($(item).find('.offices__map-router-button').hasClass('router-active')) {
             $(item).find('.js-map-router-time').text(routeTime);
           }
