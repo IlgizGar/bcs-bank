@@ -10,7 +10,7 @@
   overflow: auto
   width: 100%
   height: calc(100% - 56px)
-  padding-bottom: 24px
+  //padding-bottom: 24px
 
   background-color: $color_light
 
@@ -27,6 +27,11 @@
     //@media (min-width: 1280px)
     //  transform: translateY(80px)
 
+  .page__container
+    @media(max-width 831px)
+      padding-left: 24px!important
+      padding-right: 24px!important
+
   .menu, .nav
     display: block
 
@@ -34,7 +39,7 @@
     margin-left: 0
 
     padding-top: 20px;
-    padding-left: 15px;
+    padding-left: 23px;
 
     opensansSemibold();
 
@@ -61,14 +66,14 @@
     max-width: 100%
 
     @media (max-width: 991px)
-      height: 48px
-      min-height 48px!important
+      height: 58px
+      //min-height 48px!important
     @media (min-width 832px) {
       display: none !important
       visibility: hidden
     }
     .nav__wrapper
-      padding-left: 16px
+      padding-left: 23px
       white-space: nowrap
       .nav__button:last-child
         margin-right: 16px

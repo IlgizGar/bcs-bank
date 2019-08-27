@@ -85,13 +85,13 @@ module.exports = (elem) => {
         .addClass(linkClass);
       $menu.appendTo($menuWrapper);
       $explore.find('a')
-        .addClass(`button button_theme-white-tab button_type-tab button_size-low button_view-underscore menu__item js-button button_theme-black ${linkClass}`)
-        .appendTo(this.mobileMenu.find('.js-menu .menu__wrapper'));
+        .addClass(`button button_view-text button_type-tab button_size-low button_view-underscore menu__item js-button button_theme-black ${linkClass}`)
+        .appendTo($menuWrapper.find('.js-menu .menu__wrapper'));
 
-      $contacts.find('.header__contacts-links > a').remove();
       $contacts.find('.header__contact')[1].remove();
       $contacts.find('.header__contact')[1].remove();
       $contacts.find('.heading').remove();
+      $contacts.find('.header__contacts-links').remove();
       $contacts.appendTo($menuWrapper);
 
       $online
