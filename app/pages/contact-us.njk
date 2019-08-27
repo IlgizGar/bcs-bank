@@ -1,0 +1,42 @@
+{% extends "layout/layout.njk" %}
+{#{% extends "library/card/card.njk" %}#}
+
+{% set root = "." %}
+{% set title = "404" %}
+{% set header = 'default' %}
+{% set bodyClass = 'theme-transparent' %}
+
+{% import "../components/library/button/button.njk" as Button %}
+{% import "../components/library/contact/contact.njk" as Contact %}
+{% import "../components/library/heading/heading.njk" as Heading %}
+{% import "../components/library/socials/socials.njk" as Socials %}
+
+{% block body %}
+  <div class="page js-page">
+
+    {% include "../components/modules/header/header.njk" %}
+
+    <main role="main">
+      <section class="section page__section js-scroll-animate">
+        <div class="page__new-container">
+          <div class="contacts-block">
+            {{ Heading.heading({ 'title': 'Связаться с нами', 'mods': {'type': 'normal', 'margin': 'normal'}, 'class': 'contacts-block__contacts-heading' }) }}
+            <div class="contacts-block__contacts-wrap">
+              {{ Contact.contact({ 'title': 'Частным клиентам', 'items': [{ 'name': 'Стать клиентом БКС Банка', 'value': '8 (800) 500-16-18', 'href': 'tel:+78005001618' },
+                { 'name': 'Клиентам БКС Банка', 'value': '8 (800) 500-70-65', 'href': 'tel:88005007065' }, { 'name': 'для отправки писем и документов', 'value': 'directpilot@bcs.ru', 'href': 'mailto:directpilot@bcs.ru' }], 'class': 'contacts-block__contact' }) }}
+              {{ Contact.contact({ 'title': 'Малому бизнесу', 'items': [{'value': '8 (800) 500-03-05', 'href': 'tel:+78005000305' }], 'class': 'contacts-block__contact' }) }}
+              {{ Contact.contact({ 'title': 'Крупному бизнесу', 'items': [{ 'value': '8 (800) 500-05-59', 'href': 'tel:+78005000559' }], 'class': 'contacts-block__contact' }) }}
+              <div class="contacts-block__contacts-links">
+                {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'class': 'contacts-block__socials' }) }}
+                {{ Button.button({ 'title': 'Задать вопрос', 'href': '#question-modal-form', 'mods' : {'theme': 'default', 'size': 'wide'}, 'class': 'js-open-modal contacts-block__question-button' }) }}
+                {#              <p class="hidden-to-md">Вам ответят в ближайшее время</p>#}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    {% include "../components/modules/footer/footer.njk" %}
+  </div>
+{% endblock %}
