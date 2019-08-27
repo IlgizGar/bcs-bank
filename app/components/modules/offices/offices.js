@@ -996,8 +996,12 @@ export default class Offices {
             const startPoint = res.geoObjects.get(0)
               .geometry
               .getCoordinates();
-            this.userPos = startPoint;
             this.distanceCalculation(startPoint);
+            this.userPos = startPoint;
+            this.clearRoute();
+            this.createRoute(startPoint, 'pedestrian').then(() => {
+              $('[data-value="pedestrian"]').trigger('click');
+            });
           });
         global.contexts['select-city'].handleNamedList($(`.js-context-item[data-value="${geoID}"]`));
       });
@@ -1178,6 +1182,7 @@ export default class Offices {
         $('.collapse__item')
           .find('.collapse__control-distance-to-bcs')
           .hide();
+        this.getUserPos();
         this.distanceCalculation(this.userPos);
         $('.offices__map-router').css({ display: 'none' });
         this.routeButton.removeClass('hidden-block');
