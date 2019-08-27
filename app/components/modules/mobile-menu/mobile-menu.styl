@@ -37,16 +37,16 @@
 
   .menu
     margin-left: 0
-
     padding-top: 20px;
-    padding-left: 23px;
+    @media(max-width 831px)
+      padding-left: 23px;
 
     opensansSemibold();
 
     //border-top: solid 1px $color_borders
 
     @media (max-width 991px)
-      overflow-y: auto
+      //overflow-y: auto
 
     .menu__wrapper
       display: flex

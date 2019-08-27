@@ -4,8 +4,13 @@
   transition: all $interval
 
   p:first-child, a:first-child
-    formularBold(24px)
     color: $color_elem
+
+
+    @media (max-width: 1279px)
+      formularBold(16px)
+    @media (max-width: 831px)
+      formularBold(24px)
 
   p:last-child
     margin-top: 10px

@@ -1,5 +1,16 @@
 .header__mobile-wrapper {
   overflow-y auto
+  @media (min-width 832px) and (max-width 1279px) {
+    display: flex
+    flex-wrap wrap
+    max-width: 832px;
+    padding-left: 16px
+    padding-right: 16px
+    width: 100%
+    margin-right: auto
+    margin-left: auto
+  }
+
   @media (max-width 831px) {
     height calc(100% - 48px)
     padding-bottom: 24px

@@ -1,5 +1,11 @@
-.header .header__menu
-  margin-right: auto;
-  @media (min-width: 832px) and (max-width:1215px)
-    margin-right: 0px;
-    margin-left: 0;
+.header
+  .header__menu
+    @media (max-width: 831px)
+      margin-right: auto;
+  .header__mobile-wrapper
+    .header__menu
+      @media (min-width: 832px) and (max-width:1279px)
+        margin-right: 0;
+        margin-left: 0;
+        flex-basis 50%
+        min-width 50%
