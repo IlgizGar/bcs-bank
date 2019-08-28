@@ -1,5 +1,4 @@
-import 'core-js/fn/symbol/iterator';
-import 'core-js/es6/symbol';
+require('./utils/polyfills');
 
 import $ from 'jquery';
 
@@ -45,10 +44,6 @@ import SectionTabs from '../components/modules/section-tabs/sectionTabs';
 import Animator from '../components/modules/page-animations/animator';
 import FxCourses from '../components/modules/landing-fx/landing-fx';
 import OfficeStress from "../components/library/office-stress/office-stress";
-
-require('intersection-observer');
-
-require('babel-polyfill');
 
 $(() => {
   svg4everybody();

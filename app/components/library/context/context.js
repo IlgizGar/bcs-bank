@@ -62,8 +62,17 @@ module.exports = (elem) => {
 
     events() {
       // добавим кастомное событие
-      const customEvent = document.createEvent('Event');
-      customEvent.initEvent('contextchange', true, true);
+      // const customEvent = document.createEvent('Event');
+      // customEvent.initEvent('contextchange', true, true);
+
+      let customEvent;
+      if(typeof(Event) === 'function') {
+        customEvent = new Event('contextchange');
+      }else{
+        customEvent = document.createEvent('Event');
+        customEvent.initEvent('contextchange', true, true);
+      }
+
       //
       $(document).on('click', `.js-context[data-id="${this.id}"]`, (e) => {
         e.preventDefault();
