@@ -1,3 +1,9 @@
+require('babel-polyfill');
+import 'core-js/fn/symbol/iterator';
+import 'core-js/es6/symbol';
+import 'custom-event-polyfill';
+require('intersection-observer');
+
 (function (arr) {
   arr.forEach(function (item) {
     if (item.hasOwnProperty('remove')) {
