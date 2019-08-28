@@ -24,6 +24,8 @@ export default class Collapse {
       .removeClass(this.openClass)
       .children('.collapse__content')
       .slideUp(225);
+    $('.js-route-built').removeClass('route-built--active');
+    $('.js-button-bild-route').removeClass('hidden-block');
   }
 
   closeContent() {
@@ -31,5 +33,7 @@ export default class Collapse {
       .removeClass(this.openClass)
       .find('.collapse__content')
       .slideUp(225);
+    $('.js-route-built').removeClass('route-built--active');
+    $('.js-button-bild-route').removeClass('hidden-block');
   }
 }

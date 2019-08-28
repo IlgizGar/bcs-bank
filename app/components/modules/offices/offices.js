@@ -52,37 +52,46 @@ export default class Offices {
     this.mapBlock = null;
     this.metroList = [];
     this.init();
-    $('#select-city .js-context-item')
-      .on('click', () => {
-        const pos = $('#map-container')
-          .offset().top;
-        $('html, body')
-          .animate({
-            scrollTop: pos - 150,
-          }, 600);
+    $('#select-city .js-context-item').on('click', () => {
+      const pos = $('#map-container').offset().top;
+      $('html, body').animate({
+        scrollTop: pos - 150,
+      }, 600);
+    });
+    $('.js-map-router-button').on('click', (e) => {
+      $('.js-map-router-button').removeClass('router-active');
+      $('.js-map-router-time').text('');
+      $(e.currentTarget).addClass('router-active');
+      const type = $(e.currentTarget).attr('data-value');
+      let toPoint = $('.collapse__item_state-open').attr('data-coords');
+      toPoint = String(toPoint).split(',').map((el) => {
+        const coords = parseFloat(el.replace('[', '').replace(']', ''));
+        return coords;
       });
+      this.createRoute(toPoint, type);
+    });
+
+    // нажатие кнопки отмена маршрута
+    $('.js-map-router-cancel').on('click', () => {
+      $('.offices__map-router').css({ display: 'none' });
+      this.routeButton.removeClass('hidden-block');
+      $('.js-route-built').removeClass('route-built--active');
+      this.clearRoute();
+      this.getPoints();
+      this.addPoints();
+    });
   }
 
+
   init() {
-    // const $cities = $('#select-city ul li .js-button');
-    // console.log('CITIES', $cities);
-    // $cities.each((i, el) => {
-    //     console.log('EL', $(el).data('value'));
-    //     console.log('TITLE', $(el).find('.js-button-title').text());
-    //     cities.push({
-    //       id: $(el).data('value'),
-    //       name: $(el).find('.js-button-title').text()
-    //     })
-    //   console.log('CITIES', cities);
-    //   });
     this.onCityChange();
     this.getCurrentTab();
     this.createMetroList();
     Helpers.getGeolocation((location) => {
       ymaps.ready(() => {
         const savedCity = Cookie.get('select-city');
-        const userCity = savedCity !== undefined ? savedCity : Offices.checkUserCity(213);
-        // const userCity = savedCity !== undefined ? savedCity : Offices.checkUserCity(location.GeocoderMetaData.InternalToponymInfo.geoid);
+        const locality = location.GeocoderMetaData.Address.Components.filter(item => item.kind === 'locality')[0].name;
+        const userCity = savedCity !== undefined ? savedCity : Offices.checkUserCity(cities.filter(city => city.name === locality)[0].id);
         this.initMap();
         if (savedCity === undefined) {
           this.questionHandler();
@@ -93,7 +102,6 @@ export default class Offices {
         } else {
           this.changeCity();
         }
-
         this.getPoints();
         this.getUserPos()
           .then(() => {
@@ -133,18 +141,23 @@ export default class Offices {
 
     this.routeButton.on('click', (e) => {
       const button = $(e.currentTarget);
-      const type = button.val();
-      let toPoint = button.closest('[data-coords]')
-        .attr('data-coords');
-      toPoint = String(toPoint)
-        .split(',')
-        .map((el) => {
-          const coords = parseFloat(el.replace('[', '')
-            .replace(']', ''));
-          return coords;
-        });
+      button.addClass('hidden-block');
+      button.closest('.collapse__item').find('.js-route-built').addClass('route-built--active');
+      $('.js-map-router-time').addClass('router-active');
+      const routerType = $('.offices__map-router');
+      const type = routerType.find('.router-active').attr('data-value');
+      routerType.css({ display: 'flex' });
+      setTimeout(() => {
+        $('html, body').animate({ scrollTop: $(routerType).offset().top }, 800);
+      }, 200);
+      let toPoint = button.closest('[data-coords]').attr('data-coords');
+      toPoint = String(toPoint).split(',').map((el) => {
+        const coords = parseFloat(el.replace('[', '').replace(']', ''));
+        return coords;
+      });
       this.createRoute(toPoint, type);
     });
+
     this.searchInit();
 
     // $('.office-stress__load').tooltipster({
@@ -154,6 +167,7 @@ export default class Offices {
       this.lookAtTheMap();
     }
   }
+
 
   handleSwitch() {
     this.switcher.unbind('click');
@@ -481,19 +495,44 @@ export default class Offices {
 
   // построение маршрута
   createRoute(toPoint, mode) {
-    this.clearRoute();
-    this.multiRoute = new ymaps.multiRouter.MultiRoute({
-      referencePoints: [
-        this.userPos,
-        toPoint, // улица Льва Толстого.
-      ],
-      params: {
-        routingMode: (mode !== undefined) ? mode : 'auto',
-      },
-    }, {
-      boundsAutoApply: true,
-    });
-    this.map.geoObjects.add(this.multiRoute);
+    if ($('.offices__map-router').css('display') != 'none')
+    {
+        this.clearRoute();
+        this.multiRoute = new ymaps.multiRouter.MultiRoute({
+            referencePoints: [
+                this.userPos,
+                toPoint, // улица Льва Толстого.
+            ],
+            params: {
+                routingMode: (mode !== undefined) ? mode : 'auto',
+            },
+        }, {
+            wayPointVisible: false,
+            boundsAutoApply: true,
+        });
+        this.map.geoObjects.add(this.multiRoute);
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                if (this.multiRoute.getRoutes().get(0) != undefined)
+                {
+                    const routeTime = String(this.multiRoute.getRoutes().get(0).properties.get("duration").text);
+                    $('.offices__map-router--type').each((i, item) => {
+                        if ($(item).find('.offices__map-router-button').hasClass('router-active')) {
+                          //костыль для того чтобы убрать лишние пробелы из яндекса
+                          let tempResult = routeTime;
+                          tempResult = (tempResult.replace(/\s/g, '')).replace('ч', 'ч ');
+                          if (tempResult.indexOf('ч') == -1)
+                          {
+                            tempResult = tempResult.replace('мин', ' мин');
+                          }
+                          $(item).find('.js-map-router-time').text(tempResult);
+                        }
+                    });
+                    return resolve(routeTime);
+                }
+            }, 500);
+        });
+    }
   }
 
   getUserPos() {
@@ -799,7 +838,6 @@ export default class Offices {
         })
       })
     });
-    console.log('СТАНЦИИ_МЕТРО', this.metroList);
   }
 
   searchInit() {
@@ -966,6 +1004,11 @@ export default class Offices {
               .getCoordinates();
             this.customPos = startPoint;
             this.distanceCalculation(startPoint);
+            this.userPos = startPoint;
+            this.clearRoute();
+            this.createRoute(startPoint, 'pedestrian').then(() => {
+              $('[data-value="pedestrian"]').trigger('click');
+            });
           });
       });
   }
@@ -997,7 +1040,7 @@ export default class Offices {
 
   distanceCalculation(coord) {
     if ((typeof coord) !== undefined && coord != null) {
-      console.log('DISTANCE_CALCULATION');
+      // console.log('DISTANCE_CALCULATION');
       const $tab = $(this.points[0].element).closest('.js-tab');
       if (this.city === 'all' || this.city === null) {
         $tab.append('<div class="collapse offices__collapse" data-city="0" data-id="offices-tab" style="display: none;"></div>')
@@ -1167,9 +1210,16 @@ export default class Offices {
         $('.collapse__item')
           .find('.collapse__control-distance-to-bcs')
           .hide();
-        this.distanceCalculation(this.userPos);
+        $('.offices__map-router').css({ display: 'none' });
+        this.routeButton.removeClass('hidden-block');
+        $('.js-route-built').removeClass('route-built--active');
+        this.clearRoute();
         this.getPoints();
         this.addPoints();
+        this.getUserPos();
+        setTimeout(() => {
+            this.distanceCalculation(this.userPos);
+        }, 1000);
       });
   }
 
