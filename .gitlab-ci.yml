@@ -1,4 +1,3 @@
-#image: registry.rusrobots.ru/aic.develop/node-alipine-deploy/deploy-to-host:1.0
 image: registry.gitlab.com/mrthefirst/deploy-to-host
 
 stages:
