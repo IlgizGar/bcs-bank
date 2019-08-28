@@ -47,7 +47,7 @@ import FxCourses from '../components/modules/landing-fx/landing-fx';
 import OfficeStress from "../components/library/office-stress/office-stress";
 
 require('intersection-observer');
-
+require('./utils/polyfills');
 require('babel-polyfill');
 
 $(() => {
