@@ -97,21 +97,22 @@ module.exports = (elem) => {
     }
     processResult(url, form, data, callback) {
       console.log(this.steps);
-
+      const self = this;
       function showSmsError() {
         FormHelper.showInputError('sms_code', data.error, this.formValidator);
       }
       function showSuccessModal() {
-        $('.js-products-success')
-          .on($.modal.AFTER_CLOSE, () => {
-            form.reset();
-            this.form.closest('.js-form')
-              .find('.js-step-informer')
-              .text(this.steps.tofFirstStep() + 1);
-          })
-          .modal({
-            showClose: false,
-          });
+        self.addPixelMetric(form, data);
+        // $('.js-products-success')
+        //   .on($.modal.AFTER_CLOSE, () => {
+        //     form.reset();
+        //     this.form.closest('.js-form')
+        //       .find('.js-step-informer')
+        //       .text(this.steps.tofFirstStep() + 1);
+        //   })
+        //   .modal({
+        //     showClose: false,
+        //   });
       }
       function showInputErrors() {
         Object.keys(data.errors)
@@ -164,7 +165,18 @@ module.exports = (elem) => {
         setHiddenFields.apply(this);
       }
     }
-  }
+    addPixelMetric(form, response) {
+      let pixelUrl = $(form).data('pixel');
 
+      console.log(pixelUrl.indexOf('#ORDER_ID#') !== -1 && !!response.request_id);
+      if (pixelUrl.indexOf('#ORDER_ID#') !== -1 && response.request_id) {
+        pixelUrl = pixelUrl.replace('#ORDER_ID#', response.request_id)
+      }
+      console.log(pixelUrl);
+      if (pixelUrl) {
+        $('head').append(`<img src="${pixelUrl}" width="1"  height="1"/>`)
+      }
+    }
+  }
   return new Form(elem);
 };
