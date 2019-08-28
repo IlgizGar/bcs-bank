@@ -495,43 +495,51 @@ export default class Offices {
 
   // построение маршрута
   createRoute(toPoint, mode) {
-    if ($('.offices__map-router').css('display') != 'none')
-    {
-        this.clearRoute();
-        this.multiRoute = new ymaps.multiRouter.MultiRoute({
-            referencePoints: [
-                this.userPos,
-                toPoint, // улица Льва Толстого.
-            ],
-            params: {
-                routingMode: (mode !== undefined) ? mode : 'auto',
-            },
-        }, {
-            wayPointVisible: false,
-            boundsAutoApply: true,
-        });
-        this.map.geoObjects.add(this.multiRoute);
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                if (this.multiRoute.getRoutes().get(0) != undefined)
-                {
-                    const routeTime = String(this.multiRoute.getRoutes().get(0).properties.get("duration").text);
-                    $('.offices__map-router--type').each((i, item) => {
-                        if ($(item).find('.offices__map-router-button').hasClass('router-active')) {
-                          //костыль для того чтобы убрать лишние пробелы из яндекса
-                          let tempResult = routeTime;
-                          tempResult = (tempResult.replace(/\s/g, '')).replace('ч', 'ч ');
-                          if (tempResult.indexOf('ч') == -1)
-                          {
-                            tempResult = tempResult.replace('мин', ' мин');
-                          }
-                          $(item).find('.js-map-router-time').text(tempResult);
-                        }
-                    });
-                    return resolve(routeTime);
+    if ($('.offices__map-router')
+      .css('display') != 'none') {
+      this.clearRoute();
+      this.multiRoute = new ymaps.multiRouter.MultiRoute({
+        referencePoints: [
+          this.userPos,
+          toPoint, // улица Льва Толстого.
+        ],
+        params: {
+          routingMode: (mode !== undefined) ? mode : 'auto',
+        },
+      }, {
+        wayPointVisible: false,
+        boundsAutoApply: true,
+        zoomMargin: 10,
+      });
+      this.map.geoObjects.add(this.multiRoute);
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          if (this.multiRoute.getRoutes()
+            .get(0) != undefined) {
+            const routeTime = String(this.multiRoute.getRoutes()
+              .get(0)
+              .properties
+              .get('duration').text);
+            $('.offices__map-router--type')
+              .each((i, item) => {
+                if ($(item)
+                  .find('.offices__map-router-button')
+                  .hasClass('router-active')) {
+                  // костыль для того чтобы убрать лишние пробелы из яндекса
+                  let tempResult = routeTime;
+                  tempResult = (tempResult.replace(/\s/g, '')).replace('ч', 'ч ');
+                  if (tempResult.indexOf('ч') == -1) {
+                    tempResult = tempResult.replace('мин', ' мин');
+                  }
+                  $(item)
+                    .find('.js-map-router-time')
+                    .text(tempResult);
                 }
-            }, 500);
-        });
+              });
+            return resolve(routeTime);
+          }
+        }, 500);
+      });
     }
   }
 
