@@ -51,6 +51,7 @@ export default class Offices {
     this.mapContainer.setAttribute('tab-index', '1');
     this.mapBlock = null;
     this.metroList = [];
+    this.addressDot = null;
     this.init();
     $('#select-city .js-context-item').on('click', () => {
       const pos = $('#map-container').offset().top;
@@ -467,6 +468,7 @@ export default class Offices {
       placemark.iconReadOnly = true;
     }
     if (isSingle) {
+      this.addressDot = placemark;
       this.map.geoObjects.add(placemark);
     } else {
       this.markCollection.add(placemark);
@@ -1011,6 +1013,9 @@ export default class Offices {
               .geometry
               .getCoordinates();
             this.customPos = startPoint;
+            const el = {};
+            el.coordinates = startPoint;
+            this.createPlacemark(el, this.iconUserPosition, true);
             this.distanceCalculation(startPoint);
             this.userPos = startPoint;
             this.clearRoute();
@@ -1225,10 +1230,18 @@ export default class Offices {
         this.getPoints();
         this.addPoints();
         this.getUserPos();
+        this.clearAddressDot();
         setTimeout(() => {
             this.distanceCalculation(this.userPos);
         }, 1000);
       });
+  }
+
+  clearAddressDot() {
+    if (this.addressDot) {
+      this.map.geoObjects.remove(this.addressDot);
+    }
+    this.addressDot = null;
   }
 
   addOrRemoveButtonClose(value) {
