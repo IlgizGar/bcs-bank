@@ -468,6 +468,7 @@ export default class Offices {
       placemark.iconReadOnly = true;
     }
     if (isSingle) {
+      this.clearAddressDot();
       this.addressDot = placemark;
       this.map.geoObjects.add(placemark);
     } else {
@@ -977,8 +978,8 @@ export default class Offices {
     $(document)
       .on('click', '.offices__search-option', (e) => {
         e.preventDefault();
-        $('.search-close').css({display: 'block'});
-        $('.icon-search').css({display: 'none'});
+        $('.search-close').css({ display: 'block' });
+        $('.icon-search').css({ display: 'none' });
 
         // добавление выбранного текста по клику в инпут
         const parent = $(e.target).closest('[data-template]'); // привязка к текущему элементу на который кликнули
@@ -1015,7 +1016,7 @@ export default class Offices {
             this.customPos = startPoint;
             const el = {};
             el.coordinates = startPoint;
-            this.createPlacemark(el, this.iconUserPosition, true);
+            this.createPlacemark(el, this.iconUserPosition, true).getBounds();
             this.distanceCalculation(startPoint);
             this.userPos = startPoint;
             this.clearRoute();
