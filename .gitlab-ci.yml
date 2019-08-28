@@ -19,7 +19,7 @@ deploydev:
   script:
     - echo "start deploy to http://bcs.rusrobots.ru"
     - npm run build
-    - rsync -zrpth --delete --exclude pages.php --stats --rsh="sshpass -p $SSHPASS ssh -o StrictHostKeyChecking=no -l $SSHLOGIN" $(pwd)/dist/ $SSHHOST:web/www
+    - rsync -zrpth --delete --exclude pages.php --exclude forms/ --stats --rsh="sshpass -p $SSHPASS ssh -o StrictHostKeyChecking=no -l $SSHLOGIN" $(pwd)/dist/ $SSHHOST:web/www
   only:
     - master
 
@@ -31,7 +31,6 @@ notify_error:
     - sh ./ci-notify.sh ❌
   when: on_failure
   only:
-    - develop
     - master
 
 notify_success:
@@ -42,5 +41,4 @@ notify_success:
     - sh ./ci-notify.sh ✅
   when: on_success
   only:
-    - develop
     - master
