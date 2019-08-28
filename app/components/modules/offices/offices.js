@@ -1016,7 +1016,15 @@ export default class Offices {
             this.customPos = startPoint;
             const el = {};
             el.coordinates = startPoint;
-            this.createPlacemark(el, this.iconUserPosition, true).getBounds();
+            this.createPlacemark(el, this.iconUserPosition, true);
+            setTimeout(() => {
+              this.map.setBounds(this.map.getBounds(), {
+                checkZoomRange: true,
+                zoom: 3,
+              });
+              alert('1');
+            }, 2000);
+
             this.distanceCalculation(startPoint);
             this.userPos = startPoint;
             this.clearRoute();
@@ -1228,10 +1236,10 @@ export default class Offices {
         this.routeButton.removeClass('hidden-block');
         $('.js-route-built').removeClass('route-built--active');
         this.clearRoute();
+        this.clearAddressDot();
         this.getPoints();
         this.addPoints();
         this.getUserPos();
-        this.clearAddressDot();
         setTimeout(() => {
             this.distanceCalculation(this.userPos);
         }, 1000);
