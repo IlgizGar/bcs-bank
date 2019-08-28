@@ -30,7 +30,6 @@ notify_error:
     - sh ./ci-notify.sh ❌
   when: on_failure
   only:
-    - develop
     - master
 
 notify_success:
@@ -41,5 +40,4 @@ notify_success:
     - sh ./ci-notify.sh ✅
   when: on_success
   only:
-    - develop
     - master
