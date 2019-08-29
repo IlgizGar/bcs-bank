@@ -51,6 +51,7 @@ export default class Offices {
     this.mapContainer.setAttribute('tab-index', '1');
     this.mapBlock = null;
     this.metroList = [];
+    this.addressDot = null;
     this.init();
     $('#select-city .js-context-item').on('click', () => {
       const pos = $('#map-container').offset().top;
@@ -402,13 +403,9 @@ export default class Offices {
           .data('coords');
         $(el)
           .removeClass('state_hidden');
-        if (coords) {
+        if (!!coords) {
           let foundDot = false;
-          this.points.forEach((currentPoint) => {
-            if (currentPoint.id === Offices.generatePointId(coords)) {
-              foundDot = true;
-            }
-          });
+
           if (!foundDot) {
             this.points.push({
               id: Offices.generatePointId(coords),
@@ -416,6 +413,12 @@ export default class Offices {
               element: el,
             });
           }
+
+          this.points.forEach((currentPoint) => {
+            if (currentPoint.id === Offices.generatePointId(coords)) {
+              foundDot = true;
+            }
+          });
         }
       });
   }
@@ -467,6 +470,8 @@ export default class Offices {
       placemark.iconReadOnly = true;
     }
     if (isSingle) {
+      this.clearAddressDot();
+      this.addressDot = placemark;
       this.map.geoObjects.add(placemark);
     } else {
       this.markCollection.add(placemark);
@@ -547,6 +552,7 @@ export default class Offices {
     function addPlacemark(self, latitude, longitude) {
       const el = {};
       el.coordinates = [latitude, longitude];
+      // el.coordinates = [55.757754, 37.644993]; для теста москвы
       self.saveUserPos([latitude, longitude]);
       self.createPlacemark(el, self.iconUserPosition, true);
       // self.map.setZoom(self.map.getZoom() + 5, { checkZoomRange: true });
@@ -975,8 +981,8 @@ export default class Offices {
     $(document)
       .on('click', '.offices__search-option', (e) => {
         e.preventDefault();
-        $('.search-close').css({display: 'block'});
-        $('.icon-search').css({display: 'none'});
+        $('.search-close').css({ display: 'block' });
+        $('.icon-search').css({ display: 'none' });
 
         // добавление выбранного текста по клику в инпут
         const parent = $(e.target).closest('[data-template]'); // привязка к текущему элементу на который кликнули
@@ -1011,6 +1017,17 @@ export default class Offices {
               .geometry
               .getCoordinates();
             this.customPos = startPoint;
+            const el = {};
+            el.coordinates = startPoint;
+            this.createPlacemark(el, this.iconUserPosition, true);
+            setTimeout(() => {
+              this.map.setBounds(this.map.getBounds(), {
+                checkZoomRange: true,
+                zoom: 3,
+              });
+              alert('1');
+            }, 2000);
+
             this.distanceCalculation(startPoint);
             this.userPos = startPoint;
             this.clearRoute();
@@ -1048,20 +1065,25 @@ export default class Offices {
 
   distanceCalculation(coord) {
     if ((typeof coord) !== undefined && coord != null) {
-      // console.log('DISTANCE_CALCULATION');
+
       const $tab = $(this.points[0].element).closest('.js-tab');
+
       if (this.city === 'all' || this.city === null) {
         $tab.append('<div class="collapse offices__collapse" data-city="0" data-id="offices-tab" style="display: none;"></div>')
       } else {
         $tab.find('[data-city="0"]').remove();
       }
+
       this.points.forEach((point) => {
         const distance = Math.ceil(ymaps.coordSystem.geo.getDistance(coord, point.coordinates));
+
         $(point.element).css({
           order: distance
         });
+
         const temp = Math.ceil((distance / 1000) * 10) / 10;
-        if (distance > 1000) {
+
+        if (distance >= 1000) {
           $(point.element)
             .find('.collapse__control-distance')
             .text(`~${temp}км`);
@@ -1076,11 +1098,13 @@ export default class Offices {
             .find('.collapse__control-distance-metr')
             .text(`~${distance}м`);
         }
+
         if (this.city === null || this.city === 'all') {
           const item = $.extend(true, {}, $(point.element).clone());
           item.appendTo($tab.find('[data-city="0"]'));
         }
       });
+
       if (this.city === null || this.city === 'all') {
         $tab.find('.offices__collapse.state_active').css({
           display: 'none'
@@ -1222,6 +1246,7 @@ export default class Offices {
         this.routeButton.removeClass('hidden-block');
         $('.js-route-built').removeClass('route-built--active');
         this.clearRoute();
+        this.clearAddressDot();
         this.getPoints();
         this.addPoints();
         this.getUserPos();
@@ -1229,6 +1254,13 @@ export default class Offices {
             this.distanceCalculation(this.userPos);
         }, 1000);
       });
+  }
+
+  clearAddressDot() {
+    if (this.addressDot) {
+      this.map.geoObjects.remove(this.addressDot);
+    }
+    this.addressDot = null;
   }
 
   addOrRemoveButtonClose(value) {
