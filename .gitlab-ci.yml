@@ -18,7 +18,7 @@ deploydev:
   script:
     - echo "start deploy to http://bcs.rusrobots.ru"
     - npm run build
-    - rsync -zrpth --delete --exclude pages.php --stats --rsh="sshpass -p $SSHPASS ssh -o StrictHostKeyChecking=no -l $SSHLOGIN" $(pwd)/dist/ $SSHHOST:/web/www
+    - rsync -zrpth --delete --exclude pages.php --exclude forms/ --stats --rsh="sshpass -p $SSHPASS ssh -o StrictHostKeyChecking=no -l $SSHLOGIN" $(pwd)/dist/ $SSHHOST:/web/www
   only:
     - master
 
