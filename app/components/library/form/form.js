@@ -168,6 +168,10 @@ module.exports = (elem) => {
     addPixelMetric(form, response) {
       let pixelUrl = $(form).data('pixel');
 
+      if (!pixelUrl) {
+        return;
+      }
+
       if (pixelUrl.indexOf('#ORDER_ID#') !== -1 && response.request_id) {
         pixelUrl = pixelUrl.replace('#ORDER_ID#', response.request_id)
       }
