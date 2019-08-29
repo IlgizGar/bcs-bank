@@ -141,11 +141,6 @@ $(() => {
         window.location.href = $(e.currentTarget).attr('data-href');
       }
     });
-    $('.js-card').on('click', (e) => {
-      if ($(e.currentTarget).attr('data-href')) {
-        window.location.href = $(e.currentTarget).attr('data-href');
-      }
-    });
   }
 
   global.checkboxes = [];
