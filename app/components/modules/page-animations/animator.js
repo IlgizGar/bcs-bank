@@ -14,11 +14,25 @@ export default class Animator {
       if (delay === 0) {
         const date = new Date();
         delay = date.getTime();
-        document.body.dispatchEvent(new window.Event('scrollstart'));
+        let event;
+        if(typeof(Event) === 'function') {
+          event = new Event('scrollstart');
+        }else{
+          event = document.createEvent('Event');
+          event.initEvent('scrollstart', true, true);
+        }
+        document.body.dispatchEvent(event);
       }
       clearTimeout(timer);
       timer = setTimeout(() => {
-        document.body.dispatchEvent(new window.Event('scrollend'));
+        let event;
+        if(typeof(Event) === 'function') {
+          event = new Event('scrollend');
+        }else{
+          event = document.createEvent('Event');
+          event.initEvent('scrollend', true, true);
+        }
+        document.body.dispatchEvent(event);
         const date = new Date();
         delay = date.getTime() - delay;
         this.delay = delay;
