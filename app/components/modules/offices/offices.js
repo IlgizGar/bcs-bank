@@ -247,7 +247,6 @@ export default class Offices {
 
   onCityChange() {
     this.cityInput.on('change', (e) => {
-      console.log(e.target.value);
       if (e.target.value === 'all') {
         this.city = null;
         this.changeCity();
@@ -259,9 +258,21 @@ export default class Offices {
       // const city = cities.filter(item => item.id === e.target.value);
       // console.log('city', city);
 
+      let oldCity = this.city;
       this.city = e.target.value.toString();
       this.changeCity();
       Offices.reInitScroll(this.pane);
+
+      if (oldCity !== e.target.value.toString()) {
+        setTimeout(() => {
+          this.getPoints();
+          this.map.setBounds(this.markCollection.getBounds(), {
+            checkZoomRange: true,
+            zoomMargin: 50,
+          });
+          this.clearRoute();
+        }, 1000);
+      }
 
       // this.updateList();
       // const myGeocoder = ymaps.geocode(e.target.getAttribute('data-text'), {
