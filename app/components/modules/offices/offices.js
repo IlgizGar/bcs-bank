@@ -51,6 +51,7 @@ export default class Offices {
     this.mapContainer.setAttribute('tab-index', '1');
     this.mapBlock = null;
     this.metroList = [];
+    this.addressDot = null;
     this.init();
     $('#select-city .js-context-item').on('click', () => {
       const pos = $('#map-container').offset().top;
@@ -467,6 +468,8 @@ export default class Offices {
       placemark.iconReadOnly = true;
     }
     if (isSingle) {
+      this.clearAddressDot();
+      this.addressDot = placemark;
       this.map.geoObjects.add(placemark);
     } else {
       this.markCollection.add(placemark);
@@ -975,8 +978,8 @@ export default class Offices {
     $(document)
       .on('click', '.offices__search-option', (e) => {
         e.preventDefault();
-        $('.search-close').css({display: 'block'});
-        $('.icon-search').css({display: 'none'});
+        $('.search-close').css({ display: 'block' });
+        $('.icon-search').css({ display: 'none' });
 
         // добавление выбранного текста по клику в инпут
         const parent = $(e.target).closest('[data-template]'); // привязка к текущему элементу на который кликнули
@@ -1011,6 +1014,17 @@ export default class Offices {
               .geometry
               .getCoordinates();
             this.customPos = startPoint;
+            const el = {};
+            el.coordinates = startPoint;
+            this.createPlacemark(el, this.iconUserPosition, true);
+            setTimeout(() => {
+              this.map.setBounds(this.map.getBounds(), {
+                checkZoomRange: true,
+                zoom: 3,
+              });
+              alert('1');
+            }, 2000);
+
             this.distanceCalculation(startPoint);
             this.userPos = startPoint;
             this.clearRoute();
@@ -1222,6 +1236,7 @@ export default class Offices {
         this.routeButton.removeClass('hidden-block');
         $('.js-route-built').removeClass('route-built--active');
         this.clearRoute();
+        this.clearAddressDot();
         this.getPoints();
         this.addPoints();
         this.getUserPos();
@@ -1229,6 +1244,13 @@ export default class Offices {
             this.distanceCalculation(this.userPos);
         }, 1000);
       });
+  }
+
+  clearAddressDot() {
+    if (this.addressDot) {
+      this.map.geoObjects.remove(this.addressDot);
+    }
+    this.addressDot = null;
   }
 
   addOrRemoveButtonClose(value) {
