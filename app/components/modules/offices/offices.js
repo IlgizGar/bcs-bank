@@ -93,7 +93,9 @@ export default class Offices {
         const savedCity = Cookie.get('select-city');
         const locality = location.GeocoderMetaData.Address.Components.filter(item => item.kind === 'locality')[0].name;
         const userCity = savedCity !== undefined ? savedCity : Offices.checkUserCity(cities.filter(city => city.name === locality)[0].id);
+
         this.initMap();
+
         if (savedCity === undefined) {
           this.questionHandler();
         }
@@ -226,7 +228,7 @@ export default class Offices {
           Cookie.remove('select-city');
         }, 10);
       } else {
-        Cookie.set('select-city', this.city);
+        Cookie.set('select-city', this.city === null ? 'all' : this.city);
       }
     });
     questionPopup.generatePopup();
@@ -248,15 +250,10 @@ export default class Offices {
   onCityChange() {
     this.cityInput.on('change', (e) => {
       if (e.target.value === 'all') {
-        this.city = null;
+        // this.city = null;
         this.changeCity();
         return;
       }
-
-      // console.log('ALL_CITIES', cities);
-      // console.log('NAME', e.target.value);
-      // const city = cities.filter(item => item.id === e.target.value);
-      // console.log('city', city);
 
       this.city = e.target.value.toString();
       this.changeCity();
@@ -796,10 +793,12 @@ export default class Offices {
     try {
       this.map.setBounds(this.markCollection.getBounds(), {
         checkZoomRange: true,
-        zoom: 10,
+        zoom: 2,
       })
         .then(() => {
-          if (Offices.getMarksCount(this.markCollection) > 1) {
+          if (this.city === null || this.city === 'all') {
+            this.map.setZoom(3);
+          } else if ((this.city !== null || this.city !== 'all') && Offices.getMarksCount(this.markCollection) > 1) {
             this.map.setZoom(12);
           } else {
             this.map.setZoom(15);
@@ -857,9 +856,7 @@ export default class Offices {
   searchInit() {
     $('[name=map-search]')
       .on('keyup', (e) => {
-        // console.log('USER_CITY', this.city);
         const searchInput = $(e.currentTarget);
-        const city = this.city === null || this.city === 'all' ? '' : cities.filter(item => item.id.toString() === this.city.toString())[0].name;
         const value = `${searchInput.val()}`;
         const request = value.length ? `Россия ${value}` : '';
         let counter = 0;

@@ -11,13 +11,24 @@ export default class Helpers {
       ymaps.ready(() => {
         ymaps.geolocation.get({
           // Зададим способ определения геолокации
-          // на основе ip пользователя.
           provider: 'auto',
           // Включим автоматическое геокодирование результата.
           autoReverseGeocode: true,
         }).then((result) => {
-          console.log(result.geoObjects.get(0));
           callback(result.geoObjects.get(0).properties.get('metaDataProperty'));
+        }).catch(() => {
+          callback({
+            GeocoderMetaData: {
+              Address: {
+                Components: [
+                  {
+                    kind: 'locality',
+                    name: 'Все города'
+                  }
+                ]
+              }
+            }
+          });
         }); // Выведем результат геокодирования.
       });
     }
