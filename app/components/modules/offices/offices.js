@@ -255,9 +255,26 @@ export default class Offices {
         return;
       }
 
+      // console.log('ALL_CITIES', cities);
+      // console.log('NAME', e.target.value);
+      // const city = cities.filter(item => item.id === e.target.value);
+      // console.log('city', city);
+
+      let oldCity = this.city;
       this.city = e.target.value.toString();
       this.changeCity();
       Offices.reInitScroll(this.pane);
+
+      if (oldCity !== e.target.value.toString()) {
+        setTimeout(() => {
+          this.getPoints();
+          this.map.setBounds(this.markCollection.getBounds(), {
+            checkZoomRange: true,
+            zoomMargin: 50,
+          });
+          this.clearRoute();
+        }, 1000);
+      }
 
       // this.updateList();
       // const myGeocoder = ymaps.geocode(e.target.getAttribute('data-text'), {
@@ -589,8 +606,13 @@ export default class Offices {
     this.getPoints();
     if (this.customPos) this.distanceCalculation(this.customPos);
     else if (this.userPos) this.distanceCalculation(this.userPos);
+    else if (this.cityInput) this.distanceCalculation(this.cityInput);
     this.addPoints();
     this.clearRoute();
+    // this.map.setBounds(this.markCollection.getBounds(), {
+    //   checkZoomRange: true,
+    //   zoomMargin: 10,
+    // });
   }
 
   onPointEvent(e, coordinates) {
@@ -856,7 +878,9 @@ export default class Offices {
   searchInit() {
     $('[name=map-search]')
       .on('keyup', (e) => {
+        // console.log('USER_CITY', this.city);
         const searchInput = $(e.currentTarget);
+        const city = this.city === null || this.city === 'all' ? '' : cities.filter(item => item.id.toString() === this.city.toString())[0].name;
         const value = `${searchInput.val()}`;
         const request = value.length ? `Россия ${value}` : '';
         let counter = 0;
@@ -1017,14 +1041,6 @@ export default class Offices {
             const el = {};
             el.coordinates = startPoint;
             this.createPlacemark(el, this.iconUserPosition, true);
-            setTimeout(() => {
-              this.map.setBounds(this.map.getBounds(), {
-                checkZoomRange: true,
-                zoom: 3,
-              });
-              alert('1');
-            }, 2000);
-
             this.distanceCalculation(startPoint);
             this.userPos = startPoint;
             this.clearRoute();
@@ -1032,6 +1048,9 @@ export default class Offices {
               $('[data-value="pedestrian"]').trigger('click');
             });
           });
+        setTimeout(() => {
+            this.goToPoints();
+        }, 500);
       });
   }
 
