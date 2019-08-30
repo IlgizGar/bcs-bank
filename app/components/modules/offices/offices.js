@@ -569,15 +569,19 @@ export default class Offices {
     }
 
     return new Promise((resolve) => {
+      let errors = false;
       if (window.navigator.geolocation) {
         window.navigator.geolocation.getCurrentPosition((position) => {
           addPlacemark(this, position.coords.latitude, position.coords.longitude);
           resolve(true);
         }, (error) => {
           console.log(error);
-          resolve(false);
+          errors = true;
         });
       } else {
+        errors = true;
+      }
+      if (!errors) {
         ymaps.geolocation.get()
           .then(
             (result) => {
@@ -802,7 +806,7 @@ export default class Offices {
   }
 
   goToPoints() {
-    console.log('go to points');
+    // console.log('go to points');
     try {
       this.map.setBounds(this.map.geoObjects.getBounds(), {
         checkZoomRange: true,
