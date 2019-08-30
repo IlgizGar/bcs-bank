@@ -80,6 +80,7 @@ export default class Offices {
       this.clearRoute();
       this.getPoints();
       this.addPoints();
+      this.goToPoints();
     });
   }
 
@@ -107,6 +108,9 @@ export default class Offices {
         this.getUserPos()
           .then(() => {
             this.distanceCalculation(this.userPos);
+            setTimeout(() => {
+              this.goToPoints();
+            }, 200);
           });
       });
     });
@@ -211,8 +215,6 @@ export default class Offices {
     $('.js-footer')
       .removeClass('state_hidden');
     // $('html, body').scrollTop(0).removeClass('state_unscroll');
-
-    this.goToPoints();
   }
 
   questionHandler() {
@@ -258,9 +260,20 @@ export default class Offices {
       // const city = cities.filter(item => item.id === e.target.value);
       // console.log('city', city);
 
+      let oldCity = this.city;
       this.city = e.target.value.toString();
       this.changeCity();
       Offices.reInitScroll(this.pane);
+
+      if (oldCity != e.target.value.toString() && oldCity != null)
+      {
+        this.getPoints();
+        this.map.setBounds(this.markCollection.getBounds(), {
+          checkZoomRange: true,
+          zoomMargin: 50,
+        });
+        this.clearRoute();
+      }
 
       // this.updateList();
       // const myGeocoder = ymaps.geocode(e.target.getAttribute('data-text'), {
@@ -433,7 +446,6 @@ export default class Offices {
     this.getUserPos()
       .then(() => {
         this.map.geoObjects.add(this.markCollection);
-        this.goToPoints();
       });
   }
 
@@ -556,34 +568,32 @@ export default class Offices {
       self.saveUserPos([latitude, longitude]);
       self.createPlacemark(el, self.iconUserPosition, true);
       // self.map.setZoom(self.map.getZoom() + 5, { checkZoomRange: true });
-      self.map.setCenter(el.coordinates, 12, {
-        duration: 1000,
-        checkZoomRange: true,
-      });
     }
 
     return new Promise((resolve) => {
-      if (window.navigator.geolocation) {
-        window.navigator.geolocation.getCurrentPosition((position) => {
-          addPlacemark(this, position.coords.latitude, position.coords.longitude);
-          resolve(true);
-        }, (error) => {
-          console.log(error);
-          resolve(false);
-        });
-      } else {
-        ymaps.geolocation.get()
-          .then(
-            (result) => {
-              addPlacemark(this, result.geoObjects.position[0], result.geoObjects.position[1]);
-              resolve(true);
-            },
-            (err) => {
-              console.log(`Ошибка: ${err}`);
-              resolve(false);
-            },
-          );
-      }
+      // console.log(window.navigator.geolocation);
+      // if (window.navigator.geolocation) {
+      //   window.navigator.geolocation.getCurrentPosition((position) => {
+      //     addPlacemark(this, position.coords.latitude, position.coords.longitude);
+      //     resolve(true);
+      //   }, (error) => {
+      //     console.log(error);
+      //     resolve(false);
+      //   });
+      // } else {
+      //   console.log('1');
+      ymaps.geolocation.get({ provider: 'auto' })
+        .then(
+          (result) => {
+            addPlacemark(this, result.geoObjects.position[0], result.geoObjects.position[1]);
+            resolve(true);
+          },
+          (err) => {
+            console.log(`Ошибка: ${err}`);
+            resolve(false);
+          },
+        );
+      // }
     });
   }
 
@@ -593,7 +603,7 @@ export default class Offices {
     if (this.customPos) this.distanceCalculation(this.customPos);
     else if (this.userPos) this.distanceCalculation(this.userPos);
     this.addPoints();
-    this.clearRoute();
+    //this.clearRoute();
   }
 
   onPointEvent(e, coordinates) {
@@ -628,7 +638,6 @@ export default class Offices {
   }
 
   initPointMobileDetail(target) {
-    this.goToPoints();
     const $collapse = $.extend(true, {}, target.parent()
       .clone(true, true));
     $collapse.addClass('collapse__item_state-open');
@@ -696,7 +705,13 @@ export default class Offices {
 
     $(document)
       .on('click', '#get-geo', () => {
-        this.getUserPos();
+        this.getUserPos().then(() => {
+          this.distanceCalculation(this.userPos);
+          this.map.setCenter(this.userPos, 12, {
+            duration: 1000,
+            checkZoomRange: true,
+          });
+        });
       });
 
     $('.collapse__item[data-coords] .collapse__control')
@@ -729,7 +744,6 @@ export default class Offices {
         this.getCurrentTab();
         this.getPoints();
         this.addPoints();
-        // this.goToPoints();
         this.getUserPos()
           .then(() => {
             this.distanceCalculation(this.userPos);
@@ -793,18 +807,12 @@ export default class Offices {
   }
 
   goToPoints() {
+    // console.log('go to points');
     try {
-      this.map.setBounds(this.markCollection.getBounds(), {
+      this.map.setBounds(this.map.geoObjects.getBounds(), {
         checkZoomRange: true,
-        zoom: 10,
-      })
-        .then(() => {
-          if (Offices.getMarksCount(this.markCollection) > 1) {
-            this.map.setZoom(12);
-          } else {
-            this.map.setZoom(15);
-          }
-        });
+        zoomMargin: 50,
+      });
     } catch (e) {
       console.warn('no points');
     }
@@ -928,7 +936,7 @@ export default class Offices {
         }
 
         this.addOrRemoveButtonClose(value);
-        this.removeValueInput(searchInput);
+        // this.removeValueInput(searchInput);
 
         // const searchInput = $(e.currentTarget);
         // const value = searchInput.val();
@@ -946,7 +954,7 @@ export default class Offices {
         //   }
         // }, 250);
       });
-
+    this.removeValueInput($('[name=map-search]'));
 
     $('[name=map-search]')
       .on('change', (e) => {
@@ -1020,16 +1028,9 @@ export default class Offices {
             const el = {};
             el.coordinates = startPoint;
             this.createPlacemark(el, this.iconUserPosition, true);
-            setTimeout(() => {
-              this.map.setBounds(this.map.getBounds(), {
-                checkZoomRange: true,
-                zoom: 3,
-              });
-              alert('1');
-            }, 2000);
-
             this.distanceCalculation(startPoint);
             this.userPos = startPoint;
+            this.goToPoints();
             this.clearRoute();
             this.createRoute(startPoint, 'pedestrian').then(() => {
               $('[data-value="pedestrian"]').trigger('click');
@@ -1062,7 +1063,14 @@ export default class Offices {
     this.points = result;
     this.addPoints();
   }
-
+  setDistanceText(el, text) {
+    $(el)
+      .find('.collapse__control-distance')
+      .text(text);
+    $(el)
+      .find('.collapse__control-distance-metr')
+      .text(text);
+  }
   distanceCalculation(coord) {
     if ((typeof coord) !== undefined && coord != null) {
 
@@ -1082,6 +1090,21 @@ export default class Offices {
         });
 
         const temp = Math.ceil((distance / 1000) * 10) / 10;
+
+        switch(distance) {
+          case distance === 0:
+            this.setDistanceText(point.element, '');
+            break;
+          case distance > 0 && distance < 1000:
+            this.setDistanceText(point.element, `~${distance}м`);
+            break;
+          case distance > 1000:
+            this.setDistanceText(point.element, `~${temp}км`);
+            break;
+          default:
+            this.setDistanceText(point.element, '');
+            break;
+        }
 
         if (distance >= 1000) {
           $(point.element)
@@ -1251,7 +1274,8 @@ export default class Offices {
         this.addPoints();
         this.getUserPos();
         setTimeout(() => {
-            this.distanceCalculation(this.userPos);
+          this.distanceCalculation(this.userPos);
+          this.goToPoints();
         }, 1000);
       });
   }
