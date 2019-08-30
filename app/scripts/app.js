@@ -44,6 +44,7 @@ import SectionTabs from '../components/modules/section-tabs/sectionTabs';
 import Animator from '../components/modules/page-animations/animator';
 import FxCourses from '../components/modules/landing-fx/landing-fx';
 import OfficeStress from "../components/library/office-stress/office-stress";
+import Helper from '../components/modules/helper/helper';
 
 $(() => {
   svg4everybody();
@@ -338,4 +339,6 @@ $(() => {
   if ($('.js-congestion-time').length) {
     global.oficessStress = new OfficeStress();
   }
+
+  global.helper = new Helper();
 });
