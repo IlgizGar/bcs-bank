@@ -569,31 +569,29 @@ export default class Offices {
     }
 
     return new Promise((resolve) => {
-      let errors = false;
-      if (window.navigator.geolocation) {
-        window.navigator.geolocation.getCurrentPosition((position) => {
-          addPlacemark(this, position.coords.latitude, position.coords.longitude);
-          resolve(true);
-        }, (error) => {
-          console.log(error);
-          errors = true;
-        });
-      } else {
-        errors = true;
-      }
-      if (!errors) {
-        ymaps.geolocation.get()
-          .then(
-            (result) => {
-              addPlacemark(this, result.geoObjects.position[0], result.geoObjects.position[1]);
-              resolve(true);
-            },
-            (err) => {
-              console.log(`Ошибка: ${err}`);
-              resolve(false);
-            },
-          );
-      }
+      // console.log(window.navigator.geolocation);
+      // if (window.navigator.geolocation) {
+      //   window.navigator.geolocation.getCurrentPosition((position) => {
+      //     addPlacemark(this, position.coords.latitude, position.coords.longitude);
+      //     resolve(true);
+      //   }, (error) => {
+      //     console.log(error);
+      //     resolve(false);
+      //   });
+      // } else {
+      //   console.log('1');
+      ymaps.geolocation.get({ provider: 'auto' })
+        .then(
+          (result) => {
+            addPlacemark(this, result.geoObjects.position[0], result.geoObjects.position[1]);
+            resolve(true);
+          },
+          (err) => {
+            console.log(`Ошибка: ${err}`);
+            resolve(false);
+          },
+        );
+      // }
     });
   }
 
@@ -673,6 +671,7 @@ export default class Offices {
       }
       this.goToPoint(point);
     } else {
+      this.goToPoints();
       this.clearRoute();
     }
   }
@@ -1288,7 +1287,7 @@ export default class Offices {
               scrollTop: $('.offices__search')
                 .offset().top,
             }, 800);
-        }, 300);
+        }, 200);
       });
   }
 }
