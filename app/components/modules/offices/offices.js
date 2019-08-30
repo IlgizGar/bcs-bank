@@ -1284,7 +1284,7 @@ export default class Offices {
               scrollTop: $('.offices__search')
                 .offset().top,
             }, 800);
-        }, 200);
+        }, 300);
       });
   }
 }
