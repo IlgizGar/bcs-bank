@@ -108,7 +108,9 @@ export default class Offices {
         this.getUserPos()
           .then(() => {
             this.distanceCalculation(this.userPos);
-            this.goToPoints();
+            setTimeout(() => {
+              this.goToPoints();
+            }, 200);
           });
       });
     });
