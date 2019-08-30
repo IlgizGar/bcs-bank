@@ -1269,9 +1269,9 @@ export default class Offices {
         this.routeButton.removeClass('hidden-block');
         $('.js-route-built').removeClass('route-built--active');
         this.clearRoute();
-        // this.clearAddressDot();
-        // this.getPoints();
-        // this.addPoints();
+        this.clearAddressDot();
+        this.getPoints();
+        this.addPoints();
         this.getUserPos();
         setTimeout(() => {
           this.distanceCalculation(this.userPos);
