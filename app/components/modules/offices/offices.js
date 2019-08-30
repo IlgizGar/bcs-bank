@@ -936,7 +936,7 @@ export default class Offices {
         }
 
         this.addOrRemoveButtonClose(value);
-        this.removeValueInput(searchInput);
+        // this.removeValueInput(searchInput);
 
         // const searchInput = $(e.currentTarget);
         // const value = searchInput.val();
@@ -954,7 +954,7 @@ export default class Offices {
         //   }
         // }, 250);
       });
-
+    this.removeValueInput($('[name=map-search]'));
 
     $('[name=map-search]')
       .on('change', (e) => {
@@ -1247,9 +1247,9 @@ export default class Offices {
         this.routeButton.removeClass('hidden-block');
         $('.js-route-built').removeClass('route-built--active');
         this.clearRoute();
-        this.clearAddressDot();
-        this.getPoints();
-        this.addPoints();
+        // this.clearAddressDot();
+        // this.getPoints();
+        // this.addPoints();
         this.getUserPos();
         setTimeout(() => {
           this.distanceCalculation(this.userPos);
