@@ -1061,7 +1061,14 @@ export default class Offices {
     this.points = result;
     this.addPoints();
   }
-
+  setDistanceText(el, text) {
+    $(el)
+      .find('.collapse__control-distance')
+      .text(text);
+    $(el)
+      .find('.collapse__control-distance-metr')
+      .text(text);
+  }
   distanceCalculation(coord) {
     if ((typeof coord) !== undefined && coord != null) {
 
@@ -1081,6 +1088,21 @@ export default class Offices {
         });
 
         const temp = Math.ceil((distance / 1000) * 10) / 10;
+
+        switch(distance) {
+          case distance === 0:
+            this.setDistanceText(point.element, '');
+            break;
+          case distance > 0 && distance < 1000:
+            this.setDistanceText(point.element, `~${distance}м`);
+            break;
+          case distance > 1000:
+            this.setDistanceText(point.element, `~${temp}км`);
+            break;
+          default:
+            this.setDistanceText(point.element, '');
+            break;
+        }
 
         if (distance >= 1000) {
           $(point.element)
