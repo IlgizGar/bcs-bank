@@ -10,6 +10,7 @@
 {% import "../components/library/dropdown/dropdown.njk" as Dropdown %}
 {% import "../components/library/docs/docs.njk" as Docs %}
 {% import "../components/icon/icon.njk" as Icon %}
+{% import "../components/modules/helper/helper.njk" as Helper %}
 
 {% set root = "." %}
 {% set title = "БКС Платинум" %}
@@ -719,4 +720,5 @@
 
     {% include "../components/modules/footer/footer.njk" %}
   </div>
+  {{ Helper.popup() }}
 {% endblock %}
