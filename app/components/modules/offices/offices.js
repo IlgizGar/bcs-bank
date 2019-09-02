@@ -476,6 +476,11 @@ export default class Offices {
                   .offset().top,
               }, 800);
           }, 200);
+          $('.offices__collapse')
+            .find($('.collapse__item_state-open'))
+            .css({
+              order: -1,
+            });
         }
       });
     } else {
@@ -526,7 +531,7 @@ export default class Offices {
       }, {
         wayPointVisible: false,
         boundsAutoApply: true,
-        zoomMargin: 10,
+        zoomMargin: 15,
       });
       this.map.geoObjects.add(this.multiRoute);
       return new Promise((resolve) => {

@@ -30,6 +30,9 @@ export default class Collapse {
 
   closeContent() {
     this.$itemsBlock.find(this.openClass)
+      .css({
+        order: 50,
+      })
       .removeClass(this.openClass)
       .find('.collapse__content')
       .slideUp(225);
