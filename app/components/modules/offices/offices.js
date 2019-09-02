@@ -468,6 +468,7 @@ export default class Offices {
                   .offset().top,
               }, 800);
           }, 200);
+          console.log('pin');
         } else {
           setTimeout(() => {
             $('html, body')

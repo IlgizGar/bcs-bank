@@ -38,5 +38,6 @@ export default class Collapse {
       .slideUp(225);
     $('.js-route-built').removeClass('route-built--active');
     $('.js-button-bild-route').removeClass('hidden-block');
+    console.log('close');
   }
 }
