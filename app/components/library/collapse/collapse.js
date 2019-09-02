@@ -19,6 +19,9 @@ export default class Collapse {
   openContent(el) {
     this.event = true;
     $(el).next('.collapse__content').slideToggle(225).closest('.collapse__item')
+      .css({
+        order: '',
+      })
       .toggleClass(this.openClass)
       .siblings()
       .removeClass(this.openClass)
@@ -30,14 +33,10 @@ export default class Collapse {
 
   closeContent() {
     this.$itemsBlock.find(this.openClass)
-      .css({
-        order: 50,
-      })
       .removeClass(this.openClass)
       .find('.collapse__content')
       .slideUp(225);
     $('.js-route-built').removeClass('route-built--active');
     $('.js-button-bild-route').removeClass('hidden-block');
-    console.log('close');
   }
 }
