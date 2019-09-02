@@ -468,7 +468,6 @@ export default class Offices {
                   .offset().top,
               }, 800);
           }, 200);
-          console.log('pin');
         } else {
           setTimeout(() => {
             $('html, body')
@@ -1094,6 +1093,7 @@ export default class Offices {
         $(point.element).css({
           order: distance
         });
+        $(point.element).attr('data-order', distance);
 
         const temp = Math.ceil((distance / 1000) * 10) / 10;
 
