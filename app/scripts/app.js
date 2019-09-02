@@ -45,6 +45,7 @@ import Animator from '../components/modules/page-animations/animator';
 import FxCourses from '../components/modules/landing-fx/landing-fx';
 import OfficeStress from "../components/library/office-stress/office-stress";
 import Helper from '../components/modules/helper/helper';
+import Chat from "../components/modules/chat/chat";
 
 $(() => {
   svg4everybody();
@@ -341,4 +342,6 @@ $(() => {
   }
 
   // global.helper = new Helper();
+
+  global.chat = new Chat();
 });
