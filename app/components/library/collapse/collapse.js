@@ -18,14 +18,25 @@ export default class Collapse {
 
   openContent(el) {
     this.event = true;
-    $(el).next('.collapse__content').slideToggle(225).closest('.collapse__item')
+    let collapseItem = $(el)
+      .next('.collapse__content')
+      .closest('.collapse__item');
+    if (collapseItem.hasClass(this.openClass)) {
+      collapseItem.css('order', collapseItem.attr('data-order'));
+    }
+    $(el)
+      .next('.collapse__content')
+      .slideToggle(225)
+      .closest('.collapse__item')
       .toggleClass(this.openClass)
       .siblings()
       .removeClass(this.openClass)
       .children('.collapse__content')
       .slideUp(225);
-    $('.js-route-built').removeClass('route-built--active');
-    $('.js-button-bild-route').removeClass('hidden-block');
+    $('.js-route-built')
+      .removeClass('route-built--active');
+    $('.js-button-bild-route')
+      .removeClass('hidden-block');
   }
 
   closeContent() {
