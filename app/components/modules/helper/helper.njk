@@ -272,7 +272,7 @@ function addContent() {
   }
   // end of IE fix
 
-  $("body").append(`
+  $("body").append('' +
     '<div class="helper" data-helper-wrapper data-helper-id="' + item.id + '" data-helper-name="' + item.name + '">' +
       '<div class="helper__top">' +
         '<div class="helper__close" data-helper-close>' +
@@ -290,7 +290,7 @@ function addContent() {
             '</div>' +
           '</div>' +
           '<div class="helper__description">' +
-            '<span>' + item.description + '</span>'
+            '<span>' + item.description + '</span>' +
           '</div>' +
         '</div>' +
         '<div class="helper__bottom">' +
@@ -342,13 +342,13 @@ function addContent() {
               '</div>' +
               '<div class="h-popup__button">' +
                 '<a href="#section-request" class="h-popup__button-item _anchor" data-helper-popup-button>Оформить карту</a>' +
-              '</div>'
+              '</div>' +
             '</div>' +
           '</div>' +
         '</div>' +
       '</div>' +
     '</div>' +
-  `)
+  '')
   // Init helper popups
   initHelperPopups();
 }
