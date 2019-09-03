@@ -237,7 +237,7 @@
 
 
 <div class="modal partners-modal js-partners-modal js-form" data-form="question-modal">
-  {{ Heading.heading({ 'title': 'Переход на БКС Премьер', "class": "js-partners-modal-title", 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+  {{ Heading.heading({ 'title': 'Переход на БКС Премьер', "class": "js-partners-modal-title pb-24", 'mods': { 'type': 'default', 'margin': 'small' } }) }}
 
   <p class="text text_theme-gray js-partners-modal-subscription-text">
     {{ options.attr.subscriptionText }}
@@ -251,7 +251,7 @@
       {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': { 'class': 'js-phone-masked', 'name': 'question_p_phone', 'required': 'required', 'tyep': 'tel' } }) }}
       {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': { 'class': 'js-mail-masked', 'name': 'question_p_mail', 'required': 'required', 'type': 'email' } }) }}
     </div>
-   <div class="form__action mt-32">
+   <div class="form__action">
       <div class="form__agreements">
         {# TODO: вынести в шаблон #}
         <label class="checkbox checkbox_theme-dark js-checkbox js-personal-checkbox">
@@ -273,7 +273,7 @@
       Инвестиции, доступные каждому.<br>
       Для профессионалов и новичков.
     </p>
-    {{ Button.button({ 'href': '#', 'title': 'Перейти', 'class': 'js-partners-modal-button', 'mods': { 'type': 'button', 'theme': 'default' } }) }}
+    {{ Button.button({ 'href': '#', 'title': 'Перейти', 'class': 'js-partners-modal-button', 'mods': { 'type': 'button', 'theme': 'default', 'view': 'outlined', 'size': 'low' } }) }}
   </div>
 </div>
 
