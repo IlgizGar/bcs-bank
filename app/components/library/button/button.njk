@@ -28,7 +28,7 @@
     {%- endfor %}
   {% endset %}
 
-  <{{ tag }} class='button {{ mods | safe }} {{ options.class }} js-button' {% if options.href %} href={{ options.href }} {% endif %} {% if options.type %}type={{ options.type }} {% endif %} {{ options.state }} {{ attr | safe }}>
+  <{{ tag }} class='button {{ mods | safe }} {{ options.class }} js-button' {% if options.href %} href="{{ options.href }}" {% endif %} {% if options.type %}type={{ options.type }} {% endif %} {{ options.state }} {{ attr | safe }}>
 
     <span class='button__wrap'>
 

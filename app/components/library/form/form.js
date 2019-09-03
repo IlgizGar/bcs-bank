@@ -83,6 +83,7 @@ module.exports = (elem) => {
         dataType: 'json',
         data: FormHelper.formatOutput(sendStep ? FormHelper.collectStepData(this) : $(form).serializeArray()),
         success: (data) => {
+          console.log('DATA', data);
           $(form).removeClass('state_loading');
           this.processResult(url, form, data, callback);
         },
@@ -95,10 +96,13 @@ module.exports = (elem) => {
       });
     }
     processResult(url, form, data, callback) {
+      console.log(this.steps);
+      const self = this;
       function showSmsError() {
         FormHelper.showInputError('sms_code', data.error, this.formValidator);
       }
       function showSuccessModal() {
+        self.addPixelMetric(form, data);
         $('.js-products-success')
           .on($.modal.AFTER_CLOSE, () => {
             form.reset();
@@ -130,7 +134,7 @@ module.exports = (elem) => {
         formDelivery.deliveryAvailability(data);
       }
 
-      if (data.delivery !== null && document.querySelector('.form__form-delivery')) {
+      if (this.steps.currentStep === 1) {
         showDeliveryBlock.apply(this);
       }
 
@@ -161,7 +165,20 @@ module.exports = (elem) => {
         setHiddenFields.apply(this);
       }
     }
-  }
+    addPixelMetric(form, response) {
+      let pixelUrl = $(form).data('pixel');
 
+      if (!pixelUrl) {
+        return;
+      }
+
+      if (pixelUrl.indexOf('#ORDER_ID#') !== -1 && response.request_id) {
+        pixelUrl = pixelUrl.replace('#ORDER_ID#', response.request_id)
+      }
+      if (pixelUrl) {
+        $('head').append(`<img src="${pixelUrl}" width="1"  height="1"/>`)
+      }
+    }
+  }
   return new Form(elem);
 };

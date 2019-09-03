@@ -1,0 +1,45 @@
+.offices .offices__map-router
+  opensansRegular()
+  width 100%
+  display none
+  justify-content: space-between;
+  align-items center
+  //position: absolute;
+  //top: 365px;
+  z-index: 10;
+  background-color: $white
+  padding-right: 24px;
+  padding-left: 24px;
+  padding-bottom: 8px;
+  box-shadow: 0 14px 14px 0 rgba(0,0,0,.1), 0 0 12px 0 rgba(255,255,255,.5);
+  @media (min-width: 832px)
+    display none
+
+  .offices__map-router-wrapper
+    display flex
+    .offices__map-router--type
+      margin-right: 20px;
+      display: flex
+      align-items: center
+    .offices__map-router-time
+      color currentColor
+      margin-left 5px
+      opensansBold()
+
+  .offices__map-router-button
+    display: block;
+    max-width: 29px
+    min-width: 13px
+    width: 100%;
+    max-height: 24px
+    min-height 18px
+    height: 100%;
+    color: $slate_grey
+    svg
+      width: 100%;
+      max-height: 24px
+      min-height 18px
+
+.router-active
+  color $royal_blue!important
+

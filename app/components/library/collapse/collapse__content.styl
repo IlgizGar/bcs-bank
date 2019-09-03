@@ -3,6 +3,7 @@
   padding-left: 112px!important
   display: none
   transition: background-color 0.175s linear
+
   @media (min-width 832px) and (max-width 1215px)
     padding-left 83px!important
   @media (max-width 831px)
@@ -14,13 +15,24 @@
   *
     transition: opacity 0.225s linear
     opacity: 0
+
+
   @media (max-width 1279px)
     padding-left: 16px
     padding-right: 16px
     //padding-bottom: 32px
+  .button_bild-route
+    margin-bottom: 32px;
+    width: 100%;
+    @media (min-width 832px)
+      display: none;
 .collapse .collapse__item
   &.collapse__item_state-open
     .collapse__content
       *
         transition: opacity 0.225s linear
         opacity: 1
+
+
+.collapse .collapse__content .hidden-block
+  display: none;

@@ -72,22 +72,35 @@ module.exports = (elem) => {
     fillMobileMenu() {
       const $menu = $.extend(true, {}, $('.js-menu').clone());
       const $nav = $.extend(true, {}, $('.js-nav').clone());
+      const $contacts = $.extend(true, {}, this.contacts.clone());
       const $online = $.extend(true, {}, $('.js-online-bank').clone());
       const $explore = $.extend(true, {}, this.exploreMenu.clone());
       const linkClass = 'button_theme-black mobile-menu__link';
 
       $nav.appendTo(this.mobileMenu);
+
+      const $menuWrapper = $('<div class="header__mobile-wrapper"></div>');
       $menu.find('.js-button')
         .removeClass(this.activeClass)
         .addClass(linkClass);
-      $menu.appendTo(this.mobileMenu);
+      $menu.appendTo($menuWrapper);
       $explore.find('a')
-        .addClass(`button button_view-text button_size-low menu__item js-button ${linkClass}`)
-        .appendTo(this.mobileMenu.find('.js-menu .menu__wrapper'));
+        .addClass(`button button_view-text button_type-tab button_size-low button_view-underscore menu__item js-button button_theme-black ${linkClass}`)
+        .appendTo($menuWrapper.find('.js-menu .menu__wrapper'));
+
+      $contacts.find('.header__contact')[1].remove();
+      $contacts.find('.header__contact')[1].remove();
+      $contacts.find('.heading').remove();
+      $contacts.find('.header__contacts-links').remove();
+      $contacts.appendTo($menuWrapper);
+
       $online
         .addClass('button_theme-default mobile-menu__online-bank')
         .removeClass('hidden-mobile button_theme-white button_view-outlined')
-        .appendTo(this.mobileMenu);
+        .appendTo($menuWrapper);
+
+      $menuWrapper.appendTo(this.mobileMenu);
+
 
       this.mobileMenu.addClass('state_filled');
     }

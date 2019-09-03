@@ -10,6 +10,8 @@
 {% block body %}
   <div class="page js-page"> {% include "../components/modules/header/header.njk" %}
     <main role="main" class="map">
-      <section class="section page__section">
-         {% include "../components/modules/offices/offices.njk" %} </section>
+      <div class="page__container page__new-container">
+        <section class="section page__section">
+           {% include "../components/modules/offices/offices.njk" %} </section>
+      </div>
     </main> {% include "../components/modules/footer/footer.njk" %} </div> {% endblock %}

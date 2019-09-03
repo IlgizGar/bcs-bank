@@ -2,16 +2,16 @@
 
 {% macro searchVariations( options ) %}
 
-    <div class="offices__search-option">
-        <div class="offices__search-icon">
-            {{ Icon.icon({ 'name': 'orange' }) }}
-            {{ Icon.icon({ 'name': 'street-icon' }) }}
+    <div class="offices__search-option state_hidden" data-template="">
+        <div class="offices__search-icon js-search-icon">
+            {{ Icon.icon({ 'name': 'metro-icon', 'elementClass': 'js-metro-icon state_hidden' }) }}
+            {{ Icon.icon({ 'name': 'street-icon', 'elementClass': 'js-address-icon state_hidden' }) }}
         </div>
-        <div>
-            <div class="offices__search-title">
+        <div class="offices__search-info">
+            <div class="offices__search-title js-template-title">
                 улица Постулатная , Москва
             </div>
-            <div class="offices__search-description">
+            <div class="offices__search-description js-template-description">
                 метро Китай-город
             </div>
         </div>

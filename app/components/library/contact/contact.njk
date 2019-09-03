@@ -8,7 +8,9 @@
                 {% else %}
                     <p>{{ item.value }}</p>
                 {% endif %}
-                <p>{{ item.name }}</p>
+                {% if item.name %}
+                  <p>{{ item.name }}</p>
+                {% endif %}
             </div>
         {% endfor %}
     </div>

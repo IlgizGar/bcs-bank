@@ -1,5 +1,8 @@
 .offices .offices__collapse
 
+  display flex
+  flex-direction column
+
   width: auto
   .map-wrap
     margin 0 -20px
@@ -17,9 +20,12 @@
     .collapse__control-title
       padding-right: 34px
     .collapse__control-icon
-      right: 24px;
-      width: 22px
-      height: 22px
+      right: 35px;
+      width: 13px;
+      height: 9px;
+      @media (max-width:831px)
+        right: 30px;
+
   .collapse__content
     opensansRegular()
     padding-left: 0

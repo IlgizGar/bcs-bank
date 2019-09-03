@@ -8,11 +8,10 @@
 {% import "../../../components/library/search-variations/search-variations.njk" as SearchVariations %}
 
 <div class="offices js-offices">
-
-  <div class="collapse offices__detail js-offices-detail state_hidden">
-    <div class="js-detail-content"></div>
-    {{ Icon.icon({ 'name': 'close', 'elementClass': 'offices__detail-icon js-offices-detail-close' }) }}
-  </div>
+{#  <div class="collapse offices__detail js-offices-detail state_hidden">#}
+{#    <div class="js-detail-content"></div>#}
+{#    {{ Icon.icon({ 'name': 'close', 'elementClass': 'offices__detail-icon js-offices-detail-close' }) }}#}
+{#  </div>#}
   <div class="offices__content js-tab-scroll">
 
       <div class="section__content">
@@ -25,14 +24,43 @@
 
     <div class="offices__search-wrapper">
       <div class="offices__search">
-          {{ Input.input({ 'label': 'Введите адрес', 'class': 'search__field-group', 'field':{'name': 'map-search'}, 'icon': 'search' }) }}
+          {{ Input.input({ 'label': 'Введите адрес или метро', 'class': 'search__field-group', 'field':{'name': 'map-search'}, 'icon': 'search' }) }}
           {{ Button.button({ 'mods': {'type': 'icon','theme': 'transparent'}, 'attr': {'state': 'map'}, 'class': 'offices__switch-view js-offices-switcher' }) }}
 
-        <div class="offices__search-variations">
-          {{SearchVariations.searchVariations ({'class': 'offices__switch-view js-search-variations' }) }}
+        <div class="offices__search-variations"></div>
+        {{SearchVariations.searchVariations ({'class': 'offices__switch-view js-search-variations' }) }}
+      </div>
+      <div class="offices__map-router">
+        <div class="offices__map-router-wrapper">
+          <div class="offices__map-router--type offices__map-router--walk">
+            <button class="offices__map-router-button js-map-router-button js-map-router--walk router-active" data-value="pedestrian">
+              {{ Icon.icon({ 'name': 'icon_walk' }) }}
+            </button>
+            <div class="offices__map-router-time js-map-router-time"></div>
+          </div>
+          <div class="offices__map-router--type offices__map-router--bicycle">
+            <button class="offices__map-router-button js-map-router-button js-map-router--bicycle" data-value="bicycle">
+              {{ Icon.icon({ 'name': 'bicycle' }) }}
+            </button>
+            <div class="offices__map-router-time js-map-router-time"></div>
+          </div>
+          <div class="offices__map-router--type offices__map-router--car">
+            <button class="offices__map-router-button js-map-router-button js-map-router--car" data-value="auto">
+              {{ Icon.icon({ 'name': 'car' }) }}
+            </button>
+            <div class="offices__map-router-time js-map-router-time"></div>
+          </div>
+          <div class="offices__map-router--type offices__map-router--bus">
+            <button class="offices__map-router-button js-map-router-button js-map-router--bus" data-value="masstransit">
+              {{ Icon.icon({ 'name': 'bus' }) }}
+            </button>
+            <div class="offices__map-router-time js-map-router-time"></div>
+          </div>
         </div>
+        {{ Button.button({'title':'Отменить', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-map-router-cancel' }) }}
       </div>
     </div>
+
 
     <div id="map-container-mobile" class="offices__map-wrapper offices__map-mobile" style="height: 678px;">
       <button class="get-geo" id="get-geo">
@@ -306,8 +334,9 @@
 {#                </div>#}
 {#            </div>#}
 
-            <div class="collapse__item" data-coords="[55.73,37.56]">
-              {{ addressUnderground.addressUnderground({ 'type': 'blue', 'title':'ул. Валовая, 2-4/44', 'metro': 'Тульская'}) }}
+            <div class="collapse__item" data-coords="[55.78712,37.634456]">
+              {{ addressUnderground.addressUnderground({ 'type': 'blue', 'title':'Россия, г. Москва, Проспект Мира, д. 69, строение 1, подъезд 3
+', 'metro': 'Тульская'}) }}
               <div class="collapse__content">
                 <ul class="offices__info">
                   <li class="offices__info-item">
@@ -322,7 +351,7 @@
                       </div>
                     </div>
                     <div>
-                      <div class="offices__info-title">Кассовое обслуживание</div>
+                      <div class="offices__info-title">Кассовое<br> обслуживание</div>
                       <div class="offices__info-text">
                         пн-пт: с 10:00 до 20:00 <br>
                         сб-вс: выходной
@@ -350,18 +379,12 @@
                       <div class="office-stress__time-hours"> 13 </div>
                       <div class="office-stress__time-hours"> 15 </div>
                       <div class="office-stress__time-hours"> 17 </div>
-                      <div class="office-stress__time-hours">
-                        20
-                      </div>
+                      <div class="office-stress__time-hours"> 20 </div>
                     </div>
 
                     <div class="office-stress__congestion">
-                      <div class="office-stress__congestion-current-time">
-                        12:54
-                      </div>
-                      <div class="office-stress__congestion-current">
-                        Сейчас средняя загруженность
-                      </div>
+                      <div class="office-stress__congestion-current-time js-congestion-time"></div>
+                      <div class="office-stress__congestion-current js-congestion-resp"></div>
                     </div>
                   </li>
 {#                        <li class="offices__info-item offices__info-item_bordered">#}
@@ -375,7 +398,9 @@
 {#                                              </div>#}
 {#                                          </li>#}
                 </ul>
-{#                    {{ Dropdown.dropdown({#}
+                {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+{#                {{ Dropdown.dropdown({#}
 {#                        'mods': {'theme': 'bordered'},#}
 {#                        'label': 'Построить Маршрут',#}
 {#                        'name': 'routeType',#}
@@ -390,6 +415,337 @@
 
                     <div class="map-wrap js-collapse-map-wrap"></div>
                 </div>
+              <div class="offices__route-built js-route-built">Маршрут построен</div>
+            </div>
+            <div class="collapse__item" data-coords="[55.738333,37.661635]">
+              {{ addressUnderground.addressUnderground({ 'type': 'blue', 'title':'
+        Россия, г. Москва,  ул. Марксистская,  д. 3, строение 1', 'metro': 'Тульская'}) }}
+              <div class="collapse__content">
+                <ul class="offices__info">
+                  <li class="offices__info-item">
+                    {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                  </li>
+                  <li  class="offices__info-item offices__info-item-timetable">
+                    <div>
+                      <div class="offices__info-title">Время работы с клиентами</div>
+                      <div class="offices__info-text">
+                        пн-пт: с 10:00 до 20:00 <br>
+                        сб-вс: выходной
+                      </div>
+                    </div>
+                    <div>
+                      <div class="offices__info-title">Кассовое<br> обслуживание</div>
+                      <div class="offices__info-text">
+                        пн-пт: с 10:00 до 20:00 <br>
+                        сб-вс: выходной
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="offices__info-item">
+                    <div class="offices__info-title offices__info-stress-title">Оплата ЖКХ, аренда ячейки, открытие металлического счета,
+                      консультирование по ипотечному кредитованию</div>
+                    <div class="office-stress-list">
+                      {{ officeStress.officeStress({'h':'10','m':'00','stress':'min', 'height': '20%'}) }}
+                      {{ officeStress.officeStress({'h':'11','m':'00','stress':'normal', 'height': '40%'}) }}
+                      {{ officeStress.officeStress({'h':'12','m':'00','stress':'high', 'height': '100%'}) }}
+                      {{ officeStress.officeStress({'h':'13','m':'00','stress':'normal', 'height': '50%'}) }}
+                      {{ officeStress.officeStress({'h':'14','m':'00','stress':'normal', 'height': '45%'}) }}
+                      {{ officeStress.officeStress({'h':'15','m':'00','stress':'normal', 'height': '50%'}) }}
+                      {{ officeStress.officeStress({'h':'16','m':'00','stress':'min', 'height': '20%'}) }}
+                      {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
+                      {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
+                      {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
+                    </div>
+                    <div class="office-stress__time">
+                      <div class="office-stress__time-hours"> 10</div>
+                      <div class="office-stress__time-hours"> 13 </div>
+                      <div class="office-stress__time-hours"> 15 </div>
+                      <div class="office-stress__time-hours"> 17 </div>
+                      <div class="office-stress__time-hours"> 20 </div>
+                    </div>
+
+                    <div class="office-stress__congestion">
+                      <div class="office-stress__congestion-current-time js-congestion-time"></div>
+                      <div class="office-stress__congestion-current js-congestion-resp"></div>
+                    </div>
+                  </li>
+{#                        <li class="offices__info-item offices__info-item_bordered">#}
+{#                                              <div class="offices__info-text">#}
+{#                                                  адрес9#}
+{#                                              </div>#}
+{#                                          </li>#}
+{#                                          <li class="offices__info-item offices__info-item_bordered">#}
+{#                                              <div class="offices__info-text">#}
+{#                                                  8 800 500 7065#}
+{#                                              </div>#}
+{#                                          </li>#}
+                </ul>
+                {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+{#                {{ Dropdown.dropdown({#}
+{#                        'mods': {'theme': 'bordered'},#}
+{#                        'label': 'Построить Маршрут',#}
+{#                        'name': 'routeType',#}
+{#                        'items': [#}
+{#                            {'title': 'На автомобиле', 'value': 'auto'},#}
+{#                            {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+{#                            {'title': 'Пешком', 'value': 'pedestrian'},#}
+{#                            {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+{#                        'class': 'form__field-group form__field-group_dropdown',#}
+{#                        'attr': {'id': 'route-type4'},#}
+{#                        'field': 'js-create-route' }) }}#}
+
+                    <div class="map-wrap js-collapse-map-wrap"></div>
+                </div>
+              <div class="offices__route-built js-route-built">Маршрут построен</div>
+            </div>
+            <div class="collapse__item" data-coords="[55.786473,37.634507]">
+              {{ addressUnderground.addressUnderground({ 'type': 'blue', 'title':'Россия, г. Москва, Проспект Мира, д. 69, строение 1, подъезд 3', 'metro': 'Тульская'}) }}
+              <div class="collapse__content">
+                <ul class="offices__info">
+                  <li class="offices__info-item">
+                    {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                  </li>
+                  <li  class="offices__info-item offices__info-item-timetable">
+                    <div>
+                      <div class="offices__info-title">Время работы с клиентами</div>
+                      <div class="offices__info-text">
+                        пн-пт: с 10:00 до 20:00 <br>
+                        сб-вс: выходной
+                      </div>
+                    </div>
+                    <div>
+                      <div class="offices__info-title">Кассовое<br> обслуживание</div>
+                      <div class="offices__info-text">
+                        пн-пт: с 10:00 до 20:00 <br>
+                        сб-вс: выходной
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="offices__info-item">
+                    <div class="offices__info-title offices__info-stress-title">Оплата ЖКХ, аренда ячейки, открытие металлического счета,
+                      консультирование по ипотечному кредитованию</div>
+                    <div class="office-stress-list">
+                      {{ officeStress.officeStress({'h':'10','m':'00','stress':'min', 'height': '20%'}) }}
+                      {{ officeStress.officeStress({'h':'11','m':'00','stress':'normal', 'height': '40%'}) }}
+                      {{ officeStress.officeStress({'h':'12','m':'00','stress':'high', 'height': '100%'}) }}
+                      {{ officeStress.officeStress({'h':'13','m':'00','stress':'normal', 'height': '50%'}) }}
+                      {{ officeStress.officeStress({'h':'14','m':'00','stress':'normal', 'height': '45%'}) }}
+                      {{ officeStress.officeStress({'h':'15','m':'00','stress':'normal', 'height': '50%'}) }}
+                      {{ officeStress.officeStress({'h':'16','m':'00','stress':'min', 'height': '20%'}) }}
+                      {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
+                      {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
+                      {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
+                    </div>
+                    <div class="office-stress__time">
+                      <div class="office-stress__time-hours"> 10</div>
+                      <div class="office-stress__time-hours"> 13 </div>
+                      <div class="office-stress__time-hours"> 15 </div>
+                      <div class="office-stress__time-hours"> 17 </div>
+                      <div class="office-stress__time-hours"> 20 </div>
+                    </div>
+
+                    <div class="office-stress__congestion">
+                      <div class="office-stress__congestion-current-time js-congestion-time"></div>
+                      <div class="office-stress__congestion-current js-congestion-resp"></div>
+                    </div>
+                  </li>
+{#                        <li class="offices__info-item offices__info-item_bordered">#}
+{#                                              <div class="offices__info-text">#}
+{#                                                  адрес9#}
+{#                                              </div>#}
+{#                                          </li>#}
+{#                                          <li class="offices__info-item offices__info-item_bordered">#}
+{#                                              <div class="offices__info-text">#}
+{#                                                  8 800 500 7065#}
+{#                                              </div>#}
+{#                                          </li>#}
+                </ul>
+                {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+{#                {{ Dropdown.dropdown({#}
+{#                        'mods': {'theme': 'bordered'},#}
+{#                        'label': 'Построить Маршрут',#}
+{#                        'name': 'routeType',#}
+{#                        'items': [#}
+{#                            {'title': 'На автомобиле', 'value': 'auto'},#}
+{#                            {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+{#                            {'title': 'Пешком', 'value': 'pedestrian'},#}
+{#                            {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+{#                        'class': 'form__field-group form__field-group_dropdown',#}
+{#                        'attr': {'id': 'route-type4'},#}
+{#                        'field': 'js-create-route' }) }}#}
+
+                    <div class="map-wrap js-collapse-map-wrap"></div>
+                </div>
+              <div class="offices__route-built js-route-built">Маршрут построен</div>
+            </div>
+            <div class="collapse__item" data-coords="[55.78655,37.634507]">
+              {{ addressUnderground.addressUnderground({ 'type': 'blue', 'title':'Россия, г. Москва, Проспект Мира, д. 69, строение 1, подъезд 2', 'metro': 'Тульская'}) }}
+              <div class="collapse__content">
+                <ul class="offices__info">
+                  <li class="offices__info-item">
+                    {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                  </li>
+                  <li  class="offices__info-item offices__info-item-timetable">
+                    <div>
+                      <div class="offices__info-title">Время работы с клиентами</div>
+                      <div class="offices__info-text">
+                        пн-пт: с 10:00 до 20:00 <br>
+                        сб-вс: выходной
+                      </div>
+                    </div>
+                    <div>
+                      <div class="offices__info-title">Кассовое<br> обслуживание</div>
+                      <div class="offices__info-text">
+                        пн-пт: с 10:00 до 20:00 <br>
+                        сб-вс: выходной
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="offices__info-item">
+                    <div class="offices__info-title offices__info-stress-title">Оплата ЖКХ, аренда ячейки, открытие металлического счета,
+                      консультирование по ипотечному кредитованию</div>
+                    <div class="office-stress-list">
+                      {{ officeStress.officeStress({'h':'10','m':'00','stress':'min', 'height': '20%'}) }}
+                      {{ officeStress.officeStress({'h':'11','m':'00','stress':'normal', 'height': '40%'}) }}
+                      {{ officeStress.officeStress({'h':'12','m':'00','stress':'high', 'height': '100%'}) }}
+                      {{ officeStress.officeStress({'h':'13','m':'00','stress':'normal', 'height': '50%'}) }}
+                      {{ officeStress.officeStress({'h':'14','m':'00','stress':'normal', 'height': '45%'}) }}
+                      {{ officeStress.officeStress({'h':'15','m':'00','stress':'normal', 'height': '50%'}) }}
+                      {{ officeStress.officeStress({'h':'16','m':'00','stress':'min', 'height': '20%'}) }}
+                      {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
+                      {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
+                      {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
+                    </div>
+                    <div class="office-stress__time">
+                      <div class="office-stress__time-hours"> 10</div>
+                      <div class="office-stress__time-hours"> 13 </div>
+                      <div class="office-stress__time-hours"> 15 </div>
+                      <div class="office-stress__time-hours"> 17 </div>
+                      <div class="office-stress__time-hours"> 20 </div>
+                    </div>
+
+                    <div class="office-stress__congestion">
+                      <div class="office-stress__congestion-current-time js-congestion-time"></div>
+                      <div class="office-stress__congestion-current js-congestion-resp"></div>
+                    </div>
+                  </li>
+{#                        <li class="offices__info-item offices__info-item_bordered">#}
+{#                                              <div class="offices__info-text">#}
+{#                                                  адрес9#}
+{#                                              </div>#}
+{#                                          </li>#}
+{#                                          <li class="offices__info-item offices__info-item_bordered">#}
+{#                                              <div class="offices__info-text">#}
+{#                                                  8 800 500 7065#}
+{#                                              </div>#}
+{#                                          </li>#}
+                </ul>
+                {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+{#                {{ Dropdown.dropdown({#}
+{#                        'mods': {'theme': 'bordered'},#}
+{#                        'label': 'Построить Маршрут',#}
+{#                        'name': 'routeType',#}
+{#                        'items': [#}
+{#                            {'title': 'На автомобиле', 'value': 'auto'},#}
+{#                            {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+{#                            {'title': 'Пешком', 'value': 'pedestrian'},#}
+{#                            {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+{#                        'class': 'form__field-group form__field-group_dropdown',#}
+{#                        'attr': {'id': 'route-type4'},#}
+{#                        'field': 'js-create-route' }) }}#}
+
+                    <div class="map-wrap js-collapse-map-wrap"></div>
+                </div>
+              <div class="offices__route-built js-route-built">Маршрут построен</div>
+            </div>
+
+          <div class="collapse__item" data-coords="[55.73,37.56]">
+              {{ addressUnderground.addressUnderground({ 'type': 'blue', 'title':'ул. Валовая, 2-4/44', 'metro': 'Тульская'}) }}
+              <div class="collapse__content">
+                <ul class="offices__info">
+                  <li class="offices__info-item">
+                    {{ Button.button({'title':'Показать на карте', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-offices-button-for-map' }) }}
+                  </li>
+                  <li  class="offices__info-item offices__info-item-timetable">
+                    <div>
+                      <div class="offices__info-title">Время работы с клиентами</div>
+                      <div class="offices__info-text">
+                        пн-пт: с 10:00 до 20:00 <br>
+                        сб-вс: выходной
+                      </div>
+                    </div>
+                    <div>
+                      <div class="offices__info-title">Кассовое<br> обслуживание</div>
+                      <div class="offices__info-text">
+                        пн-пт: с 10:00 до 20:00 <br>
+                        сб-вс: выходной
+                      </div>
+                    </div>
+                  </li>
+
+                  <li class="offices__info-item">
+                    <div class="offices__info-title offices__info-stress-title">Оплата ЖКХ, аренда ячейки, открытие металлического счета,
+                      консультирование по ипотечному кредитованию</div>
+                    <div class="office-stress-list">
+                      {{ officeStress.officeStress({'h':'10','m':'00','stress':'min', 'height': '20%'}) }}
+                      {{ officeStress.officeStress({'h':'11','m':'00','stress':'normal', 'height': '40%'}) }}
+                      {{ officeStress.officeStress({'h':'12','m':'00','stress':'high', 'height': '100%'}) }}
+                      {{ officeStress.officeStress({'h':'13','m':'00','stress':'normal', 'height': '50%'}) }}
+                      {{ officeStress.officeStress({'h':'14','m':'00','stress':'normal', 'height': '45%'}) }}
+                      {{ officeStress.officeStress({'h':'15','m':'00','stress':'normal', 'height': '50%'}) }}
+                      {{ officeStress.officeStress({'h':'16','m':'00','stress':'min', 'height': '20%'}) }}
+                      {{ officeStress.officeStress({'h':'17','m':'00','stress':'min', 'height': '10%'}) }}
+                      {{ officeStress.officeStress({'h':'18','m':'00','stress':'min', 'height': '25%'}) }}
+                      {{ officeStress.officeStress({'h':'19','m':'00','stress':'normal', 'height': '50%'}) }}
+                    </div>
+                    <div class="office-stress__time">
+                      <div class="office-stress__time-hours"> 10</div>
+                      <div class="office-stress__time-hours"> 13 </div>
+                      <div class="office-stress__time-hours"> 15 </div>
+                      <div class="office-stress__time-hours"> 17 </div>
+                      <div class="office-stress__time-hours"> 20 </div>
+                    </div>
+
+                    <div class="office-stress__congestion">
+                      <div class="office-stress__congestion-current-time js-congestion-time"></div>
+                      <div class="office-stress__congestion-current js-congestion-resp"></div>
+                    </div>
+                  </li>
+{#                        <li class="offices__info-item offices__info-item_bordered">#}
+{#                                              <div class="offices__info-text">#}
+{#                                                  адрес9#}
+{#                                              </div>#}
+{#                                          </li>#}
+{#                                          <li class="offices__info-item offices__info-item_bordered">#}
+{#                                              <div class="offices__info-text">#}
+{#                                                  8 800 500 7065#}
+{#                                              </div>#}
+{#                                          </li>#}
+                </ul>
+                {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+{#                {{ Dropdown.dropdown({#}
+{#                        'mods': {'theme': 'bordered'},#}
+{#                        'label': 'Построить Маршрут',#}
+{#                        'name': 'routeType',#}
+{#                        'items': [#}
+{#                            {'title': 'На автомобиле', 'value': 'auto'},#}
+{#                            {'title': 'На общественном транспорте', 'value': 'masstransit'},#}
+{#                            {'title': 'Пешком', 'value': 'pedestrian'},#}
+{#                            {'title': 'На велосипеде', 'value': 'bicycle'}],#}
+{#                        'class': 'form__field-group form__field-group_dropdown',#}
+{#                        'attr': {'id': 'route-type4'},#}
+{#                        'field': 'js-create-route' }) }}#}
+
+                    <div class="map-wrap js-collapse-map-wrap"></div>
+                </div>
+              <div class="offices__route-built js-route-built">Маршрут построен</div>
             </div>
 
             <div class="collapse__item" data-coords="[55.78,37.56]">
@@ -408,7 +764,7 @@
                       </div>
                     </div>
                     <div>
-                      <div class="offices__info-title">Кассовое обслуживание</div>
+                      <div class="offices__info-title">Кассовое<br> обслуживание</div>
                       <div class="offices__info-text">
                         пн-пт: с 10:00 до 20:00 <br>
                         сб-вс: выходной
@@ -460,7 +816,9 @@
                   {#                            </div>#}
                   {#                        </li>#}
                 </ul>
-{#                    {{ Dropdown.dropdown({#}
+                {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+                {#                    {{ Dropdown.dropdown({#}
 {#                        'mods': {'theme': 'bordered'},#}
 {#                        'label': 'Построить Маршрут',#}
 {#                        'name': 'routeType',#}
@@ -474,6 +832,7 @@
 {#                        'field': 'js-create-route' }) }}#}
                     <div class="map-wrap js-collapse-map-wrap"></div>
                 </div>
+              <div class="offices__route-built js-route-built">Маршрут построен</div>
             </div>
 
             <div class="collapse__item" data-coords="[55.72,37.54]">
@@ -492,7 +851,7 @@
                           </div>
                         </div>
                         <div>
-                          <div class="offices__info-title">Кассовое обслуживание</div>
+                          <div class="offices__info-title">Кассовое<br> обслуживание</div>
                           <div class="offices__info-text">
                             пн-пт: с 10:00 до 20:00 <br>
                             сб-вс: выходной
@@ -534,7 +893,9 @@
                         </div>
                       </li>
                     </ul>
-{#                    {{ Dropdown.dropdown({#}
+                  {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+                  {#                    {{ Dropdown.dropdown({#}
 {#                        'mods': {'theme': 'bordered'},#}
 {#                        'label': 'Построить Маршрут',#}
 {#                        'name': 'routeType',#}
@@ -549,6 +910,7 @@
 
                     <div class="map-wrap js-collapse-map-wrap"></div>
                 </div>
+              <div class="offices__route-built js-route-built">Маршрут построен</div>
             </div>
 
 
@@ -571,7 +933,7 @@
                     </div>
                   </div>
                   <div>
-                    <div class="offices__info-title">Кассовое обслуживание</div>
+                    <div class="offices__info-title">Кассовое<br> обслуживание</div>
                     <div class="offices__info-text">
                       пн-пт: с 10:00 до 20:00 <br>
                       сб-вс: выходной
@@ -613,6 +975,8 @@
                   </div>
                 </li>
               </ul>
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
 {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
@@ -625,8 +989,10 @@
 {#                    'class': 'form__field-group form__field-group_dropdown',#}
 {#                    'attr': {'id': 'route-type7'},#}
 {#                    'field': 'js-create-route' }) }}#}
+
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[45.060537,39.022001]">
@@ -645,7 +1011,7 @@
                     </div>
                   </div>
                   <div>
-                    <div class="offices__info-title">Кассовое обслуживание</div>
+                    <div class="offices__info-title">Кассовое<br> обслуживание</div>
                     <div class="offices__info-text">
                       пн-пт: с 10:00 до 20:00 <br>
                       сб-вс: выходной
@@ -687,7 +1053,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -701,6 +1069,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[45.061511,38.962091]">
@@ -719,7 +1088,7 @@
                     </div>
                   </div>
                   <div>
-                    <div class="offices__info-title">Кассовое обслуживание</div>
+                    <div class="offices__info-title">Кассовое<br> обслуживание</div>
                     <div class="offices__info-text">
                       пн-пт: с 10:00 до 20:00 <br>
                       сб-вс: выходной
@@ -761,7 +1130,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -775,6 +1146,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[45.030114,38.996424]">
@@ -793,7 +1165,7 @@
                     </div>
                   </div>
                   <div>
-                    <div class="offices__info-title">Кассовое обслуживание</div>
+                    <div class="offices__info-title">Кассовое<br> обслуживание</div>
                     <div class="offices__info-text">
                       пн-пт: с 10:00 до 20:00 <br>
                       сб-вс: выходной
@@ -835,6 +1207,8 @@
                   </div>
                 </li>
               </ul>
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
 {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
@@ -849,6 +1223,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[45.054697,39.010843]">
@@ -867,7 +1242,7 @@
                     </div>
                   </div>
                   <div>
-                    <div class="offices__info-title">Кассовое обслуживание</div>
+                    <div class="offices__info-title">Кассовое<br> обслуживание</div>
                     <div class="offices__info-text">
                       пн-пт: с 10:00 до 20:00 <br>
                       сб-вс: выходной
@@ -909,7 +1284,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -923,10 +1300,11 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
-          <div class="collapse__item" data-coords="[45.019887,38.967241]">
-            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'title':'ул. Комсомольская, 41', 'metro': 'Таганская' }) }}
+          <div class="collapse__item" data-coords="[45.021418, 38.964702]">
+            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'title':'ул. Мира, 30', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
                 <li class="offices__info-item">
@@ -941,7 +1319,7 @@
                     </div>
                   </div>
                   <div>
-                    <div class="offices__info-title">Кассовое обслуживание</div>
+                    <div class="offices__info-title">Кассовое<br> обслуживание</div>
                     <div class="offices__info-text">
                       пн-пт: с 10:00 до 20:00 <br>
                       сб-вс: выходной
@@ -983,7 +1361,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -997,6 +1377,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
         </div>
       </div>
@@ -1023,7 +1404,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1037,6 +1420,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[55.747,37.57]">
@@ -1059,7 +1443,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1073,6 +1459,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[55.77,37.48]">
@@ -1095,7 +1482,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1109,6 +1498,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[55.76,37.57]">
@@ -1131,7 +1521,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1145,6 +1537,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[55.77,37.55]">
@@ -1167,7 +1560,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1181,6 +1576,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[55.746,37.578]">
@@ -1203,7 +1599,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1217,6 +1615,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
         </div>
         <div class="collapse offices__collapse" data-city="35" data-id="atm-tab">
@@ -1241,7 +1640,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1255,6 +1656,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[45.035469,38.968443]">
@@ -1277,7 +1679,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1291,6 +1695,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[45.055792,38.983377]">
@@ -1313,7 +1718,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1327,6 +1734,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[45.047761,38.939947]">
@@ -1349,7 +1757,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1363,6 +1773,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[45.061024,38.973764]">
@@ -1385,7 +1796,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1399,6 +1812,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
 
           <div class="collapse__item" data-coords="[45.057009,38.939947]">
@@ -1421,7 +1835,9 @@
                   </div>
                 </li>
               </ul>
-{#                {{ Dropdown.dropdown({#}
+              {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+
+              {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
 {#                    'label': 'Построить Маршрут',#}
 {#                    'name': 'routeType',#}
@@ -1435,6 +1851,7 @@
 {#                    'field': 'js-create-route' }) }}#}
               <div class="map-wrap js-collapse-map-wrap"></div>
             </div>
+            <div class="offices__route-built js-route-built">Маршрут построен</div>
           </div>
         </div>
       </div>
@@ -1473,7 +1890,7 @@
                   </div>
                 </li>
                 <li class="offices__info-item">
-                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-title">Кассовое<br> обслуживание</div>
                   <div class="offices__info-text">
                     ПН-ПТ с 10:00 до 20:00 <br>
                     СБ: с 10:00 до 13:00 <br>
@@ -1553,7 +1970,7 @@
                   </div>
                 </li>
                 <li class="offices__info-item">
-                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-title">Кассовое<br> обслуживание</div>
                   <div class="offices__info-text">
                     ПН-ПТ с 10:00 до 20:00 <br>
                     СБ: с 10:00 до 13:00 <br>
@@ -1607,7 +2024,7 @@
                   </div>
                 </li>
                 <li class="offices__info-item">
-                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-title">Кассовое<br> обслуживание</div>
                   <div class="offices__info-text">
                     ПН-ПТ с 10:00 до 20:00 <br>
                     СБ: с 10:00 до 13:00 <br>
@@ -1661,7 +2078,7 @@
                   </div>
                 </li>
                 <li class="offices__info-item">
-                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-title">Кассовое<br> обслуживание</div>
                   <div class="offices__info-text">
                     ПН-ПТ с 10:00 до 20:00 <br>
                     СБ: с 10:00 до 13:00 <br>
@@ -1715,7 +2132,7 @@
                   </div>
                 </li>
                 <li class="offices__info-item">
-                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-title">Кассовое<br> обслуживание</div>
                   <div class="offices__info-text">
                     ПН-ПТ с 10:00 до 20:00 <br>
                     СБ: с 10:00 до 13:00 <br>
@@ -1771,7 +2188,7 @@
                   </div>
                 </li>
                 <li class="offices__info-item">
-                  <div class="offices__info-title">Кассовое обслуживание</div>
+                  <div class="offices__info-title">Кассовое<br> обслуживание</div>
                   <div class="offices__info-text">
                     ПН-ПТ с 10:00 до 20:00 <br>
                     СБ: с 10:00 до 13:00 <br>

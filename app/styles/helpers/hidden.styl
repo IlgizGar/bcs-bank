@@ -1,13 +1,40 @@
 .hidden-mobile {
   @media (max-width 1279px) {
-    display: none!important
+    display: none !important
     visibility: hidden
   }
 }
 
 .hidden-desktop {
   @media (min-width 1280px) {
-    display: none!important
+    display: none !important
+    visibility: hidden
+  }
+}
+
+.hidden-md {
+  @media (min-width 832px) and (max-width 1279px) {
+    display: none !important
+    visibility: hidden
+  }
+}
+
+.hidden-to-md {
+  @media (max-width 831px) {
+    display: none !important
+    visibility: hidden
+  }
+}
+.hidden-to-lg {
+  @media (max-width 1279px) {
+    display: none !important
+    visibility: hidden
+  }
+}
+
+.hidden-from-md {
+  @media (min-width 832px) {
+    display: none !important
     visibility: hidden
   }
 }
