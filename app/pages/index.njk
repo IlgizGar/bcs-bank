@@ -120,21 +120,23 @@
           </div>
         </div>
       </section>
-      <section class="mobile section section_theme-blue page__section page__section_theme-large js-scroll-animate">
-        <div class="page__container">
+      <section class="mobile section page__section page__section_theme-large js-scroll-animate">
+        <div class="page__container section_theme-blue">
           <div class="section__row">
             <div class="mobile__content">
               {{ Heading.heading({ 'title': 'Легкий мобильный банк', 'mods': { 'type': 'default', 'margin': 'small', 'theme': 'light' } }) }}
               <div class="section__text section__text_theme-normal section__text_theme-light">
-                <p>Управление банковскими и инвестиционными продуктами</p>
-                <p>Оплата услуг без комиссии</p>
-                <p>Переводы по всему миру</p>
-                <p>Обмен валюты по курсу близкому к биржевому</p>
-                <p>Чат с оператором</p>
+                <p>Ваш бесплатный помощник в получении банковских услуг.<br> Легко скачать, легко использовать</p>
               </div>
               <div class="mobile__vendors">
-                {{ Button.button({ 'href': 'https://play.google.com/store/apps/details?id=cz.bsc.bcs', 'name': 'android', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
-                {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
+                <a class="mobile__link-app" href="https://play.google.com/store/apps/details?id=cz.bsc.bcs" target="_blank">
+                  {{ Button.button({ 'name': 'android', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large', 'view': 'outlined' } }) }}
+                  <p>Google Play</p>
+                </a>
+                <a class="mobile__link-app" href="https://itunes.apple.com/ru/app/bks-onlajn/id652802642" target="_blank">
+                  {{ Button.button({ 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large', 'view': 'outlined' } }) }}
+                  <p>AppStore</p>
+                </a>
               </div>
             </div>
             <div class="mobile__figure">
