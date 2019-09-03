@@ -39,9 +39,8 @@
       {% if options.path %}
         <span class='button__icon'>{{ Svg.inlineSvg({ 'path': [options.path] }) }}</span>
       {% elseif options.name %}
-        <span class='button__icon'>{{ Icon.icon({ 'name': options.name }) }}</span>
+        <span class='button__icon' target='_blank'>{{ Icon.icon({ 'name': options.name }) }}</span>
       {% endif %}
-
     </span>
   </{{ tag }}>
 
