@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import Helpers from '../../../scripts/helpers';
 
 export default class Chat {
   constructor() {
@@ -6,6 +7,20 @@ export default class Chat {
   }
 
   init() {
+    window.yandexMapApiKey = '43aae7e6-b7a1-4f85-b4ca-242979d9dcfd';
+    var currentLocation;
+    Helpers.getGeolocation((curLoc) => {
+      // console.log(curLoc);
+      global.currentCity = curLoc.GeocoderMetaData.Address.Components[4].name;
+      console.log('Ваш город: ', global.currentCity);
+    });
+
+    window.clientData = JSON.stringify({
+      "name": "Name Surname",
+      "phone": "+7-999-999-99-99",
+      "email": "e@mail.com",
+      "customField":"customValue"
+    });
     this.initializeChat();
   }
 
