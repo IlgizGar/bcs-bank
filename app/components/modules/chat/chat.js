@@ -22,7 +22,7 @@ export default class Chat {
       "email": "e@mail.com",
       "customField":"customValue"
     });
-    // this.initializeChat();
+    this.initializeChat();
   }
 
   initializeChat() {
