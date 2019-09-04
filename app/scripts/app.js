@@ -340,5 +340,5 @@ $(() => {
     global.oficessStress = new OfficeStress();
   }
 
-  // global.helper = new Helper();
+  global.helper = new Helper();
 });
