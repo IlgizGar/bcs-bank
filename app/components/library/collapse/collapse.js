@@ -21,6 +21,7 @@ export default class Collapse {
     let collapseItem = $(el)
       .next('.collapse__content')
       .closest('.collapse__item');
+    console.log(collapseItem);
     if (collapseItem.hasClass(this.openClass)) {
       collapseItem.css('order', collapseItem.attr('data-order'));
     }

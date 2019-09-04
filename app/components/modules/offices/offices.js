@@ -621,6 +621,7 @@ export default class Offices {
     const parentCollapse = target.parent()
       .parent()
       .closest('.collapse__item');
+    console.log(target);
     if (parentCollapse.length) {
       parentCollapse.children('.collapse__control')
         .trigger('click');
