@@ -459,6 +459,7 @@ export default class Offices {
     if (el.id) {
       // событие клика по пину
       placemark.events.add('click', (e) => {
+        console.log('click');
         this.onPointEvent(e, el.coordinates);
         if (window.innerWidth > 831) {
           setTimeout(() => {
