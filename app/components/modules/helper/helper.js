@@ -11,7 +11,7 @@ export default class Helper {
         linkName: '',
         percent: '2%',
         description: 'Возвращаем 2% при оплате<br> авиабилетов картой БКС',
-        logo: 'http://aeroflot.aic.ru/AB_bcs_helper/images/c-aviasales.svg',
+        logo: 'https://aeroflot.aic.ru/AB_bcs_helper/images/c-aviasales.svg',
         popup: {
           title: 'Бонусы с дебетовой картой БКС',
           subtitle: 'Получить легко',
@@ -24,7 +24,7 @@ export default class Helper {
         linkName: 'https://bcs.ostrovok.ru',
         percent: '6%',
         description: 'Забронируйте отель с картой БКС,<br> и мы вернем 6% от суммы',
-        logo: 'http://aeroflot.aic.ru/AB_bcs_helper/images/c-ostrovok.png',
+        logo: 'https://aeroflot.aic.ru/AB_bcs_helper/images/c-ostrovok.png',
         popup: {
           title: 'Бонусы с дебетовой картой БКС',
           subtitle: 'Получить легко',
@@ -37,7 +37,7 @@ export default class Helper {
         linkName: 'https://www.rentalcars.com/?affiliateCode=bcs627&adplat=desktop',
         percent: '7%',
         description: 'Возвращаем 7% от стоимости<br> аренды авто при оплате картой',
-        logo: 'http://aeroflot.aic.ru/AB_bcs_helper/images/c-rentalcars.png',
+        logo: 'https://aeroflot.aic.ru/AB_bcs_helper/images/c-rentalcars.png',
         popup: {
           title: 'Бонусы с дебетовой картой БКС',
           subtitle: 'Получить легко',
@@ -50,7 +50,7 @@ export default class Helper {
         linkName: 'https://bcs.level.travel',
         percent: '3%',
         description: 'Бронируйте туры с нами<br> и зарабатывайте бонусы.<br> 1 бонус = 1 рублю',
-        logo: 'http://aeroflot.aic.ru/AB_bcs_helper/images/c-leveltravel.png',
+        logo: 'https://aeroflot.aic.ru/AB_bcs_helper/images/c-leveltravel.png',
         popup: {
           title: 'Бонусы с дебетовой картой БКС',
           subtitle: 'Получить легко',
@@ -63,7 +63,7 @@ export default class Helper {
         linkName: 'https://bcs.cherehapa.ru',
         percent: '10%',
         description: 'Получайте 10% бонусами при<br> оплате картой страховки для<br> путешествий',
-        logo: 'http://aeroflot.aic.ru/AB_bcs_helper/images/c-cherehapa.png',
+        logo: 'https://aeroflot.aic.ru/AB_bcs_helper/images/c-cherehapa.png',
         popup: {
           title: 'Бонусы с дебетовой картой БКС',
           subtitle: 'Получить легко',
@@ -306,7 +306,7 @@ export default class Helper {
     '<div class="helper" data-helper-wrapper data-helper-id="' + item.id + '" data-helper-name="' + item.name + '">' +
       '<div class="helper__top">' +
         '<div class="helper__close" data-helper-close>' +
-          '<img src="http://aeroflot.aic.ru/AB_bcs_helper/images/i-close.svg" />' +
+          '<img src="https://aeroflot.aic.ru/AB_bcs_helper/images/i-close.svg" />' +
         '</div>' +
       '</div>' +
       '<div class="helper__body">' +
@@ -338,7 +338,7 @@ export default class Helper {
       '<div class="h-popup__modal" data-helper-popup-modal>' +
         '<div class="h-popup__wrapper" data-helper-popup-wrapper>' +
           '<div class="h-popup__close" data-helper-popup-close>' +
-            '<img src="http://aeroflot.aic.ru/AB_bcs_helper/images/i-close.svg" />' +
+            '<img src="https://aeroflot.aic.ru/AB_bcs_helper/images/i-close.svg" />' +
           '</div>' +
           '<div class="h-popup__title">' +
             '<div class="h-popup__container">' +
