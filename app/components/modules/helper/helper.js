@@ -72,7 +72,7 @@ export default class Helper {
       }
     ];
 
-    if (global.showHelperPopup) {
+    if (window.showHelperPopup) {
       this.init();
     }
   }

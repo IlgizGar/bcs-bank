@@ -113,30 +113,64 @@
     text-align right
     margin-left 80px
 
-    &__bottom
-      margin-top 56px
+  &__bottom
+    margin-top 56px
 
+  &__subtitle
+    font-family "Formular Bold", sans-serif
+    font-size 24px
+    color #334458
+
+  &__bottom-description
+    font-family "Opensans Regular", sans-serif
+    margin-top 32px
+    font-size 16px
+    line-height 28px
+    color #334458
+
+  &__button
+    margin-top 48px
+
+  &__button-item
+    padding 16px 72px
+    color #ffffff
+    background-color #5282f5
+    border-radius 4px
+    font-family "Opensans Bold", sans-serif
+    font-size 16px
+    line-height 24px
+    color #ffffff
+
+  @media (max-width: 831px)
+    &__wrapper
+      max-width 95%
+    &__container
+      padding 0 30px
+    &__title
+      font-size 1.5rem
+      ^[0]__container
+        text-align left
     &__subtitle
-      font-family "Formular Bold", sans-serif
-      font-size 24px
-      color #334458
-
-    &__bottom-description
-      font-family "Opensans Regular", sans-serif
-      margin-top 32px
-      font-size 16px
-      line-height 28px
-      color #334458
-
-    &__button
-      margin-top 48px
-
-    &__button-item
-      padding 16px 72px
-      color #ffffff
-      background-color #5282f5
-      border-radius 4px
-      font-family "Opensans Bold", sans-serif
-      font-size 16px
-      line-height 24px
-      color #ffffff
+      text-align left
+    &__about
+      flex-direction column
+    &__body
+      margin-top 20px
+    &__info
+      order 2
+      flex-direction column
+    &__description
+      margin-left 0
+      p
+        padding-left: 5px
+        padding-right: 5px
+    text-align center
+    &__percent
+      margin-left 0
+    &__bottom
+      margin-top 28px
+      &-description
+        margin-top 16px
+        p
+          font-size .9em
+          text-align justify
