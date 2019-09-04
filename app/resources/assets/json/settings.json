@@ -9,22 +9,22 @@
     "clientId": "clientId",
     "disableGeoRequest": false,
     "disableWebNotification": false,
-    "clientData": "clientData",
-     "appMarker": "bcsbanksite",
+    "clientData": "clientChatCity",
+    "appMarker": "bcsbanksite",
     "webNotification": {
       "title": "Threads Web Chat",
       "icon": "data:image/png;base64,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"
     },
     "chatHeader": {
       "title": "Добро пожаловать!",
-      "search": "Поиск оператора",
-      "operatorSubTitle": "специалист поддержки",
+      "search": "Пожалуйста, подождите. Сейчас к чату подключится оператор",
+      "operatorSubTitle": "Оператор БКС Банк",
       "showOrganisationUnit": false
     },
     "welcome": {
       "pre": {
-        "text": "Добро пожаловать в чат Threads!",
-        "notice": ""
+        "text": "Онлайн чат БКС",
+        "notice": "Здравствуйте! Здесь вы можете получить справочную информацию о продуктах и услугах банка. Задать вопросы о ваших картах, тарифах и кредитах"
       },
       "post": {
         "text": "Рады приветствовать Вас в чате",
@@ -45,7 +45,7 @@
         "en": "No"
       }
     },
-    "typing": "печатает...",
+    "typing": "Оператор набирает сообщение...",
     "checkURL": "https://pushserver.mfms.ru/brooma/health",
     "datastore": "https://threads.bcs.ru/files",
     "history": {
@@ -58,6 +58,7 @@
     "welcomeForm": {
       "phone": true,
       "email": true,
+      "city": true,
       "name": true
     },
     "inactivityForm": {
@@ -97,7 +98,55 @@
         }
       ]
     },
-    "theme": {},
+    "theme": {
+      "fonts": [
+        "https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap&subset=cyrillic"
+      ],
+      "desktop": {
+        "Global": {
+          "fontFamily": "'Open Sans', sans-serif"
+        },
+        "Chat": {
+          "width": "384px",
+          "height": "576px",
+          "padding": "24px"
+        },
+        "ChatBody": {
+          "padding": "24px",
+          "backgroundColor": "#fff"
+        },
+        "ChatWelcome": {
+          "textColor": "#001934",
+          "textMarginBottom": "16px",
+          "textFontWeight": "600",
+          "textFontSize": "24px",
+          "subtextFontSize": "14px",
+          "subtextMarginBottom": "32px"
+        },
+        "InputText": {
+          "placeholderColor": "#78818F",
+          "padding": "20px 16px",
+          "fontSize": "16px",
+          "color": "#001934",
+          "backgroundColor": "#ffffff",
+          "borderColor": "#d8d8d8",
+          "borderRadius": "4px",
+          "margin": "0 0 24px 0"
+        },
+        "ChatInput": {
+          "placeholderColor": "#78818F",
+          "wrapperBackgroundColor": "#ffffff",
+          "backgroundColor": "#ffffff",
+          "color": "#001934",
+          "fontSize": "16px",
+          "padding": "24px 75px 24px 24px",
+          "borderColor": "#d8d8d8",
+          "borderTopWidth": "1px",
+          "submitButtonDisplay": "block",
+          "submitButtonBackgroundImage": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMTgiIHZpZXdCb3g9IjAgMCAyMCAxOCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0wLjA0NDM3NDYgMi4yOTQ4OUMtMC4yODA4NDUgMC43ODU2NTEgMS4yNDEzNyAtMC40NTY4OTUgMi42NTYwNyAwLjE2MzAzOEwxOC44NjY3IDcuMjY2NjNDMjAuMzc3OCA3LjkyODc5IDIwLjM3NzggMTAuMDcxMiAxOC44NjY3IDEwLjczMzRMMi42NTYwOCAxNy44MzdDMS4yNDEzNyAxOC40NTY5IC0wLjI4MDg0NiAxNy4yMTQ0IDAuMDQ0Mzc0NiAxNS43MDUxTDEuNDg5MjQgOUwwLjA0NDM3NDYgMi4yOTQ4OVpNMy4yMjI0NiA5Ljk0NjMzTDEuODk1NjUgMTYuMTAzNkwxOC4xMDYzIDlMMS44OTU2NSAxLjg5NjQxTDMuMjIyNDYgOC4wNTM2N0g3LjczMDAxQzguMjUyOTQgOC4wNTM2NyA4LjY3Njg3IDguNDc3MzYgOC42NzY4NyA5QzguNjc2ODcgOS41MjI2NCA4LjI1Mjk0IDkuOTQ2MzMgNy43MzAwMSA5Ljk0NjMzSDMuMjIyNDZaIiBmaWxsPSIjMDAxOTM0Ii8+Cjwvc3ZnPgo="
+        }
+      }
+    },
     "webview": {
       "loadError": {
         "ru": "Ошибка загрузки данных",
