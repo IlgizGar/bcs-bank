@@ -7,14 +7,13 @@ export default class Chat {
   }
 
   init() {
-    // window.yandexMapApiKey = '43aae7e6-b7a1-4f85-b4ca-242979d9dcfd';
-    // var currentLocation;
-    // Helpers.getGeolocation((curLoc) => {
-    //   // console.log(curLoc);
-    //   global.currentCity = curLoc.GeocoderMetaData.Address.Components[4].name;
-    //   console.log('Ваш город: ', global.currentCity);
-    //   window.clientChatCity = JSON.stringify(global.currentCity);
-    // });
+    window.yandexMapApiKey = '43aae7e6-b7a1-4f85-b4ca-242979d9dcfd';
+    var currentLocation;
+    Helpers.getGeolocation((curLoc) => {
+      global.currentCity = curLoc.GeocoderMetaData.Address.Components[4].name;
+      console.log('Ваш город: ', global.currentCity);
+      window.clientChatCity = JSON.stringify(global.currentCity);
+    });
 
     window.clientData = JSON.stringify({
       "name": "Name Surname",
@@ -23,6 +22,13 @@ export default class Chat {
       "customField":"customValue"
     });
     this.initializeChat();
+    global.chateg = ThreadsWidget;
+    $(document).ready(()=>{
+    });
+    $.when(this.initializeChat()).then(function() {
+      // console.log($("iframe#__threadswidget_chat__iframe").contents().find('.threadswidget_welcome__form').is(':visible'));
+      $('iframe#__threadswidget_chat__iframe').contents().find('.threadswidget_welcome__form h3').css('font-weight', 600);
+    })
   }
 
   initializeChat() {
@@ -32,5 +38,3 @@ export default class Chat {
   // // $("iframe[name='__threadswidget_chat__iframe']").contents().find('h3').css('font-weight', 600)
   // }
 }
-
-
