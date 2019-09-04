@@ -21,10 +21,9 @@ export default class Collapse {
     let collapseItem = $(el)
       .next('.collapse__content')
       .closest('.collapse__item');
-    console.log(collapseItem);
-    if (collapseItem.hasClass(this.openClass)) {
-      collapseItem.css('order', collapseItem.attr('data-order'));
-    }
+    $.each($('.collapse__item'), function (i, item) {
+      $(item).css('order', $(item).attr('data-order'));
+    });
     $(el)
       .next('.collapse__content')
       .slideToggle(225)

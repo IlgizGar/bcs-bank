@@ -477,11 +477,11 @@ export default class Offices {
                   .offset().top,
               }, 800);
           }, 200);
-          $('.offices__collapse')
-            .find($('.collapse__item_state-open'))
-            .css({
-              order: -1,
-            });
+          // $('.offices__collapse')
+          //   .find($('.collapse__item_state-open'))
+          //   .css({
+          //     order: -1,
+          //   });
         }
       });
     } else {
@@ -617,7 +617,7 @@ export default class Offices {
       this.removeExploredDetail();
     }
     const currentCollapse = global.collapses[this.currentTabId];
-    const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${coordinates.join()}]"] .collapse__control`);
+    const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${coordinates.join()}]"] .collapse__control`).first();
     const parentCollapse = target.parent()
       .parent()
       .closest('.collapse__item');
@@ -642,6 +642,7 @@ export default class Offices {
       //   }
       // }
     }
+    this.appBlock.find(`#${this.currentTabId} [data-coords="[${coordinates.join()}]"]`).css('order', '-1');
   }
 
   initPointMobileDetail(target) {
