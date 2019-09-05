@@ -57,9 +57,8 @@
     },
     "welcomeForm": {
       "phone": true,
-      "email": true,
-      "city": true,
-      "name": true
+      "name": true,
+      "email": true
     },
     "inactivityForm": {
       "phone": true,
