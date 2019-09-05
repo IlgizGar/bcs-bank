@@ -622,6 +622,7 @@ export default class Offices {
       .parent()
       .closest('.collapse__item');
     console.log(target);
+    this.appBlock.find(`#${this.currentTabId} [data-coords="[${coordinates.join()}]"]`).css('order', '-1');
     if (parentCollapse.length) {
       parentCollapse.children('.collapse__control')
         .trigger('click');
@@ -642,7 +643,6 @@ export default class Offices {
       //   }
       // }
     }
-    this.appBlock.find(`#${this.currentTabId} [data-coords="[${coordinates.join()}]"]`).css('order', '-1');
   }
 
   initPointMobileDetail(target) {
