@@ -41,16 +41,22 @@ export default class Collapse {
     if (countOrders > 1) {
       $(el)
         .next('.collapse__content')
+        .slideToggle(225)
         .closest('.collapse__item')
         .toggleClass(this.openClass)
         .siblings()
         .removeClass(this.openClass)
-        .children('.collapse__content');
+        .children('.collapse__content')
+        .slideUp(225);
       $('.js-route-built')
         .removeClass('route-built--active');
       $('.js-button-bild-route')
         .removeClass('hidden-block');
       $('.collapse__item_state-open').find('.collapse__control-icon').css({ transform: 'scaleY(-1)' });
+      // $(el).on('click', (e) => {
+      //   console.log($(el));
+      //   $('.collapse__content').css({ display: 'block' });
+      // });
     } else {
       $(el)
         .next('.collapse__content')
