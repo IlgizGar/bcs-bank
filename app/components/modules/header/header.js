@@ -87,13 +87,15 @@ module.exports = (elem) => {
       $explore.find('a')
         .addClass(`button button_view-text button_type-tab button_size-low button_view-underscore menu__item js-button button_theme-black ${linkClass}`)
         .appendTo($menuWrapper.find('.js-menu .menu__wrapper'));
-
-      $contacts.find('.header__contact')[1].remove();
-      $contacts.find('.header__contact')[1].remove();
-      $contacts.find('.heading').remove();
-      $contacts.find('.header__contacts-links').remove();
-      $contacts.appendTo($menuWrapper);
-
+      if ($contacts.find('.header__contact')[1]) {
+        $contacts.find('.header__contact')[1].remove();
+        $contacts.find('.header__contact')[1].remove();
+        $contacts.find('.heading')
+          .remove();
+        $contacts.find('.header__contacts-links')
+          .remove();
+        $contacts.appendTo($menuWrapper);
+      }
       $online
         .addClass('button_theme-default mobile-menu__online-bank')
         .removeClass('hidden-mobile button_theme-white button_view-outlined')
