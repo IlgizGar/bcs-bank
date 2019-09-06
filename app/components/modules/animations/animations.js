@@ -20,7 +20,7 @@ export default class Animations {
               renderer: 'svg',
               loop: true,
               autoplay: false,
-              path: `assets/illustrations/${$(el).data('illustration')}.json`,
+              path: `/assets/illustrations/${$(el).data('illustration')}.json`,
             }),
           });
         }
