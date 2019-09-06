@@ -341,4 +341,8 @@ $(() => {
   }
 
   global.helper = new Helper();
+
+  if ($('.js-button-check-gosuslugi')) {
+
+  }
 });
