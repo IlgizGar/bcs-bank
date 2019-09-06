@@ -54,8 +54,8 @@ export default class Collapse {
         .removeClass('hidden-block');
       $('.collapse__item_state-open').find('.collapse__control-icon').css({ transform: 'scaleY(-1)' });
       // $(el).on('click', (e) => {
-      //   console.log($(el));
-      //   $('.collapse__content').css({ display: 'block' });
+      //   console.log($(e));
+      //   $(e).next($('.collapse__content')).css({ display: 'block' });
       // });
     } else {
       $(el)
