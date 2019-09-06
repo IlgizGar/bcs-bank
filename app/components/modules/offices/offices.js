@@ -459,6 +459,7 @@ export default class Offices {
     if (el.id) {
       // событие клика по пину
       placemark.events.add('click', (e) => {
+        console.log('click');
         this.onPointEvent(e, el.coordinates);
         if (window.innerWidth > 831) {
           setTimeout(() => {
@@ -476,11 +477,11 @@ export default class Offices {
                   .offset().top,
               }, 800);
           }, 200);
-          $('.offices__collapse')
-            .find($('.collapse__item_state-open'))
-            .css({
-              order: -1,
-            });
+          // $('.offices__collapse')
+          //   .find($('.collapse__item_state-open'))
+          //   .css({
+          //     order: -1,
+          //   });
         }
       });
     } else {
@@ -616,10 +617,12 @@ export default class Offices {
       this.removeExploredDetail();
     }
     const currentCollapse = global.collapses[this.currentTabId];
-    const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${coordinates.join()}]"] .collapse__control`);
+    const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${coordinates.join()}]"] .collapse__control`).first();
     const parentCollapse = target.parent()
       .parent()
       .closest('.collapse__item');
+    console.log(target);
+    this.appBlock.find(`#${this.currentTabId} [data-coords="[${coordinates.join()}]"]`).css('order', '-1');
     if (parentCollapse.length) {
       parentCollapse.children('.collapse__control')
         .trigger('click');
