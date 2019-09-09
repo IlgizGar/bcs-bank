@@ -1,6 +1,7 @@
 {
   "filename": "/assets/scripts/appffbefaaa.js",
   "webchat": {
+    "style": "/assets/chat-theme.css",
     "signature": "signature",
     "locale": "ru",
     "package": "im.threads.webchat.bks",
@@ -9,7 +10,7 @@
     "clientId": "clientId",
     "disableGeoRequest": false,
     "disableWebNotification": false,
-    "clientData": "clientChatCity",
+    "clientData": "clientData",
     "appMarker": "bcsbanksite",
     "webNotification": {
       "title": "Threads Web Chat",
@@ -58,7 +59,7 @@
     "welcomeForm": {
       "phone": true,
       "name": true,
-      "email": true
+      "email": false
     },
     "inactivityForm": {
       "phone": true,
@@ -99,7 +100,7 @@
     },
     "theme": {
       "fonts": [
-        "https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap&subset=cyrillic"
+        "/assets/chat-fonts.css"
       ],
       "mobile": {
         "AttachmentButton": {
@@ -108,7 +109,18 @@
       },
       "desktop": {
         "Global": {
-          "fontFamily": "'Open Sans', sans-serif"
+          "fontFamily": "'Opensans Regular', sans-serif"
+        },
+        "ChatHeader": {
+          "align": "left",
+          "padding": "16px 24px",
+          "backgroundColor": "#ffffff",
+          "avatarWidth": "48px",
+          "avatarHeight": "48px",
+          "agentNameFontSize": "16px",
+          "agentNameColor": "#30445A",
+          "agentInfoFontSize": "12px",
+          "agentInfoColor": "#78818F"
         },
         "AttachmentButton": {
           "backgroundImage": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTE4Ljc0MTYgMTAuNTM1M0MxOC43OTIxIDEwLjQ4NjEgMTguODM1OCAxMC40MzI5IDE4Ljg3MjkgMTAuMzc2N0MyMC4zODE1IDguNjA3NjYgMjAuMjg0NyA1Ljk3NzM1IDE4LjU4MjQgNC4zMTg4N0MxNi43Nzc1IDIuNTYwMzggMTMuODUxMiAyLjU2MDM4IDEyLjA0NjQgNC4zMTg4N0w5LjM5MSA2LjkwNTk3QzkuMzU2NDYgNi45MzE2MiA5LjMyMzI3IDYuOTU5ODEgOS4yOTE3MSA2Ljk5MDU2TDUuODgyMjIgMTAuMzEyNEMzLjM3MjU5IDEyLjc1NzUgMy4zNzI1OSAxNi43MjE5IDUuODgyMjIgMTkuMTY3QzguMzkxODQgMjEuNjEyMSAxMi40NjA3IDIxLjYxMjEgMTQuOTcwNCAxOS4xNjdMMTkuNzE0NyAxNC41NDQ2QzIwLjA5NTEgMTQuMTc0IDIwLjA5NTEgMTMuNTczMSAxOS43MTQ3IDEzLjIwMjVDMTkuMzM0MyAxMi44MzE5IDE4LjcxNzYgMTIuODMxOSAxOC4zMzcyIDEzLjIwMjVMMTMuNTkyOSAxNy44MjQ5QzExLjg0NCAxOS41Mjg4IDkuMDA4NTYgMTkuNTI4OCA3LjI1OTcgMTcuODI0OUM1LjUxMDg0IDE2LjEyMSA1LjUxMDg0IDEzLjM1ODQgNy4yNTk3IDExLjY1NDVMOC4zMzUyOSAxMC42MDY2QzguMzY5ODQgMTAuNTgwOSA4LjQwMzAzIDEwLjU1MjcgOC40MzQ1OSAxMC41MjJMMTMuNDIzOCA1LjY2MDk1QzE0LjQ2OCA0LjY0MzY2IDE2LjE2MDggNC42NDM2NiAxNy4yMDUgNS42NjA5NUMxOC4yNDkxIDYuNjc4MjQgMTguMjQ5MSA4LjMyNzU5IDE3LjIwNSA5LjM0NDg4TDEyLjAzNTEgMTQuMzgxOEMxMi4wMTg1IDE0LjM5OCAxMi4wMDI3IDE0LjQxNDUgMTEuOTg3NiAxNC40MzE1TDExLjM4NDkgMTUuMDE4N0MxMS4wNTUzIDE1LjMzOTkgMTAuNTIwOCAxNS4zMzk5IDEwLjE5MTIgMTUuMDE4N0M5Ljg2MTU0IDE0LjY5NzYgOS44NjE1NCAxNC4xNzY5IDEwLjE5MTIgMTMuODU1N0wxNC4zMjg2IDkuODI0NjFDMTQuNzA5IDkuNDU0IDE0LjcwOSA4Ljg1MzE0IDE0LjMyODYgOC40ODI1M0MxMy45NDgyIDguMTExOTMgMTMuMzMxNSA4LjExMTkzIDEyLjk1MTEgOC40ODI1M0w4LjgxMzY5IDEyLjUxMzZDNy43MjMyOSAxMy41NzYgNy43MjMyOSAxNS4yOTg0IDguODEzNjkgMTYuMzYwOEM5LjkwNDA5IDE3LjQyMzIgMTEuNjcyIDE3LjQyMzIgMTIuNzYyNCAxNi4zNjA4TDE4Ljc0MTYgMTAuNTM1M1oiIGZpbGw9IiMwMDE5MzQiLz48L3N2Zz4="
@@ -118,20 +130,59 @@
           "height": "576px",
           "padding": "24px"
         },
+        "MessageClient": {
+          "backgroundColor": "#4573D9",
+          "fontSize": "16px",
+          "borderTopLeftRadius": "4px",
+          "borderBottomLeftRadius": "4px",
+          "borderTopRightRadius": "4px",
+          "borderBottomRightRadius": "4px",
+          "margin": "16px 14px"
+        },
+        "MessageOperator": {
+          "backgroundColor": "#F7F7F7",
+          "borderTopLeftRadius": "4px",
+          "borderBottomLeftRadius": "4px",
+          "borderTopRightRadius": "4px",
+          "borderBottomRightRadius": "4px",
+          "fontSize": "16px",
+          "margin": "16px 14px"
+        },
+        "CloseButton": {
+          "top": "29px",
+          "right": "29px",
+          "width": "14px",
+          "height": "14px"
+        },
         "ChatButton": {
           "borderRadius": "50%"
+        },
+        "EmojiButton": {
+          "height": "0px",
+          "width": "0px"
         },
         "ChatBody": {
           "padding": "24px",
           "backgroundColor": "#fff"
         },
         "ChatWelcome": {
+          "margin": "64px auto 0px auto",
+          "maxWidth": "336px",
+          "textFontFamily": "'Formular Bold'",
           "textColor": "#001934",
-          "textMarginBottom": "16px",
-          "textFontWeight": "600",
+          "textMarginBottom": "12px",
           "textFontSize": "24px",
           "subtextFontSize": "14px",
-          "subtextMarginBottom": "32px"
+          "subtextMarginBottom": "18px"
+        },
+        "Button": {
+          "padding": "16px 5px 17px",
+          "fontWeight": "bold",
+          "backgroundColor": "#4573D9",
+          "backgroundColorHover": "#3b66c5",
+          "colorHover": "#acc2f5",
+          "borderRadius": "4px",
+          "fontSize": "16px"
         },
         "InputText": {
           "placeholderColor": "#78818F",
@@ -144,6 +195,7 @@
           "margin": "0 0 24px 0"
         },
         "ChatInput": {
+          "limiterMaxHeight": "144px",
           "placeholderColor": "#78818F",
           "wrapperBackgroundColor": "#ffffff",
           "backgroundColor": "#ffffff",

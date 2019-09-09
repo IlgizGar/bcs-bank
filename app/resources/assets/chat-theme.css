@@ -1,0 +1,29 @@
+.threadswidget_chat__welcome p {
+  line-height: 24px;
+}
+.chat_header__operator .avatar {
+  margin-right: 16px;
+}
+.chat_header__operator .operator__name {
+  font-family: "Formular Bold", sans-serif!important;
+  font-weight: normal!important;
+}
+.threadswidget_message {
+  line-height: 24px;
+}
+.threadswidget_chat__input {
+  padding-top: 0;
+}
+.threadswidget_chat__body___wrapper > .clipper {
+  padding: 0;
+}
+.threadswidget_message.type-out .threadswidget__chat_message__pointer,
+.threadswidget_message.type-in .threadswidget__chat_message__pointer {
+  display: none;
+}
+.threadswidget_add__quote {
+  display: none;
+}
+.threadswidget_message__avatar {
+  display: none;
+}
