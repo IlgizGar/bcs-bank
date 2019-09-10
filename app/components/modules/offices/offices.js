@@ -737,6 +737,7 @@ export default class Offices {
 
     $('.collapse__item[data-coords] .collapse__control')
       .on('click', (e) => {
+        this.activeAddress();
         if (!this.appBlock.hasClass('state_explored')) {
           this.scrollToCollapse($(e.target));
           const collapseContent = $(e.target)
