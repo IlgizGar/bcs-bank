@@ -181,7 +181,7 @@ export default class Offices {
   activeAddress() {
     if ($('.collapse__item_state-open').length) {
       console.log($('.collapse__item_state-open'));
-      $('.collapse__active-marker').addClass('visible');
+      $('.collapse__item_state-open').find($('.collapse__active-marker')).css({ display: 'block' });
     }
   }
 
