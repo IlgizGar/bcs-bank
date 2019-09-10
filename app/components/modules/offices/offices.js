@@ -74,7 +74,7 @@ export default class Offices {
 
     // нажатие кнопки отмена маршрута
     $('.js-map-router-cancel').on('click', () => {
-      $('.offices__map-router').css({ display: 'none' });
+      $('.js-map-router').css({ display: 'none' });
       this.routeButton.removeClass('hidden-block');
       $('.js-route-built').removeClass('route-built--active');
       this.clearRoute();
@@ -149,7 +149,7 @@ export default class Offices {
       button.addClass('hidden-block');
       button.closest('.collapse__item').find('.js-route-built').addClass('route-built--active');
       $('.js-map-router-time').addClass('router-active');
-      const routerType = $('.offices__map-router');
+      const routerType = $('.js-map-router');
       const type = routerType.find('.router-active').attr('data-value');
       routerType.css({ display: 'flex' });
       setTimeout(() => {
@@ -518,7 +518,7 @@ export default class Offices {
 
   // построение маршрута
   createRoute(toPoint, mode) {
-    if ($('.offices__map-router')
+    if ($('.js-map-router')
       .css('display') != 'none') {
       this.clearRoute();
       this.multiRoute = new ymaps.multiRouter.MultiRoute({
@@ -1274,7 +1274,7 @@ export default class Offices {
         $('.collapse__item')
           .find('.collapse__control-distance-to-bcs')
           .hide();
-        $('.offices__map-router').css({ display: 'none' });
+        $('.js-map-router').css({ display: 'none' });
         this.routeButton.removeClass('hidden-block');
         $('.js-route-built').removeClass('route-built--active');
         this.clearRoute();

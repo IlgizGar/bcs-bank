@@ -1,0 +1,29 @@
+<div class="offices__map-router-for-desktop js-map-router-for-desktop">
+  <div class="offices__map-router-wrapper">
+    <div class="offices__map-router--type offices__map-router--walk">
+      <button class="offices__map-router-button js-map-router-button js-map-router--walk router-active" data-value="pedestrian">
+        {{ Icon.icon({ 'name': 'icon_walk' }) }}
+      </button>
+      <div class="offices__map-router-time js-map-router-time"></div>
+    </div>
+    <div class="offices__map-router--type offices__map-router--bicycle">
+      <button class="offices__map-router-button js-map-router-button js-map-router--bicycle" data-value="bicycle">
+        {{ Icon.icon({ 'name': 'bicycle' }) }}
+      </button>
+      <div class="offices__map-router-time js-map-router-time"></div>
+    </div>
+    <div class="offices__map-router--type offices__map-router--car">
+      <button class="offices__map-router-button js-map-router-button js-map-router--car" data-value="auto">
+        {{ Icon.icon({ 'name': 'car' }) }}
+      </button>
+      <div class="offices__map-router-time js-map-router-time"></div>
+    </div>
+    <div class="offices__map-router--type offices__map-router--bus">
+      <button class="offices__map-router-button js-map-router-button js-map-router--bus" data-value="masstransit">
+        {{ Icon.icon({ 'name': 'bus' }) }}
+      </button>
+      <div class="offices__map-router-time js-map-router-time"></div>
+    </div>
+  </div>
+  {{ Button.button({'title':'Отменить', 'mods': {'theme': 'default','view':'text'}, 'class': 'js-map-router-for-desktop-cancel' }) }}
+</div>
