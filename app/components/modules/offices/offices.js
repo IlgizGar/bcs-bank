@@ -182,6 +182,8 @@ export default class Offices {
     if ($('.collapse__item_state-open').length) {
       console.log($('.collapse__item_state-open'));
       $('.collapse__item_state-open').find($('.collapse__active-marker')).css({ display: 'block' });
+    } else {
+      $('.collapse__active-marker').css({ display: 'none' });
     }
   }
 
