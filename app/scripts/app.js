@@ -1,3 +1,5 @@
+require('./utils/polyfills');
+
 import $ from 'jquery';
 
 import sticky from 'stickyfilljs';
@@ -43,6 +45,7 @@ import Animator from '../components/modules/page-animations/animator';
 import FxCourses from '../components/modules/landing-fx/landing-fx';
 import OfficeStress from '../components/library/office-stress/office-stress';
 import Helper from '../components/modules/helper/helper';
+import Chat from "../components/modules/chat/chat";
 
 require('./utils/polyfills');
 
@@ -351,4 +354,7 @@ $(() => {
         window.location.href = newUrl[0] + '#section-request';
       });
   }
+  // global.helper = new Helper();
+
+  global.chat = new Chat();
 });
