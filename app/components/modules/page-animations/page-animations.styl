@@ -161,10 +161,13 @@ body
       opacity 1
     .mobile .mobile__content
       width calc(54.666667% - 40px)
-      @media (max-width: 991px)
-        width 100%
+      @media (max-width: 1215px)
+        //width 100%
+        width calc(46.666667% - 40px)
+      @media (max-width: 831px)
+        width: 100%;
     .mobile .mobile__figure
-      @media (min-width: 992px) and (max-width: 1279px)
+      @media (min-width: 832px) and (max-width: 1215px)
         width: calc(52.833333% - 40px);
       @media (min-width: 1280px)
         width: calc(53.5% - 40px);

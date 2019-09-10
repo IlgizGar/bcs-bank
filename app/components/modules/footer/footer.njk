@@ -237,16 +237,15 @@
 
 
 <div class="modal partners-modal js-partners-modal js-form" data-form="question-modal">
-  {{ Heading.heading({ 'title': 'Переход на БКС Премьер', "class": "js-partners-modal-title", 'mods': { 'type': 'default', 'margin': 'small' } }) }}
-  <p class="text text_theme-gray mb-40 js-partners-modal-text">
-    Инвестиции, доступные каждому.<br>
-    Для профессионалов и новичков.
+  {{ Heading.heading({ 'title': 'Переход на БКС Премьер', "class": "js-partners-modal-title pb-24", 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+
+  <p class="text text_theme-gray js-partners-modal-subscription-text">
+    {{ options.attr.subscriptionText }}
   </p>
-  {{ Button.button({ 'href': '#', 'title': 'Перейти', 'class': 'js-partners-modal-button', 'mods': { 'type': 'button', 'theme': 'default' } }) }}
-  <div class="partners-modal__line mt-64"></div>
-  <form  action="/" class="form partners-modal__form mt-64">
+
+  <form  action="/" class="form partners-modal__form mt-32">
     <input type="hidden" name="theme" class="js-partners-modal-theme" value="">
-    {{ Heading.heading({ 'title': 'Есть вопросы?', 'mods': {'type': 'default', 'margin': 'normal'}, 'class': 'header__contacts-heading' }) }}
+{#    {{ Heading.heading({ 'title': 'Есть вопросы?', 'mods': {'type': 'default', 'margin': 'normal'}, 'class': 'header__contacts-heading' }) }}#}
     {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': {'class': 'js-fio-masked', 'name': 'queston_p_name', 'required': 'required', 'type': 'text' } }) }}
     <div class="form__line-group">
       {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': { 'class': 'js-phone-masked', 'name': 'question_p_phone', 'required': 'required', 'tyep': 'tel' } }) }}
@@ -268,6 +267,14 @@
     </div>
   </form>
 
+  <div class="partners-modal__line mt-40 mb-40"></div>
+  <div class="partners-modal__footer">
+    <p class="text text_theme-gray js-partners-modal-text">
+      Инвестиции, доступные каждому.<br>
+      Для профессионалов и новичков.
+    </p>
+    {{ Button.button({ 'href': '#', 'title': 'Перейти', 'class': 'js-partners-modal-button', 'mods': { 'type': 'button', 'theme': 'default', 'view': 'outlined', 'size': 'low' } }) }}
+  </div>
 </div>
 
 

@@ -51,17 +51,39 @@ export default class Offices {
     this.mapContainer.setAttribute('tab-index', '1');
     this.mapBlock = null;
     this.metroList = [];
+    this.addressDot = null;
     this.init();
-    $('#select-city .js-context-item')
-      .on('click', () => {
-        const pos = $('#map-container')
-          .offset().top;
-        $('html, body')
-          .animate({
-            scrollTop: pos - 150,
-          }, 600);
+    $('#select-city .js-context-item').on('click', () => {
+      const pos = $('#map-container').offset().top;
+      $('html, body').animate({
+        scrollTop: pos - 150,
+      }, 600);
+    });
+    $('.js-map-router-button').on('click', (e) => {
+      $('.js-map-router-button').removeClass('router-active');
+      $('.js-map-router-time').text('');
+      $(e.currentTarget).addClass('router-active');
+      const type = $(e.currentTarget).attr('data-value');
+      let toPoint = $('.collapse__item_state-open').attr('data-coords');
+      toPoint = String(toPoint).split(',').map((el) => {
+        const coords = parseFloat(el.replace('[', '').replace(']', ''));
+        return coords;
       });
+      this.createRoute(toPoint, type);
+    });
+
+    // нажатие кнопки отмена маршрута
+    $('.js-map-router-cancel').on('click', () => {
+      $('.offices__map-router').css({ display: 'none' });
+      this.routeButton.removeClass('hidden-block');
+      $('.js-route-built').removeClass('route-built--active');
+      this.clearRoute();
+      this.getPoints();
+      this.addPoints();
+      this.goToPoints();
+    });
   }
+
 
   init() {
     this.onCityChange();
@@ -82,11 +104,13 @@ export default class Offices {
         } else {
           this.changeCity();
         }
-
         this.getPoints();
         this.getUserPos()
           .then(() => {
             this.distanceCalculation(this.userPos);
+            setTimeout(() => {
+              this.goToPoints();
+            }, 200);
           });
       });
     });
@@ -122,18 +146,23 @@ export default class Offices {
 
     this.routeButton.on('click', (e) => {
       const button = $(e.currentTarget);
-      const type = button.val();
-      let toPoint = button.closest('[data-coords]')
-        .attr('data-coords');
-      toPoint = String(toPoint)
-        .split(',')
-        .map((el) => {
-          const coords = parseFloat(el.replace('[', '')
-            .replace(']', ''));
-          return coords;
-        });
+      button.addClass('hidden-block');
+      button.closest('.collapse__item').find('.js-route-built').addClass('route-built--active');
+      $('.js-map-router-time').addClass('router-active');
+      const routerType = $('.offices__map-router');
+      const type = routerType.find('.router-active').attr('data-value');
+      routerType.css({ display: 'flex' });
+      setTimeout(() => {
+        $('html, body').animate({ scrollTop: $(routerType).offset().top }, 800);
+      }, 200);
+      let toPoint = button.closest('[data-coords]').attr('data-coords');
+      toPoint = String(toPoint).split(',').map((el) => {
+        const coords = parseFloat(el.replace('[', '').replace(']', ''));
+        return coords;
+      });
       this.createRoute(toPoint, type);
     });
+
     this.searchInit();
 
     // $('.office-stress__load').tooltipster({
@@ -143,6 +172,7 @@ export default class Offices {
       this.lookAtTheMap();
     }
   }
+
 
   handleSwitch() {
     this.switcher.unbind('click');
@@ -185,8 +215,6 @@ export default class Offices {
     $('.js-footer')
       .removeClass('state_hidden');
     // $('html, body').scrollTop(0).removeClass('state_unscroll');
-
-    this.goToPoints();
   }
 
   questionHandler() {
@@ -232,9 +260,20 @@ export default class Offices {
       // const city = cities.filter(item => item.id === e.target.value);
       // console.log('city', city);
 
+      let oldCity = this.city;
       this.city = e.target.value.toString();
       this.changeCity();
       Offices.reInitScroll(this.pane);
+
+      if (oldCity != e.target.value.toString() && oldCity != null)
+      {
+        this.getPoints();
+        this.map.setBounds(this.markCollection.getBounds(), {
+          checkZoomRange: true,
+          zoomMargin: 50,
+        });
+        this.clearRoute();
+      }
 
       // this.updateList();
       // const myGeocoder = ymaps.geocode(e.target.getAttribute('data-text'), {
@@ -377,13 +416,9 @@ export default class Offices {
           .data('coords');
         $(el)
           .removeClass('state_hidden');
-        if (coords) {
+        if (!!coords) {
           let foundDot = false;
-          this.points.forEach((currentPoint) => {
-            if (currentPoint.id === Offices.generatePointId(coords)) {
-              foundDot = true;
-            }
-          });
+
           if (!foundDot) {
             this.points.push({
               id: Offices.generatePointId(coords),
@@ -391,6 +426,12 @@ export default class Offices {
               element: el,
             });
           }
+
+          this.points.forEach((currentPoint) => {
+            if (currentPoint.id === Offices.generatePointId(coords)) {
+              foundDot = true;
+            }
+          });
         }
       });
   }
@@ -405,7 +446,6 @@ export default class Offices {
     this.getUserPos()
       .then(() => {
         this.map.geoObjects.add(this.markCollection);
-        this.goToPoints();
       });
   }
 
@@ -419,6 +459,7 @@ export default class Offices {
     if (el.id) {
       // событие клика по пину
       placemark.events.add('click', (e) => {
+        console.log('click');
         this.onPointEvent(e, el.coordinates);
         if (window.innerWidth > 831) {
           setTimeout(() => {
@@ -436,12 +477,19 @@ export default class Offices {
                   .offset().top,
               }, 800);
           }, 200);
+          // $('.offices__collapse')
+          //   .find($('.collapse__item_state-open'))
+          //   .css({
+          //     order: -1,
+          //   });
         }
       });
     } else {
       placemark.iconReadOnly = true;
     }
     if (isSingle) {
+      this.clearAddressDot();
+      this.addressDot = placemark;
       this.map.geoObjects.add(placemark);
     } else {
       this.markCollection.add(placemark);
@@ -470,56 +518,88 @@ export default class Offices {
 
   // построение маршрута
   createRoute(toPoint, mode) {
-    this.clearRoute();
-    this.multiRoute = new ymaps.multiRouter.MultiRoute({
-      referencePoints: [
-        this.userPos,
-        toPoint, // улица Льва Толстого.
-      ],
-      params: {
-        routingMode: (mode !== undefined) ? mode : 'auto',
-      },
-    }, {
-      boundsAutoApply: true,
-    });
-    this.map.geoObjects.add(this.multiRoute);
+    if ($('.offices__map-router')
+      .css('display') != 'none') {
+      this.clearRoute();
+      this.multiRoute = new ymaps.multiRouter.MultiRoute({
+        referencePoints: [
+          this.userPos,
+          toPoint, // улица Льва Толстого.
+        ],
+        params: {
+          routingMode: (mode !== undefined) ? mode : 'auto',
+        },
+      }, {
+        wayPointVisible: false,
+        boundsAutoApply: true,
+        zoomMargin: 15,
+      });
+      this.map.geoObjects.add(this.multiRoute);
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          if (this.multiRoute.getRoutes()
+            .get(0) != undefined) {
+            const routeTime = String(this.multiRoute.getRoutes()
+              .get(0)
+              .properties
+              .get('duration').text);
+            $('.offices__map-router--type')
+              .each((i, item) => {
+                if ($(item)
+                  .find('.offices__map-router-button')
+                  .hasClass('router-active')) {
+                  // костыль для того чтобы убрать лишние пробелы из яндекса
+                  let tempResult = routeTime;
+                  tempResult = (tempResult.replace(/\s/g, '')).replace('ч', 'ч ');
+                  if (tempResult.indexOf('ч') == -1) {
+                    tempResult = tempResult.replace('мин', ' мин');
+                  }
+                  $(item)
+                    .find('.js-map-router-time')
+                    .text(tempResult);
+                }
+              });
+            return resolve(routeTime);
+          }
+        }, 500);
+      });
+    }
   }
 
   getUserPos() {
     function addPlacemark(self, latitude, longitude) {
       const el = {};
       el.coordinates = [latitude, longitude];
+      // el.coordinates = [55.757754, 37.644993]; для теста москвы
       self.saveUserPos([latitude, longitude]);
       self.createPlacemark(el, self.iconUserPosition, true);
       // self.map.setZoom(self.map.getZoom() + 5, { checkZoomRange: true });
-      self.map.setCenter(el.coordinates, 12, {
-        duration: 1000,
-        checkZoomRange: true,
-      });
     }
 
     return new Promise((resolve) => {
-      if (window.navigator.geolocation) {
-        window.navigator.geolocation.getCurrentPosition((position) => {
-          addPlacemark(this, position.coords.latitude, position.coords.longitude);
-          resolve(true);
-        }, (error) => {
-          console.log(error);
-          resolve(false);
-        });
-      } else {
-        ymaps.geolocation.get()
-          .then(
-            (result) => {
-              addPlacemark(this, result.geoObjects.position[0], result.geoObjects.position[1]);
-              resolve(true);
-            },
-            (err) => {
-              console.log(`Ошибка: ${err}`);
-              resolve(false);
-            },
-          );
-      }
+      // console.log(window.navigator.geolocation);
+      // if (window.navigator.geolocation) {
+      //   window.navigator.geolocation.getCurrentPosition((position) => {
+      //     addPlacemark(this, position.coords.latitude, position.coords.longitude);
+      //     resolve(true);
+      //   }, (error) => {
+      //     console.log(error);
+      //     resolve(false);
+      //   });
+      // } else {
+      //   console.log('1');
+      ymaps.geolocation.get({ provider: 'auto' })
+        .then(
+          (result) => {
+            addPlacemark(this, result.geoObjects.position[0], result.geoObjects.position[1]);
+            resolve(true);
+          },
+          (err) => {
+            console.log(`Ошибка: ${err}`);
+            resolve(false);
+          },
+        );
+      // }
     });
   }
 
@@ -529,7 +609,7 @@ export default class Offices {
     if (this.customPos) this.distanceCalculation(this.customPos);
     else if (this.userPos) this.distanceCalculation(this.userPos);
     this.addPoints();
-    this.clearRoute();
+    //this.clearRoute();
   }
 
   onPointEvent(e, coordinates) {
@@ -537,10 +617,12 @@ export default class Offices {
       this.removeExploredDetail();
     }
     const currentCollapse = global.collapses[this.currentTabId];
-    const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${coordinates.join()}]"] .collapse__control`);
+    const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${coordinates.join()}]"] .collapse__control`).first();
     const parentCollapse = target.parent()
       .parent()
       .closest('.collapse__item');
+    console.log(target);
+    this.appBlock.find(`#${this.currentTabId} [data-coords="[${coordinates.join()}]"]`).css('order', '-1');
     if (parentCollapse.length) {
       parentCollapse.children('.collapse__control')
         .trigger('click');
@@ -564,7 +646,6 @@ export default class Offices {
   }
 
   initPointMobileDetail(target) {
-    this.goToPoints();
     const $collapse = $.extend(true, {}, target.parent()
       .clone(true, true));
     $collapse.addClass('collapse__item_state-open');
@@ -632,7 +713,13 @@ export default class Offices {
 
     $(document)
       .on('click', '#get-geo', () => {
-        this.getUserPos();
+        this.getUserPos().then(() => {
+          this.distanceCalculation(this.userPos);
+          this.map.setCenter(this.userPos, 12, {
+            duration: 1000,
+            checkZoomRange: true,
+          });
+        });
       });
 
     $('.collapse__item[data-coords] .collapse__control')
@@ -665,7 +752,6 @@ export default class Offices {
         this.getCurrentTab();
         this.getPoints();
         this.addPoints();
-        // this.goToPoints();
         this.getUserPos()
           .then(() => {
             this.distanceCalculation(this.userPos);
@@ -729,18 +815,12 @@ export default class Offices {
   }
 
   goToPoints() {
+    // console.log('go to points');
     try {
-      this.map.setBounds(this.markCollection.getBounds(), {
+      this.map.setBounds(this.map.geoObjects.getBounds(), {
         checkZoomRange: true,
-        zoom: 10,
-      })
-        .then(() => {
-          if (Offices.getMarksCount(this.markCollection) > 1) {
-            this.map.setZoom(12);
-          } else {
-            this.map.setZoom(15);
-          }
-        });
+        zoomMargin: 50,
+      });
     } catch (e) {
       console.warn('no points');
     }
@@ -864,7 +944,7 @@ export default class Offices {
         }
 
         this.addOrRemoveButtonClose(value);
-        this.removeValueInput(searchInput);
+        // this.removeValueInput(searchInput);
 
         // const searchInput = $(e.currentTarget);
         // const value = searchInput.val();
@@ -882,7 +962,7 @@ export default class Offices {
         //   }
         // }, 250);
       });
-
+    this.removeValueInput($('[name=map-search]'));
 
     $('[name=map-search]')
       .on('change', (e) => {
@@ -917,8 +997,8 @@ export default class Offices {
     $(document)
       .on('click', '.offices__search-option', (e) => {
         e.preventDefault();
-        $('.search-close').css({display: 'block'});
-        $('.icon-search').css({display: 'none'});
+        $('.search-close').css({ display: 'block' });
+        $('.icon-search').css({ display: 'none' });
 
         // добавление выбранного текста по клику в инпут
         const parent = $(e.target).closest('[data-template]'); // привязка к текущему элементу на который кликнули
@@ -953,7 +1033,16 @@ export default class Offices {
               .geometry
               .getCoordinates();
             this.customPos = startPoint;
+            const el = {};
+            el.coordinates = startPoint;
+            this.createPlacemark(el, this.iconUserPosition, true);
             this.distanceCalculation(startPoint);
+            this.userPos = startPoint;
+            this.goToPoints();
+            this.clearRoute();
+            this.createRoute(startPoint, 'pedestrian').then(() => {
+              $('[data-value="pedestrian"]').trigger('click');
+            });
           });
       });
   }
@@ -982,23 +1071,51 @@ export default class Offices {
     this.points = result;
     this.addPoints();
   }
-
+  setDistanceText(el, text) {
+    $(el)
+      .find('.collapse__control-distance')
+      .text(text);
+    $(el)
+      .find('.collapse__control-distance-metr')
+      .text(text);
+  }
   distanceCalculation(coord) {
     if ((typeof coord) !== undefined && coord != null) {
-      // console.log('DISTANCE_CALCULATION');
+
       const $tab = $(this.points[0].element).closest('.js-tab');
+
       if (this.city === 'all' || this.city === null) {
         $tab.append('<div class="collapse offices__collapse" data-city="0" data-id="offices-tab" style="display: none;"></div>')
       } else {
         $tab.find('[data-city="0"]').remove();
       }
+
       this.points.forEach((point) => {
         const distance = Math.ceil(ymaps.coordSystem.geo.getDistance(coord, point.coordinates));
+
         $(point.element).css({
           order: distance
         });
+        $(point.element).attr('data-order', distance);
+
         const temp = Math.ceil((distance / 1000) * 10) / 10;
-        if (distance > 1000) {
+
+        switch(distance) {
+          case distance === 0:
+            this.setDistanceText(point.element, '');
+            break;
+          case distance > 0 && distance < 1000:
+            this.setDistanceText(point.element, `~${distance}м`);
+            break;
+          case distance > 1000:
+            this.setDistanceText(point.element, `~${temp}км`);
+            break;
+          default:
+            this.setDistanceText(point.element, '');
+            break;
+        }
+
+        if (distance >= 1000) {
           $(point.element)
             .find('.collapse__control-distance')
             .text(`~${temp}км`);
@@ -1013,11 +1130,13 @@ export default class Offices {
             .find('.collapse__control-distance-metr')
             .text(`~${distance}м`);
         }
+
         if (this.city === null || this.city === 'all') {
           const item = $.extend(true, {}, $(point.element).clone());
           item.appendTo($tab.find('[data-city="0"]'));
         }
       });
+
       if (this.city === null || this.city === 'all') {
         $tab.find('.offices__collapse.state_active').css({
           display: 'none'
@@ -1155,10 +1274,26 @@ export default class Offices {
         $('.collapse__item')
           .find('.collapse__control-distance-to-bcs')
           .hide();
-        this.distanceCalculation(this.userPos);
+        $('.offices__map-router').css({ display: 'none' });
+        this.routeButton.removeClass('hidden-block');
+        $('.js-route-built').removeClass('route-built--active');
+        this.clearRoute();
+        this.clearAddressDot();
         this.getPoints();
         this.addPoints();
+        this.getUserPos();
+        setTimeout(() => {
+          this.distanceCalculation(this.userPos);
+          this.goToPoints();
+        }, 1000);
       });
+  }
+
+  clearAddressDot() {
+    if (this.addressDot) {
+      this.map.geoObjects.remove(this.addressDot);
+    }
+    this.addressDot = null;
   }
 
   addOrRemoveButtonClose(value) {

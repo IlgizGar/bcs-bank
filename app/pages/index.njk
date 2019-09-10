@@ -120,29 +120,7 @@
           </div>
         </div>
       </section>
-      <section class="mobile section section_theme-blue page__section page__section_theme-large js-scroll-animate">
-        <div class="page__container">
-          <div class="section__row">
-            <div class="mobile__content">
-              {{ Heading.heading({ 'title': 'Легкий мобильный банк', 'mods': { 'type': 'default', 'margin': 'small', 'theme': 'light' } }) }}
-              <div class="section__text section__text_theme-normal section__text_theme-light">
-                <p>Управление банковскими и инвестиционными продуктами</p>
-                <p>Оплата услуг без комиссии</p>
-                <p>Переводы по всему миру</p>
-                <p>Обмен валюты по курсу близкому к биржевому</p>
-                <p>Чат с оператором</p>
-              </div>
-              <div class="mobile__vendors">
-                {{ Button.button({ 'href': 'https://play.google.com/store/apps/details?id=cz.bsc.bcs', 'name': 'android', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
-                {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'white', 'size': 'large' } }) }}
-              </div>
-            </div>
-            <div class="mobile__figure">
-              <div class="illustration" data-illustration="data_il1"></div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {% include "../components/modules/easy-mobil-bank/easy-mobil-bank.njk" %}
       <section class="services section page__section page__section_theme-large">
         <div class="page__container">
           <div class="section__heading js-scroll-animate">
@@ -190,9 +168,9 @@
           <div class="section__row">
             <div class="company__carousel carousel carousel_type-mobile">
               <div class="js-carousel carousel__content" data-id="index-company" data-breakpoint="768">
-                {{ Card.card({ 'href': '#', 'icon': 'assets/images/svg/premier.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'circle', 'title': 'Ваш персональный финансовый советник в БКС онлайн', 'subtitle': 'Инвестиции доступные \n каждому' | striptags(true) | escape | nl2br, 'link': 'БКС Премьер', 'class': 'section__element company__card js-show-partners-modal-button' , "attr": {"title":"Переход на БКС Премьер", "text":"Инвестиции, доступные каждому. Для профессионалов и новичков.", "link":"#"} }) }}
-                {{ Card.card({ 'href': '#', 'icon': 'assets/images/svg/logo-dark.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'circle', 'title': 'Инвестируйте \n с крупнейшим \n брокером России' | striptags(true) | escape | nl2br, 'subtitle': 'Достижение ваших \n финансовых целей' | striptags(true) | escape | nl2br, 'link': 'БКС Брокер', 'class': 'section__element company__card js-show-partners-modal-button' , "attr": {"title":"Переход на БКС Брокер", "text":"Торгуйте на бирже с ведущим брокером №1 в рейтинге московских бирж.", "link":"#"} }) }}
-                {{ Card.card({ 'href': '#', 'icon': 'assets/images/svg/ultima.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'circle', 'title': 'Персональный банк самых амбициозных', 'subtitle': 'Уникальные привилегии \n и безграничные возможности' | striptags(true) | escape | nl2br, 'link': 'БКС Ультима', 'class': 'section__element company__card js-show-partners-modal-button' , "attr": {"title":"Переход на БКС Ультима", "text":"Ваш личный финансист составит финансовый план и подберет банковские продукты.", "link":"#"} }) }}
+                {{ Card.card({'href': '#', 'icon': 'assets/images/svg/premier.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'circle', 'title': 'Ваш персональный финансовый советник в БКС онлайн', 'subtitle': 'Инвестиции доступные \n каждому' | striptags(true) | escape | nl2br, 'link': 'БКС Премьер', 'class': 'section__element company__card js-show-partners-modal-button' , "attr": {"title":"Переход на БКС Премьер", "subscriptionText": "Получайте свежие предложения от ведущего премьера №1 в рейтинге московских бирж. Укажите ваши контакты для подписки на рассылку",  "text":"Инвестиции, доступные каждому. Для профессионалов и новичков.", "link":"http://bcs-bank.com"} }) }}
+                {{ Card.card({ 'vasya': 'Petya', 'href': '#', 'icon': 'assets/images/svg/logo-dark.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'circle', 'title': 'Инвестируйте \n с крупнейшим \n брокером России' | striptags(true) | escape | nl2br, 'subtitle': 'Достижение ваших \n финансовых целей' | striptags(true) | escape | nl2br, 'link': 'БКС Брокер', 'class': 'section__element company__card js-show-partners-modal-button' , "attr": {"title":"Переход на БКС Брокер", "subscriptionText": "Получайте свежие предложения от ведущего брокера №1 в рейтинге московских бирж. Укажите ваши контакты для подписки на рассылку", "text":"Торгуйте на бирже с ведущим брокером №1 в рейтинге московских бирж.", "link":"http://bcs-bank.com"} }) }}
+                {{ Card.card({ 'href': '#', 'icon': 'assets/images/svg/ultima.svg', 'view': 'lowercase', 'theme': 'black-unhovered', 'hoverType': 'circle', 'title': 'Персональный банк самых амбициозных', 'subtitle': 'Уникальные привилегии \n и безграничные возможности' | striptags(true) | escape | nl2br, 'link': 'БКС Ультима', 'class': 'section__element company__card js-show-partners-modal-button' , "attr": {"title":"Переход на БКС Ультима", "subscriptionText": "Получайте свежие предложения от ведущего ультима №1 в рейтинге московских бирж. Укажите ваши контакты для подписки на рассылку", "text":"Ваш личный финансист составит финансовый план и подберет банковские продукты.", "link":"http://bcs-bank.com"} }) }}
               </div>
               <div class="carousel-controls js-carousel-controls">
                 <div class="carousel-controls__pagination js-carousel-pagination" data-carousel="index-company">

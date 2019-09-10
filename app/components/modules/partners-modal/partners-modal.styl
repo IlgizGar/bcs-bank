@@ -1,8 +1,28 @@
+.blocker {
+  padding 24px
+}
+
 .partners-modal
+  &__form
+    margin-top: 32px
+    @media (max-width: 1279px)
+      margin-top 16px
+  .form__action
+    margin-top: 32px
+    @media (max-width: 1279px)
+      margin-top 24px
+    .form__submit-button
+      margin-top: 32px
+  .form__field-group
+    &:last-child
+      margin-bottom: 0
   &__line
     width calc(100% + 208px)
     border-bottom 1px solid $gainsboro
     margin 0 -104px
     @media (max-width: 1279px)
       width calc(100% + 32px)
-      margin  0 -16px
+      //margin  0 -16px
+      margin  32px -16px !important
+  @media (max-width: 1279px)
+    padding 48px 32px

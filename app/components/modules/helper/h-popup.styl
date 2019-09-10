@@ -1,0 +1,182 @@
+.h-popup
+  position fixed
+  left 0px
+  width 100%
+  height 100%
+  z-index 1000
+  top 0px !important
+  display none
+
+  &__layout
+    position absolute
+    z-index 1001
+    top 0px
+    left 0px
+    width 100%
+    height 100%
+    background-color rgba(0, 0, 0, 0.8)
+    display: none
+
+  &__modal
+    position absolute
+    top 0px
+    left 0px
+    width 100%
+    height 100%
+    display flex
+    flex-direction row
+    justify-content center
+    align-items center
+    z-index 1002
+
+  &__wrapper
+    box-sizing border-box
+    padding 64px 0px 48px 0px
+    background-color rgb(255, 255, 255)
+    border-radius 6px
+    max-width 1048px
+    position relative
+    display: none
+
+  &__close
+    position absolute
+    right 32px
+    top 32px
+    width 32px
+    height 32px
+    display flex
+    flex-direction row
+    justify-content center
+    align-items center
+
+  &__title
+    font-size 40px
+    font-family "Formular Bold", sans-serif
+    color rgb(51, 68, 88)
+
+  &__container
+    padding 0px 80px
+    margin 0px auto
+    width 100%
+    box-sizing border-box
+
+  &__body
+    display flex
+    flex-direction row
+    justify-content space-between
+    align-items center
+    margin-top 80px
+    padding-bottom 16px
+    border-bottom 1px solid #d8d8d8
+
+  &__about
+    width 100%
+
+  &__logo
+    max-width 147px
+    max-height 80px
+    display flex
+    flex-direction row
+    justify-content flex-start
+    align-items center
+
+  &__logo img
+    max-width 100%
+    max-height 100%
+    height auto
+
+  &__info
+    display flex
+    flex-direction row
+    justify-content flex-start
+    align-items center
+
+  &__description
+    margin-left 80px
+    font-size: 16px
+    color: #334458
+    font-family "Opensans Regular", sans-serif
+
+  &__description br
+    display none
+
+  &__about
+    display flex
+    flex-direction row
+    justify-content space-between
+    align-items center
+
+  &__percent
+    font-family "Formular Regular", sans-serif
+    font-size 40px
+    color #051932
+    text-align right
+    margin-left 80px
+
+  &__bottom
+    margin-top 56px
+
+  &__subtitle
+    font-family "Formular Bold", sans-serif
+    font-size 24px
+    color #334458
+
+  &__bottom-description
+    font-family "Opensans Regular", sans-serif
+    margin-top 32px
+    font-size 16px
+    line-height 28px
+    color #334458
+
+  &__button
+    margin-top 48px
+
+  &__button-item
+    padding 16px 72px
+    color #ffffff
+    background-color #5282f5
+    border-radius 4px
+    font-family "Opensans Bold", sans-serif
+    font-size 16px
+    line-height 24px
+    color #ffffff
+
+  @media (max-width: 831px)
+    &__wrapper
+      max-width 100%
+      max-height 100%
+      overflow-y scroll
+    &__container
+      padding 0 30px
+    &__title
+      font-size 1.5rem
+      ^[0]__container
+        text-align left
+    &__subtitle
+      text-align left
+    &__about
+      flex-direction column
+    &__body
+      margin-top 20px
+    &__info
+      order 2
+      flex-direction column
+    &__button
+      text-align center
+    &__button-item
+      padding 16px
+    &__description
+      margin-left 0
+      p
+        padding-left: 5px
+        padding-right: 5px
+    text-align center
+    &__percent
+      margin-left 0
+    &__bottom
+      margin-top 28px
+      &-description
+        margin-top 16px
+        p
+          font-size .9em
+          text-align justify

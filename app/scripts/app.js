@@ -1,6 +1,3 @@
-import 'core-js/fn/symbol/iterator';
-import 'core-js/es6/symbol';
-
 import $ from 'jquery';
 
 import sticky from 'stickyfilljs';
@@ -17,7 +14,7 @@ import {
   ExchangeService,
   ExchangeBanksService,
   ExchangeBanksServiceCorp,
-  ExchangeBanksServiceDefault
+  ExchangeBanksServiceDefault,
 } from '../components/modules/services/services';
 import MediaSlider from '../components/library/media-slider/media-slider';
 import TableSort from '../components/library/table/table';
@@ -44,11 +41,10 @@ import PartnerModalForm from '../components/modules/partners-modal/partners-moda
 import SectionTabs from '../components/modules/section-tabs/sectionTabs';
 import Animator from '../components/modules/page-animations/animator';
 import FxCourses from '../components/modules/landing-fx/landing-fx';
-import OfficeStress from "../components/library/office-stress/office-stress";
+import OfficeStress from '../components/library/office-stress/office-stress';
+import Helper from '../components/modules/helper/helper';
 
-require('intersection-observer');
-
-require('babel-polyfill');
+require('./utils/polyfills');
 
 $(() => {
   svg4everybody();
@@ -146,11 +142,6 @@ $(() => {
         window.location.href = $(e.currentTarget).attr('data-href');
       }
     });
-    $('.js-card').on('click', (e) => {
-      if ($(e.currentTarget).attr('data-href')) {
-        window.location.href = $(e.currentTarget).attr('data-href');
-      }
-    });
   }
 
   global.checkboxes = [];
@@ -234,7 +225,7 @@ $(() => {
     const el = $(e.currentTarget).data('scroll');
     setTimeout(() => {
       if ($(el).length) {
-        $('html, body').animate({scrollTop: $(el).offset().top}, 500);
+        $('html, body').animate({ scrollTop: $(el).offset().top }, 500);
       }
     }, 200);
     return false;
@@ -335,11 +326,11 @@ $(() => {
     if ($(urlHash).closest('.js-tab').length === 0) {
       if (screen.width < 960) {
         setTimeout(() => {
-          $('html, body').animate({scrollTop: $(urlHash).offset().top}, 500);
+          $('html, body').animate({ scrollTop: $(urlHash).offset().top }, 500);
         }, 3000);
       } else {
         setTimeout(() => {
-          $('html, body').animate({scrollTop: $(urlHash).offset().top - ($(urlHash).height() * 0.2)}, 500);
+          $('html, body').animate({ scrollTop: $(urlHash).offset().top - ($(urlHash).height() * 0.2) }, 500);
         }, 3000);
       }
     }
@@ -347,5 +338,17 @@ $(() => {
 
   if ($('.js-congestion-time').length) {
     global.oficessStress = new OfficeStress();
+  }
+
+  global.helper = new Helper();
+
+  if ($('.js-button-check-gosuslugi')) {
+    $('.js-button-check-gosuslugi')
+      .on('click', () => {
+        const url = new URL(window.location.href);
+        url.searchParams.set('no_esia', 'true');
+        const newUrl = url.href.split('#');
+        window.location.href = newUrl[0] + '#section-request';
+      });
   }
 });
