@@ -49,6 +49,7 @@
     "typing": "Оператор набирает сообщение...",
     "checkURL": "https://pushserver.mfms.ru/brooma/health",
     "datastore": "https://threads.bcs.ru/files",
+    "isContainerHidden": true,
     "history": {
       "url": "https://threads.bcs.ru/history/v6",
       "count": 20

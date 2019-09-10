@@ -3,13 +3,27 @@ import Helpers from '../../../scripts/helpers';
 
 export default class Chat {
   constructor() {
+    this.controlButton = document.querySelector('.js-chat-call');
+    this.chatOpened = false;
     this.init();
   }
 
   init() {
     this.initializeChat();
+    this.chatControl();
   }
 
+  chatControl() {
+    this.controlButton.addEventListener('click', (e) => {
+      if (!this.chatOpened) {
+        ThreadsWidget.showChat();
+        this.chatOpened = true;
+      } else {
+        ThreadsWidget.hideChat();
+        this.chatOpened = false;
+      }
+    })
+  }
 
   initializeChat() {
 
@@ -67,7 +81,6 @@ export default class Chat {
           var s = t.createElement('link');
           s.type = 'text/css', s.rel = 'stylesheet', s.href = e.style, t.getElementsByTagName('head')[0].appendChild(s);
         }
-        console.log(e);
       }
 
       function r() {
