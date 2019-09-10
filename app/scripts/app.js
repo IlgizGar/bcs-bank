@@ -343,10 +343,12 @@ $(() => {
   global.helper = new Helper();
 
   if ($('.js-button-check-gosuslugi')) {
-    $('.js-button-check-gosuslugi').on('click', () => {
-      const url = new URL(window.location.href);
-      url.searchParams.set('no_esia', 'true');
-      window.location.href = url.href + 'section-request';
-    });
+    $('.js-button-check-gosuslugi')
+      .on('click', () => {
+        const url = new URL(window.location.href);
+        url.searchParams.set('no_esia', 'true');
+        const newUrl = url.href.split('#');
+        window.location.href = newUrl[0] + '#section-request';
+      });
   }
 });
