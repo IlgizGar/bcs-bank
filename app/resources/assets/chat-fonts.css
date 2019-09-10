@@ -1,0 +1,84 @@
+@font-face {
+  font-family:'Opensans Bold';
+  src:url(/assets/fonts/OpenSans-Bold.eot);
+  src:url(/assets/fonts/OpenSans-Bold.eot?#iefix) format('embedded-opentype'),
+  url(/assets/fonts/OpenSans-Bold.woff2) format('woff2'),
+  url(/assets/fonts/OpenSans-Bold.woff) format('woff'),
+  url(/assets/fonts/OpenSans-Bold.ttf) format('truetype'),
+  url(/assets/fonts/OpenSans-Bold.svg#lgfont) format('svg');
+  font-weight:400;
+  font-style:normal;
+  font-stretch:normal
+}
+@font-face {
+  font-family:'Opensans Semibold';
+  src:url(/assets/fonts/OpenSans-Semibold.eot);
+  src:url(/assets/fonts/OpenSans-Semibold.eot?#iefix) format('embedded-opentype'),
+  url(/assets/fonts/OpenSans-Semibold.woff2) format('woff2'),
+  url(/assets/fonts/OpenSans-Semibold.woff) format('woff'),
+  url(/assets/fonts/OpenSans-Semibold.ttf) format('truetype'),
+  url(/assets/fonts/OpenSans-Semibold.svg#lgfont) format('svg');
+  font-weight:400;
+  font-style:normal;
+  font-stretch:normal
+}
+@font-face {
+  font-family:'Opensans Regular';
+  src:url(/assets/fonts/OpenSans-Regular.eot);
+  src:url(/assets/fonts/OpenSans-Regular.eot?#iefix) format('embedded-opentype'),
+  url(/assets/fonts/OpenSans-Regular.woff2) format('woff2'),
+  url(/assets/fonts/OpenSans-Regular.woff) format('woff'),
+  url(/assets/fonts/OpenSans-Regular.ttf) format('truetype'),
+  url(/assets/fonts/OpenSans-Regular.svg#lgfont) format('svg');
+  font-weight:400;
+  font-style:normal;
+  font-stretch:normal
+}
+@font-face {
+  font-family:'Opensans Italic';
+  src:url(/assets/fonts/OpenSans-Italic.eot);
+  src:url(/assets/fonts/OpenSans-Italic.eot?#iefix) format('embedded-opentype'),
+  url(/assets/fonts/OpenSans-Italic.woff2) format('woff2'),
+  url(/assets/fonts/OpenSans-Italic.woff) format('woff'),
+  url(/assets/fonts/OpenSans-Italic.ttf) format('truetype'),
+  url(/assets/fonts/OpenSans-Italic.svg#lgfont) format('svg');
+  font-weight:400;
+  font-style:normal;
+  font-stretch:normal
+}
+@font-face {
+  font-family:'Formular Bold';
+  src:url(/assets/fonts/Formular-Bold.eot);
+  src:url(/assets/fonts/Formular-Bold.eot?#iefix) format('embedded-opentype'),
+  url(/assets/fonts/Formular-Bold.woff2) format('woff2'),
+  url(/assets/fonts/Formular-Bold.woff) format('woff'),
+  url(/assets/fonts/Formular-Bold.ttf) format('truetype'),
+  url(/assets/fonts/Formular-Bold.svg#lgfont) format('svg');
+  font-weight:400;
+  font-style:normal;
+  font-stretch:normal
+}
+@font-face {
+  font-family:'Formular Medium';
+  src:url(/assets/fonts/Formular-Medium.eot);
+  src:url(/assets/fonts/Formular-Medium.eot?#iefix) format('embedded-opentype'),
+  url(/assets/fonts/Formular-Medium.woff2) format('woff2'),
+  url(/assets/fonts/Formular-Medium.woff) format('woff'),
+  url(/assets/fonts/Formular-Medium.ttf) format('truetype'),
+  url(/assets/fonts/Formular-Medium.svg#lgfont) format('svg');
+  font-weight:400;
+  font-style:normal;
+  font-stretch:normal
+}
+@font-face {
+  font-family:Formular;
+  src:url(/assets/fonts/Formular.eot);
+  src:url(/assets/fonts/Formular.eot?#iefix) format('embedded-opentype'),
+  url(/assets/fonts/Formular.woff2) format('woff2'),
+  url(/assets/fonts/Formular.woff) format('woff'),
+  url(/assets/fonts/Formular.ttf) format('truetype'),
+  url(/assets/fonts/Formular.svg#lgfont) format('svg');
+  font-weight:400;
+  font-style:normal;
+  font-stretch:normal
+}
