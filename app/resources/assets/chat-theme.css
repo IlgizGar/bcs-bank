@@ -13,6 +13,7 @@
 }
 .threadswidget_chat__input {
   padding-top: 0;
+  max-width: 100% !important
 }
 .threadswidget_chat__body___wrapper > .clipper {
   padding: 0;
@@ -26,4 +27,14 @@
 }
 .threadswidget_message__avatar {
   display: none;
+}
+
+.threadswidget_chat__input .submit-button {
+  right: 20px;
+}
+.threadswidget_chat__input .icon-paper-clip {
+  right: 14px;
+}
+.threadswidget_chat__input .submit-button + span .icon-paper-clip {
+  right: 50px;
 }
