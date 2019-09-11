@@ -30,7 +30,7 @@
         <div class="offices__search-variations"></div>
         {{SearchVariations.searchVariations ({'class': 'offices__switch-view js-search-variations' }) }}
       </div>
-      <div class="offices__map-router">
+      <div class="offices__map-router js-map-router">
         <div class="offices__map-router-wrapper">
           <div class="offices__map-router--type offices__map-router--walk">
             <button class="offices__map-router-button js-map-router-button js-map-router--walk router-active" data-value="pedestrian">
@@ -335,6 +335,7 @@
 {#            </div>#}
 
             <div class="collapse__item" data-coords="[55.78712,37.634456]">
+              <div class="collapse__active-marker"></div>
               {{ addressUnderground.addressUnderground({ 'type': 'blue', 'title':'Россия, г. Москва, Проспект Мира, д. 69, строение 1, подъезд 3
 ', 'metro': 'Тульская'}) }}
               <div class="collapse__content">
@@ -399,7 +400,7 @@
 {#                                          </li>#}
                 </ul>
                 {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
-
+                {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 {#                {{ Dropdown.dropdown({#}
 {#                        'mods': {'theme': 'bordered'},#}
 {#                        'label': 'Построить Маршрут',#}
@@ -418,6 +419,7 @@
               <div class="offices__route-built js-route-built">Маршрут построен</div>
             </div>
             <div class="collapse__item" data-coords="[55.738333,37.661635]">
+              <div class="collapse__active-marker"></div>
               {{ addressUnderground.addressUnderground({ 'type': 'blue', 'title':'
         Россия, г. Москва,  ул. Марксистская,  д. 3, строение 1', 'metro': 'Тульская'}) }}
               <div class="collapse__content">
@@ -482,6 +484,7 @@
 {#                                          </li>#}
                 </ul>
                 {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+                {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
 {#                {{ Dropdown.dropdown({#}
 {#                        'mods': {'theme': 'bordered'},#}
@@ -501,6 +504,7 @@
               <div class="offices__route-built js-route-built">Маршрут построен</div>
             </div>
             <div class="collapse__item" data-coords="[55.786473,37.634507]">
+              <div class="collapse__active-marker"></div>
               {{ addressUnderground.addressUnderground({ 'type': 'blue', 'title':'Россия, г. Москва, Проспект Мира, д. 69, строение 1, подъезд 3', 'metro': 'Тульская'}) }}
               <div class="collapse__content">
                 <ul class="offices__info">
@@ -564,6 +568,7 @@
 {#                                          </li>#}
                 </ul>
                 {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+                {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
 {#                {{ Dropdown.dropdown({#}
 {#                        'mods': {'theme': 'bordered'},#}
@@ -583,6 +588,7 @@
               <div class="offices__route-built js-route-built">Маршрут построен</div>
             </div>
             <div class="collapse__item" data-coords="[55.78655,37.634507]">
+              <div class="collapse__active-marker"></div>
               {{ addressUnderground.addressUnderground({ 'type': 'blue', 'title':'Россия, г. Москва, Проспект Мира, д. 69, строение 1, подъезд 2', 'metro': 'Тульская'}) }}
               <div class="collapse__content">
                 <ul class="offices__info">
@@ -646,6 +652,7 @@
 {#                                          </li>#}
                 </ul>
                 {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+                {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
 {#                {{ Dropdown.dropdown({#}
 {#                        'mods': {'theme': 'bordered'},#}
@@ -666,7 +673,8 @@
             </div>
 
           <div class="collapse__item" data-coords="[55.73,37.56]">
-              {{ addressUnderground.addressUnderground({ 'type': 'blue', 'title':'ул. Валовая, 2-4/44', 'metro': 'Тульская'}) }}
+            <div class="collapse__active-marker"></div>
+            {{ addressUnderground.addressUnderground({ 'type': 'blue', 'title':'ул. Валовая, 2-4/44', 'metro': 'Тульская'}) }}
               <div class="collapse__content">
                 <ul class="offices__info">
                   <li class="offices__info-item">
@@ -729,6 +737,7 @@
 {#                                          </li>#}
                 </ul>
                 {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+                {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
 {#                {{ Dropdown.dropdown({#}
 {#                        'mods': {'theme': 'bordered'},#}
@@ -749,6 +758,7 @@
             </div>
 
             <div class="collapse__item" data-coords="[55.78,37.56]">
+              <div class="collapse__active-marker"></div>
               {{ addressUnderground.addressUnderground({ 'type': 'green', 'title':'ул. Мирная, 2-4/44', 'metro': 'Проспект Мира' }) }}
               <div class="collapse__content">
                 <ul class="offices__info">
@@ -817,6 +827,7 @@
                   {#                        </li>#}
                 </ul>
                 {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+                {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
                 {#                    {{ Dropdown.dropdown({#}
 {#                        'mods': {'theme': 'bordered'},#}
@@ -836,6 +847,7 @@
             </div>
 
             <div class="collapse__item" data-coords="[55.72,37.54]">
+              <div class="collapse__active-marker"></div>
               {{ addressUnderground.addressUnderground({ 'type': 'brown', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
                 <div class="collapse__content">
                     <ul class="offices__info">
@@ -894,6 +906,7 @@
                       </li>
                     </ul>
                   {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+                  {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
                   {#                    {{ Dropdown.dropdown({#}
 {#                        'mods': {'theme': 'bordered'},#}
@@ -918,6 +931,7 @@
         <div class="collapse offices__collapse" data-city="35" data-id="offices-tab">
 
           <div class="collapse__item" data-coords="[45.037538,38.967756]">
+            <div class="collapse__active-marker"></div>
             {{ addressUnderground.addressUnderground({ 'type': 'red', 'title':'ул. Кирова , 133', 'metro': 'Великая' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
@@ -976,6 +990,7 @@
                 </li>
               </ul>
               {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+              {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
 {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
@@ -996,6 +1011,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[45.060537,39.022001]">
+            <div class="collapse__active-marker"></div>
             {{ addressUnderground.addressUnderground({ 'type': 'fenny', 'title':'ул. 1 мая, 210', 'metro': 'Тульская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
@@ -1054,6 +1070,7 @@
                 </li>
               </ul>
               {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+              {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
               {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
@@ -1073,6 +1090,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[45.061511,38.962091]">
+            <div class="collapse__active-marker"></div>
             {{ addressUnderground.addressUnderground({ 'type': 'blue', 'title':'ул. Дальняя, 8', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
@@ -1131,6 +1149,7 @@
                 </li>
               </ul>
               {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+              {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
               {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
@@ -1150,6 +1169,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[45.030114,38.996424]">
+            <div class="collapse__active-marker"></div>
             {{ addressUnderground.addressUnderground({ 'type': 'orange', 'title':'ул. Казачья, 72', 'metro': 'Гогена' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
@@ -1208,6 +1228,7 @@
                 </li>
               </ul>
               {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+              {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
 {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
@@ -1227,6 +1248,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[45.054697,39.010843]">
+            <div class="collapse__active-marker"></div>
             {{ addressUnderground.addressUnderground({ 'type': 'yellow', 'title':'ул. Чернышевского, 99', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
@@ -1285,6 +1307,7 @@
                 </li>
               </ul>
               {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+              {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
               {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
@@ -1304,6 +1327,8 @@
           </div>
 
           <div class="collapse__item" data-coords="[45.021418, 38.964702]">
+            <div class="collapse__active-marker"></div>
+            <div class="collapse__active-marker"></div>
             {{ addressUnderground.addressUnderground({ 'type': 'blue', 'title':'ул. Мира, 30', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
@@ -1362,6 +1387,7 @@
                 </li>
               </ul>
               {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+              {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
               {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
@@ -1385,6 +1411,7 @@
         <div class="collapse offices__collapse" data-city="213" data-id="atm-tab">
 
           <div class="collapse__item" data-coords="[55.76,37.587]">
+            <div class="collapse__active-marker"></div>
             {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'time', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
@@ -1405,6 +1432,7 @@
                 </li>
               </ul>
               {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+              {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
               {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
@@ -1424,6 +1452,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[55.747,37.57]">
+            <div class="collapse__active-marker"></div>
             {{ addressUnderground.addressUnderground({ 'type': 'red', 'atm':'always', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
@@ -1444,6 +1473,7 @@
                 </li>
               </ul>
               {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+              {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
               {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
@@ -1463,6 +1493,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[55.77,37.48]">
+            <div class="collapse__active-marker"></div>
             {{ addressUnderground.addressUnderground({ 'type': 'pink', 'atm':'time', 'title':'ул. Мира, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
@@ -1483,6 +1514,7 @@
                 </li>
               </ul>
               {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+              {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
               {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
@@ -1502,6 +1534,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[55.76,37.57]">
+            <div class="collapse__active-marker"></div>
             {{ addressUnderground.addressUnderground({ 'type': 'red', 'atm':'time', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
@@ -1522,6 +1555,7 @@
                 </li>
               </ul>
               {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+              {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
               {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
@@ -1541,6 +1575,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[55.77,37.55]">
+            <div class="collapse__active-marker"></div>
             {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'time', 'title':'ул. Валяева, 2-4/44', 'metro': 'Валяева' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
@@ -1561,6 +1596,7 @@
                 </li>
               </ul>
               {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+              {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
               {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
@@ -1580,6 +1616,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[55.746,37.578]">
+            <div class="collapse__active-marker"></div>
             {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'always', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
@@ -1600,6 +1637,7 @@
                 </li>
               </ul>
               {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+              {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
               {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
@@ -1621,6 +1659,7 @@
         <div class="collapse offices__collapse" data-city="35" data-id="atm-tab">
 
           <div class="collapse__item" data-coords="[45.019887,38.967241]">
+            <div class="collapse__active-marker"></div>
             {{ addressUnderground.addressUnderground({ 'type': 'grey', 'atm':'always', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
@@ -1641,6 +1680,7 @@
                 </li>
               </ul>
               {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+              {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
               {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
@@ -1660,6 +1700,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[45.035469,38.968443]">
+            <div class="collapse__active-marker"></div>
             {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'always', 'title':'ул. Шуваши, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
@@ -1680,6 +1721,7 @@
                 </li>
               </ul>
               {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+              {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
               {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
@@ -1699,6 +1741,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[45.055792,38.983377]">
+            <div class="collapse__active-marker"></div>
             {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'always', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
@@ -1719,6 +1762,7 @@
                 </li>
               </ul>
               {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+              {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
               {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
@@ -1738,6 +1782,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[45.047761,38.939947]">
+            <div class="collapse__active-marker"></div>
             {{ addressUnderground.addressUnderground({ 'type': 'blue', 'atm':'always', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
@@ -1758,6 +1803,7 @@
                 </li>
               </ul>
               {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+              {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
               {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
@@ -1777,6 +1823,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[45.061024,38.973764]">
+            <div class="collapse__active-marker"></div>
             {{ addressUnderground.addressUnderground({ 'type': 'pink', 'atm':'always', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
@@ -1797,6 +1844,7 @@
                 </li>
               </ul>
               {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+              {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
               {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
@@ -1816,6 +1864,7 @@
           </div>
 
           <div class="collapse__item" data-coords="[45.057009,38.939947]">
+            <div class="collapse__active-marker"></div>
             {{ addressUnderground.addressUnderground({ 'type': 'green', 'atm':'always', 'title':'ул. Орджоникидзе, 2-4/44', 'metro': 'Таганская' }) }}
             <div class="collapse__content">
               <ul class="offices__info">
@@ -1836,6 +1885,7 @@
                 </li>
               </ul>
               {{ Button.button({ 'title': 'Построить маршрут', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low', 'bild': 'route'}, 'class': 'js-button-bild-route' }) }}
+              {% include "../../library/map-router-for-desktop/map-router-for-desktop.njk" %}
 
               {#                {{ Dropdown.dropdown({#}
 {#                    'mods': {'theme': 'bordered'},#}
