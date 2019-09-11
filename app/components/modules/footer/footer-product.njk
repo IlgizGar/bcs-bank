@@ -1,0 +1,299 @@
+{% import "../../../components/library/button/button.njk" as Button %}
+{% import "../../../components/inline-svg/inline-svg.njk" as Svg %}
+{% import "../../../components/library/socials/socials.njk" as Socials %}
+{% import "../../../components/library/heading/heading.njk" as Heading %}
+{% import "../../../components/library/input/input.njk" as Input %}
+{% import "../../../components/library/dropdown/dropdown.njk" as Dropdown %}
+{% import "../../../components/library/contact/contact.njk" as Contact %}
+{% import "../../../components/icon/icon.njk" as Icon %}
+
+
+{% set menu = [
+    {'title': 'Услуги',
+        'items': [
+        {'name': 'Кредиты', 'href': '#'},
+        {'name': 'Дебетовые карты', 'href': '#debet'},
+        {'name': 'Кредитные карты', 'href': '#credit'},
+        {'name': 'Пакеты услуг', 'href': 'http://juravlev.rusrobots.ru/bks/vacancies.html'},
+        {'name': 'Вклады', 'href': '#'},
+        {'name': 'БКС-Бонус', 'href': '#'},
+        {'name': 'Интернет-банк', 'href': '#'}]
+    },
+    {'title': 'О банке',
+        'items': [
+        {'name': 'Новости', 'href': 'http://juravlev.rusrobots.ru/bks/news.html'},
+        {'name': 'Общая информация', 'href': '#'},
+        {'name': 'Руководство', 'href': '#'},
+        {'name': 'Вакансии', 'href': 'http://juravlev.rusrobots.ru/bks/vacancies.html'},
+        {'name': 'Офисы и банкоматы', 'href': '#'},
+        {'name': 'Вся группа', 'href': '#'}]
+    },
+    {'title': 'Реквизиты',
+        'items': [
+        {'name': 'Cтрахованиe вкладов', 'href': '#'},
+        {'name': 'Лицензии', 'href': '#'},
+        {'name': 'БКС Онлайн', 'href': '#'},
+        {'name': 'Депозитарий', 'href': '#'}
+    ]},
+    {'title': 'Инсайдерам',
+        'items': [
+        {'name': 'Раскрытие информации', 'href': 'http://juravlev.rusrobots.ru/bks/disclosure.html'},
+        {'name': 'Документы', 'href': 'http://juravlev.rusrobots.ru/bks/documents.html'},
+        {'name': 'Финансовым институтам', 'href': '#'}
+    ]}
+] %}
+
+<footer class="footer js-footer js-scroll-animate">
+  <div class="page__container">
+    <div class="footer__wrap">
+      <div class="footer__menu">
+          {% for item in menu %}
+            <div class="footer__menu-group js-footer-menu">
+              <div class="footer__menu-title">
+                  {{ item.title }}
+                  {{ Icon.icon({ 'name': 'dropdown' }) }}
+              </div>
+              <div class="footer__menu-content js-footer-menu-content">
+                  {% for el in item.items %}
+                      {{ Button.button({ 'href': el.href, 'title': el.name, 'mods': {'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'footer__menu-link' }) }}
+                  {% endfor %}
+              </div>
+            </div>
+          {% endfor %}
+      </div>
+      <div class="footer__info">
+        <div class="footer__contacts">
+          <a class="footer__contacts-phone" href="tel:+78005001618">8 800 500 1618</a>
+          <p class="footer__contacts-inform">Стать клиентом БКС Банка</p>
+          <a class="footer__contacts-phone" href="tel:+78005007065">8 800 500 7065</a>
+          <p class="footer__contacts-inform">Клиентам БКС Банка</p>
+            {{ Button.button({ 'title': 'Задать вопрос', 'href': '#question-modal-form', 'mods': {'theme': 'default'}, 'class': 'footer__contacts-button js-open-modal'  }) }}
+        </div>
+        <div class="footer__socials footer__socials_state-desktop">
+            {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'title': 'Присоединяйтесь' }) }}
+            {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'title': 'Доступно для', 'device': 'true' }) }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer__about">
+    <div class="page__container">
+      <div class="footer__about-wrap">
+        <div class="footer__credentials">
+          <div>
+              {{ Button.button({ 'href': '#', 'title': 'Перечень подразделений АО «БКС Банк»', 'mods': {'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'footer__credentials-link' }) }}
+          </div>
+            {{ Button.button({ 'href': '#', 'title': 'Информация о максимальных процентных ставках по вкладам физических лиц', 'mods': {'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'footer__credentials-link' }) }}
+            {{ Button.button({ 'href': '#', 'title': 'Регистрация в Единой Биометрической Системе (ЕБС) в АО «БКС Банк»', 'mods': {'type': 'link', 'theme': 'gray', 'view': 'text'}, 'class': 'footer__credentials-link' }) }}
+          <div class="pp_copyr">
+            <p>© 1989–2019, АО «БКС Банк», официальный сайт,</p>
+            <a class='button  button_theme-gray button_view-text button_type-link footer__credentials-link js-button' href="/f/general-license.pdf">
+              <span class='button__wrap'>
+               <span class='button__title js-button-title'>Универсальная Лицензия Банка России №101 от 29.11.2018.</span>
+              </span>
+            </a>
+          </div>
+        </div>
+        <div class="footer__socials footer__socials_state-mobile">
+            {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'} }) }}
+            {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'device': 'true' }) }}
+        </div>
+        <div class="footer__developer">
+          <p>Сделано в </p>
+            {{ Icon.icon({ 'name': 'aic' }) }}
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{# TODO: Вынести в шаблон #}
+<div id="question-modal-form" class="modal js-form" data-form="question-modal">
+  <form id="question-form" action="/" class="form question-form">
+      {{ Heading.heading({ 'title': 'У Вас есть вопрос?', 'mods': {'type': 'default', 'margin': 'normal'}, 'class': 'header__contacts-heading' }) }}
+      {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': {'class': 'js-fio-masked', 'name': 'queston_name', 'required': 'required', 'type': 'text' } }) }}
+    <div class="form__line-group">
+        {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': { 'class': 'js-phone-masked', 'name': 'question_phone', 'required': 'required', 'type': 'tel' } }) }}
+        {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': { 'class': 'js-mail-masked', 'name': 'question_mail', 'required': 'required', 'type': 'email' } }) }}
+    </div>
+      {{ Dropdown.dropdown({ 'mods': {'theme': 'bordered'}, 'label': 'Тема', 'name': 'question', 'items': [{'title': 'Предложения по сайту', 'value': '0'},{'title': 'Интернет-банк', 'value': '1'}], 'class': 'form__field-group form__field-group_dropdown', 'state': 'required', 'attr': {'id': 'question-form-list'}, 'field': 'js-question-topic' }) }}
+      {{ Input.input({ 'label': 'Текст вопроса', 'tag': 'textarea', 'rows': '6', 'class': 'input_textarea form__field-group', 'field': { 'required': 'required', 'name': 'question_text', 'class': 'js-question-textarea' } }) }}
+    <div class="form__action">
+      <div class="form__agreements">
+          {# TODO: вынести в шаблон #}
+        <label class="checkbox checkbox_theme-dark js-checkbox js-personal-checkbox">
+          <input type="checkbox" class="checkbox__control" name="question__personal" checked>
+          <span class="checkbox__state"></span>
+          <span class="checkbox__label">
+            Даю согласие на обработку <br>
+              {{ Button.button({ 'href': '#', 'title': 'персональных данных', 'class': 'js-confidence-policy-link', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
+          </span>
+        </label>
+      </div>
+        {{ Button.button({ 'title': 'Отправить', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
+    </div>
+  </form>
+  <div class="question-form-success js-form-success state_hidden">
+      {{ Heading.heading({ 'title': 'Сообщение отправлено' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'none', 'theme': 'default', 'class': 'form__title'}) }}
+    <p class="text mt-16">Вам ответят в ближайшее время</p>
+      {{ Contact.contact({ 'title': 'По срочным вопросам можно позвонить',
+          'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500 70 65', 'href': '+78005007065' }, { 'name': 'Если вы звоните из-за рубежа', 'value': '+7 (495) 967 11 11', 'href': '+74959671111' }],
+          'class': 'js-contact mt-40' }) }}
+      {{ Heading.heading({ 'title': 'Присоединяйтесь к нам в социальных сетях', 'class': 'mt-56' }) }}
+      {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'class': 'mt-32'}) }}
+    <a href="#close-modal" rel="modal:close" class="close-modal modal__close"></a>
+  </div>
+  <div class="question-form-success js-form-error state_hidden">
+      {{ Heading.heading({ 'title': 'Сообщение не отправлено' | striptags(true) | escape | nl2br, 'type': 'default', 'margin': 'none', 'theme': 'default', 'class': 'form__title'}) }}
+    <p class="text mt-16">К сожалению, что-то пошло не так. Попробуйте повторить запрос позже.</p>
+      {{ Contact.contact({ 'title': 'По срочным вопросам можно позвонить',
+          'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500 70 65', 'href': '+78005007065' }, { 'name': 'Если вы звоните из-за рубежа', 'value': '+7 (495) 967 11 11', 'href': '+74959671111' }],
+          'class': 'js-contact mt-40' }) }}
+      {{ Heading.heading({ 'title': 'Присоединяйтесь к нам в социальных сетях', 'class': 'mt-56' }) }}
+      {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'class': 'mt-32'}) }}
+    <a href="#close-modal" rel="modal:close" class="close-modal modal__close"></a>
+  </div>
+</div>
+
+<div class="modal products-submit-success js-products-success">
+    {{ Heading.heading({ 'title': 'Заявка отправлена', 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+  <p class="text mt-16">Вам ответят в ближайшее время</p>
+    {{ Contact.contact({ 'title': 'По срочным вопросам можно позвонить',
+        'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500 70 65', 'href': '+78005007065' }, { 'name': 'Если вы звоните из-за рубежа', 'value': '+7 (495) 967 11 11', 'href': '+74959671111' }],
+        'class': 'js-contact mt-40' }) }}
+    {{ Heading.heading({ 'title': 'Присоединяйтесь к нам в социальных сетях', 'class': 'mt-56' }) }}
+    {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'class': 'mt-32'}) }}
+  <a href="?success=true#close-modal" rel="modal:close" class="close-modal modal__close"></a>
+</div>
+<div class="modal products-submit-error js-products-error">
+    {{ Heading.heading({ 'title': 'Сообщение не отправлено', 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+  <p class="text mt-16">К сожалению, что-то пошло не так. Попробуйте повторить запрос позже.</p>
+    {{ Contact.contact({ 'title': 'По срочным вопросам можно позвонить',
+        'items': [{ 'name': 'Бесплатный звонок по России', 'value': '8 (800) 500 70 65', 'href': '+78005007065' }, { 'name': 'Если вы звоните из-за рубежа', 'value': '+7 (495) 967 11 11', 'href': '+74959671111' }],
+        'class': 'js-contact mt-40' }) }}
+    {{ Heading.heading({ 'title': 'Присоединяйтесь к нам в социальных сетях', 'class': 'mt-56' }) }}
+    {{ Socials.socials({ 'mods': {'type': 'icon', 'theme': 'gray', 'view': 'outlined', 'size': 'low'}, 'class': 'mt-32'}) }}
+  <a href="?success=false#close-modal" rel="modal:close" class="close-modal modal__close"></a>
+</div>
+
+<div class="modal confidence-policy js-confidence-policy">
+    {{ Heading.heading({ 'title': 'Согласие на обработку персональных данных субъекта персональных данных', 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+  <p class="text mt-16">
+    Настоящим Я, действуя своей волей и в своем интересе, при размещении (вводе) своих персональных данных на Интернет-сайте
+    Акционерного общества «БКС — Инвестиционный Банк», предоставляю каждому в отдельности и совместно Акционерному обществу
+    «БКС — Инвестиционный Банк» (АО «БКС Банк») (ОГРН 1055400000369, Российская Федерация, местонахождение: 630099,
+    Новосибирск, Советская, 37), Акционерному обществу Управляющая Компания «Брокеркредитсервис» (АО УК «БКС»)
+    (ОГРН 1025403200020, Российская Федерация, местонахождение: 630099, Новосибирск, Советская, 37), Обществу с
+    ограниченной ответственностью «Компания Брокеркредитсервис» (ООО «Компания БКС») (ОГРН 1025402459334, местонахождение:
+    Российская Федерация, 630099, Новосибирск, ул. Советская 37), Закрытому акционерному обществу «Первый специализированный
+    депозитарий» (ЗАО «ПРСД») (ОГРН 1027700373678, Российская Федерация, местонахождение: 125167, г.Москва, ул 8 Марта 4-я, дом 6А),
+    «БРОКЕРКРЕДИТСЕРВИС (КИПР) ЛИМИТЕД» (регистрационный номер НЕ 154856, местонахождение: Меса Геитония, пр-т
+    Спиру Киприану ул. 1-го Октября, д.1, «ВАШИОТИС КАЛАНДЕ ОФИСЕС», 1-ый этаж, Лимасол, Кипр), Обществу с ограниченной
+    ответственностью «Консультационный центр БКС» (ООО «Консультационный центр БКС») (ОГРН 5087746668610, Российская Федерация,
+    129110, Москва, проспект Мира, 69, стр. 1) (далее каждый в отдельности — Оператор, совместно — Операторы),
+    право (согласие) на обработку моих персональных данных (том числе, но не ограничиваясь: фамилию, имя, отчество,
+    номер телефона, адрес электронной почты, адрес места регистрации, почтовый адрес, реквизиты документа,
+    удостоверяющего личность, и данные, содержащиеся в нем), указанных при размещении (вводе) моих персональных
+    данных и документов (копий документов, в том числе в электронном виде), содержащих мои персональные данные,
+    на сайте Оператора и/или в настоящей Анкете (Заявке), и подтверждаю, что даю такое согласие.
+  </p>
+  <p class="text mt-16">
+    Настоящим подтверждаю, что ознакомлен с целями обработки моих персональных данных: обработка персональных данных
+    будет осуществляться Операторами, как в отдельности, так и совместно, в моих интересах, в том числе в целях
+    предложения мне услуг, новых услуг, предоставляемых Операторами, как в отдельности, так и совместно, в целях
+    направления мне рассылок (включая смс-уведомления), в том числе имеющих рекламный и маркетинговый характер,
+    и проведения опросов, анкетирования, рекламных и маркетинговых исследований в отношении услуг, предоставляемых
+    Операторами, как в отдельности, так и совместно, а также в целях оказания услуг по проведению семинаров
+    (курсов, лекций, обучению), путем осуществления прямых контактов со мною с помощью средств связи
+    (в том числе посредством использования телефонной, факсимильной, подвижной радиотелефонной связи,
+    а также посредством использования информационно-телекоммуникационной сети Интернет,
+    в том числе путем направления по электронной почте), указанных при размещении (вводе) моих персональных данных
+    и документов (копий документов, в том числе в электронном виде), содержащих мои персональные данные,
+    на сайте Оператора и/или в настоящей Анкете (Заявке).
+  </p>
+  <p class="text mt-16">
+    Настоящее право (согласие) предоставляется на осуществление любых действий в отношении моих персональных данных, которые необходимы и желаемы для достижения вышеуказанных целей, включая, без ограничения: сбор, систематизацию, накопление, хранение, уточнение (обновление, изменение), использование, распространение (передачу) (в том числе передачу лицам, указанным в настоящей Анкете), обезличивание, блокирование и уничтожение персональных данных, под которыми понимаются все данные, указанные в настоящей Анкете.
+  </p>
+  <p class="text mt-16">
+    Настоящим подтверждаю, что уведомлен, о том, что обработка персональных данных осуществляется Операторами любым способом, в том числе как с использованием средств автоматизации (включая программное обеспечение), так и без использования средств автоматизации (с использованием различных материальных носителей, включая бумажные носители).
+  </p>
+  <p class="text mt-16">
+    Настоящее право (согласие) действует в течение 75 лет и может быть отозвано, если иное не установлено действующим законодательством Российской Федерации, путем направления мной письменного уведомления в адрес каждого из Операторов, которым передаются персональные данные, по адресам, указанным выше. Настоящее согласие считается отозванным по истечении 30 (тридцати) дней с момента получения Оператором письменного уведомления об отзыве настоящего согласия. День получения уведомления не включается в тридцатидневный срок.
+  </p>
+  <p class="text mt-16">
+    Субъект персональных данных имеет право на защиту своих законных прав (Права субъекта персональных данных) и интересов, в том числе на возмещение убытков и (или) компенсацию морального вреда в судебном порядке.
+  </p>
+  <p class="text mt-16">
+    Нажмите <a href="https://bcs-bank.com/f/personal_data_politics.pdf" target="_blank">здесь</a> для ознакомления с&nbsp;Политикой в&nbsp;отношении обработки персональных данных.
+  </p>
+  <p class="text mt-16">
+    Согласен с&nbsp;условиями <a href="https://bcs-bank.com/f/agreement-on-the-use-of-simple-electronic-signature.pdf" target="_blank">соглашения</a>.
+  </p>
+</div>
+
+
+<div class="modal bonus-modal js-bonus-modal">
+    {{ Heading.heading({ 'title': 'Получить бонусы Aviasales', 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+  <p class="text mt-16 mb-40">
+    Чтобы получить бонусы за покупку авиабилетов, необходимо перейти в мобильное приложение БКС.
+  </p>
+  <p class="text mt-16 mb-10">
+    Установить приложение
+  </p>
+  <div class="mobile__vendors">
+      {{ Button.button({ 'href': 'https://play.google.com/store/apps/details?id=cz.bsc.bcs', 'name': 'android', 'mods': { 'type': 'icon', 'theme': 'default', 'size': 'large' } }) }}
+      {{ Button.button({ 'href': 'https://itunes.apple.com/ru/app/bks-onlajn/id652802642', 'name': 'apple', 'mods': { 'type': 'icon', 'theme': 'default', 'size': 'large' } }) }}
+  </div>
+    {#  {{ Button.button({ 'href': '#', 'title': 'Регистрация', 'class': 'js-bonus-modal-button', 'mods': { 'type': 'button', 'theme': 'default' } }) }}#}
+</div>
+
+
+<div class="modal partners-modal js-partners-modal js-form" data-form="question-modal">
+    {{ Heading.heading({ 'title': 'Переход на БКС Премьер', "class": "js-partners-modal-title pb-24", 'mods': { 'type': 'default', 'margin': 'small' } }) }}
+
+  <p class="text text_theme-gray js-partners-modal-subscription-text">
+      {{ options.attr.subscriptionText }}
+  </p>
+
+  <form  action="/" class="form partners-modal__form mt-32">
+    <input type="hidden" name="theme" class="js-partners-modal-theme" value="">
+      {#    {{ Heading.heading({ 'title': 'Есть вопросы?', 'mods': {'type': 'default', 'margin': 'normal'}, 'class': 'header__contacts-heading' }) }}#}
+      {{ Input.input({ 'label': 'ФИО', 'class': 'form__field-group', 'field': {'class': 'js-fio-masked', 'name': 'queston_p_name', 'required': 'required', 'type': 'text' } }) }}
+    <div class="form__line-group">
+        {{ Input.input({ 'label': 'Мобильный телефон', 'class': 'form__field-group', 'field': { 'class': 'js-phone-masked', 'name': 'question_p_phone', 'required': 'required', 'tyep': 'tel' } }) }}
+        {{ Input.input({ 'label': 'Электронная почта', 'class': 'form__field-group', 'field': { 'class': 'js-mail-masked', 'name': 'question_p_mail', 'required': 'required', 'type': 'email' } }) }}
+    </div>
+    <div class="form__action">
+      <div class="form__agreements">
+          {# TODO: вынести в шаблон #}
+        <label class="checkbox checkbox_theme-dark js-checkbox js-personal-checkbox">
+          <input type="checkbox" class="checkbox__control" name="question__personal" checked>
+          <span class="checkbox__state"></span>
+          <span class="checkbox__label">
+            Даю согласие на обработку <br>
+              {{ Button.button({ 'href': '#', 'title': 'персональных данных', 'class': 'js-confidence-policy-link', 'mods': { 'type': 'link', 'theme': 'default', 'view': 'text' } }) }}
+          </span>
+        </label>
+      </div>
+        {{ Button.button({ 'title': 'Отправить', 'type': 'submit', 'mods': {'theme': 'default'}, 'class': 'form__submit-button' }) }}
+    </div>
+  </form>
+
+  <div class="partners-modal__line mt-40 mb-40"></div>
+  <div class="partners-modal__footer">
+    <p class="text text_theme-gray js-partners-modal-text">
+      Инвестиции, доступные каждому.<br>
+      Для профессионалов и новичков.
+    </p>
+      {{ Button.button({ 'href': '#', 'title': 'Перейти', 'class': 'js-partners-modal-button', 'mods': { 'type': 'button', 'theme': 'default', 'view': 'outlined', 'size': 'low' } }) }}
+  </div>
+</div>
+
+
+<div id="limits" class="modal services-limits">
+    {% include "../services/limits.njk" %}
+</div>
+
+{% include "../select-city/select-city.njk" %}
+{% include "../products/select-filter/select-filter.njk" %}
+{% include "../products/deposit-filter/deposit-filter.njk" %}
