@@ -3,7 +3,7 @@ import Helpers from '../../../scripts/helpers';
 
 export default class Chat {
   constructor() {
-    this.controlButton = document.querySelector('.js-chat-call');
+    this.controlButtons = document.querySelectorAll('.js-chat-call');
     this.chatOpened = false;
     this.init();
   }
@@ -14,14 +14,16 @@ export default class Chat {
   }
 
   chatControl() {
-    this.controlButton.addEventListener('click', (e) => {
-      if (!this.chatOpened) {
-        ThreadsWidget.showChat();
-        this.chatOpened = true;
-      } else {
-        ThreadsWidget.hideChat();
-        this.chatOpened = false;
-      }
+    this.controlButtons.forEach((el) => {
+      el.addEventListener('click', (e) => {
+        if (!this.chatOpened) {
+          ThreadsWidget.showChat();
+          this.chatOpened = true;
+        } else {
+          ThreadsWidget.hideChat();
+          this.chatOpened = false;
+        }
+      })
     })
   }
 
