@@ -81,6 +81,20 @@ export default class Offices {
       this.clearRoute();
       this.getPoints();
       this.addPoints();
+      if ($('input[name=map-search]').val().length)
+      {
+        const address = $('input[name=current-city_input]').attr('data-text') + ',' + $('input[name=map-search]').val();
+        ymaps.geocode(address)
+            .then((res) => {
+              const startPoint = res.geoObjects.get(0)
+                  .geometry
+                  .getCoordinates();
+              this.customPos = startPoint;
+              const el = {};
+              el.coordinates = startPoint;
+              this.createPlacemark(el, this.iconUserPosition, true);
+            });
+      }
       this.goToPoints();
     });
   }
