@@ -913,55 +913,78 @@ export default class Offices {
         // console.log('CITY', city);
         // console.log('REQUEST', request);
         if (request.length) {
-          ymaps.suggest(request, {
-            results: 100,
+
+          ymaps.geocode(request, {
             provider: 'yandex#map',
+            results: 100,
           })
             .then((items) => {
-              // console.log('ITEMS', items);
               searchVariationsContainer.hide();
               searchVariationsContainer.find('.offices__search-option[data-template]').remove();
               const searchVartiations = $('.offices__search-option[data-template]');
-              items.forEach((address) => {
-                if (counter < 10) {
-                  const item = $.extend(true, {}, searchVartiations.clone());
-                  const addressArr = address.value.split(',');
-                  // console.log(addressArr);
-                  const suggCity = addressArr[1];
-                  addressArr.splice(0, 2);
-                  const result = addressArr.join()
-                    .trim();
-                  // console.log('RESULT', result);
-                  // console.log('INDEX', result.indexOf('метро'));
-                  if (result.length) {
-                    item.find('.js-template-title')
-                      .text(result);
-                    item.find('.js-template-description')
-                      .text(suggCity.trim());
-                  } else {
-                    item.find('.js-template-title')
-                      .text(suggCity.trim());
-                    item.find('.js-template-description').remove();
+
+              // items.forEach((address) => {
+              const currentCityName = $('input[name=current-city_input]').attr('data-text');
+              const len = items.geoObjects.getLength();
+              if (len > 0) {
+                for (let i = 0; i < len; i++) {
+                  const addressComponents = items.geoObjects.get(i).properties.get('metaDataProperty').GeocoderMetaData;
+                  let addressCity = addressComponents.Address.Components.filter((comp) => {
+                    return comp.kind === 'locality'
+                  })[0];
+
+                  if (typeof addressCity === 'undefined') {
+                    addressCity = {
+                      name: '',
+                    }
                   }
-                  if (address.value.indexOf('метро') >= 0) {
-                    addressArr.forEach((el) => {
-                      if (el.indexOf('метро')) {
-                        const metroName = el.substr(6).toLowerCase().trim();
-                        const st = this.metroList.filter(item => (item.metro === metroName && item.name === suggCity.toLowerCase().trim()));
-                        item.find('.js-search-icon').css('color', st.length ? st[0].color : '');
+
+                  if (currentCityName.toLowerCase() === 'все города' || addressCity.name.toLowerCase() === currentCityName.toLowerCase()) {
+                    const address = {value: addressComponents.text};
+                    if (counter < 10) {
+                      const item = $.extend(true, {}, searchVartiations.clone());
+                      const addressArr = address.value.split(',');
+                      // console.log(addressArr);
+                      const suggCity = addressArr[1];
+                      addressArr.splice(0, 2);
+                      const result = addressArr.join()
+                        .trim();
+                      // console.log('RESULT', result);
+                      // console.log('INDEX', result.indexOf('метро'));
+                      if (result.length) {
+                        item.find('.js-template-title')
+                          .text(result);
+                        item.find('.js-template-description')
+                          .text(suggCity.trim());
+                      } else {
+                        item.find('.js-template-title')
+                          .text(suggCity.trim());
+                        item.find('.js-template-description').remove();
                       }
-                    });
-                    item.find('.js-metro-icon').removeClass('state_hidden');
-                    item.find('.js-address-icon').addClass('state_hidden');
-                  } else {
-                    item.find('.js-metro-icon').addClass('state_hidden');
-                    item.find('.js-address-icon').removeClass('state_hidden');
+                      if (address.value.indexOf('метро') >= 0) {
+                        addressArr.forEach((el) => {
+                          if (el.indexOf('метро')) {
+                            const metroName = el.substr(6).toLowerCase().trim();
+                            const st = this.metroList.filter(item => (item.metro === metroName && item.name === suggCity.toLowerCase().trim()));
+                            item.find('.js-search-icon').css('color', st.length ? st[0].color : '');
+                          }
+                        });
+                        item.find('.js-metro-icon').removeClass('state_hidden');
+                        item.find('.js-address-icon').addClass('state_hidden');
+                      } else {
+                        item.find('.js-metro-icon').addClass('state_hidden');
+                        item.find('.js-address-icon').removeClass('state_hidden');
+                      }
+                      item.removeClass('state_hidden');
+                      item.appendTo(searchPane);
+                      counter += 1;
+                    }
                   }
-                  item.removeClass('state_hidden');
-                  item.appendTo(searchPane);
-                  counter += 1;
+
                 }
-              });
+              }
+
+              // });
               if (searchVariationsContainer.find('.offices__search-option[data-template]').length) {
                 searchVariationsContainer.show();
               }

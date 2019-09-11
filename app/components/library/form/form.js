@@ -173,7 +173,7 @@ module.exports = (elem) => {
         return;
       }
 
-      pixels.forEach((pixelUrl) => {
+      pixels.split(',').forEach((pixelUrl) => {
         if (pixelUrl.indexOf('#ORDER_ID#') !== -1 && response.request_id) {
           pixelUrl = pixelUrl.replace('#ORDER_ID#', response.request_id)
         }
