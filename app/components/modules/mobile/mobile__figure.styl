@@ -13,8 +13,8 @@
   .illustration
 
     position: absolute
-    top: 50%
-    right: 40px
+    top: 52%;
+    right: 4px;
 
     height: auto
     width: auto
@@ -31,8 +31,8 @@
       max-width none
 
     @media (min-width: 1280px)
-      max-width: 683px
-      max-height: 683px
+      max-width: 450px
+      max-height: 450px
       @media all and (-ms-high-contrast: none), (-ms-high-contrast: active)
         width: 683px
         height: 683px
@@ -44,6 +44,14 @@
         height: 500px
         width: 500px
 
+    @media (max-width: 1215px)
+      //display: none
+      max-height: 350px
+      max-width: 350px
 
-    @media (max-width: 991px)
-      display: none
+    @media (max-width: 831px)
+      position: static;
+      transform none
+      margin-top: -34px
+      max-height: 259px
+      max-width: 300px
