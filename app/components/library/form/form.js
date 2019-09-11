@@ -167,17 +167,20 @@ module.exports = (elem) => {
     }
     addPixelMetric(form, response) {
       let pixelUrl = $(form).data('pixel');
+      const pixels = $(form).data('pixel');
 
-      if (!pixelUrl) {
+      if (!pixels) {
         return;
       }
 
-      if (pixelUrl.indexOf('#ORDER_ID#') !== -1 && response.request_id) {
-        pixelUrl = pixelUrl.replace('#ORDER_ID#', response.request_id)
-      }
-      if (pixelUrl) {
-        $('head').append(`<img src="${pixelUrl}" width="1"  height="1"/>`)
-      }
+      pixels.forEach((pixelUrl) => {
+        if (pixelUrl.indexOf('#ORDER_ID#') !== -1 && response.request_id) {
+          pixelUrl = pixelUrl.replace('#ORDER_ID#', response.request_id)
+        }
+        if (pixelUrl) {
+          $('head').append(`<img src="${pixelUrl}" width="1"  height="1"/>`)
+        }
+      })
     }
   }
   return new Form(elem);
