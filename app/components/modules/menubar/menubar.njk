@@ -22,7 +22,7 @@
         {% if options.vars.header === 'blue' %}
           {{ Menu.menu({ 'basic': [{'href': '#', 'title': 'Карты', 'selected': true}, {'href': '#', 'title': 'Кредиты'}, {'href': '#', 'title': 'Вклады'}, {'href': '#', 'title': 'Платежи'}, {'href': '#', 'title': 'БКС Бонус'}],
             'more': [], 'theme': 'white-tab', 'class': 'header__menu' }) }}
-          {{ Button.button({ 'name': 'chat', 'mods' : {'type': 'icon', 'theme': 'default', 'view': 'text', 'size': 'large'}, 'class': 'js-chat-call index-search__control-button' }) }}
+          {{ Button.button({ 'name': 'chat', 'mods' : {'type': 'icon', 'theme': 'default', 'view': 'text', 'size': 'large'}, 'class': 'js-chat-call menubar__chat-button' }) }}
           {{ Button.button({ 'href': 'https://online.bcs.ru/cy/web/guest/home', 'title': 'Интернет-банк', 'mods' : {'theme': 'white', 'view': 'outlined', 'size': 'low'}, 'class': 'js-online-bank hidden-mobile' }) }}
         {% else %}
           {{ Menu.menu({ 'basic': [{'href': '#', 'title': 'Карты', 'selected': true}, {'href': '#', 'title': 'Кредиты'}, {'href': '#', 'title': 'Вклады'}, {'href': '#', 'title': 'Платежи'}, {'href': '#', 'title': 'БКС Бонус'}],
