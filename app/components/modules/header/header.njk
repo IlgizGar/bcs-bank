@@ -29,6 +29,7 @@
             {{ Button.button({ 'title': 'Офисы и банкоматы', 'href': 'http://juravlev.rusrobots.ru/bks/offices.html', 'mods' : {'type': 'tab', 'theme': 'default-tab', 'view': 'underscore'}, 'class': 'navbar__button js-btn-header-offices hidden-to-lg', 'attr': {'title': 'На карте'} }) }}
         {% endif %}
         <div style="display:flex;">
+          {{ Button.button({ 'name': 'chat-mobile', 'mods' : {'type': 'icon', 'theme': 'default', 'view': 'text', 'size': 'low'}, 'class': 'js-chat-call header__chat-button' }) }}
           {% include "../index-search/index-search.njk" %}
           <button class="menubar__burger js-menubar-burger">
 {#            <span class="menubar__burger-title">Меню</span>#}
@@ -39,7 +40,6 @@
           </span>
           </button>
         </div>
-
       </div>
     </div>
   </div>
