@@ -81,6 +81,20 @@ export default class Offices {
       this.clearRoute();
       this.getPoints();
       this.addPoints();
+      if ($('input[name=map-search]').val().length)
+      {
+        const address = $('input[name=current-city_input]').attr('data-text') + ', ' + $('input[name=map-search]').val();
+        ymaps.geocode(address)
+            .then((res) => {
+              const startPoint = res.geoObjects.get(0)
+                  .geometry
+                  .getCoordinates();
+              this.userPos = startPoint;
+              const el = {};
+              el.coordinates = startPoint;
+              this.createPlacemark(el, this.iconUserPosition, true);
+            });
+      }
       this.goToPoints();
     });
   }
@@ -179,11 +193,10 @@ export default class Offices {
 
   // добавляет маркер активности у выбранного адреса
   activeAddress() {
+    $('.collapse__active-marker').css({ display: 'none' });
     if ($('.collapse__item_state-open').length) {
       console.log($('.collapse__item_state-open'));
       $('.collapse__item_state-open').find($('.collapse__active-marker')).css({ display: 'block' });
-    } else {
-      $('.collapse__active-marker').css({ display: 'none' });
     }
   }
 
@@ -738,6 +751,7 @@ export default class Offices {
     $('.collapse__item[data-coords] .collapse__control')
       .on('click', (e) => {
         this.activeAddress();
+        $(this.routeBlock).css({ display: 'none' });
         if (!this.appBlock.hasClass('state_explored')) {
           this.scrollToCollapse($(e.target));
           const collapseContent = $(e.target)
