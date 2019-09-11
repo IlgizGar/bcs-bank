@@ -16,7 +16,7 @@ import {
   ExchangeService,
   ExchangeBanksService,
   ExchangeBanksServiceCorp,
-  ExchangeBanksServiceDefault
+  ExchangeBanksServiceDefault,
 } from '../components/modules/services/services';
 import MediaSlider from '../components/library/media-slider/media-slider';
 import TableSort from '../components/library/table/table';
@@ -43,8 +43,11 @@ import PartnerModalForm from '../components/modules/partners-modal/partners-moda
 import SectionTabs from '../components/modules/section-tabs/sectionTabs';
 import Animator from '../components/modules/page-animations/animator';
 import FxCourses from '../components/modules/landing-fx/landing-fx';
-import OfficeStress from "../components/library/office-stress/office-stress";
+import OfficeStress from '../components/library/office-stress/office-stress';
 import Helper from '../components/modules/helper/helper';
+import Chat from "../components/modules/chat/chat";
+
+require('./utils/polyfills');
 
 $(() => {
   svg4everybody();
@@ -225,7 +228,7 @@ $(() => {
     const el = $(e.currentTarget).data('scroll');
     setTimeout(() => {
       if ($(el).length) {
-        $('html, body').animate({scrollTop: $(el).offset().top}, 500);
+        $('html, body').animate({ scrollTop: $(el).offset().top }, 500);
       }
     }, 200);
     return false;
@@ -326,11 +329,11 @@ $(() => {
     if ($(urlHash).closest('.js-tab').length === 0) {
       if (screen.width < 960) {
         setTimeout(() => {
-          $('html, body').animate({scrollTop: $(urlHash).offset().top}, 500);
+          $('html, body').animate({ scrollTop: $(urlHash).offset().top }, 500);
         }, 3000);
       } else {
         setTimeout(() => {
-          $('html, body').animate({scrollTop: $(urlHash).offset().top - ($(urlHash).height() * 0.2)}, 500);
+          $('html, body').animate({ scrollTop: $(urlHash).offset().top - ($(urlHash).height() * 0.2) }, 500);
         }, 3000);
       }
     }
@@ -341,4 +344,17 @@ $(() => {
   }
 
   global.helper = new Helper();
+
+  if ($('.js-button-check-gosuslugi')) {
+    $('.js-button-check-gosuslugi')
+      .on('click', () => {
+        const url = new URL(window.location.href);
+        url.searchParams.set('no_esia', 'true');
+        const newUrl = url.href.split('#');
+        window.location.href = newUrl[0] + '#section-request';
+      });
+  }
+  // global.helper = new Helper();
+
+  global.chat = new Chat();
 });

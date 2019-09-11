@@ -30,6 +30,7 @@
     "filepond": "^1.8.8",
     "filepond-plugin-file-validate-size": "^1.0.3",
     "filepond-plugin-file-validate-type": "^1.1.0",
+    "gulp-cheerio": "^0.6.3",
     "inputmask": "^4.0.0",
     "intersection-observer": "^0.5.1",
     "ion-rangeslider": "^2.2.0",

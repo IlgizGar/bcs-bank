@@ -47,6 +47,7 @@ export default class Offices {
     this.markCollection = null;
     this.points = [];
     this.mapContainerId = window.innerWidth > 831 ? 'map-container' : 'map-container-mobile';
+    this.routeBlock = window.innerWidth > 831 ? '.js-map-router-for-desktop' : '.js-map-router';
     this.mapContainer = document.getElementById(this.mapContainerId);
     this.mapContainer.setAttribute('tab-index', '1');
     this.mapBlock = null;
@@ -74,7 +75,7 @@ export default class Offices {
 
     // нажатие кнопки отмена маршрута
     $('.js-map-router-cancel').on('click', () => {
-      $('.offices__map-router').css({ display: 'none' });
+      $(this.routeBlock).css({ display: 'none' });
       this.routeButton.removeClass('hidden-block');
       $('.js-route-built').removeClass('route-built--active');
       this.clearRoute();
@@ -147,14 +148,16 @@ export default class Offices {
     this.routeButton.on('click', (e) => {
       const button = $(e.currentTarget);
       button.addClass('hidden-block');
-      button.closest('.collapse__item').find('.js-route-built').addClass('route-built--active');
-      $('.js-map-router-time').addClass('router-active');
-      const routerType = $('.offices__map-router');
-      const type = routerType.find('.router-active').attr('data-value');
+      const routerType = $(this.routeBlock);
       routerType.css({ display: 'flex' });
-      setTimeout(() => {
-        $('html, body').animate({ scrollTop: $(routerType).offset().top }, 800);
-      }, 200);
+      const type = routerType.find('.router-active').attr('data-value');
+      if (window.innerWidth < 832) {
+        button.closest('.collapse__item').find('.js-route-built').addClass('route-built--active');
+        setTimeout(() => {
+          $('html, body').animate({ scrollTop: $(routerType).offset().top }, 800);
+        }, 200);
+      }
+      $('.js-map-router-time').addClass('router-active');
       let toPoint = button.closest('[data-coords]').attr('data-coords');
       toPoint = String(toPoint).split(',').map((el) => {
         const coords = parseFloat(el.replace('[', '').replace(']', ''));
@@ -171,8 +174,18 @@ export default class Offices {
     if ($('.js-offices-button-for-map')) {
       this.lookAtTheMap();
     }
+    this.activeAddress();
   }
 
+  // добавляет маркер активности у выбранного адреса
+  activeAddress() {
+    if ($('.collapse__item_state-open').length) {
+      console.log($('.collapse__item_state-open'));
+      $('.collapse__item_state-open').find($('.collapse__active-marker')).css({ display: 'block' });
+    } else {
+      $('.collapse__active-marker').css({ display: 'none' });
+    }
+  }
 
   handleSwitch() {
     this.switcher.unbind('click');
@@ -460,6 +473,7 @@ export default class Offices {
       // событие клика по пину
       placemark.events.add('click', (e) => {
         this.onPointEvent(e, el.coordinates);
+        this.activeAddress();
         if (window.innerWidth > 831) {
           setTimeout(() => {
             $('html, body')
@@ -476,11 +490,11 @@ export default class Offices {
                   .offset().top,
               }, 800);
           }, 200);
-          $('.offices__collapse')
-            .find($('.collapse__item_state-open'))
-            .css({
-              order: -1,
-            });
+          // $('.offices__collapse')
+          //   .find($('.collapse__item_state-open'))
+          //   .css({
+          //     order: -1,
+          //   });
         }
       });
     } else {
@@ -517,7 +531,7 @@ export default class Offices {
 
   // построение маршрута
   createRoute(toPoint, mode) {
-    if ($('.offices__map-router')
+    if ($(this.routeBlock)
       .css('display') != 'none') {
       this.clearRoute();
       this.multiRoute = new ymaps.multiRouter.MultiRoute({
@@ -616,10 +630,12 @@ export default class Offices {
       this.removeExploredDetail();
     }
     const currentCollapse = global.collapses[this.currentTabId];
-    const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${coordinates.join()}]"] .collapse__control`);
+    const target = this.appBlock.find(`#${this.currentTabId} [data-coords="[${coordinates.join()}]"] .collapse__control`).first();
     const parentCollapse = target.parent()
       .parent()
       .closest('.collapse__item');
+    console.log(target);
+    this.appBlock.find(`#${this.currentTabId} [data-coords="[${coordinates.join()}]"]`).css('order', '-1');
     if (parentCollapse.length) {
       parentCollapse.children('.collapse__control')
         .trigger('click');
@@ -721,6 +737,7 @@ export default class Offices {
 
     $('.collapse__item[data-coords] .collapse__control')
       .on('click', (e) => {
+        this.activeAddress();
         if (!this.appBlock.hasClass('state_explored')) {
           this.scrollToCollapse($(e.target));
           const collapseContent = $(e.target)
@@ -1271,7 +1288,7 @@ export default class Offices {
         $('.collapse__item')
           .find('.collapse__control-distance-to-bcs')
           .hide();
-        $('.offices__map-router').css({ display: 'none' });
+        $(this.routeBlock).css({ display: 'none' });
         this.routeButton.removeClass('hidden-block');
         $('.js-route-built').removeClass('route-built--active');
         this.clearRoute();

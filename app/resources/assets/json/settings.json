@@ -1,0 +1,238 @@
+{
+  "filename": "/assets/scripts/appffbefaaa.js",
+  "webchat": {
+    "style": "/assets/chat-theme.css",
+    "signature": "signature",
+    "locale": "ru",
+    "package": "im.threads.webchat.bks",
+    "uid": "PH5hemVpbmFsb3YtbmV3LTE1MjcxNjc2MDMzNTQtZ2VuZXJhdGVkV2l0aFVJfj4=",
+    "hideWelcome": false,
+    "clientId": "clientId",
+    "disableGeoRequest": false,
+    "disableWebNotification": false,
+    "clientData": "clientData",
+    "appMarker": "bcsbanksite",
+    "webNotification": {
+      "title": "Threads Web Chat",
+      "icon": "data:image/png;base64,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"
+    },
+    "chatHeader": {
+      "title": "Добро пожаловать!",
+      "search": "Пожалуйста, подождите. Сейчас к чату подключится оператор",
+      "operatorSubTitle": "Оператор БКС Банк",
+      "showOrganisationUnit": false
+    },
+    "welcome": {
+      "pre": {
+        "text": "Онлайн чат БКС",
+        "notice": "Здравствуйте! Здесь вы можете получить справочную информацию о продуктах и услугах банка. Задать вопросы о ваших картах, тарифах и кредитах"
+      },
+      "post": {
+        "text": "Рады приветствовать Вас в чате",
+        "notice": "Какой у вас вопрос?"
+      }
+    },
+    "chatEndPoll": {
+      "text": {
+        "ru": "Специалист ответил на все ваши вопросы, продолжить консультацию?",
+        "en": "Did operator resolve your question or we should continue?"
+      },
+      "yes": {
+        "ru": "Да",
+        "en": "Yes"
+      },
+      "no": {
+        "ru": "Нет",
+        "en": "No"
+      }
+    },
+    "typing": "Оператор набирает сообщение...",
+    "checkURL": "https://pushserver.mfms.ru/brooma/health",
+    "datastore": "https://threads.bcs.ru/files",
+    "isContainerHidden": true,
+    "history": {
+      "url": "https://threads.bcs.ru/history/v6",
+      "count": 20
+    },
+    "schedule": {
+      "interval": 5000
+    },
+    "welcomeForm": {
+      "phone": true,
+      "name": true,
+      "email": false
+    },
+    "inactivityForm": {
+      "phone": true,
+      "email": false,
+      "name": true,
+      "text": "Чат будет доступен в ${ day }. c ${ time }",
+      "sent": "Ваше сообщение доставлено в&nbsp;контактный центр. Ожидайте ответа оператора."
+    },
+    "activePages": [],
+    "test": {
+      "history": {
+        "url": "https://datastore.threads.im/history/v2",
+        "count": 20
+      },
+      "package": "browser.websocket.test.app2",
+      "uid": "PH5FY2WhSFTeL4eZklsJin345rNnmUsqKwd"
+    },
+    "pushserver": "https://pushserver.mfms.ru/bcs",
+    "websocket": "https://pushserver.mfms.ru/bcs-ws",
+    "socialLinks": {
+      "visible": false,
+      "text": {
+        "ru": "Спросить в мессенджере",
+        "en": "Ask in the messenger"
+      },
+      "buttons": [
+        {
+          "url": "https://vk.com/",
+          "tooltip": "VK",
+          "image": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDMxLjMzNCAzMS4zMzQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDMxLjMzNCAzMS4zMzQ7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8cGF0aCBkPSJNMzAuMTA5LDI0LjcwN2MtMC4xNjcsMC4wMjEtMC4zMzUsMC4wNDctMC41MDMsMC4wNDhjLTEuNjQ3LDAuMDAzLTMuMjk0LTAuMDAxLTQuOTQsMC4wMDUgICBjLTAuMjI5LDAuMDAxLTAuNDIzLTAuMDg0LTAuNTkzLTAuMjIxYy0wLjM0NC0wLjI4MS0wLjY5OC0wLjU1OC0xLjAxNS0wLjg3Yy0wLjgyNC0wLjgxNy0xLjYyNy0xLjY1Ny0yLjQ0NS0yLjQ4MiAgIGMtMC4yNTUtMC4yNTctMC41MjctMC40OTQtMC43OTUtMC43MzdjLTAuMTM5LTAuMTMxLTAuMzEzLTAuMTU5LTAuNDkzLTAuMTU2Yy0wLjI0MSwwLjAwNi0wLjQ0LDAuMTE1LTAuNTM1LDAuMzM4ICAgYy0wLjA4NywwLjIwMi0wLjE1OSwwLjQyMS0wLjE4MiwwLjYzN2MtMC4wNCwwLjM5MS0wLjA0MiwwLjc4NC0wLjA1LDEuMTc1Yy0wLjAwOSwwLjQzOC0wLjAyMiwwLjg3OS0wLjE0NSwxLjMwNSAgIGMtMC4wNTUsMC4xODgtMC4xMzMsMC4zNzktMC4yMywwLjU0OWMtMC4xNywwLjI5Mi0wLjQzOCwwLjQ1MS0wLjc3OSwwLjQ1OGMtMS40MzgsMC4wMzMtMi44NzcsMC4wNTQtNC4zMTMtMC4wNCAgIGMtMC4yNjYtMC4wMi0wLjUxMS0wLjEwNC0wLjc0OC0wLjIyMWMtMS4zNC0wLjY1OC0yLjUxNy0xLjUzMi0zLjU0LTIuNjIyYy0xLjI0NS0xLjMyNS0yLjM3NS0yLjc0Ni0zLjUwNS00LjE2NyAgIGMtMS41MjEtMS45MTYtMi44MzYtMy45NjYtNC4wMTgtNi4xMDRjLTAuNDMyLTAuNzc5LTAuODQ5LTEuNTY5LTEuMTU5LTIuNDA4Yy0wLjE1My0wLjQxNC0wLjE1My0wLjgyOS0wLjAzOC0xLjI0NiAgIGMwLjAzMy0wLjEyNCwwLjA5Mi0wLjI0NSwwLjE2LTAuMzU0QzAuMzQsNy40MzQsMC40OTEsNy4zNDUsMC42ODQsNy4zNDFDMC43NTIsNy4zNCwwLjgyMyw3LjMzOCwwLjg5MSw3LjMzOCAgIGMxLjQ5NCwwLDIuOTg2LDAuMDA2LDQuNDc5LTAuMDA1QzUuNjY1LDcuMzMxLDUuODkxLDcuNDMsNi4wODksNy42M0M2LjQ1Nyw3Ljk5OCw2Ljc0Myw4LjQyNyw3LDguODczICAgYzAuMjgsMC40ODYsMC41NiwwLjk3NSwwLjgwNywxLjQ3OWMwLjU0MywxLjEwOSwxLjIwOSwyLjE0MywxLjkxNCwzLjE1MWMwLjM0NCwwLjQ5MSwwLjcxNiwwLjk2MywxLjA3MywxLjQ0NCAgIGMwLjE2NiwwLjIyNCwwLjM5NiwwLjMwOSwwLjY2MSwwLjMxNmMwLjI1OCwwLjAwOSwwLjM2My0wLjA5NiwwLjM3My0wLjM1NGMwLjAwMy0wLjA2MiwwLjAwMi0wLjEyMywwLjAwMi0wLjE4NSAgIGMwLTEuNjg2LDAtMy4zNy0wLjAwMi01LjA1NWMwLTAuMTMxLDAtMC4yNjMtMC4wMTMtMC4zOTNjLTAuMDMtMC4zMDEtMC4xODktMC40NzctMC40ODctMC41MzUgICBjLTAuMTM1LTAuMDI2LTAuMjczLTAuMDM4LTAuNDEtMC4wNTZjLTAuNDItMC4wNTUtMC41OTQtMC4yMzMtMC42MzgtMC42NTVjLTAuMDY1LTAuNjM3LDAuMjQtMS4xMzQsMC44MzctMS4zNTcgICBjMC4yNTctMC4wOTYsMC41MjMtMC4xMTcsMC43OTUtMC4xMTZjMS4zMzEsMC4wMDIsMi42NjIsMCwzLjk5MywwLjAwMWMwLjI3LDAsMC41NC0wLjAxNCwwLjgwOCwwLjAxICAgYzAuMjgxLDAuMDI3LDAuNTY1LDAuMDY0LDAuODM4LDAuMTQ0YzAuNTgyLDAuMTY4LDAuOTE5LDAuNTY0LDAuOTg1LDEuMTc0YzAuMDE3LDAuMTQ2LDAuMDIxLDAuMjkyLDAuMDIxLDAuNDM4ICAgYzAuMDAyLDEuMDIzLDAuMDAyLDIuMDQ2LDAuMDAyLDMuMDY5YzAsMS4wODUtMC4wMDEsMi4xNywwLjAwMiwzLjI1NWMwLDAuMTA2LDAuMDA5LDAuMjE3LDAuMDM4LDAuMzE4ICAgYzAuMDk1LDAuMzI5LDAuNDUzLDAuNDM4LDAuNzU0LDAuMjMxYzAuODg3LTAuNjExLDEuNDY5LTEuNDYyLDEuOTE3LTIuNDA5YzAuNDE0LTAuODc1LDAuNzcxLTEuNzc3LDEuMTYtMi42NjQgICBjMC4zMTEtMC43MDMsMC42My0xLjQwMiwwLjk1NS0yLjA5OWMwLjA3OS0wLjE3MywwLjE5Ni0wLjMzLDAuMzA1LTAuNDg4YzAuMDk5LTAuMTQyLDAuMjI5LTAuMjA0LDAuNDEyLTAuMjA0ICAgYzEuOTMzLDAuMDA2LDMuODYyLDAuMDA1LDUuNzk0LDAuMDAzYzAuNDczLDAsMC44NDgsMC4xOTIsMS4xNDMsMC41NTFjMC4xMDQsMC4xMjgsMC4xNDcsMC4yNzgsMC4xNzQsMC40NDMgICBjMC4xMTUsMC43NjEtMC4xNDYsMS40MjQtMC41MSwyLjA2M2MtMC4zNDUsMC42MDQtMC43NTUsMS4xNjEtMS4yMDEsMS42OWMtMC45MjQsMS4wOTQtMS44MywyLjIwMS0yLjYyMiwzLjM5NiAgIGMtMC4yMDQsMC4zMDctMC4zNzgsMC42MzQtMC41NjQsMC45NTFjLTAuMTM3LDAuMjMyLTAuMTE5LDAuNDU1LDAuMDUzLDAuNjYyYzAuMzQ5LDAuNDIsMC42ODcsMC44NTIsMS4wNTQsMS4yNTMgICBjMC44NzIsMC45NTYsMS43NjYsMS44ODksMi42NDMsMi44NGMwLjI4MSwwLjMwNiwwLjUzNSwwLjYzNCwwLjc5NiwwLjk1OGMwLjA4NiwwLjEwNywwLjE1LDAuMjMyLDAuMjM0LDAuMzQxICAgQzMxLjc1MSwyMy4zMywzMC45MzUsMjQuNTk4LDMwLjEwOSwyNC43MDd6IiBmaWxsPSIjRkZGRkZGIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg=="
+        },
+        {
+          "url": "https://www.facebook.com/",
+          "tooltip": "Facebook",
+          "image": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDI2LjI5MyAyNi4yOTMiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDI2LjI5MyAyNi4yOTM7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8cGF0aCBkPSJNMTkuMjU2LDguNTE1bC0wLjQ3OSw0LjY0MWgtMy42ODdjMCw1Ljg4OCwwLDEzLjEzNywwLDEzLjEzN0g5LjYzM2MwLDAsMC03LjE3OCwwLTEzLjEzN0g3LjAzN1Y4LjUxNWgyLjU5N1Y1LjUxMSAgIEM5LjYzNCwzLjM2MywxMC42NTUsMCwxNS4xNDMsMGw0LjA0NSwwLjAxN3Y0LjUwNmMwLDAtMi40NTksMC0yLjkzNiwwYy0wLjQ3OSwwLTEuMTYsMC4yMzktMS4xNiwxLjI2NXYyLjcyOEwxOS4yNTYsOC41MTUgICBMMTkuMjU2LDguNTE1eiIgZmlsbD0iI0ZGRkZGRiIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo="
+        }
+      ]
+    },
+    "theme": {
+      "fonts": [
+        "/assets/chat-fonts.css"
+      ],
+      "mobile": {
+        "Chat": {
+          "width": "calc(100% - 48px)",
+          "height": "576px",
+          "right": "24px",
+          "bottom": "48px",
+          "borderRadius": "0px",
+          "boxShadow": "0px 12px 28px rgba(0, 0, 0, 0.1), 0px 4px 4px rgba(0, 0, 0, 0.06)"
+        },
+        "ChatInput": {
+          "limiterWidth": "100%"
+        },
+        "AttachmentButton": {
+          "backgroundImage": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTE4Ljc0MTYgMTAuNTM1M0MxOC43OTIxIDEwLjQ4NjEgMTguODM1OCAxMC40MzI5IDE4Ljg3MjkgMTAuMzc2N0MyMC4zODE1IDguNjA3NjYgMjAuMjg0NyA1Ljk3NzM1IDE4LjU4MjQgNC4zMTg4N0MxNi43Nzc1IDIuNTYwMzggMTMuODUxMiAyLjU2MDM4IDEyLjA0NjQgNC4zMTg4N0w5LjM5MSA2LjkwNTk3QzkuMzU2NDYgNi45MzE2MiA5LjMyMzI3IDYuOTU5ODEgOS4yOTE3MSA2Ljk5MDU2TDUuODgyMjIgMTAuMzEyNEMzLjM3MjU5IDEyLjc1NzUgMy4zNzI1OSAxNi43MjE5IDUuODgyMjIgMTkuMTY3QzguMzkxODQgMjEuNjEyMSAxMi40NjA3IDIxLjYxMjEgMTQuOTcwNCAxOS4xNjdMMTkuNzE0NyAxNC41NDQ2QzIwLjA5NTEgMTQuMTc0IDIwLjA5NTEgMTMuNTczMSAxOS43MTQ3IDEzLjIwMjVDMTkuMzM0MyAxMi44MzE5IDE4LjcxNzYgMTIuODMxOSAxOC4zMzcyIDEzLjIwMjVMMTMuNTkyOSAxNy44MjQ5QzExLjg0NCAxOS41Mjg4IDkuMDA4NTYgMTkuNTI4OCA3LjI1OTcgMTcuODI0OUM1LjUxMDg0IDE2LjEyMSA1LjUxMDg0IDEzLjM1ODQgNy4yNTk3IDExLjY1NDVMOC4zMzUyOSAxMC42MDY2QzguMzY5ODQgMTAuNTgwOSA4LjQwMzAzIDEwLjU1MjcgOC40MzQ1OSAxMC41MjJMMTMuNDIzOCA1LjY2MDk1QzE0LjQ2OCA0LjY0MzY2IDE2LjE2MDggNC42NDM2NiAxNy4yMDUgNS42NjA5NUMxOC4yNDkxIDYuNjc4MjQgMTguMjQ5MSA4LjMyNzU5IDE3LjIwNSA5LjM0NDg4TDEyLjAzNTEgMTQuMzgxOEMxMi4wMTg1IDE0LjM5OCAxMi4wMDI3IDE0LjQxNDUgMTEuOTg3NiAxNC40MzE1TDExLjM4NDkgMTUuMDE4N0MxMS4wNTUzIDE1LjMzOTkgMTAuNTIwOCAxNS4zMzk5IDEwLjE5MTIgMTUuMDE4N0M5Ljg2MTU0IDE0LjY5NzYgOS44NjE1NCAxNC4xNzY5IDEwLjE5MTIgMTMuODU1N0wxNC4zMjg2IDkuODI0NjFDMTQuNzA5IDkuNDU0IDE0LjcwOSA4Ljg1MzE0IDE0LjMyODYgOC40ODI1M0MxMy45NDgyIDguMTExOTMgMTMuMzMxNSA4LjExMTkzIDEyLjk1MTEgOC40ODI1M0w4LjgxMzY5IDEyLjUxMzZDNy43MjMyOSAxMy41NzYgNy43MjMyOSAxNS4yOTg0IDguODEzNjkgMTYuMzYwOEM5LjkwNDA5IDE3LjQyMzIgMTEuNjcyIDE3LjQyMzIgMTIuNzYyNCAxNi4zNjA4TDE4Ljc0MTYgMTAuNTM1M1oiIGZpbGw9IiMwMDE5MzQiLz48L3N2Zz4="
+        }
+      },
+      "desktop": {
+        "Global": {
+          "fontFamily": "'Opensans Regular', sans-serif"
+        },
+        "ChatHeader": {
+          "align": "left",
+          "padding": "16px 24px",
+          "backgroundColor": "#ffffff",
+          "avatarWidth": "48px",
+          "avatarHeight": "48px",
+          "agentNameFontSize": "16px",
+          "agentNameColor": "#30445A",
+          "agentInfoFontSize": "12px",
+          "agentInfoColor": "#78818F"
+        },
+        "AttachmentButton": {
+          "backgroundImage": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTE4Ljc0MTYgMTAuNTM1M0MxOC43OTIxIDEwLjQ4NjEgMTguODM1OCAxMC40MzI5IDE4Ljg3MjkgMTAuMzc2N0MyMC4zODE1IDguNjA3NjYgMjAuMjg0NyA1Ljk3NzM1IDE4LjU4MjQgNC4zMTg4N0MxNi43Nzc1IDIuNTYwMzggMTMuODUxMiAyLjU2MDM4IDEyLjA0NjQgNC4zMTg4N0w5LjM5MSA2LjkwNTk3QzkuMzU2NDYgNi45MzE2MiA5LjMyMzI3IDYuOTU5ODEgOS4yOTE3MSA2Ljk5MDU2TDUuODgyMjIgMTAuMzEyNEMzLjM3MjU5IDEyLjc1NzUgMy4zNzI1OSAxNi43MjE5IDUuODgyMjIgMTkuMTY3QzguMzkxODQgMjEuNjEyMSAxMi40NjA3IDIxLjYxMjEgMTQuOTcwNCAxOS4xNjdMMTkuNzE0NyAxNC41NDQ2QzIwLjA5NTEgMTQuMTc0IDIwLjA5NTEgMTMuNTczMSAxOS43MTQ3IDEzLjIwMjVDMTkuMzM0MyAxMi44MzE5IDE4LjcxNzYgMTIuODMxOSAxOC4zMzcyIDEzLjIwMjVMMTMuNTkyOSAxNy44MjQ5QzExLjg0NCAxOS41Mjg4IDkuMDA4NTYgMTkuNTI4OCA3LjI1OTcgMTcuODI0OUM1LjUxMDg0IDE2LjEyMSA1LjUxMDg0IDEzLjM1ODQgNy4yNTk3IDExLjY1NDVMOC4zMzUyOSAxMC42MDY2QzguMzY5ODQgMTAuNTgwOSA4LjQwMzAzIDEwLjU1MjcgOC40MzQ1OSAxMC41MjJMMTMuNDIzOCA1LjY2MDk1QzE0LjQ2OCA0LjY0MzY2IDE2LjE2MDggNC42NDM2NiAxNy4yMDUgNS42NjA5NUMxOC4yNDkxIDYuNjc4MjQgMTguMjQ5MSA4LjMyNzU5IDE3LjIwNSA5LjM0NDg4TDEyLjAzNTEgMTQuMzgxOEMxMi4wMTg1IDE0LjM5OCAxMi4wMDI3IDE0LjQxNDUgMTEuOTg3NiAxNC40MzE1TDExLjM4NDkgMTUuMDE4N0MxMS4wNTUzIDE1LjMzOTkgMTAuNTIwOCAxNS4zMzk5IDEwLjE5MTIgMTUuMDE4N0M5Ljg2MTU0IDE0LjY5NzYgOS44NjE1NCAxNC4xNzY5IDEwLjE5MTIgMTMuODU1N0wxNC4zMjg2IDkuODI0NjFDMTQuNzA5IDkuNDU0IDE0LjcwOSA4Ljg1MzE0IDE0LjMyODYgOC40ODI1M0MxMy45NDgyIDguMTExOTMgMTMuMzMxNSA4LjExMTkzIDEyLjk1MTEgOC40ODI1M0w4LjgxMzY5IDEyLjUxMzZDNy43MjMyOSAxMy41NzYgNy43MjMyOSAxNS4yOTg0IDguODEzNjkgMTYuMzYwOEM5LjkwNDA5IDE3LjQyMzIgMTEuNjcyIDE3LjQyMzIgMTIuNzYyNCAxNi4zNjA4TDE4Ljc0MTYgMTAuNTM1M1oiIGZpbGw9IiMwMDE5MzQiLz48L3N2Zz4="
+        },
+        "Chat": {
+          "width": "384px",
+          "height": "576px",
+          "borderRadius": "0px",
+          "boxShadow":  "0px 12px 28px rgba(0, 0, 0, 0.1), 0px 4px 4px rgba(0, 0, 0, 0.06)"
+        },
+        "MessageClient": {
+          "backgroundColor": "#4573D9",
+          "fontSize": "16px",
+          "borderTopLeftRadius": "4px",
+          "borderBottomLeftRadius": "4px",
+          "borderTopRightRadius": "4px",
+          "borderBottomRightRadius": "4px",
+          "margin": "16px 14px"
+        },
+        "MessageOperator": {
+          "backgroundColor": "#F7F7F7",
+          "borderTopLeftRadius": "4px",
+          "borderBottomLeftRadius": "4px",
+          "borderTopRightRadius": "4px",
+          "borderBottomRightRadius": "4px",
+          "fontSize": "16px",
+          "margin": "16px 14px"
+        },
+        "CloseButton": {
+          "top": "29px",
+          "right": "29px",
+          "width": "14px",
+          "height": "14px"
+        },
+        "ChatButton": {
+          "borderRadius": "50%"
+        },
+        "EmojiButton": {
+          "height": "0px",
+          "width": "0px"
+        },
+        "ChatBody": {
+          "padding": "24px",
+          "backgroundColor": "#fff"
+        },
+        "ChatWelcome": {
+          "margin": "64px auto 0px auto",
+          "maxWidth": "336px",
+          "textFontFamily": "'Formular Bold'",
+          "textColor": "#001934",
+          "textMarginBottom": "12px",
+          "textFontSize": "24px",
+          "subtextFontSize": "14px",
+          "subtextMarginBottom": "18px"
+        },
+        "Button": {
+          "padding": "16px 5px 17px",
+          "fontWeight": "bold",
+          "backgroundColor": "#4573D9",
+          "backgroundColorHover": "#3b66c5",
+          "colorHover": "#acc2f5",
+          "borderRadius": "4px",
+          "fontSize": "16px"
+        },
+        "InputText": {
+          "placeholderColor": "#78818F",
+          "padding": "20px 16px",
+          "fontSize": "16px",
+          "color": "#001934",
+          "backgroundColor": "#ffffff",
+          "borderColor": "#d8d8d8",
+          "borderRadius": "4px",
+          "margin": "0 0 24px 0"
+        },
+        "ChatInput": {
+          "limiterMaxHeight": "144px",
+          "placeholderColor": "#78818F",
+          "wrapperBackgroundColor": "#ffffff",
+          "backgroundColor": "#ffffff",
+          "color": "#001934",
+          "fontSize": "16px",
+          "padding": "24px 75px 24px 24px",
+          "borderColor": "#d8d8d8",
+          "borderTopWidth": "1px",
+          "submitButtonDisplay": "block",
+          "submitButtonBackgroundImage": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBjbGlwLXBhdGg9InVybCgjY2xpcDApIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZD0iTTIuMDQ0MzcgNS4yOTQ4OUMxLjcxOTE1IDMuNzg1NjUgMy4yNDEzNyAyLjU0MzExIDQuNjU2MDcgMy4xNjMwNEwyMC44NjY3IDEwLjI2NjZDMjIuMzc3OCAxMC45Mjg4IDIyLjM3NzggMTMuMDcxMiAyMC44NjY3IDEzLjczMzRMNC42NTYwOCAyMC44MzdDMy4yNDEzNyAyMS40NTY5IDEuNzE5MTUgMjAuMjE0NCAyLjA0NDM3IDE4LjcwNTFMMy40ODkyNCAxMkwyLjA0NDM3IDUuMjk0ODlaTTUuMjIyNDYgMTIuOTQ2M0wzLjg5NTY1IDE5LjEwMzZMMjAuMTA2MyAxMkwzLjg5NTY1IDQuODk2NDFMNS4yMjI0NiAxMS4wNTM3SDkuNzMwMDFDMTAuMjUyOSAxMS4wNTM3IDEwLjY3NjkgMTEuNDc3NCAxMC42NzY5IDEyQzEwLjY3NjkgMTIuNTIyNiAxMC4yNTI5IDEyLjk0NjMgOS43MzAwMSAxMi45NDYzSDUuMjIyNDZaIiBmaWxsPSIjMDAxOTM0Ii8+PC9nPjxkZWZzPjxjbGlwUGF0aCBpZD0iY2xpcDAiPjxyZWN0IHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgZmlsbD0id2hpdGUiLz48L2NsaXBQYXRoPjwvZGVmcz48L3N2Zz4="
+        }
+      }
+    },
+    "webview": {
+      "loadError": {
+        "ru": "Ошибка загрузки данных",
+        "en": "Error loading data from server"
+      }
+    },
+    "icons": {
+      "poll": {
+        "simple": "",
+        "extended": ""
+      }
+    }
+  }
+}

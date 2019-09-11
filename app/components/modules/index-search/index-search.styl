@@ -14,10 +14,15 @@
 
   &.state_explored
     width: 100%
-    max-width: 100%
 
     animation: setBackground $interval forwards
     transition: max-width $interval
+    height: 40px;
+    position: absolute;
+    z-index: 10;
+    right: 15px;
+    top: 8px;
+    max-width: calc(100% - 30px);
 
     @media (min-width: 1280px)
       height: 48px;
