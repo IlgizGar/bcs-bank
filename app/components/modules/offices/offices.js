@@ -905,7 +905,8 @@ export default class Offices {
         const searchInput = $(e.currentTarget);
         const city = this.city === null || this.city === 'all' ? '' : cities.filter(item => item.id.toString() === this.city.toString())[0].name;
         const value = `${searchInput.val()}`;
-        const request = value.length ? `Россия ${value}` : '';
+        const currentCityName = $('input[name=current-city_input]').attr('data-text');
+        const request = value.length ? `Россия ${currentCityName} ${value}` : '';
         let counter = 0;
 
         const searchVariationsContainer = $('.offices__search-variations');
@@ -924,7 +925,6 @@ export default class Offices {
               const searchVartiations = $('.offices__search-option[data-template]');
 
               // items.forEach((address) => {
-              const currentCityName = $('input[name=current-city_input]').attr('data-text');
               const len = items.geoObjects.getLength();
               if (len > 0) {
                 for (let i = 0; i < len; i++) {
