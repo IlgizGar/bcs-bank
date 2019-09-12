@@ -558,7 +558,7 @@ export default class Offices {
       }, {
         wayPointVisible: false,
         boundsAutoApply: true,
-        zoomMargin: 15,
+        zoomMargin: 20,
       });
       this.map.geoObjects.add(this.multiRoute);
       return new Promise((resolve) => {
