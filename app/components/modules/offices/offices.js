@@ -47,6 +47,7 @@ export default class Offices {
     this.markCollection = null;
     this.points = [];
     this.mapContainerId = window.innerWidth > 831 ? 'map-container' : 'map-container-mobile';
+    this.routeBlock = window.innerWidth > 831 ? '.js-map-router-for-desktop' : '.js-map-router';
     this.mapContainer = document.getElementById(this.mapContainerId);
     this.mapContainer.setAttribute('tab-index', '1');
     this.mapBlock = null;
@@ -74,12 +75,26 @@ export default class Offices {
 
     // нажатие кнопки отмена маршрута
     $('.js-map-router-cancel').on('click', () => {
-      $('.offices__map-router').css({ display: 'none' });
+      $(this.routeBlock).css({ display: 'none' });
       this.routeButton.removeClass('hidden-block');
       $('.js-route-built').removeClass('route-built--active');
       this.clearRoute();
       this.getPoints();
       this.addPoints();
+      if ($('input[name=map-search]').val().length)
+      {
+        const address = $('input[name=current-city_input]').attr('data-text') + ', ' + $('input[name=map-search]').val();
+        ymaps.geocode(address)
+            .then((res) => {
+              const startPoint = res.geoObjects.get(0)
+                  .geometry
+                  .getCoordinates();
+              this.userPos = startPoint;
+              const el = {};
+              el.coordinates = startPoint;
+              this.createPlacemark(el, this.iconUserPosition, true);
+            });
+      }
       this.goToPoints();
     });
   }
@@ -147,14 +162,16 @@ export default class Offices {
     this.routeButton.on('click', (e) => {
       const button = $(e.currentTarget);
       button.addClass('hidden-block');
-      button.closest('.collapse__item').find('.js-route-built').addClass('route-built--active');
-      $('.js-map-router-time').addClass('router-active');
-      const routerType = $('.offices__map-router');
-      const type = routerType.find('.router-active').attr('data-value');
+      const routerType = $(this.routeBlock);
       routerType.css({ display: 'flex' });
-      setTimeout(() => {
-        $('html, body').animate({ scrollTop: $(routerType).offset().top }, 800);
-      }, 200);
+      const type = routerType.find('.router-active').attr('data-value');
+      if (window.innerWidth < 832) {
+        button.closest('.collapse__item').find('.js-route-built').addClass('route-built--active');
+        setTimeout(() => {
+          $('html, body').animate({ scrollTop: $(routerType).offset().top }, 800);
+        }, 200);
+      }
+      $('.js-map-router-time').addClass('router-active');
       let toPoint = button.closest('[data-coords]').attr('data-coords');
       toPoint = String(toPoint).split(',').map((el) => {
         const coords = parseFloat(el.replace('[', '').replace(']', ''));
@@ -171,8 +188,17 @@ export default class Offices {
     if ($('.js-offices-button-for-map')) {
       this.lookAtTheMap();
     }
+    this.activeAddress();
   }
 
+  // добавляет маркер активности у выбранного адреса
+  activeAddress() {
+    $('.collapse__active-marker').css({ display: 'none' });
+    if ($('.collapse__item_state-open').length) {
+      console.log($('.collapse__item_state-open'));
+      $('.collapse__item_state-open').find($('.collapse__active-marker')).css({ display: 'block' });
+    }
+  }
 
   handleSwitch() {
     this.switcher.unbind('click');
@@ -459,8 +485,8 @@ export default class Offices {
     if (el.id) {
       // событие клика по пину
       placemark.events.add('click', (e) => {
-        console.log('click');
         this.onPointEvent(e, el.coordinates);
+        this.activeAddress();
         if (window.innerWidth > 831) {
           setTimeout(() => {
             $('html, body')
@@ -518,7 +544,7 @@ export default class Offices {
 
   // построение маршрута
   createRoute(toPoint, mode) {
-    if ($('.offices__map-router')
+    if ($(this.routeBlock)
       .css('display') != 'none') {
       this.clearRoute();
       this.multiRoute = new ymaps.multiRouter.MultiRoute({
@@ -532,7 +558,7 @@ export default class Offices {
       }, {
         wayPointVisible: false,
         boundsAutoApply: true,
-        zoomMargin: 15,
+        zoomMargin: 20,
       });
       this.map.geoObjects.add(this.multiRoute);
       return new Promise((resolve) => {
@@ -724,6 +750,8 @@ export default class Offices {
 
     $('.collapse__item[data-coords] .collapse__control')
       .on('click', (e) => {
+        this.activeAddress();
+        $(this.routeBlock).css({ display: 'none' });
         if (!this.appBlock.hasClass('state_explored')) {
           this.scrollToCollapse($(e.target));
           const collapseContent = $(e.target)
@@ -877,7 +905,8 @@ export default class Offices {
         const searchInput = $(e.currentTarget);
         const city = this.city === null || this.city === 'all' ? '' : cities.filter(item => item.id.toString() === this.city.toString())[0].name;
         const value = `${searchInput.val()}`;
-        const request = value.length ? `Россия ${value}` : '';
+        const currentCityName = $('input[name=current-city_input]').attr('data-text');
+        const request = value.length ? `Россия ${currentCityName} ${value}` : '';
         let counter = 0;
 
         const searchVariationsContainer = $('.offices__search-variations');
@@ -885,55 +914,77 @@ export default class Offices {
         // console.log('CITY', city);
         // console.log('REQUEST', request);
         if (request.length) {
-          ymaps.suggest(request, {
-            results: 100,
+
+          ymaps.geocode(request, {
             provider: 'yandex#map',
+            results: 100,
           })
             .then((items) => {
-              // console.log('ITEMS', items);
               searchVariationsContainer.hide();
               searchVariationsContainer.find('.offices__search-option[data-template]').remove();
               const searchVartiations = $('.offices__search-option[data-template]');
-              items.forEach((address) => {
-                if (counter < 10) {
-                  const item = $.extend(true, {}, searchVartiations.clone());
-                  const addressArr = address.value.split(',');
-                  // console.log(addressArr);
-                  const suggCity = addressArr[1];
-                  addressArr.splice(0, 2);
-                  const result = addressArr.join()
-                    .trim();
-                  // console.log('RESULT', result);
-                  // console.log('INDEX', result.indexOf('метро'));
-                  if (result.length) {
-                    item.find('.js-template-title')
-                      .text(result);
-                    item.find('.js-template-description')
-                      .text(suggCity.trim());
-                  } else {
-                    item.find('.js-template-title')
-                      .text(suggCity.trim());
-                    item.find('.js-template-description').remove();
+
+              // items.forEach((address) => {
+              const len = items.geoObjects.getLength();
+              if (len > 0) {
+                for (let i = 0; i < len; i++) {
+                  const addressComponents = items.geoObjects.get(i).properties.get('metaDataProperty').GeocoderMetaData;
+                  let addressCity = addressComponents.Address.Components.filter((comp) => {
+                    return comp.kind === 'locality'
+                  })[0];
+
+                  if (typeof addressCity === 'undefined') {
+                    addressCity = {
+                      name: '',
+                    }
                   }
-                  if (address.value.indexOf('метро') >= 0) {
-                    addressArr.forEach((el) => {
-                      if (el.indexOf('метро')) {
-                        const metroName = el.substr(6).toLowerCase().trim();
-                        const st = this.metroList.filter(item => (item.metro === metroName && item.name === suggCity.toLowerCase().trim()));
-                        item.find('.js-search-icon').css('color', st.length ? st[0].color : '');
+
+                  if (currentCityName.toLowerCase() === 'все города' || addressCity.name.toLowerCase() === currentCityName.toLowerCase()) {
+                    const address = {value: addressComponents.text};
+                    if (counter < 10) {
+                      const item = $.extend(true, {}, searchVartiations.clone());
+                      const addressArr = address.value.split(',');
+                      // console.log(addressArr);
+                      const suggCity = addressArr[1];
+                      addressArr.splice(0, 2);
+                      const result = addressArr.join()
+                        .trim();
+                      // console.log('RESULT', result);
+                      // console.log('INDEX', result.indexOf('метро'));
+                      if (result.length) {
+                        item.find('.js-template-title')
+                          .text(result);
+                        item.find('.js-template-description')
+                          .text(suggCity.trim());
+                      } else {
+                        item.find('.js-template-title')
+                          .text(suggCity.trim());
+                        item.find('.js-template-description').remove();
                       }
-                    });
-                    item.find('.js-metro-icon').removeClass('state_hidden');
-                    item.find('.js-address-icon').addClass('state_hidden');
-                  } else {
-                    item.find('.js-metro-icon').addClass('state_hidden');
-                    item.find('.js-address-icon').removeClass('state_hidden');
+                      if (address.value.indexOf('метро') >= 0) {
+                        addressArr.forEach((el) => {
+                          if (el.indexOf('метро')) {
+                            const metroName = el.substr(6).toLowerCase().trim();
+                            const st = this.metroList.filter(item => (item.metro === metroName && item.name === suggCity.toLowerCase().trim()));
+                            item.find('.js-search-icon').css('color', st.length ? st[0].color : '');
+                          }
+                        });
+                        item.find('.js-metro-icon').removeClass('state_hidden');
+                        item.find('.js-address-icon').addClass('state_hidden');
+                      } else {
+                        item.find('.js-metro-icon').addClass('state_hidden');
+                        item.find('.js-address-icon').removeClass('state_hidden');
+                      }
+                      item.removeClass('state_hidden');
+                      item.appendTo(searchPane);
+                      counter += 1;
+                    }
                   }
-                  item.removeClass('state_hidden');
-                  item.appendTo(searchPane);
-                  counter += 1;
+
                 }
-              });
+              }
+
+              // });
               if (searchVariationsContainer.find('.offices__search-option[data-template]').length) {
                 searchVariationsContainer.show();
               }
@@ -1274,7 +1325,7 @@ export default class Offices {
         $('.collapse__item')
           .find('.collapse__control-distance-to-bcs')
           .hide();
-        $('.offices__map-router').css({ display: 'none' });
+        $(this.routeBlock).css({ display: 'none' });
         this.routeButton.removeClass('hidden-block');
         $('.js-route-built').removeClass('route-built--active');
         this.clearRoute();

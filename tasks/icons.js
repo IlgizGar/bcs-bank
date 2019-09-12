@@ -3,6 +3,7 @@ const gulpIf = require('gulp-if');
 const svgmin = require('gulp-svgmin');
 const svgSymbols = require('gulp-svg-symbols');
 const rename = require('gulp-rename');
+const cheerio = require('gulp-cheerio');
 
 gulp.task('icons', () => {
   const svgminOpts = {
@@ -23,7 +24,19 @@ gulp.task('icons', () => {
 
   gulp
     .src('app/icons/**/*.svg')
-    .pipe(svgmin(svgminOpts))
+    .pipe(cheerio({
+      run: function($, file) {
+        if ($('svg').attr('leaveFill') != "true") {
+          $('[fill]').removeAttr('fill');
+          $('[title]').removeAttr('title');
+          $('[fill-rule]').removeAttr('fill-rule');
+        }
+      },
+      parserOptions: {
+        xmlMode: true
+      }
+    }))
+    // .pipe(svgmin(svgminOpts))
     .pipe(svgSymbols(svgSymbolsOpts))
     .pipe(gulpIf(/\.svg$/, rename('icons.svg')))
     .pipe(gulpIf(/\.svg$/, gulp.dest('dist/assets/images')));

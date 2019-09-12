@@ -1,6 +1,7 @@
 {% import "../../../components/inline-svg/inline-svg.njk" as Svg %}
 {% import "../../../components/modules/menu/menu.njk" as Menu %}
 {% import "../../../components/library/button/button.njk" as Button %}
+{% import "../../../components/icon/icon.njk" as Icon %}
 
 {% macro menubar( options ) %}
   {% set class_sep = joiner(' ') %}
@@ -21,11 +22,12 @@
         {% if options.vars.header === 'blue' %}
           {{ Menu.menu({ 'basic': [{'href': '#', 'title': 'Карты', 'selected': true}, {'href': '#', 'title': 'Кредиты'}, {'href': '#', 'title': 'Вклады'}, {'href': '#', 'title': 'Платежи'}, {'href': '#', 'title': 'БКС Бонус'}],
             'more': [], 'theme': 'white-tab', 'class': 'header__menu' }) }}
+          {{ Button.button({ 'name': 'chat', 'mods' : {'type': 'icon', 'theme': 'default', 'view': 'text', 'size': 'large'}, 'class': 'js-chat-call menubar__chat-button' }) }}
           {{ Button.button({ 'href': 'https://online.bcs.ru/cy/web/guest/home', 'title': 'Интернет-банк', 'mods' : {'theme': 'white', 'view': 'outlined', 'size': 'low'}, 'class': 'js-online-bank hidden-mobile' }) }}
         {% else %}
           {{ Menu.menu({ 'basic': [{'href': '#', 'title': 'Карты', 'selected': true}, {'href': '#', 'title': 'Кредиты'}, {'href': '#', 'title': 'Вклады'}, {'href': '#', 'title': 'Платежи'}, {'href': '#', 'title': 'БКС Бонус'}],
             'more': [], 'theme': 'dark-tab', 'class': 'header__menu' }) }}
-          {{ Button.button({ 'href': 'https://online.bcs.ru/cy/web/guest/home', 'title': 'Интернет-банк', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low'}, 'class': 'js-online-bank hidden-mobile' }) }}
+          {{ Button.button({ 'href': 'https://online.bcs.ru/cy/web/guest/home', 'title': 'Интернет-банк', 'mods' : {'theme': 'default', 'view': 'outlined', 'size': 'low'}, 'class': 'js-online-bank hidden-mobile pp_button' }) }}
         {% endif %}
 
       </div>

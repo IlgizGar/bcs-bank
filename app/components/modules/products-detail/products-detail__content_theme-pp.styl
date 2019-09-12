@@ -1,0 +1,1135 @@
+.product-page
+  .navbar
+    .navbar__wrapper
+      height 56px
+    .button
+      &.button_type-tab
+        .button__wrap
+          .button__title
+            opensansSemibold()
+  .nav
+    .button
+      &.button_type-tab
+        .button__wrap
+          .button__title
+            formularBold()
+  .page__container
+    max-width 1256px
+    padding-left 20px
+    padding-right 20px
+  .menubar
+    .menubar__logo
+      margin-top 8px
+      height 36px
+      display inline-block
+      &.menubar__logo_theme-white
+        img
+          &:nth-child(2)
+            display none
+  .header
+    .header__menu
+      margin-left 0
+      margin-right 160px
+  .menu
+    .menu__item
+      margin-left 20px
+      margin-right 20px
+      .button__wrap
+        .button__title
+          formularBold()
+  .context
+    &.context_type-menu
+      .context__button
+        span
+          formularBold()
+  .feature
+    &.feature_type-normal
+      .feature__title
+        margin-bottom 8px
+        font-size 24px
+        formularMedium()
+        line-height 32px
+      .feature__text
+        formularLight()
+        line-height 24px
+  .pp_tab_nav
+    margin-bottom 72px
+    .tabbar
+      .button
+        &.button_type-tab
+          .button__wrap
+            .button__title
+              formularBold()
+        &.button_theme-light-tab
+          &.state_active
+            .button__wrap
+              color #001934
+      .button__wrap
+        padding-bottom 28px
+        color #B2BAC2
+        line-height 24px
+    .tabbar__marker
+      bottom 0
+      top auto
+      height 4px
+      background #4573D9
+    .tabbar__scroll-wrapper
+      &:after
+        content ""
+        position absolute
+        bottom 0
+        left 20px
+        width calc(100% - 40px)
+        height 2px
+        background #EFEFF0
+  &.page
+    .page__section
+      margin-bottom 96px
+    .pp_steps
+      &.page__section
+        margin-bottom 116px
+    .pp_card
+      padding 80px 0
+      margin-bottom 0
+  .brand-features__icon
+    height 103px
+  .brand-features
+    .brand-features__item
+      .brand-features__title
+        margin 40px 0 16px 0
+      .brand-features__props
+        margin 56px 0 32px
+  .pp_calc_section
+    padding 108px 0 76px 0
+    .calculation
+      .calculation__thumbnail
+        padding 48px
+        border-radius 0
+        .calculation__result
+          formularBold(40px)
+          margin 0
+    .input
+      height 64px
+      .input__label
+        line-height 100%
+      .input__slider
+        .irs
+          .irs-bar
+            height 1px
+          .irs-line
+            .irs-line-left
+              height 1px
+          .irs-slider
+            width 24px
+            height 24px
+            top -13px
+            &:after
+              width 8px
+              height 8px
+              top calc(50% - 4px)
+              left calc(50% - 4px)
+    .input__field
+      margin-bottom 2px
+  .calculation
+    .button
+      margin-top 48px
+  .pp_button_icon_block
+    display inline-block
+    height 32px
+    line-height 32px
+    text-decoration none
+    color #ffffff
+    transition 0.2s
+    margin-right 36px
+    .pp_button_icon
+      float left
+      width 32px
+      height 32px
+      border 1px solid #E4EAF9
+      border-radius 4px
+      line-height 30px
+      text-align center
+      .icon
+        max-width 12px
+        max-height 13px
+        vertical-align middle
+        transition 0.2s
+        img
+          height auto
+    &:hover
+      .pp_button_icon
+        background #ffffff
+        color #4573d9
+    .pp_button_label
+      opensansBold()
+      padding-left 16px
+      line-height normal
+      vertical-align middle
+  .pp_card
+    .form
+      .input:not(.input_textarea)
+        height 65px
+  .mobile
+    .mobile__vendors
+      margin-top 80px
+    .section__row
+      padding 0
+  .pp_mobile
+    .heading
+      padding-bottom 32px
+      line-height 48px
+    &.mobile
+      .mobile__figure
+        .illustration
+          max-width 450px
+          max-height 454px
+          right 82px
+    .section__text
+      p
+        opensansSemibold()
+  .pp_steps
+    .brand-features
+      .brand-features__item
+        .brand-features__title
+          line-height 32px
+    .heading
+      &.heading_margin-normal
+        padding-bottom 70px
+  .pp_card
+    .heading
+      padding-bottom 16px
+    .text
+      margin-bottom 48px
+    .form
+      .form__steps
+        line-height 24px
+        margin-bottom 4px
+        font-size 14px
+      .heading
+        padding-bottom 32px
+      .form__line-group
+        .form__field-group
+          &:not(:last-child)
+            margin-right 30px
+    .dropdown
+      .dropdown__input
+        margin-top 14px
+    .calculation
+      .text
+        &.calculation__text
+          margin-bottom 0
+          text-align center
+          font-size 14px
+          line-height 24px
+      .calculation__image
+        margin 16px 0 28px 0
+  .pp_button_icon_big
+    display inline-block
+    height 40px
+    line-height 40px
+    text-align left
+    .pp_button_icon
+      float left
+      width 40px
+      height 40px
+      line-height 40px
+      text-align center
+    .pp_button_label
+      line-height normal
+      vertical-align middle
+      display inline-block
+      color #000000
+      opensansBold()
+      padding-left 16px
+      transition 0.2s
+    &:hover
+      .pp_button_label
+        color #4573d9
+  .checkbox
+    &.checkbox_theme-dark
+      .checkbox__control
+        &:checked
+          & + .checkbox__state
+            background #4573d9
+            &:after
+              border-bottom-color #ffffff
+              border-right-color #ffffff
+  .footer
+    border-top none
+    .footer__menu-link
+      line-height 24px
+      margin-bottom 16px
+    .footer__menu-title
+      margin-bottom 24px
+    .footer__contacts-phone
+      font-size 24px
+      margin-bottom 0
+    .footer__contacts-inform
+      font-size 14px
+      margin-bottom 22px
+      line-height 24px
+    .footer__socials
+      .socials
+        float left
+        margin-top 48px
+        &:nth-child(1)
+          margin-right 32px
+        .socials__item
+          float left
+          margin-right 16px
+          &:last-child
+            margin-right 0
+    .footer__about
+      .footer__credentials
+        .footer__credentials-link
+          margin-bottom 6px
+          .button__wrap
+            .button__title
+              font-size 14px
+              line-height 24px
+        p
+          display inline
+          font-size 14px
+          line-height 24px
+  .footer__socials
+    width 100%
+    display inline-block
+  .socials
+    .socials__title
+      margin-bottom 16px
+  .pp_copyr
+    margin-top 24px
+  .index-search
+    &.state_explored
+      .index-search__close
+        margin-right 12px
+
+  .pp_button
+    .button__wrap
+      padding 0 24px
+
+  .pp_first_section
+    &.section
+      &.page__section
+        margin-bottom 96px
+
+@media(min-width: 1280px)
+  .product-page
+    .products-detail
+      .products-detail__content
+        padding 120px 0 32px 0
+      .products-detail__figure
+        .illustration
+          top -80px
+          height 692px
+          width 488px
+    .heading
+      &.heading_margin-medium
+        padding-bottom 48px
+    .products-detail__content
+      .features
+        margin-bottom 120px
+    .calculator
+      .heading
+        &.heading_margin-medium
+          padding-bottom 24px
+          max-width 630px
+      .text
+        max-width 630px
+        margin-bottom 72px
+    .calculation
+      margin-top -182px
+      width 384px
+      margin-left 0
+    .form
+      &.form_layout-narrow
+        width calc(100% - 384px)
+        max-width 590px
+    .pp_calc_section
+      .calculation
+        .text
+          margin-bottom 8px
+    &.page
+      .page__section
+        .calculator__row
+          -webkit-box-pack justify
+          -ms-flex-pack justify
+          justify-content space-between
+          flex-wrap unset
+          -ms-flex-wrap unset
+    .mobile
+      .mobile__content
+        padding 96px 0
+      .mobile__wrapper
+        padding-left 96px
+    .pp_card
+      .calculation
+        width 382px
+        margin-top 90px
+        margin-left auto
+        text-align center
+      .section__row
+        flex-wrap unset
+        -ms-flex-wrap unset
+    .footer
+      .footer__wrap
+        padding 72px 0 48px
+        -webkit-box-pack justify
+        -ms-flex-pack justify
+        justify-content space-between
+        .footer__menu
+          width 836px
+        .footer__info
+          width 280px
+        .footer__contacts
+          width 100%
+      .footer__about
+        .footer__about-wrap
+          padding 48px 0 54px
+        .footer__developer
+          width 290px
+          padding-bottom 12px
+
+@media(min-width 768px)
+  .product-page
+    .features
+      .features__item
+        width 208px
+        padding-right 32px
+
+@media (max-width 1279px)
+  .product-page
+    .nav
+      display block
+    .pp_tab_nav
+      margin-bottom 56px
+      .tabbar__scroll-wrapper
+        &:after
+          left 80px
+          width calc(100% - 80px)
+      .tabbar
+        .button
+          padding 0
+          margin-right 40px
+    .menubar
+      background transparent
+      border none
+      .menubar__logo
+        height 28px
+        margin-top 0
+        &.menubar__logo_theme-white
+          img
+            &:nth-child(1)
+              display block
+    .header
+      -webkit-box-direction normal
+      -ms-flex-direction column
+      flex-direction column
+      .header__menu
+        display block
+        margin-right 0
+        margin-left 28px
+    &.page
+      .page__container
+        padding 0 80px
+      .page__section
+        margin-bottom 80px
+      .pp_mobile
+        .page__container
+          padding 0
+        .mobile__wrapper
+          border-radius 0
+          padding-left 80px
+          padding-right 16px
+      .pp_steps
+        &.page__section
+          margin-bottom 80px
+      .pp_card
+        padding 64px 0
+        margin-bottom 0
+        .section__row
+          max-width 424px
+      .pp_features .page__container
+      .pp_steps .page__container
+        overflow auto
+        padding-bottom 20px
+        margin-bottom -20px
+        z-index 1
+      .pp_features.page__section
+      .pp_steps.page__section
+        position relative
+      .pp_features.page__section:after
+      .pp_steps.page__section:after
+        position absolute
+        content ""
+        bottom 0
+        left 0
+        width 100%
+        height 20px
+        background #ffffff
+        z-index 2
+      .pp_features .brand-features__item .text
+      .pp_steps .brand-features__item .text
+        font-size 16px
+        line-height 24px
+        padding 0
+        max-width 232px
+      .pp_features .carousel-controls
+      .pp_steps .carousel-controls
+        display none !important
+    .nav__wrapper
+      padding 4px 0
+    .section
+      .section__header
+        margin-top -52px
+        padding-top 52px
+    .menubar__wrapper
+      height 28px
+      margin-top 24px
+      -webkit-box-pack start
+      -ms-flex-pack left
+      justify-content left
+    .menu
+      .menu__item
+        height 28px
+    .menubar__burger
+      position absolute
+      top 15px
+      right 40px
+      z-index 705
+      cursor pointer
+    .mobile-menu
+      z-index 700
+      .nav
+        display none
+      .menu
+        margin-left 0
+    .heading
+      &.heading_type-large
+        font-size 40px
+        margin-bottom 24px
+        line-height 48px
+    .products-detail
+      .products-detail__content
+        width calc(58% - 40px)
+        padding 120px 0 28px 0
+      .products-detail__figure
+        .illustration
+          top 46px
+          right 60px
+          height 318px
+          width 318px
+    .pp_first_section
+      .features
+        display inline-block
+        width 100%
+        margin-bottom 120px
+      .button
+        height 56px
+        .button__wrap
+          padding 0 40px
+      &.section
+        &.page__section
+          margin-bottom 78px
+    .features
+      .features__item
+        width 100%
+        padding 0
+        margin-bottom 8px
+        &:nth-child(3)
+          display block
+    .feature
+      &.feature_type-normal
+        .feature__text
+          br
+            display none
+    .brand-features
+      .brand-features__item
+        & > .text
+          br
+            display none
+        .brand-features__title
+          font-size 24px
+          line-height 32px
+          margin 0 0 8px 0
+        .brand-features__props
+          position absolute
+          bottom 60px
+          left 40px
+          margin 0
+          & + .text
+            margin-top 0
+    .form
+      &.form_layout-narrow
+        margin-left 16px
+        margin-right 16px
+        width 100%
+    .tabbar__scroll-wrapper
+      margin-left 0
+    .brand-features__icon
+      height 103px
+      position absolute !important
+      bottom 46px
+      left 40px
+    .pp_calc_section
+      padding 64px 0 32px 0
+      .heading
+        &.heading_type-default
+          font-size 40px
+          line-height 48px
+          margin-bottom 40px
+      .form
+        &.form_layout-narrow
+          width 100%
+          max-width 382px
+      .calculation
+        width 276px
+        margin-top -75px
+        .calculation__thumbnail
+          padding 0
+          background transparent
+          .calculation__result
+            margin-top 8px
+      .calculator__row
+        -webkit-box-pack justify
+        -ms-flex-pack justify
+        justify-content space-between
+        margin-top 24px
+      .text
+        line-height 24px
+        max-width 330px
+    .calculation
+      .button
+        margin-top 22px
+        height 56px
+        width 234px
+    .pp_mobile
+      .heading
+        font-size 40px
+        line-height 48px
+        padding-bottom 16px
+      .section__text
+        p
+          br
+            display none
+      &.mobile
+        .mobile__figure
+          .illustration
+            display inline-block
+            max-width 370px
+            max-height 474px
+            right 72px
+            margin-top 14px
+    .mobile
+      .mobile__content
+        padding 64px 0
+        max-width 384px
+        margin-left 16px
+        margin-right 16px
+      .mobile__vendors
+        margin-top 48px
+      .mobile__figure
+        width calc(100% - 464px)
+    .pp_steps
+      .heading
+        &.heading_margin-normal
+          padding-bottom 56px
+          text-align left
+          font-size 40px
+          line-height 48px
+          font-family 'Formular Bold',sans-serif
+          br
+            display none
+    .pp_card
+      .heading
+        font-size 40px
+        line-height 48px
+        padding-bottom 16px
+      .text
+        margin-bottom 40px
+        max-width 384px
+      .form
+        .heading
+          font-size 24px
+          line-height 32px
+        .input
+          &:not(.input_textarea)
+            height 64px
+        .form__line-group
+          display inline-block
+          width 100%
+        .form__agreements
+          flex-direction row
+        &.form_layout-narrow
+          .form__submit-button
+            margin-top 0
+            height 56px
+          fieldset
+            margin-bottom 0
+      .dropdown
+        height 64px
+      .calculation
+        position absolute
+        top 240px
+        right 58px
+        width 284px
+        .calculation__image
+          display block
+          margin 16px 0 32px 0
+          height auto
+        .text
+          &.calculation__text
+            padding 0 15px
+      .calculation__text
+        display block
+    .footer
+      .footer__wrap
+        padding 56px 0 50px
+        .footer__contacts
+          width 208px
+        .footer__info
+          margin-top 40px
+          -webkit-box-pack start
+          -ms-flex-pack start
+          justify-content start
+          margin-bottom 0
+      .page__container
+        padding 0 46px 0 80px
+      .footer__menu-link
+        margin-top 0
+        .button__wrap
+          .button__title
+            font-size 16px
+      .footer__menu-title
+        line-height 24px
+      .footer__contacts-phone
+        line-height 32px
+        white-space nowrap
+      .footer__contacts-button
+        height 56px
+        margin-top 8px
+      .footer__socials
+        .socials
+          width 100%
+          margin-top 0
+          margin-bottom 32px
+          margin-right 0 !important
+      .footer__about
+        .footer__about-wrap
+          padding 56px 0 16px 0
+        .footer__credentials
+          max-width 590px
+        .footer__developer
+          margin-left 36px
+          max-width 140px
+          padding-bottom 8px
+    .footer__socials
+      width 200px
+      margin-left 106px
+    .pp_copyr
+      .button
+        &.button_type-link
+          display inline
+          .button__wrap
+            display inline
+    .input
+      &.state_init
+        .input__label
+          font-size 16px
+    .mobile-menu
+      .menu
+        .menu__wrapper
+          .menu__item
+            font-family "Formular Bold",sans-serif
+            letter-spacing normal
+            font-size 16px
+            font-weight 500
+
+    .feature
+      &.feature_type-normal
+        .feature__title
+            display inline
+            font-size 16px
+            line-height 24px
+            font-family 'Opensans Regular', sans-serif
+
+    .feature
+      &.feature_type-normal
+        .feature__text
+            display inline
+            font-size 16px
+            line-height 24px
+            font-family 'Opensans Regular', sans-serif
+
+    .pp_features
+      .brand-features__item
+        width 384px
+        background #F7F7F7
+        border-radius 4px
+        margin-right 32px
+        margin-left 0
+        padding 40px
+        flex none
+        height 350px
+        -webkit-transform translateY(0) !important
+        transform translateY(0) !important
+        opacity 1 !important
+    .brand-features
+      .brand-features__item
+        width 384px
+        background #F7F7F7
+        border-radius 4px
+        margin-right 32px
+        margin-left 0
+        padding 40px
+        flex none
+        height 350px
+        -webkit-transform translateY(0) !important
+        transform translateY(0) !important
+        opacity 1 !important
+
+    .pp_features.section .section__row
+    .pp_steps.section .section__row
+      width auto
+      -ms-flex-wrap nowrap
+      flex-wrap nowrap
+      margin 0
+
+@media (max-width 900px)
+  .product-page
+    .index-search
+      margin-right 30px
+    &.page
+      .page__container
+        padding 0 24px
+      .pp_mobile
+        .mobile__wrapper
+          padding-left 24px
+      .menubar__burger
+        right 24px
+      .pp_tab_nav
+        .tabbar__scroll-wrapper
+          &:after
+            left 24px
+            width calc(100% - 24px)
+      .menu
+        .menu__item
+          margin-left 15px
+          margin-right 15px
+      .products-detail
+        .products-detail__content
+          padding 90px 0 28px 0
+      .pp_first_section
+        .features
+          margin-bottom 48px
+      .mobile-menu
+        .mobile-menu__online-bank
+          margin-left 24px
+      .pp_card
+        .calculation
+          right 0
+      .footer
+        .page__container
+          padding 0 24px 0 24px
+
+@media (max-width 831px)
+  .product-page
+    .menubar__burger
+      top 0
+      position static
+      .menubar__burger-title
+        font-size 0
+        margin 0
+    .nav
+      display none
+    .mobile-menu
+      .nav
+        display block
+        .nav__wrapper
+          padding-left 24px
+    .header
+      .header__menu
+        display none
+      .mobile-menu
+        .header__menu
+          display block
+      .navbar
+        position relative
+    .menubar
+      height 56px
+      .menubar__logo
+        height 32px
+        &.menubar__logo_theme-white
+          img
+            &:nth-child(2)
+              display block
+            &:nth-child(1)
+              display none
+      &.section__menubar
+        height 56px
+    .section
+      .section__header
+        margin-top 0
+        padding-top 0
+      .section__row
+        margin-left -24px
+        margin-right -24px
+    .pp_tab_nav
+      margin-bottom 32px
+      .tabbar__scroll-wrapper
+        .tabbar
+          padding-top 0
+    .pp_first_section
+      &.section
+        &.page__section
+          margin-bottom 40px
+      .features
+        margin-bottom 40px
+      .button
+        width 100%
+    .menubar__wrapper
+      margin-top 13px
+    .index-search
+      margin 0
+    &.page
+      .menu
+        .menu__item
+          margin-left 0
+          margin-right 0
+      .products-detail__nav
+        &.section__nav
+          .tabbar__scroll-wrapper
+            box-shadow none
+            height 46px
+            overflow auto
+          .section__wrap
+            margin-left -24px
+            margin-right -24px
+            width calc(100% + 48px)
+            padding-left 24px
+      .pp_mobile
+        margin-bottom 40px
+        overflow hidden
+        .mobile__wrapper
+          padding 40px 24px 24px 24px
+      .products-detail
+        .products-detail__figure
+          .illustration
+            top 28px
+            height 300px
+            right 0
+        .products-detail__content
+          width calc(100% - 40px)
+          padding 16px 0 60px
+          margin-left 24px
+          margin-right 24px
+      .page__section
+        margin-bottom 40px
+      .pp_card
+        padding 40px 0
+        margin-bottom 48px
+        .section__row
+          max-width 500px
+      .pp_steps
+        &.page__section
+          margin-bottom 40px
+    .brand-features__icon
+      bottom 18px
+      left 24px
+    .brand-features
+      .brand-features__item
+        padding 24px 24px 16px 24px
+        .brand-features__props
+          bottom 34px
+          left 24px
+    .pp_calc_section
+      padding 32px 0 40px
+      .heading
+        &.heading_type-default
+          font-size 24px
+          line-height 32px
+          margin-bottom 16px
+      .calculator__row
+        margin-top 24px
+      .calculation
+        width calc(100% - 48px)
+        margin 0 24px
+        background #ffffff
+        padding 40px
+      .form
+        &.form_layout-narrow
+          margin-left 24px
+          margin-right 24px
+          width calc(100% - 48px)
+    .form
+      &.form_layout-narrow
+        margin-left 24px
+        margin-right 24px
+        fieldset
+          margin-bottom 8px
+    .calculation
+      .button
+        width 100%
+        max-width 288px
+        margin-top 31px
+    .pp_mobile
+      .heading
+        font-size 32px
+        line-height 40px
+        padding-bottom 16px
+      .section__text
+        p
+          font-size 16px
+          line-height 24px
+      &.mobile
+        .mobile__figure
+          .illustration
+            width auto
+            max-width 100%
+            max-height 100%
+            right 0
+            margin-top 0
+    .mobile
+      .mobile__content
+        padding 0
+        max-width 384px
+        margin-left 24px
+        margin-right 24px
+      .mobile__vendors
+        margin-top 48px
+      .mobile__figure
+        width 100%
+        height 222px
+        margin-top 40px
+    .pp_steps
+      .heading
+        &.heading_margin-normal
+          font-size 24px
+          line-height 32px
+          padding-bottom 32px
+    .pp_card
+      .heading
+        font-size 24px
+        line-height 32px
+      .text
+        margin-bottom 32px
+      .form
+        .heading
+          font-size 16px
+          line-height 24px
+          padding-bottom 24px
+        .form__agreements
+          flex-direction column
+        &.form_layout-narrow
+          .form__submit-button
+            margin-top 32px
+      .calculation
+        position relative
+        top auto
+        right auto
+        width calc(100% - 48px)
+        max-width 432px
+        text-align center
+        margin-top 24px
+        padding-top 72px
+        margin-left 24px
+        margin-right 24px
+        .text
+          &.calculation__text
+            margin auto
+        .calculation__image
+          max-width 382px
+          margin 16px auto 0 auto
+    .footer
+      .footer__wrap
+        flex-direction column-reverse
+        padding 0
+        .footer__info
+          margin-top 0
+        .footer__menu
+          margin 38px -24px 0
+          width calc(100% + 48px)
+          .footer__menu-group
+            .icon
+              color #001934
+      .footer__contacts-button
+        margin-top 0
+      .footer__menu-title
+        margin-bottom 0
+        padding 16px 24px
+        -webkit-box-align center
+        -ms-flex-align center
+        align-items center
+      .footer__menu
+        .footer__menu-content
+          padding 0 24px 24px
+      .footer__about
+        .footer__about-wrap
+          padding 0 0 20px 0
+        .footer__credentials
+          padding 32px 0 16px 0
+          .footer__credentials-link
+            margin-bottom 24px
+        .footer__developer
+          width calc(100% + 48px)
+          margin-left -24px
+          max-width calc(100% + 48px)
+          padding-left 24px
+          padding-right 24px
+          margin-top 40px
+          padding-bottom 0
+          padding-top 24px
+      .footer__socials
+        .socials
+          width auto
+          margin-bottom 0
+    .pp_copyr
+      margin-top 0
+    .footer__socials
+      width 100%
+      margin 0
+      -webkit-box-pack justify
+      -ms-flex-pack justify
+      justify-content space-between
+    .pp_features
+      .brand-features__item
+        width 280px
+        padding 30px 24px 16px 24px
+        height 304px
+        overflow hidden
+
+    .brand-features
+      .brand-features__item
+        width 280px
+        padding 30px 24px 16px 24px
+        height 304px
+        overflow hidden
+
+    .pp_button_line
+      position absolute
+      top 0
+      left 0
+      width 100%
+
+@media (max-width 386px)
+  .product-page
+    .pp_calc_section
+      .calculation
+        padding 30px
+    .pp_button_icon_block
+      margin-right 10px
+      &:last-child
+        margin-right 0
+      .pp_button_label
+        padding-left 12px
+    .pp_button_icon_big
+      .pp_button_label
+        font-size 15px
+        padding-left 14px
+    .pp_card
+      .calculation
+        .text
+          &.calculation__text
+            padding 0
+            line-height 20px
+            top 60px

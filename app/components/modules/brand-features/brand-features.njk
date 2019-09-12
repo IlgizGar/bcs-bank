@@ -7,7 +7,11 @@
 
     <div class="brand-features {{ options.class }}">
         <div class="page__container brand-features__carousel carousel carousel_type-mobile {% if options.landing  %} page__container_landing {% endif %}">
+            {% if options.js_carousel == 0 %}
+            <div class="section__row" data-id="product-cards">
+            {% else %}
             <div class="section__row js-carousel" data-id="product-cards" data-breakpoint="992">
+            {% endif %}
                 {% for item in options.items %}
 
                     {% set mods = '' %}
@@ -40,11 +44,13 @@
                     {% endif %}
                 {% endfor %}
             </div>
-            <div class="carousel-controls carousel-controls_theme-dark js-carousel-controls">
-              <div class="carousel-controls__pagination js-carousel-pagination" data-carousel="product-cards">
-                <span>01</span><span></span><span></span>
-              </div>
-            </div>
+            {% if options.js_carousel != 0 %}
+                <div class="carousel-controls carousel-controls_theme-dark js-carousel-controls">
+                    <div class="carousel-controls__pagination js-carousel-pagination" data-carousel="product-cards">
+                        <span>01</span><span></span><span></span>
+                    </div>
+                </div>
+            {% endif %}
         </div>
     </div>
 
