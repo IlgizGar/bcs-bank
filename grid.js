@@ -4,12 +4,12 @@ module.exports = {
   offset: '40px', /* gutter width px || % || rem */
   mobileFirst: false,
   container: {
-    maxWidth: '1240px',
+    maxWidth: '1216px',
     fields: '20px',
   },
   breakPoints: {
     lg: {
-      width: '1240px',
+      width: '1216px',
       fields: '20px',
     },
     md: {

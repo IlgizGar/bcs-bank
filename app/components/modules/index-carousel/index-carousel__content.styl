@@ -1,9 +1,29 @@
 .index-carousel .index-carousel__content
 
-  padding-bottom 56px;
+  padding-bottom 69px;
+  color: $color_light;
+  width: calc(62% - 40px)
+  padding-top: 40px;
+  @media (max-width: 831px)
+    padding-top 0
+    padding-bottom 0
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 40px;
+    width: 100%;
+  @media (min-width: 832px) and (max-width: 1215px)
+    width: calc(62% - 40px);
+    padding-top: 0;
+    padding-bottom: 64px;
 
-  color: $color_light
-
+  .heading
+    margin-bottom 38px
+    @media (min-width: 832px) and (max-width: 1215px)
+      margin-bottom 33px
+    @media (max-width: 831px)
+      font-size 40px
+      line-height: 48px;
+      margin-bottom: 22px;
   &-text
     opensansRegular(24px)
     margin-bottom: 53px;
@@ -13,21 +33,6 @@
       opensansRegular(18px)
 
   col()
-  @media (min-width: 1280px)
-    size(7)
-
-  @media (min-width: 992px) and (max-width: 1279px)
-    size(8)
-
-  @media (min-width: 768px) and (max-width: 991px)
-    size(6)
-
-  @media (max-width: 767px)
-    order: 1
-    size(12)
-  @media (max-width: 991px)
-    .features
-      +.button
-        margin-top 40px
-
-    padding-bottom: 0
+  //size(8)
+  //@media (max-width: 960px)
+  //  size(7)

@@ -29,16 +29,41 @@
               <div class="carousel__progressbar-bar js-carousel-progressbar"></div>
             </div>
             <div class="index-carousel js-carousel" data-id="index-header">
+                <div class="index-carousel__slide" data-href="/bks/cards-detail_more-visa-platinum.html" data-scroll-id="#section-request">
+                    <div class="page__container">
+                        <div class="index-carousel__wrap">
+                            <div class="section__row">
+                                <div class="index-carousel__content">
+                                    {{ Heading.heading({ 'tag': 'h1', 'title': 'MORE Visa Signature', 'mods' : { 'type': 'large', 'theme': 'light' } }) }}
+                                    <div class="features index-carousel__features">
+                                        {{ Feature.feature({ 'title': '0 ₽', 'text': 'За посещение бизнес-залов Lounge Key', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
+                                        {{ Feature.feature({ 'title': 'до 5%', 'text': 'бонусы за все покупки', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
+                                    </div>
+                                </div>
+                                <div class="index-carousel__image">
+                                    <div class="illustration">
+                                        <img class="illustration-image" src="assets/illustrations/More Platinum.svg" alt="Ремонт легче с кредитом БКС">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
               <div class="index-carousel__slide" data-href="http://google.com" data-read-more-href="http://ya.ru" data-scroll-id=""><!-- data-read-more-href url для первой кнопки    data-href  для второй кнопки -->
                 <div class="page__container">
                   <div class="index-carousel__wrap">
                     <div class="section__row">
                       <div class="index-carousel__content">
-                        {{ Heading.heading({ 'tag': 'h1', 'title': 'Сократите платежи \n по всем кредитам', 'mods': { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}
-                        <div class="features index-carousel__features">
-                          {{ Feature.feature({ 'title': 'До 55 дней', 'text': 'беспроцентный \n период', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
-                          {{ Feature.feature({ 'title': 'До 1 млн. #ruble', 'text': 'максимальная \n сумма кредита', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
-                          {{ Feature.feature({ 'title': 'До 30%', 'text': 'от покупок \n возвращаются на карту', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
+                        {{ Heading.heading({ 'tag': 'h1', 'title': 'Сократите платежи \n по всем кредитам', 'mods': { 'type': 'large', 'theme': 'light', 'title':'large'} }) }}
+
+{#                        todo: если три колонки в банере, то контейнеру features index-carousel__features, добавляем еще один класс index-carousel__features-many. А также создаем еще одну feature с классом index-carousel__feature-many, удаляя title.#}
+                        <div class="features index-carousel__features index-carousel__features-many">
+                          {{ Feature.feature({ 'title': 'до 55 дней', 'text': 'Беспроцентный \n период', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
+                          {{ Feature.feature({ 'text': 'Беспроцентный период до 55 дней', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature-many'}) }}
+                          {{ Feature.feature({ 'title': 'до 1 млн. #ruble', 'text': 'Максимальная \n сумма кредита', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
+                          {{ Feature.feature({ 'text': 'Максимальная сумма кредита до 1 млн. #ruble', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature-many'}) }}
+                          {{ Feature.feature({ 'title': 'до 30%', 'text': 'от покупок \n возвращаются на карту', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
+                          {{ Feature.feature({ 'text': 'От покупок возвращаются на карту до 30%', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature-many'}) }}
                         </div>
                       </div>
                       <div class="index-carousel__image">
@@ -53,11 +78,14 @@
                   <div class="index-carousel__wrap">
                     <div class="section__row">
                       <div class="index-carousel__content">
-                        {{ Heading.heading({ 'tag': 'h1', 'title': 'Покупки \n с картой БКС', 'mods': { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}
-                        <div class="features index-carousel__features">
-                          {{ Feature.feature({ 'title': 'До 55 дней', 'text': 'беспроцентный \n период', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
-                          {{ Feature.feature({ 'title': 'До 1 млн. #ruble', 'text': 'максимальная \n сумма кредита', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
-                          {{ Feature.feature({ 'title': 'До 30%', 'text': 'от покупок \n возвращаются на карту', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
+                        {{ Heading.heading({ 'tag': 'h1', 'title': 'Покупки \n с картой БКС', 'mods': { 'type': 'large', 'theme': 'light', 'title':'large'} }) }}
+                        <div class="features index-carousel__features index-carousel__features-many">
+                          {{ Feature.feature({ 'title': 'до 55 дней', 'text': 'Беспроцентный \n период', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
+                          {{ Feature.feature({ 'text': 'Беспроцентный период до 55 дней', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature-many'}) }}
+                          {{ Feature.feature({ 'title': 'до 1 млн. #ruble', 'text': 'Максимальная \n сумма кредита', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
+                          {{ Feature.feature({ 'text': 'Максимальная сумма кредита до 1 млн. #ruble', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature-many'}) }}
+                          {{ Feature.feature({ 'title': 'до 30%', 'text': 'от покупок \n возвращаются на карту', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
+                          {{ Feature.feature({ 'text': 'От покупок возвращаются на карту до 30%', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature-many'}) }}
                         </div>
                       </div>
                       <div class="index-carousel__image">
@@ -74,16 +102,19 @@
                   <div class="index-carousel__wrap">
                     <div class="section__row">
                       <div class="index-carousel__content">
-                        {{ Heading.heading({ 'tag': 'h1', 'title': 'Ремонт легче с \n кредитом онлайн', 'mods' : { 'type': 'large', 'margin': 'medium', 'theme': 'light' } }) }}
-                        <div class="features index-carousel__features">
-                          {{ Feature.feature({ 'title': 'До 55 дней', 'text': 'беспроцентный \n период', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
-                          {{ Feature.feature({ 'title': 'До 1 млн. #ruble', 'text': 'максимальная \n сумма кредита', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
-                          {{ Feature.feature({ 'title': 'До 30%', 'text': 'от покупок \n возвращаются на карту', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
+                        {{ Heading.heading({ 'tag': 'h1', 'title': 'Ремонт легче с \n кредитом онлайн', 'mods' : { 'type': 'large', 'theme': 'light', 'title':'large' } }) }}
+                        <div class="features index-carousel__features index-carousel__features-many">
+                          {{ Feature.feature({ 'title': 'до 55 дней', 'text': 'Беспроцентный \n период', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
+                          {{ Feature.feature({ 'text': 'Беспроцентный период до 55 дней', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature-many'}) }}
+                          {{ Feature.feature({ 'title': 'до 1 млн. #ruble', 'text': 'Максимальная \n сумма кредита', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
+                          {{ Feature.feature({ 'text': 'Максимальная сумма кредита до 1 млн. #ruble', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature-many'}) }}
+                          {{ Feature.feature({ 'title': 'до 30%', 'text': 'от покупок \n возвращаются на карту', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature'}) }}
+                          {{ Feature.feature({ 'text': 'От покупок возвращаются на карту до 30%', 'mods': {'type': 'normal'}, 'class': 'index-carousel__feature-many'}) }}
                         </div>
                       </div>
                       <div class="index-carousel__image">
                         <div class="illustration">
-                          <img class="illustration-image" src="assets/illustrations/credit_online.svg" alt="Ремонт легче с кредитом БКС">
+                          <img class="illustration-image" src="assets/illustrations/More Platinum.svg" alt="Ремонт легче с кредитом БКС">
                         </div>
                       </div>
                     </div>
@@ -95,7 +126,8 @@
           <div class="page__container">
             <div class="section__header-controls">
 
-              {{ Button.button({ 'href': '/bks/cards-detail_bks-platinum.html?#section-request', 'title': 'Оформить', 'mods': { 'theme': 'white' }, 'class': 'section__header-button js-redirect-scroll' }) }}
+              {{ Button.button({ 'href': '/bks/cards-detail_bks-platinum.html?#section-request', 'title': 'Оформить онлайн', 'mods': { 'theme': 'white' }, 'class': 'section__header-button js-redirect-scroll' }) }}
+              {{ Button.button({ 'href': '/bks/cards-detail_bks-platinum.html?#section-request', 'title': 'Оформить карту', 'mods': { 'theme': 'white' }, 'class': ' section__header-button-mobil js-redirect-scroll' }) }}
               {{ Button.button({ 'href': '/bks/cards-detail_bks-platinum.html', 'title': 'Узнать больше', 'mods': { 'theme': 'white', 'view': 'text' }, 'class': 'section__header-button_type-more js-redirect-url' }) }}
 
               <div class="carousel-controls js-index-carousel-controls">
