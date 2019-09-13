@@ -3,7 +3,11 @@
   //justify-content: space-between
   //align-content: stretch
 
-  @media (min-width: 1280px)
+  @media (min-width: 1216px)
+    margin-right: -20px;
+    margin-left: -20px;
+
+  @media (min-width: 432px)
     //height: 450px
     .section__row
       flex-wrap nowrap
@@ -14,10 +18,13 @@
   @media (min-width: 768px) and (max-width: 991px)
     //height: 360px
 
-  @media (max-width: 767px)
-    //flex-direction: column
+  @media (max-width: 831px)
+    .section__row
+      flex-direction: column-reverse
+      width 100%
+      margin-right: 0;
+      margin-left: 0;
 
-    //height: auto
-    //padding-top: 50px
-    //padding-bottom: 104px
+
+
 

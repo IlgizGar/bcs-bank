@@ -79,9 +79,8 @@ module.exports = (elem) => {
               $('.js-carousel-progressbar').addClass('state_busy');
             }, 200);
           });
-
           this.carousel.not('.slick-initialized').slick({
-            autoplay: true,
+            autoplay: false,
             autoplaySpeed: 12000,
             speed: 800,
             appendArrows: $('.js-index-carousel-controls'),

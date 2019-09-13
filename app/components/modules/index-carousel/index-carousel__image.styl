@@ -1,59 +1,47 @@
 .index-carousel .index-carousel__image
   position: relative
-
+  width: calc(38% - 40px)
   col()
-  @media (min-width: 1440px)
-    size(7)
-    shift-right(-1)
-    shift-left(-1)
+  @media (min-width: 832px) and (max-width: 1215px)
+    width: calc(38% - 40px)
 
-  @media (min-width: 1280px) and (max-width: 1439px)
-    size(5)
-
-  @media (min-width: 992px) and (max-width: 1279px)
-    size(4)
-
-  @media (min-width: 768px) and (max-width: 991px)
-    size(6)
-
-  @media (max-width: 767px)
-    size(12)
-    margin-bottom: 16px
+  @media (max-width: 831px)
+    width: 100%;
+    margin-right: 0;
+    margin-left: 0;
 
   .illustration
-    z-index: 1
-    position: absolute
-
-    @media (min-width: 1280px)
-      top: -160px
-      right: -80px
-
-      width: 683px;
-      height: 683px
-
-    @media (min-width: 768px) and (max-width: 1279px)
-      top: -80px
-      right: -20px
-
-      width: 438px;
-      height: 438px
-
-    @media (max-width: 767px)
-      position: relative
-      margin: 0 auto
-
-      height: 154px
-
+    position relative
+    z-index 1
+    width 100%
+    margin-top -50px
+    margin-left -10px
+    height calc(100% + 45px)
+    margin-bottom -45px
+    max-width 440px
+    max-height 355px
+    min-width 330px
+    @media (max-width: 831px)
+      min-width 250px
+      max-width 316px
+      margin: 0 auto;
+      width 74%
+      left: -2%;
     .illustration-image
       position: absolute
       top: 50%
       left: 50%
       transform: translate(-50%, -50%)
 
-      width: auto
+      width: 100%
       height: auto
       max-width: 100%
       max-height: 100%
+      @media (max-width: 831px)
+        position static
+        transform none
+        margin: 0 auto;
+
       &-short
         max-width 406px
         max-height 406px

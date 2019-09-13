@@ -1,20 +1,25 @@
 .index-carousel .index-carousel__feature
-  @media (min-width: 992px)
-    width: 206px
+  width 100%
+  max-width 310px
+  @media (min-width: 832px) and (max-width: 1215px)
+    max-width 188px
+    margin-right: 17px;
+  @media (max-width: 831px)
+    &:not(:last-child)
+      margin-right: 33px;
 
-  @media (min-width: 768px) and (max-width: 991px)
-    width: 206px
-    
-    &:nth-child(n+3) {
-      display: none
-    }
-
-  @media (min-width: 576px) and (max-width: 767px)
-    width: 150px
-
-  @media (max-width: 575px)
-    width: 150px
-
-    &:nth-child(n+3) {
-      display: none
-    }
+  .feature__title
+    font-size 33px
+    margin-bottom 15px
+    font-weight: 600;
+    @media (max-width: 960px)
+      margin-top 9px
+      font-size 22px
+  .feature__text
+    formular(24px)
+    @media (min-width: 800px) and (max-width: 1215px)
+      font-size 16px
+    @media (max-width: 831px)
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing -0.2px
